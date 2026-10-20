@@ -1,0 +1,396 @@
+
+
+CreateMeshBuilder
+Cylinder,6,0.008,0.008,0.13
+Translate, 0,-0.10,0.07
+Rotate,0,0,0,35
+SetColor, 25,25,25
+
+RotateAll, 1,0,0,-35
+TranslateAll, 0, 0.15, -0.1
+
+CreateMeshBuilder,
+AddVertex, 0.03, 0.115, -0.01,0,0,-1
+AddVertex,-0.03, 0.115, -0.01,0,0,-1
+AddVertex, 0.03 ,0.115, -0.05,0,0,-1
+AddVertex,-0.03, 0.115, -0.05,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\mani.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+;;;; curva 1;;;
+
+CreateMeshBuilder,
+AddVertex, 0.03, 0.115, -0.05,0,0,-1
+AddVertex,-0.03, 0.115, -0.05,0,0,-1
+AddVertex, 0.03 ,0.110, -0.06,0,0,-1
+AddVertex,-0.03, 0.110, -0.06,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\mani.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+CreateMeshBuilder,
+AddVertex, 0.03, 0.110, -0.060,0,0,-1
+AddVertex,-0.03, 0.110, -0.060,0,0,-1
+AddVertex, 0.03 ,0.103, -0.065,0,0,-1
+AddVertex,-0.03, 0.103, -0.065,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\mani.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+CreateMeshBuilder,
+AddVertex, 0.03, 0.103, -0.065,0,0,-1
+AddVertex,-0.03, 0.103, -0.065,0,0,-1
+AddVertex, 0.03 ,0.090, -0.065,0,0,-1
+AddVertex,-0.03, 0.090, -0.065,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\mani.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CreateMeshBuilder,
+AddVertex, 0.035, 0.110, -0.0595,0,0,-1
+AddVertex,-0.035, 0.110, -0.0595,0,0,-1
+AddVertex, 0.035 ,0.103, -0.065,0,0,-1
+AddVertex,-0.035, 0.103, -0.065,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.11495, -0.0495,0,0,-1
+AddVertex,-0.035, 0.11495, -0.0495,0,0,-1
+AddVertex, 0.035 ,0.110, -0.0595,0,0,-1
+AddVertex,-0.035, 0.110, -0.0595,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.103, -0.065,0,0,-1
+AddVertex,-0.035, 0.103, -0.065,0,0,-1
+AddVertex, 0.035 ,0.090, -0.0645,0,0,-1
+AddVertex,-0.035, 0.090, -0.0645,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.11400, 0.00,0,0,-1
+AddVertex,-0.035, 0.11400, 0.00,0,0,-1
+AddVertex, 0.035 ,0.11490, -0.0495,0,0,-1
+AddVertex,-0.035, 0.11490, -0.0495,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CreateMeshBuilder,
+AddVertex, 0.035, 0.11400, 0.00,0,0,-1
+AddVertex,-0.035, 0.11400, 0.00,0,0,-1
+AddVertex, 0.035 ,0.110, -0.0100,0,0,-1
+AddVertex,-0.035, 0.110, -0.0100,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.110, -0.0100,0,0,-1
+AddVertex,-0.035, 0.110, -0.0100,0,0,-1
+AddVertex, 0.035 ,0.105, -0.0150,0,0,-1
+AddVertex,-0.035, 0.105, -0.0150,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.105, -0.0150,0,0,-1
+AddVertex,-0.035, 0.105, -0.0150,0,0,-1
+AddVertex, 0.035 ,0.100, -0.0140,0,0,-1
+AddVertex,-0.035, 0.100, -0.0140,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.100, -0.0140,0,0,-1
+AddVertex,-0.035, 0.100, -0.0140,0,0,-1
+AddVertex, 0.035 ,0.095, -0.0125,0,0,-1
+AddVertex,-0.035, 0.095, -0.0125,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.095, -0.0125,0,0,-1
+AddVertex,-0.035, 0.095, -0.0125,0,0,-1
+AddVertex, 0.035 ,0.090, -0.0000,0,0,-1
+AddVertex,-0.035, 0.090, -0.0000,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232,
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.090, -0.0000,0,0,-1
+AddVertex,-0.035, 0.090, -0.0000,0,0,-1
+AddVertex, 0.035 ,0.085, -0.0000,0,0,-1
+AddVertex,-0.035, 0.085, -0.0000,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.085, -0.0600,0,0,-1
+AddVertex,-0.035, 0.085, -0.0600,0,0,-1
+AddVertex, 0.035 ,0.085, -0.0000,0,0,-1
+AddVertex,-0.035, 0.085, -0.0000,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+
+CreateMeshBuilder,
+AddVertex, 0.035, 0.090, -0.06495,0,0,-1
+AddVertex,-0.035, 0.090, -0.06495,0,0,-1
+AddVertex, 0.035 ,0.085, -0.0600,0,0,-1
+AddVertex,-0.035, 0.085, -0.0600,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+CreateMeshBuilder,
+AddVertex,-0.035, 0.090, -0.06495,0,0,-1
+AddVertex,-0.035, 0.090, -0.0000,0,0,-1
+AddVertex,-0.035 ,0.085, -0.0600,0,0,-1
+AddVertex,-0.035, 0.085, -0.0000,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+
+CreateMeshBuilder,
+AddVertex,-0.035, 0.103, -0.06495,0,0,-1
+AddVertex,-0.035, 0.095, -0.0100,0,0,-1
+AddVertex,-0.035 ,0.090, -0.06495,0,0,-1
+AddVertex,-0.035, 0.090, -0.0000,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+CreateMeshBuilder,
+AddVertex,-0.035, 0.103, -0.06495,0,0,-1
+AddVertex,-0.035, 0.105, -0.0150,0,0,-1
+AddVertex,-0.035 ,0.095, -0.06495,0,0,-1
+AddVertex,-0.035, 0.095, -0.0120,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+CreateMeshBuilder,
+AddVertex,-0.035, 0.115, -0.0495,0,0,-1
+AddVertex,-0.035, 0.1140, -0.0000,0,0,-1
+AddVertex,-0.035 ,0.11, -0.060,0,0,-1
+AddVertex,-0.035, 0.103, -0.0180,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+CreateMeshBuilder,
+AddVertex,-0.035, 0.11, -0.060,0,0,-1
+AddVertex,-0.035, 0.1140, -0.0000,0,0,-1
+AddVertex,-0.035 ,0.102, -0.065,0,0,-1
+AddVertex,-0.035, 0.103, -0.0180,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+CreateMeshBuilder,
+AddVertex,0.035, 0.090, -0.06495,0,0,-1
+AddVertex,0.035, 0.090, -0.0000,0,0,-1
+AddVertex,0.035 ,0.085, -0.0600,0,0,-1
+AddVertex,0.035, 0.085, -0.0000,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+
+CreateMeshBuilder,
+AddVertex,0.035, 0.103, -0.06495,0,0,-1
+AddVertex,0.035, 0.095, -0.0100,0,0,-1
+AddVertex,0.035 ,0.090, -0.06495,0,0,-1
+AddVertex,0.035, 0.090, -0.0000,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+CreateMeshBuilder,
+AddVertex,0.035, 0.103, -0.06495,0,0,-1
+AddVertex,0.035, 0.105, -0.0150,0,0,-1
+AddVertex,0.035 ,0.095, -0.06495,0,0,-1
+AddVertex,0.035, 0.095, -0.0120,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+CreateMeshBuilder,
+AddVertex,0.035, 0.115, -0.0495,0,0,-1
+AddVertex,0.035, 0.1140, -0.0000,0,0,-1
+AddVertex,0.035 ,0.11, -0.060,0,0,-1
+AddVertex,0.035, 0.103, -0.0180,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+CreateMeshBuilder,
+AddVertex,0.035, 0.11, -0.060,0,0,-1
+AddVertex,0.035, 0.1140, -0.0000,0,0,-1
+AddVertex,0.035 ,0.102, -0.065,0,0,-1
+AddVertex,0.035, 0.103, -0.0180,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\maniB.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+SetColor,232,232,232
+
+translateall,0.01,0.10,5.40
+scaleall,1.03,1.05,0.79,

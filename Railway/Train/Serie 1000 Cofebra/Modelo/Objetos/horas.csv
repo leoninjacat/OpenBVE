@@ -1,0 +1,13 @@
+CreateMeshBuilder,
+AddVertex,-0.07,0.35,-0.005
+AddVertex,0.07,0.35,-0.005
+AddVertex,0.07,0.10,-0.005
+AddVertex,-0.07,0.10,-0.005
+AddFace2,0,1,2,3
+LoadTexture,relogio.png,relogio.png
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,2,1,0.098
+SetTextureCoordinates,3,0,0.098
+setcolor,200,200,200,
+ScaleAll,0.4,0.3,1

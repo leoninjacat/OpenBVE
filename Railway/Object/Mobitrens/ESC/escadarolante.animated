@@ -1,0 +1,28 @@
+[Object]
+Position = 4.7, 0, 0
+States = Escalator1.csv
+
+[Object]
+Position = 1, 0, 0
+States = EscalatorStep1.csv
+TranslateXDirection = 0, -0.15, -0.3
+TranslateXFunctionRPN = time 1 mod 0 - 1 *
+
+[Object]
+Position = 1, 0, 0.3
+States = EscalatorStepFlat1.csv
+TranslateXDirection = 0, 0, -0.3
+TranslateXFunctionRPN = time 1 mod 0 - 1 *
+
+[Object]
+Position = 0.5, 0, 0
+States = EscalatorStep1.csv
+TranslateXDirection = 0, -0.15, -0.3
+TranslateXFunctionRPN = time 1 mod 0 - 1 *
+
+[Object]
+Position = 0.5, 0, 0.3
+States = EscalatorStepFlat1.csv
+TranslateXDirection = 0, 0, -0.3
+TranslateXFunctionRPN = time 1 mod 0 - 1 *
+

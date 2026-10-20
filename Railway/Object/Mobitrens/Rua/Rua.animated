@@ -1,0 +1,24 @@
+[Object]
+States=rua com poste.csv
+
+[Include]
+calcada1.csv
+Position = 10, 0, 0
+
+[Include]
+calcada2.csv
+Position = -2, 0, 0
+
+[Include]
+calcada3.csv
+Position = 4.7, 0, 0
+
+[include]
+lamp.b3d
+Position = 3,0,0
+
+[include]
+lamp.b3d
+Position = -7,0,0
+
+

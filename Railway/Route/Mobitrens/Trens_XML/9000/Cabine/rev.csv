@@ -1,0 +1,67 @@
+﻿
+CreateMeshBuilder,
+Cylinder,8,0.025,0.035,0.01
+Rotate,1,0,0,180
+Translate, 0,1.008, -0.00008
+SetEmissiveColor, 20,20,20
+SetColor, 20,20,20
+LoadTexture,handle.png,
+SetTextureCoordinates,0, 0.0, 0
+SetTextureCoordinates,1, 0.0, 0.1
+SetTextureCoordinates,2, 0.11, 0
+SetTextureCoordinates,3, 0.11, 0.1
+SetTextureCoordinates,4, 0.22, 0
+SetTextureCoordinates,5, 0.22, 0.1
+SetTextureCoordinates,6, 0.33, 0
+SetTextureCoordinates,7, 0.33, 0.1
+SetTextureCoordinates,8, 0.44, 0
+SetTextureCoordinates,9, 0.44, 0.1
+SetTextureCoordinates,10,0.55, 0
+SetTextureCoordinates,11,0.55, 0.1
+SetTextureCoordinates,12,0.66, 0
+SetTextureCoordinates,13,0.66, 0.1
+SetTextureCoordinates,14,0.77, 0
+SetTextureCoordinates,15,0.77, 0.1
+
+
+
+
+
+CreateMeshBuilder,
+Cylinder,8,0.035,0.030,0.01
+Rotate,1,0,0,180
+Translate, 0,1.018, -0.00008
+SetEmissiveColor, 20,20,20
+SetColor, 20,20,20
+LoadTexture,handle.png,
+SetTextureCoordinates,0, 0.0, 0
+SetTextureCoordinates,1, 0.0, 0.1
+SetTextureCoordinates,2, 0.11, 0
+SetTextureCoordinates,3, 0.11, 0.1
+SetTextureCoordinates,4, 0.22, 0
+SetTextureCoordinates,5, 0.22, 0.1
+SetTextureCoordinates,6, 0.33, 0
+SetTextureCoordinates,7, 0.33, 0.1
+SetTextureCoordinates,8, 0.44, 0
+SetTextureCoordinates,9, 0.44, 0.1
+SetTextureCoordinates,10,0.55, 0
+SetTextureCoordinates,11,0.55, 0.1
+SetTextureCoordinates,12,0.66, 0
+SetTextureCoordinates,13,0.66, 0.1
+SetTextureCoordinates,14,0.77, 0
+SetTextureCoordinates,15,0.77, 0.1
+
+CreateMeshBuilder,
+Cube, 0.005, 0.018, 0.012,
+SetEmissiveColor, 25,25,25
+SetColor, 20,20,20
+Translate, 0,1.006, -0.015
+Rotate,0,1,0,90  
+
+
+CreateMeshBuilder,
+Cube, 0.001, 0.010, 0.012,
+SetEmissiveColor, 150,150,150
+SetColor, 20,20,20
+Translate, 0,1.015, -0.0145
+Rotate,0,1,0,90

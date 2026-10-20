@@ -1,0 +1,79 @@
+; lamp_led_cold.b3d
+; LED branca fria (fake light): tubo + feixe + mancha no chão
+; Unidades em metros (aprox)
+
+; ----------------------------
+; 1) TUBO (caixinha fina)
+; ----------------------------
+CreateMeshBuilder,
+; caixa bem fina (substitui cilindro por simplicidade)
+AddVertex, -0.60, 0.02,  0.06,
+AddVertex,  0.60, 0.02,  0.06,
+AddVertex,  0.60,-0.02,  0.06,
+AddVertex, -0.60,-0.02,  0.06,
+
+AddVertex, -0.60, 0.02, -0.06,
+AddVertex,  0.60, 0.02, -0.06,
+AddVertex,  0.60,-0.02, -0.06,
+AddVertex, -0.60,-0.02, -0.06,
+
+; faces
+AddFace2, 0,1,2,3,   ; frente
+AddFace2, 4,5,6,7,   ; trás
+AddFace2, 0,4,5,1,   ; topo
+AddFace2, 3,7,6,2,   ; baixo
+AddFace2, 0,3,7,4,   ; esquerda
+AddFace2, 1,5,6,2,   ; direita
+
+; cor do corpo luminoso (frio = levemente azulado)
+SetColor, 235,245,255
+EmissiveColor, 200,220,255
+BlendMode, Additive, 80, DivideExponent4
+
+; ----------------------------
+; 2) FEIXE (plano vertical com textura)
+; ----------------------------
+CreateMeshBuilder,
+LoadTexture, beam_cold.png,
+
+; Um “retângulo” pendurado pra baixo (você pode inclinar depois se quiser)
+; Z pequeno pra não ficar z-fighting com o tubo
+AddVertex, -0.70, 0.00, 0.001,
+AddVertex,  0.70, 0.00, 0.001,
+AddVertex,  0.70,-2.50, 0.001,
+AddVertex, -0.70,-2.50, 0.001,
+AddFace2, 0,1,2,3,
+
+; UV
+SetTextureCoordinates, 0, 0,0
+SetTextureCoordinates, 1, 1,0
+SetTextureCoordinates, 2, 1,1
+SetTextureCoordinates, 3, 0,1
+
+; brilho mais sutil que o tubo
+EmissiveColor, 120,145,190
+BlendMode, Additive, 110, DivideExponent4
+
+; ----------------------------
+; 3) MANCHA NO CHÃO (plano horizontal com textura)
+; ----------------------------
+CreateMeshBuilder,
+LoadTexture, pool_cold.png,
+
+; Um quad no “chão” relativo ao objeto (a 2.55m abaixo do tubo)
+; Você ajusta essa distância conforme o pé-direito
+AddVertex, -1.40,-2.55, -1.00,
+AddVertex,  1.40,-2.55, -1.00,
+AddVertex,  1.40,-2.55,  1.00,
+AddVertex, -1.40,-2.55,  1.00,
+AddFace2, 0,1,2,3,
+
+SetTextureCoordinates, 0, 0,0
+SetTextureCoordinates, 1, 1,0
+SetTextureCoordinates, 2, 1,1
+SetTextureCoordinates, 3, 0,1
+
+; bem suave pra não “lavar” o piso
+EmissiveColor, 70,90,130
+BlendMode, Additive, 140, DivideExponent4
+

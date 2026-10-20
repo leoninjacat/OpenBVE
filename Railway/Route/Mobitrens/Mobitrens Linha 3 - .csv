@@ -1,0 +1,157 @@
+With Route
+.Comment Mobitrens Linha  (Rota Fictícia);
+.Timetable Extensao ;
+;.image info1.png;
+.Change 0;
+.Gauge 1067 
+
+With Options,
+.objectvisibility 1,
+
+With Structure;
+.DikeL(1)  Mobitrens\Dike\Dike1L.b3d,
+.DikeR(1)  Mobitrens\Dike\Dike1R.b3d,
+
+.rail(0) Mobitrens\Trilhos\trilho.B3D
+.rail(1) Mobitrens\Trilhos\NULL.b3d;
+.rail(2) Mobitrens\Trilhos\brown-500_overhead.B3D
+.rail(3) Mobitrens\Trilhos\brown500_overhead.B3D
+.rail(4) Mobitrens\Trilhos\brown-1000_overhead.B3D
+.rail(5) Mobitrens\Trilhos\brown1000_overhead.B3D
+.rail(6) Mobitrens\Trilhos\bridgetrack.B3D
+.rail(7) Mobitrens\Trilhos\bridgetrack2.B3D
+.rail(8) Mobitrens\Trilhos\empty.b3d
+.rail(9) Mobitrens\Trilhos\estacaotrack.B3D
+
+.rail(10) Mobitrens\Pole\pol2.b3d
+.rail(11) Mobitrens\Pole\pol1.b3d
+.rail(12) Mobitrens\Pole\pol0.b3d
+
+.rail(20) Mobitrens\Muros\Mureta.b3d
+.rail(21) Mobitrens\Muros\murocomgrade.b3d
+
+.rail(30) Mobitrens\Morros\morro1.csv
+.rail(31) Mobitrens\Morros\morro3.csv
+.rail(32) Mobitrens\Morros\morro2.csv
+.rail(33) Mobitrens\Morros\morro4.csv
+
+.rail(35) Mobitrens\Rua\rua.animated
+
+.rail(40) Mobitrens\tunel\T4.csv
+.rail(41) Mobitrens\tunel\T3.csv
+
+.rail(50) Mobitrens\Telhas\telha.csv
+
+.rail(60) Mobitrens\tunel\teto2.b3d
+
+.rail(70) Mobitrens\Paredes\muro.b3d
+
+.rail(280) Mobitrens\Predios\Condominio 1\Condominio.animated
+.rail(281) Mobitrens\Predios\Condominio 2\Condominio.animated
+.rail(282) Mobitrens\Predios\Condominio 3\Condominio.animated
+.rail(283) Mobitrens\Predios\Condominio 4\Condominio.animated
+.rail(284) Mobitrens\Predios\Condominio 5\Condominio.animated
+
+.rail(100) Mobitrens\Plataformas\FormL.b3d
+.rail(101) Mobitrens\Plataformas\FormR.b3d
+.rail(102) Mobitrens\Plataformas\FormC.b3d
+
+.rail(500) Mobitrens\Estacoes\Elevadas\Elevadas.b3d
+.rail(501) Mobitrens\Estacoes\Elevadas\ElevadB.b3d
+.rail(502) Mobitrens\Estacoes\Elevadas\basecentral.b3d
+
+.rail(600) Mobitrens\Estacoes\GAT\VidroLateral\VidroLateral.b3d
+
+;abrigo estacao Manoel Lacerda
+.rail(800) Mobitrens\Estacoes\LAC\abrigo.b3d
+.rail(801) Mobitrens\Estacoes\LAC\abrigo_L.b3d
+
+;objs estacao Cabritas
+.rail(700) Mobitrens\Estacoes\Ilhas\abrigo.b3d
+
+.rail(802) Mobitrens\Estacoes\ilhas\abrigo_red.b3d
+.rail(803) Mobitrens\Estacoes\LAC\abrigo_c.b3d
+
+.rail(901) Mobitrens\Estacoes\SHO\abrigo_R.b3d
+
+.ground(0) Mobitrens\Solo\GroundE.b3d;
+
+With Texture
+.background(0) Mobitrens\Fundos\background1.bmp
+.background(1) Mobitrens\Fundos\black.bmp
+
+
+With track
+
+;trilho 1
+0,.rail 1;-14;0;0
+
+;mata
+0,.rail 300;-50;0;30,.rail 301;70;0;32
+
+;trilhos transparentes
+0,.railtype 0;1,.railtype 1;1
+
+;muro
+600,.rail 20;7;0;20
+
+;Trilhos começam 
+600,.railtype 0;0
+
+;Poles
+600,.rail 11;0;1;11
+
+;via singela termina, se afastando até o começo da plataforma central
+800,.rail 4;0;0;2
+825,.rail 4;-1.3;0;0
+850,.rail 4;-4.2;0;0
+875,.rail 4;-7.5;0;0
+900,.rail 4;-10.8;0;3
+925,.rail 4;-13.1;0;3
+950,.railend 4;-14
+
+;curva suave para situar o trilho central
+800,.curve 1000,.railtype 0;3
+875,.curve -1000,.railtype 0;4
+950,.curve 0,.railtype 0;0
+
+;pole 2 começa
+950,.rail 10;-14;1;10
+
+;rail 1 aparece
+950,.railtype 1;0
+
+;Estação Vila Velha
+1000,.sta Vila Velha
+1200,.stop 1
+
+;plataforma central
+1000,.rail 100;0;0;100,.rail 101;-14;0;101
+1200,.railend 100,.railend 101
+
+;mureta vira gradeado
+1000,.railtype 20;21
+
+;trilho 1 volta a se juntar
+1200,.rail 1;-14;0;0
+1225,.rail 1;-13.3;0;3
+1250,.rail 1;-11.7;0;3
+1275,.rail 1;-9.5;0;2
+1300,.rail 1;-7;0;0
+1325,.rail 1;-5.7;0;2
+1350,.rail 1;-5.1;0;0
+1375,.rail 1;-5;0;0
+
+;pole volta a se juntar
+1200,.rail 10;-14
+1225,.rail 10;-13.2
+1250,.rail 10;-11.7
+1275,.rail 10;-9.5
+1300,.rail 10;-7
+1325,.rail 10;-5.7
+1350,.rail 10;-5.2
+
+;curva volta
+1200,.curve -1000,.railtype 0;4
+1275,.curve 1000,.railtype 0;3
+1350,.curve 0,.railtype 0;0

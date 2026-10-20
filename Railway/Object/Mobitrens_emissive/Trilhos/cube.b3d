@@ -1,0 +1,14 @@
+[MeshBuilder]
+Cube 0.4, 4, 1,
+Color 100,100,100
+Translate 0.5, 3.5, 0
+
+[MeshBuilder]
+Cube 0.4, 4, 1,
+Color 100,100,100
+Translate -23.8, 3.5, 0
+
+[MeshBuilder]
+Cube 14, 0.5, 1,
+Color 120,120,120
+Translate -11.5, 8, 0

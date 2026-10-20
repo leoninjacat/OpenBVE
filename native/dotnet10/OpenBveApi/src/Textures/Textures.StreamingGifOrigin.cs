@@ -80,31 +80,25 @@ namespace OpenBveApi.Textures
 				// Linux-native fallback: decode the requested GIF frame.
 				try
 				{
-					using var image =
-						SixLabors.ImageSharp.Image.Load<
-							SixLabors.ImageSharp.PixelFormats.Rgba32>(
-								FileBytes);
-
-					int target = System.Math.Clamp(
-						frame, 0, image.Frames.Count - 1);
-
-					var gifFrame = image.Frames[target];
+                    using var image = SkiaDecoder.DecodeBitmap(FileBytes, frame);
+                    if (image.Width != Width || image.Height != Height)
+                        throw new InvalidDataException("GIF dimensions do not match texture.");
 					byte[] bytes = new byte[checked(Width * Height)];
 
 					for (int y = 0; y < Height; y++)
 					{
 						for (int x = 0; x < Width; x++)
 						{
-							var pixel = gifFrame[x, y];
+							var pixel = image.GetPixel(x, y);
 							int bestIndex = 0;
 							int bestDistance = int.MaxValue;
 
 							for (int i = 0; i < Palette.Length && i < 256; i++)
 							{
-								int dr = pixel.R - Palette[i].R;
-								int dg = pixel.G - Palette[i].G;
-								int db = pixel.B - Palette[i].B;
-								int da = pixel.A - Palette[i].A;
+								int dr = pixel.Red - Palette[i].R;
+								int dg = pixel.Green - Palette[i].G;
+								int db = pixel.Blue - Palette[i].B;
+								int da = pixel.Alpha - Palette[i].A;
 
 								int distance =
 									dr * dr + dg * dg + db * db + da * da;

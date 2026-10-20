@@ -1,0 +1,6 @@
+﻿[Object]
+States = Display2.csv
+StateFunction = value == 0
+TextureShiftXFunction = 0.02 * time 
+RefreshRate = -0.5
+

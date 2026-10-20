@@ -1,0 +1,56 @@
+[Meshbuilder]
+Vertex 0.01, 7, 2
+Vertex 0.01, 7, 10
+Vertex 2.5, 4.5, 12
+Vertex 2.5, 4.5, 0
+Vertex 2.5, 0, 12
+Vertex 2.5, 0, 0
+Face 0,1,2,3
+Face 3,2,4,5
+
+[Texture]
+Load House_2.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0,0.5
+Coordinates 4,1,1
+Coordinates 5,0,1
+
+[Meshbuilder]
+Vertex -0.01, 7, 2
+Vertex 0.01, 7, 2
+Vertex 2.5, 4.5, 0
+Vertex -2.5, 4.5, 0
+Vertex 2.5, 0, 0
+Vertex -2.5, 0, 0
+Face 0,1,2,3
+Face 3,2,4,5
+
+[Texture]
+Load House_2.bmp
+Coordinates 0,0,0
+Coordinates 1,0.5,0
+Coordinates 2,0.5,0.5
+Coordinates 3,0,0.5
+Coordinates 4,0.5,1
+Coordinates 5,0,1
+
+[Meshbuilder]
+Vertex -0.01, 7, 2
+Vertex -0.01, 7, 10
+Vertex -2.5, 4.5, 12
+Vertex -2.5, 4.5, 0
+Vertex -2.5, 0, 12
+Vertex -2.5, 0, 0
+Face 3,2,1,0
+Face 5,4,2,3
+
+[Texture]
+Load House_2.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0,0.5
+Coordinates 4,1,1
+Coordinates 5,0,1

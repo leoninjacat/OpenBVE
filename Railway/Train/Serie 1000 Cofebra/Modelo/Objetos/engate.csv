@@ -1,0 +1,83 @@
+﻿;==============================Engate automatico
+createmeshbuilder
+addvertex,-0.3417,0.4085,12.1575
+addvertex,-0.3417,1.1315,12.1575
+addvertex, 0.3917,1.1315,12.1575
+addvertex, 0.3917,0.4085,12.1575
+addface2,3,2,1,0
+loadtexture, engatescharfenberg.png
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,1
+setdecaltransparentcolor,0,255,0
+translate,0,-0.2,0
+
+createmeshbuilder
+addvertex,-0.2317,0.4485,11.7000
+addvertex,-0.2317,0.8500,11.7000
+addvertex,-0.3317,0.9300,11.7000
+addvertex,-0.3317,1.1315,11.7000
+addvertex,-0.3317,1.1215,12.1600
+addvertex,-0.3317,0.9300,12.1600
+addvertex,-0.2317,0.8500,12.1600
+addvertex,-0.2317,0.4485,12.1600
+addface2,0,1,6,7
+addface2,6,5,2,1
+addface2,2,3,4,5
+loadtexture, engatescharfenberg-2.png
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,0,0.38
+SetTextureCoordinates,2,0,0.3
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,4,1,0
+SetTextureCoordinates,5,1,0.3
+SetTextureCoordinates,6,1,0.38
+SetTextureCoordinates,7,1,1
+setdecaltransparentcolor,0,255,0
+translate,0,-0.2,0
+
+createmeshbuilder
+addvertex,0.2017,0.4485,11.7000
+addvertex,0.2017,0.8500,11.7000
+addvertex,0.2877,0.9300,11.7000
+addvertex,0.2877,1.1305,11.7000
+addvertex,0.2877,1.1205,12.1600
+addvertex,0.2877,0.9300,12.1600
+addvertex,0.2017,0.8500,12.1600
+addvertex,0.2017,0.4485,12.1600
+addface2,0,1,6,7
+addface2,6,5,2,1
+addface2,2,3,4,5
+loadtexture, engatescharfenberg-2.png
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,0,0.38
+SetTextureCoordinates,2,0,0.3
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,4,1,0
+SetTextureCoordinates,5,1,0.3
+SetTextureCoordinates,6,1,0.38
+SetTextureCoordinates,7,1,1
+setdecaltransparentcolor,0,255,0
+translate,0,-0.2,0
+
+createmeshbuilder
+addvertex,-0.3317,1.1215,12.1600
+addvertex,-0.3317,1.1215,11.9000
+addvertex, 0.3017,1.1215,11.9000
+addvertex, 0.3017,1.1215,12.1600
+addface2,0,1,2,3
+loadtexture, engatescharfenberg-3.png
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,1
+translate,0,-0.2,0
+
+
+createmeshbuilder
+cylinder,7,0.12,0.12,1
+setcolor,010,010,010
+rotate,90,0,0,90
+translate,0000,0.77,11.6500
+

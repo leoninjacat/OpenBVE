@@ -1,0 +1,56 @@
+;;lado esquerdo
+CreateMeshBuilder,
+AddVertex,0.81,0.00,9.50,0,0,1
+AddVertex,0.81,1.10,9.50,0,0,1
+AddVertex,0.81,1.10,5.40,0,0,1
+AddVertex,0.81,0.00,5.40,0,0,1
+AddFace2,0,1,2,3,
+LoadTexture,rodeiro by RNT.png,
+SetTextureCoordinates,0,1,1,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,0,
+SetTextureCoordinates,3,0,1,
+SetDecalTransparentColor,255,255,255,
+
+CreateMeshBuilder,
+AddVertex,-0.81,0.00,9.50,0,0,1
+AddVertex,-0.81,1.10,9.50,0,0,1
+AddVertex,-0.81,1.10,5.40,0,0,1
+AddVertex,-0.81,0.00,5.40,0,0,1
+AddFace2,0,1,2,3,
+LoadTexture,rodeiro by RNT.png,
+SetTextureCoordinates,0,1,1,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,0,
+SetTextureCoordinates,3,0,1,
+SetDecalTransparentColor,255,255,255,
+
+;;;;
+
+CreateMeshBuilder,
+AddVertex,0.81,0.90,5.40,0,0,1
+AddVertex,-0.81,0.90,5.40,0,0,1
+AddVertex,-0.81,0.10,5.40,0,0,1
+AddVertex,0.81,0.10,5.40,0,0,1
+AddFace,3,2,1,0,
+LoadTexture,rodeiro by RNT.png,
+SetTextureCoordinates,0,0.8,0.6,
+SetTextureCoordinates,1,0.2,0.6,
+SetTextureCoordinates,2,0.2,0.9,
+SetTextureCoordinates,3,0.8,0.9,
+SetDecalTransparentColor,255,255,255,
+
+CreateMeshBuilder,
+AddVertex,0.81,0.90,9.49,0,0,1
+AddVertex,-0.81,0.90,9.49,0,0,1
+AddVertex,-0.81,0.10,9.49,0,0,1
+AddVertex,0.81,0.10,9.49,0,0,1
+AddFace,0,1,2,3,
+LoadTexture,rodeiro by RNT.png,
+SetTextureCoordinates,0,0.8,0.6,
+SetTextureCoordinates,1,0.2,0.6,
+SetTextureCoordinates,2,0.2,0.9,
+SetTextureCoordinates,3,0.8,0.9,
+SetDecalTransparentColor,255,255,255,
+
+

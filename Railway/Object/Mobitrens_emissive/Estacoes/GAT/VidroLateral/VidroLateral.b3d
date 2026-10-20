@@ -1,0 +1,28 @@
+;vidros
+
+;lado A
+[MeshBuilder]
+Vertex 7, 10, 25
+Vertex 7, 5.5, 25
+Vertex  7, 5.5,  0
+Vertex  7, 10, 0
+Face2  0,1,2,3
+
+[Texture]
+Load foor.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,255,0
+
+;lado transparente
+[MeshBuilder]
+Vertex 7, 10, 25
+Vertex 7, 5.5, 25
+Vertex  7, 5.5,  0
+Vertex  7, 10, 0
+Face2  0,1,2,3
+Color 85,95,125,180
+
+EmissiveColorAll 20,20,20

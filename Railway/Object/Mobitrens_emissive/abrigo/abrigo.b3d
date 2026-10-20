@@ -1,0 +1,154 @@
+;(c) Joao Carlos Goncalves, June 2008
+;http://www.bvebrasil.com.br
+;mail to joaocg@iconet.com.br
+;
+;This is a hand-coded object, made from scratch
+;
+;Sinta-se livre para usar este objeto
+;
+;Apenas coloque os meus créditos, se for divulgar sua rota na Web.
+;
+
+;;pillar for Y1;;
+[Meshbuilder]
+cylinder 14, 0.42, 0.42, 25.100
+translate 0.0002,-5.2000, 0.000
+
+;;double V's
+[MeshBuilder]
+Vertex  0.1, 4.4, 0.0
+Vertex  0.1, 5.8, 0.0
+Vertex -1.8, 5.8, 0.0
+Vertex -1.8, 4.4, 0.0
+Face2 0,1,2,3
+[Texture]
+Load mast_v.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,-1,0
+Coordinates 3,-1,1
+Transparent 0,255,0
+
+
+;;
+[MeshBuilder]
+Vertex -0.1, 4.4, 0.0
+Vertex -0.1, 5.8, 0.0
+Vertex  1.8, 5.8, 0.0
+Vertex  1.8, 4.4, 0.0
+Face2 0,1,2,3
+[Texture]
+Load mast_v.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,-1,0
+Coordinates 3,-1,1
+Transparent 0,255,0
+
+
+
+;;pillar for Y2;;
+[Meshbuilder]
+cylinder 14, 0.42, 0.42, 25.100
+translate 0.0002, -5.2000, 12.5000
+color 195,195,195
+
+;;double V's
+[MeshBuilder]
+Vertex   0.1, 4.4, 12.50
+Vertex   0.1, 5.8, 12.50
+Vertex  -1.8, 5.8, 12.50
+Vertex  -1.8, 4.4, 12.50
+Face2 0,1,2,3
+[Texture]
+Load mast_v.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,-1,0
+Coordinates 3,-1,1
+Transparent 0,255,0
+
+;;
+[MeshBuilder]
+Vertex -0.1, 4.4, 12.50
+Vertex -0.1, 5.8, 12.50
+Vertex  1.8, 5.8, 12.50
+Vertex  1.8, 4.4, 12.50
+Face2 0,1,2,3
+[Texture]
+Load mast_v.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,-1,0
+Coordinates 3,-1,1
+Transparent 0,255,0
+
+
+;;pillar for Y3;;
+[Meshbuilder]
+cylinder 4, 0.42, 0.42, 5.100
+translate 0.0002, 3.2000, 25.000
+color 195,195,195
+
+
+;;double V's
+[MeshBuilder]
+Vertex  0.1, 4.4, 25.0
+Vertex  0.1, 5.8, 25.0
+Vertex -1.8, 5.8, 25.0
+Vertex -1.8, 4.4, 25.0
+Face2 0,1,2,3
+[Texture]
+Load mast_v.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,-1,0
+Coordinates 3,-1,1
+Transparent 0,255,0
+
+;;
+[MeshBuilder]
+Vertex -0.1, 4.4, 25.0
+Vertex -0.1, 5.8, 25.0
+Vertex  1.8, 5.8, 25.0
+Vertex  1.8, 4.4, 25.0
+Face2 0,1,2,3
+[Texture]
+Load mast_v.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,-1,0
+Coordinates 3,-1,1
+Transparent 0,255,0
+
+
+
+
+[MeshBuilder]  ;;roof=====
+Vertex -3,0,-1
+Vertex 3,0,-1
+Vertex 3,0,25
+Vertex -3,0,25
+Face 0,1,2,3
+Translate 0,5.8,0
+[Texture]
+Load Teto.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0
+Coordinates 3,0,0
+
+
+[MeshBuilder]  ;;roof=====
+Vertex -3,0,1
+Vertex 3,0,1
+Vertex 3,0,-25
+Vertex -3,0,-25
+Face 0,1,2,3
+Translate 0,5.8,24
+[Texture]
+Load Teto.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0
+Coordinates 3,0,0

@@ -1,0 +1,22 @@
+[Object]
+States=Radial.csv
+
+[Include]
+calcada1.csv
+Position = 10, 0, 0
+
+[Include]
+calcada2.csv
+Position = 14, 0, 0
+
+[Include]
+calcada1.csv
+Position = -12, 0, 0
+
+[Include]
+Radial.csv
+Position = 24, 0, 0
+
+[Include]
+calcada2.csv
+Position = 36, 0, 0

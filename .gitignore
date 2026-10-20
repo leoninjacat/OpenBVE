@@ -60,3 +60,6 @@ debian/debhelper-build-stamp
 
 # NuGet Packages
 **/[Pp]ackages/*
+
+# Reconstructed from content-parts/ by native/prepare-content.sh (>100 MB).
+/Railway/Sound/L2 verde/SomPlat.wav

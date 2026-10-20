@@ -1,0 +1,201 @@
+﻿;;;manometro
+;; Reserv.
+[object]
+states = cabine\cabine\needle_pressuregauge_upper.csv
+position =  0.323, 2.16, 11.777
+rotatezdirection = 0, 0, -1
+rotatezfunction = -2.05 + brakeCylinder[2] * 0.0000055
+rotatexfunction = If[brakeCylinder < 400000 ,-0.19 * 1, 0.05 * 1] 
+;; Cilindro de Freio
+[object]
+states = cabine\cabine\needle_pressuregauge_2.csv
+position =  0.325, 2.158, 11.78
+rotatezdirection = 0, 0, 1
+rotatezfunction = -0.27 * 5.5
+rotatexfunction = 0.05 * 4.5
+rotatexdamping = 30, 0.8
+[Object]
+Position = -1.38,2.90,7.215
+States = cabine\cabine\CAMERA.b3d
+[Object]
+Position = -0.00,1.97,7.500
+States = cabine\cabine\Micro.csv
+;;;botões;;;
+[Object]
+Position = -0.16,1.90,7.245
+States = cabine\cabine\BotãoGiratorio.csv
+[Object]
+Position = -0.24,1.90,7.245
+States = cabine\cabine\BotãoGiratorio.csv
+[Object]
+Position = -0.32,1.90,7.245
+States = cabine\cabine\BotãoGiratorio.csv
+[Object]
+Position = -0.24,1.90,7.32
+States = cabine\cabine\BotãoGiratorioSemBase.csv
+;;;;;;;;botões em si;;;
+[Object]
+Position = -0.32,0.865,7.305
+States = cabine\cabine\BotãoCabineAzul.csv
+[Object]
+Position = -0.14,0.865,7.325
+States = cabine\cabine\BotãoCabineAzul.csv
+[Object]
+Position = -0.24,1.90,7.405
+States = cabine\cabine\BotãoGiratorioPQ.csv
+[Object]
+Position = -0.14,0.865,7.395
+States = cabine\cabine\BotãoCabineVerde.csv
+[Object]
+Position = -0.32,0.865,7.375
+States = cabine\cabine\BotãoCabineAzul.csv
+[Object]
+Position = -0.17,0.865,7.47
+States = cabine\cabine\BotãoCabineSeila.csv
+;;;;;;Portas lado Esquerdo;;;
+[Object]
+Position = -0.475,0.865,7.231
+States = cabine\cabine\BotãoCabineVerde.csv
+[Object]
+Position = -0.430,0.865,7.295
+States = cabine\cabine\BotãoCabineApagado.csv
+[Object]
+Position = -0.495,0.865,7.315
+States = cabine\cabine\BotãoCabinePreto.csv
+[Object]
+Position = -0.445,0.865,7.37
+States = cabine\cabine\BotãoCabineAceso.csv
+[Object]
+Position = -0.565,0.865,7.255
+States = cabine\cabine\BotãoCabineBuzina.csv
+;;;;;;Portas lado Direito;;;
+[Object]
+Position = 0.465,0.865,7.230
+States = cabine\cabine\BotãoCabineVerde.csv
+[Object]
+Position = 0.410,0.865,7.295
+States = cabine\cabine\BotãoCabineApagado.csv
+[Object]
+Position = 0.475,0.865,7.315
+States = cabine\cabine\BotãoCabinePreto.csv
+[Object]
+Position = 0.425,0.865,7.385
+States = cabine\cabine\BotãoCabineAceso.csv
+[Object]
+Position = 0.535,0.865,7.230
+States = cabine\cabine\BotãoCabineEmerg.csv
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[object]
+states = cabine\cabine\portasfechadas2.csv 
+position = -0.155,-0.005, 0.317
+statefunction = Ceiling [rightdoors] != 1
+[object]
+states = cabine\cabine\portasfechadas2.1.csv 
+position = 0.155,-0.005, 0.317
+statefunction = Ceiling [leftdoors] != 1
+[Object]
+States = cabine\cabine\Portasfechadas.csv
+StateFunction = reverserNotch != -1
+position = -0.009,-0.085, -0.051
+[Object]
+states = cabine\cabine\Cortina Fechada.csv
+position = 0.00,-0.10, -0.07
+StateFunction = reverserNotch != 0
+[Object]
+states = cabine\cabine\Portasfechadas.csv
+position = -0.009,-0.085, -0.051
+StateFunction = reverserNotch != 1
+[object]
+states = cabine\cabine\Portas abertas.csv
+position = 0,0, -0.002
+statefunction = Ceiling[rightdoors]!= 1
+[object]
+states = cabine\cabine\Portas abertas esquerda.csv
+position = 0,0, -0.002
+statefunction = Ceiling[leftdoors]!= 1
+[object]
+states = cabine\cabine\PHM.csv
+position = 0,0, -0.003
+statefunction = pluginstate[270]!=1
+[object]
+states = cabine\cabine\falha.csv
+position = 0,0, -0.002
+statefunction = pluginstate[257]!=1
+[object]
+states = cabine\cabine\falha.csv
+position = 0,0, -0.002
+statefunction = pluginstate[258]!=1
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[object]
+states =cabine\cabine\atc\25.csv
+statefunction = pluginstate[271] != 1
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\25.csv
+statefunction = pluginstate[271] != 2
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\25.csv
+statefunction = pluginstate[271] != 3
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\50.csv
+statefunction = pluginstate[271] != 4
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\50.csv
+statefunction = pluginstate[271] != 5
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\70.csv
+statefunction = pluginstate[271] != 6
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\70.csv
+statefunction = pluginstate[271] != 7
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\70.csv
+statefunction = pluginstate[271] != 8
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\90.csv
+statefunction = pluginstate[271] != 9
+Position = -0.008, -0.082,-0.05
+[object]
+states =cabine\cabine\atc\90.csv
+statefunction = pluginstate[271] != 10
+Position = -0.008, -0.082,-0.05
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;velocimetro digital;;;;;;;;;;;;;;;
+;;;;;;dezena
+[Object]
+States = cabine\cabine\digit.csv
+Position = -1.008, -0.007, -3.987
+TextureShiftYFunction = 0.1 * floor[mod[speed, 35] * 0.36]
+; unidade
+[Object]
+States = cabine\cabine\digit.csv
+Position = -0.995, -0.007, -3.976
+TextureShiftYFunction = 0.1 * floor[mod[speed, 35] * 3.6]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[Object]
+Position = -0.75,2.4,7.405
+States = cabine\cabine\mochila.b3d
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[object]
+states = cabine\cabine\manipulo.csv
+position = 0.15, 1.83, 7.35
+TranslateZFunction = if[powerNotch >= 1, 0.01 * powerNotch, -0.01 * brakeNotchLinear]
+;;;;;;;;;;;;
+[object]
+states = cabine\cabine\rev.csv
+position =  0.31, 0.95, 11.585
+rotateyfunction = 0.32 * reverserNotch
+[Object]
+Position = 0.0,0.865,7.415
+States = cabine\cabine\BotãoCabinePreto.csv
+;;;;;;;;;;;;;;;;
+[Object]
+Position = 0.35,0.99,11.55
+States = cabine\cabine\extintor.csv

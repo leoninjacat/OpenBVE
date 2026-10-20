@@ -1,0 +1,14 @@
+global using Bitmap = OpenBve.Native.Drawing.Bitmap;
+global using Font = OpenBve.Native.Drawing.Font;
+global using FontFamily = OpenBve.Native.Drawing.FontFamily;
+global using FontStyle = OpenBve.Native.Drawing.FontStyle;
+global using GraphicsUnit = OpenBve.Native.Drawing.GraphicsUnit;
+global using StringFormat = OpenBve.Native.Drawing.StringFormat;
+global using StringAlignment = OpenBve.Native.Drawing.StringAlignment;
+global using Brush = OpenBve.Native.Drawing.Brush;
+global using SolidBrush = OpenBve.Native.Drawing.SolidBrush;
+global using Brushes = OpenBve.Native.Drawing.Brushes;
+global using Pen = OpenBve.Native.Drawing.Pen;
+global using Pens = OpenBve.Native.Drawing.Pens;
+global using Graphics = OpenBve.Native.Drawing.Graphics;
+global using Image = OpenBve.Native.Drawing.Bitmap;

@@ -1,0 +1,191 @@
+[Texture] stair_texture.png
+
+; Criando os 40 degraus com [MeshBuilder] antes de cada um
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 0.3, 0.4
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 0.6, 0.8
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 0.9, 1.2
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 1.2, 1.6
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 1.5, 2.0
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 1.8, 2.4
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 2.1, 2.8
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 2.4, 3.2
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 2.7, 3.6
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 3.0, 4.0
+
+; (Continuando até o degrau 40)
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 3.3, 4.4
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 3.6, 4.8
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 3.9, 5.2
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 4.2, 5.6
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 4.5, 6.0
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 4.8, 6.4
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 5.1, 6.8
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 5.4, 7.2
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 5.7, 7.6
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 6.0, 8.0
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 6.3, 8.4
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 6.6, 8.8
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 6.9, 9.2
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 7.2, 9.6
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 7.5, 10.0
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 7.8, 10.4
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 8.1, 10.8
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 8.4, 11.2
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 8.7, 11.6
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 9.0, 12.0
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 9.3, 12.4
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 9.6, 12.8
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 9.9, 13.2
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 10.2, 13.6
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 10.5, 14.0
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 10.8, 14.4
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 11.1, 14.8
+
+[MeshBuilder]
+Cube 2, 0.3, 0.4
+[Translate] 0, 11.4, 15.2
+
+; Corrimão inclinado
+[MeshBuilder]
+Cylinder 12, 0.05, 0.05, 20
+Rotate 0, 0, 0, -130
+[Translate] -1.1, 8, 8
+
+[MeshBuilder]
+Cylinder 12, 0.05, 0.05, 20
+Rotate 0, 0, 0, -130
+[Translate] 1.1, 8, 8
+
+; Suportes dos corrimões
+[MeshBuilder]
+Cylinder 12, 0.05, 0.05, 1.2
+[Translate] -1.1, 0.6, 0.4
+
+[MeshBuilder]
+Cylinder 12, 0.05, 0.05, 1.2
+[Translate] -1.1, 4.2, 6.0
+
+[MeshBuilder]
+Cylinder 12, 0.05, 0.05, 1.2
+[Translate] -1.1, 8.4, 12.0
+
+[MeshBuilder]
+Cylinder 12, 0.05, 0.05, 1.2
+[Translate] 1.1, 0.6, 0.4
+
+[MeshBuilder]
+Cylinder 12, 0.05, 0.05, 1.2
+[Translate] 1.1, 4.2, 6.0
+
+[MeshBuilder]
+Cylinder 12, 0.05, 0.05, 1.2
+[Translate] 1.1, 8.4, 12.0

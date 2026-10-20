@@ -1,0 +1,52 @@
+[MeshBuilder]
+Vertex -8.8, -1.1, 0
+Vertex -8.8, -1.1, 25.1
+Vertex -8.8, 8.7, 25.1
+Vertex -8.8, 8.7, 0
+Face2 0, 1, 2, 3
+[Texture]
+Load wall4.bmp
+Coordinates 0, 1, 1
+Coordinates 1, 0, 1
+Coordinates 2, 0, 0
+Coordinates 3, 1, 0
+
+[MeshBuilder]
+Vertex -9.2, -1.1, 0
+Vertex -9.2, -1.1, 25.1
+Vertex -9.2, 8.7, 25.1
+Vertex -9.2, 8.7, 0
+Face2 0, 1, 2, 3
+[Texture]
+Load wall4.bmp
+Coordinates 0, 1, 1
+Coordinates 1, 0, 1
+Coordinates 2, 0, 0
+Coordinates 3, 1, 0
+
+;1º Pilar
+[MeshBuilder]
+Vertex -9.2, 8.7, 0
+Vertex -8.8, 8.7, 0
+Vertex -8.8, -1.1, 0
+Vertex -9.2, -1.1, 0
+Face2 0, 1, 2, 3
+[Texture]
+Load wall4.bmp
+Coordinates 0, 1, 1
+Coordinates 1, 0, 1
+Coordinates 2, 0, 0
+Coordinates 3, 1, 0
+
+[MeshBuilder]
+Vertex -9.2, 8.7, 25.1
+Vertex -8.8, 8.7, 25.1
+Vertex -8.8, -1.1, 25.1
+Vertex -9.2, -1.1, 25.1
+Face2 0, 1, 2, 3
+[Texture]
+Load wall4.bmp
+Coordinates 0, 1, 1
+Coordinates 1, 0, 1
+Coordinates 2, 0, 0
+Coordinates 3, 1, 0

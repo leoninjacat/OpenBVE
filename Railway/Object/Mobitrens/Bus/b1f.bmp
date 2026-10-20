@@ -1,0 +1,1830 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenBve</name>
+    </assembly>
+    <members>
+        <member name="T:OpenBve.Game.BogusPretrainAI">
+            <summary>Represents the bogus (non-visible) AI train, placed via .PreTrain commands</summary>
+        </member>
+        <member name="T:OpenBve.Game.SimpleHumanDriverAI">
+            <summary>This class forms an AI representation of a simple human driver</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.TimeLastProcessed">
+            <summary>The time last processed, in seconds since midnight</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.CurrentInterval">
+            <summary>The processing interval in seconds</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.BrakeMode">
+            <summary>Whether the train is currently braking to a stop</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.CurrentSpeedFactor">
+            <summary>The current percentage of the limit the driver is aiming for</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.PersonalitySpeedFactor">
+            <summary>A random base speed factor for the driver personality</summary>
+            <remarks>Controls the percentage of the speed limit the driver aims for</remarks>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.PowerNotchAtWhichWheelSlipIsObserved">
+            <summary>The last notch at which wheelslip was observed</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.LastStation">
+            <summary>The index of the last station the train called at</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.SpeedLimit">
+            <summary>The AI speed limit (if set by routefile)</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.Train">
+            <summary>Holds a reference to the train the AI is driving</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.MotorCar">
+            <summary>The index to the first motor car, if the driver car is not a motor car</summary>
+        </member>
+        <member name="M:OpenBve.Game.SimpleHumanDriverAI.PerformPlugin(System.Double)">
+            <summary>Sets the response time for actions triggered by a runtime plugin</summary>
+            <param name="timeElapsed">The elapsed time</param>
+            <returns>The response time</returns>
+        </member>
+        <member name="M:OpenBve.Game.SimpleHumanDriverAI.PerformDefault">
+            <summary>Performs all default actions</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.doorWaitingTimer">
+            <summary>The timer unti the doors may be opened</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.wiperTimer">
+            <summary>Controls the AI operating the wipers</summary>
+        </member>
+        <member name="F:OpenBve.Game.SimpleHumanDriverAI.doorOpenAttempted">
+            <summary>Whether a door open has yet been attempted</summary>
+        </member>
+        <member name="M:OpenBve.Game.SimpleHumanDriverAI.AttemptToOpenDoors">
+            <summary>Provides a simple random delay timer, so the driver does not appear to open the doors instantly</summary>
+        </member>
+        <member name="F:OpenBve.Game.Menu">
+            <summary>The in-game menu system</summary>
+        </member>
+        <member name="F:OpenBve.Game.RouteInfoOverlay">
+            <summary>The in-game overlay with route info drawings</summary>
+        </member>
+        <member name="F:OpenBve.Game.CurrentScore">
+            <summary>The current in-game score</summary>
+        </member>
+        <member name="T:OpenBve.Game.Score">
+            <summary>The score class</summary>
+        </member>
+        <member name="F:OpenBve.Game.Score.CurrentValue">
+            <summary>The current total score</summary>
+        </member>
+        <member name="F:OpenBve.Game.Score.Maximum">
+            <summary>The maximum available score</summary>
+        </member>
+        <member name="F:OpenBve.Game.Score.OpenedDoorsCounter">
+            <summary>The number of times the doors have been opened incorrectly</summary>
+        </member>
+        <member name="F:OpenBve.Game.Score.OverspeedCounter">
+            <summary>The number of times the speed limit has been exceeded</summary>
+        </member>
+        <member name="F:OpenBve.Game.Score.TopplingCounter">
+            <summary>The number of times the train has toppled due to excessive speed in curves</summary>
+        </member>
+        <member name="F:OpenBve.Game.Score.RedSignal">
+            <summary>The number of times a signal has been passed at danger</summary>
+        </member>
+        <member name="F:OpenBve.Game.Score.Derailed">
+            <summary>The number of times the train has been derailed</summary>
+        </member>
+        <member name="M:OpenBve.Game.Score.Update(System.Double)">
+            <summary>This method should be called once a frame to update the player's score</summary>
+            <param name="TimeElapsed">The time elapsed since this function was last called</param>
+        </member>
+        <member name="M:OpenBve.Game.Score.AddScore(System.Int32,OpenBve.Game.ScoreTextToken,System.Double,System.Boolean)">
+            <summary>Is called by the update function to add a new score event to the log</summary>
+            <param name="Value">The value of the score event</param>
+            <param name="TextToken">The token type which caused the score event</param>
+            <param name="Duration">The duration of the score event (e.g. overspeed)</param>
+            <param name="Count">Whether this should be counted as a unique event (NOTE: Scheduled stops are the only case which are not)</param>
+        </member>
+        <member name="M:OpenBve.Game.Score.AddScore(System.String,System.Double)">
+            <summary>Is called by the update function to add a new score event to the log</summary>
+            <param name="Text">The log text for this score event</param>
+            <param name="Duration">The duration of the score event (e.g. overspeed)</param>
+        </member>
+        <member name="M:OpenBve.Game.UpdateScoreMessages(System.Double)">
+            <summary>Updates all score messages displayed by the renderer</summary>
+        </member>
+        <member name="F:OpenBve.Game.LogRouteName">
+            <summary>The current route name used for score logging</summary>
+        </member>
+        <member name="F:OpenBve.Game.LogTrainName">
+            <summary>The current train name used for score logging</summary>
+        </member>
+        <member name="F:OpenBve.Game.LogDateTime">
+            <summary>The current time for score logging</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreLogs">
+            <summary>Holds all score log messages generated</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreLogCount">
+            <summary>The current score log message count</summary>
+        </member>
+        <member name="T:OpenBve.Game.ScoreLog">
+            <summary>Represents a score log message</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreLog.Value">
+            <summary>The value for the score event</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreLog.TextToken">
+            <summary>The token for the score event which triggered this log message</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreLog.Position">
+            <summary>The absolute track position (Front axle of the front car) which this log message was generated at</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreLog.Time">
+            <summary>The in-game time at which this log message was generated at</summary>
+        </member>
+        <member name="T:OpenBve.Game.ScoreTextToken">
+            <summary>Holds the different score tokens</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreFactorOpenedDoors">
+            <summary>The default number of points lost when the doors are opened unexpectedly</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreFactorOverspeed">
+            <summary>The default number of points lost per second when running overspeed</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreFactorToppling">
+            <summary>The default number of points lost when toppling the train through overspeed</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreFactorStationLate">
+            <summary>The default number of points lost per second late</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreFactorStationStop">
+            <summary>The default number of points lost when missing a station's defined stop point</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreFactorStationDeparture">
+            <summary>The default number of points lost when departing unexpectedly from a station</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreValueDerailment">
+            <summary>The default number of points lost when the train is derailed</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreValueRedSignal">
+            <summary>The default number of points lost when a red signal is passed</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreValueStationPerfectTime">
+            <summary>The default number of points gained when arriving at a station on time</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreValueStationPerfectStop">
+            <summary>The default number of points gained when stopping within tolerance of a station's defined stop point</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreValuePassengerDiscomfort">
+            <summary>The default number of points lost when the passengers are experiencing discomfort (Excessive speed through curves etc)</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreValueStationArrival">
+            <summary>The default number of points gained when stopping at a scheduled station</summary>
+        </member>
+        <member name="F:OpenBve.Game.StartupTime">
+            <summary>The time at which the current game started, expressed as the number of seconds since midnight on the first day</summary>
+        </member>
+        <member name="F:OpenBve.Game.MinimalisticSimulation">
+            <summary>Whether the game is in minimal simulation mode: 
+            This is used when the game is fast-forwarding on start or station jump.
+            Train and time movements are processed, but no graphical processing is done
+            </summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreMessages">
+            <summary>Holds all current score messages to be rendered</summary>
+        </member>
+        <member name="F:OpenBve.Game.ScoreMessagesRendererSize">
+            <summary>Holds the current on-screen size in px of the area occupied by score messages</summary>
+        </member>
+        <member name="M:OpenBve.Game.Reset(System.Boolean)">
+            <summary>Call this function to reset the game</summary>
+            <param name="resetLogs">Whether the logs should be reset</param>
+        </member>
+        <member name="T:OpenBve.GameMenu">
+            <summary>Implements the in-game menu system; manages addition and removal of individual menus.</summary>
+        </member>
+        <member name="M:OpenBve.GameMenu.GetControlDescription(System.Int32)">
+            <summary>Builds the description string for a control</summary>
+        </member>
+        <member name="T:OpenBve.GameMenu.SingleMenu">
+            <summary>Provides implementation for a single menu of the menu stack.</summary>
+            <remarks>The class is private to Menu, but all its fields are public to allow 'quick-and-dirty'
+            access from Menu itself.</remarks>
+        </member>
+        <member name="F:OpenBve.GameMenu.Instance">
+            <summary>Returns the current menu instance (If applicable)</summary>
+        </member>
+        <member name="M:OpenBve.GameMenu.OnResize">
+            <summary>Should be called when the screen resolution changes to re-position all items on the menu appropriately</summary>
+        </member>
+        <member name="M:OpenBve.GameMenu.PushMenu(LibRender2.Menu.MenuType,System.Int32,System.Boolean)">
+            <summary>Pushes a menu into the menu stack</summary>
+            <param name= "type">The type of menu to push</param>
+            <param name= "data">The index of the menu in the menu stack (If pushing an existing higher level menu)</param>
+            <param name="replace">Whether we are replacing the selected menu item</param>
+        </member>
+        <member name="M:OpenBve.GameMenu.IsCustomizingControl">
+            <summary>Whether we are currently customising a control (Used for key/ joystick capture)</summary>
+            <returns>True if currently capturing a control, false otherwise</returns>
+        </member>
+        <member name="M:OpenBve.GameMenu.ProcessMouseScroll(System.Int32)">
+            <summary>Processes a scroll wheel event</summary>
+            <param name="Scroll">The delta</param>
+        </member>
+        <member name="M:OpenBve.GameMenu.ProcessCommand(OpenBveApi.Interface.Translations.Command,System.Double)">
+            <summary>Processes a user command for the current menu</summary>
+            <param name="cmd">The command to apply to the current menu</param>
+            <param name="timeElapsed">The time elapsed since previous frame</param>
+        </member>
+        <member name="F:OpenBve.MessageManager.TextualMessages">
+            <summary>Contains the current textual messages</summary>
+        </member>
+        <member name="F:OpenBve.MessageManager.ImageMessages">
+            <summary>Contains the current image based messages</summary>
+        </member>
+        <member name="M:OpenBve.MessageManager.AddMessage(System.String,RouteManager2.MessageManager.MessageDependency,OpenBveApi.GameMode,OpenBveApi.Colors.MessageColor,System.Double,System.String)">
+            <summary>Adds a message to the in-game interface render queue</summary>
+            <param name="Text">The text of the message</param>
+            <param name="Depencency"></param>
+            <param name="Mode"></param>
+            <param name="Color">The color of the message text</param>
+            <param name="Timeout">The time this message will display for</param>
+            <param name="key">The textual key identifiying this message</param>
+        </member>
+        <member name="M:OpenBve.MessageManager.AddMessage(RouteManager2.MessageManager.AbstractMessage)">
+            <summary>Adds a message to the in-game display</summary>
+            <param name="message">The message to add</param>
+        </member>
+        <member name="M:OpenBve.MessageManager.UpdateMessages(System.Double)">
+            <summary>Updates all current messages</summary>
+        </member>
+        <member name="T:OpenBve.MessageManager.GameMessage">
+            <summary>Defines a textual message generated by the game</summary>
+        </member>
+        <member name="F:OpenBve.MessageManager.GameMessage.InternalText">
+            <summary>The internal (non-translated) string</summary>
+        </member>
+        <member name="F:OpenBve.MessageManager.GameMessage.Depencency">
+            <summary>The action which triggered this message (route, speed limit etc.)</summary>
+        </member>
+        <member name="F:OpenBve.MessageManager.GameMessage.Font">
+            <summary>The font used for this message</summary>
+        </member>
+        <member name="F:OpenBve.MessageManager.GameMessage.ScreenReaderAnnounced">
+            <summary>Whether the message has been announced by the screen reader</summary>
+        </member>
+        <member name="T:OpenBve.ObjectManager">
+            <summary>The ObjectManager is the root class containing functions to load and manage objects within the simulation world</summary>
+        </member>
+        <member name="F:OpenBve.ObjectManager.AnimatedWorldObjects">
+            <summary>Holds all animated objects currently in use within the game world</summary>
+        </member>
+        <member name="F:OpenBve.ObjectManager.AnimatedWorldObjectsUsed">
+            <summary>The total number of animated objects used</summary>
+        </member>
+        <member name="M:OpenBve.ObjectManager.UpdateAnimatedWorldObjects(System.Double,System.Boolean)">
+            <summary>Is called once a frame to update all animated objects</summary>
+            <param name="timeElapsed">The total frame time elapsed</param>
+            <param name="forceUpdate">Whether this is a forced update (e.g. camera change etc)</param>
+        </member>
+        <member name="M:OpenBve.ObjectManager.ProcessJump(OpenBveApi.Trains.AbstractTrain)">
+            <summary>Updates any TFOs within the world after a jump</summary>
+            <param name="Train">The train which has jumped</param>
+        </member>
+        <member name="T:OpenBve.RouteInfoOverlay">
+            <summary>Displays an in-game overlay with information about the route, including a map and gradient profile</summary>
+        </member>
+        <member name="F:OpenBve.RouteInfoOverlay.gradientPosWidth">
+            <summary>The width of the gradient position bar in pixels</summary>
+        </member>
+        <member name="F:OpenBve.RouteInfoOverlay.gradientPosBar">
+            <summary>The color of the gradient position bar</summary>
+        </member>
+        <member name="F:OpenBve.RouteInfoOverlay.trainDotRadius">
+            <summary>The radius of a train dot in pixels</summary>
+        </member>
+        <member name="F:OpenBve.RouteInfoOverlay.trainDotDiameter">
+            <summary>The diameter of a train dot in pixels</summary>
+        </member>
+        <member name="F:OpenBve.RouteInfoOverlay.trainDotColour">
+            <summary>The color used to render dots for non-player (AI) trains</summary>
+        </member>
+        <member name="F:OpenBve.RouteInfoOverlay.playerTrainDotColour">
+            <summary>The color used to render the dot for the player train</summary>
+        </member>
+        <member name="M:OpenBve.RouteInfoOverlay.ProcessCommand(OpenBveApi.Interface.Translations.Command)">
+            <summary>Processes commands.</summary>
+            <returns><c>true</c>, if command was processed, <c>false</c> otherwise.</returns>
+            <param name="command">The Translations.Command command to process.</param>
+        </member>
+        <member name="M:OpenBve.RouteInfoOverlay.Show">
+            <summary>Displays the current state into the simulation window.</summary>
+        </member>
+        <member name="M:OpenBve.RouteInfoOverlay.SetState(OpenBve.RouteInfoOverlay.OverlayState)">
+            <summary>Sets the state, intializing any required resource.</summary>
+            <param name="newState">The new state to set to.</param>
+        </member>
+        <member name="T:OpenBve.ScoreMessage">
+            <summary>An on-screen score message to be displayed by the renderer</summary>
+        </member>
+        <member name="F:OpenBve.ScoreMessage.Value">
+            <summary>The numeric value of this score message</summary>
+        </member>
+        <member name="F:OpenBve.ScoreMessage.Text">
+            <summary>The translated text to display</summary>
+        </member>
+        <member name="F:OpenBve.ScoreMessage.Timeout">
+            <summary>The timeout for this message to be removed</summary>
+        </member>
+        <member name="F:OpenBve.ScoreMessage.Color">
+            <summary>The text color for this message</summary>
+        </member>
+        <member name="F:OpenBve.ScoreMessage.RendererPosition">
+            <summary>The on-screen position of this message</summary>
+        </member>
+        <member name="F:OpenBve.ScoreMessage.RendererAlpha">
+            <summary>The current alpha value (Used when fading the message out)</summary>
+        </member>
+        <member name="F:OpenBve.SwitchChangeDialog.MapPicturebox">
+            <summary>The picturebox containing the map texture</summary>
+        </member>
+        <member name="F:OpenBve.SwitchChangeDialog.CloseButton">
+            <summary>The close button</summary>
+        </member>
+        <member name="F:OpenBve.SwitchChangeDialog.ZoomInButton">
+            <summary>The zoom in button</summary>
+        </member>
+        <member name="F:OpenBve.SwitchChangeDialog.ZoomOutButton">
+            <summary>The zoom in button</summary>
+        </member>
+        <member name="F:OpenBve.SwitchChangeDialog.TitleLabel">
+            <summary>The title label</summary>
+        </member>
+        <member name="F:OpenBve.SwitchChangeDialog.selectedSwitch">
+            <summary>The GUID of the currently selected switch</summary>
+        </member>
+        <member name="F:OpenBve.SwitchChangeDialog.AvailableSwitches">
+            <summary>The list of available switches</summary>
+        </member>
+        <member name="M:OpenBve.SwitchChangeDialog.ProcessMouseMove(System.Int32,System.Int32)">
+            <summary>Processes a mouse move event</summary>
+            <param name="x">The screen-relative x coordinate of the move event</param>
+            <param name="y">The screen-relative y coordinate of the move event</param>
+        </member>
+        <member name="M:OpenBve.SwitchChangeDialog.ProcessMouseDown(System.Int32,System.Int32)">
+            <summary>Processes a mouse down event</summary>
+            <param name="x">The screen-relative x coordinate of the down event</param>
+            <param name="y">The screen-relative y coordinate of the down event</param>
+        </member>
+        <member name="M:OpenBve.SwitchChangeDialog.ZoomIn(System.Object,System.EventArgs)">
+            <summary>Zooms the map in</summary>
+        </member>
+        <member name="M:OpenBve.SwitchChangeDialog.ZoomOut(System.Object,System.EventArgs)">
+            <summary>Zooms the map out</summary>
+        </member>
+        <member name="F:OpenBve.HUD.CurrentHudElements">
+            <summary>The current HUD elements to render</summary>
+        </member>
+        <member name="F:OpenBve.HUD.StationAdjustBeepSource">
+            <summary>Sound source used by the accessibility station adjust tone</summary>
+        </member>
+        <member name="F:OpenBve.HUD.StationAdjustBeep">
+            <summary>Station adjust beep sound used by accessibility</summary>
+        </member>
+        <member name="M:OpenBve.HUD.LoadHUD">
+            <summary>Loads the current HUD</summary>
+        </member>
+        <member name="M:OpenBve.HUD.Element.CalculateViewingPlaneSize(System.Double@,System.Double@,System.Double@)">
+            <summary>Calculates the viewing plane size for the element</summary>
+            <param name="leftWidth">The left width of the viewing plane</param>
+            <param name="rightWidth">The right width of the viewing plane</param>
+            <param name="lCrH">The center point of the viewing plane</param>
+        </member>
+        <member name="T:OpenBve.HUDSubject">
+            <summary>Describes the subject for a HUD Element</summary>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Events.FindEvents(System.Int32)">
+            <summary>Finds visible events on a rail index</summary>
+            <param name="railIndex">The rail index</param>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Overlays.LampCollection.#ctor(TrainManager.Trains.TrainBase)">
+            <summary>Initialises the ATS lamps for the specified train using one of the default safety systems</summary>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Overlays.Render(System.Double)">
+            <summary>Is called once by the main renderer loop, in order to render all overlays shown on the screen</summary>
+            <param name="timeElapsed">The time elapsed since the last call to this function</param>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Overlays.RenderATSLamps(OpenBve.HUD.Element)">
+            <summary>Renders the ATS lamp overlay</summary>
+            <param name="Element">The HUD element these are to be rendered onto</param>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Overlays.RenderDebugOverlays">
+            <summary>Renders the debug (F10) overlay</summary>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Overlays.RenderBrakeSystemDebug">
+            <summary>Renders the brake system debug overlay</summary>
+        </member>
+        <member name="F:OpenBve.Graphics.Renderers.Overlays.MessagesRendererSize">
+            <summary>The current size of the plane upon which messages are rendered</summary>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Overlays.RenderGameMessages(OpenBve.HUD.Element,System.Double)">
+            <summary>Renders the list of game (textual) messages</summary>
+            <param name="Element">The HUD element these are to be rendered onto</param>
+            <param name="TimeElapsed">The time elapsed</param>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Overlays.RenderHUDElement(OpenBve.HUD.Element,System.Double)">
+            <summary>Renders all default HUD elements</summary>
+            <param name="Element">The HUD element these are to be rendered onto</param>
+            <param name="TimeElapsed">The time elapsed</param>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Overlays.RenderScoreMessages(OpenBve.HUD.Element,System.Double)">
+            <summary>Renders the list of score messages</summary>
+            <param name="element">The HUD element these are to be rendered onto</param>
+            <param name="timeElapsed">The time elapsed</param>
+        </member>
+        <member name="M:OpenBve.Graphics.Renderers.Touch.CreatePickMatrix(OpenTK.Vector2,OpenTK.Vector2)">
+            <summary>Make a projection matrix that can be used to limit drawing to small areas of the viewport.</summary>
+            <param name="point">Center of picking area at window coordinates</param>
+            <param name="delta">Width and height of picking area in window coordinates</param>
+        </member>
+        <member name="M:OpenBve.TrackFollowingObjectParser.ParseTrackFollowingObject(System.String,System.String)">
+            <summary>Parses a track following object</summary>
+            <param name="objectPath">Absolute path to the object folder of route data</param>
+            <param name="fileName">The XML file to parse</param>
+        </member>
+        <member name="M:OpenBve.TrackFollowingObjectParser.ParseScriptedTrainNode(System.String,System.String,System.Xml.Linq.XElement)">
+            <summary>Parses a base track following object node</summary>
+            <param name="objectPath">Absolute path to the object folder of route data</param>
+            <param name="fileName">The filename of the containing XML file</param>
+            <param name="sectionElement">The XElement to parse</param>
+        </member>
+        <member name="M:OpenBve.TrackFollowingObjectParser.ParseDefinitionNode(System.String,System.Xml.Linq.XElement,TrainManager.Trains.ScriptedTrain)">
+            <summary>
+            Function to parse TFO definition
+            </summary>
+            <param name="fileName">The filename of the containing XML file</param>
+            <param name="sectionElement">The XElement to parse</param>
+            <param name="scriptedTrain">The track following object to parse this node into</param>
+        </member>
+        <member name="M:OpenBve.TrackFollowingObjectParser.ParseTrainNode(System.String,System.String,System.Xml.Linq.XElement,System.String@,System.Boolean@)">
+            <summary>
+            Function to parse train definition
+            </summary>
+            <param name="objectPath">Absolute path to the object folder of route data</param>
+            <param name="FileName">The filename of the containing XML file</param>
+            <param name="sectionElement">The XElement to parse</param>
+            <param name="trainDirectory">Absolute path to the train directory</param>
+            <param name="consistReversed">Whether to reverse the train composition.</param>
+        </member>
+        <member name="M:OpenBve.TrackFollowingObjectParser.ParseTravelDataNodes(System.String,System.Xml.Linq.XElement,System.Collections.Generic.ICollection{TrainManager.Trains.TravelData})">
+            <summary>Parses a train travel data node</summary>
+            <param name="fileName">The filename of the containing XML file</param>
+            <param name="sectionElement">The XElement to parse</param>
+            <param name="travelData">The list of travel data to add this to</param>
+        </member>
+        <member name="M:OpenBve.TrackFollowingObjectParser.ParseTravelDataNode(System.String,System.Xml.Linq.XElement,TrainManager.Trains.TravelData)">
+            <summary>
+            Function to parse the contents of TravelData class
+            </summary>
+            <param name="fileName">The filename of the containing XML file</param>
+            <param name="sectionElement">The XElement to parse</param>
+            <param name="travelData">Travel data to which the parse results apply</param>
+        </member>
+        <member name="M:OpenBve.TrackFollowingObjectParser.ParseTravelStopNode(System.String,System.Xml.Linq.XElement)">
+            <summary>
+            Function to parse the contents of TravelStopData class
+            </summary>
+            <param name="fileName">The filename of the containing XML file</param>
+            <param name="sectionElement">The XElement to parse</param>
+            <returns>An instance of the new TravelStopData class with the parse result applied</returns>
+        </member>
+        <member name="M:OpenBve.TrackFollowingObjectParser.ParseTravelPointNode(System.String,System.Xml.Linq.XElement)">
+            <summary>
+            Function to parse the contents of TravelPointData class
+            </summary>
+            <param name="fileName">The filename of the containing XML file</param>
+            <param name="sectionElement">The XElement to parse</param>
+            <returns>An instance of the new TravelPointData class with the parse result applied</returns>
+        </member>
+        <member name="T:OpenBve.Program">
+            <summary>Provides methods for starting the program, including the Main procedure.</summary>
+        </member>
+        <member name="M:OpenBve.Program.getuid">
+            <summary>Gets the UID of the current user if running on a Unix based system</summary>
+            <returns>The UID</returns>
+            <remarks>Used for checking if we are running as ROOT (don't!)</remarks>
+        </member>
+        <member name="M:OpenBve.Program.geteuid">
+            <summary>Gets the UID of the current user if running on a Unix based system</summary>
+            <returns>The UID</returns>
+            <remarks>Used for checking if we are running as SUDO</remarks>
+        </member>
+        <member name="F:OpenBve.Program.CurrentCPUArchitecture">
+            <summary>Stores the current CPU architecture</summary>
+        </member>
+        <member name="F:OpenBve.Program.CurrentHost">
+            <summary>The host API used by this program.</summary>
+        </member>
+        <member name="F:OpenBve.Program.FileSystem">
+            <summary>Information about the file system organization.</summary>
+        </member>
+        <member name="F:OpenBve.Program.RestartArguments">
+            <summary>If the program is to be restarted, this contains the command-line arguments that should be passed to the process, or a null reference otherwise.</summary>
+        </member>
+        <member name="F:OpenBve.Program.RandomNumberGenerator">
+            <summary>The random number generator used by this program.</summary>
+        </member>
+        <member name="M:OpenBve.Program.Main(System.String[])">
+            <summary>Is executed when the program starts.</summary>
+            <param name="args">The command-line arguments.</param>
+        </member>
+        <member name="M:OpenBve.Program.Initialize">
+            <summary>Initializes the program. A matching call to deinitialize must be made when the program is terminated.</summary>
+            <returns>Whether the initialization was successful.</returns>
+        </member>
+        <member name="M:OpenBve.Program.Deinitialize">
+            <summary>Deinitializes the program.</summary>
+        </member>
+        <member name="T:OpenBve.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:OpenBve.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:OpenBve.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:OpenBve.CrashHandler">
+            <summary>Provides functions for handling crashes, and producing an appropriate error log</summary>
+        </member>
+        <member name="M:OpenBve.CrashHandler.CurrentDomain_UnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>Catches all unhandled exceptions within the current appdomain</summary>
+        </member>
+        <member name="M:OpenBve.CrashHandler.UIThreadException(System.Object,System.Threading.ThreadExceptionEventArgs)">
+            <summary>Catches all unhandled exceptions within the current UI thread</summary>
+        </member>
+        <member name="M:OpenBve.CrashHandler.LogCrash(System.String)">
+            <summary>This function logs an unhandled crash to disk</summary>
+        </member>
+        <member name="M:OpenBve.CrashHandler.LoadingCrash(System.String,System.Boolean)">
+            <summary>This function logs an exception caught whilst loading a route/ train to disk</summary>
+        </member>
+        <member name="T:OpenBve.FolderSelectDialog">
+            <summary>
+            Present the Windows Vista-style open file dialog to select a folder
+            </summary>
+        </member>
+        <member name="P:OpenBve.FolderSelectDialog.InitialDirectory">
+            <summary>
+            Gets or sets the initial directory for the folder browser dialog to show
+            </summary>
+        </member>
+        <member name="P:OpenBve.FolderSelectDialog.Title">
+            <summary>
+            Gets or sets the title of the dialog
+            </summary>
+        </member>
+        <member name="P:OpenBve.FolderSelectDialog.FileName">
+            <summary>
+            The selected filename
+            </summary>
+        </member>
+        <member name="M:OpenBve.FolderSelectDialog.Show">
+            <summary>
+            Shows the dialog
+            </summary>
+        </member>
+        <member name="M:OpenBve.FolderSelectDialog.Show(System.IntPtr)">
+            <param name="hWndOwner">Handle of the control or window to be the parent of the file dialog</param>
+            <returns>true if the user clicks OK</returns>
+        </member>
+        <member name="T:OpenBve.Input.AbstractJoystick">
+            <summary>Represents a joystick.</summary>
+        </member>
+        <member name="F:OpenBve.Input.AbstractJoystick.Name">
+            <summary>The textual representation of the joystick.</summary>
+        </member>
+        <member name="F:OpenBve.Input.AbstractJoystick.Handle">
+            <summary>The handle to the joystick.</summary>
+        </member>
+        <member name="F:OpenBve.Input.JoystickManager.AttachedJoysticks">
+            <summary>Holds all joysticks currently attached to the computer.</summary>
+        </member>
+        <member name="M:OpenBve.Input.JoystickManager.RefreshJoysticks">
+            <returns>Call this function to refresh the list of available joysticks and their capabilities</returns>
+        </member>
+        <member name="P:OpenBve.Input.JoystickManager.RailDriverCount">
+            <summary>Gets the number of RailDriver controllers connected</summary>
+        </member>
+        <member name="T:OpenBve.Input.AbstractRailDriver">
+            <summary>The abstract base RailDriver class</summary>
+        </member>
+        <member name="T:OpenBve.Input.StandardJoystick">
+            <summary>Represents a standard joystick, handled via openTK</summary>
+        </member>
+        <member name="T:OpenBve.Input.RailDriver32">
+            <summary>A 32-bit RailDriver</summary>
+        </member>
+        <member name="M:OpenBve.Input.RailDriver32.HandlePIEHidData(System.Byte[],PIEHid32Net.PIEDevice,System.Int32)">
+            <summary>Callback function from the PI Engineering DLL, raised each time the device pushes a data packet</summary>
+            <param name="data">The callback data</param>
+            <param name="sourceDevice">The source device</param>
+            <param name="error">The last error generated (if any)</param>
+        </member>
+        <member name="M:OpenBve.Input.RailDriver32.HandlePIEHidError(PIEHid32Net.PIEDevice,System.Int32)">
+            <summary>Callback function from the PI Engineering DLL, raised if an error is encountered</summary>
+            <param name="sourceDevices">The source device</param>
+            <param name="error">The error</param>
+        </member>
+        <member name="T:OpenBve.Input.RailDriver64">
+            <summary>A 64-bit RailDriver</summary>
+        </member>
+        <member name="M:OpenBve.Input.RailDriver64.HandlePIEHidError(PIEHid64Net.PIEDevice,System.Int64)">
+            <summary>Callback function from the PI Engineering DLL, raised if an error is encountered</summary>
+            <param name="sourceDevices">The source device</param>
+            <param name="error">The error</param>
+        </member>
+        <member name="M:OpenBve.Input.RailDriver64.HandlePIEHidData(System.Byte[],PIEHid64Net.PIEDevice,System.Int32)">
+            <summary>Callback function from the PI Engineering DLL, raised each time the device pushes a data packet</summary>
+            <param name="data">The callback data</param>
+            <param name="sourceDevice">The source device</param>
+            <param name="error">The last error generated (if any)</param>
+        </member>
+        <member name="F:OpenBve.Interface.CurrentControls">
+            <summary>The list of current in-game controls</summary>
+        </member>
+        <member name="M:OpenBve.Interface.SaveControls(System.String,OpenBveApi.Interface.Control[])">
+            <summary>Saves a control configuration to disk</summary>
+            <param name="FileOrNull">An absolute file path if we are exporting the controls, or a null reference to save to the default configuration location</param>
+            <param name="controlsToSave">The list of controls to save</param>
+        </member>
+        <member name="M:OpenBve.Interface.LoadControls(System.String,OpenBveApi.Interface.Control[]@)">
+            <summary>Loads the current controls from the controls.cfg file</summary>
+            <param name="FileOrNull">An absolute path reference to a saved controls.cfg file, or a null reference to check the default locations</param>
+            <param name="Controls">The current controls array</param>
+        </member>
+        <member name="M:OpenBve.Interface.AddControls(OpenBveApi.Interface.Control[]@,OpenBveApi.Interface.Control[])">
+            <summary>Adds an array of controls to an existing control array</summary>
+            <param name="Base">The base control array</param>
+            <param name="Add">The new controls to add</param>
+        </member>
+        <member name="F:OpenBve.Interface.Identifier">
+            <summary>Magic bytes identifying this as an OpenBVE blackbox file</summary>
+            <remarks>openBVELOGS in UTF-8</remarks>
+        </member>
+        <member name="F:OpenBve.Interface.Footer">
+            <summary>Magic bytes identifying the EOF</summary>
+            <remarks>_fileEND in UTF-8</remarks>
+        </member>
+        <member name="M:OpenBve.Interface.LoadLogs">
+            <summary>Loads the black-box logs from the previous simulation run</summary>
+        </member>
+        <member name="M:OpenBve.Interface.SaveLogs(System.Boolean)">
+            <summary>Saves the current in-game black box log</summary>
+        </member>
+        <member name="T:OpenBve.Interface.BlackBoxFormat">
+            <summary>The available formats for exporting black box data</summary>
+        </member>
+        <member name="M:OpenBve.Interface.ExportBlackBox(System.String,OpenBve.Interface.BlackBoxFormat)">
+            <summary>Exports the current black box data to a file</summary>
+            <param name="File">The file to write</param>
+            <param name="Format">The format in which to write the data</param>
+        </member>
+        <member name="M:OpenBve.Interface.GetScoreText(OpenBve.Game.ScoreTextToken)">
+            <summary>Gets the formatted text for an in-game score event</summary>
+            <param name="textToken">The in-game score event</param>
+        </member>
+        <member name="M:OpenBve.Interface.ExportScore(System.String)">
+            <summary>Exports the current score data to a file</summary>
+            <param name="File">The file to write</param>
+        </member>
+        <member name="F:OpenBve.Interface.Options.UserInterfaceFolder">
+            <summary>The on disk folder in which user interface components are stored</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.TimeAccelerationFactor">
+            <summary>The accelerated time factor (1x to 5x)</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.ObjectOptimizationVertexCulling">
+            <summary>Whether duplicate verticies are culled during loading</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.Collisions">
+            <summary>Whether collisions between trains are enabled</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.BlackBox">
+            <summary>Whether the black-box data logger is enabled</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.UseJoysticks">
+            <summary>Whether joystick support is enabled</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.JoystickAxisThreshold">
+            <summary>The threshold below which joystick axis motion will be disregarded</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.KeyRepeatDelay">
+            <summary>The delay after which a held-down key will start to repeat</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.KeyRepeatInterval">
+            <summary>The interval at which a held down key will repeat after the intial delay</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.SoundModel">
+            <summary>The current sound model</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.SoundRange">
+            <summary>The range outside of which sounds will be inaudible</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.ShowWarningMessages">
+            <summary>Whether warning messages are to be shown</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.ShowErrorMessages">
+            <summary>Whether error messages are to be shown</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.RouteFolder">
+            <summary>The current route's on-disk folder path</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.TrainFolder">
+            <summary>The current train's on-disk folder path</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.RecentlyUsedRoutes">
+            <summary>The list of recently used routes</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.RecentlyUsedTrains">
+            <summary>The list of recently used trains</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.RecentlyUsedLimit">
+            <summary>The maximum number of recently used routes/ trains to display</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.RouteEncodings">
+            <summary>The list of recently used route character encodings</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.TrainEncodings">
+            <summary>The list of recently used train character encodings</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.PreviousGameMode">
+            <summary>The previous game mode, used for calculating the score in the main menu</summary>
+            <remarks>This is loaded from the black-box log if enabled, not the main options file</remarks>
+        </member>
+        <member name="F:OpenBve.Interface.Options.MainMenuWidth">
+            <summary>The width of the main menu window</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.MainMenuHeight">
+            <summary>The height of the main menu window</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.LoadInAdvance">
+            <summary>Whether the simulation will load all textures and sounds into system memory on initial load</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.UnloadUnusedTextures">
+            <summary>Whether the simulation will dynamically unload unused textures</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.AllowAxisEB">
+            <summary>Whether EB application is possible from the use of a joystick axis</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.PreferNativeBackend">
+            <summary>Whether to prefer the native OpenTK operating system backend</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.RailDriverMPH">
+            <summary>Stores whether the RailDriver speed display is in MPH (true) or KPH (false)</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.EnabledInputDevicePlugins">
+            <summary>The list of enabled Input Device Plugins</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.CursorHideDelay">
+            <summary>The time in seconds after which the mouse cursor is hidden</summary>
+            <remarks>Set to zero to never hide the cursor</remarks>
+        </member>
+        <member name="F:OpenBve.Interface.Options.ScreenReaderAvailable">
+            <summary>Whether a screen reader is available</summary>
+            <remarks>Not saved, detected on game init</remarks>
+        </member>
+        <member name="F:OpenBve.Interface.Options.KioskMode">
+            <summary>Whether we are currently in kiosk mode</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.KioskModeTimer">
+            <summary>The timer before AI controls are enabled in kiosk mode</summary>
+        </member>
+        <member name="F:OpenBve.Interface.Options.FPSLimit">
+            <summary>The maximum upper limit for FPS</summary>
+            https://github.com/leezer3/OpenBVE/issues/941
+        </member>
+        <member name="M:OpenBve.Interface.Options.#ctor">
+            <summary>Creates a new instance of the options class with default values set</summary>
+        </member>
+        <member name="M:OpenBve.Interface.Options.Save(System.String)">
+            <summary>Saves the options to the specified filename</summary>
+            <param name="fileName">The filename to save the options to</param>
+        </member>
+        <member name="F:OpenBve.Interface.CurrentOptions">
+            <summary>The current game options</summary>
+        </member>
+        <member name="M:OpenBve.Interface.LoadOptions">
+            <summary>Loads the options file from disk</summary>
+        </member>
+        <member name="M:OpenBve.Interface.TryParseTime(System.String,System.Double@)">
+            <summary>Parses a string into OpenBVE's internal time representation (Seconds since midnight on the first day)</summary>
+            <param name="Expression">The time in string format</param>
+            <param name="Value">The number of seconds since midnight on the first day this represents, updated via 'out'</param>
+            <returns>True if the parse succeeds, false if it does not</returns>
+        </member>
+        <member name="T:OpenBve.MainLoop.ControlRepeat">
+            <summary>Defines a repeating control</summary>
+        </member>
+        <member name="F:OpenBve.MainLoop.ControlRepeat.ControlIndex">
+            <summary>The control index to repeat</summary>
+        </member>
+        <member name="F:OpenBve.MainLoop.ControlRepeat.Countdown">
+            <summary>The countdown time remaining in ms until the next repeat event is sent</summary>
+        </member>
+        <member name="F:OpenBve.MainLoop.RepeatControls">
+            <summary>Stores the currently repeating controls</summary>
+        </member>
+        <member name="F:OpenBve.MainLoop.RepeatControlsUsed">
+            <summary>The number of repeating controls in use (Maximum 16)</summary>
+        </member>
+        <member name="M:OpenBve.MainLoop.AddControlRepeat(System.Int32)">
+            <summary>Adds a control to be repeated</summary>
+            <param name="controlIndex">The control index to repeat</param>
+        </member>
+        <member name="M:OpenBve.MainLoop.RemoveControlRepeat(System.Int32)">
+            <summary>Removes a control repeat</summary>
+            <param name="controlIndex">The control index to stop repeating</param>
+        </member>
+        <member name="M:OpenBve.MainLoop.UpdateControlRepeats(System.Double)">
+            <summary>Should be called once a frame, to update the status of all repeating controls</summary>
+            <param name="timeElapsed">The time elapsed in milliseconds since the last call to this function</param>
+        </member>
+        <member name="M:OpenBve.MainLoop.KeyDownEvent(System.Object,OpenTK.Input.KeyboardKeyEventArgs)">
+            <summary>Called when a KeyDown event is generated</summary>
+        </member>
+        <member name="M:OpenBve.MainLoop.KeyUpEvent(System.Object,OpenTK.Input.KeyboardKeyEventArgs)">
+            <summary>Called when a KeyUp event is generated</summary>
+        </member>
+        <member name="M:OpenBve.MainLoop.ProcessControls(System.Double)">
+            <summary>The ProcessControls function should be called once a frame, and updates the simulation accordingly</summary>
+            <param name="TimeElapsed">The time elapsed in ms since the last call to this function</param>
+        </member>
+        <member name="F:OpenBve.MainLoop.BlockKeyRepeat">
+            <summary>BlockKeyRepeat should be set to 'true' whilst processing a KeyUp or KeyDown event.</summary>
+        </member>
+        <member name="F:OpenBve.MainLoop.TimeFactor">
+            <summary>The current simulation time-factor</summary>
+        </member>
+        <member name="F:OpenBve.MainLoop.currentMouseState">
+            <summary>The current mouse state</summary>
+        </member>
+        <member name="F:OpenBve.MainLoop.previousMouseState">
+            <summary>The current mouse state</summary>
+        </member>
+        <member name="M:OpenBve.MainLoop.mouseDownEvent(System.Object,OpenTK.Input.MouseButtonEventArgs)">
+            <summary>Called when a mouse button is pressed</summary>
+            <param name="sender">The sender</param>
+            <param name="e">The button arguments</param>
+        </member>
+        <member name="M:OpenBve.MainLoop.mouseMoveEvent(System.Object,OpenTK.Input.MouseMoveEventArgs)">
+            <summary>Called when the mouse is moved</summary>
+            <param name="sender">The sender</param>
+            <param name="e">The move arguments</param>
+        </member>
+        <member name="M:OpenBve.MainLoop.mouseWheelEvent(System.Object,OpenTK.Input.MouseWheelEventArgs)">
+            <summary>Called when the state of the mouse wheel changes</summary>
+            <param name="sender">The sender</param>
+            <param name="e">The button arguments</param>
+        </member>
+        <member name="T:OpenBve.CommandLine">
+            <summary>Contains methods used to parse command-line arguments</summary>
+        </member>
+        <member name="M:OpenBve.CommandLine.ParseArguments(System.String[])">
+            <summary>Parses any command-line arguments passed to the main program</summary>
+            <param name="Arguments">A string array of arguments</param>
+        </member>
+        <member name="T:OpenBve.UserInterface.FormViewLog">
+            <summary>Basic class to show logs</summary>
+        </member>
+        <member name="M:OpenBve.UserInterface.FormViewLog.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="text">The log text to show</param>
+        </member>
+        <member name="F:OpenBve.UserInterface.FormViewLog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpenBve.UserInterface.FormViewLog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpenBve.UserInterface.FormViewLog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:OpenBve.UserInterface.FormRaildriverCalibration">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenBve.UserInterface.FormRaildriverCalibration.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:OpenBve.UserInterface.FormRaildriverCalibration.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="F:OpenBve.UserInterface.FormRaildriverCalibration.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpenBve.UserInterface.FormRaildriverCalibration.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:OpenBve.FormImageExport.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpenBve.FormImageExport.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpenBve.FormImageExport.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:OpenBve.formBugReport.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpenBve.formBugReport.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpenBve.formBugReport.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:OpenBve.FormAbout.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpenBve.FormAbout.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpenBve.FormAbout.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:OpenBve.ImageExtensions">
+            <summary>Provides extension methods for working with images</summary>
+        </member>
+        <member name="M:OpenBve.ImageExtensions.ToByteArray(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+            <summary>Converts an image to a byte array</summary>
+            <param name="image">The image to convert</param>
+            <param name="format">The format of the image</param>
+        </member>
+        <member name="M:OpenBve.ImageExtensions.CombineBitmapAlpha(System.Drawing.Bitmap,System.Drawing.Bitmap,System.Drawing.Bitmap)">
+            <summary>Combines a RGB bitmap and a greyscale mask into a RGBA bitmap</summary>
+            <param name="b">The output bitmap</param>
+            <param name="s">The RGB source bitmap</param>
+            <param name="a">The greyscale mask</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenBve.ImageExtensions.FromFile(System.String)">
+            <summary>Loads an image from a file, without locking the source file</summary>
+            <param name="fileName">The filename to load</param>
+            <returns>The new image</returns>
+        </member>
+        <member name="T:OpenBve.Scripting">
+            <summary>This is a proxy class, which provides read-only access to variables, in a manner analagous to that found in .animated files </summary>
+            Notes:
+            A proxy class is required, as otherwise we start making a horrendous amount of stuff public which shouldn't be, when working with cross-assembly access.
+            Doing it this way, also allows for sensible scripting access, rather than climbing through multiple levels.
+        </member>
+        <member name="T:OpenBve.Scripting.Signal">
+            <summary>
+            Provides scripting access to signals
+            </summary>
+        </member>
+        <member name="M:OpenBve.Scripting.Signal.CurrentAspect(TrainManager.Trains.TrainBase,System.Int32,System.Boolean)">
+            <summary>This method returns the current aspect of the selected section</summary>
+            <param name="Train">The train for which we wish to get the section index</param>
+            <param name="SectionIndex">The section to get the aspect for</param>
+            <param name="IsPartOfTrain">Defines whether we wish to get the section index for the selected train, or for when placed via a .SigF command</param>
+            <returns>The aspect of the selected signal</returns>
+        </member>
+        <member name="T:OpenBve.Scripting.Train">
+            <summary>
+            Provides scripting access to trains internal variables
+            </summary>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.numberOfCars(TrainManager.Trains.TrainBase)">
+            <summary>Returns the number of cars in this train</summary>
+            <param name="Train">The selected train</param>
+            <returns>The number of cars</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.speed(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the speed of the selected car </summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The car for which to get the speed</param>
+            <returns>The speed in m/s</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.speedometer(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the speed of the selected car, accounting for wheelslip and wheel lock</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The car for which to get the speed</param>
+            <returns>The speed in m/s</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.acceleration(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the acceleration of the selected car</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The car for which to get the acceleration</param>
+            <returns>The acceleration in m/s</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.accelerationMotor(TrainManager.Trains.TrainBase)">
+            <summary>Returns the acceleration that the first motor car is currently generating in m/s</summary>
+            <param name="Train">The selected train</param>
+            <returns>The acceleration in m/s</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.accelerationMotor(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the acceleration that the selected car's motor is currently generating in m/s</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>The acceleration in m/s</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.distance(TrainManager.Trains.TrainBase,OpenBveApi.Math.Vector3)">
+            <summary>Returns the cartesian distance to the nearest car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="Position">The object's absolute in-game position</param>
+            <returns>The distance to the object</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.distance(TrainManager.Trains.TrainBase,System.Int32,OpenBveApi.Math.Vector3)">
+            <summary>Returns the cartesian distance to the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <param name="Position">The object's absolute in-game position</param>
+            <returns>The distance to the object</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.trackDistance(TrainManager.Trains.TrainBase,System.Double)">
+            <summary>Returns the track distance to the nearest car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="TrackPosition">The object's track position</param>
+            <returns>The distance to the object</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.trackDistance(TrainManager.Trains.TrainBase,System.Int32,System.Double)">
+            <summary>Returns the track distance to the nearest car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <param name="TrackPosition">The object's track position</param>
+            <returns>The distance to the object</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.mainReservoir(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the main brake reservoir pressure of the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>The main brake reservoir pressure in Pa</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.brakePipe(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the brake pipe pressure of the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>The brake pipe pressure in Pa</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.brakeCylinder(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the brake cylinder pressure of the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>The brake cylinder pressure in Pa</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.straightAirPipe(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the brake pipe pressure of the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>The brake pipe pressure in Pa</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.doors(TrainManager.Trains.TrainBase)">
+            <summary>Returns the doors state of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>0.0 if all doors are closed, 1.0 if all doors are open, or a value in between</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.doors(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the doors state of the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>0.0 if all doors are closed, 1.0 if all doors are open, or a value in between</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.leftDoors(TrainManager.Trains.TrainBase)">
+            <summary>Returns the left-hand doors state of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>0.0 if all doors are closed, 1.0 if all doors are open, or a value in between</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.leftDoors(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the left-hand doors state of the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>0.0 if all doors are closed, 1.0 if all doors are open, or a value in between</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.rightDoors(TrainManager.Trains.TrainBase)">
+            <summary>Returns the left-hand doors state of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>0.0 if all doors are closed, 1.0 if all doors are open, or a value in between</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.rightDoors(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns the left-hand doors state of the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>0.0 if all doors are closed, 1.0 if all doors are open, or a value in between</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.leftDoorsTarget(TrainManager.Trains.TrainBase)">
+            <summary>Returns whether the left doors are opening for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>True if the doors are opening, false otherwise</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.leftDoorsTarget(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns whether the left doors are opening for the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>True if the doors are opening, false otherwise</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.rightDoorsTarget(TrainManager.Trains.TrainBase)">
+            <summary>Returns whether the left doors are opening for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>True if the doors are opening, false otherwise</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.rightDoorsTarget(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Returns whether the left doors are opening for the selected car of the selected train</summary>
+            <param name="Train">The selected train</param>
+            <param name="CarIndex">The selected car</param>
+            <returns>True if the doors are opening, false otherwise</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.reverserNotch(TrainManager.Trains.TrainBase)">
+            <summary>Returns the driver's selected reverser position for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>-1 for backwards, 0 for neutral, 1 for forwards</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.powerNotch(TrainManager.Trains.TrainBase)">
+            <summary>Returns the driver's selected power notch for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>The driver's selected power notch</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.powerNotches(TrainManager.Trains.TrainBase)">
+            <summary>Returns the maximum power notch for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>The maximum power notch</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.brakeNotch(TrainManager.Trains.TrainBase)">
+            <summary>Returns the driver's selected brake notch for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>The driver's selected power notch</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.brakeNotches(TrainManager.Trains.TrainBase)">
+            <summary>Returns the maximum brake notch for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>The maximum power notch</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.brakeNotchLinear(TrainManager.Trains.TrainBase)">
+            <summary>Returns the driver's selected brake notch (Including EB) for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>The driver's selected brake notch</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.brakeNotchesLinear(TrainManager.Trains.TrainBase)">
+            <summary>Returns the maximum possible brake notch (Including EB) for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>The maximum possible brake notch</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.emergencyBrake(TrainManager.Trains.TrainBase)">
+            <summary>Returns whether EB is active for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>Whether EB is active</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.hasAirBrake(TrainManager.Trains.TrainBase)">
+            <summary>Whether the selected train has an automatic air brake</summary>
+            <param name="Train">The selected train</param>
+            <returns>Whether the selected train has an automatic air brake</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.holdBrake(TrainManager.Trains.TrainBase)">
+            <summary>Whether the hold brake is currently active for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>Whether the hold brake is currently active</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.hasHoldBrake(TrainManager.Trains.TrainBase)">
+            <summary>Whether the selected train has a hold brake</summary>
+            <param name="Train">The selected train</param>
+            <returns>Whether the selected train has a hold brake</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.constantSpeed(TrainManager.Trains.TrainBase)">
+            <summary>Whether the constant speed devicee is currently active for the selected train</summary>
+            <param name="Train">The selected train</param>
+            <returns>Whether the constant speed device is currently active</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.hasConstantSpeed(TrainManager.Trains.TrainBase)">
+            <summary>Whether the selected train has a constant speed device</summary>
+            <param name="Train">The selected train</param>
+            <returns>Whether the selected train has a constant speed device</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.hasPlugin(TrainManager.Trains.TrainBase)">
+            <summary>Whether the selected train uses a custom plugin</summary>
+            <param name="Train">The selected train</param>
+            <returns>True if the train uses a custom plugin, false otherwise</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Train.pluginState(TrainManager.Trains.TrainBase,System.Int32)">
+            <summary>Whether the selected train has a hold brake</summary>
+            <param name="Train">The selected train</param>
+            <param name="pluginState">The plugin state to query</param>
+            <returns>The plugin state value</returns>
+        </member>
+        <member name="T:OpenBve.Scripting.Simulation">
+            <summary>
+            Provides scripting access to in simulation variables
+            </summary>
+        </member>
+        <member name="M:OpenBve.Scripting.Simulation.time">
+            <summary>
+            Gets the current in-simulation time
+            </summary>
+            <returns>Returns the number of seconds elapsed since midnight on the first day</returns>
+        </member>
+        <member name="M:OpenBve.Scripting.Simulation.CameraDistance(OpenBveApi.Math.Vector3)">
+            <summary>Gets the camera distance in meters from the current object </summary>
+            <param name="Position">The absolute in-game position of the current object to test against</param>
+            <returns>The distance in meters</returns>
+        </member>
+        <member name="T:OpenBve.LaunchParameters">
+            <summary>The parameters to apply when launching the main game</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.Start">
+            <summary>Whether to start the simulation</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.RouteFile">
+            <summary>The absolute on-disk path of the route file to start the simulation with</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.ErrorFile">
+            <summary>The last file an error was encountered on (Used for changing character encodings)</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.RouteEncoding">
+            <summary>The text encoding of the selected route file</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.TrainFolder">
+            <summary>The absolute on-disk path of the train folder to start the simulation with</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.TrainEncoding">
+            <summary>The text encoding of the selected train</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.ReverseConsist">
+            <summary>Whether the consist of the train is to be reversed on start</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.InitialStation">
+            <summary>The textual name of the station the player's train is to start at</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.StartTime">
+            <summary>The time the game is to start in seconds after midnight</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.AIDriver">
+            <summary>Whether the AI driver is on when the game starts</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.FullScreen">
+            <summary>Whether the game starts in full-screen mode</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.Width">
+            <summary>The game width</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.Height">
+            <summary>The game height</summary>
+        </member>
+        <member name="F:OpenBve.LaunchParameters.ExperimentalGLMenu">
+            <summary>Whether to show the experimental GL menu</summary>
+        </member>
+        <member name="M:OpenBve.Sounds.StopAllSounds(System.Object)">
+            <summary>Stops all sounds that are attached to the specified train.</summary>
+            <param name="train">The train.</param>
+        </member>
+        <member name="M:OpenBve.Sounds.UpdateInverseModel(System.Double)">
+            <summary>Updates the sound component. Should be called every frame.</summary>
+            <param name="timeElapsed">The time in seconds that elapsed since the last call to this function.</param>
+        </member>
+        <member name="M:OpenBve.Screen.Initialize">
+            <summary>Initializes the default values of the screen.</summary>
+        </member>
+        <member name="M:OpenBve.Screen.WindowResize(System.Int32,System.Int32)">
+            <summary>Resizes the OpenGL viewport if the window is resized</summary>
+        </member>
+        <member name="M:OpenBve.Screen.ToggleFullscreen">
+            <summary>Changes to or from fullscreen mode.</summary>
+        </member>
+        <member name="F:OpenBve.FormImage.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpenBve.FormImage.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpenBve.FormImage.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:OpenBve.formMain.configureLinkLocations">
+            <summary>Array containing the configure link locations within the painted picturebox</summary>
+        </member>
+        <member name="M:OpenBve.formMain.PopulatePackageList(System.Collections.Generic.List{OpenBveApi.Packages.Package},System.Windows.Forms.DataGridView,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>This method should be called to populate a datagrid view with a list of packages</summary>
+            <param name="packageList">The list of packages</param>
+            <param name="dataGrid">The datagrid view to populate</param>
+            <param name="simpleList">Whether this is a simple list or a dependancy list</param>
+            <param name="isDependancy">Whether this is a package needed by another or not</param>
+            <param name="isRecommendation">Whether this is a package recommended by another or not</param>
+        </member>
+        <member name="M:OpenBve.formMain.UninstallPackage(OpenBveApi.Packages.Package,System.Boolean)">
+            <summary>This method should be called to uninstall a package</summary>
+        </member>
+        <member name="M:OpenBve.formMain.ShowInputDialog(System.String@)">
+            <summary>Shows a popup text input box to add a website link</summary>
+        </member>
+        <member name="M:OpenBve.formMain.ApplyLanguage">
+            <summary>This function is called to change the display language of the program</summary>
+        </member>
+        <member name="M:OpenBve.formMain.linkHomepage_LinkClicked(System.Object,System.Windows.Forms.LinkLabelLinkClickedEventArgs)">
+            <summary>Launches a web-browser linked to the project homepage</summary>
+        </member>
+        <member name="M:OpenBve.formMain.LoadImage(System.String,System.String)">
+            <summary>Attempts to load an image into memory using the OpenBVE path resolution API</summary>
+        </member>
+        <member name="M:OpenBve.formMain.TryLoadImage(System.Windows.Forms.PictureBox,System.String)">
+            <summary>Attempts to load an image into a picture box using the OpenBVE path resolution API</summary>
+        </member>
+        <member name="F:OpenBve.formMain.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpenBve.formMain.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpenBve.formMain.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:OpenBve.formMain.currentRouteFolder">
+            <summary>The current routefile search folder</summary>
+        </member>
+        <member name="M:OpenBve.formMain.PopulateRouteList(System.String,System.Windows.Forms.ListView,System.Boolean)">
+            <summary>Populates the route display list from the selected folder</summary>
+            <param name="routeFolder">The folder containing route files</param>
+            <param name="listView">The list view to populate</param>
+            <param name="packages">Whether this is a packaged content folder</param>
+        </member>
+        <member name="F:OpenBve.formMain.currentTrainFolder">
+            <summary>The current train search folder</summary>
+        </member>
+        <member name="M:OpenBve.formMain.PopulateTrainList(System.String,System.Windows.Forms.ListView,System.Boolean)">
+            <summary>Populates the train display list from the selected folder</summary>
+            <param name="selectedFolder">The folder containing train folders</param>
+            <param name="listView">The list view to populate</param>
+            <param name="packages">Whether this is a packaged content folder</param>
+        </member>
+        <member name="F:OpenBve.formMain.previewLock">
+            <summary>Lock to be held when the route / train details are being updated</summary>
+        </member>
+        <member name="F:OpenBve.Loading.LoadedTrain">
+            <summary>The number of trains that have been loaded so far</summary>
+        </member>
+        <member name="P:OpenBve.Loading.Cancel">
+            <summary>Set this member to true to cancel loading</summary>
+        </member>
+        <member name="F:OpenBve.Loading.Complete">
+            <summary>Whether loading is complete</summary>
+        </member>
+        <member name="F:OpenBve.Loading.SimulationSetup">
+            <summary>True when the simulation has been completely setup</summary>
+        </member>
+        <member name="F:OpenBve.Loading.CurrentRouteFile">
+            <summary>The current route file</summary>
+        </member>
+        <member name="F:OpenBve.Loading.CurrentRouteEncoding">
+            <summary>The character encoding of this route file</summary>
+        </member>
+        <member name="F:OpenBve.Loading.CurrentTrainFolder">
+            <summary>The current train folder</summary>
+        </member>
+        <member name="F:OpenBve.Loading.CurrentTrainEncoding">
+            <summary>The character encoding of this train</summary>
+        </member>
+        <member name="M:OpenBve.Loading.LoadAsynchronously(System.String,System.Text.Encoding,System.String,System.Text.Encoding)">
+            <summary>Initializes loading the route and train asynchronously. Set the Loading.Cancel member to cancel loading. Check the Loading.Complete member to see when loading has finished.</summary>
+        </member>
+        <member name="M:OpenBve.Loading.GetRailwayFolder(System.String)">
+            <summary>Gets the absolute Railway folder for a given route file</summary>
+            <returns>The absolute on-disk path of the railway folder</returns>
+        </member>
+        <member name="M:OpenBve.Loading.GetDefaultTrainFolder(System.String)">
+            <summary>Gets the default train folder for a given route file</summary>
+            <returns>The absolute on-disk path of the train folder</returns>
+        </member>
+        <member name="F:OpenBve.OpenBVEGame.TimeFactor">
+            <summary>The current time acceleration factor</summary>
+        </member>
+        <member name="M:OpenBve.OpenBVEGame.SetupSimulation">
+            <summary>This method is called once the route and train data have been preprocessed, in order to physically setup the simulation</summary>
+        </member>
+        <member name="M:OpenBve.Timetable.Table.CollectData">
+            <summary>Collects the timetable data for the current route</summary>
+        </member>
+        <member name="M:OpenBve.Timetable.Table.RenderData(OpenBveApi.Textures.Texture@)">
+            <summary>Renders the timetable data</summary>
+            <param name="timetableTexture">The texture to create</param>
+        </member>
+        <member name="M:OpenBve.Timetable.CreateTimetable">
+            <summary>Creates the texture used to display the default auto-generated timetable</summary>
+        </member>
+        <member name="T:OpenBve.TrainManager">
+            <summary>The TrainManager is the root class containing functions to load and manage trains within the simulation world.</summary>
+        </member>
+        <member name="M:OpenBve.TrainManager.#ctor(OpenBveApi.Hosts.HostInterface,LibRender2.BaseRenderer,OpenBveApi.BaseOptions,OpenBveApi.FileSystem.FileSystem)">
+            <inheritdoc/>
+        </member>
+        <member name="M:OpenBve.TrainManager.UpdateTrains(System.Double)">
+            <summary>This method should be called once a frame to update the position, speed and state of all trains within the simulation</summary>
+            <param name="TimeElapsed">The time elapsed since the last call to this function</param>
+        </member>
+        <member name="M:OpenBve.World.PerformBoundingBoxTest(OpenBveApi.Objects.StaticObject@,OpenBveApi.Math.Vector3@)">
+            <summary>Checks whether the camera can move in the selected direction, due to a bounding box.</summary>
+            <returns>True if we are able to move the camera, false otherwise</returns>
+        </member>
+        <member name="T:OpenBve.Host">
+            <summary>Represents the host application.</summary>
+        </member>
+        <member name="M:OpenBve.Host.ReportProblem(OpenBveApi.Hosts.ProblemType,System.String)">
+            <summary>Reports a problem to the host application.</summary>
+            <param name="type">The type of problem that is reported.</param>
+            <param name="text">The textual message that describes the problem.</param>
+        </member>
+        <member name="M:OpenBve.Host.QueryTextureDimensions(System.String,System.Int32@,System.Int32@)">
+            <summary>Queries the dimensions of a texture.</summary>
+            <param name="path">The path to the file or folder that contains the texture.</param>
+            <param name="width">Receives the width of the texture.</param>
+            <param name="height">Receives the height of the texture.</param>
+            <returns>Whether querying the dimensions was successful.</returns>
+        </member>
+        <member name="M:OpenBve.Host.LoadTexture(System.String,OpenBveApi.Textures.TextureParameters,OpenBveApi.Textures.Texture@)">
+            <summary>Loads a texture and returns the texture data.</summary>
+            <param name="path">The path to the file or folder that contains the texture.</param>
+            <param name="parameters">The parameters that specify how to process the texture.</param>
+            <param name="texture">Receives the texture.</param>
+            <returns>Whether loading the texture was successful.</returns>
+        </member>
+        <member name="M:OpenBve.Host.RegisterTexture(System.String,OpenBveApi.Textures.TextureParameters,OpenBveApi.Textures.Texture@,System.Boolean,System.Int32)">
+            <summary>Registers a texture and returns a handle to the texture.</summary>
+            <param name="path">The path to the file or folder that contains the texture.</param>
+            <param name="parameters">The parameters that specify how to process the texture.</param>
+            <param name="handle">Receives the handle to the texture.</param>
+            <param name="loadTexture">Whether the texture is to be pre-loaded</param>
+            <param name="timeout">The timeout for loading the texture</param>
+            <returns>Whether loading the texture was successful.</returns>
+        </member>
+        <member name="M:OpenBve.Host.RegisterTexture(OpenBveApi.Textures.Texture,OpenBveApi.Textures.TextureParameters,OpenBveApi.Textures.Texture@)">
+            <summary>Registers a texture and returns a handle to the texture.</summary>
+            <param name="texture">The texture data.</param>
+            <param name="parameters">The parameters that specify how to process the texture.</param>
+            <param name="handle">Receives the handle to the texture.</param>
+            <returns>Whether loading the texture was successful.</returns>
+        </member>
+        <member name="M:OpenBve.Host.LoadSound(System.String,OpenBveApi.Sounds.Sound@)">
+            <summary>Loads a sound and returns the sound data.</summary>
+            <param name="path">The path to the file or folder that contains the sound.</param>
+            <param name="sound">Receives the sound.</param>
+            <returns>Whether loading the sound was successful.</returns>
+        </member>
+        <member name="M:OpenBve.Host.RegisterSound(System.String,OpenBveApi.Sounds.SoundHandle@)">
+            <summary>Registers a sound and returns a handle to the sound.</summary>
+            <param name="path">The path to the file or folder that contains the sound.</param>
+            <param name="handle">Receives a handle to the sound.</param>
+            <returns>Whether loading the sound was successful.</returns>
+        </member>
+        <member name="M:OpenBve.Host.RegisterSound(System.String,System.Double,OpenBveApi.Sounds.SoundHandle@)">
+            <summary>Registers a sound and returns a handle to the sound.</summary>
+            <param name="path">The path to the file or folder that contains the sound.</param>
+            /// <param name="radius">The sound radius</param>
+            <param name="handle">Receives a handle to the sound.</param>
+            <returns>Whether loading the sound was successful.</returns>
+        </member>
+        <member name="M:OpenBve.Host.RegisterSound(OpenBveApi.Sounds.Sound,OpenBveApi.Sounds.SoundHandle@)">
+            <summary>Registers a sound and returns a handle to the sound.</summary>
+            <param name="sound">The sound data.</param>
+            <param name="handle">Receives a handle to the sound.</param>
+            <returns>Whether loading the sound was successful.</returns>
+        </member>
+    </members>
+</doc>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                INDX( 	                 (       è      CÜ                   |    h R     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦C ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ    CÁ÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                   Cµİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v             C      µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v     C              µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v             C      µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     µİ     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                     Á÷™¼j¦Ü ²tauÜæ¡¼j¦Üü¶¨Uš¦Ü Ğ     JÎ              R u n 7 . w a v                                                                                                                                                                                                                           C                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              C‰PNG
+
+   IHDR  p  5   şŒ»à   sRGB ®Îé   gAMA  ±üa   	pHYs  Ä  Ä•+   bKGD ÿ ÿ ÿ ½§“   tIMEß5/„Ì¢6  ÿ€IDATx^ìıgeI–ß‰x:tDfFj­³ª²DWUwUuOË‘X#÷iä’K€‹]€kü@;\rñ…fK³%kK~ƒm±¶  =Ó=-¦DW—VY:µ–!2"C<üÿş~ï‹—Q‘YUYUİ˜A÷ü¹_Ç?~ü¸_¿÷õıƒÿğ¯.¿üÚÑî´£P*ÇüâRôKÑ‰Bôú¢ÕnĞËúíØï³ßq|+*öûú(¡"”Ô§…e…ä JÇr;–ûZÊ,Íh—–£])F¡S‰Rs(ŠË­(E#JË¢A˜;¢İr¡­>å—ßşvg@¨†b¹(<Š3$rR=Y¸J–U@!§(~ß™„G4/÷eŸÀ³¼|{Ùî•ª#­#G\_Ÿ™’gPPÛà”Éëm!±.]—şÒ‚¾,Ã Ñ'Gæ,ˆ—@8DK×eD¸–Nª«Ğ% /§X’¿Lg÷@~•³´µµ—Å½%:yßİz
+Sgºô­Î—ˆ½#-÷ğÍ(î^Íš k(Úw‡>L=°ªÁkû.vCÆÿi°¬ñØÑ¸ÏÁås|ÙO’U‘EöL‚o'3ç{FÄêqÒÒ;ƒ®ÔÒòò·å‘[Ö5ÜKÈ9?+õ!#è1—ÍÒAçò\*€¾2dÅ’—]Ö’³n›„7+½J[)ıIXÖ[ŞaıH5¸îè‡ßh7b!šê·Åz=Š_Û·÷÷/^¾¢Øb´ZêPL%4%±ÑÆOñm)hªã©’hçÅGºaœ¯³Ÿ>á7u(*¿ò”¥•ËŠ*…ŠE1´)œ-M RîQ5ƒİUàƒ9<*äI´d$­ø9èzYe»
+-}åÒç^À%óz3è^²²ËÄHËRÒä²dx³æÊ¿·ÁJÈÛap¸­`êŸÔc=	2Úäx}oÜÔŞœü;‘OYà¶dÅ­Îîşû<áæ¢u/ğŠ®€‘Ü¦.íw)¤ßîÜêc õMbPî§şÏûí“ôœ©Vpé›A
+Í²İpGxÒµòçáœ¶œ«ÀåWhv8ósükµa¤³tiÁñ½i	rÿvË§ø+Ús§Ä¼^;r)ã6§Ãí»KØë^×O½&Aa¹‘“3éN¼‚“­¶ŒZø­rMÖõF=úş×ßûÎòwË•Xj4…UŠ\¹úŠE$F|ÒïtÊö±ÀSa‰­K©Ş¾’	5apº¯!×²U]1ƒRÆØîËË%åÅ:_Ku–û…gXé-©ôôÛ”%ŞRŞÖrYœ°öZ0B_ÒÒğE"Ô(Jt'ÒU^Ìè5?Ğ®'AÊ•×İÔœƒ¸¤:QŞÅ®ı²6xuà‚«òdåïªŒ>çìf_©qr_eÎqy»ô-ªÿ-rş¦ø„2ùÖ÷²1Ç_ÌúÆ×Jï’A;ëç{…ÂªÀZ·k-èc$Ü3ä|Ë.ïîF[‚•ô”µ7ÿŠb0¤ñÍpâwû2çéwZ¦d{Ê%TiÄg~G0ŠŞ:2<ŸÊ%{h%"ósºia°&ÚàyrD1 óN |Î
+†¼·ø²t<SĞ›m­2P
+®Î‘aK ıÔa¬öPŠ›2­VËy1i­Áïh¦–VLm•jëºÑiE²õÉÇ—Ïœ¿ Á*FŠ™¦²¾X*Šë¬À•¦Á˜Ò$QRà\“FoPàm[ØeÅ²M8ä–”›:É_•€ÔtÕñRàj@Ëa&–J´‹ÊåŞCPñÂwX”äq'Gçt…C“Î½n¡ Æ“áêbY©V¸7¸Îsuó)cIŸ$8+±½°’;åJèÔ†„VPúêŞî^úòjrŒ„,T|Xb:±‰?¸Õ[(Yõ¾È*Ê!g'qEÉ‘Ã+•Ş–·å­´{‡®õbHá<Šfª‚ÇHÉ‚ŸÄ1^i9ë×‚¼¬Ñš@áÛÓWgÍåp’¡7’{ó¬†$_êCË
+æa.ï\´}à_•ïÎmú$`$äÊÌ |½èPà«¡?«s4MLzv-/—åVó\@V©¸=ë½ƒêôX=eãHñKKlk"+KŠ–‚Œî–T˜Œ¤ÀÛH(oëA)ğF[zø÷>°|åÚ(IY/«!­¶J¨²¥f+*µªg ±xE.I{––+®@¨ç†Ö¬%Ä9Ê KAªº YCÖ7{Ü)ïaiáº`Yy—½½ÒÈ|(Wšğ£ÀÁŒ'Ä¾xKñÍ¢–)ğì›|D©}>Ê;SàyÜVà|º•¬€,B–õƒ«§¾¬nÊĞY%Oa=4u!dyê¨4R`ÙGÉtõIp6e yS5¦š€´ñæ¸N}¦1ÇÜõpş„ª©%]Â¤è< È²GéÓ¸>ŸÜÈù`U¢à³(ğnVÁêº>	‰Ğ°ZòëÛéû$ÀO—Ï®W¥ïŠ#«ÿ@óVÑÖ¢é˜µ¶±ÀÛ;VV5Ú8n¶0î¹Œİ+Ü‘şPv¨€$›Ä¤~ÉbT>m]Ü”ù‹Ğ÷Y€63>t¸ÆñKK‹¦ÎD†K”'ÈÛ¿Z3ö2²ÍFÓˆ±ÂòåJê8uÎ§Ü$0ı=kˆ@;pÉA”™«J‹º,êº$WT=%]—äËè—¯eEI8„§,e_]Ì\-JÒÎ}ËÑÖÔ|Ğ¬O1ªÙG6,¸T¸ñ©'9Ñ–ÈPyÅ—Rò¦YJÌonÜ³ã³V|æÌ—ÌQ—}Å«˜ÁÁü¹­äËã»ue8|İÓÆ5\^_ÂI¤«¥k]¼$d…üf±2„S|¯Ëã“#Âmt;“#!¥9yÅeen‹#Â&O^«ÒÁÚ’Ñ·‚‰‚·ƒ£{éı¤ËeõñY=ww _¹^MCjCÎ½»C^zµr<÷âØ/]+Ş.û¬	Š¾cšÀ)ÂÑ;1ÿ:2òÖ`u};]Èá¯å~%`~ËË\ºÎ?äıÒdÄß	
+mur®„»
+\ùñ?Õ‚T¤Ë*kå‰SŠ¡¸XÜrEœHå¦¥ìü¨È¯8MV\Y3½–Å>Ù£)ğN-ªm9…±O—³İïèc¢aP£ÀËr%•A9¦İ;óp7òÙéCÂ
+Ş»Ãëâ^q9â<ë\PÒ%õ÷(rñ"ËÖu†¬Ïº×w8–£Â$u³»ßä”F?v´¼b §Ää%ü9­(ÀçŠayŞŞúsœ9ËŸ;•Ëlo¼óRŸŠ%êWÀq=4ti1ÜÃ~~£]Ëe×µ–#_†î6÷y ^$dş1ˆºnû ¿NèmÿZıûYÜ§rù“ö(³âÛ9ÏİİWİ:2¢|íÊÓu~™ Ú3ÇUÀYwW©ñ¹˜®Ó@ü4`–CÍâ<%ßxåË…ª ÁÏ†IÈü¯(²´Ü”Ò^”µ}+FJó1ZœÑ¾Ùé›¡å%]/Ç pVU†#‰VÚBT*6Eó’ˆo)Nu¡L´œèËœ´—“²W[ì2¡oY–-§ìøÀ {qúĞ.OrÒĞy¼~O£ÓàN\ñ=@:Jü6|«\/Åö¤gxİª<®~¥¼].h¾=xçÉËzÃ_ \ÿí±ævÈ#nó?‘ësÃ
+¿îä²Œ÷ô\Ş†å§û`¸?_.€¹«¼{}uo98¬|wsÊó•ò†×g×ğ&s]™ìº”Ç :WQ¦ lõzİ™w‡—¾tZ-éÎ¶tfK®í»¬(L„¸(l\l-.·UY#j*Ó¯:eõ:1PlÄ€ö¨øXq!6ÖZr)òFõµc°ÔUM$¥>«jé`7AÆµªÎ.1%kımœXÛùp{Ú½CÕwÕå—ª»·®O?øŸRw¯KŞÊuïİÜ§B–±‹4#J<²œ™WVR~v½š÷Ô{7÷%ÀŠÌÑYûş¼+ñOã`’¯/æ>Èñ	å­_l:ÂÄ$ÿ“Åÿ•ƒ*q[2×­“K¼Ş8…V>¥OáÁí&ö=Ë›íÛ5”(ùe)wö©+¥bŒFµXŒõµrl­b}QŠZõH­#Ã‹18°•òR”
+1\êÄˆ”ıp”£¿-EŞ†íè+-ÈÂ—%®Š9µÎX¡15eo¬é”ÁûcL¿†Á7gÜù´+ï¾LydWwƒŸôíîò!õÓ`¯ºá'ñÓÓğW"‰ù3+¼ø³DõŸÈ¥ÑJ»çºë«CîärË\ß¯Ğ5=ù˜µ#ÉiG)œÅ¦M·ÃÊ8"'ëøt%ğ°÷àI‰ŸeLO	éc_Î¥E.·¢À–‰bû¥UKF”9á"¥¾^×[:‹±­º;Ç[±{kÄ¦­X7\ãRìÃEYàË1R©Äh¹"k½UYâ%,oN³¨®D³,}ÕˆK–OêÒ¬´Ã4f¿İä?£@ÿx+:Ú¹ÏÒ6÷›Ë¯òÓ¿wr)ÿİÁòc—E,_YåÄšÔU¾Ó¿lÈêËİ—QEÚëNæBŞĞ|ëì³ŒŸ_'|¡öglLm¾‹ëÊ€t‚–Ækæçé Jè¸Î}w ×ŸGguá\¥ë¤Ğ×rÎê3¬„RÙHõ.ú×® ¤+®`—?i€ñ³Ú±»‹Ï}ÆRÑÍ	œpøIö‚O—˜¡’'p†N®¹‡—ßÇƒÓCN™Š;GG~£Öw¬)$kWÚÑa+ôô›3šT”&'?¸=©+°’Ÿ”h_”eeTû£O
+| \Z%ú‹ì}K™WŠ1V‹“å½ióP¬Û±>†7ODuÃ–¨ŒMDôG““š *å‚ìo,ÔA4°-ùå’azŒ671£›XyÒ—N%OşûE!ç¼ï‚ëJõ¥ëÌ_©KÒç‹Bƒ«ÕGõç´İÃ);å|)€“wç“S]g
+¤fóIqìˆ‡&>øYXj$?áSÈ^×'ºp¾»S—òç÷qğíòx9Hrêg—' N÷i˜®ò^|_¼Kï€V|Z»‚ŠŞ­üZıw[å4)o.K\Ï÷ h»·KI+”ô£1H&xÑu!eZÖu¡¨\*yü6ÅŸ&u5~õ¡h³ÅÑ¸¶VÖØ”®-áXš§ÒQò}ƒ^®-#gWúÊ¥hÈ0\–¢¬H±ÚOÚ[y”¯¤ô¢òµ4©µr5*(SåGû3zÌ
+%ÉUŸïÓ••^R¾¢Š–4;àŠR:j“ı¢´şã›‘nÈğ1oe|¢À!ÁŠ%NMÂÍqæÄ6)yéL•2.|rğ	ÔiRPø ÄÅc#¿ïG<©\[àa®‰YÂô›:8uoRàT
+AC<-è:ÍÊUoªÁË1>Ğ›FGbËºñ(¶1T-Gua:öc÷ş=1¸m"*›6Ç†Æ¦İ£U­ÄâÂœ¬îvTØKo©‘œÿšª»n1‚³ân”®$J¡›îÂ¥¨DõíòŞ+ä¼W] Î.¿ÎüU wòÏ=ê¤İ£&ª5MŸgâZ*G0çPŞ®ì²rÜ)kg¥©Yış¤¸t
+&Å¤S-¹\QµIfR:^æg×äM ë,Ü¥+Ë›šáY.{€‡%Ÿ¥S ã(ì®.˜_Zşùd7%“œ+½"ÜÎIf§'Åã›ËÔÁ8"ÉJ^²ˆ•dRAL3‰G¦$û ³ü*¯êà„Öm7ç‡»ø„£Y@ñ5ušV¿øğ¾­rRd¶æôÑlÅ½¾\[cŠ#½²@pZ!‚[•ùtš”5ïBJÇC“ñÍwg*Hy·¥ˆ8ÜÛAö:Ø øB¡ì1È“İ]5i(Ü€WğFi)Xï NxÇë<à_Y: ş“Ç÷ÔT·ù)Ç¹ê’\SiËæ£Ô°Ò+š(B¼qzÖGL@³InuòE¥,"úy0Ğ:Pi8|PˆºA{	 Œ‰“ëĞöá-·JX¾ìR¿UTÔ2t	ÒÊLùÌS•‡/pH$õ‰ßH,˜É¸€êMi© Ùxê°¦ŠQäÄ!\¹ &<9ù J,z¦åJPc¼­¡ò&!Á»·l‹Û¶Æ–ã±oç[ä7¬…©K±mb 6îİ»öÅ¦Š]?¶y,Æ6íöz4ç¯FEÕµ–ni–­G½-Å¾\‹:Ò‹æÔ@èéñ‡ ©z‚ºN§4;ÂÎïÌŸ(•F£é‚âˆÏÑæş' î¥Ï§øÉ•û9¬ôY†MÑÅ›ãë.dÁÄ‰M<ƒ+ª§¯UŞ
+,kÂãÓ/2qÕ}œÉ9†#¤‰ãüŠ³Åä¼MÚ%	2+¼¾r1’6+)åÀê°¬©dU«4nŠãhÓ¡x8	H÷Xép?¤‰0ƒ•dÅyb/J¸Ú’VmÉ!áœfd¼©`K®+r EåvBŠTa<4”ØVœÓõ)–àâÄ/d’ö‡õ—?@E{à
+°…¢Te…ÏsD–ºÅ_9Orö)'ºõuYêªÈzÄo5y…ÒK¢AuÑ?Ğ€R`pó¤Áí"¥¶ŒØI±H÷Ke ğüÄ5|”2%o[tcµ"ĞéZ+WET+Ñ$Å+’¼©
+ıà#ğA1~âP}dåIDªA´ÁD'Ïmğ KµRõÃ_„(Ë:O:DS“Ê¥ÊC~Ò/(ğ÷×TyUå**SrGJ™c™“Om%/uÒd§OáV½úGô5Ô-±Á'W<Á)l—®“O”§%|ÈLKÂÎ5ñ}L”4Î¦>öU7^FŸ#-ñ‚ş‚7äa²…ĞéÉ%58Ç _¢ \4)¹+îş}Wï*,¦PÔÔ1¹ÀghìçCÊ¤Áp}rëfB4ƒ™yoıèx<ñğ#±ad$–fgb¤V•U¾G8“ç£RªGilC~4¶>ı¢²í‰ˆ¡	YäÛÔAK1sîÍ(-6biæF,,Öc¡Ù‹ËêDğ`¯,øô²'!S™âS´Kéy>Êäíæ1d39u mÆâo^AÀ¤G¥'%hÎ8Îõ+>ãV7Í§iÔ†>Íşæ{¤Ñ‰'Kº–ÚÕÖ²²À ä$L¾ Á/k °´£JcÙ¦J¸E—l5×C{
+öÖº†ÊóVG^UĞn©F	RYÒËaòÓ„Vƒ‡şÇR¤µË(îi¨<çüK<e«Á‰ÕP•RFÏu¤¨VU¯j3.i€Ì-ÎGep@¯D°\ßz_KÖ˜VXRìM)$Ã@­&«O8Õ¼/s'’P7RÜÖ?aû=E2JÉÌNr@°%Ë\ÕjU´°œ]j+Ë £v‘×ÕàT(ƒŸ“X ìÃ¡y{_nMÓëğAY#ƒL$¶ü.@.¥0èûL2P	Éİºq´Q>íDàÊ«»$tË¹â’bÏDÏ`¥fÅ„BôBC}$k¥²Æ dIòDñöÅ„_>İ¢†U”®†”
+J9°òV»à›ªLôc¨‰‡8·Qå<9ÉªæÚu¨î²Ê™^ûªMEhùPê‰O’OÒ5‘“	~ÁSú‘ÆŠ€¾JüáO“0Q°}R”KüfRHıApØè 1¼ÅÂ5íiŒÁeŠf‘PáÊa×e_ôB³<ÎíS4&½—Ê¦t®Ùrjc¬0ñ)LZG“à6JÚËšÜT/iL8†”Åøô+‡–MÑ–dCŸâ6Yà
+§ä¬b
+8ƒŸ,pÔOÂªN*)í*oÖTHBBw­‹Cû÷ÇÕË—ãØ;oÇÔÔ¤ràĞá˜¼|!
+W¢8ØÃÊ2êå¡h5ny&n-NÇâ™£19³7fba©íZÌªŞ:`Ò)æó¦Ş@9iPÖEá¶™!Æ(‚Å6LF6ÛR~J“²¨Ké¡(Ü^	*Mƒv„ÚQ.s“.RºèfÏ­P)kéh% A8ĞïeaKÂV”2¶`³g&_5[É³cğá¯ùÓ­ŠêÔ€6ÓÈ’he`Á;–¥K`EÊŒÎ–ò,Êâ’=©645ø°`à¿Êª­Êš„Ã¼º$@4ÈBªìL¶ĞP-bAJı˜ğĞåì)"LĞËdr”U™ÁâœÂ#å¿ŒåZê‡Vñù ŠŠAÃR›ÉˆÕÚÂÂ¢ÊÈb‚¯œ`«+j³ªotúudpXJ½áº Å’²/gB5¹!O(!hGñ
+[‹ä±¢ 	ç
+Uõ>(“ ¼B©¡ø¬@E£'/Ë…"äúP¼ÊlrŠÊqĞ"Ç e Vl©J.­+Ş@–(ã7éŸ„9•uŸ«N•åãAŒS[x½…-IçT’±¦²F[ µ…òX¹˜Rô=ÛX£•’xìtaP’^Ö¬Pøme®vÂ/6ıÅJEª(÷…eC¾•©"-›ôUSx ›ÂÂgœ’&‡?)|1Niâ‘P%Pe¹6V¹òº„‚vµêÙÉ2á…ï¦Oa€_”2M}Ğƒ<×n¤­Ú"t
+G“W­ºß•f~gåU<ğÃ‡ä…×â÷ØÊBÍaVüåÁg
+O+¾¬Ÿ”.=AnŠˆ¿~ Ñ¼Pô-Œr}ÊÃä…ÌÑ5©­j¿ú¶ÂË—Ô’s±È+7J©øãäÒ“¾ø¾†vhòË[…´­JÚÊÌ¾YE¡¬vÄPY2²ûáp²¤ñú–±$\Å†[aÁl)¦¢Ö}^oĞq"@x'oŞŒ™¥zœ»1¥Ñqm¾³MÕ'ëzy¹ólH Z!«°4 ¾«S5’F(ètæé"ÁR“™æh«^â(*Íë|Ô\¥¡è[RJé@øë¥L}A\’²
+Fyé(>Gİy9¿¡v@ƒ„ô¥…y	LÃ
+‡óô,û<	‚".$!ïŠj£Ö}Ãß¢WZæ‹ Ü²x––lYmŞB6)ø
+Bá›8i2G5õEÑ§r¢­İ0Â«úYZ©_®ª0OÃ.£¤•EbE>®Q„Šë¯Ê²SıibËò	—·Dq€ã„×İ¢<´Û¾²,zágEŠÈËd+8õ‹ø†je	=(p^)ÜQ_têÑR¿x{%!?à[¯/²¸´u9¬b¤‚ÁILì~M®ĞQWß$«ŞIz29.ÈêÇõå>Îü]ÒdC¿Bo[ıÚT]ÜŠªïS†>O˜‰ªÊ¼@&ÚJo)C¾6%ßs³7ãÖ­Ù$OäîÂË
+ãÔñrÔŸÚ¸,¥Ôv^Ñ øŠŒ&)V~ı•jŒªbIãUmîk¨¹yÉcVå¡İ4J™x„¶"^×¤-â;*_mE¡ÓG-•ë ›Êƒ<4E;×ôDAc­¬Éëš
+5è	ğ.™\’a§ÉÄO^K1Ô4ÉÖd(U˜pÔÍº”eÇq	WÉºŠQrîñ¨xd†íÙêG–H£Ig¬vÄ/x\€?Êã|îµ_<aâdåL$ã€®#äXÁ,›ß49Sºø…l¥	ˆ6'º(“&+õµJİcºìDB (›ëÒ‡1å1Äør:u«§¥< MuÈO1s¼ëLIÉ¥rüô=ºcqÎäÀ*ß3a|@@DÎÈRIL ‰
+`ˆ{¹v1§ªôİ§Ÿ‰±Ñ¸pú¤;mïÎ–z\:öbª^¡»£xôh<ø›)6}Z1¢~ı|\~ãOââk?kœŠkg¯ÇÌB5®×ÇâJ»sê¨¦&ˆ†ê`hHX’Â¦ü´zHÅÅR²OÄ,]`³!™÷€qC…ZÕ `ùÅÀ…Çyš¸Øg£9ìİª™ŠWŠpÖÕa,xä@ù±ŞÚK„t¼èƒ4±(¯h 4y&G 4ˆ˜ùı‚®>)3Y>Z"H 4Ø˜ E‹¦­´’p·ÔáXkUiô>)†P=~·m“º0ƒ»Œå%ÒlNı^•çåQì›.cµŠöN“+4LíU?±¯Ê~^¥&|j77^æço	'ıÌàÑä¨	ë¼Ví¯_Ú‚<àS—Ú/œğFÌÖ˜Ğä)ÂdÌ*a†b§ø^ö~dGídW<Ë·nšj0‰™\Áz"laeóÒ5&j–Ò‹¢möÖ\ŒoX¯6K	/iRSııı5+©%M,k‡†ÒŒ1A¿IvXÚf‰Åïõ¢¼Å£vÖ¤0Qz7e,ŠÜ@+HÉ˜fáEaÔç­àªÊKÙšê†ß-•£ªÚI¿´¤È˜¤9‘€Ö¡Ïí2EÀú‚”Ó­ùyëôZÿ€yÁ~²’=ùô‹†Áóş5òë}l•¥ë«Zeº]ú¡[z	™±ÒĞ¸¸©‰åÚZÛIU†²éF<æ$X9¶nÙÖ¯÷$l«]8¼­'Eœ+Ö´=‘˜H>&ğ1–._»'OtÚê#NQ,Î/ÄØèhìÛ³7ÆÔ‘áa!Ö´ ú©C»é5&ä·“.!«Ô/æ K(ô+ªçâ¥Q—Ü7$#²˜Ø¸16oŞ"ÃDüGIËqsµ®AoŠj‹¼‘°äõÑFVÙ³ê_|ú§Ø—ø0Û¾¥±J?Òf(d¼vŠÜ®©½Èâùsçã†x†VegD@me‚4³äÜfáç’~ ïÑ?˜¥ĞÄö`ß£Û·»ªôcÕ´â;¨×ø€¿]Ëú!=i6U
+¹Ğ“¶åX?2ßüÆ“1>8èøÖÌLœ8~<
+7.Æãã¥Ù±5bËPl~ğP¬?t8ÊøùË§ãÆ‡¯ÄÒ•3qåôõ˜¼V[KÕ¸Ñ‰ÉVÉÛ(‹íª_©ÈqC;õ‚¸&[èh“ PDé“òÒµ˜ı,÷lefmãcÛNŒ³â3ùŒ¥ºf|	e]ƒ®©‘Õ/%„5£%„kP­„Ğ
+e…Ì¸Ì9òP‡F¼:Bth¢î@×y ´ë--­ê± ««l§ZöÒYÕË’UÙÅÅP#ƒCÊ¯)Åİbé,«õõÏ²y¹#)k6`Î÷É,bõÔl–b~q!nLŞ ñP%XìƒÒßÂ¸lÚ´1††‡Ü÷M¥/ÉÒÕ@Ã0L|"[š`hmDß¸ÑÔ¹[óq?Q›™dÈQUÛØ³½usÖÖä®­Û]åIéVàd´ß„0Wà(¹v¿ú@
+›¥?
+Á5us:Ÿ<ı’µ¦döĞVW¬jú+µØµ}gŒ‹~NƒTğÅ§¯äC;õ³Ô¥l ;ĞÉ}fz:>ArcnF}Í¾1´B¨¼È–M›ãÃ‡Õ)!ÚÉ~²>,¥±,‘É¦ú…U÷¨–;ù‹‘¬.^¹Ká]¹vİ§)<ñŠ;Xà%)Ş]ë×ÅãO<ë¥XáYÿÀ€÷±ÙñV‘h–çI“-;Âj··CÁŒV¿|ùå¸xõr”E+ŠºÁ3¯¾;täp|ç7¾-¾©ßêgÑˆlŠGô–®$
+£TlI&„±ÄJ—|L2×%k/¼ø‹¸pş¼ğK±©M¼	kŸò<t4~ê©¤Ü5Ö#Œ½?8^Eë’Ú—Ú¯ôï5õãâÂ…‹ñìóÏÆÅkWbAãµx0~æ™øÎw¾›6Nh6‘l+?ø9ÚÈàğ«>DÖwz‡“jãí;Ğ¢k¯©³2Ü›X(Ôµú%f¢%Íınü"“¬Ê‰Ãè¹uëVüè¯¾öjzú£_+ğe	vI 8ŒKU²İÄö#ü£OØp Í¸&´>’)pä@o/ß‹·‘À,Jao‘>¦¥{Ä¢f{–”EÜ^­ë6íÛ}ëµ„©iö¯Æ0™$Üó³W£>s#¦¯ÍIÀ"æšıq³97¥4çTGİ
+\Š+SŞXá-9¹ØÙ,YÄö­Û¬ úûû½¼gIUÒR², İ˜’ÒÀ °¨<óêÃ`Â^ÍW¯_Ó§O{Ë§=Põ©„Š¸ZY£÷îØöí“RÑ ’ò t¶Jä°òqğs©|øc^¡+’<°nİ\ˆë×&ãì¥+1Í²¶&e+zÌoå/JíÙ¾=Ğd‡5ÌöQYmRwz™eĞ–uV“e®†hPA‡RSÇhR’bÍíNU|·Ş~+nÎİ´¥˜Nj0Á±$Y]›ãÁôFâ¸ĞPıCCÃ±¸ l¢Åc"u§%JV.K`«QJTó²|ÿô…_ÄÔ´â™D™På¥íÑªŒÁëÉC|A	ÕYn+İ}ÀG8»²âšÕd¡ğ¥ FFFb^÷‹¿üeLK!yà+¼Şú/í;=ü°·/Ø/u*ôkº.+%]‹§X×¥ãØL8ë‡GcH“ôO_|>Ş?u<Š¢•òC»Ù
+zø‡âI)Öf«!«SÊWVqYm®³]'™¬ ¼Ô/í}ãÖ¹*|”7–±‹RÏıâE+qÚÃ=ú¹£A}õÔ¡#ñıßü&áÉøèãÒÍh¢ø[ı´Ÿ‰™c\¦q›&äg«ÆÅºõãñ§Ï=ï~ğ¾xÆÊ”>Ğ)å‡ñğ[¿ù[ñŒëÙÓgd|0ÏlñÿiBÀzbà+“<™Ñj…mÁİ{÷ÄÆ›âµ7^·ß~[í‡¦1¯\áí÷¾ıíxğâƒ>ˆ³gÏ©³ÕõÀå}oÑİQ~öË«•ÑŠ^FV*l{ıæ÷`şÇ?ù“8q6ÕJ5~ów~;şÊ_üK1>>S×oøæï°Â³2–ê’ŸaMıÿÓ×®Å¬ägp¨_nĞJsF+Q8‰áÇI îOÌOÏÙx¨ÆØzMlêé©iµ&<>H»¦zèSVIƒrLÊÿäŸü“xşùç½ºB.[Ü|Q;­À¤Xâ)åè#À
+\}‚”Ú˜/8 Ğ÷È¶mÖÌé‡¡ÒãçÀµœá’Ë-—k¤ÓÎ‚GÑ +°°údµ”b%>:¢A®s~.†bSm(FZQnK©.ÆĞ f©²,e€²´¨ÆÎŞªÇÍùNL-•âV»‹R:·4(Xµ¥ˆúÅ Yá=
+Üès¸aÉ2ığqä½÷ˆR© ($ ¶o,¨-Ğ0R%Âë’–¹X>XıêLâ½ûfökR ²T–Ëí°fØ'¿öxìÛ½7¦§§¼”g¡Dr¡½®kø£i"u Ä¹­-òcbİÆH<û‹—ã¬‡¥
+†Dµ}@e¿vôh9x0.]¹³sóQ’÷œÍàQ7D'§5ÒM,É$ mY|ó‹Zò©ÛvR›†âåW^ÓçÎªœ®Z¼ïÊRóèCÅáCãœ,¦—/ye±„¦ş+máaq±PQSkJOò-hµÀë­ÛwÄŸ>ÿBœ»tYü” J1±¯†™ÆG<ûµt>+:®\¹ê3À©/áLêOo=ÉÁ?ÈòpM
+
+ÅÜŠ¬DY¼[¶m—Ô³çÏiiš”Àö
+æO<‡÷ïwß|;nª ÕV¶”5ÊŒ‰’:Ş²’Üºåñ}äE«œÃ{öÅ“?Ï¿üËxã½c±ì­µ”A6¨ÕÍ·z&vîØo¼ıF|xâ„Pö«™hšóR¬Ğ$³íº·Y¼‡ªPx¹­jã‘Ç‰ÇŸüºŞñòk¯yûT¬™d
+²à¾ûèãñõ§¾aeõî{ï'¾A‹éI[L(ßäTPêç8{%§ï{×“ğ“O}=Ş”R}ûØ;V¬¬<±°}:Eüùá÷b‡úğgò“øø£Ò„&hPkÈKÓÖùáı“ñ¢ñ@»¸YÌÄ¿(9X7>nKş½?Œ—5Ér‚„ç=¸Q¿,‹¸ªşù=M[·l‰ÿÉŸÄÉS§lĞÕ4hW_"ùÄãë´â¨Åî=»¼ı2©1yæÔéøßşí8¤ñş³çµ¿¥£5şò_ùËñ—şò_’òŒ7_{=HŞj²ÖßıèÃ‰Še›¢Ù–A0<:¬Õv)®L^’Kúeë–m±~l}ÌMßôvÈÎƒ{âñ¯?áıúŸÿìç±~Ãúøú×¿g4ÙıèG?Š=’—GyD«¤	ßÄÿ§ÿÃÿ¯¼úª­qŒHMEêSé‹î
+üe8£Ğğ$É˜¯Qàô?2ZÜ42òûîE¨Øm¾,½ k”Qî
+l,™§ÙG 8°¡ÌGÅŒo>ıTlš˜ˆ›Zæ.j¶ô²G8êz,¶µ$Àí“‚(h)¼$WÙzE®³­rÌu´ä×ì´ /É:ë,£,ª:fJ&/êE7$åĞÖ¤P±ğA3û[o½—¥HfnLÆ%Íò*îôÉqúÔÉøHÂyæÌé˜šº×n\S¢'Ëò¾,‹’Ù~8feQÜ¼9ãº¼”³ÛêøA)¼½»vÙyUJäÍwŞŠÓgÏÄ©3§â”–Û¸“§OI0Ö >ò¸„éŠ–Š1;3}ğn|üÁ{VìëFÆU§Vss^bÒ&Ö[ìëTÙØ.kãV¼ıÖ[ñÑñãqYŠüÜÅ‹qáâ…¸$wñÜ¹¸|ñR\×|NË}”S[×‚&ÏkW¯¨ı—4p«±qbCLª­l	0 u	•Ù:Ş%ËËáÍ7ßŒã'>›²Ø¯j<95%ÌÆôÌ´h¿étsJÃJf›¡¾Tóâ-§Ø§ßËI$­^¦$ô@²,4
+õEñíÜ¹CŠ¥ßÊêœ”ï”ğ1h®ß¸×5˜n¨¾ÉÉ)MŒ3Â1“2¦æfEÇdÜŞ7®{ßy÷İîÛiõt|C•
+Õ¨”Äşİ{b¤_í‘xöÂYo”kêW³âõ¥ËšµBœRÿNk¾)7£ÕÉÂâ‚x·S²t«êóıjû¬Ljœf@è™¸X% ·w‹ó—/Z!bsO½×M&bç®±mûÖ˜˜Ø›emO¨/Æ¥äXsĞ(Ú;vÄ­…ÉĞédYK¹4û%t
+ïß¹+6nŞl¾±ê¨hÅ}Î†c„ÆZD ˆQK¥Ø,%yhß¸!a~î–ø¶GÖâ5(I•Ì¡|ËR`û÷í÷.Êû¦xoN¯
+$7ôá°¬Î-¢ã„¾ZP[±`Qx£c£^pcùšíÉ*Ûmè¤¼Æ*
+ÿ€¬tğ°O>­zØªdóå½:Ôê’Éâë?!Ë¶Û¶nöä8±n]J†¶lÚRÌ§4Ö&%;ğ İpD“Ö²î¯Jşß¿Î_8çñıÁûHG”cãğpÌiÌqCx›p4ŞfÔß'ü|Â‡j;ûÿÏ|ãªcS´´"×8Zl‰ŸÛ¶˜îÿøG^yîÙ½;©ï?ÖªoTÿnÜ°Aá–ÀKj?Û{Z™6hô®ÆXïñÑ¼2$Ğs-Î)¤ ŞjßáOkÌäP¾vˆÁÊcçe)à³Ìï«–£¦N­«ëZÚœ•€L÷Uµ”’5¾aWyè©8úÈw4[ˆ…úPL.Ä”,í›¡˜“Â¾¥šæ%4M?‚jIÊ(Á8%ËõùÆ¤oB‰)%ÍlYô7ÔA·4(¬-Ş;,Ë’Æ"ÄJ*IXéümRÊÊ=¤Yyhd8æ5ˆp7}ç}µ£NÀbRs<PØ»ÃªãdŠÚ†åÀ >ü/š›8qjLú¤„á»ßû~|íñ¯Åá#GDÏ+,:w¦ÚÇŞ|z¿:{ÀÉï—eÂÍ3µê€†–„Ã3º|„F°ŸØ²)~ôáxòÉ'UÏãâmq4çmi×¥œ˜#<¿£}$¸B©6‰¿¢¾ÍK9WµäôÓr}L\âõ¢œ|fZ´ŒÆáƒ‡b7["?~À7fÙ…$öOáŠÕeÕ.èe%£È¸Åyq-Ã«è(£²|î‰Tå´¤­Õ´bëê{½ğ»ª	f †Õ,nX[~…›{¾× šÙïe/6·àû4ãJi¬—Â,õÅf)‡>d=±5PÕ’ÅU”l Ğ°~¹¹K|±Â^(Õ$‰‡s=ÃÀ|C¹1ÍVÊ…²ì×ÓŸ%S¿++ñéo>[wn›¤¸UïÆÍ›âˆ,Ô½ûöºml Ç¬0hè°Ô~ú]B’¬7ÑÊöV’1É¨hê°êŒ@¯ÚøØïqYÓ
+x`xĞ749£Îj‹›íDo+‰Ÿ¾£ú¬,?õ;;ŠÔ÷2„YóªEr½¤U$G^Ù²`/½¬É¥=:6îû”ƒcàğ6šüüx«Ğ«Y¬T³z„Ÿ­,oú¤ÑnhU¾h‹œÉmD²Æ_’”ñõÑûZ}×¶­[ÆI,>üÏÏĞ³­ÄÈb¬3şY‘o”mUÅaT.Ê*Ş¥Iñ™ßøN8°_†È¢ßÊÊÍÏõš 6hÌnĞ=sút¼÷î»1,<‡Ò¸]§>J«H:‡¥ÉıVŸXÚ'd°-Hˆï¦YĞ‡öykRü¥[í‹?
+u?|×¢Å¶¼À „•=˜OæÊ•ç e“|–Z³69mAfi‡ãi§Rj<ôoÆ·~ï/Ç3ÿÁ_Œ¯ÿæïÅØı1³Ø‰E™8u	–ıŞÒµS¨Jp´tPvP‡ƒ"?$#AHó™‚™^a:úğ#ñÔ7Ÿ‰‡4=ü`<üØcñĞ×µ{ä‰Çã¡'‹Š ¥÷OÇ¡ñ1îXXX±Š*nFamcuÒi\[j*ò5`4µk‘€SŞš–“ı¥Xb¯a°ûì‹Ç{ÔŠkFÜ`VÔùòé„!ÕPâañC‡cñæ7•P®>O*3PQ7mıZRî‘õ¹wï~	æÕ³1¥üÀ…eî$
+S¯çy]²M’nt‰Ÿr¾÷"ÇÀæ&
+ıJOÚ¢ñ–,Ùy	í·¾ùÍ8tğ O°ÄfŸ’Cä÷S‹ªÑI•Ù §O­Ío;]Ó÷vÊH8(#¢ºıí›h
+Ã+:¿b¡eYä¢û<Nl‘U´}³­õ[¨Û·mqYŠVœ´W}ˆ+Hyó@U½#EŠR”2nKYq²ÇÇÊ‰^Õ~œÂXX>2¸Ìi‡V:y¡¾İ·oŸ–Õ»bJ«—ç_úE<ÿË_Ä/ä³Ê™œ´R¥ÀÁüƒ"ÕØ3ÜªS_ONâ¥&±'å-*¸ùŠªB‘£L	ó¸u)Wş…9¾n}lİ¶-¥¼l((ş¦ŸİÇÁ×D	œ¦¥i¼Q½	€ÕÃ˜É}#ñRŠª ‰ãaR+‰sZ	ÎÌ¦íÄJ­_rÄi$É‘®)O}Éaø)@*Í+kdŸ±¤1ä>°Q$ùWgIãíwŞ‰?ü@zeI$Aµ„%/j3÷88¥/g´ºb_ı±'‹ï~ÿ{26´úÓbk†c‰³Zõ?şqÜ¸|Õ'½xH­¿_«¬´Ø¿zE+/õç>­X=ñœË+¯¼b%±uZ–=7awÈä„«^¶U­“h£ÚÂÑZÆ<r‘d5sj3—yTæ­	ëiÃVŸJuÖq Hûƒ4åÃ­(HÓ‡N§Ë~æx’‹ÁÅ`óMò©­bÔ-qdÑ±ßÔ`˜Ö¬:§öoİã{‹‹…¸8Ó‰Q…Çv?SÍJÌ/Wca¹uNN0ø5È[²Ú¥ŞD59írP—Óo«L£u¬gV/½ÅĞ)›kòÏi™{úìÙ8Ëöƒ:‡»ÿç5ƒ^¼,Æk©bÁJñŸ?«àófÉs¥ºo$˜æ‰ëÏ|ÕvÊP®ıZr¡š—4¸šÊËJ…#Qi%À#ÚD]	¡­b7RmƒÙ>aTö™Lâı²\Ÿpaé°'Ìà-ËB©ôZ9•e}úd}¤†ÙQ«ü´œ£nêQ¿J9¢<9Š’€V¬>p¢Ìà/Ñ7«	«c«¬,c˜-îºğ!7©”³­<áANr…eî0
+·*Ì¶
+‹v2¨<0@.€\BéjH—
+O7AEoUrÛîqøÁ47É¢ö.&fÎwS¤Ç²Ãmğÿ€9|"ñe‘xF¼õÈg<±O‰gbã}$ƒ¶z5aŸ:Ÿ<-¥/j%493å#ƒ¶…*Åa+ÛZ½*|F¯€·mHçBõ£ìÒØc,Kk`r–æróÅÿ£¨6ø$}/¥…•ŒAÂjˆ±š^wp¢ğÓ^ÚhGØNñ~XN:¢¤UGö.hÜ?s:NÊ=~úŒ÷»Oi\İ’Ë	$¿|ŠU’øÚ a€Gæ$²¡:ˆ£ÅĞÍ*É*?İµX_RÛŞÙ¾m«V5cbb"æ$wX·Ë[:Â­¤ĞÂ=82ä­6VBûeecĞlÛ¾-¶lÙZ	]ºp>~òG?ŒwßyË7C·Êªg[„m>VGÜ4İµ{W¬ŸX'dı3y—ÂÇâŞ&Z6nÚë7¬óŠ÷ÑG‰o>óLTÈ‘OEÑf}’q$©DŒÜz"1ÿñ‹Öµ3	¿—0WŒ¥0ÂÇ¬å3§ŠóƒYºfÉ˜ãzÉ×O/J†	`§–%ì³­ŸØ#²rè4‰€oª˜Ù¶x.¦nÍÇÕÙé¸x]³öÂŒ²ìÎI.kğwx AoªdSƒx«|r©Á¹B÷(êQ„çnI ÎÄ›ï¼/½şz¼öî;qìøGñ,àÏ÷%|ÇÔ¯¼ıVüäùçâ'Ï=o¿ÿ÷\Uµğªnš(_"÷h¨i‘© —n4YYÃ+¹–êÇñÀ”šÒ ™“ğ½wâT?^Kİr¬Û´EËÛ¡¸¥É?”öË¨F›Ú¿|CñéÉG¥ç4‰X[(Á¶ÂœœåŒû‚pMb1Èš‘r˜Ô„uñêUïñò¿¤Xôiÿ–:¨¹ÖÄCùŞKU8ñ—Ê•_íÁÂb…á³òª¿&s\KMg]çT–;g¢­h5h¸³J²6ÁÉäÄ§ĞÁ´:Ä$ƒ«´ü4A8!É@†ËJ^4â‹è¸,>ÌÉbÚ±k‡O`<¨%ïnlàö¢¿&$V><QY”Á‘,<êN<¡ø‚RCPpøÈ>D (áS“t#Ú±cïÄë6MÄVÕ¿eçö¶’O+¨l<‚ßüGr =ùDTdò¯úò•­Y¥°WNFøN)¶À††Íîã Ğ=yË1¶ÙêòøÖ„B¿’F5Ôa~Óf9"‰ã/–1[j\ÃOŒÎKaã8ˆ@5¶hä/Ig0±¤WpĞL€‰~×~(—¯®“ì°ú‘¢G	‹8VîWÕw~ø‘·ü	+J¶SÎjlsFŸ>(ËjOÛ4‡™X	âşö÷¾£ÕÖ˜·2w<x0v=|(&öíŒ}_{(|ı±8øÄ#ñø÷¾Oüà[1¼}c´Gª±ç±cã¡İ
+×b÷#ÄÓáñÌïş şÚcñäOÆïşÎïÆ_ùË%>$Ë|¯·V¼•ø˜Vùœq÷êñ£¶-.,z(•$W<bYà7€Õ‰îq§w3) U‚€`KhÌêÄü<j¹˜Qi·Œ ã³€!ÕŠD>áè(¬ËÑõëc/¬‰!	é¶;µê—²Ò’G¿P×’ãÒT¼ö¡fî«“q^‚õÚñãƒóç¢]F5}ƒÓO/	'æ×r[
+\¾-5ÕŠøC‹uíF+¯-§hÔ‹hnş–ï©sg5ˆ®Ê:XRIåÁ2@ÈD3
+ûÊÕkZæÎØªÄ„a;:ß'bÕ‘˜lå >&3EI>ïCnñW~î¤ö´T[s.Æ+o¼ï¼÷a\›š–ğ/jù¹$ULôZ)¨,ud£¤ª#]zr¤n´ƒğ*V^ZN³læ(ÊÉwŞÿ0><q2ÉûƒâÚä£…-TÒÎy˜¿¹Åí€ÔÿI1¤Î€ğÍ[
+¬0ùÙVbËf`pĞ{ŒÏ>ûl{÷İXĞÄÿ=HEıE}VÜ¢¥­KÈHö«a„sPr×wSyŸºÏ…—Õ¡'$E¦­çÖ7áòM"…¨Æqƒ”#”o¾ùF¼üË—â¬¬â=»vÅ72ìÚC<å¨¶³Šãx&òÜÓÇXuV¬Y[ ‰ŞJİèwÌ°ÔK•Á{e°Èçæ½Õ€¨pÃ‘c†„ë(N•£íh…e^mğuVStEšœ÷İsGUÊŒ£|1íªƒÔx`ëí7ßŠşğ‡¾¡Ş’¼3¦İ¦¬Ö	ŠKÛªÂõÊ‰—n‹Àz‚íQÉ y0Xu§­»Š­ûšä Yáu±ì]óPr…œµ@©£ Óª!õ¥ëPß+>èÊä^õK)b0@;7‰OËøâhïk¯¾Wµ@i{’VyN†(ä½}V…×¯_÷ê››á8¶¬–dLÍÕãÌÅó~Ğ¨Ô_‰{wÇğø¨VéÓŠ×ªüúU­ã†VI´BŸº5³êCŸTÒ‡gC0vñ/sp@uÍÜœõªşúä¤·Nßœöï´õXĞDÎÁVfC‹¼4Ë[`Â×à=AmV|Ò‘üõ¤Y-÷÷I5	ñä©&oæ
+$šaLºA$¦¹á&×úx;Eœ†IX>?í&¤N¹ÒI`¶ÕŒÿ –©Ü…åÄåK½Üà¤ôK±´Ğˆ))•ë7®Æ1Èç@Ï\Py‘­:Qà‡²¶c%naEÀD·\N‰éĞ·…äxzn«–6ìËS'ñ´{™-êÔHËx‰EEÂŞ6¯¨Ämß¼5Æ†ÆâòyuàäTtÊ5oQñr»/†G´ÜÚ®ìÄÅ‹—eI7]§›hÎ•xÖz)®IˆŸ;W&¯yÿ°Ñh¥»öë×Åyá˜á("Ï#«xjOæQŒÖ´œÛ¾CËrœ-lGùU¢·ƒïş}É°,¿97kwáÊå¸:uÃ|Ù®‰•›v.õx±Í@ĞEÑºeËñ¯ßƒdIe|&^Mö¶‰ú/Â|w÷Ë`I°ï{åò•8¥6£öqk×î½qB8Ø²‚Çˆ§1BPìR{x ƒ¼üÔ£ò¤• ıMÊ7óM#¼'£\æd§%ÎhĞ\›¼Î±rY~m}KV9…2Ö?ki?WjF½]›×'cRô¶n-ù|÷F­¶nŞ¤Ô²’]h,¦úUÓÃÄø:õÑV?éwõÚµh²‚±u.¾‹µ?¸g¯ohŸ’b™šŸõËÈhËğğpl_ï§g[KQªZN=îD7ÊjqáÂ…?öíÛ£±rUm:c…ˆ¢L² *EËî­Ûb“–ìïi¼ l˜D•$b¡ƒ"Ñå½záç5F'‡8‰4­2ë$Á¤s´"”8§]P¶ğn¯Ú324'OŸL§àˆ¬c^ÆänşH&86ÈS¯;Té­ñ‘-H)¢Ğ8íƒ¡€,ñ#§«x~¿=Õ8~ú„­åL8Jª‡•v{¿V°<o€tÌŞœ“RF!ßŒ9YüØøHIæN;¯•¦hÕ8ãOÓë‹8wú|{ëxóõ·âØ;ïÅ±÷Şwed¼óö;ñÆ›oÇëï‹×½¯È½¨<¿|íÍxíÍwâ­7Şcrï¿õ¾İ[¯¿¯¿úf¼úÚkñÚÛïªÜ»ñª&Å×„ãMá}[xßÎ7…çMM2o¿÷^¼õŞ»JÓÂ|}Á:Íã©RŒE)æÆªø±Xì°¿¥6·bı`%6i°qt06ù¾+™¦ûağûô‚,Mfgï‘@µÄTüÜYÉ«C±ÈÙBál'o+äEŠóy_	Ë¥k×ã½?ğCo©A<”€•Ë>/['…R¿_‹‹W&ãÕ7Å‹/¿§Î¢˜Šr¥h,k–V×ñ'B¯U§v$\N¢¤m”'"L«>€š(ºÔ&¨’ c9r^ÖO¶Iñà31x¦W¬Î·š´^¤Ö&Nt3xL£Âøİn}lé»²D	B½bejğË÷p&@µ¥Â¶4Hp±R¼Ÿ«kÎ›sãì8ß¬/}ê±µ":º+ ø‘r8¬YV ¨	pÙ«+7&ã†,ıEñœOØ&c"„_Pí6Q•ÒU4…U<ñ;VT&·˜8qÀ1Jú‘ÊßĞ ãæ)d‹ıoŸåç±½EÂ•z±S¬ í+Mé]rÖpæ)J^ØrK×oÀcâ…7êHÒ |×N³J¾Â(·ÁşAï"§W4¹½ğÂVí{ôè#q`ÏX78ìwˆø%l©ĞÔ‰r´)Õ¨&Õoı­ÔÍŠ6ÿc¿oCãªMìWŸóÌ‚Ÿ Tœo¼+O”ÚÒCaJ©ú•š›¸î+qCUõ‹>6¬Ä€ÆS¹ÙZëöÉ Ñ*Èà),#k²Hµ².j¬åDÌeé•ÿ<Œ%ÜN­HP[Õ•%H—•Å³¢ÆOVót`«Œ¥È;WZQSœìpMl5Á#)¤BMcm°óíÅ8qét\½¼¿¼M}rKËìÇw‚?Nğ«Tg§¤4|ÑÁ‹:‘Ášè7oàäDüÿ.“K©¦…&µ‚ÚÓ¡«ò¥SÄÖ–
+Â^Ç})Ø›¼6¼ûA“Âıà½â}­Fß‘²E™¿ş†ú»Iñ¾*%ş’í«ï¼Ç4ÑøÑñxïØRÚo«ì1YıïÆÛšŞ“R~ÿıâm´Ê¼•¹cŠÇÿŞûÒyokb¾·¥Ğß¾Ëš¼8Ü‘8ÿ"CŒŒgNK±Åë8ypÿ¾8úÀƒqô¡ı°ÛÑ#ÄÄº6&¼Gu†4ËòD›v bià÷[¨Ä(å³ĞêZ_û¦ÄXÒ¯•ƒ:‡%á¢¬˜W^~5şå¿üWñ³g.ëô‚¢Ÿå×Àæ8zO–ï–âj‹áÅü1Yée	q¿¸,qÍ¤ÜÄô]o+nIV—ŠˆKD‰â›Ô´+€}0ïéêÇ^K>fiwÈKêxömËåª„V‚ !¨H0°Âûšb¶\I3:‚Ñ½ñ¦z}i/ÕË¡¸i–»ôÒ&lMsKu-•ŠQ‰>)óEM¾A(7Ï^µÇ[)r´E?úˆgê5+”Š'µLEíaê@á²<ãéQnüq|ÓïíĞ -2èM/8 IQSyÅJ!(*¥ Ø¿%œo±¤íîNÓ“¸Cs5ØE»ây(c^õr¾wYƒ«¥:[Z¾..¸à:“†-;•gòEA±|œ—5ÌÃX¼§Û¯zµ~àŠ£¤vIy5äêKR6êğJÀ«©Ÿë²D¥ğÍEô–ÑB§úÂIIHü£­ÉŒ­³Šä}QŠâô+ñÆ‡ïÇGgNùß|üÉøÍ¯?O?ğPX¿9ªKÍ¨I^‡Ôr¿ÖVãÁÛf&BŒ!Î3#w0—í¸ŠRÆÊD>ØAJMáZk’CÉ¨˜Ìè&xVl9pú
+k—·¼‡×T•ñ˜ûÜ/b+)‹Š4_UÎÿ£¡…¯iAJÍ;&úPr/#¦¯¦T»Ù‡åa/è¤n$ıl£FŸ~R|G¶·U‘ºDıÂCwXö<]Š"¢ËJRæ5Yİ>I+'z¹Ÿ¯Ğ-ğçAü"*•eâÆ¯INÉÇÓ™¼·œSW²£½êàåTBøÜcH8QÖñÕ¸‘¾BÖ”Å¾uú™óVÚïtúGm©·]Ç‰–èÂaÔb´a°úDQvy¾Ä÷GT‡'¯ÇY	gaëIÂÂ‰L`8`hp@ÄÇ—ÕVm–'ÉV_]Æmk9ÆjÃ±{ËN?Õ{`ïş¨hb/vlÛµ’\'½Q@9#tìí­Órz×İÁr
+w`ÿØ±s§ÏJ“.2 W•KXPät„c6¦-óÕSŠË™ÈpÀq†š›tô°ï’+Ÿæq5NŠC#·VÕr½®«Ê_VÚPÔcP»_
+B
+\Bä§Ñ$éĞÃ G	P²ï8èCAy?Ì––´”ŒÚË:è,¯RO²¯FÓï/eåüŞeI7áÔ5R¬¬>9udz3-V'@Ö¥kS¤€Ÿ´º‚$X	‹báéÔ£=¿eYûUµ‘Adz•k„Gí“’C™‹²¤ÚX(I-»`¼A²O
+«,¼ËX6âœm/×µÒÁ2’ +ÿ€úL†QGU–Z_‡‡;TŸ|¡¨%º{z;‹ÈÕ l,ğ¢U‘Ì{7UW¿Õ€Ÿ}»ºòÖµÜ›­bi ·¤Ã–T'ÔpLÏb’…ğNe±²XF£˜g‹Q—ÖDI‹F&.ï¹ËyK%slY°Ô¤å5¶—„‹Ê_¨Å»Zè+‘çşb”Qš¬‰Eˆb§O4	ğ6LùL8-¹á:yşl¼üæk~dëæÍ±gûxôÈƒñÌOÆúá‰dIOû}Éd2'Br ê€¨Dş3ıòÖ=?«r~-­”*“9OCFŠÒh@iáKÊ_-‘Œzõ¦|<ï&(Gá-rÆŞ:ÿĞÃ	¶ª¤6@b~Õ/œm÷sRÚÄóÖD£¬iÒaÜğ“ŞŞ©4Õ§lİtY§S7âËëTm˜ˆ€’˜ÌD!Áïb"©`üàëšmC|(ÆËÂñ>º§0Ã‰éÅï»Éğå¯‡e›W'ó¤&üÁgœÀ;	¸38¯	@ı˜Şbˆy¡xê°ÂN:#k¢'€I•öaP /÷>¤0†}8|ôsb„ëÉëÂù>˜ú+ßºê–Ët%“Abrªß7‹%Oğ™#Œî…YMñ*n6ÅÚ^?¾Ş[Ál_±ı5*9Ü¸~ƒú‚"÷/oß´)vmÚ;6NÄv)ó=Û¶Äa)ô»wÆÖı¾Ü¦¬Fé
+_0‰]
+µÄ-œJ¥1ƒÇé·
+ï·¿õíxDËRŞÍ>±Ä^øÊ£ÎëkÄpµ›G†cÓè°:H³éO|İ’’–“JVÌïôZLu²ªcFL’˜À6x‡ó«F%ŒÌŞt§ßC!Ÿß°ôäıá
+iU5•fl&5˜ªAÕÇ)¤T×üÿTUtWìøRl,¥e_HĞÚ:)`:N4ùõ°(¤?çM¦TX‚PÌ¥ºhbk-EUt­ÓòWB¬å–ØP¾–œºÙÊ›eI¢ÕW–5)+OGén=‡r8—”¾©ú¼ÈŒVPš°„ÜïmáÿEé4ş¦®ûqõ‹·kÔ¬†tm#ñAu%¥¤	N¼Ã2*+}%$‡ÿ@B€Ì7Ô· [(°w#ÀŞ‡#°HQ
+LOUY”ªåà‰Q´ñÎî‚,’+¹²Â%5…{mµ…eú±fèCÑ½X80†AÁÀãÿY±`¤ï\«U(nI^éÇZÅoü[lÖãä™³ññ¹Óqmv&Şøà½xíƒwcQr]Y?íZ9Õ?XÄà²‚S{|³¹Rÿyğ*zjeŞJ(åcúäDOí­ó¾?nİØ¸ÆØ¦N)k­Àxâ#(,^©‹¢ƒß¶Ô©C`)ÓV¯>˜(D«#úM¦tÉ½&6–0+?˜„,*;†
+OAr¼¶)>%Å?éDñZ|sZé¤6©vË‡èBb<édÎ}(ş"¶T1qÂÕÚÔ*‹´*«™m#‰¨eŠ?à¾¯,ğkm…›…u'Ö8<1_¤Ì™èh7M‘%%Ê3é5i'ñæ¨µ´"ùnFúä÷Ïü ”Ò‘?”DšOÏÖµŠå©ÚƒÒ{t~ğ¡Ø·k·_ÑXX´şLÊ¾HÎÊ€O¢#Éq( @F`+ú¢ /ÕîbCF˜,Õd,ŒËêˆÆ­ºïrŒŒDk±“×¦¼B±ªE{®û&6Å·Æ¨Y[Èô»oGûìéœŸ‰½cCñğ1Rª:ïÀrÔZıP¥´ª^dIÚ®¨Ï«(&1® NÂªêĞí6Å¶M[bçöİ16º!fÕ‰üGí´bd`9¾~ôpüÖSÏÄ÷¾şt<ñĞÃæZ4Ú75Pd¡JÁ{ëƒ½<µ¿¢–«›,H¹KR§_x—ñæqó«ÅÀòÁš³
+æ3ÀX&bí0 ™ı„”:‡ş@0 9ÃË~¯O%È#½ó²*‡‚t—Xİ÷¯P¥k”•­YàÑÀFüJWåA˜)ËÀu{%¸¶VHG ¤üÒ;¤Û¶NÒƒ"[‚¥ƒp{	Gùi0r³ÉÌJF3?IY›Á]X{Èš,¬!?,¤kVLŞ¼¿£¤	”waóâ.ğùçrü½YI¸Käµ¯ÉL8°¦ür#áæ•±Ô–óYÚÂõéJuˆ.á5NÕUc0’¦pRZÉŸ\EùÔ õ‘–ĞŞÂR|—„$å­v¡,½}ğ×÷pà¿hà/«Coåˆ·LÕšìgºŒKW¯ø†÷¢døõ·ß^yÉG2‹ıj–¬ÊKšm‹
+CøóAŒRGÒÒ[¾èEVvìÚ÷Œİ;vÅa)†#Å^ó—bç£(GxåwÔ·åö+É—"òÄÆd%ÇûÕ1Æ†‡¼Îßú]òj‡4©î>&qMP¥%óÙP{éîq(›é·’×gª?D77@½×.åÅ_öîE¡dPNùr+;YäIÆ‹È¡hF&‘¡ÆNA+¥SYÃŞ ]XİL\ì#¢¸‘¬Oä
+Ãe&Køz›Eøèwn–¢#Zl¥ ¼é[÷úÖ¡!w8k8öGöQ[ëÈ‰§”7O/ï;ßßùßß“#¼oï>Ó‚‘–,qÆ±Z,g}Ğã˜Èsk<\çñ–3^í“¼ «Pèb•«qsnÎ'â.\¼äã¿ÜŸÙ¿ï oˆ8?4<Ã#£Â¡B#çÎ4ï ‘	eÊÍ‚±uc~”˜}Uö¶™¡¼Õ Êò›Nj½’ÿr_fHŞ°cû¶xçÍ·ü4ÒáC‡ÒÌ+¦¢Ùó]?±9víßÛ¶ÆÇ“O}#¶héÚ`¹…x©³ <÷)aÇ¬ ×+q¨QŒ~é<–·È‚”—âÔ(‚23(IhxB1Sv(>öH¨p*Wú²Ê6ıñ7ÑP†ì#úõXPZ©ğ²~™c48(^	>Ê—xĞÿz­ö¹ã”Ë¾9VõY¡‰p7MI!æÖãh‡tJ˜„ÓKWåã/³p+ËS\Âãí%Ñ×’¢IıhÎ‰O˜oåŠ‚–à3Y@oY8X¯8–Íòµ$`Ğ²Êk0AÔ/eÇ`XfÒ™L$Ë¥ö·êu]«>Qb¥?ÔÚeiå@{øö)‘3÷G1{9]³à¤¼Ş‹†?jƒK(”?J2¹°nÛK¬PP(µ+—®ú¼ñ–Í[ü*T‡ñ^)œN/‰ÿğMmÁŠò
+%Æ ”Ü£ ¸ï²$Y€è¼5;çÏ_ğq6Ş+ssj&nrœíÚõ¸rñrœ>y:Î>ëwÉ0	%¹`k,m!À‹äÔçêV¸Ëª£µ´õ…yµS†“\[c”­^Ê¤!“-¢¾óØ8ËqømX°şG¡Ôjø­ºmEJÙKF9º=¢Ã£âÒ~qÚ;¶¥É=ÕÃª‹7Z®U¸éoÉª¶2á“·&£ÂGİ¾Ç¦~B™ûÂ¬WXˆÕÅ~7×sDĞ+<áBxÚYÈ'Ğ¥@¤[YìHcõ"‡’§n?xx~aÏ½qôÁı^&Ø‰ü„ñé1¬`”xÚï†VüD|H‰Æ”ê°ÌËY.à‘Òuc;ÆF«WN#U4QrêSfóâUMõ?ö'cçŞ=>†X`yPğ»xKO„­ÓrNÂfÎC}ìk²öÄ-ÃÍÿ)­–iÜÌô¬h'=Kæ&¶éšWšîŞ±SÑvG¶µl©Ìİœó2½¬%é f“ÚĞ·8
+54:f‰N°Já81œ%.©²‚Iø^ã „SG@H‡™øç.°­W!ÆRMn¥-^Ö©8/¯ m©C.„I$'¦ûm+{	¢B¹•eäIV­|üçA%üV.ºF˜büf#)hFĞİp}“ğKU*E¯Å…ÿ!ˆÁÅ’×V¾
+$+F‰üVÀ™Î'	7‘yBãr°Ë«è@±€tÉª‚÷‹0Y¤¥mC
+O½:€eüŠÓ Í!³òÂì¼”
+KL)YáFAà7ÆM[á'Ö8}­RóvŠW
+œN¼älá»ŞtÍB›Q(;;ïj¡	XÆÄ£°ğÙ’Â¨`ååw¥“É}+kX¤b9úô‡„¯ƒ5A]Šãİ¿|ñÅ8şñqÉ&M>ÜtÂ á,÷“„ğ'%–ú˜mò±LV+Æâ*«mU¿…?”8qâT¼sìX¼óÎ±xã­7ãµ×^—^y5Şxû-ä)`^QËÃ/K´·æ,ÓéHj’K»·¢$L‰/Cj/Vë}XºƒªÓN4ôKnp¼G~P¸‡ÅçÑÁØ0¾A+â1ÓË›6m¥
+,?â<áÑŒı¢Æ.güÇÆÖùˆ#ïáz@ãk1¹¡”#n@×<‰»~bClÙªÕıø¸¿–&®9oÙ`H1yÙ[KirhÏn­Föíßç{r;wí]8ÅíŞ¹;vK7íÜ¹3¶K¯ØÉĞÛ.åºsÏ®Ø³wol’ÁÈ;rPîÜçòK×•ù{ŒeÉ†3ñ p+]zì7Ã#NşŠ1¾iã¦Ø,FŸ2A0NQüv„s‡Œ»>ä!ç<ò¬t­tõN#ĞüáH1ú×/l•Qıø“OÆwğ¿nrf:.k…XÜ::öû±Cfïíêå‹1/Áå=ÀÜàŠÿí_ûk1+Áû£ıÙŞm»°À;vYº¦ô `pç³¤`€V%D;·mÓwÅ‰?ÖRdÔDi­ß8'Ïõ#¸åâ¥0›&6ùÅDœ8åR¼ıÁûZ²ÎhD¢$3PF¡qœ”¾]vmRôaî%„Pñ8,Œ¡Ñ‹êXhÆV¬ô± ÄšÑµ\nÙzu Ær7A†vf`}IK™YÍøíb0£”°ÀyÆæ-›}ê†sî¼ƒÁOğ©£xê‘=<0øYú1H­Ldı±UÂ ¤âB Ï]¸àˆ§Í(¬Ûñjb|½÷v§§&mù0Ùqj%…oEE¥zjR*(aü~ÕÉP2HvîÙüÊ©óç49/ESJÉƒ&i±Ó´3Ñ²GËÍö2YòŞğá~Ğ‚pV…Ouò ÁÖ/Ë•÷­‡µ=&°]À[é8Ÿ½ k‰ÕxÜ‰/ƒš0(˜kÂÃ	+	É„ğ®¸(hâçl2ËLş`b;²yêÌ™XP{ÒI2aËX²ÀËeÙ`s²ˆ7©Ş ãÃc1Š,fqZ…¦{>m×36¢<ª‡³Êı²Œ>úà#ŸŸçEQÌ±lÇa¹Ñ—U–GªQºC£#nßÄ†	+‚q”ÚØ¸ŸHV¿óşoòmÒÚ&yC}|â„ò˜;2,`ÖQëÎŠËã<ÿnåß»{·-Ã½»wÅ>ñƒë}{¤¥üx]ïÑ~pßş8(%À‹³y ö¨.”×ë¯¿.E=ã‰üğÌOck¢\¿~£”ê®X·n½[? ·ÿ¿û÷ì<x öË*İ'Üé]/{c¯êÚw`¿ÓQ¾¼ŠóËI\»z]3¸Æ˜ø%aõJ9xSâ˜ø²AüÛºc{l•Amõãî[ÌWÎ¾£@yã¦­›]†±·A<æAŸ©©©à}â·æo©‹å€I5}’uîİùÏº’Ièñãb½Úì·™ò' ’K^‹Kò	Mìª-ŒÄÊõ`EÍXÒ˜7ÎkÇ	ûŞÖ“²ä)_ªg"aÒçø2ïQGF¨—÷ğì_xì‘8qîlü«şQ|túLô=¶s×2VÊ7}4¶J©^×`nµê>BµA3ç&	Å~÷wãÿíã¿ııw²°t<3À¢#KVà›˜ıXmÜ=Ş ñO?Ë²Ü~ùüó±gß^ßuÅB:pø`üø…çâŒ¬Ì€Ä‘Ç˜÷lß)‹PB{êd|xêDpZ²]Ê&ŠÌÖ±™è¥3ˆ ²ÚUJoBÃƒG²âùøä‰¸©Nõö²¬%Ù/L8V^úÂ}ÄÄ`,DöÏPÎÛ¶mó]ş7ßx#ııT¿,"ÚmK·Û% ‹iâõ®¶h@,†äË'…,œ¦XRÇ´xgy­OÓ‰âQ‚ÎÉ¹›ñê[oÄÔÜŒ•&ûl‡UâˆÏfMxSÓS~KbQƒÛB$á€-¾‰%GsÒjÚªQ•$ú‘îñ‰±˜¼9¿|ıÕ˜ŸÖ~ä!CÔ'‡÷j0ÊÊáõ¦,Ù°&x±Pµ,Ë£.ü´…(ç0ÍÌ+†Õ{u·Ä·_üòE[8lÁÁ#&8	|9|øˆ'./+Å7¶G¼ï+>Á;ßäôG@sd²]Eê˜VŒ¼âö¯¼ä•$ÿb²R}u­ø?ú¨xwĞ&òÁ²`ÉK”=ğ€-&Ş`Ç$^ñS§Z*[ÉŒú¡¤·ŞzÇï¯áO§9o9‚ÂÅf–"ão–OÂ¡Nğ`eiÍ½¶·ˆ[fPŸ`©Ó¾¦Ærƒ5ŠÁqüäi¿*–mLúá¤Ê¢sÇúñxğ¡£ ¡Ş@'êë­)á‘#Ì®&«M Òšê0ç@á}|üc?ŞÍ6*²Äzó×Üò0Ü &G¦0ÆL )(å·€Ş=¥~X-µlòÇœ·çıí>"ËÖ…Æ7}Á
+ã„÷ÒğVNÿÁˆŒ9şr¼Ş’ÿ¼b}¬Ê©ƒ¶C/['¼˜×şòÊcŒâiw¦¦İ6BåÏ`õ9×°„vËOãDüS˜ø¾ñä×}{›&
+ŒM^•üìÏî÷§Ï°}g#SñÊø3x%.â?ÍÇµ$^°ŒÖÒ_Õi%GİêÉ 4ìŞ¹=vmÛ,¶¯{´›wœxü„Æ‘ä>¥Ù}¿fº#š)‹6şffm/ª‚³—.Æ/½'OŸÕ@ÔR]#ƒ®á*&¦¥¢Hğ]3SDbÕnWGü¿õ;qåÂÅ¸¥%Ø¸„eƒ}XVÉ»'>_HÈšZºy+j²Ø'$(4{F–g†U4¨Ô:*5=1ÚÊ™¥€¸e‰w'ˆ#l‡Kèöìİm`=@á³µÊ~­ÚbáU&|à@q0€é„´ìjÇüÒB\8!ÎÈÂcÛ¡S+øÄ[FÜÔÙ£	—8±ÄÄ²ÌéƒWy¨s´KrÄ²áÂj…IAŸ•2åoÁÎ^ºêb[«HÔùÍÍªC{÷û&Z÷İ¢ŸóØà¤!;aúaPK=	°õÂØÍÅÙ¸píJœ½xŞıÇ1EÊ=hîğï3Xvì	Cƒ™ãjì-rgàÑ<jL³!Ì1Mş¶í¬,ğşÁ~oİ°'Î¶…áí†uZfkp¨~˜7½ùThõcÎQõPF¸9 È^*Êmú4ïx¿~Í“:“E(K?ò§F×yß’ıø‘Ú•*ŸüM|^îŠ‡PÎŠƒfZI		û¸k×®JQğäŸx®Á= u±¥Äº‰½2ñ“«JğÉáOÿ„¯r%b,Å»¬â|ÔÍù–½Í7'¥g³š/¢ÔãQÿjZ£ØY•`Ñ/Ğ‚QF›ÙÇv×pÈ'R|%2ÊÒ{è5L;‘7F O˜xÀÅÓ¥(o´Æ‹|w’2[9!k™ĞŞd‰·ÂáwæX!'Õ§±+=by•ÎŠÓ{ä¤«Ú&rÑ>UÇıïÍ«­®ƒñ*º•É[~Œ L*€eÔÀ˜NÍóéë°tmyƒo¾V}¢‡•$;	´jÁHÆ8­ñÉÖïw¯«î&…3¾ö: Ÿ¶æN¦ÅÊ>vâô‰i’±U¨zœ²ò!û0oAŸØÄ¸õŞ·hê‰¾#[·-/È:‘l•Õ½^ÖÒÈØpìÕÅÍÇeñóW¯Ê:PGŠáwÌøüS7‡øEj÷Ø\`û¥4¦™jÿÎ=Ñ\\°Rcy¼Ô”M-âyQş\})Î/ÁÍÃº”6Ç¼°  à‚*Ã’b ä@NLÌVÇ(Â{â=yPğ!û¥XáÌ^ìÅñ.Îóà©^?ÄÂ\n‡[b|/\DğnÊ
+Âm)\•"ª«ãyÌš‡xH¢¥™Ê‡¥È‡†ÜYşçk!s‡f8­XQ¸â9ñ>Y"±À,wŞ€(IöS£*ƒò Xœè¨J‘ÃcNÏhd/*Äû}
+{™Sé×å¸€e¤•¼oaA«-¶Êdşyàú¬;ƒFu°?Œ¥Ã	nnaå˜^3<Â¨kH³¯x§“¤0÷7J&& òq“×Á›\ééÒ7½Õ/Œ5¸ñÑwÒå’²§k~ü%§“†âUx(:Í)iò1H V/é~€&Ea,r¢†„É´çáË'mdÁmNuq©P¬©¥Ô]vØ—fàÓfú%o‰¢ÙÔ+rĞÛõB+ø/WEÛÑn"7àK´Ñ',ÏQÌFà¾æ§ ¾Ûi<Ùºóø¤V€K<Pœk  læû„‡5’Å×«zaøcœºöK Ì[Éƒ&qÅjÕ©ö16°ÖáŸ±Ğ…ä¸&ìkÊ·k¡C¸Ï9™N<)W&-êe¬zå	V¼PcúØŠäşƒıö62~\gN@Ş,è¾kw8Ñ%,‡¢ˆ­Aşë–{%¼#Ãv4äxˆ-oo¯ğ»Ê;E8ÎŠÜR‹íKV
+¬"*Ò©5µ£­ŸĞJ‹şWs-‡t[m`P<‘¢?²uë2–¦ÖkıjêZMÚ]³¡…Æãæ¼%'%}j€êå¦wPÅWx @TºÁVFv,j9Ã1'şÕefvÆƒ‚¦0Wš†póÂúò€,fV6!ˆö"œ¶Ğf€`Úq`Àâtéx¸òcI(Î¿Z±ˆ^ÊT…¸,ÍÏ¹õ„Ššu¶>¬ÊËšÄ1œ	x‚QÃ[%Ñ¦6ûño:Gu`™ df¾\ÂÑqSoÂK—:ÙÛŞI´¤†&vC®oFŠÿ´‹<¹#S7(àr*HY nŞKÎƒ0jıG>°å‚Ì5ÙªKÁ«oŒKÙm	Ñ^ñ‹_âïˆÄgĞÓNÆÂÉ¶\ÕeÊ$°…¤ ´YĞıI©VàY—ÿ„Š<ÈAM*ç‚ô™o)ƒ_‡Jš‰ÂjSœhGÑ_ü§"Â‹†KšùÂ”®.1 y2–’ò“U‘úGüEÁ$*Ôï©miP+c— ä-ö¯ÒÀ¥S_+à‹ŒF‚{/©2ø†~EèÈKéSÎÍ3°İÙ¥ôV”ÊÏI¤lµÉj¥È¸aÂfâ&‰"ôV…°Ï±ÀªÍíƒÓ‘|ø_¹7CËLõÂk'\9VÃ¬½…ßTıbD6<…*åMYóWş²ÊbëçJş¸Ÿ„ß…xOÍ;èA{Ê‹Œ* 2&ÏO
+ÓVä6I«R¹Çƒ±riÈ÷D–ÕÙåEª¬–3ãI×‡~^jòR«ºôJYz³¬6bL¥›ß¬„ùßTz ãGÔz›ˆw[BŞwdû6B,…À1·4P“’ó!KÃ¯)…9LÓ¡J`¸›A#‚]$
+3Ò,ÉqŸ½†^áµ%#šW=³ª¨	+ç@ÉG9 Ü(–8à&:\ÀAEâSoî <ƒ"uLs§ª2OŠGycaB¯«¥óÉ«`ªP9â‰Í$ïzhk	l–¸°Ñ¸->=¼ÊÏHZÁ‰S&†-Ö\t9¹”—ßT'[ø:%tëq^¹"£–8¥;)Ëg>)Âıç„””£L‹˜Ä‰³Ëô t¹Ú"<yÛğs…×R‚ßé©˜*‰ÏikK1äqEI6(Pù‚óß‡2Xœ&—n?“ONu`µ%[*õ§léb\‘&&úš­’4(–6	àÏ˜+ngæ‘¬Ÿ¤ÜÉC;Øâ¡]´æ•œŠ®W§[ËoH@½…B9$OWÂÔ¥kxFn§C_ºPK Aõ1ÆP,ø”Gát!!78»~*Z…0ÑùF,Ê"›¨y’CİÀçÉÜ¬
+¥KÉ6P%¢ãO%Êåğ¸R”'7äÈo¼Š·5mºÆùïÔĞ?™“x“µCiô„WÈr Šï¾4©LH›pd|Iı¤8«<ò(	M¢6…Ô
+—OmK}–é7_‹e&‰Ñ†šœBVÖÜ#iÓ¦Ï À×êj.khs‡&Ì¦ÆŒ§²xI\Ÿ÷Çë¦•×á²å%N
+¿¨<²ƒ?5Öe[N•³ÏJÅ0¶ÒÖ„Ì„TF³¤pÕÏGÄköK³59±Ïöñ/J	ÂÂOÊ£ÆÉO
+Œª[é…ñ••ì8”=JÒ×”‘(è|[³Æ›Ò‰OW™%‡Yà(œÇ”ÅéºR˜4h…ÂYW;½S”Z+% ¤æu“D\NwN£­çO‚ 9†q«Rïƒ’`€0"3pøšGöäË³aáô_iá²¸n@qnä"ßÆp»H‚V0ŞmNvOXø\ğl=i`‚›AH»Èg?Ó9G5.—XFôĞ‘™(N*ÆyİGŠÊÔ®êLàNä…×	wN§é8àM{ågQö%Æ‡Fu}äácÍäÅƒ$õ&“î8öÎ50å<	¤Tÿ&_N‘®&ê:Ï’„ƒJ4JÅç¤XDMF´9â<
+•íV!ğÃ3MÕ/EÉûêİ2åg?š÷³ D™ Ğ<œÈJ-æµàô:¸ÎTÁ
+úÄS¯VU¾«À…SDŠô‡eO½ ©Èêd›ËÇ2­W‰ŒÉ÷d¦W÷ÂM²
+°òV6dÅ2d¨õxËOiÔCtÂ 9‰ÖôËQHùL/.£ÄàaÏŸ2¶è‰&/[JØä¼ÆxMg¢'¯‡)´9RûÔKÍ…è´Äû"¯0V4Ûš@Kjı şsXD
+’ïbëŠ®›Pà[©uÅb4!4KT‡Ox¨Â~ªÂdï&™Qä'Z¥Q.é=*!ŸkİÎ$¤e¸.éwNqä€ö©£ÇÏë\1â ¼´KÎV.Ï ç¾MjKÊ†Ÿ„ÈëOéy¾œ˜F‹l-ëR¨Rİò­Ô`¢ËS‚ëVceô<a©„-×§:l)A—öŒò+oÏ9ŸÛs–êË ´õ‚—½f4®K¦Ëu³B†ÚAa²Ñ®do)“h[,Ó)>w69¯\›Ç‰	Và´K
+<AR¼9×~òV@E€¼mÅ¶mi]§òIh‘É¥A™öu‰¶ƒF9N8 äK«hÚs¤­(	(¹N+ÕXâ=ØÔ):Ò~o
+çĞ›—ÿFåæ±İ^Ì§ë’OÃ¨'ÇM´ÃŒ3¶¤ 1å†×^%0–i;2dÊ3/e3XöôËæiê„4)èªêäc|ºæbAÒQànyÆ;ÀµÜVG*Ÿøé¬¢G5f|A´8¨@? O8êŠgËË–¼!ıA3Ê™~ÀFM[£¬êY‚ç­ÂĞÃxÒ„„÷6ËBZ&g=@â<Jœ¢iºßäÎóqÓ•:À^nz{Ò Nô`ô¹pËİ¦ÀÁ“…sH2—Å=˜z}>xö£VôÖ\z¾@º‚6ªoZí¥(”Ä#şãTåšRğ<ä(¾Å­apYÑª—L€š”²”4¾*‚„ˆa“+pä-œä,ÿÊí½,¹\ÛŠSağ€—!–Š¤ùŠ¶È —}ãíñ»Rg·~ÅÉëZß6²Î§ŠÈÇ5ô¡À)±¢°iF¾¤::Ê1)/ï±µ¬KßÏ#E?8Úa‹3·[y°¾qäádæcW‡è¡ó}¥¸¼“?	J`ç *ò¶v$+¾BIf0de¹RÀE3°¢¢ò»mR<4#°‹U¬«Œô¡Âã@~·r€î˜A‚Ä÷,Ÿğğ!™ª½J|N?yX~1czâ?}¤²¤Ë9Ê£Cx¸±ÎÇˆIƒÇøªE”óÙ”@ 
+\QÄÚÏÂN7YE²¾xÿ4`T8bÉK¥	w§—P¹2—O±É'wšL]RâNÉsÉZ?q[Y,ˆ¨·[·ç“'çJè£>`{„½x+/]ScYÊ……qàåa–¬Í;¦LéPëVd|é†]mútÃ0ù×øk>ş§6ğ¤)‡"¼½’)Jà-88Ócô¢Qa[êúÀCË»>´¼s Jâ,Ï@îä£˜<“LV˜×‹%¬8p¤­%xº9ïöfõÂŸÜü&ÚîJx+"C-¿Ù«V9ÕxT#·+¯Âfá-®}lßL_‹! R^÷’è¦±G“Õ°0€¥ÄÉŸ+ÏîàRavãuNU¥ô41pMšv:u'Á÷uç_“”(óaZo½¹#;eså+pœËĞ'ä°‡œ8 …	A¯OõãreƒSã¤sÅÅçuÎMo0¸R”Ó™sN5e>2¥78¦¶y°û2Å¥_W™|"”'Wà ø Ú™€şI>Qz#KUªäŒ*‹Ë}À×ª#Wâiµ rÊCß³o9_M{Ğ¹Rv[2 ƒ3Ñ-Üoğ+×é‚‡?9pÚBı0üé'®Y~%tÉ¤™hA!Sà©OSğÙy,s¡0Y}z"³úLíI–ƒâ<hÄ[bò#Œ`	Ğ&•%K½ÂÌ¬œÀr–‡å¨qœÓVò:Bc‹úÓ•®\÷äSÃ-™]Ü™LQ\ãÖéÛÅ·‚bõu/€Kã‹‡déZ¡RL'æ“£âS‰Œæ£®û$EGåxğÇ		wÂ—áæ—@
+è/¯U$ÏcV¡0«	ºõ’’:—>1Áo–Tş¼^ÀyìP»p~S{2áp`q¾Gy¥»VGkÒW ¹!s ‘eŸ|TÇS¹l3å`:zünŸÜ	ĞÎ
+wäòÎ5åÙ6IaÉãıUß·ğŸ‘§ıŞEXŒ e‹´±2D JÜ[,JGpˆ4~PYRÊ+'k— ™Mr ^N8\€ANJ#ßNaÓ•5Ş¥ÉŞãçuæ½K¼‚]…’+pğTÊL0,AS‰ä’"5%®;Q%¸’°’E ä#ààtQ§©¼’\¯Òr¼.¢X• }ÜÍwg=|Mu—¡4$l™¯Jò‹eÅ(¾”Ó¿9m)ü(p…ˆ§!Øë+`HıMŸĞ÷ı‚,pò²œÍãÍFüY/`>º]Iùóx6YÚñĞr>ÿê'©på—‚#Îñ @JVL|ƒHÕÉ5ğŒ`yÖ¼UŠ%A®Šìexó
+à£óğK*:•[”GÀ¾\wºìâëH„#O¨E= É%eá‡v§¼©%äa¥ÒR<ò‰ãj¾p@P/p¹Ò0_®ÔÁX&G·M*ft*o™¤^”°pÎ®´ÔkN)ŞÑ–’¤"iŒã’l;…a§…@Ê¤A†zòş ^2Ñ Gx’’|Xí)]Ni(á¬²D\jS–&%{ì:y¥<eÙê1b”!Ã” »æ×7³²@^G·.ÿÜVú6pûRÖ,3xW|V¬@xŠ•‰†÷¥ğLF‹1lË¸>VàH¤ü¶G‰Áì?‰¸|_ÍË`åÇ²¦œg.U’+SĞl,\¶[`8ZÍğ”X¦—äáÊ¾q©ë€6Ù—ËëÌ•§ë–ËË[©¨@+/—wÊä®Pä4îdµ8K#Ş±Y~wı¼İ]Y.êÍ#MgÖn”8§ªBĞšx˜2'ÁS¦.¬`ÍÃyí6)xúé-•®zËŠ#?õzÙ©u0³6\ò	áHUk2Z‰ANè6`sid¤`ÔÏ5e”70póàm;½Û£Ù…=å1jÂ«!Kè=ı›IDï×!8b.ß/nšÄÿ.8*”‘ß…<œ¡Ô2–}Å®NøTİîsµ¬e)C”Ğ ¸‰CqŸ;ÒaË®"+¥xRrË ŞVg¼Õ©î;å¡ßäò>3nh—P·‡ÿG6/o§ãÊêéH%üàÏ*°^Sú
+X,îB¨‹;Ç›<gdÌÒø¸†ŒVãÌ§ÔT0_iĞ&³ŸúôA.¼W¯ˆ¤ˆ³rÉK…18¾ˆîº²pÅ¾ŠáSœÿÛdÏ?°ğÍÓ¤À·Hƒ@Yå§DD¤1>B¨ˆ„ öªÌ³nM)`%–ù9¹,³’x¦¬>3‹ş “~¬H€—p÷Ú.»’GU”±]ÅÅ§ÜéCpĞk_r õßåõqÑì7A
+“–—Yès×›ÔSéãİwYúm¸tÁşl^W’ŒÜe±yán|jh¥^sŞ<5s!¯¸-ƒ"Å˜N§A+è¬ÉjTútU®â’­fe¢tz’ èO';uÌãL6ŒB ÇWÕÉZ)µ(“Ç%«sMP¶ÜxHğöÂ'B.}|ölV~„r4«ª¸#˜Tà;4+áÊÊ§–è‚-2i×AºSSÎ*#+¤Äó†ÌË!ë‚5<´án€¢v¿Q?ºôxKÏÇç)Œ½}2úI'¤!Y$ù¸²Ó²2¹ŸŠ¥-êçZ”ßuà“^ÔŠsì ñ*L|—	£Év=+òâ$HRŞOydÔJUé.^ÕÕÒË¸|tcŞ†¼ı¹|6åÉ¼¼4~nó€«^OÁ³;<mÚ÷Ğöj•š&ÍŸ¼Ñ—÷`bŒgÁ²!²2w‚Õi«›’–(w†Şò«Ë&Q¦sÅ ¡ñ4Â¾€ßÜ(ÅÊÏò¯/XÅyüíJºúDÅS6Kşdºx—¨RÜ™YH×ˆD–‰ÍÅŒ¢¤å×Îç<€~İéêªÈ>™M4õdAÊ'kÒeúÎdu¤"‰WGÓ^EÇà ¡[U¾æGÎá<~øC,]Õ[j-HÜ¹x‹ª›áÓp­@“¿%»|ÚÀc…ùÙk]ŠX¯?2\Y“p>§›¤<%æ>Î§˜YlŠï­´ĞÏY?
+rŸÿ¹Låò˜Şœ²9Å•û.k÷ØI$+¬.RF~ô%Î£Ÿ4.ÒÀèË¢“ïré:ÕKŞ„'ùÙˆĞãçRRW	Ÿ–IçIùòk4Y¦ÍôK9Êº<¼’–ÌOY…#SŒN#
+È®	p'*Wà9m©hÖ_à“[ÈGå¢èr¹¯"NW#9
+¹˜½‹ˆ÷ñ6q}G¥Àİ8ÙÛhW(ç­“d9äá®%~ği
+ün {°äÒ/1İmÈÚBq8¶ŸgOÚÔÙDƒ#oèêlDsãì“)(Ú4‘<«òÃ¯fè)„H§ ¼ü\šWƒç}w·Ş4æ8zó+.Sà@JQ	3DÎÑúÑ7ñ‘p³£drÌ`U}‚¼ oç½BÚò»¬ßôë‡¿f»^ºVçRa}K(Wøg@6UfÙÈg
+4
+å-beÄMjL_“¡K­«÷ÀáMÊVÑ¡KÇäB_ ÒEúºµ,‰9]ÊdYÖ×"£>ÜÀ3*ÒñíVÂnkväxÒµèWûó¤@ÏÛ€"<2:<&{€m&œWSÂ›xBvhÏ”¶|+Y|ôY#ËŸëßèÎÂ ±Éòš.{%Âq¯ŸòqŠ§2É£í‚ç€”n{y°Ûm(pÉ
+¼Õje¯ÍŞôgYÛùR‡öâ|·–$.ñ‡ÄŒS·µğî@ÎdıÜa›+˜WC:åSôÌí<ä7ír"ÎËE‘–®¯:ä(»ªæ²¶+”Ò{s‚\aŸA&HZBæ—ŞŞò$‘ó0áƒ8–^Jw ·)ËÑ¾¬_€j»p7t†%™F›.?	Ôw§:”T/ÓGİ¡^Qºv‚ë,kP!{÷ôm:Á‘·!—W¥¹AúA[&È¿"I.äK~ØÏ.ôãñ¬qí(ÓÙ›1‰¬@OáršÜN/Ó„“"Â‹Bì ¾D0)IŞ²6Ø®TF}S¡Ë/F!Æ@:õ•E§³¨\.sùoWS¸,¨>ÀuéÃ×7=ˆØÉ”v
+£ÙŠà:}V8Và8]+‹ùG=©Ù©N\Îœ‡‰ñ&ß œùâF­ÆÛ;Ä‘J'ŸÉ‰×Ì¢Ày?ûß81ş·À“çF÷©fãƒO<‘«AqIvù!ÃÉ£×LF<± ×¦?±Ï?+8ºĞ—s[Â’¬øÈ˜; ÷—å­<Nsô–^IhîÃ“¤†Á¶R§®¤Tºq™Ú?ó,ŞbQt››xF¿v®?+c©ò—A‘#¢ÜÚeï=Ùù›0ÓeÈpæ hdzMÈŠøx\Ö}kS¡Ø;  xßÏİ{àÎ@©Ü Ée%íc‹=uZ‰¸¾rÁ<İ
+Ü7AS*à$_*¤r]ñïfQ€Lò\Woe‚•lâåQ
+ç²Lºã3Ü¼¹4Çá||äç|Iq	o
+¥¸|Ô´$Kİ­4ò
+©¯2º]†xy”qUÆ™âÈï­,éöÃá§•6ÊZHÒöFºæ!¿`}‘W /=w‘)ğ·ÉOAÎ}]VÑğÄ2ê¢›Ò“Ç<Èp¬àuàÊ0$]œ®SÙ>¿×qsíW¨ĞŸı-œ: ‘¡NÍùr
+¦Ğ& —CÎJ§‹U@
+Ùz‹+¹IÉOR`ŸpêfË1ˆ·j{*¯¸éP}A0Ï\ƒK‡õãŠÖ ”/<ÈĞn+¾¤ÀSrj¯}’œGİÃ8âˆ¦ÇˆÎÔÁ}”Î9Úü¾I¯l©Ãw7¡î…OàJ°ÊI×]èÉ©`VÛÁ¯0Mä	º.xïó@
+oÑÌ¹öi0™¨.Øøèª2€ö¨ÿ³<É_‘°TW/\~Şƒş¢‘ÚªœîĞvùEŸ9zaV_Yñ2¶œ<*±ÜRöœŠœòUÖùÅcË¡Ë/Ï‘ %İYD’7hKa”ªË“˜¢9N’y"KÊ‡&àéEŸœs†ÄUŞˆI|şL‹›ÈÎ¬ŸU<£5Ç®âºN
+\1dÎáå´ß	Œó.²oH5jc$œáÖ'•í³òæ/Ú ›màÏ¶WÏx.ıĞ]©¨Ó•Æ{³Yf¤?Ğ•@§iäk)ì·‚HàPú&¤ST.Ow¦H9Ò±¿¹RÉ¬œ°²À7î'î)B_ò9ƒQ'ë‰üßDgãRN“o „Ğ%?ñÎ8Ÿ!%Ì	‡¡1¹”5ËdySRR ¤ÚªPd’m…3<®¯§¸„J_4CÂÆèB)6úR?Ü¤Kñ	Cyî´½:-]ƒƒ÷I	óªœD’ìÄlPš¿jTG&x/õ‰É#¤¤§å¿ŒD×•…Âq¢"°ASacÏÊæåğIÉï*8Od>·Ì{ÌR:9^C;C
+Ÿ€”ÇÊJÁn›{A	³eÙ‚„¦.!ÙuW†zÀËE"#2ÿz2uqĞ½×]HíÏ·ñhÃíÕ$¬½eWÒóHQ—/¡²¨.ûA­6¡ülÏ‘—÷¯K§×§¼iĞOVºPÊG=ùÄ÷$Dz>¡Ã/ÓµWÑÎ°6yî ĞJıàL­&œµ_Ÿ\ù¯(ğÂŸ®pıü3¯­äÎìBg):¼Mm©Uk~-Ç¿w˜QRèéŸ£9ƒ«Á›·YiæCºòAyÿ³¹™/)€‘\«j–ÏàDğ\Æ| dşK¡ä9.«§«Eõ+Â/ÛI\<!©¾ôH±ò‚ƒôÌ%\tº†?ã%ÍÁ,ÏàÊé¦ë¬-äM=)ğ´Àä£+Ç§+KBÏµ-•DœãŒ‰,Î§Ká§=Æ›åIÛY~}á£³“îB	HÎRÛ|™Ó™®	wß’çßƒ~œE¨=¨ãé{õeèO*4ÊÇ(?©¸™”ÕÀ/\Kl¤¾ô:&]T¿=(zê[Ÿ­€2ô)ÈÃ"Ú'Qôñ“¦+9²ı)/«"ïÍ)ÒïAIgt8ğ¦bœ~Ğ/V)r–Å¥±/¾¹Y©\-ÀÖñĞgşëcB>	Æª¯±d¨Ì<h€ìóRâJ>J*ëÇ¸˜C™…vzb’BîÅåùˆE9óêkÆ|£Ğ´ÎŸÊ´ĞÊ€ÎÀÈKüq«NZ)ñ‚¯óJ{|‚¼‡ñ¯Ğ
+~X˜µ,ñ_Ÿ\óïB(pÆÔçSàYİ	uç‘Ëï¤ÎHáT4Ê}Ò{kÒ>UgußV¹€Á[h´¢&a‹şşÓ7füoØşë6uÎ8J¼Z)»¾œNÿA-J\¸|j….ly*ïó¥òÓ1#91Îö1Ò=Ús‰ÄË®i›•N—©PøÎÆ¯”(Pp¾Ùä2éE9(\±ç<4+Nş»ÒxôM”¤_GĞ&<G¥ÈL]˜ş‘ŞKbC–C?.%> ü´İ/ˆJYÈÁ}Ä˜¢³x¤‘yÉã)lê½ï¨$Ó2ÏB-+ÙĞ×òçHÒPh
+¡‘¥ÉO]DĞÙ‰wtÊçHHÑµ­Lòd×ùE¥„IQ©H·Ó‡ş Iù5}HfãË( tMŒãíĞàËâœG¿FFœÒD\ÑüK« r9~“YUùÏ&ø¨Ş2&(”ö§ÍHg'œò¸ä…ÜgqJã×yD+(şp¥–d0õ9~bg*ïÓ„p(ƒëuµBâÛ˜rÒ KyoZ¡V>A]w?Ùµ
+åßnØ÷¶°–]H-qçƒ/¡ñ)ŒNnHq­¾ ÿ¦ä÷š+­¦±^“7¯é<¼•Pàşw >®6µ+oàk>TšƒÃ)Â}“g^Ò˜½3€-˜Ú•á4ÒõjÎµ÷ÀŸªÀ“B»€.±Ê"s9»ŠªÁ™ëfu(‡±2›Ü2< åz}è­HğÆ+±~ÓD|ã÷ÿ÷¿÷á>Ü‡;Á±ÿûÿ/Ş¾tÒ8º#®*ëœ½nôÚÆzß”%ó¸¹ ³©kM¸M®ŸGó7kRš]~í™C"|M ¡·9Gİ×æŸ;°$Qô¤t¬n·ßöu@Ã ‰FÔü¿ƒ÷á>Ü‡ûğiÀÖ+şf½”V¹¤äúK>WÖ_)ŞŠÔÚ5é0G“ŸO*”å_Û}Y×Û÷¦A{`-‚sXiã§é¥Ûh’	H8„Ö7ÂîÃ}¸÷áîÀ¿õ£“|¯©P´åm=bU”é£taı”tTRÜI“Y¥,vY™/zi°ôUò(´raø[()cN<Ğ»ßÃs`.—9 WûeóüJ&Ş5dá<ßš ¤<=Çhˆ^ş}m0F†â›ÿÕßvúWÿğ/ßß¢¹÷áßøÇÿòÿ›…>?<ÿşßqzöF²\¥CÒÁ’OªĞ9ş¬øŞÛGÿ ¯òx‡9õ_òxú²7iu˜Ûè¾«ŒÖss=èš{~Ü§àŞt|=pç[A&ø¬
+Ü8Å(ƒÂ½ùÀŸÎXŞLBª,/ãò)ü]êx­?ªııñ½üŸ:ı«€ÕÊû‹Ğç…¼î_E½íüUÖ÷«âçŸçúş}é»ïüîkñì?áğ½ÔıãÿÓW—£ÓhF©ÁÃ?…şrÚÎ•ªá&?Ÿd™gŠN
+‡›à€c2õpÍk”ÙÇ&L’]^T>‹±ŸHËÏ#ğODS„sfzÎ7pE‡xö 7‘¿4î¿6¢œ"\,5>eÃâ˜Å²†¼N¼w_SÒ(õ_«Æşë¿ïô/œ\Pz…¶wÀ|UĞ[Ï¯ºÎ¯º¾?Ïm~íûªá×Ù68€'îóÂıÃÿ&®/.E§ŞLW@óZŞt²ÆŠ[|\ÒYéÄ`?©"×œÄó»ğÎ“Ğo¾&ƒt&,Û'½—ÒrÀúF3	t}®çøU:×<‰Y—(pëØ/ªÀùçtYLe]^@<‘éqÛ—’PÜù}ß;@†HxV|f$æ ‘şZTä~÷¿şÿ2é’ÕBûì‹/ù:‡ï<ó”ıÏÜ­LïàøU×ùeÕ·V|o=ÀŸ§¶½u¿êö_´®ÏZÏ¯ºm¹îE‰ÿğÿüÿˆ‹²À¥ÀK­åtd·ŠGÏ¬(nôN®À9ºX%õÓÕZ.¥8ü,iEWRT^îÀÒ«;ó0
+œ¿d"ø4Î6
+×¹¿‹ù{w0ÑT¨™ƒÓÅüK¹×T(—Ş)Âé­crœ}v˜4v aÅ‹wD¬8–´TéË<1%†w
+QZ.rº~îÃ}¸ÿÊ<ŸH>+Û(Eô‰z)EÛñY Ëÿ‰bBFœİJu]çkyéçsÀªŠøã®iÿ	§¹¢îuÌyØŠ˜§Õüï Éî¾&’w+<+
+>½ÄÉö·*òÓ|
+s½¢üåtòv¼|ŞÀœp%”y6!$|¹€`|ŞÙı>Ü‡ûğï6XgI-ñjÿvR=|ín+oùuÖÍ£•áa·®“‚ôÃor®PĞ­§Ç·K—vŸ
+=ôä€.v<äáµ ·"ÓÕv¹¬pNszÊëÓ]{]/ä×Úvªø6†˜’ûpîÃ¿oĞ»¥ò™ ×š<¼Zm¬V<²¬ÎöyÀ(¥s…íËäuqã¬÷œ¥f™³«”‚·û_x³ÀÍ ¹¾^'¾–Âîu&\?‰pAŸÇßÑeùücÿ>Ü‡ûğï#|®m”L¬ì È³>²VQBÒ_V+Deeé"\Ë’´/gO¹#&ÿd©Æc“ø“ş'¡7n%œBù}Aà+ğ®é¹îGñùÇÏ·cYüËÛŒÏÂt Çi¸‹ÜÓûpîÃ}¸#äªÂ:ªGqX)Ê%%må’”º‚>©¢ Ÿ\§q~ÜïéÁ‘Keì«œ~§“–}ÃÒN×®|ÎäåáÌÏĞ­Šˆ„ğ‹+ğ®E¼–#ıSÜ'@å€5ñõ8Ï P§¾d¸¿ÿ}îÃ¿›ğìÿcûÒ)àól£$¥1.W²¼Ş£TàÕ²Ù«©uX‰KM¢„Ë%Ås-çÅáÅs.oŒ`>9]ƒ“ÿêäE[¼7³Ş<,Ä5/{Eáªpø?=3zV;NÛáß	úØ‘Úq”0S«ifIsÑ€œ¼Óku¼:ÏY‰kŒàu°äÏ-l»,¼ÌLa¹j¹ƒ#~÷ÿöå=È“+ğµ| 7üUÂ¯³Î¯º¾?Ïm~íûªá×Û¶¿*÷/cÿy|ç©ÿ…ƒ¿ó·Ş´ÿiğãÿâ¿KÅh.Õ£,¥ÃùëjeŒ•Œ¾ÂªNzE„m5›VÔ¼ÑuÖjñ.şlZŠZJ72òÎD
+ 7»º“°âxk:x;#oDßÖ*Õ¨T*Ñj/G]8©R	Iÿå>¿ÂC˜r8ŒÖrövÕ/¬Àš’î˜Ç¸(ã8ıÔæ²êä´‰ëaXÖ¶®uÖ+z83aE
+|h`@
+¼¿ûıòx/ô
+éê´¯zÊ¯
+ÖjÿWÛÜï»/RU÷?Œ©ë2ÿó(ğËRà­E¸¡tTµ’½R}%—Î+3:HÀu[
+–_a…£ÕPàh"ò/û_1üÌdÂáR”“v3½ù0?_®¯ñ¡ŞªÕšOçÕ…‚) °îÃ×Gê1Õ!Å‡ò®Ë¥×Éò‡Øšl>‹'¦K€”,çmë’\Î®Œ4ƒ ‰W ZA	/ñnxx¨©†ˆ)üY'kş¦‹§¢xñ:~Nø]hT7>/iˆj©¿ó_ı]Ğ)‚ŞÁ,§}ÕĞ[Ï¯ºÎ¯º¾?Ïm~íûªá×Û¶¤ÀWoŸ|vşÿŒ+Í¤À+ÒÁe¶1xJ)ÓKè'åÃ¡ãˆc¥ònÔÓŸ)¤w£ |ùOMKbÈ¢£À¡²şk8}½5£É2Í†,yê“ÕN¬/-ùõ°ÕÓä˜5ĞÃÔûü*ğm8òÈ/9cîœ-#d©nK‰||ÇUñ%iğ>öA´à'ü•™ŸºäŸ6L?,!ä»<i”íxg‡rÀÏ2F>ùøçhş™ÆK—“ã“HÒ—×ÈC1{P‰¦/æ¾ó½,t»òî…¯úé³µàW]ç­o­øµê¾h]À§•é…/Zßç©ø¢xÏZç­ë³Ö“ÃÅ|–:QŞÉÿœÇsMˆº’êJúD~‚¤_VLÆ¤¼Ñ‹VšÊÇS›\£Ä·nÙ‡M›6
+§”sKy¨¢„	?…Ñq(otY¥T¶¾BwŞœ¹}øAœ¾pÁÖw!ûƒôcÒ³\0°)qI›wçs	!Ò^%o_Š¹Øjy/©S¯G{a)
+Z.ôÉ©ÕQ”u]Ñ%)w[åİ%öz4“µ£½TWÁN´•w¹ÕÑr¦(kZ3‹aÜ©5½]GÔŸh0}0ƒÄ/†Ÿı¹g} ?ß‡ûpşİ‚Üÿ,€æÀÆ¶á¨°•mN€RÉ|ÿ¢ÄÓ¿ı°íÑ’nŒÃ‡ÇGˆë7Ä@¿·rqµ~ÿ?V6Êš-,p¬ø~Å÷×ª1<8ä	àá‡Šx0ÆFÇ\´QkÒ¹©îR<?‰ÒD·ç£»CÊ¨&kÖ‹­ñl	#†´„Ø6¾!önŞ{¶à¶ÄM[cï–qh÷8¸sWìß¶3ölUÚæ­±oÛ8²{o=p0’Û½}GL¬[ge]_\áŞ²5î™‘Í‡“£R”xîœ‰VĞ°ûpîÃ}øTHj‘{h¸ü8_ŠG×uCşäÇ ışp)b”q¿öèÈX\¹z5şğßüëøÿé??üWÿúÿ şğ_şK»õğÏÿYü«ññ‹ç÷½¯¾ôr¼ôÂ‹Ÿøğã˜ºv=¥Ôj5©6ôddÊL~2L|s]—+x.>Uç\Hu À±Äş4øˆf¢Gy8yúéøö·¿Ï<óL<ùä“ñø“ÇO<>úX<úµGãÑÇ‰G}8~Xî‘£ñ°Â_{ü±øÖSOÇ“?›7nŒæÒR´ä Ê4ª
+óƒî8â­³³k?‚ïFquîÃ}¸w«
+ıxgWÎ&œÀ/
+/…½Mœ…­ÀeMû?:ÙUP¸İlÄÔõëqõêõ¸v}Úîêõ)ùSq}rÆáÉé™Å¾gßŞØ´yslØ8»÷ì‰Ñ±ÑXbœÿîÌªÇ N~ºN$%òk“Sğ?Ucmç…Ø6ñ6
+… Â:zÔo¼yk.nL^Ëš•®^¿7¦nx†ºxùR\¾vYñ—ãÂ¥KqöÂù¸(ÿúëqC¿uóflM6D…w©`á7Û±¬†uØáãd€–ìšeP—¸/~U7fîÃ}¸_>ïöf½Ü‰ÅJ_ÌW‹±Xî‹f±#eí¿fÎr+¹N+Úíf4;hq\Nù[Êƒã|%)£êr'úeÃKƒÑ(ÄRa8ê…¨÷õGS®Uìåò`F¢PŒ…V;n..D_¥ÃëF£¯Vî¶­ü’ªàT¾¢¢ˆŞeÂ7p%=lå)o~>“÷?ƒ³Í.š+o–œa¬ŒÄû'>ŠŸ¿ø|üì…çãç¿x.{é—ñÂ+/+î…xáõ—ãÅ×^ßx-^~û8öñqáÆ•X“fÕ˜3'OÆÒÂ‚ØÀr #L³Û6~‚©gIi	`: ÄïÃ}¸ÿ^ÂçÙÿĞ¼ÈªUàä>/ÖËµIæ¤ãxxn¬ú£<éĞ„µó$ƒ2]sXcYˆìs-½ä;y([ÕÑ”1zóælLNMÅœŒ]…ğÿœ¤µ±ê³.~aö'+ÏõZğ™øm¡ábIÁñ¿º0\™ŒsQ/.ÇR_[3‘f¸‚n-YQ/iÖª‹aœokÆ+÷ÇğÄºØ°yS¬—õÍF§%k[u°ñï§—xÒI~z[¡ª´ÓDS¯5Î>ı²á¾~îÃ¿ûp/‡líÊ¨-á°x¥C¬¸3À&´â$À!	Åå:P?RÔ™Nä“_ó¿¼œ¼³ŸòUV¸93W®\–Ÿ‰i)ğ³gÏÅµ«W½ƒP)Wdéw¬ÄÁÇ×`Å-£V†r~ô:Oêf’×w$ûC‡ÜL<³O5¥åõQ8=Q”¬ïr±Û·o‹ßúşwâŸıóW¦&£6 ¥ŠX(xl”†¡\!Ì¶—c¨Ö[7nŠ[¶Å`­)û‘uãñÆ›oÇû}Õşà'?áÉypÍL OŞÓ)ÇŞ‘Á!ùÕøîù7œöeJ<’\¡ÿª”{o=¿ê:¿êúş<·øu¶ï«†_gÛzŞË:üìıwq¹3K‹(tŠ~³&-^æ¯ÕüŠêìÆ TL×âÆ”cï›'8·mÜ¿õïE_½?ûÉÏâÌÔL´«ı6,Qä¶½Ñ“BT–âŒÁZ,Êò^œŸá¡¡Ø»ww<úğÃRŞ­øñOg.\‰şÁÁ¤›¥ïğ°úó÷µ´µ"Xj6}\Ñç¿eèZOÙ¶‹j­1ë)ÜUàYAÎxc%·–šVÜ~v_i‡÷ˆïıÆ7ãüŸş§¸4;}UÍ&ä¾¾V;*¼\(["’sİUÍ6›ÇÖÅşÍÛcÏÆ­ZÂ4bª~#6oİ¯¼òz¼û>
+|0Š)q)î>M“Í°À6™}1 +İÿÈ£Iá[ÿ—¯FˆÖÔÏ+4_~]uş*êûóÜ6à~ß}¹@¹¿å<û_ü÷q©s3êuYßé=$e©©R¦ÀKVàIi&•¾ÉxK
+|ËÄ¦øíï~?
+Vüä'?‰ó“3Ñ‘O™ÑW2`­¼ÙWÇ×[™–’ß±m[|ó™§¼ıÓŸ=§/\–<˜Õ(+pñ[²î¦ôasEË×—
+V\R‘V“ÖşN÷—ô”ŒşƒÒ•‘4ç÷ï
+ôÆÁ€BYË)]ïûÑ¢³0¿¨Æ¥#:ÎN¥±ïî§1Wáì‚¢İ@æ™DÚW	.ØûpîÃ¯PÜ÷ª¼Òl™$×‘“¶ÃpÍÕÊÇ:(Óo\[Ãe¿)`°®â£k©0+kŞwbÇp¹$]şZM“DEù
+~z“wª »êÍ–,ê¶û%ZèÈn‚Œ&È[QƒJë†uõÀ¶İjÆŠb(2œ÷wdKÁ6ë¨ÊgK…ô#Ä÷Ÿy:şé?ÿgqáæ¤,ğ²qXéŠ°²,pˆjiÆa‡‡™m T‰ñJŒ”û¥Ä[±aÓp<üècñò+¯Åo¿CÃ²Àk±¤ÙMMSùb½Ùô’5h°ZŠÑ(W«ñ­¯h¥î+ñûp~½ğE-şgÿËÿ>®4e/.E©-E‹ò¬HùJéúŸ¾¸Î”2€B'Ú—NkÖeoØ(ü{Qhvâ§ò“¸4=QëGµPäàC‘³sîô½DéÁ²â8Š8::O>ù„ğùÓçç/^ŠÙêÊ‡.ŒØ´ŸÁõ²ÿÓ¸ˆã¨ÍïOUàÄµÙ#*EK
+œ£~Ş'’;²ÿ@|/Sà¥ÀC³¸’×²}pÊ«¢e–(Jaæ«45!¨ñ<‚zèÈ®øú7_z%Ş|ûXôF©Z‹…¥¦•~Iõ­Và J|PÆè`”+Ràÿè«QàUuLÛÖşNæ³¦ã}BF<h,·DŒ"ÔN&;â x×]!Ì^> x€û9ä7EJåZª”Î¿ş7µ8áN9G,kBØ(V½š©·êĞz”ûtM½…EÕ×’`©sÔ9ä8M›êã-kÜ$Ç¬’°$àæ1‚³&HbV}KËx§MA#¢%‚‘•Nó–:¼b\©ÎVzƒgçTùà}@¤›¢>&N	 W2X/‰F•OyWÚ>ç¯Ü'<ú,(VÔW…Z—*~ÛÛÆá¨W9UÕÅhF±-šà‰Êp'%C¾}²şÆ ¨†¿ââísôt]Z3€×¬ ‡å¨+[¿dú«—åbKiÕXV[dIqtb^+Qîÿ´úæİ—´ƒ“	ø,ësœOR¾¿”ÅóªRÀu¶ÄI$ÁJÇK‰ğŞ5ÜrÄé¬ÏÀRn‹G%É<ü¨ë|—¯Ù¨Gƒja!-Û3 @¿R'Û~mªòpr¬¥:¨¡ªz¥'maZ\&s¬°³6 mş"Q¾ÛÜnFK¨¤]b/ÚxçÈ²ùµeäÕÿyà¹ßÿÿÄ¥æL4Pà¼ÌJæh…-	ÌR)\®U¿¥O_t":ş‡¿ìo˜ˆßşÎ÷U~9şäG?‹SÓQè—W~z¢ ]‡ÒöAï,@sÇ÷ìPêó·nÅØèH<#İIÜÏşô¹8wñJT“Ò¦Nú™ş¢vèî/úOÅ+pUXœûı¬ŸÍ<÷&€7$ŠÀØåû®¨>ë×ÇíÛã½ŞÙ¥Åè“  .£ÆÁ:‘ÎF~H lbj‘ëÖÄÎ»âô¹sqíú¨ÈšöfšxéQ@9¿~xlÊÈßùÇöeÃr½S×&caöV,ÌÍYèêÄ…¥¥¨Ëoõ5­´Øçç&-ƒ¶!F³çO¸)—Çæf®ãuƒ›4¨!%“Ç%œ„ëÑ”iJ ™Á¹‰QŸ¯Giz^Š©Uşày¾¥	sc!‹R-e?úKyîpóúËä8Û*_ŠŸ^ n©¾d^§üÉÕ›K­éÕËÊ—»:<=®$:šN,¶ËR ´µOVNCB®¶Gà(ÉƒNıßÖ luh£&jùMYm)Vöúˆ§½ö³p“ÉJ|H÷CXúÂ±4¡·4‰Á›–Ò …{'qŞoìãm7oÅ-Y]·¦¯Çâìõh/.ŠUÊ#^ÁŸf³áÓÎøÓVûr>@WêCåÃ—aÒ ı2µ¥İréÜğŠC¶BÍ†ø]XO¢Ÿ¼´©-Ştf®EÌMGkn!bQiK¢¹,nQ<‡&ğeı=Ä1ˆQ`9Ñ”§£h–ZKÑÈø—xœärÈUC®Oü„ïœş"O±Q‰…ë2Â.\˜™¾¹[Ñ˜Ÿ‰Z]efc±/)ü¼ÎfV¿ ñš-&èE¶I§®Wá:|R:|&İx¤¬zÇÇ<~æà÷²øRŸœ‹Î¬ø¸ i—Wph²åê?k‚Ïç}=n¶—,÷¼p*= “¬eeÎô“‚cÑ>¤}”Šƒûökr)Æñû\@NåÕ-~ Ä­/¥p+ºfû¹ÀÀ¨IáoÙºÕ]¸x)nJ¿pª/oÑŠNVHåÑƒ*j)ì¼Ô÷©
+_%yÙ9Ğ{5Yü†uëcw¦Àç¤ĞúÄp0Æ˜…‹"…Ìì¡.1îü|7¤Òà‰‰±Øºm[œ:u&nLNE™×+¢ÀMKVÿ ªFôË
+g¹²ó;Ÿï<ègQ »Ô!•ÀÒã5>Ú£ºÙ·_.fwœİY%ç‡é†;=ÃpMgæmÂ·ÉO×ğµËÒ±¾xİ¤ï!¨¬$*>şødÌ^½“ÓSqõúõ¸våšÜ•¸>}%Æ¶NÈ¢*—h Or9N* †œö.-=.oCI‚ŞßÉâq9Î¢fé“'NÆ‰sâÊå‹qíÚ¸zõª,švô©õ¹ëÉòÛÄK`\æYÚäE•‡)Cy,O+6É!‚E„£œ-’l@3ÈˆWEc±ï¿ùNœºt6f¥ .\<'ºnD©6CãƒÆKÔ¸¾öÁò$ïÎ&:E‡"éJ8¯\>&r0Ú:İìµbÈ`âğßÌÔÍxç•—|œìòåkqşÂå¸69[÷m¦×…œ!?®‡kÕßl
+'hÌéÃjc :K3-¢Á{¾Ds­@)Ëï²º®D¼úò‹1uáBÜ¸1)cêZ\¼×¯^‹S3±aç¶şPÿd>mG? œ'Š2À#.h¿-gåÉù
+àß~ßK´0~È—É¦ŸæüRœ9~:foÎÆôÌtLÉÍÎÍD±¿•şªË8ÿœxG
+\r½Œ©R9é$j¶7‰N‘-n§•€ŠÃú½M§OMÒ)gt:¢"Ÿ•†¥÷Ã}ÚŠÈ¸ˆíÒ”9#ãuzf.É0yp®W eêºåè[(ºD6 1IÁ] ²ƒó‹tƒƒÔ–A7[å%ª€N¤Ò¢–şÒt^†2à š¬Xzya¡}J'Múã6Øóç¨¯h+“]…Õ•\0ËEÑHÛè”¶,!³kÄ‚È„FHgö4ÂähædäWrîò|mY>^‹?ƒ Ş}ô“gcéßü4–øó(ÿñsQúÑsQùéóqõ‡ı­eÜÓ-†<®¤PSØKbÒM5u'´–ËÛ„SãíPggN…vM}©¸‚üb-Î^¸B.÷)S7ƒ€ía³"„Ô¥]×
+•’Ü‘à“uA<è+‹ÒÌ1‰Êæ“5Çà€‰¶v£¥¾˜œ=KCRÇÂØå˜)^ŠKg/‹õğÈÓ¦iÊùÓûa‚ë¨¸¼½X¼}”Í+€^X]j‰äB'¬R=øó‹}qsêj<´7âÑSñĞD3®+Äô‡ï¥Lô‡­Qh#"ıäG¯³ÍéÍx÷­Ÿ'{’2q-Hø›Zéà°.µˆÅr+®¼ôzìùàBl÷ãØúÚû±å•÷câcîÙ—3e›!”Ë?Ô‰bÎ·
+HóØÎh£½Ö ê7êÆê&c5@‰®cÜË¡ä82×j¶cêÊ8ìx\8öqœ}óƒ8ñæ»ñÁ/^‹³2øî	DOª"@{ 7µŞÜŠ2½jcU: GÛ¼e§DşXÁï—XtÒñ±Æ™ü<‹r³ª€_8V æt	ÍÎå0ç…/V¼JÈÉÌAÕ¬ „¢Œz%ñX]C•ÓPå<(À¬5X¢FS:6“pPâò™„YÁ —­4Ì.u²)Í„!wÏœ÷‰ô±°~EÀ²|Y½Nj«CZ˜.U´hQ|Ÿ´‹ßÉ¢†”k^–•8œ/áÓtå´"
+_áşê@RVj»_»«2<¸Ä ¤I¤±ÒÁçÍe­Ë`­~TVëãÖe-ÌÇß9ô`ü­í»ã?“û{;wÇßÙµ+àÑİVT8ˆÊÃ·;†”|$ş©röÁÙcçU›iÁ ,E­ÚõQyp@<e²híÂV¨øºÃë45Zÿçÿ«¿ç?ùOã¯ÿ­¿ÿË¿ı·£‘ÉˆÛ§~¢ş¤\°~JôªÅJªO«HÃÊL‚"siQÙ—öCu]Pšû„	^~GşÛ ]CÃQ-3áÖ\ï·ÿÒãñÿè±øşÿîñ8ú·Gÿúã±8¸ĞD8òåagî°î¡ÉN¼©UúÕ/Éz£¾l†i7¹çç´Z+Ê(a|C«Ê¨máX-mcr¯”šñ×ÿ£ïÅßı'şö_ûñø›¿£l‰†ÔdAê«œ®œNÓ*ÆôÆãØÆ rÆO«ÑPŸ½rFòÅ£>)eY…ËêÛ¦”k³PÍõFüÇ;öÇßØw şŞ¾â?ßõ@ü]‡âk%É•
+÷ò%w$ Ï­lÕCaî`}³mcáD±©NŞRJÿëš?eAù£´‘CöÑ9(,9!Şşÿîïoşøó?‰¿ÿ·ş^üıÿÍßL÷Pîà™›ùæ5?40æ‡ÑO6ÒÄ[o±å†¾Ízİ÷	:2>¼ÅˆLe|a|S_â
+:õüáÉLª¤ğLÓ
+¬º\ÒèXy¯r DB<DSV4(ƒ…eë<äáVÖ”_Qg”%<X"(*:’N¤,K•ÜrEIóŞÂFŠë7Ÿ<Èÿ	'<äò‰ä« × úÒ>,)ê•¢(4E[]Ò–Òv/È/¢<Ç`æç}Ê#Ã0úß'–µ—¤d4x„(Zêx¶&P˜´’Æ-^½ĞÔÒ@V~»!~Ô¥ô¸óÄ½¹Û9Ë±_hÈ*İ'Åy@•ì—Û"×³¥Úç õ7fšíT{¢)zT¿È…U.Õ¡]Y{h[CñÜä-‰ho³•³ã¢Zh™¨¤5¡oYŠ-ñz„³Ø§%¤xY\–¬(½"+¾O“{úËŠoÍsã‘iQ“^] %‘ËLtñNô‹¾†–İĞ×)ÌKA-Å­ÒÍXXŒÖ`+‡g£oãRk‰O’Ú¬NæT¤ûğ Ó©mÕíÜïìëğ’£äCsŸò¶¡|ìÇû8ò°$™mhÂWtY<ª¢6²…ÏFÓ€±‚¥ÏJÍ%IãC“¤<A/«3échÓÌg~Ó§e•îÔÜ"í¸YşfåÛ©6Sşs £³SO7‰QîÈ•*/$Ç
+öI·ÔGş#áÆu4)”Ïaò¡â5&6®ßC#£1>:ëÇÖÅî[•ñÇ¼ˆóv†Wn|	e—®2 *2½ÅåAY²Í‹üüB+ô+KçTÍÜ(pôY›ÕdS
+^º“<Kó³<Ì³¸hİY«õ{BO+aõ…ë»ÜF\sâr¥‡S|â²ÀmJ““ÙÃÛ%/wj¥ÙıO9şf1	ë‘U0Ê)íÇ¹{„“úÀÇlö2ixÓl:¸à¹ùnK>ÿ|öy€GmC5¤–%ÅQ£Z¡çŞş0±´Ô î/Ä‡ï|Ïşø§ñò/z 0yüğcÒŠÃ¸ç~ös+èYn#µAán¬öÍ*•¨Éâ¨2áir;sü¤`#FÇc 47¯İŒÆ-Fnï«àòâ‚€¦9”&C}ĞEOîè“š„‰ÁşÂOÿÔ“¨‰òr%Ô¾ó/ş&(µC^?®êşãıo=Xû–YòJ`Åzşièº€5²€½¿4(>ŒÆ×Uw¿&VŒk@§	Q(UÏê%JÿøØG1>0®|ÍM¸²&¶Z»£ÊWSû'¯\‹|dš–¥ˆ0‹ƒ²@[uáªÄ XQ“#[+Ÿ	ÄŞS?:8"ÊñãûCQ^<ôÇÒ¢,MY§#Cë¢±¤åşäMY¿<‘WÒ²zP¹˜ˆÊñÃ?ø#·õ¹?×/İR¬eMJ}5Í¢¯1'eÇ}ïÀØD!¼şÒqıòX7´^<é÷cãcƒÃ¢K},å³0=7Î^‹şåjôw*RŞ%å‘åËj«±íºÆ´¬L”¬r™êYŸÈr¿V>Ï“,-Ç¸/ ¼×ÈşfŒôÄ›/¿ƒSÈ8
+~t`È#}òúõxıÕ×¤“`€Ï/,F§"E‡µ®•)7“ïÒ$‚™ã›˜V$wTÆ&÷¸¯‡~B¶ÇÆÆãk_ûZ<ıÔÓñÄãÇã?_{ì1¿õá£Åƒ=à÷}?ğ€üŠ£GÆc>_ÿú×]n|İxÌÎŞŒùùyë@+³Ï+ù>ó4ÆŒá¹µí=±T«·?—–<ÛÂöîéÙK’§—Z‹K
+Ëñ
+EùÃ´
+|ğ)Hø`V¾½èò0ßí°Ôïµ3?00hS>yqùúqâøq×İÒ¬Ì¹ÎuëÖÅ…çE–Uñ¼ÿ ~Á;–¼/^™ã¸ûœß <åõ’ù¾ôøø¸ó¤í-E5{OMM9ú@KM”®ÊPıé{ğ,h ÀTêñªF´R“Ëõk×NKüÔÚuC| nóF^0¡ãÃô€IzQÑÜÜò YBFT|ÈÅRf­À£©©é¨×—º7{ !ı)lKñ2ğkãÆQåa	}`½fº2Gœo}ğ>´/åÅnğ•U'4÷÷×R¼häAááaÑ®Y‡şW_@3´_ºtÉ8.KèS€^SAùüTüø" ÏØšÜôƒ'Ô¤v‹.µgffFõ¥ãœiC^G4$¹ÒŠ†å)Ùó8ıŒ@óî‡¼_0ÎÀ~ ~äüÊ•+ÎCŸC·¤êŠ]»v%y]q¢‰- ¶c¾$›÷È††¤}9&6 «mÌ–$ïĞ MK³s·â£>–òC‡Ç7B!?Jq?òğÑxTŸ?l8úĞƒRâG¤ÄÄcRîO=õT|ãOÅ={ca~!NŸ9mYJú”êTWæ²šï
+>…âPêÃ?eÌR£ÛPùşIbë–ÍqâÔ)ß‰Eˆ4»rn´ª÷‹©¤¸+[”ã®mEV9‡×ŠÊ;X‰Íë<óŸ<}:¦or‡Îw-@ª7ÀÜF9fJ©O³½–ëÊ»ëÛO’ü¥CYKåšh=şÁÇñá»ïÅèúqãâåh\šŒÉ‹Wbç‡ãÜÙó±sÛ˜Ğ ~õµ×âAu&–Å[²$xîÅó|#Ëb|l8Ş;ö^¼®|[7o‰gş§2p4¸/_ö›W~ùRôkiõŞ±c±mË¶øãıL–çñØÑGã—/¾‡|0Î¾üBü‡ı›Å›RÜòVKÍV¼?·sÏ<’Y.Ÿ.‹ÆŞ>&Km(N?ë7nİ—âCY³ãëã£÷>Œ=;wÇûï¼'Şwâ¥_ŒK.Ä¢„ğĞÁƒZi-j‚š]ßü½ØP[T?Ö¢.şî³?í;YòŞõ…åøùŸüLƒ¨—OãgÏÄ„–Ê¿xşê`­âd©:~*~ù‹_Æ¶­ÛãÃ?ŠŸ›3³±gï¾xñ§?s§N{Õrã2V÷Ç~ÏzÑ:¦É4ôÓ®KA]ÚD;†Ô—õ²Ek8Î½9»7oLÄÜŠ*ÃçÅ~¡~>ùÅ8xè`üP–ø=ûãÙgŸ‹ç{!vïŞ¯¿şfœ9}FÍLS³,l¿ñ‹Wâßúf¼ğ“gãty` šsÓñÍ£’}õU_¡£}­øÑŸ‹ñŸè[”©}ÿ®€Øsä—/½ôrœf]áA•z{çİØ¾e{¼ğ§?RG¥T~ø‡ÿÆ§q6nØ¦Õ^9N}p<6nÛ¦>•şéËñ×MÄ­ªÆŸV=¼€®(ÚŞ™YŒÆoU+êd5 Q/J.X³JıàØ»qeòFìRÿıÉÏ5é‡õccñóıIÌOßŒ7§cAÈö­ÛâGôÇqşò•Ø¿gõD[ŠÉoşÚt<°ë }h5¨IFz®:×ˆ/}Û>½ÿVÃÙ^­*Údm;é?Înó‘Ö1ßİRı°à‰L—-a¶ƒÙU¸)cbFåõ«Wãìù³qæÌ©8ş|œ;w>Î;g%+çğåˆ;§´³gÎJÏŠSÒ—'OĞØúPe.xµÁ?Ïj¶šdDÎ÷	1Òö)$hw®»…ÅˆUĞ”*––3Ò¾ıû%Ç‘#ši<)üèÃÄCGˆ'ûZ<ñÈcñ¸İ£ñKˆG¿ßøÚñµG‰6¤}!!
+¯Ÿ`’‚ÇºÌ[ƒ°ô:ÇÉÁp_´‹ZEhöó—¯Gÿ|)F:ñÚ¤ty¦¯Sç/Ç¶m;£QlÄ;š•‡Zµ(È2›—0n(jÙ-pAŠhßV)ø¡±èÌuâ±ıÇâ¥Ùh]_Œ1·J@ç#mÙµF!.¼*n¿WŸóÃRsW¦c¤0sÓSÑ).i2(ÇœÖÅ­¶¬S)°v‡wÆD[B ›Ü¼ù¼nşÒtôÏVbÏ–G¢Ó×à{3®^’RÕ2±Z!4nÅËÏı,ÎÑÆë¢|s)f§çb¬¯³ƒ¢¥Ú·J²øúš±,ÍÙQ©NU«¾®Q_¹o!×1:>Û	ÌåëÓQ’âŞ¤A~ìí·ã±‡Ä†Ñ¡˜ºß~?önß®ôVÌ_¼3Ê{`çş(¶
+ññ{ÇCŒã¢­])ÄBŸVt™YÈF£Âª¬xõÇRµÍÚ¼ï#¬E×j×Wáæ`_œzïT<¶ûk¶ÜkâóœğÀı›cİrMı¦ƒäxV–åo}ó™¸rêl4g¢X“Ñ"vşÂõ•^­¤	w9*ìCkø5Š“šì–£Ş,Fµ“Vn@®DpŞnïq½ôájo¡O«¤331º,~nØ=ùxl_3·f}¡_‹«Ù—£o¦ß|üi?}xõÒù8qádô‹–ä·#!lH†æÇc¨>å–*+¨•Î–ùİhÀ7_=[Õ/Q'¯Ä­éÅØ2¸.¶nØï½ûA|û7¾	Æ¾÷[ñŞ«ïÄÒõÙ}K'®z[é£Sg¤¬;Ñ\æ9õ]±ã‹Í˜—lÁ•FI«‚Ï ºÖÊz‚w|·…·#Şûè"7kÄuK:­#¹qO(šUß–ªDM†hEc¿ÑXŒsÎÆ‡'?ã'NË‹S§/Ê¢¾Ç5nO<¯ëšĞÏÇÅ—dì\¶?sòT\8{N¼¿¤Uí•Xš¿¥IRzO>OGR³t1¡ğAi3‘8O–—¸œñwŠ£¬•Û
+2MOO{éŒ-[¶zéºn|ÌçÃ·nÚ›&&bƒÀº±u±NÖúØÈhŒÄXæ°ÔgfnÆÍV^ÒA9[”;Á
+İŸe¡qïÀ½Ã¾Z%fë1S¿RŸ19S–o=ššc:,ëD;{‹CÆıJİ¦–(¼Bw¹¿,Ë¸sÈ#ƒãêR451­“EÒÔ@™‘•4-wãêTÜ{(®^™’õ6«ÎDëcjr6FÖú”E±¿jÁâ|mIÂÅÓ{EÑRà©4îØ©Ş’ú	ÕÉÒğó:öíYÊİÒ²£9«¥j]Ëñ7|#•=ëÉ«3ª¯Ó×nÆ¼ÒG5(;R¼¥N%
+mY& ¾a…œÈ+é%µV}¥åŠ,µvœ•àÅĞÀX4–¸™qAƒ€ıïŠ¬ø’ÓØĞ:õBIñökùLŠ¢r¿äPÖüR+†‡Ç5Ñ.Ëò“2•òhKã¡ËN+9F/ËÅ«>)<h]‹®ÕNSOS°jnj²»]õÓ‰ã²ö5ƒšgıÕš•À@mXƒ½Ó7nÆâì’d~]\<w%ûGÄÉ¸òò}¢E-4{sc³Ô\“†OujNÖŠè–d.a=¼­s|lƒ&û>\MólP†7ˆ§¯ÏÈ(¸•¾ªûJÒê¯š…%ÉvİrÅ©ó¢äÙu¬UwÓ7–1sy2Š8;&¶[†J
+7®ÌÅÂÕÙXkÆèÀ¸Vöªoh ZåB´qšì—„„ë‡ö[yâ€\IáÛ‰Èë½÷‰øc†f¡­É‰óëÂ§•`2İVòb‰Û”¶~ÚÁcğšad@5c£tÛCZÑ<ıÌSñï/¾ùß‹o<õ­xæ™oÇw¿÷ƒø­ßşİøÍßüíøÎw‰&â‰øæ7¿ßıîwã7´{úé§¼o¾mëß;ây¶Q¬´­¼3-‡îÕ“âJ ô,tG @wo®[RWƒ&''ã…ï¿ÿn|ğşûZ6¾o¼ùF¼öÚ«ñÆë¯Ç›¯+üÊ«ñêË/ùÿàØxåÅ_ÆËv/*íµxûíwâã?–€µü_s¾)*‹×Ä©îµº‰s®†¼m_!p“ƒ}·¢–ŞÖŸ•EÃSWL2•Z5ª²¶½ó¶‰=x`¿:(Jù²~ãÛßóR» %epÊBCbaAøŠU¤í;vÇË/¿z;}øQì9p8P‡×ÅòRm êsÜZ6¡,ğ—e¡&c«TçW4èx¦AqõRïs;nÎlİ±5^{óÕh¶ëZ±Hñ‰¹R¤ó”-97ÈÚ\ª·âòù+±{ïøö·¿”f‰ã“RuRnÜL]æfªxàW¨½kÕÇéŒõ—/]‰)-E§njpKx7kÉÿ®¬4©WY:ıæË°ø´¬	oZÌ¬V}Ã²,RNóâgñËıƒqY8Æ'6Å­™ù¸59K-êgÕ`]udEÊ›àSkÒµÊ)7BXĞÒıì¹ÓtAœ–UÕh´c|ıX||ü£àéXß¯_*U¥(Õ¿¢kph$._¼µÁáxí7cpx4œ%È5%wÚš Dg£Á^>Ç× áSœ›Æ½êdRã¤”ùâ‚Œ«Zì>p(6Š¯#ë'dÕâÚät4Eÿ©Sš<5¹œU{Z’g-[Ôw’¡Êb,T—¢®UjGÚ›\«î^‡ÁµQÆÛ/}Ql.ÄÒ÷»°\±}ıÖxå¹W45¾UUy &oÜğ‰M‚¿ı;¿ƒ£#~š»¬q–ÄÆÉÍOğûİİr´¶€©|Ï ·rE¨ßôu)@|šÑuÄ±úòı*qƒ¿H{\
+xÏîİ’Ù-±yÛÖX·q"&¶lŠ»wÆöÛ5^&b|İº˜PüÆMå6Å–Í[b‹”öİ{â‰¯==*ùT1¡'½‚Åo%ÅMø6¥mqL¿úª»r6¹d3%_,±’Ï#İ´’ı¢eºJšë‹³²Ğ´˜¥ÅùXZš™›Óq}f:n)ÌcÚ(Ÿ6Ú3Ëh¶i×ç%¬KªC"æt¦¼ŠÖu<!èsäĞÈtˆ"Èéa"QXŸÇ.*{t%¹¯x£“JKæ·˜¢EO£Şğ5«®9&D‡Ãp ®Îf•2wë–” VR’äC8Z„0pSuÇ7şM›7Y™2iò—u×¯_Ë&©å´BQÛWOZ÷²ç½ ù¦¬oüª&¦õë×Ç ê÷#î`<mÛ¶-FFFÏúAcMyÙbÊÁ7¤DNº	uwà±zÍõë×ÍöşoÜ¸î³Á´üÔ&Aº¡ËMÕªñc±°OÊ€à7’¹±¾¼ GOÜghà†ä&>nØB7yy’'4Õ%éWÇz$¾Ô,´ƒ¼'ìÍs3ï6M9]İóÀ÷øù…yõWÇÆıÆWöc¤Ì¡…‰†¿4$¾EŞXt|ÊùeJ‘Ÿ¥/sHGäÒ‘aVÖCRNĞÅê¼ô²NnêÓ‡”¹¤ş³¬iø†^¬î6ôÕ½ô%ÀVêĞx¯g	@^–’úÅqR¨2Ø|~_ı}È<Š˜Gã½{,}î¹øå«¯ÄK2\_zí•x^Fíú“øÑO~/)şò•+>iráü¹8sæt\¹rÕ²Ä!†ñ±qÉÆ@ª^Âó´}¢ú»DçàgtY\?:úû¦7]¯8ıÀ(ÔJJ» …$”‚­°”hµcBùĞûbç¶-ğ^0ó0Ø˜‘öj–Ú¹}[lßº5vj–Ú¹e³ónß¶9víŞ[·o‰ñd½²•2ëšéXß¼” !ˆ¼ûÂ
+
+Êºªg?‘÷‹÷W%,åØñ*Ã—,-‹2.ÊJa‹b«èç66NlğşíöÆ’¬Îm»·FQ“Ñäåk±GKÀ¢ÒÎŸ¾×æ¦c³,[$ìĞ’{$&Ök	)!Ş.~]¹t16îŞ5YN‡óW/FG³Sy°<ñh\>u*f®MÅÃ—ÎÆ¡Ãûãü/^ÿÙĞú¨ªoÊ²|Ûš`0ëÎÌ,Äì·5åÁ²Ïá8]ÍHG}$*CµxàáCQ¨i UJ±}ï¶(TâĞCÈÊØ›÷l‰úübÌh‚Ş°i}lñÑ®“g.Å¡¯KO dEâ½Ÿm;&>QÁôÄş#{c@mßµkKŒmZãCqø¡Ã±eÇ–(V‹’	¸Ò¹a5±mSìÜ¿;JåØºg»óW‡ûcİæ14.¾î”<‰¿åñAñ|9šõÅˆuÓQcì[EYÇ­JÜxm ¶mÙğ	ºV;¯5ĞÈŠå¿_·íİé•Êá‡D¡¼,ú&â¸úè±§Ÿˆ-»wÄî}»´"¨ÄÆ­›Å«u±qÛDìÙ»+>;îÊ &<™’¼å©‡6È0ê—,sïb@ş½}è¡5é¸›c½×§1³QÊ¸,å²KtŒ¨_6nPß¬—Õ/ÅÙ?25äO<«ÖDŸ¬A¿MÛ7Ç¨xWR_Oÿä…ø‹vj…©•Ëy!ï[®Ä[R6Kß~TuI#¬Q×i¼ô÷Uc³Ú;®¶ßœ‰íâÇzõÛõ©+±÷¡CQSÿNlİ¨•ÛRLNMÆ½{c›”áG|#ã£JÛ¤qŸN!ñVóêLİsÈVxÓÆœhZjÆkg?õ;6¤Aú9àÂóïÆÍæ¢±VMÂÆ½ÿºxd¥§/k>(ÔüiJ€Iiß=2<;ñüóÏÇÇRÊ×4	^»qÍ§Ó8¸ÀMËk×®yÂÜ±sG9É}İºqãÂxauÏßZXòé&€:á'z7Ÿ:ñó'¡¡ËÛÙò¥ÀGº
+«We6(€p 4"íÑ±(ÕğKÉ¿ñÄ#VòÂÃÒ‘ã€X"X!~+—g/Kñ¢´×S’Ò)ŠàuıO¼Èjq©®Îƒ QB}Ôm8S…å›'|·š—Y1¹ìøÖW£À%Í^ÖíØµ3vïŞë40wìİ[µLâDÁà†±Ø¢âfmß¥I+j-}Wıé<cå>86¤0F'Æ4+h"ÂªUc‡Ñ:)¸±£ÑO­RFë†bóÎÍZÖ¶bß=qFÂ°nóD+ÏĞúá8û“—ã÷6í’P‰·R ³êívTâä´V<_ß-,TuĞçqCZî³l‰¶µ©Y©Ge´ã['¢¯Ü‰õ[Ö«(‚¡è«¶bLxMJr|ã¨&–&·’,®‹±õàa­ªlQó8ô‰W~[¤ğW×W(´cPŠ£6XŠ¡Ñ)­:TOmT23 v)GäËŠg	ß¯	{H+4ñ¶-¾tÄïVA[QS…`”©wx’±ÃÂ×ĞòÿVS+ÃÅ›1Ó8'­X¸%§ERSçü‰-}×‚®ÕCB‚héÓX“›ä»ªxµB¥¨‰w€£â±i×VÑ¤UÓÊLŸš&ÁÚH¿Ê¶Ä/âÕG¢¹OÊ›GÈë“×bÿö‘˜ZºıSËrüñÏßˆ‰Ç_“»9–ÛŒÒ)‰QõİĞĞp44÷Ö$-úFª~ï4W‡«–Å>õsmD¼î/iÜj<J†¦~öJ<>°^ÆÅbğÜR½UˆÙF'Ş»y3Ú¿õD÷ÌUã7ÇÀ–á(j’]·y]NhB-µctÛº(¯×$²n0êZ}oÒ¤»i»d_†÷xÆdLhBá/Q.}ÍdZõM/Ä{Zñ±mˆÌ‹åŞºpR
+|"ÑÏ^x+æ‹ZQK¡Àqßè ·zQ:hë|V!™ƒ¯»wíòéº÷Şã=Pu?ÍÊSä¾ù©‰ŸGK·KOh659¥‰±»vîô;ÂùƒN[]ºt9fç¬?\•]†‹ÑÂ5«&ŸĞÓµé•Ÿ,pòd®ºÈgUK"æ å½¸<Ô°[„lÜ8îı½3ÎÇ-]Ïœ¿`‚X&\¼p!ÎŸ;¥€8›:¯eÜÅË5ĞÏøßé§¦§µ÷V7Cçh„–8l!@¼ˆÍË˜Š3iVà}>À#çäÙşÍ¯F×Å¤º&ŸÊ€¤,nRV†9ñ¡Äjz¸€	©Ù^ôÿƒÊÌÓğmÊ_– 4cûöš4x…£P.Ä’p‹;>ìÜó=1ÒX5J@«U:Ñ¥£ô+¾O‹oã²Lªãª·Ò‰“ÇNÄz-ËÏõ©óµB8©¼çUâ¶> WŸÃñxº[f¾Á³`Ê‹´xÄá¤1^—R”¯h-K‰ªÅ<)zúÄ)¿›}af2æ$S“Ó1ù‚¬ªuŸ¨¯T`_ıËMØå†¬enèÑîÌ-§úòkqm%M·æaîP:,×Ojƒ®9=ÁS¥çÏ¹éÅ˜½ÚŒ™‹K1wa>ª[d¡‚®O:<ıĞàT{yó ¯¤å^Še Ø+†øÒY^rcÇüâm’¢]ƒ&šÜ@¥¯%S‹×§ãÖôLœ¿1×.jy}a)}4[>²ªşÏàT42. ’-É¦xPĞøÁ/ª^ßÅ¥1d&ø'.**¹yÉá‰_¾%…^‹+jãY5à¬òØ×ˆw[õ~ú¨¸Ûê]åX…ÉŒŒFAÚ_¼Gtšª‡^gò‡®5l65V4G¤× h|!‹
+/k,TëêqåéLÍûint…V¿3òÏÌİˆõÛ?¿~ñoÇM­Ùµò‘6Ja Ú¬oì£u’"ïhÒe»ŒvöËP=°Æ»ÇŞÙú’Æ´ˆ&£À'é¤ÃZ-n˜÷ywb‚ÓvšùOLsğ<§[ÎKOŞD‹æ¥ğày‚Kh}_É¯/ÎÏ®À™åûî(ÖE[Š‰;îûöhù«¥ş/¾W''cQË©ÙÙX\\²››¿·fç|`eÃZ‚W5İZœÉ™)-b£,ğõë6hzÒäYÆóPDsîqebRS¬ÀÇÉ€š[._•ïçİÛlİ4%„t €wR#€<¨$"c¹ÑŠªï&h’“Bå­è-7oÚí­:ø+:öõ•F¶d–*Ë£ö-	¾$ÖõÊêèÓu4dyJ¼œOƒfã¦Í^ÍTkÜlÆ‡'.Æ9)ÉcÍ[ñ!ç}æâñò†ÁÆÇ÷Æp±_óCñs9Æ2§8ÅÂMXNºğŠØR›Í	
+t/«~]—±sƒPieå­)Gsn1NÈ"™<w.&Ïœ‰g.Ä­¶h9¿º>^E€úå„‰˜®Ãõ¨^9ê#Œã0q¹«ÊÂÃS«éôq¡ ÇO%¸Õ¶”«ÊT[¥¸qúr4§ú¢5õÿgï; ìªªµ¿Ûëô–ŞRI#@ „„ĞVì¨Ï‡åY±=}
+V»(*ˆˆ
+JïÒ{!H!½'“LŸÛûÿ}ëÜ;Â$OàÏº³çœ³Ï>»ïo¯µvÀ×@~OcOESí‹É'ge¬òÆÃø4æB;ŸÂ¥Õj"U`2¬—z¯™/–k˜ñ"Û¥˜±“ö ¤1´*‘ã~ê©5Ø¾»€İ[˜o»¬…‘†îş›€Å‡d´¨_ÈGMçÖÕÇj«ùìıÕ9¾ô±Œe’äÈ;¶u`¹ãLÔÄ~»ÒVº¥	£&M`XÌ÷Âïo´ZWšŸ~4xÌz¥Áì ].ï=¼×^Ü’¶„úFá=\Ä;0†õ+Ìzæ¥tmáÖÛnÇŠ•+ğÁr9¯kÖ<‹Æñ#QMîş`iÇÃOS"ëàŒ³¸bá¡HXgXãÜ”±ÏÁŞ²óq÷<nìX„ƒ!<ñÄˆ÷JAGıálö&iœeÀú!°>|¹î‘H±j<B¡Ìã÷›N]k`zÉhˆùÑ7öãµÜÕò¿c„‡Î
+KN†î&®·––{â…±e~ßcƒŠ>3\Ë­ÅÕÔQL›?oE¡j\ö§Ë‘R¤ÈI'Y~ŸM‰`ebU`ŒÉ”‰Gà´ÓO±dë¶-xzÅÓhİµGN™aóÈ¯¿ùfìjİc#öné‚˜QiW3XqFÈz5Æ]:º*öbµ$!'~Ü—?ìDüE‘Šâù¤Œ;¢Ä? )ß"åñ@D¬¦Ü*^>M{c±	ê“Ş,ËA@ÊŠCO¯ÒÉ‹ky±Ô·×/
+¾üH.­ÎwŒ?SÃ×U¨Ÿqk{Æ\œ8xqzšãœ£¼n‘…/ØîùŞ§Ä@lÏ’Ò>í/t®¡Â)ê`ˆ¢©©bş\ˆqcmÖ<u¢ŠÇúÕ O–¼}Hé<ròèù”wâÊ%Æ1!vœ4zç–DÃzn9ÍÎ´°¿Š³ÚŸëıå¥—e—òª…3.,èÑÌyb^ñªÊ){•óAĞÀá\à9¡û Ê‘A`ôTîÊ!}­6“*hn¸Ó¶¤R¬±J´Ó7ÆY*%Ñ’\Í=]HÅÄ&m‹á%3ªÎ•IW²ÊÀ-£‹şIA¥i¢ôŠL›öàÔE'£:ÅŸ/¿mšØ@C'@–{[ÄÈotpû°ÁCÈÄ´ N|™MfúyÆ´#-Œ;î¾;Ú:‰ŸQÆuAàM£œ°{Õg^5)Bão© m¦—âx Roj§l°Pu/ÖİÄg´¬M×U>Æ53Â{d´µ§E@œÔ ì‘BUU¨®«Có!¨oj²ŒÅ]K·£Ù¶g.#›g&hy±Â³c 2k%ŒßRì:2Ns Ãì±Ó©iŒû#ÇPyŞ×T¶İ×öcr+S"7ä¼wü
+ğ19âd‚L[ˆ@+îSÒËüh)UúZmN  ıSdöÛzD#pdGJ@ÖB5& Ä¦DC©Cvªlt\™g­0¼uâ>ß2å¯ŒêÏ@f ·2šZ)Q\5G¢|ÎCnËMI*éÎ­3—îpÉû£ıf¸cŠ·Œ)Ö22'Š—;M;rÎÊ!‹”•3kmØˆ™ßKÅ]f ¸È(¿œi,7+³2ˆËŠ¤ÕÈbè’†#…Tç”0ª/™Ñ8O#µ˜ÆÜÄ‰ê$îHíök Ç§²LÊNSK0Å:»=Ú›²Ù{©\ÍGÇ‘ó­İ³lˆQ°ôCX%&ÅÔ'’"ø±fÔi‚­Û¶’S_ŠM7®õÈ5À)Zœºái¿r®ÄŞaÙTºç]9ìÊ{Ñ¼âĞàÕ¶yåO:_y£Á˜tZ[¬1Òeµ‡m³*‘„ÏM¿Ów49F¶;Ãªµk°ìéåØÀDIå¤è!°HKñ¥ª±Ì‡¨ŒÚ›.RùÁrn”y¶}ãA|È ÄeT8‰~ºVìö55Ú—bòÌ_…8uF)6¨²÷)ŠwYM–¼BN+É{ˆC;(bÂ,«Hl®ÆMÉ«@æƒŸ%ı dÄ` Vbk„F•Î™Å (8æ Ò~ü er+3[Ÿ:<rùş¼Ÿ`no¶Š?Ç¸	ÄUsåV*¥i`ÈïâñRŒ$7ãèäc#µ‚-ğQÌ´³¸]UÆõ% ø@q—(.føœoEArv€AJXZ@4“eİË’c=X8LÚ`¬¾`t¬ y~Ëø_(Ùn¤‚Ã#7"Õ½“Ê¿b¨Sú>U˜åÛçxÇòĞsŸJEW©ı´Øk¯!‡Lğ6C¬ÔöÂšï.Œ¨ÛtN©@igy<3İ|”ÿòÓ²{ı+GÊÂvHWÆşÀ¤ ªá3Ã¤ãqüq"/¶^^‰­WğŠ¤yË„hfŠ¶UÛÖÙG/Á<‚Ç–=-Û·#CñG‰‰¯ÂÑ\h%Ú¤Á¢ÒS1*}%%À¯èƒ^,9 ô|ãˆØ§¦™y]HcœÛ †òÆ€Æ[ØäVÆ[ÊÁOà—š‘*bd€ÙÏ]QOP€´0Çƒ£
+À
+<óPf øÈœÒªHm—«†^Q#Iz×í£‘ÿ_YoùXLq¼şı–Ù7o+¦>õ7¹•8XGÂ{AÛËüÒUuÔ‰ƒÔ&ÌrçErÀû£}ı•(Ş2Å[&Cğ©œsªj,)¦àI˜kô#Çº®<Tg³?Ïh ¸ËìŠ)•üìôØ¡129V8—+‹P!‹ tå™G”d'UËäói 0¸™"Áo £ÎN»*êlOM'ÔÂ1”i2;YÕKb”Ó!öAÃ€Ä’g@ÄúIDsê&Ÿ)3\“ó†ÿl3IhïY6´ìÓFXGB4F iÖu¶ĞöÚ8]€Œ¬úiı‚öæ	'mY’Íÿ/‡í®²pœwåÛò½ó(©è $GŠ|l¿Œt7 ¡g©J´µc‰¹Æh°gÑ*<Š9flN"Š2ÄöÎ.<±l™-"H’ó¶3ä(úŒq¸©C™Y,[Äo-Ïùsö×K¹qÜéµ2ñ0¦Ãt˜^ˆ* Ü‡„†(ecvrU¾ğÙ~e·Bc$‰]{À	Ø2d¡Ø ±Q›wi­ŠÀ;¨iÕ4Z`%ƒ*.Ü°«´ısnì*x6+{.w4"s¢ğ‰}Íˆ®*¸Í7%x[Bh¯ÁM¢nPé¡ÀÚ¼Tçd–3*k¤-ˆ`¬ÍªÊb„¾•Èò#yg@nİ2_ïäN¤à?L‡é0¦CD2â“°Fàé ¨ LP#$ªà=Û­î*0çpİe'öÎ8nróŞf´=×gS5o\³öŒ§pOXj‹‡Ì/Ç3…RñÓ‰‡BuâgïôXy§{şz¾ õ%@hiØƒ“ ¶]e)Ò{'R2$0	ÕáRw˜è õ
+¸jû˜èY¿ãUŸ‡û¥J2œ.å0¦Ãt˜L.	;`tş9¦‚'"çÿ›û²=On4•PZÛn€ø¥£üLßÍkE…"õ¯LO#Ğ®èÀÍ+Â•4R	¹*RÂÔÅÁ4YéÑ¹¡³.ßóîEøI[,è§o D€uş+l'²N&ˆ;×(®>æƒ>¢Ÿæ¶òÁ $ßå\NŒ[?L‡é0¦A†ü9Ü­sgÿh*ß˜UùZ$ãÔÅ5ËNßÒH®‘MÔ: ¸ ]+Ğ+ÆUú!¨ªÌçÖ|p©5Ã	EáULå®BÏÅ8{Ë°^€¸é©€·HÏä?¹ñ
+pËØ½¡±ÄÊFºŞ›…Tà÷ÚÉvã*ÿ^˜£.¿—?4‡ü0¦Ãôbh/Rhô]˜#ğŒ§ÈQó§¡E-Ş¾‰¹”ê×VAÒë¥Ö<û?M´é‹t&Â»xuóÙf}ÑŒ8n-öR˜…¢¶ÉjÒ¿áKa;?—*Xñ3d82†qıôgu"Š3_:14 ç­(t©Tè­FN"†£3²ØÒ8*.³Ú¸&¯Qeí,Òeê¿_R°*‹Ãt˜ÓazAş¸5†€ZÊ•qÊc‹uúŒ°H«¬É%kâ†6FÓ)şE¯fiZ4í	Ê:ê0«í{]ZS6Ä²’¶Ÿ Hòš,²é$’q”¤[S„É"¼~â¢—1òÑCùOÿÉ-–9cüöƒC=¿( 7°Õ>°Ÿ€Ã@óŸüg òÈYœKcªs‘~ˆ nFöz¡ùÇoÌ0“ìl@&Z¢Då½¨ß­ÑŞ{ÇÅFÿû»y=Qµ–›{}È¸ÒhÒNµÍà-P+!ÀTk‘®zv¹}Ì_‚E/¹VÊ€Aõ¬‡éÿ€”Ï,›’$Ñ4O5Ä B™6ìjø2A$|§­B„m$€Ş` UÙ 
+î ’ş ‚ù€-!ğÛ¿ÍyÓHù³ì¬Ñ#eÉ¨eÉnªUú(UGóäA™6ŸÇÂ¨*†Ö²oU%Úéîµ×¾ôÃ>O wî¬~Ÿ"tÚ³¸Tğò9ÄìÍÃ—OÛ¡))oBÒÖMh‚s<âCšù¼?RÜœòr8lç‘÷fã¼wpNˆ&Ã{¦K/|>g›g©?Ú jÈĞ¡hjjÂĞaC1xÈPgopš–æ457£±±	µµµ¶•pKË Úµ`øğá3f¬m —L¥Ig·è”q±bÑgÿ\ª¼ö4ÖÔ\àDº’¸2ñA íLİcŸÅH+9ÒçHœğ5z$Á7ƒÕëÖÚJ({'õVÌiö^9h?: —.C;-¸¡}‰FöafÊ(&ZbÉÊë‘÷èé¯Ä¾õ2RÑĞÅE#ÇêõøÄxè¼Á v-¡gø	³œx¿¨X¬F"B@ÂS@wˆ™ÀJ«
+47¶@®!'Ã¼PŞd½%Ä‚*:tM–Ş}ĞóÆÓK#§±{X‚ƒÙ´bwO	^–Y„4- FğªKçÌ×FS£íƒôzë	â~"aˆ€WpV?²úkÁÔkl ›¸¸×lĞ‹4q@ªWÊ|Î…Vrœ½ªÂ¦+íG!Ë<“á³ì@†¸Š g'W’Ş˜şiáPÖSd~ ‰	:x"H†ÏV‚³İg]Ul(!2^42×b³1©yõaÌ_ò<¼Ó"!ÑÎ‡–£K›Oe³Œgy7YƒÄï”©ùs0P¦¢MÈêÛLÍ9l8†j›ìÑ£1lÔ(Ûód8í´}¬®Ú?° }Ğ »×öÚ£FÂÈQ#ù<ÌBXKìÜ¸q3!NqPÇÃPq’åXĞPf ‹ÑU<´jİjÚ¤ò^(rcßñjŸ(âôB#¨`Ô‚b„íÀ¥“>jªk±àÄOÆpóÍ7Û^¶š6£C|ô<ŸÕ©×Z²,}PŒiÔ³8ª“¢½6÷è9`ÿƒ›¸)vÁ`yVğ ³İÃì4E¿bÂÎA1´U›,¤ˆ×†êjT‡ÃôÓ…£ÿûÅşuEş\†jF}i52ì¬¢¬ô	„HyÙŸ´êQ‹Sò4™t;Ç–o,"Yt6ë?L¯$©LT×YÏ=â¦Xäßxê4b^d"ÛX—µ]n›ã|?ÌTÓ'/Bd†n¹u‡»t´âj_Tò X ÔèÎãìygcó®[ñTQŠ$°'Ã¬Ğ½¶DßRX!W­EsLc„‡M7v1Ê7÷Ç»°­{Î™2¾UĞ‘onWEOÜÀk_W,*”ªĞjÀ¥·­F C c±ì»ÊÒüëcHÅâ¶á––âGÃâœàâ½ÜÖì9-~“î›/àR­h÷@í‡2œÜô¸QcPbgC?ŠÄ¿Ê&wFş9Œ¯‡å§9àJ£ö2œ§{:Ú°}ûVtuÇp€„ô)NûÖéÚm¥¹,è§V®§2)›C®íºåkòğÎtÆğú]E¬Nì	õ¬é€ê´‹–À¼¦¦Ç{4ê˜øÅ?j“Û™ÿ¦ÓÖn]%rrkÂÄ;€Spf¸:…êš*;’hwWîò	Ä´G/;OÑc;ªib1ÏpµWƒÔ,Œ‚Ôü>LÎ»¡ªU:Í‚™uôW?äDùuD:?óIÿR­c$(–†mol‘‰Xı‰A{‚ëˆ5¸÷3“oFk¦\sÓ+H*À)Ô³®³ñ’Ü…ÇMìÏ×­0I¨T¢ø *zã,»"&×…İÛÇ°ƒä<Å…–¼Ê‰ìB¦x QÃê±¬í7H3È°=»K”–YŸã”D¤:Iz²ğk§OuzéAÎ‹N‚ÿü†ÏãÈbòí]¸w×cØ=lJ¡=†¥bÔÉê}©Ü¿¹<8ºa!vmıÀŸøÁ•X€Ç g¸Ñ°ægp5¯ãâà	E‚sş+ÙöÕâ_>™fjÉ½óû,í³’‚MKá¢¦*Íü„ -Jš‹T:iÀ­-FÄñk{m…­ªEyÄ(§-=R<¨©lj%µN7KÑh›ÀÙY4•·“˜è}Ô*I­èZ„(¶k>·ÓXSÍˆ˜ˆPE@­««3ıOCcƒ‰:šK¦Üv]m=jù^:!WKZ#³:°`OwrYMÃñÙÎ^Z4$ğ·$HÄa\ìH1ÆLöm©ªâ8ô•:ĞáßHîR »}İ»w!˜²!°¢° ³*i––S²dAR¼òàËP)²‡¦¼pi1ÁTŠ{*şÃôÊ“PVu5oõTj¬d®“Õ–u<°“à@FÈ¦Jû1ê µ¤}LÕ0tv¶ TTİÖ.¯WÜµM*CŠyĞå^EàÍ}´*ä\I³‚t+</d[/hçJ·6aöa|`’ÕõğÄÒhOu¢ì°müù(»ÈMşù¦¼uØI¯Ò¹¨µdò¥Aşë¯Bi}d:t¤#AXR«T(Ÿ³EîUvºÓ¯Íˆ´q–˜&;Ÿ€x¨U–#‡Ç°!CÑHœ«nlDqÎÎ½äóÁƒì¾¦Æ&4û´‰Ÿ‡Òı!:sª„ôl–;sDºv½Õ%‹Û.ã£{µb©–µ–£Bqö">’W§‘W¸ºşÜ6_Û¯ó
+õ±Şirºz§6ÑPcG¢i¿êx<nïµ|Tœ²ÏKĞgbå½­àä;Ûı«|¯Ş.™cû=Hû¤ër!Í±PƒpeĞÆ0rc¢„2N÷Å½x}´
+QràêPæ|åƒå¿~ÈMãÉÀj´ÎÙ™nøÁ½¬õ:ıœµ_û“«Ó½öû`Cùô7æA'K(’v¿™^ír˜^YR{y>ŞZXŸ«éšGYgCƒıï½"*z‡Ì<;×LAmAsL»â”]¼ºÉU$CÅvßSB‚©ß!@ĞuùB(ôÔ _ÃõÀ–e«Q×T#O˜‚¸+†(ñ@m8V`aè-×M@íÖ<ÖöºV¡;’D@‡ˆ”ˆ% í)4cè,¤VAÌ¸ûçsàOşèoXÓ³ÇT(Ú]R8pA\€.õ‡¢,áA4oü7Û1K]tÌë£Çá¤y'Ø§N‘øXT§Àgí}¢eõj—ybgFçÓM(,	ŒX.cÙèÔªzO.šuÃo¥Âk©à,lIºÒ/mA’¢_¦B	Œ;'^{@\»iéĞVgÃ(GŸ­{MŸI§ÒèikCOO¯PßÖÖXo]ä¦÷ìŞC»NtuvÙQB:V'iôvuÛvŠ±Ş^;€Vn{“qxBA¸~›nú#æ—Ó+îåÀÔíåÀCZšJàWÏ5ôøéã×%ü.tR,y¶!L|]kãÂÕ˜6~¦Ò¤7$qÂ¬c0{JÆÑˆw`ìÑ™'íãJh,LAF‡F¦ÿbı´ºº—ï-í¦øF6´)_\-.ıÎ˜± ™Ü”&Hzz7~åiL?Ã‘[Ë´A˜ì£¸v²2N¯rJX4q!çÍ"ZåÂîÔ2Şà
+!DÓ-xü¶u˜>gû^Œ<÷Ş·İ±6„(ÅóCæ]MŞ±Eà%¾»·ÉšìØz¡ƒEœsı•›1ab\Ò­”í´ñ ğp´¦ªàÍk#<b(ÿõçÀw/^‰49p©k	”:ÌAàí)£¶‚p|#ÔğŸm³ËwÎThY5d§M‚1#Gá™åË±nãfì"¾édíÛtÙvìnmÅ–Í[°}ëv;´<O[‰y1ÄÙyh02Z%ƒ[Ä&ò Œùg¼¿E@€Òæîtè³¾³İÅ¸‘Ê n15‹¾kÙN`'çm,;}qVOZìe«0jĞ ;©\j’ææ;yGxJEbÓfšœã„4ÕFSjš›Z0ˆîôN‡ÃA$ØAèX"ş#}¶N¥×ôÂ
+ˆ[F*ùÎ6<çOz&Àu"C^‡ î'GÒJ0Àsu.\sö­xãÿNCpX!šúÓÇà¾;7`úYÕTF`ÖDtíÚŠ–¦#½xÄSl?L¯(9[Áj·HJ§yI:«Óƒxq7™64o'î½ªÛIaçİkĞZ¬ÃÖÍlZ—7³am=·ìB[hC‡bR#ëzkÑC?Ù¨Õğ^,êh<"ëmcs»O"NĞq§›^ãÁU\ŠS¦†ÉcÆà˜Çàİ'½'q"\ùr.¸}AóNC¯Õ1b¼©ªíÖ!xt8GšHËwaÚÑ’L 3"`EnÎÊ à®D;¥~á‹8t±£à†—ı²Z8S±²“Â$ú	GqÄØ±¦æ½áÚë±‰À½™à¼eóf3›7mAÛ=Ø¸a£1¨£	ôÑhÔö—¤QSScL¯8p©¦×¯]lÌ±8‰ÿ*a‹Œï'ãj Î0…É†ÇŒŒØZ:Ù¿áwì¥¤tWFQDdWQÈ
+E0fôXÌ{&ŒŸ€±cÆbò¤É˜0aÆŒÇëDŒ?âŒ?£™ØQ£Ç`ä¨Q:lŒÁğ±ü~öìÙ1b„ù«3çŒÃg¦jğT;:İ‘.ÎUÏå;‹¢ÙWŞ½Î¨ÿàU!Ç—ÿñ~²kÓ^3>KgĞµ¸“}Ş$½AŒÚ‹	GŒ¡kg4;¨É³‡éßJn‚»@¤zq
+?}×ÿàáëÁUgı¿Ãù}æŠS.ÀÍ7ŞŠ?½íóØ¸|=ÒÚàºLı˜°×ÅÈYç3	øŠÕXvç2|ş½ÿ…Ÿó‡øÜ¹b~ôà÷¿¼_şğW1¼0÷Ü¸”i$µõo¸ìÃÉãÉ C.{_²µ& áE_––±ÃÁeåÓ²ƒ½HC9È›ç6.¨	U©2rEÊ^´³-´	°i‚s:“A86¼«'ƒ+æTÓ óyÈà!†ušµgc}Ôş[oLÍŸnê™~9 n1ßÇTRÃ/!=I¡!fÀôÜ¿MHWr6STX·~}öY¬c¯³yëV¬ß´+V¯ÆŠ•«°zÍ¬æ»•«Váég±“œ×­]‡íì¹´½¢æIú52k½Š£÷Ñ]Æ};QPÙİ+Ó™™ÒÏ+Ê1}ÒŞ”‰Ëëòo±9ß“/dĞrR¶gá+õÂ—’”¤È™	²·>Lÿ^r²È×ºqìÜ™øğ¹gã¨3çcá©‹úÌüÓNâõhwÒÉpEÍ©ıñ[™²?¯5Šç]¨4¡ØÁ»çŸƒ‘õ£±‚8pç]wØ\÷ï^üÜùà]èìnÇÂ9§"×[Ï¯˜àÒ‹Ó÷·İ²>ÿÁŸJï¶éÈ{¹[´ı„)z¶öÊ¨Â Jó ™2â õu>Ÿ'€”h¯÷‚'Mútû|ğ’«¶å÷4A¸7°3‚5	Ä¦Yû¶3¡N¥G­Mş,Lë $(æÚŒ€%Ø½ƒ '©N£@]“	¶ïØIP^a ½lùr»_µv-Á›`½b…øj{^µëÖcO[›ù#€nïhG{{§€ÊOù-²Ù.O'²’ÔçôE¤Œ5 /óz$Sï•©¤õ2qºbr%/†ÎmÁ¶‹W åÖ¤&­|‹Ù÷ùR-¿·^ï0ıÉãJ’»Ì!œ÷â±Ç–bíú­Ğ¯j[6Ó¦MÇÄ	“ñÄ“O ÍŸ?ï0L2ó_‹'GÎÕãúßß‡cæ¡”"U
+â»ßù>îºşa”2%ÄJ]‡xÏ‚áÆ‹D±DØ#tÈÀt?´àóÇÂï.?•IÓ45Óç ä¨aé·Ÿ-ˆò?k]e¡{³wH·Âm¡­ï¥N1CÎærH$’vÕùZ¹×¤‘¾= šş»µ¬×…~ŸÎuBíOzê³¡qİê_?r+Æ\,	L€“ ç#{OªèÀí h†½ˆæ…Û¾ ì•Ò4ŠÙbšSd‚33<ŒèPrìs>O:	S§O·¥¤¶rÓÈ±;y¯Œ½?ÀËVêN
+û’ùº#MŸ:édœY£°nñfT»jmEz­¬àûÿ…æÍ›‡ÿıßÿµzÜŸ–-[†Õdp¤N”d[!µƒ×*€çóYÄ»	j16ÔLÀ¼ø²Ì?f!î¿ûÌ?c±>w-|q‚j§ëÍ1o Ğî®¼|–mÜM†æù*‘¤óı“°‹8Â_¯…veæUìhÊè¼9X$rpÈ¹in·e'Å}µ¦¥§·7m6€/ÜÛÈÀ®Zµ
+;wîD$&7îC&¥Å_ôÇ>•£Ôgú?0—ú=Ğ(Cu)Q>\Št³Çë7ÑA	qy‰<ìytº¼î5¿»¾¥	GÎœ‰ÙÇƒ‰“&£¡©Éq/Å=ß÷³Â¨%³sŞÙ­eQåW±{}RbÇŞ—ÉWÊ¢Ô~|,<9/;ËçªLò®'¦ÿÒâ‹¯|å+
+ıI¨mòOkIŸ"¹P3(¯ÛzÍ‘æV«‚5F5»±ön2ÇD‚QlØ´ó¦OE0–‡Ÿ\wO&1£W«Ğ¨ŞïûĞx¼ñ½clÍK&+‚}åÖ!a›ìœ«Ù”ËKeSÙÊCßéCá–ŞkkqÜ*G²ß†kÚ¥0™H`åÊ•¸÷Ş{LeœL¦±cûNìØ±:µÌpí%e†Qù•ãeWšàâß÷±³¬ã?J¯A¨)Ò7Í((X”ŠCúZºéŠõb·¦Æ(ækYÚ9×KDåè9$Y;O;E|ïÓë™/ ÂÖ>{Bt?¼	EŠN9í%Ü{˜^ÃTn¯ERÇÓQÚƒioŠÇvÜP°€P$„@m ?y?N;ét$2)ô„¸eó=˜ı¡cáÃñ\!òy$ğˆ£-‚b «l{päè’{Ë¨c h}$;YÈ½û(U2ï5Xj`ÍÂ²T:O,,ŞyÉykk?]W~o<aSF¥vÖw)rİ
+S~i½Œ…SSªXYü¬³y®Q'TN?V¢$.X†ğYıˆÎ•ËÄw¨ùŠìu¨ñÒ'ŸÄ=÷İ‡ÅKÇ–mÛlPeE‘Qç?¿²«hß+ÜÊ½"o]‰óÙëª´Á9ì¢'Ú´öe XVbÇG.EKæÃI.½~FŒ›„^¹ Ùm ­V ÎóğÂ79Û–ª¾ªLl´‚öQ…¶•y®¤ªıZ¤œÏ aä„ .àw¬Ÿ;ÑÔT¢/„OP
+i9sÏ8İŞ^Üõô­7† æ&#è	 F=cù°úëgo„/?ğÖîüaMj)›šÙïÊ¿>Ò}ÅÈ‰ë·¬Y&äÂ¥ŞÑÀ£ø%mÄ'Xò2¾nrÒ>—¦8kAP	Ú%6à×Šuª#aJÖ*QÒªÎbŞæ &µg”-áç7=×Nù£+Æ™şly5/_œ!)ÆüÈ¹×°"«'#C8)'F+Ñtu8ráI®T0}x¶G2•ÄÆM›ğÈ£â©§BwOE^9`:n~kª/Ë{²Á Û¼œ‰µ«õB×îD«¡×ùJË×Pº	æ“N|×'‚¡œë†Póëœø_#˜Ñİxz{˜ş¤YUZá§eæ,¹íÿÃ:Î*­ı§3^¶«ã¯=ò³ÍWÙ–ÆYÛˆ«î½ç÷@]_ûì'Që-áº«/C[Û,:n¢…r™r† 	¿"qáÕoM|¾„)µîIåÁf$¿åÖ™-Á?ušZJäa˜~z§?:q> ío‰=vâÏ,AXu‚^Tû‹zrL¯v$ÒÚÙ<B„¶ßë4ÿ€§„šhá ‘P€ ÏN@Í™ïÄò
+Ü5£D ovÄC7ã§Í±ÔÉ°V°†Ğ½©:X/Ô¿`_|“ïŸ™å{úkêë7Â4‚árÒ0×[&Ø Ãíõ ‹ÀİÖÑ49p›¢(0ñ#e¬z‘qÙ4•«¾sîuÇ0‡æşõF_ù´‰h‚ŸqæY_
+Ş¦nš{æİøF4$Ò¸s,ÏÃşj#OQLkwíÂÏòËšŸıòbdØh
+”XólğZşí°5¯=ò2İ2mOCGÕamz>õÓ¯âò]‰Î¶VììÜ‰w|îıøãâ«áêF¢ØMóHŞ,ûp`*j×Í üEQÎ”HºéI¦]eÏ{qÊvª|0h»³ê[S§`=d¬´˜<´s&ñMÆO£%õÚV¤ÂaË¹Õ¢!!¤sF°Û¦*´P¬¿¹¨X”1Ï¼rRó|£íõsÅo;F=…ßû$ò0Õš©åïšöæãÕNh&'à5èö"êZ•hÓiO ?m” rÕ‚¹÷å)‚hE¯¦0b$Õ3šøÀg/_éª=*?eÎë‘$ÁÀïÆ Ô(Üñ…ÕğÆ"´ó2Šøù§oÀÉ[ˆáØŠ˜Gj,gg·Ãôê"IKy_aøîM_8 ùéíçÃÓ‚?-&‹à@$)½F§¡B nkÉ²)”b˜uúÜºòJœù‹àƒ¿ş4„«aR¡8± Ì–¼ÏÌ+¶ı<"¶B¸£]J+¦&_CÆP+4÷Ú9 w`Õ‹ÍPQ@2e2øĞ?ıõáJÙwÂ­|y¶œM[æ1î2wdCû@\ ¯éo™ í*ËìÈål‘¦öùÖ|½"'\‹’Ò@2ìsK™¢‘ß~FÀ]1EfaÉM–÷fÄîÓWÌhõ‘r¨€¬Ÿì½¶iğâÕÏtÛ&ïôZó&+ºò¿cWd=DJ ğå´Y îèšMë@tÇo¸¥ƒâ½*7ƒ/ıı‘«àEˆøæ/.Åû8Ew”e‘fŞDñæŸŒÉï`¥/R³òt¤
+Ù´¤Ãôo%14iŠu·
+o=>Îşæ¢š3¾xNêA¸¦ ö'{MûÕH¡B]Ş$b"¡0zÓè­!8+Š	ï™Œ‹#ğTÅ‘ïê€×U‡œ;	_ö¹ ¬•¬2®’ŸR	´lŞüÁ±”TrÏ±s™;šH¢ön ,u0q/	\eÉ«ïØ5€©=½e­ÚCô¡â’Ê[Œ¬¶±ë”z-F”‘{}X‰›-D$‡.à”cßà÷%}æD©âv/ì#w-.Ü8qUqŞe#ÒÙm²—‚İ®voáòªHïÿ¬²™=¯ùÃ«M“‘ßÉM¾¤™+˜+A65GîÍ­®òÃ1¿û®|'#wJJ99¯KŠù=H#‡w}w!
+‡Dd®r2<l{)¦W;©ÂVê¿®0Æ¬8îõÓ,R;Õê5HYÆİ]jD1¥$GCÈ¸»¾R5½¨÷$Q­ûRÚ97²B!7é}$·+C’!ãB¦­b´7RÌK;)`‚âD**çÑ!¡†Gec¶sc2y£İXuü£îµ’RÓBµÍˆT?:"HÎ;Äg]¼ú¥R‘†î¥nÑ‚mÖ§ma5'ŒÍĞÎpó€Ô{Y|ù{AÖÕqæÜõ#¤ ¡Br2Ú6h©Lutá¼·«2ºb¯ïc‘4òGs+óL” ÙD9Ñ÷tè,äÑGY˜z'+:ªdôgÀk“ò’|¼.l<ƒàø,j#Sh+îŒG±‡iß›7û’“w‡éßM¥’ê¶Äoq–/Î¸æÚKmÀG©óµH5îÆ‡Gb„«–¢z¹ÕŒp×cx`…!ƒhğD“0¼a&š"c16t<Â.í¾—\…û¶¥î°Í²ª/9aoÁÿ;ÇİÍ¨Å8vjM•;š2¾ˆ¤9(äu0Ã^n\j•t:D"t2Åx–ØY‘1%ÈÔ™24©TÊŒvnÕ¬Ú•5×n„lÃsvÁV¢[Pû'¾ß7^²±İíq¯İs©ÌéJç,œÔˆº¢UDãÆÃÖ];±{ÏnÓmë4fÛğÜÄ²<pîû{,lQõ¬­®ÂÈ!ƒĞÙİ­Û¶ÛÂqä
+Ñ¥òÏ¾uâÁ®€ ^²]¼"Áõ~ò}ĞñGÊë×Õ²gÜénÃÔÆ	øé"º'…èp5rå‰#’íKêÜìX'ø1#1>Äë È8…{ØìkJVßµ uÑê#ë19—DiEë:d½ğÃ´§È\"@íÏ#tïÇàè0¤;ê‘!çËûPxèÁÅ°é<LI[ŸíÁ°­ÓP³kjwGİ®	¨Ú5u;Æ£jûH´µæ0bë‘¼A3Õ;†!ÒDakG·0ÏÚH/£9>5PÓ>­ÓP¿Ç1Í{¦£‰×ºİSQ¿›v45mcè~*ºjsv¼™Z‡Ëş»v,]ƒÖîNg ’QµGçk8ã´(AİŞ«ş9 ©sÄwüŒ=abàºukm{Ù(±H‡‡ƒAšB qéÚëÉï8³íø±áV4-dœ<e
+v··aÃÆıĞÍ!]+ÆÂ'˜Šûà«Ñ\s½sM±”ùåÊ×>€ÓHŸc÷ä˜šõõ8íôÓğğÒÅX¾üiD"aÛ7\ÓkÂÊ Gïó|R‹ã=l0æ5·lÅâ%KágˆáĞf7Š‡/ ì'7.8ıÕÁÈRÛT1šjëbxyÆiæ—ßïxş:¢l)€Õş§Qí‚âZÔR2ÒÁ€
+œq&ÕÁŒÙöFÄC>DàÅS¹¦çÓ~LE6S¤÷V#çM’“–¤úœ–õ<Êx<å€`UÛjâìˆ¥Bq|-Æ¹ŠJåÎí;Ë—@“çÎv÷`ëšõ†=if¯¦Èªƒˆ¹"9p Ì¼{º*ƒi£Ç“#Ö<<ï@‡5¿½Ë6®3.Ù«o|>bIÈÆñ„K• tÑ½ØI‡ó&¸Ó¤¶ŒëNZ¸˜€§Ÿ&öùÙùê všĞ¡i†v–ı³iĞfá*-´V‰î¼~››ñèâÅxì±%t'œ3à`#!Í¤h‡‘e\è§N°O“Æj‘TÏ/À	¤Œˆ¶=T¦HQßØĞ€Óßp:\ü0zò)À³Ì‚¶z­ûW@öq?¢÷–QRŒ9ó=ë×oÀ£KG ±Qk†bÚ@›á"ÿ˜¶?¸8XÀ›ëêíD,2ëuà¶†€/18H¸F@ú*Ëç’æİ*§ã~–U:‹ +f2—a£zm.ymÑÀ[:WB˜í"ÇvÑŸû)’Öj2=úª95Öu?å4Óâ¹MèUKjÛqaDoÄcjJ‘3ı¾ qà|@š¼ÍöÌ’Kve©­¿7cÀ+ğf	’PÆŸ²z¯°u>¥úºbRKòİøÚßŞ„'6­Ee¢N5$ ¯Òx:¤{¶üÒ?»ÒR±¶SàÀÙ¦¦Ã‡Å”©Slja1›‡[g2ş>³Î*°	štA…_|"îC<•4©@Ó©wìÚeØ×ÑÙIğwÏ„³
+•~ˆ‘¶P’Fö‰té2“¬¥û¶çÊ¸!ÖÈª"(ñ\éDù7y&Zñ–ÀÃ‘ˆmh‡y2ÒJ€ísÂÈ;‚}ÒŸ
+‹~ğÃ‡ÂŒiS°rÕjøcğ°qà.o€ñÕò{qİü^ÀÈÚl*xƒêbÏ¥-³¾ò‹ïë‰<gS°L!‡°ÛÅB$]Ï?&-Ó>Êš;L…Àc3(Ìçƒ—MıkÅaz1ä§(©Æ¦ºk°L©÷`B4q—€9èÄv6{Wş5àš( ÕT_ñy¶wØ5Tæ²D­Ú¹ü >0¯t€¯m¼’t¯<€üÄ©Gœ9ó”@ÉY»rdC©¶ö·7cÙ¦5Èt5¾ ³-«¢d’Äó½B©DÓî	TÙÛ“,¤]	9>k[ØššjS«äÈ0ù‰C¤Ô³ğR3VÄ}«#‘Ç6iƒ?qÔº×ñiÀÌĞ/ct™aÆ­‹Ó·PğÇ®mH¤–N¦S¦åĞi<~ÿ‹p¨ó~EÌrˆÿè ¾¶'/ZÄ^&‡­Û¶§,]G°©§•H¢«ó'”3ªÈŠÒ%QÄësã)Š!kÖ®·M±ÄeºVÚÉKIvD¦Iÿ®¾L§cˆL Ğ2ŒßŒ×!î-h¹®¸0M³Ô’lg…X¾\ŸCÀa¾jÚ¦8cÔI€ƒ!‰€**Uh>L/‚ú·˜½¤­"©I¢'Ëº9`"àö³05Eîµ@6‘AU†ñ±Ú)×ƒÙTM[Dh Õe©N”ÄûÉµ¦ å¦¿°¯pğ›ğ$9ğœ œxòÀ«BQæ¹¥3³Ã`Ôª?ÛœÚ=¶	¼tƒ˜ØÚš9t÷è2[šó­H:x¹ÃÑ–òĞöAaç¤[»{{ĞÕİú†zd’YÓ\˜”B?M}Brq~¯İ¥BÑAÂFÍ€±$àúéŞb.@uş¥Dr;9Bºi&(DÑaâ„	ÜØ`‰Êäé1	¤¥À×H­‰toúpŞ§ÒEgY2°»}76nŞDû9wöfê”‰gkÆ
+o½ÅÈÑW“ãT_ˆ/ÀDÀ¿ô^ûõDbuZ*ëº˜”ú»}¨ä*°Ò’KÈÉ¥ ºñ²E<·ŠMobùéªòê£ıèy©¬"Ø—BûÙXÀ4åİÚàHó‰™ÿ,?dï*úíH±×	ÚÌ,›¶ÔDPÕ×ÂAìç’!Hc`ÌouuÀyàLSç&®¿²q§ÂXW:|óºçqà 7‰Ÿî¬…)|gÏA_Óˆ’yÔ)dÆ3Œ
+…BÈøh$Š"ï¥¢ÑqqåòKØ¨Í¼¤fN$¶*]õ=÷Ş‹ööv¶/…¡o!óGÀ/µÇ\3[<Ä<€O1Š¯ùã‡É'Ñ¦R`s¸é›‰R‘0’–1ŒXm4ÊÌË˜Ë3‰²×ÒPºŠsÖ|5ú*@H&U @9’aÄ2qöH¾'7N7,€4š¯IóòÓÀ‹	1^œŠâªqààìíf|ñõàZJ/R|Ì+O˜~§YØû’Y$|šN¥JKÑÅ¦oóÉE«ü‚¬ª°éî#í	z˜öCs‡Y’@ZØ6y‰s>ŠêÉx—µ²=,÷ ‹ûPD¿²$ %YmŒsf'\:ˆº£ı¶Â-d²ïiŸ£T>…ó{ÅI bzÔoV:}|İï¤BYWÖ—¼J ®@ùó]-¦ÂÛ={c"óR…åÑÒÒŒãçÎÅĞ¡Cìd1­£L«4SO‹–rdR5¨Å=b†¢áˆM!h‡‚û\Ö¶™8i"–,Y‚»î¹›\|°¬BqÚv…—šD˜hƒ˜É¤éÀ=ÄIãÀ‰¯/àêAÄM{™£šÏ0±ì)äYmUAV8Óõhâºßk‡;Hÿ£QVa¿FoP€ßIÍ’+/>‘(¡İ{Ò1öDêÙ˜ÑÁ4ØYhkFm”%Å¿ââb2N´s <L ¯G” efyŞ{Ìß×9\{ø|		"³*¨Î¹Ì•%ş¤=74€©÷âààª„Î©ÒtuvbÍš5N]¨PñÅUøÿ'Ìaú
+ez8D:w¶®©ãe©¦"zÉ_#»JŠ[‘f²•DqÒUÆ‹%Í$é%Şˆ«ÙoeXÕu¿¿­ñÕ&D
+B5]†:Gz}>€¯ÿİ-Xf¸à!ğé¸å‰ F^V®²,
+œ®üØaÀçŸ0Ïpï†n°™anr×©7‹\:m+15c¯šù”É“íTú­[¶`êÔ©v6ğšuk1mÚ4tttàÿü'Â!2Ã}¸:o…Kï´_"•0|•ªÙ1‰{/àuÕœF-]Ï0bê±,£Á‰ãÇaÌÈ¡H€µq‹86õ.úVs%•òEr¯#„¤¿6UŒ€½G{w']»»Z÷PÄˆò…@ÏÈ©pÄ‹ÀÕÕ¡ÚÇè?íg+æ‡éeR!Ç½Wß‚?~§#ZV3ÏÓ,Ã¸ƒ:E–»Ìñˆ«r÷²,kÙp5à–dËQÍ`.è _ÖV@xv[™–JUt—à=ß¹cl\!¤É]ªÃÉkÇ¶,ıç3tŸƒ¬G@Ã!CIDs¨µÁ²D?(–¤[-ùÙY—¼]l0µğv¥ı!’¨t3ÌbˆÎºmj™Up…“'Ê‰`di‘gƒo%<Œn«Ø0Ö×^Ú“ãÒ,bW†áÒm.Œ‚ŸŠb“a‡æa^è¤"Ã“ìîm£ÿÕÊD"N+½Á°Ä
+ÆèÓSä;oí•.ÆİÃ07¸S´Ó™a,|ëc8íS3_µZ¹ŒS‚YO¿ÓA‘À{  ßğû[±lãZë µmGÀ¥BqÀE&Û®ågq×BH’¶´´àÄç÷Røë•WÚæcälóÎg4=‡¨&dğ~PsŞtÆ¦=¸÷{1iòDœpÂ|<ºøQóGƒ’ÿøç?È™; Ş·À‘g:pÖY©P„Ÿ	qàRÍø¼vx„cµ¸’<uÉÓsÓË0‚õÏ‰“&ÁôÛ,	MYëM&Ğ“ˆÛt—ŞT’&ÎXÙíîlÃ®¶İh#w·«}ŸÛmS«ñ& ¦¶Ú@YY%®Û–«2,M­‘mÅìKêñ…+±ã0¦Ãt˜D6ËƒXcØ,„¶¿~(#P1’‡ãhL®T"ú–ÏÔB^¸¨÷›QB†d/)1ñ+b’@XªãÆ¦f<˜X7>vš(PS]%.ù¡aS…£ò¿‚…ŠŸÙW¨Ù™>{Zjj/¨D¹rµiÌ’à±ò$@—ZeèĞ¡&,^ú¨h¬9[wn³é[wïÂ¶];x¿›·ğyÏnlÚ²í]]6rë¶mØ²m+¡ †Š;vbO{»é…$2ˆóVi:b%¢Ê©ÊU1UÆDC!™	JRó±Zf~˜^.¹ÓUØ±r3Î˜›EĞ½š\9À$¹€xEÄn€rI'lgz5#“ßL7½ü.†\6F/O"KNe'İ¥ø]¹d …$+[ºIú_L±âÇYé3¬î™%´İä(È”²]ô;o/Hše ƒ%·$Ÿ`½LÃ!³ŸÎ°$Óü¾‹\	9X^s)MñŠ1>4I1»ég’vt“"—«âaÆ¹îL7¥Å.dùM>IF!åC&¡ûŠ	ıòPÌî@)VÍøS¥¿ş.gŠ%ãK<©SÆ·tÜÂÍ3íÊ‹¢¸°%Ñtı£}šÏñzÆßÏ|ÙœbŠ&ãPTxé$™ Âf\qm“=‹R€€FÓiÅ½¬Š9Lû§
+^™Ï;©rDİOmÄ26³„?©hıÊ^D<…8e ,Ã¶£1 ?‚Ù,ë¢NÕ™0ş;.í™§WRørÛ6Àn¹†CäVsÒõıĞ!ƒ18)uëîİhßÓÆ†FÄbI„ÃÕè%°qãfø,Œ¯ÅÁñCÿĞ%É²Cs«M­\fZ_˜§CëµìÉÑwkJ‹¦Èh.£“ÖÑnu[W':zºĞA®»ƒ÷zîŒu#–Œ#•M£ª®£ÇAuC­qål@šOÿœC¢B™óf¦iºleï$«/o{>(fûôS‡éePÀdå¦ÀO`òº´p„b<Á;¼EÍQDs›ÆUwÃå©|MğºÇÀ[ÉÒŒ’GƒÛCX8u(²t×W ‡öa¸]«àG !xà¡ßÁÁÍÏòöèéÆã
+¡è#ïg…§YÏzáì¦?(X_”Ş|ô‡ÜRĞÅ
+0…:ú)åk#d©T|øJdª†“ë)Áãg<‚{h/&¡	ÜÆ"àøÃT¹})Æ§‰6Œ«@ƒ¿µ5rJÃOPÔ¦Ÿ¾ŠÑ(†®ş¹/?˜·%K;)WEøÁŒO=ŠŞŸyĞAY¼y¶›<İå=õ45Î•œY2™³:Jñ*NĞÍ¼s±s:L‡Œ„} XFÍj“fAW;X††øVnt+wÄi#ô÷¶”ÖæCI<4ëzŞ{\^>k\Ğckc6oÚD ÛÈÜê0ãuk×£½­Á€&H½Xa˜ËäDËè9öŠƒâ.;ÎësÆ„æfh)cÒ„®–h}SX‚¸FX5]Æãf³aeôz´æ_û D1¬ß§d  ÿôIDAT¶D(A„Ï!CšcÖäé8aÎq˜3eZ¢ğ’ë±'Ğ/å¹&ß,ïh§…CÊH5¥ŸHïılX>%œou<Ña:4”.;$#áòio·2®.d¼[nª’ƒõnC,¿‰+A6—!¤D•Ç]7m ÇI°—„æMÃãs!U Ê¢ñšÉaÖ"U$gÎM‘Ê§/%	¨dgó­ˆ{Èª¤Ùi¤¤İaŠ¢ô‹Ã“Hç^rÛaä
+Æ%ÀöTC3˜õqvÈ±C)uÀ“	ÁÅxù‹ŒO¾bê:øÙ¼¹‚ş\`øÙR'¿İfŠ²lh>Ä{¦=Hû×“!+2îÍÈ•v ëŞÄ¼èFOœ ^¬G _ƒ¬§€9ít&@®<ÂøÕ‘“gç—Ä:I /³íÈ»(•0O]¹(¹séîCäH•È²SÉjÖÒÈº:PfÇÈv¦†-½¼±sÚ#å02rXQáÆ^Ò“€²Ï˜
+D¶â¹Å´:öúÒùGxRı(h<ÏYlhvˆeÂ+m5"ğö¹½èéê¶ÓÇ–>öÚvï±I›6nÀ®]­¶–Eî40Zñ÷ÅÖƒTHƒ¶FJæYm9lÙ°&xW”êŠ°Æä'ŠYF˜Õ×ÍVï¢ñºuŒÅq.ºg£óä=8bÄ9n
+F7Ã‘£&aâ±¨*ù¡ÿ~­œbïeƒTêÅòŒƒFàªÅaÀY™í¼@å-ßùè¿ú9õ”fÓ!¡¹Î"Á²Pªf%­e¹×Ğ„å‘Êm"Û‚šÁÉo'çZ…¨;‚_şr²ñZ¸SRiì¤»\ş¨j‚lª…Ôø\½ğE¢‡Á]ÕR´ŠÄ$s,ÿ;óê4;ü6béTG5€é§ÿÕŞíO|MN=ŒPMîÚ1ì@†¢Ç·™P„¢h7ÜÕ¨m˜w]3P3–½FzQWó`DšÇÀW+n—’ Nr©›€Rãpxé®®H/z}íˆğ»`Õ0ºW4ÆN…¢mÍE'#Z=™¢39°|½È_š¨f[õ0#áÎlGmh;ÓÉ&µŠ÷ZñP„ÂäşµqÒJ]È³MDJsPåeçcÛÉ‡h(Í4M®Ü0…âÆ=	j»Ãtˆh/ø	øht©PÙjï;sR?àÔ½Ô0bj¨ÎÑg¬N–%™it˜ƒôìÙµÛv#úı¨¯®A<ÆºÙ”CÓ~Íÿio˜Æ¬ÚãZÿ…€fi= ”Æ¹Ê‰Ş	ÀËŠxcõ«|/Ò·Î
+"ç*‘€ŸĞwºâ³ô5MÍÍ…ıØÕJQœ@sK³Mzwübø­zº²o¶ßŠ®ıé¹Oe*Çá0Òì›œ£Ë¥©lÌ÷bâ:ºFbò¸]¿¿¿X³PBÈ¹·ãˆ9^üàWİ(ùzÒyüéêŒªCÂ±ms=<Arœ®n¼õÍ­øÊ'Ö›ëñğ##1²ñILÙ†7±¿ûm+LCnA&>
+Kî‰¿\X€ßÓˆå­ãÑ2äIl~rÚS>ûî'pó5y¸£S0÷øØµz"Şıîõ]…A#6bHprÅãpîÇÛ08ºõñÓ®»Y_ï:ûIŒ¶-U[1©jòİS÷Õbê¸ÕŒÓÓh®Ş»oŒãÙ>«}£[–cpğq¬y¢9-şr{+¸ÈE¸nfL\Ìº}4ªÁûŞö‚îcĞº{ù,†ÔlÀ—ş+Æ¸úQğñ¾÷mÂ1GÜKFg0]Ü[†y´6Ç^À©äº7:\¹_zn¾Zn»ô3+›ò;İëN(èà”°N\¸£>
+„¥÷vö'ˆÓA(ÀÎ:¤Sİ¨©ª&cR…ºJò+ÏÎ_şˆ!¦û—Jôa/)Yû«2ÂgÆ¾ï½]™âÙ9)µ«ŞU4H%/¹~»­u~|	î¼ÿ<øØblok|^“Íğ;[zofo&Ê3ëHN–Ú…Q¡²ía:äÉG(5	(ÒOk‚Í1ÏVuà‚ï¯Ã—~=W-9¿¹<´wŠá*üõ–<|õ¬LÑqÈ ş¤ˆ¿=u,n\ú9¼ûìNd=C‘	—°d°âÑä]>~Zêqë'áªëŞëH¨–B7²¡=p…#äŸL,àwwlÄÂ·ûîŠ!	a‹7JQt$¶¶ûğäSadÒ»qş/âÖ‡ÎÁ­÷œS_æÜrm/î{è]¸í¡·Â×Eî¨DÇŸüà¸õ_oÀ£ËNÆŒ)SáNÂÅÜƒâxÜ÷äÉøÊEG1ìj|õ«IÜµø‹¸ùÑEøğ§&°>‘­	áï C÷'YƒÎ|=ªèÒ9†hëD „?_·ÿ¹ÿxäSXJ†|O[ùpë;pììqHô6!]ğPØôÙ"­|‰‰—„iTóæ¢$¢©†‡éĞ‘0Å £jkte|.–8dó³ùÂ¸m^à2Â 1§v
+hŠµ6²Ò¶#ºŠ¯"“ª¹àZn/ “Æ¡Ó½îC ·%ú şX·/	–ûÈ*Š¬ŒìÊ÷ı©â¡€Õ¸óÊûræ”è«iB¤rá¯HÎzõÚµxä±%XöÌÓxì©'°nËfäñâºS—¿º–Í dñqnŸóĞì‡éeSV){²,Sé`YvdÁµ¢°ˆQXvpî[cÛøw|ô›!,¾—•/X…Oû0å-Èävù»qç'anÓ.Œü[£ÃNT!àŠâ¼1Àš™äÒÛG`Ø¨[àÓ‰aî{à™tJ9 ,u¸ßw>¡^D»XÁ›½Xÿ§­øïÏ=‰_<œÁğŞ8’¡8ªÜíøÍ'»ğošÄ»1¶aŠ#ş„‚ç› ïƒ„[ÖC÷ğ®ÇĞN>ğ›™Üèàµ¨.Ş‹®Ì]Ø£#Ïâ«ğ«K€/¾ã‚w¡0x5º"½š ƒÄQ,e§²¤bã[{‡ÃÏ;7_Á ]­ˆ«úå6ñ:‘Â`»vã«ÿyÎûØ =äFüòçUXqÛN(Ù| Ò#>;ë–yà«í4ı~H“•+óÖ+¤{Í§ôs˜	+„[Ï'½Ù‹?éØ;Æ!Ùi‡A›ÌÁ­Sñ‘ƒÖ|ò€Ïg*­Zj¹»¸6ĞJ¢)Ø:ØX³R48jÜ¼V1îúÇÕ‰Ğsè9 ~ ê‡—–Š_àz!şi„Tà­ùjö:>M‡%r¤h´"C»T!köi¸Ã	¥/ŞĞÚ1eKsQ¶¬¸·A‡ÃôŠR®Pš@zªŠ˜<¥€8AqMë‘˜9c=jz4æ®ã0uìİ,"÷íÊ
+»xy“Ïqcá^ìÙù,¢™5¸âçspî‡‰µ‰0+=+#A<ZjAÄUo‘`%ˆÅÈ©z‹>.ƒŞÎõ6ëCõ½¾f2Z²ƒg¬‡×_‡‡ï™‰ãÓ^‰{wĞïùè<ÌŸÓƒ…GRš6z|H±"ıëîá8nn‹V-ÛÄÊ:ƒ´Ğ4ßMÿÔö¼½ä—ãñŞ·ó¦öàŠ_e,Õ¡+>'Á›{¤—ÉÑ¨¢4€l¢¡¼¬ãL.şå|õÓÛ€Hª†O=\wgSßÌ™2W_÷(ƒ“ô™CŞ‡ËÓ¡l>L¯00—ïû¨Œ]Ú{»÷ÎÔ$$i´Š\F>9ç]Ju¢9P´!ó @÷-ÎÜÔtN£·mAèîÓéã$µhq_²Ğ„­¼˜&¢üÜŸ'›…R1¢çÜó»şÏÒ³˜İèŞ¼ç?È¾qT- O³RkÁî¸Éaéê	øeCq€^î ·mÅ¹³w*÷ÿFÆ£—ïd*	4«Ãô
+R¤¸éhkò£ĞêŸ~Ç‡	3pÙƒèÙ†k.ºùË.ñ0œ¹p:‚÷“ĞÖ±½yœÿsà·‘\ÇO/e‡‘3ÇgoÇ.ÈğïÒ4íhU-¬à~´:±´g;ªªŸ³5Âg¶÷ †`ÿ†ş7-©Ç\ù6œxújìÜ9­mÄÛƒ';?úî*´e§ «£[TG¼YrEnœuJ;:;Eûî	XpêXhÓÁÃ€s´SMNè»q$í·lğã¿/äs>+¯÷£&³—~ìûØÃÕ9ŞA]LÏÈò»m«¯jÀÅ—_¸€Òï(üîR?æ¼³	?ıpåÃÀşóøçm¨ÖÚxCÊ]K©£ÎÉèÃôŠ’A…ş™qnÆ"Í	ekÓ
+‹X!¶qğS:pˆã…3¥ĞáÈ5©¥óšyâ!C)ğ¶}£Ê€¯ÁMí%İí¼­eÉ¤3åõ.üñ©€µ0PqPMM#°/8á	ôä§Í€qlöOçòÕ İL9}Ízg6ü×Ùê™	}WNkİ—&T\¸6ƒÑrQË*ó¯Íöğ<ªX™{pÂ<L¯ùc9\ğàØIkñÏÂÓVÂˆÉqë_/Ãßşvşyóxìˆuâ‰ÇvÃß´3_‚EG/Æ{?H`nËáÑ;	^šŒ«®Ÿ‰›ÿ
+\|Ñû0or5®ºìF,&¨…»'"{#şóİ;pêœeøÊ{¯%Â%?+àW?ğáê«gà‡?«Åß~_DÓn`t8‡é{¬ãğ‘lÃ±ÓÇÜiWâ¦»Ÿ6°Îy3ˆuïB*^‡m:[Î;šõe*>uî³8zöJ?3‰»şµõ.ƒ^8'Í¸§µßçûÖ«Oh.şI‘híÚ <Wşöz\ñ›wãª;BøÏoŠ‡îÛ„“ßÂôI?Ç1#WcÄ¦å&|€é~ãŒ5X0e1n¿º³çÅÓ½|$®¾y*%
+Æ§»‰ŞOÑ£¼Tÿ0½âäHëÃÿÄ&Sc°¼+€LGv1ĞÖLYÑèS©@¬úFîµ[ª¸mqÖkÛ7Š /ÚšbJW1¨ÚÏD ®u4ê0t-Ã&Ãˆ;÷2`gàèeªèà=µµ(vúÆ¾+ßè¥€V±Öì!h$èÚTß€£F`Å³«O&E¼<•³òOGî›ÈÁDŠÔûXìäˆ—–ÆzÜ„-;v`Çv&Ds{õÓƒˆK&QÎñO3‘ÍŠ=GˆnÃäâµ{›¾i8¼óö¡Ù²jÎ<¡€êğNe¶å½¯Ã¸)˜zD³Hã[ßö »”FËàNÌœJ7ä´'5ƒıOãÃÿ5—Ü³îjüñÚ´·­Ç13"8rÔNVúvŒ9¢ˆÆÉaü‘,š›ÀÛß
+Ì?¾C¦®%X&pädàÄ…ä²O\è˜4›B¥§ƒÆzP]Èaş<àMoFI¢f0rD'üU%Iÿæ[Â›Î¦LíDZÌÁÑ[àˆi=4j7«ş`'&ÏÈbîÜ^¼…şLŞ…Ú†Ì˜æÅcŠXxpÌ‰ÔGJXpZq÷Xxë:1¼Ù…ææ$fÏH ÑÓš±Í»ÆÛß_‹z~?ó¸<.úQJ±8N\453»ˆïÿd³pfŒõcüÈtw·ĞG¢6¸^-œ*…ÙĞÙÃ°ÿåŸYL8úmŒg–Uİk"¸òÿ0)Ëd„aRmTVb&Ù‚-{v˜‰OÄ­júÅÍ@6À-;&URáğLkYü¤I“°ËNÔYÏwÎÆ}Æ…³½8a³Üdh§-hµ`QÀİËº'lÚ£æ›6aÃæÄ>âg9,çË½BDâÂµoŠæ+Î^Ÿ×î]G:ûWî8^8jÍ"QBµ5,»„½”²9L;'œ8W_w­Ä”§â´M¢+ù‰ ¯•İ¼ØĞš]˜2~Ÿ=>±?½
+mèâ&GBñÕÃœ/µ'
+]\È+c˜¢¢2¾èFC¤
+Í5U3ó]ÌÀñŸy§ñÃô²HÛv>ğÏğ›ÿÎbhãã,Kr!,6o1AÎb<ëÁvC,£|
+_>WñŞ4ªıIä¢ğ%H³øĞ··bpï üÏ7sD»PEî7—ÓjÌ$Š 
+Ù.Dª©ëS
+®|İvÔú§Ù(ø›àééD¶&:l¼³DSM=òZ È:äIö¢»±‹œz5<ùF„]]¬°šOC¾7†tU-ÛD‘íÜ£‘->ÃïÆÀìec}Î¥‘óí©aıÍÃŞÍ†QÃÖêF2¥¹Şøò;Ğ•Í²úuˆÔv Ñƒ+×ŒR#+j¾9^"ÁñÈe)}d{ÙaEº”ä7Eä#ôîÜ_m 5ùQ(ôÒï`/ÓêF¡;‚l©.ÿVv6Aœvvoü¯+X÷clAæ»“ÿ‡éàHx&³ïfV­WŞû^ŠbÖÙşU×F}(²Ri­‹pÌ Yˆl€,Ì*™JOLl,Ãô#§ãÌÓOÇÓÏ<ƒ;î¸ƒîı·l.8ÃÓşá>?ë‘ĞC?Ä=k÷À,+‹ÀxØˆ‘xÛÛß;ïº÷ÜªªCæ¿Œøl»2şº—Ñ7İ=½¶õv(¶mHÒ¼¼‚ø•{á­ ¶²¡¸•Æg²yÊˆÙO3‚7”hõ_¶ˆi±Ôın²ƒpåixõZìœAN©RtLÂ•µz"å›H‡~Ï'é®œåª‡1ÿÈ[ÍÂXÃ@œs ôæ‘ŞDÉßH@lB²-ƒœ¯
+)ÿüùÛ-øÙë©ÕNol9¸	r±B‘ì(w‰ãavØ~ä£L²]Ú:µ›şìF<Gª+€Ö=.”òc‰u¡‹ é&GT#ãB¢”BÖµ¹îjúO/µ†Ô_Ï¸ªùKyd
+tïÊ!]Ì §˜BëgœïREŸM‘Ô2ıTo ‰4¹ôDØ¶M»;Ñ
+¢Îµ	 üäŒûªšŒP0…H¼†õ¹U…±H&cÈtsìÛøê<ãBWo
+uì$Òr½mdDZ‘*í`§Óƒ1Æ”x=­ŒZ‹“Ï‡é&ŒaŒsÛGÂ™rO)<©`›ğÇTe.ZLn*™D<‘ÀğaÃ)ÅÍÅQ³gcÖ¬Y˜uÔlÌ.ßÏ”™9Ó§OÇô3ìùÈ™Ó1çØ98fî±˜4eŠmú§½¡´» B¶Ğ-\»)[ô]¤½²Â>¤´Éèğá<ÅV¥M›Š;=„ İI¤‰*²g©péZf¯«ûäÇä°ò(²·(j£sŠÈåYaµ"{&ú“)ğ==²„FúGñ/uŠE‡/*1"É’ÆLğ˜ûCA•ö5ÚãX¢˜îµ¿V¡V6Ì§Í@nÿ+aô¿È­ŒÇ:É,sO›ÆûMZ9däÍÃ_êd™ ĞéX· Ù˜"Ë([Ğ–—7‘AÄM€äQªK³“8ğ††Ù=ğ§ LtìFm7ë@¢q;>¿+€p¶
+	¹‰@		_I–cF[~d]ÈEÚ@
+	Ö1—ŞHAoÕ…"­6g:LĞMF"HÔt0B¨ÊTÁ—#‰1ƒX·òA¸•ó‰ñJxµ÷¹mw=ÜrÈäÈÂŒå:æ]~Jt9úéKWYd\=³Ô!ô0!dÂ9dCn$hŸÊ¶"I?Şn–‡‹@ß/óÅONºX¨GÑß,¹ş|0‹hÎ‡´7‚h1ÈïÙ‚.æ]Ò0ë÷n¤|%dÙ)æ½IrWQÆìÈ4yRğiÍ£Y-GûÖ—2nu_£z®ƒTçUÅ^ª›¼hÜdÆ2Î{ı¤XèS.h(ò3¿½Ä/Rä^s,êêÄA{}Wâ¤8¾Ú÷3ñÆ(
+ÓìçPÅ0O[_v4ı¯··›·l1†vÂ„ñ˜8q"Æq4cÇÃØ±c1zÌhŒ9’œö>ƒ‡áu¸=×56 ›Ïá™U+±£u—íí-ª„n‡ò»|oû!OCİşuà‚wqŞê}¤R"•*Hís;œZ»v­¤J]"]¹Ä%Òz.ÊâÎÅ…›aÃñÑN;jÚÍ°áC0xä <»av·³x™Œ²â¨ ƒf¶¦2ÏÏxÑ_,Q¥(á#02¬º£&ÉåË"…iáYF0*å¼PEÑñ–—¼—½*“›Ü?Ï0ıBÅèã²—Ï3ò³²ù}å~şË+94ßJR]1oäÉ! x~v¬Y‹SDQ}ÂÔhD$§1Ãæ•3Ñª6üí*`êqï'3”`çì3 wk>øAP¥¿Xcõi bÙ[ñóŸê£î+f_?dJjıUßõ³Úoi_ä?W)ÿ<¼ê¾@;½“Ñ÷j#3ÉZÆÚ)ïútà+6cAS¢¾b¥“Ã"A-²ÑÃ#Ó(uoE¡$U¥FÑ™:Ì¦§»íhİµ­­­ØµS×]|¦iİiúñ];wbçÎíØ±c¶mßfYµîŞƒ7bëöØ²u+:ºº…Ùñk3‹†‘®–>ç‘÷dÈ?O>aÔ^¸L…eŒk‰rĞî[J°ŸnÄñ5
+GÏ9Ú ¼»»Û*5²ª^ÉN‹È‘k/g€mîBà–ÿºjzV&5h†«Ş‹[ïº›¶ìD$\ƒ¹!í“ïgìİ:í‡%­MuKóÀæEcU†5Ö!âg¸Œ×¨¿Õ‰øË õêÊ4–
+^+H•%v` ïie\IÅ_Sj¤²ÂmÒ&F‘òH¤0t’Nå^ÜÎ@äjÌT3"%¨q+ö—ƒ£,ËêÑkşˆ_k,Æ¹‰Õá4JN‡é%#ø¦·mÂiç^T¡’m_ÂAx¹½XR]ˆTßÕfUßåÆ0‚~÷Ç‰ş”ßOÀšt`ŒYßJS2aû‰£Â”¾Zí@a
+èµß˜ì,|¹QÔF·¨âv_ø¿İ»Ÿz¥¥/úÑT+ Í“QÍ0zÉõkÊ6…y"1¨(1MØhª Z,®`P¤´';şÑ¨#à•ÎÅôñÆMÌ# ™úÅOĞÖÅybˆÎVÈÄ{äˆAHí§ÿL¯Â;»ç÷ÒÄ¥÷KÎx¸Æïà•ğ* &µI–iª‹æ j%š¸éúêj9y*êjëĞëí;!Bƒä(B+±6Ò œ=[ĞÄ)Z’»XÕ±O®\ÉN …P°ŠjûN¯¡¤ä¸YÒ–bZKõø­öIö¹}àCëkm³Hÿ€K4«TV¥_ ­g-%¯T”
+Øš½:¢ıN	‘–H~>×ç~_R¼$Ù¨r‰s§¢²;$Ä
+üàµ7"¹ı6³i+OUD…y˜^YJ°LæBøÀ×/F®'0T!çÍ±l®p¶¨öW¶fİ¯>ŠT?U¢ıùc*>µ	m+Öí{ÿ‘$hñÂ©´³’n­~VÏ£ıxÛßÄ]K— $•q#¡±.LÀÎ[Ê.<€ÛQjNÀnW‘A7nÚÔ×£¥©	¾€.†&V8–3ÔÀFÂ˜X^e§™':FR³Q´ãäNqì­»Mc¡S|”'J’6¿“úZ	Õ¤:€îŞ^$À#„ƒ6 ù ï_8ğ’ÚF ×ö±!‚§€EzíAMğë	Â‘<À©¹ºg,6>‚·2Kºr²g„4S2îJasv7ºÙ#‰“ô¸ÌX7"ŞÜt§Pœzöt‘ş©p•Q.šªk1¨¶aÁ•ÌèŸåDüe¦Œ.Œ»…K¥Sğ5Ë¡ß‡,{é»î¼o<ıèÊv›z)Úy¡Êt;J©Ë3¯*ºyu€ápAæ§$MGÉÂñ²7mkoCë–í?u²“×ÌS_uñXÜJµ2. ÊSÂ•)¡š~ö$;‘då2]Ù! ´3ÿ£yı3J¹GûV—(õìGx‘i…$Iş_£XpHt§²Ò…wÂpëh¶ÀfV”†²‹Gy‚…D}›tÀ4©>©|LJ{1XZH¢:åb[Ó:Õ!Õ3]íÀ¶ı¤öëç³O¨*ÿ„¼¨yÏ:BQu^ßçÙ©[½V§ßâ\³”àşjbƒkÎÓoëÛÛR0t íHmÏå"X&3ğG™~¶9Ã¡ µµİÿyC$u¬^™öÇ¸ìÀÛ¯zÿzôab³ù”‹¬«‰8 Îük\MíR{•ˆıv¦¥&MÈ>Äö:{Ö,ÓwHš¼‹æŠ^Ğ©ñ¶å´2CÖ~•ŸôG`ŞÓÕ…{î¹]¼ê¤kçŠ$W×U¸É2è"€§şÌã@8D0OÃ5q”ÎÄTbU‘x§’õ†üyU¨;äœu¶`š	(²	Kx4ZÅ+ÁŠÀ­[ÅdÀJ°€Q\¸+ÇÂenñm	yM×Š0S4ùİB¦i‚Ø:u´tTy–DÖÔ*h¤¹¦ƒkj*O#}î[œˆ¿²´2®ß4ÏÜÏôIvÛãÔãO´‚Iä³Ø°n&T)‰jJ"~{Wgšš›ëÕ.~^,^²GÏ™c½«Àı™+p×]w`ÌØ1xó›ŞŒ;­šÚZÔğû»wY'èË‘`m¨¥}­/„=İ6ø!ĞÖ©Öv’Ñª*´¶µá²__ŠµO-Ã[ß]p’5¬CA!ŠY­œõ°fÍ`é1ÿÙ€K¯ÿƒúƒv0%É–J–†lÈî<ÛX‘/©äífd´ÎÿÅS˜eç4d¾÷İïâÛßù2âÖÄl›½±¢¬KÎÜb©4›Ë‹D2'xÇw<‚)‰úËY]Ûwàíg¼	nT{ojÙÖôIº—ŞI hj‚ÎÎNÃ½¯®®B,·4şğ¿ÀçÎ;‡ ¯Õ‡|G	Z$ğºöÚkpî‹6ÖëhU|aìènÇ—>ş)\ôÛßàº;nAæÉo8±\Eé¬Ëmõ`¼íê‡ñ¯G4¼3 PGFé¹ ®eØ©Ñ(‚ä¦s:-Š?©“'MœˆSO9Å¸iéº¥`×ó6ªvH#?2lG:X*ù-M…Àßïó3;z®¾ê*¬Y»†ù¢s\ù©"9€“ºXnpnï#€§àÁµP 0pÔÏÆteaõÒ2D/…Ã(°ÇVQOî{HS” T…Æ¦:Šuò.Š†úÔñ¹¶®µÚº†\½ã÷Íµ¨"“ÏeD5HÉz*ñJ‰Pf³tlfŠÇ™^Ô‚ö`E´Ù¾tWUÌ› Ï‚¨›}„Òø²¨¢T‡óô“Oâ¯—]do‚Ü?ğÔ£K°ôñ¥˜2m*®úÛß°üñ'0ÿø¹øáw¿Ï®Å´ÉSğ‹‹~†®¶vÔEkğ«ï]ˆÉS¦â²ßı±®mnÁÂSO²Á*‚pCCî¿ï>üêW¿Â¢E‹ğôSËqıUÿÀüE±rÅJ\vñ%8ã”Óğ?_ıvlŞJØ‡;n¹ûó_pÜ¼y8râT¬Yı,>üÑ -©¦ø¼’õår*¤‡•Ø›&a½$W÷:6Eté4Û×@:€›Cm©l}ÑšdoQ‡4keDj‚JIsÙ%}¾xº÷¦ÛpËõ7büè±xø¾ûñÄâ%¬“UXµüi\ÿÏkpæ©§ã²Kş€õ«×ØÖ§7mÂ_ş|¸ wıëN±‹~òÌ=æX<³r%jjqßíwâáGÆÄ)“qõŸş‚Å>„93fá‚o|cGB¥Â.ø6Zš›1¸e¹î~{ño±ê™•8~ş<lÛÒJàÑB¨zø)aÿö¢_âÎ[oÇ	s³ë£<„Ù3fâÒß^{®¿„-ÏnÀ8¦aë¶ˆuîÁÔéÓwO¦Mä ÕÀTy'¦ì9ƒ˜«¶aÃö­´q&YhÃä–%A˜Ô@À6ÉYàI£ÉyÍš£?&ÉÓÍ>Yúøãxàû±}ûNlÚ¼k×¯ÃÚëlRfı†õèîéF„€+æ`wk«qßê,5À9üz2ƒR£ˆc9éábÁ¶®å{GgNì•ä$Æ–ŒgpMÃøí|*àç-2[~)x×o[ÄÄI%ĞÔØˆY3¦cÚÔñ4x0†A3Í--<x(†ò~ğàAÆAá{ÅßLU'1âı¡´£;óîd"SÙ”Ã¹3~—W	#!^H#Ó
+[ñPÏ	†À}´Ç;€ë[±Ò¡‰ïšê8ÄAŠ(,–èå&_”¸Hi X‡¯½ƒÕcÊÔ#°lùZ|äÃÿE.xF²rŞwËõ8uŞ™p½3zÇDfh7†Ë7`îø¡Ø¶u–u{1hóÌŸ7MSÇ™h†R"‰nì	Õãñ?ßÿ8ÿ“Ø¼t{ğq1a*Æd\5r<¹ôz:»ñ¦3ß„-›·wÿ©Oş~ø&D«›ğô³[0ı„™3ë‘’C §Pb‡¦Ab‰Ê<¹(†³>*/ƒ¨f…É3U%O¶¥_)	ˆ{P%6c??¹‘ÑO;Ûä]äx-•íöıåø^Sû\änˆ˜ÈÊ=M‘ IùƒÌ˜ßÄÇ´iÅŞp*&­a^+áÈù¥ŸŞ).†#ûŠÛ~iæ…Ì½”~´?…7ãA‚uQª9ÃîÕwnıÒ@×Aü*ñÑWŠ³~•kåg•”©¨úÎø:0afğ¶Æ¬öÁ2.‘‹²®ÃAR9t3<¢î¹ò¼çÃõ7\‰D¯ŸşÄ×pÍuÄæ5sÔÉó¸æê[ñş÷|]=ëpçÍâ«_ø6‡°}}Ó&‰w¼í-¸çÎï%GZ¨ÁYg=n´í\ƒw¿çJ”«ÑİºùøçpÉï/Å±Ó'á¸…gâ/—ü§Ÿ±1¿S'ÍÂİ7Ş‹ù³Æ°è`l\ù4%Ğ±èŒç˜Ïq¼óıŸÅªa‡Õ³>úi<z9íº0Şyö°ô±Øİ»ƒFğ)QtÅ·`Ğ´#«ŠÀ—"p1ojÂu°^ë$xÕw««Ê7æ“ğZmúù ¾İp:ªDàæ—òYxhp‰n5%¡Ä´Ñ£Fá™gV`ÃúÌMüÊ›~:M®8¥ùİ:F2•FCc1d*É°iöŠ¸ñqãÆb÷®V>Œ@¿»vì2PV„çJ"ª]íf/€{Ë ®ú(,tî‡4³D¢ƒÚ”› äÑYúØPßHÀ™ˆDšâ}"‰Nr–í]İ¼ÆLWÓŞÙ…=íè  uvõ¢'°{èĞÖÑE»F„b4 }OEW0°ÄXì•
+ç¢ŒWéÔI°ãHÿHÒ±I_õ¡w¼_~û‡ñ¥³>„/½íœwÖqŞ[>€Ÿ}é›¶ÙŒS	ğ.|ğœspõ?ÿaÇ‰é4 /Å-éO;óL´ŒÖ¶=llnø#~¸(‘4³£Jd’ği<€ó<xÓ;ŞË®¼Q4•8¹z59vdZ©åP[]0óUñƒgŸ%=ˆ?^ü;{"5ÕåÀØÁœ§L?6P5lôjÅXMÑH±t¤'Šóßu¾úÖsğå³ÎÁi>ó÷á‹´ûò»?‚Ï1í÷^{3ªL9Tdeà:û~Aªaê°)‡¹¥ûÔÌCòI³J]´®Ö eø‰T`ºªrËÈ~”xŒ„ğğ½ õ‰Õ8ïmïÃWßñ<~ïƒXıÔÓ’i¦±‹ƒ%ÅI¹ñRsä…hãÒgğÙw}_yÛ{ñÓ¾‡Ú¢QbRL…XÇüìâÈ²şç]y7.¶lß†hmëRÀòYÌyXW5–ÔëB[W»÷¸	Z¡¡òĞŠì=´ÏĞ1S.¶‰0ë§Ú…rlµ”È½lË.~Ü¿Mf1oo¹ã6üó†ëpÓí·bw{;»ªb9?ã¦İIã&/ë·ê¸8ì%øl‘½^¾bê›µÂ7ª‚ápÿ·âkïÿOü×[Ş‰¿ıíïÆEË¼ê_ª¨FÂ©qERiĞ†—Éfö°íJÕ˜£•â¯<³öJ\Pš4Ø©1²$ØşÓéª)k¶KoOÃ—ı?XR½ò´ÔÖÛ<ğ
+=/AJ {¬"/®N#¸š¤>fìhÜvÛMvªòæ­Û±=ÉVík²³ÕN©—h!Ànïì4·›Íd|:	ön6¦–ÁX·iƒrì.‚À»/"l¡¶¥¦ıh‰«:Óh0Œ*rá~é[hT¡0]ÖC‘”ùš	óô²'ñí]ˆo8§¿åL,zÃi8õÍg`ö1sàŠÀÕø)Î¶µíÆ­·Ş€á#†"Rß€Q›v¶n³Ù6.yK_†YÇ…$¹5·'„†–jüá²Ë1cöQÌ«êš¡•’¢Uã¨Á˜|Ü\I15è¯Æä	£§È9¢¶?¼øG8ûïÆ³ëÅµ7]‡·½ëíÊ0ıÛ_“£™í­;Ml•”òØKqõµ×à#y2¬1»Û:0eÆDä²`çã6åìãæâoy#N9ót3§¿ñÍXt¦Òx&æÎ]€Û·c,ÃÏˆ[;Ô¿ESG£…;•J>Y™ğu|E~w‰e${†öeÑÌ¥H~ôwùYF÷"v¥ì*/ö!oÁ…®»ï9óm8ïŸ1O	ixûoÀÖí›‘Î±Öù‹Øö;mt`R>hÛP¹˜ £ıÄã`IŒNlw'V?ñ¾òãqüœcª^;ÆG©ö_wß‰3ßz:Áz–=µïxïYdÆü¸ë¾»0oÁÑØHÉğˆÉ	Ú9Œ?b*.ıóå8ë]oašw£º®
+—üñ·øÀ‡ß‡í;ÛÂUxà‘{t‚"FB¤kÖ­Á)§.Âß¿ïÿĞØ.|¸ğ‡?Å9|Ÿ\>fÒ$¤ãi´’¹>û¹/ –é2©dÄøñXûìJ\~å?pÎ‡Ş§V-Ã<„÷’Y¿y#şvõ58ç£ÅšÍ«	ò>şL
+CG#Xº0ãˆ‰8æÄpÒ¢3ğğ²Å˜}ÔlãL-oËù»?<¹rÖ›
+ÅÉCiúsà²^áÀUÕ9ˆ”[gZŠû5z6®_OŒÛÆNª‹ßĞS1¼v‹i€ÖÜ®N´·µ# õiœL®´6lÀ2‚b–}ş·:Cr¢a¤Ù+9ÆC3µr]cr®#GÓş>æ¨ÂiëZşF2µh¤	6"K¯”/bú‘Ó0›\âå—ÿñXBÎL-Qd¹Üê˜ylĞj˜ÒÍ?î8L›:EIEg{V¯\e¢Àrñw<p¶îÙÉo4 Éæ£Àå!$ÑH³ ò´×@¨fÂh^hKMƒÍB		ômóÍN|û‘ÒU™oª^¿*ÁŸ:ÿó«™xSéù40ªO¦“L£fÙÈÙø|‚ºôP¼îíîEC]UŒ3ÒïØÌ˜ v&]¤xC8aàB”æŠìf|G$Èùòhs¥i€7fœ³h+yQEn¢T•G,™²ÁNupİİ]6 ¡ª˜q*”
+V#Ø¹VeÚµ}ªªZX.ÕèˆíF>ONÉŸµª êÔÌdîÉ=>rEÜ}Ïİxã»ßh³%Ì¸ªƒÖ,$òOå7Ï%‡+u®"«{vWpæ°ìŠZœÄûıÍµWú4f¡·òOÏ»
+éYïåßşhpMî¿æFüş¿8ŞÇNÇ÷´w"]]Â>÷uÌûIä–ÚÙQ;zÊKZ°–L¥¬A³ K®HBô`ÃÚøÃ×¿‡\÷¸3yd}.”¬Ö9Ÿ¬3¹|‚m/jÜ^Oo;ëlÕóD²Ë$·{ş\>‰h¤^Ú,Æµ‡u¬ÚÊ0Lî¼½sšFZıö5îÔÀzÓFI2‰*r•»vlÇP‚«çJùjª›)ıä˜q$¥(°C!s“Ì±]•ˆ	Ş4Ü72%Û0ÛP ©X’ÀÔ‰HmºÛ:ÑÔ¨¸0šÑRã!£’bZü±¾Æ™8{‘¶“2ê©ÅÅ¿û)>øÁÚô+×§J>Ğ æmK„¶öĞJïA¶©Z3è4i‚àH;µCİÛ<pæ£˜qv:a¾··œˆãˆg·ß~;¤d÷R’`ùª&
+Ÿ"ÌÛ ÛsîÇ‘ñ›7÷82½9¬¤4‘b[øûX~Ç<®ù

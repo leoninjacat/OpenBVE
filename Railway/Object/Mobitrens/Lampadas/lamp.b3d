@@ -1,0 +1,58 @@
+[MeshBuilder]
+cube 0.2,0.3,12
+Color 20,20,20
+translate 4,6.9,13
+
+[MeshBuilder]
+cube 0.3,0.1,2
+Color 255,255,255
+translate 4,6.5,5
+emissivecolor 255, 255, 255
+
+[MeshBuilder]
+cube 0.3,0.1,2
+Color 255,255,255
+translate 4,6.5,15
+emissivecolor 255, 255, 255
+
+[MeshBuilder]
+; Tapete como PLANO (4 vértices + 1 face), não cube
+Vertex -3, 0, -10,  0, 1, 0
+Vertex  2, 0, -10,  0, 1, 0
+Vertex  2, 0,  10,  0, 1, 0
+Vertex -3, 0,  10,  0, 1, 0
+Face2 0, 1, 2, 3
+
+Translate 5, 1.15, 5
+Color 180,180,180,175
+EmissiveColor 140,140,140
+
+
+[Texture]
+Load light_spill.png
+Coordinates 0, 0, 0
+Coordinates 1, 1, 0
+Coordinates 2, 1, 1
+Coordinates 3, 0, 1
+
+
+[MeshBuilder]
+; Tapete como PLANO (4 vértices + 1 face), não cube
+Vertex -3, 0, -10,  0, 1, 0
+Vertex  2, 0, -10,  0, 1, 0
+Vertex  2, 0,  10,  0, 1, 0
+Vertex -3, 0,  10,  0, 1, 0
+Face2 0, 1, 2, 3
+
+Translate 5, 1.15, 15
+Color 180,180,180,175
+EmissiveColor 140,140,140
+
+
+[Texture]
+Load light_spill.png
+Coordinates 0, 0, 0
+Coordinates 1, 1, 0
+Coordinates 2, 1, 1
+Coordinates 3, 0, 1
+

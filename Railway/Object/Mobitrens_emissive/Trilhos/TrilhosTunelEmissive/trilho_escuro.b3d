@@ -1,0 +1,87 @@
+[MeshBuilder]
+Vertex -1.35, -0.170, -0.5
+Vertex -1.35, -0.175, 25.5
+Vertex  1.35, -0.175, 25.5
+Vertex  1.35, -0.170, -0.5
+Face 0,1,2,3
+[Texture]
+Load schwellenE.png
+Coordinates 0, -0.02, 10
+Coordinates 1, -0.02, 0
+Coordinates 2,  1.02, 0
+Coordinates 3,  1.02, 10
+
+
+[MeshBuilder]
+Vertex -2.80, -0.400, -0.5
+Vertex -2.80, -0.400, 25.5
+Vertex -1.35, -0.175, 25.5
+Vertex -1.35, -0.175, -0.5
+Face 0,1,2,3
+[Texture]
+Load schotterE.bmp
+Coordinates 0, 0, 10
+Coordinates 1, 0, 0
+Coordinates 2, 1, 0
+Coordinates 3, 1, 10
+
+[MeshBuilder]
+Vertex 1.35, -0.175, 25.5
+Vertex 2.80, -0.400,  25.5
+Vertex 2.80, -0.400, -0.5
+Vertex 1.35, -0.175, -0.5
+Face 0,1,2,3
+[Texture]
+Load schotterE.bmp
+Coordinates 0, 0, 0
+Coordinates 1, 1, 0
+Coordinates 2, 1, 10
+Coordinates 3, 0, 10
+
+
+;;center ballast======
+[MeshBuilder]
+Vertex  1.360, -0.175,  25.5
+Vertex -1.360, -0.175,  25.5
+Vertex -1.360, -0.175, -0.5
+Vertex  1.360, -0.175, -0.5
+Face 3,2,1,0
+[Texture]
+Load schotterE.bmp
+Coordinates 0, 0, 0
+Coordinates 1, 1, 0
+Coordinates 2, 1, 10
+Coordinates 3, 0, 10
+
+;;====rails
+[MeshBuilder]
+Vertex -0.80, 0, -0.5
+Vertex -0.80, 0, 25.5
+Vertex -0.72, 0, 25.5
+Vertex -0.72, 0, -0.5
+Face 0,1,2,3
+Color 100,100,100
+
+[MeshBuilder]
+Vertex 0.72, 0, -0.5
+Vertex 0.72, 0, 25.5
+Vertex 0.80, 0, 25.5
+Vertex 0.80, 0, -0.5
+Face 0,1,2,3
+Color 100,100,100
+
+[meshbuilder]
+vertex 0.76, 0.00, 25.5
+vertex 0.76, 0.00, -0.5
+vertex 0.76, -0.17, -0.5
+vertex 0.76, -0.17, 25.5
+face2 0,1,2,3
+color 85,50,50
+
+[meshbuilder]
+vertex -0.76, 0.00, 25.5
+vertex -0.76, 0.00, -0.5
+vertex -0.76, -0.17, -0.5
+vertex -0.76, -0.17, 25.5
+face2 0,1,2,3
+color 85,50,50

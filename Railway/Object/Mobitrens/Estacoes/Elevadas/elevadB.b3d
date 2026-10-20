@@ -1,0 +1,157 @@
+[MeshBuilder]
+Vertex -7, 1.1, 0
+Vertex -7, 1.1, 25.1
+Vertex -7, 5.2, 25.1
+Vertex -7, 5.2, 0
+Face2 0, 1, 2, 3
+
+[Texture]
+Load AFO.bmp
+Coordinates 0, 1, 1
+Coordinates 1, 0, 1
+Coordinates 2, 0, 0
+Coordinates 3, 1, 0
+
+[MeshBuilder]
+Vertex -7, 6.7, 0
+Vertex -7, 6.7, 25.1
+Vertex -5.8, 7.7, 25.1
+Vertex -5.8, 7.7, 0
+Face2 0, 1, 2, 3
+
+[Texture]
+Load telhado.png
+Coordinates 0, 1, 1
+Coordinates 1, 0, 1
+Coordinates 2, 0, 0
+Coordinates 3, 1, 0
+
+[MeshBuilder]
+Vertex -7, 5.31, 0
+Vertex -7, 5.31, 25.1
+Vertex -6.8, 5.48, 25.1
+Vertex -6.8, 5.48, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+[MeshBuilder]
+Vertex -7, 5.61, 0
+Vertex -7, 5.61, 25.1
+Vertex -6.8, 5.78, 25.1
+Vertex -6.8, 5.78, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+[MeshBuilder]
+Vertex -7, 5.91, 0
+Vertex -7, 5.91, 25.1
+Vertex -6.8, 6.09, 25.1
+Vertex -6.8, 6.09, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+[MeshBuilder]
+Vertex -7, 6.21, 0
+Vertex -7, 6.21, 25.1
+Vertex -6.8, 6.39, 25.1
+Vertex -6.8, 6.39, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+[MeshBuilder]
+Vertex -7, 6.41, 0
+Vertex -7, 6.41, 25.1
+Vertex -6.8, 6.59, 25.1
+Vertex -6.8, 6.59, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+[MeshBuilder]
+Vertex -5.8, 7.7, 0
+Vertex -5.8, 7.7, 25.1
+Vertex -1, 7.7, 25.1
+Vertex -1, 7.7, 0
+Face2 0, 1, 2, 3
+
+[Texture]
+Load telhado.png
+Coordinates 0, 1, 1
+Coordinates 1, 0, 1
+Coordinates 2, 0, 0
+Coordinates 3, 1, 0
+
+;1º Pilar
+[MeshBuilder]
+Vertex -7, 6.6, 0
+Vertex -6.7, 6.6, 0
+Vertex -6.7, 1.1, 0
+Vertex -7, 1.1, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+;1º Pilar
+[MeshBuilder]
+Vertex -7, 6.6, 25.1
+Vertex -6.7, 6.6, 25.1
+Vertex -6.7, 1.1, 25.1
+Vertex -7, 1.1, 25.1
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+;2º Pilar
+[MeshBuilder]
+Vertex -7, 6.6, 0
+Vertex -6.7, 6.6, 0
+Vertex -6.7, 1.1, 0
+Vertex -7, 1.1, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+;2º Pilar
+[MeshBuilder]
+Vertex -5.7, 7.7, 0
+Vertex -5.2, 7.7, 0
+Vertex -6.7, 6.6, 0
+Vertex -7, 6.6, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+;2º Pilar
+[MeshBuilder]
+Vertex -5.7, 7.7, 25.1
+Vertex -5.2, 7.7, 25.1
+Vertex -6.7, 6.6, 25.1
+Vertex -7, 6.6, 25.1
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+;1º Pilar
+[MeshBuilder]
+Vertex -5.8, 7.7, 0
+Vertex -1, 7.7, 0
+Vertex -1, 7.4, 0
+Vertex -5.8, 7.4, 0
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+[MeshBuilder]
+Vertex -5.8, 7.7, 25.1
+Vertex -1, 7.7, 25.1
+Vertex -1, 7.4, 25.1
+Vertex -5.8, 7.4, 25.1
+Face2 0, 1, 2, 3
+Color 100,100,100
+
+;pilares A1
+[MeshBuilder]
+Cube 0.3,0.4,13
+Translate -1,8,12
+Color 160,160,160
+
+;pilares A2
+[MeshBuilder]
+Cube 0.3,0.4,13
+Translate -4,8,12
+Color 160,160,160
+
+MirrorAll 1,0,0

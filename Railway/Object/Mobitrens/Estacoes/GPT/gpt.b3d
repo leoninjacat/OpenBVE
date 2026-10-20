@@ -1,0 +1,142 @@
+[MeshBuilder]
+; Teto em arco
+Vertex -10, 5, 0
+Vertex -8, 8, 0
+Vertex -5, 9.5, 0
+Vertex 0, 10, 0
+Vertex 5, 9.5, 0
+Vertex 8, 8, 0
+Vertex 10, 5, 0
+
+Vertex -10, 5, 25.3
+Vertex -8, 8, 25.3
+Vertex -5, 9.5, 25.3
+Vertex 0, 10, 25.3
+Vertex 5, 9.5, 25.3
+Vertex 8, 8, 25.3
+Vertex 10, 5, 25.3
+
+Face2 0,1,8,7
+Face2 1,2,9,8
+Face2 2,3,10,9
+Face2 3,4,11,10
+Face2 4,5,12,11
+Face2 5,6,13,12
+
+[Texture]
+;File roof_texture.png
+
+;barras laterais
+[MeshBuilder]
+Cube 0.2,0.2,13.1
+Color 0,145,99
+Translate 9.8,5,12.9
+
+[MeshBuilder]
+Cube 0.2,0.2,12.9
+Color 0,145,99
+Translate -9.8,5,12.9
+
+;pilar central inicio
+[MeshBuilder]
+Cube 0.5,7,0.2
+Color 0,145,99
+Translate 0,2.95,0
+
+;pilar central final
+[MeshBuilder]
+Cube 0.5,7,0.2
+Color 0,145,99
+Translate 0,2.95,24.9
+
+;pilar central horizontal inicio
+[MeshBuilder]
+Cube 9.9,0.2,0.2
+Color 0,145,99
+Translate 0,5,0
+
+;pilar central horizontal final
+[MeshBuilder]
+Cube 9.9,0.2,0.2
+Color 0,145,99
+Translate 0,5,24.9
+
+;pilares secundarios
+[MeshBuilder]
+Cube 0.2,0.2,13.1
+Color 0,145,99
+Translate 6.8,8.2,12.9
+
+[MeshBuilder]
+Cube 0.2,0.2,12.9
+Color 0,145,99
+Translate -6.8,8.2,12.9
+
+[MeshBuilder]
+Cube 0.2,0.2,13.1
+Color 0,145,99
+Translate 3.3,9.5,12.9
+
+[MeshBuilder]
+Cube 0.2,0.2,12.9
+Color 0,145,99
+Translate -3.3,9.5,12.9
+
+;pilar inclinado AA
+[MeshBuilder]
+Cube 0.2,3,0.1
+Color 0,145,99
+Translate 3.5,6.6,0
+Rotate 0,0,1,40
+
+;pilar inclinado AB
+[MeshBuilder]
+Cube 0.2,3.1,0.1
+Color 0,145,99
+Translate 3.5,6.9,0
+Rotate 0,0,1,59
+
+;pilar inclinado BA
+[MeshBuilder]
+Cube 0.2,3,0.1
+Color 0,145,99
+Translate -3.5,6.6,0
+Rotate 0,0,1,-40
+
+;pilar inclinado BB
+[MeshBuilder]
+Cube 0.2,3.1,0.1
+Color 0,145,99
+Translate -3.5,6.9,0
+Rotate 0,0,1,-59
+
+;pilar inclinado ZA
+[MeshBuilder]
+Cube 0.2,3,0.1
+Color 0,145,99
+Translate 3.5,6.6,24.9
+Rotate 0,0,1,40
+
+;pilar inclinado ZB
+[MeshBuilder]
+Cube 0.2,3.1,0.1
+Color 0,145,99
+Translate 3.5,6.9,24.9
+Rotate 0,0,1,59
+
+;pilar inclinado ZC
+[MeshBuilder]
+Cube 0.2,3,0.1
+Color 0,145,99
+Translate -3.5,6.6,24.9
+Rotate 0,0,1,-40
+
+;pilar inclinado ZD
+[MeshBuilder]
+Cube 0.2,3.1,0.1
+Color 0,145,99
+Translate -3.5,6.9,24.9
+Rotate 0,0,1,-59
+
+
+ScaleAll 0.5,0.5,1

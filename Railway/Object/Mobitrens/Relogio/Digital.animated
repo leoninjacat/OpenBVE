@@ -1,0 +1,48 @@
+;; Dezenas das horas
+
+[Object]
+States = horas.csv
+Position = 0.15, 0, 0
+TextureShiftYFunction = 0.1 * floor[mod[time * 0.000277777777777778, 24] * 0.098]
+
+;; Unidades das horas
+
+[Object]
+States = horas.csv
+Position = 0.29, 0, 0
+TextureShiftYFunction = 0.09985 * floor[mod[time * 0.000277777777777778, 24]]
+
+;; Dezenas dos minutos
+
+[Object]
+States = horas.csv
+Position = 0.51, 0, 0
+TextureShiftYFunction = 0.1 * floor[mod[time * 0.0166666666666667, 60] * 0.098]
+
+;; Unidades dos minutos
+
+[Object]
+States = horas.csv
+Position = 0.65, 0, 0
+TextureShiftYFunction = 0.09999995 * floor[time * 0.0166666666666667]
+
+;; Separador que pisca
+
+[Object]
+States = separador.csv
+Position = 0.40, 0, 0
+StateFunction = value == 0
+RefreshRate = 0.5
+
+;; Fundo
+
+[Include]
+fundo.csv
+Position = 0.40, 0, 0
+
+[Object]
+States = Led.csv
+Position = 0.40, 0, -0.005
+TextureShiftXFunction = 0.3 * time
+RefreshRate = 0.0
+

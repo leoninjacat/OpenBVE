@@ -1,0 +1,129 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;piso do mezanino
+[MeshBuilder]
+cube 27,1,27
+translate -7,16,0
+color 100,100,100
+
+[MeshBuilder]
+cube 26,0.2,25
+translate -7,8.6,0
+color 80,80,80
+emissivecolor 10,10,10
+
+;pilastras transversais do mezanino
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -18,8.2,0
+color 100,100,100
+emissivecolor 10,10,10
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -14,8.2,0
+color 100,100,100
+emissivecolor 10,10,10
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -10,8.2,0
+color 100,100,100
+emissivecolor 10,10,10
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -7,8.2,0
+color 100,100,100
+emissivecolor 10,10,10
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -4,8.2,0
+color 100,100,100
+emissivecolor 10,10,10
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -1,8.2,0
+color 100,100,100
+emissivecolor 10,10,10
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate 2,8.2,0
+color 100,100,100
+emissivecolor 10,10,10
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate 5,8.2,0
+color 100,100,100
+emissivecolor 10,10,10
+
+;paredes mezanino
+[MeshBuilder]
+cube 0.2,4,25
+translate 5,4.2,0
+color 150,150,150
+emissivecolor 50,50,50
+
+[MeshBuilder]
+cube 0.2,4,25
+translate -19,4.2,0
+color 150,150,150
+emissivecolor 50,50,50
+
+[MeshBuilder]
+Vertex -19, 16.5, -25
+Vertex -19, 9, -25
+Vertex  5, 9, -25
+Vertex  5, 16.5, -25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -19, 16.5, 25
+Vertex -19, 9, 25
+Vertex  5, 9, 25
+Vertex  5, 16.5, 25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -33, 16.5, -25
+Vertex -33, 0, -25
+Vertex -19, 0, -25
+Vertex -19, 16.5, -25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -33, 16.5, 25
+Vertex -33, 0, 25
+Vertex -19, 0, 25
+Vertex -19, 16.5, 25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex 5, 16.5, -25
+Vertex 5, 0, -25
+Vertex 19, 0, -25
+Vertex 19, 16.5, -25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex 5, 16.5, 25
+Vertex 5, 0, 25
+Vertex 19, 0, 25
+Vertex 19, 16.5, 25
+Face2  0,1,2,3
+
+;parede b
+[MeshBuilder]
+cube 0.2,8,25
+translate 19,8.2,0
+color 150,150,150
+
+[MeshBuilder]
+cube 0.2,8,25
+translate -33,8.2,0
+color 150,150,150

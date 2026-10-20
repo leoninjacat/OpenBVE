@@ -1,0 +1,424 @@
+;teto
+[MeshBuilder]
+Vertex -22, 5, 0.0
+Vertex -22, 5, 25
+Vertex  18, 5, 25
+Vertex  18, 5, 0.0
+Face2  0,1,2,3
+Color 180,80,80
+
+;piso
+[MeshBuilder]
+Vertex -22, -11, -33
+Vertex -22, -11, 25
+Vertex  18, -11, 25
+Vertex  18, -11, -33
+Face2  0,1,2,3
+Color 80,80,80
+
+;edgeteto 2a
+[MeshBuilder]
+Vertex -22, 7, 0.0
+Vertex -22, 3.9, 0
+Vertex  18, 3.9, 0
+Vertex  18, 7, 0.0
+Face2  0,1,2,3
+
+;edgeteto 2b
+[MeshBuilder]
+Vertex -22, 7, 25.0
+Vertex -22, 3.9, 25
+Vertex  18, 3.9, 25
+Vertex  18, 7, 25.0
+Face2  0,1,2,3
+
+;teto 1a
+[MeshBuilder]
+Vertex 	7, 	-0.7, 	0.0
+Vertex 	7, 	-0.7, 	15
+Vertex  18, 	-0.7, 	15
+Vertex  18, 	-0.7, 	0.0
+Face2  0,1,2,3
+Color 150,150,150
+
+;escadaria basica
+[MeshBuilder]
+Vertex 	7, 	-0.7, 	15
+Vertex 	7, 	-5.0, 	20
+Vertex  12, 	-5.0, 	20
+Vertex  12, 	-0.7, 	15
+Face2  0,1,2,3
+Color 70,70,70
+
+;escadaria basica B
+[MeshBuilder]
+Vertex 	7, 	-5.0, 	20
+Vertex 	7, 	-5.0, 	25
+Vertex  18, 	-5.0, 	25
+Vertex  18, 	-5.0, 	20
+Face2  0,1,2,3
+Color 70,70,70
+
+;escadaria basica C
+[MeshBuilder]
+Vertex 	12, 	-12, 	9
+Vertex 	12, 	-5.0, 	20
+Vertex  18, 	-5.0, 	20
+Vertex  18, 	-12, 	9
+Face2  0,1,2,3
+Color 70,70,70
+
+;acesso A frente
+[MeshBuilder]
+Vertex 12, 7, 0.0
+Vertex 12, -5, 0
+Vertex 18, -5, 0
+Vertex  18, 7, 0.0
+Face2  0,1,2,3
+
+;teto escada rolante
+[MeshBuilder]
+Vertex 	7.2, 	-5, 	-25
+Vertex 	7.2, 	5, 	0
+Vertex  12, 	5, 	0
+Vertex  12, 	-5, 	-25
+Face2  0,1,2,3
+Color 180,80,80
+
+;piso escada rolante
+[MeshBuilder]
+Vertex 	7.2, 	-15, 	-25
+Vertex 	7.2, 	-0.6, 	0
+Vertex  12, 	-0.6, 	0
+Vertex  12, 	-15, 	-25
+Face2  0,1,2,3
+Color 50,50,50
+
+;parede escada rolante A
+[Meshbuilder]
+Vertex 12,	-5, 	-25
+Vertex 12, 	5, 	0
+Vertex 12, 	-5, 	0
+Vertex 12, 	-5, 	-25
+Face2  0,1,2,3
+Color 150,150,150
+
+
+;parede escada rolante b
+[Meshbuilder]
+Vertex 7.2,	-5, 	-25
+Vertex 7.2, 	5, 	0
+Vertex 7.2, 	-5, 	0
+Vertex 7.2, 	-5, 	-25
+Face2  0,1,2,3
+Color 150,150,150
+
+;parede terreo escada rolante A
+[Meshbuilder]
+Vertex 18,	-5, 	-33
+Vertex 18, 	-5, 	0
+Vertex 18, 	-15, 	0
+Vertex 18, 	-15, 	-33
+Face2  0,1,2,3
+Color 150,150,150
+
+;lado escadas 1A
+[Meshbuilder]
+Vertex 12,	-3, 	20
+Vertex 12, 	1.2, 	15
+Vertex 12, 	-15, 	15
+Vertex 12, 	-15, 	20
+Face2  0,1,2,3
+Color 150,150,150
+
+;lado escadas 2A
+[Meshbuilder]
+Vertex 7,	1.2, 	25
+Vertex 7, 	1.2, 	15
+Vertex 7, 	-15, 	15
+Vertex 7, 	-15, 	25
+Face2  0,1,2,3
+Color 180,180,180
+
+;teto escada rolante terreo 1a
+[MeshBuilder]
+Vertex 	7, 	-5, 	-33
+Vertex 	7, 	-5, 	-25
+Vertex  18, 	-5, 	-25
+Vertex  18, 	-5, 	-33
+Face2  0,1,2,3
+Color 180,80,80
+
+;teto escada rolante terreo 2a
+[MeshBuilder]
+Vertex 	12, 	-5, 	-33
+Vertex 	12, 	-5, 	0
+Vertex  18, 	-5, 	0
+Vertex  18, 	-5, 	-33
+Face2  0,1,2,3
+Color 180,80,80
+
+;escada rolante verso
+[MeshBuilder]
+Vertex 7, -5, -33
+Vertex 7, -15, -33
+Vertex  18, -15, -33
+Vertex  18, -5, -33
+Face2  0,1,2,3
+
+;acesso A verso
+[MeshBuilder]
+Vertex 7, 7, 25.0
+Vertex 7, 4, 25
+Vertex  18, 4, 25
+Vertex  18, 7, 25
+Face2  0,1,2,3
+
+;acesso A janela verso
+[MeshBuilder]
+Vertex 7, 4, 25.0
+Vertex 7, 1, 25
+Vertex  18, 1, 25
+Vertex  18, 4, 25
+Face2  0,1,2,3
+Color 50,50,50,180
+
+;acesso A verso
+[MeshBuilder]
+Vertex 7, 1, 25.0
+Vertex 7, -15, 25
+Vertex  18,-15, 25
+Vertex  18, 1, 25
+Face2  0,1,2,3
+
+;escadas lado a
+[MeshBuilder]
+Vertex 12, 1.2,15
+Vertex 12, -1.2, 15
+Vertex  18,-1.2, 15
+Vertex  18, 1.2, 15
+Face2  0,1,2,3
+
+[Meshbuilder]
+Vertex 18,	1, 	0
+Vertex 18, 	1, 	25
+Vertex 18, 	-15, 	25
+Vertex 18, 	-15, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex 18,	4, 	0
+Vertex 18, 	4, 	25
+Vertex 18, 	1, 	25
+Vertex 18, 	1, 	0
+Face2  0,1,2,3
+Color 50,50,50,180
+
+[Meshbuilder]
+Vertex 18,	4, 	0
+Vertex 18, 	4, 	25
+Vertex 18, 	7, 	25
+Vertex 18, 	7, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+;acesso A verso
+[MeshBuilder]
+Vertex 7, -0.7, 15
+Vertex 7, -15,15
+Vertex 12,-15, 15
+Vertex 12, -0.7, 15
+Face2  0,1,2,3
+
+;;;;;;;;;;;;;;;;;;;;parte b
+
+;teto 1a
+[MeshBuilder]
+Vertex -22, 	-0.7, 	0.0
+Vertex -22, 	-0.7, 	15
+Vertex -12, 	-0.7, 	15
+Vertex -12, 	-0.7, 	0.0
+Face2  0,1,2,3
+Color 150,150,150
+
+;escadaria basica
+[MeshBuilder]
+Vertex -12, 	-0.7, 	15
+Vertex -12, 	-5.0, 	20
+Vertex -17, 	-5.0, 	20
+Vertex -17, 	-0.7, 	15
+Face2  0,1,2,3
+Color 70,70,70
+
+;escadaria basica B
+[MeshBuilder]
+Vertex 	-12, 	-5.0, 	20
+Vertex 	-12, 	-5.0, 	25
+Vertex  -22, 	-5.0, 	25
+Vertex  -22, 	-5.0, 	20
+Face2  0,1,2,3
+Color 70,70,70
+
+;escadaria basica C
+[MeshBuilder]
+Vertex 	-17, 	-12, 	9
+Vertex 	-17, 	-5.0, 	20
+Vertex  -22, 	-5.0, 	20
+Vertex  -22, 	-12, 	9
+Face2  0,1,2,3
+Color 70,70,70
+
+;acesso A frente
+[MeshBuilder]
+Vertex -22, 7, 0.0
+Vertex -22, -5, 0
+Vertex -17, -5, 0
+Vertex -17, 7, 0.0
+Face2  0,1,2,3
+
+;teto escada rolante
+[MeshBuilder]
+Vertex 	-17, 	-5, 	-25
+Vertex 	-17, 	5, 	0
+Vertex  -12.3, 	5, 	0
+Vertex  -12.3, 	-5, 	-25
+Face2  0,1,2,3
+Color 180,80,80
+
+;piso escada rolante
+[MeshBuilder]
+Vertex 	-17, 	-15, 	-25
+Vertex 	-17, 	-0.6, 	0
+Vertex  -12.3, 	-0.6, 	0
+Vertex  -12.3, 	-15, 	-25
+Face2  0,1,2,3
+Color 50,50,50
+
+;parede escada rolante A
+[Meshbuilder]
+Vertex -17,	-5, 	-25
+Vertex -17, 	5, 	0
+Vertex -17, 	-5, 	0
+Vertex -17, 	-5, 	-25
+Face2  0,1,2,3
+Color 150,150,150
+
+;parede terreo escada rolante A
+[Meshbuilder]
+Vertex -22,	-5, 	-33
+Vertex -22, 	-5, 	0
+Vertex -22, 	-15, 	0
+Vertex -22, 	-15, 	-33
+Face2  0,1,2,3
+Color 150,150,150
+
+;lado escadas 1A
+[Meshbuilder]
+Vertex -17,	-3, 	20
+Vertex -17, 	1.2, 	15
+Vertex -17, 	-15, 	15
+Vertex -17, 	-15, 	20
+Face2  0,1,2,3
+Color 150,150,150
+
+;lado escadas 2A
+[Meshbuilder]
+Vertex -12.21,	1.2, 	25
+Vertex -12.21, 	1.2, 	15
+Vertex -12.21, 	-15, 	15
+Vertex -12.2, 	-15, 	25
+Face2  0,1,2,3
+Color 180,180,180
+
+;escadas lado b
+[MeshBuilder]
+Vertex -22, 1.2,15
+Vertex -22, -1, 15
+Vertex -17,-1, 15
+Vertex -17, 1.2, 15
+Face2  0,1,2,3
+
+;teto escada rolante terreo 1a
+[MeshBuilder]
+Vertex 	-17, 	-5, 	-33
+Vertex 	-17, 	-5, 	-25
+Vertex  -12, 	-5, 	-25
+Vertex  -12, 	-5, 	-33
+Face2  0,1,2,3
+Color 180,80,80
+
+;teto escada rolante terreo 2a
+[MeshBuilder]
+Vertex 	-22, 	-5, 	-33
+Vertex 	-22, 	-5, 	0
+Vertex  -17, 	-5, 	0
+Vertex  -17, 	-5, 	-33
+Face2  0,1,2,3
+Color 180,80,80
+
+[Meshbuilder]
+Vertex -22,	1, 	0
+Vertex -22, 	1, 	25
+Vertex -22, 	-15, 	25
+Vertex -22, 	-15, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex -22,	4, 	0
+Vertex -22, 	4, 	25
+Vertex -22, 	1, 	25
+Vertex -22, 	1, 	0
+Face2  0,1,2,3
+Color 50,50,50,180
+
+[Meshbuilder]
+Vertex -22,	4, 	0
+Vertex -22, 	4, 	25
+Vertex -22, 	7, 	25
+Vertex -22, 	7, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+;acesso A janela verso
+[MeshBuilder]
+Vertex -12, 4, 25.0
+Vertex -12, 1, 25
+Vertex -22, 1, 25
+Vertex -22, 4, 25
+Face2  0,1,2,3
+Color 50,50,50,180
+
+;acesso A verso
+[MeshBuilder]
+Vertex -22, 1, 25.0
+Vertex -22, -15, 25
+Vertex -12,-15, 25
+Vertex -12, 1, 25
+Face2  0,1,2,3
+
+;acesso A verso
+[MeshBuilder]
+Vertex -22, -5, -33
+Vertex -22, -15,-33
+Vertex -12,-15, -33
+Vertex -12, -5, -33
+Face2  0,1,2,3
+
+;acesso A verso
+[MeshBuilder]
+Vertex -17, -0.7, 15
+Vertex -17, -15,15
+Vertex -12,-15, 15
+Vertex -12, -0.7, 15
+Face2  0,1,2,3
+
+;parede escada rolante B
+[Meshbuilder]
+Vertex -12.3,	-5, 	-25
+Vertex -12.3, 	5, 	0
+Vertex -12.3, 	-5, 	0
+Vertex -12.3, 	-5, 	-25
+Face2  0,1,2,3
+Color 150,150,150

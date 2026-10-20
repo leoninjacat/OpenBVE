@@ -1,0 +1,33 @@
+[MeshBuilder]
+Vertex -60,60,0
+Vertex -50,60,0
+Vertex -50,60,125
+Vertex -60,0,0
+Vertex -50,0,0
+Vertex -50,0,125
+Vertex -60,60,125
+Vertex -60,0,125
+Face 0,1,4,3
+Face 1,2,5,4
+Face 6,0,3,7 
+Face 2,6,7,5
+
+[Texture]
+Load biruding.bmp
+Coordinates 0, 0, 0
+Coordinates 1, 0.6, 0
+Coordinates 2, 1, 0
+Coordinates 3, 0, 1
+Coordinates 4, 0.6, 1
+Coordinates 5, 1, 1
+Coordinates 6, 0.6, 0
+Coordinates 7, 0.6, 1
+Transparent 0,0,0
+
+[MeshBuilder]
+Vertex -60,60,125
+Vertex -50,60,125
+Vertex -50,60,0
+Vertex -60,60,0
+Face 0,1,2,3
+Color 160, 160, 160

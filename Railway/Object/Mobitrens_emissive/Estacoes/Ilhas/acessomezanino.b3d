@@ -1,0 +1,94 @@
+;paredes acesso
+[MeshBuilder]
+Vertex -5.1, 14, -25
+Vertex -5.1, 8.5, -25
+Vertex -5.1, 0,  -38
+Vertex -5.1, 6, -38
+Face2  0,1,2,3
+emissivecolor 50,50,50
+
+;paredes acesso
+[MeshBuilder]
+Vertex -5, 14, -25
+Vertex -5, 8.5, -25
+Vertex -5, 0,  -38
+Vertex -5, 6, -38
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -8.5, 14, -25
+Vertex -8.5, 8.5, -25
+Vertex -8.5, 0,  -38
+Vertex -8.5, 6, -38
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -8.4, 14, -25
+Vertex -8.4, 8.5, -25
+Vertex -8.4, 0,  -38
+Vertex -8.4, 6, -38
+Face2  0,1,2,3
+emissivecolor 50,50,50
+
+;teto acesso
+[MeshBuilder]
+Vertex -8.5, 6, -38
+Vertex -8.5, 14,-25
+Vertex -5, 14, -25
+Vertex -5, 6, -38
+Face2  0,1,2,3
+Color 111,111,111
+
+[MeshBuilder]
+Vertex -8.5, 8.5, -25
+Vertex -8.5, 0,-38
+Vertex -5, 0, -38
+Vertex -5, 8.5, -25
+Face2  0,1,2,3
+Color 111,111,111
+
+;base acesso
+[MeshBuilder]
+Vertex -5, 6, -42
+Vertex -5, 5.5,-42
+Vertex -8.5,5.5, -42
+Vertex -8.5, 6, -42
+Face2  0,1,2,3
+Color 111,111,111
+emissivecolor 50,50,50
+
+[MeshBuilder]
+Vertex -5, 6, -38
+Vertex -5, 0, -38
+Vertex -5, 0,  -42
+Vertex -5, 6, -42
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -5.1, 6, -38
+Vertex -5.1, 0, -38
+Vertex -5.1, 0,  -42
+Vertex -5.1, 6, -42
+Face2  0,1,2,3
+emissivecolor 50,50,50
+
+[MeshBuilder]
+Vertex -8.5, 6, -38
+Vertex -8.5, 0, -38
+Vertex -8.5, 0,  -42
+Vertex -8.5, 6, -42
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -8.4, 6, -38
+Vertex -8.4, 0, -38
+Vertex -8.4, 0,  -42
+Vertex -8.4, 6, -42
+Face2  0,1,2,3
+emissivecolor 50,50,50
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -4,8.2,0
+color 100,100,100
+emissivecolor 10,10,10

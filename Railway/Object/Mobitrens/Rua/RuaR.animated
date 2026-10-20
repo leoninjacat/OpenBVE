@@ -1,0 +1,14 @@
+[Object]
+States=RuaR.csv
+
+
+
+[Include]
+calcada2.csv
+Position = -2, 0, 0
+
+[Include]
+calcada3.csv
+Position = 4.7, 0, 0
+
+

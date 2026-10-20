@@ -1,0 +1,15 @@
+;description=default track on bridge
+;author=Uwe Post
+;copyright=the BVE RouteBuilder team 2002, part of RB Base library, goto routebuilder.bve-routes.com
+
+;base
+[MeshBuilder]
+Cube 1,10.8,1
+Translate 0,-11.3,14
+Color 130,120,110
+
+;base
+[MeshBuilder]
+Cube 1,10.8,14.5
+Translate 0,-11.3,0
+Color 130,120,110

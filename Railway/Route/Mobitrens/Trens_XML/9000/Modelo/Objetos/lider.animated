@@ -1,0 +1,9 @@
+
+[Object]
+States = ind1.csv
+StateFunction = reverserNotch != 1
+
+[Object]
+States = ind2.csv
+StateFunction = reverserNotch != -1
+

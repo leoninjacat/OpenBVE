@@ -1,0 +1,18 @@
+;assento
+[MeshBuilder]
+cube 0.66,0.2,5
+Color 160,160,160
+
+;apoio A
+[MeshBuilder]
+cube 0.66,0.9,0.3
+Color 160,160,160
+Translate 0,-0.8,-4.5
+
+;apoio B
+[MeshBuilder]
+cube 0.66,0.9,0.3
+Color 160,160,160
+Translate 0,-0.8,4.5
+
+scaleall 0.6,0.6,0.6

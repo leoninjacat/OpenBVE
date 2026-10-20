@@ -1,0 +1,12 @@
+[MeshBuilder]
+Vertex -62.5, -0.25, 0.0
+Vertex -62.5, -0.25, 25.2
+Vertex  66.5, -0.25, 25.2
+Vertex  66.5, -0.25, 0.0
+Face2  0,1,2,3
+[Texture]
+Load Wall1.bmp
+Coordinates 0, 1, 0
+Coordinates 1, 0, 0
+Coordinates 2, 0, 1
+Coordinates 3, 1, 1

@@ -1,0 +1,1509 @@
+;;By Roger Natael & Gabriel Souza
+
+;;vidros
+CreateMeshBuilder,
+AddVertex,1.498,2.9,7.13,0,0,1
+AddVertex,1.498,2.9,5.56,0,0,1
+AddVertex,1.498,2.07,5.56,0,0,1
+AddVertex,1.498,2.07,7.13,0,0,1
+AddFace2,0,1,2,3, 
+setcolor,200,200,200,100
+loadtexture,vidro.png,vidro.png
+SetTextureCoordinates,0,1,0,
+SetTextureCoordinates,1,0,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+
+CreateMeshBuilder,
+AddVertex,-1.498,2.9,7.13,0,0,1
+AddVertex,-1.498,2.9,5.56,0,0,1
+AddVertex,-1.498,2.07,5.56,0,0,1
+AddVertex,-1.498,2.07,7.13,0,0,1
+AddFace2,0,1,2,3, 
+setcolor,200,200,200,100
+loadtexture,vidro.png,vidro.png
+SetTextureCoordinates,0,1,0,
+SetTextureCoordinates,1,0,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+;;
+
+;;Lateral
+CreateMeshBuilder,
+AddVertex,-1.50,1.15,8.05,0,0,1
+AddVertex,-1.50,3.15,8.05,0,0,1
+AddVertex,-1.50,3.15,4.55,0,0,1
+AddVertex,-1.50,1.15,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,0,0,0.925
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,0.925
+SetDecalTransparentColor,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.499,1.15,8.05,0,0,1
+AddVertex,-1.499,3.15,8.05,0,0,1
+AddVertex,-1.499,3.15,4.55,0,0,1
+AddVertex,-1.499,1.15,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral2.png,
+SetTextureCoordinates,0,0,0.925
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,0.925
+SetDecalTransparentColor,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.50,3.15,8.05,0,0,1
+AddVertex,-1.50,3.275,8.05,0,0,1
+AddVertex,-1.50,3.275,4.55,0,0,1
+AddVertex,-1.50,3.15,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,3,0,0.05
+SetTextureCoordinates,2,0,0.01
+SetTextureCoordinates,1,1,0.01
+SetTextureCoordinates,0,1,0.05
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.50,1.00,8.05,0,0,1
+AddVertex,-1.50,1.15,8.05,0,0,1
+AddVertex,-1.50,1.15,4.55,0,0,1
+AddVertex,-1.50,1.00,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,0,0,0.925
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0.925
+
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,1.50,1.15,8.05,0,0,1
+AddVertex,1.50,3.15,8.05,0,0,1
+AddVertex,1.50,3.15,4.55,0,0,1
+AddVertex,1.50,1.15,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,0,0,0.925
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,0.925
+SetDecalTransparentColor,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.499,1.15,8.05,0,0,1
+AddVertex,1.499,3.15,8.05,0,0,1
+AddVertex,1.499,3.15,4.55,0,0,1
+AddVertex,1.499,1.15,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,Lateral2.png,
+SetTextureCoordinates,0,0,0.925
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,0.925
+SetDecalTransparentColor,0
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,1.50,3.15,8.05,0,0,1
+AddVertex,1.50,3.275,8.05,0,0,1
+AddVertex,1.50,3.275,4.55,0,0,1
+AddVertex,1.50,3.15,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,3,0,0.05
+SetTextureCoordinates,2,0,0.01
+SetTextureCoordinates,1,1,0.01
+SetTextureCoordinates,0,1,0.05
+Setcolor,195,195,195,
+CreateMeshBuilder,
+AddVertex,1.50,1.00,8.05,0,0,1
+AddVertex,1.50,1.15,8.05,0,0,1
+AddVertex,1.50,1.15,4.55,0,0,1
+AddVertex,1.50,1.00,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,0,0,0.925
+
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0.925
+
+Setcolor,195,195,195,
+
+;;teto
+CreateMeshBuilder,
+AddVertex,1.50,3.272,8.05,0,0,1
+AddVertex,1.45,3.313,8.05,0,0,1
+AddVertex,1.45,3.32,4.55,0,0,1
+AddVertex,1.50,3.27,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0.83,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0.83,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.38,3.362,8.05,0,0,1
+AddVertex,1.45,3.313,8.05,0,0,1
+AddVertex,1.45,3.32,4.55,0,0,1
+AddVertex,1.38,3.36,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.83,  1
+SetTextureCoordinates,1,0.83,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.38,3.362,8.05,0,0,1
+AddVertex,1.30,3.398,8.05,0,0,1
+AddVertex,1.30,3.398,4.55,0,0,1
+AddVertex,1.38,3.36,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0.8,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0.8,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.19,3.44,8.05,0,0,1
+AddVertex,1.30,3.398,8.05,0,0,1
+AddVertex,1.30,3.398,4.55,0,0,1
+AddVertex,1.19,3.44,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.7,  1
+SetTextureCoordinates,1,0.7,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.19,3.44,8.05,0,0,1
+AddVertex,1.0,3.498,8.05,0,0,1
+AddVertex,1.0,3.498,4.55,0,0,1
+AddVertex,1.19,3.44,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.5,  1
+SetTextureCoordinates,1,0.5,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,;;
+AddVertex,1.0205,3.49,8.05,0,0,1
+AddVertex,1.0205,3.503,8.05,0,0,1
+AddVertex,1.0205,3.503,4.55,0,0,1
+AddVertex,1.0205,3.49,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,0.88,  3.545,8.05,0,0,1
+AddVertex,1.0205,3.503,8.05,0,0,1
+AddVertex,1.0205,3.503,4.55,0,0,1
+AddVertex,0.88,  3.545,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.5,  1
+SetTextureCoordinates,1,0.5,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,0.88,  3.545,8.05,0,0,1
+AddVertex,0.805,3.56,8.05,0,0,1
+AddVertex,0.805,3.56,4.55,0,0,1
+AddVertex,0.88,  3.545,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.8,  1
+SetTextureCoordinates,1,0.8,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,;;meio direito
+AddVertex,0.805,3.56,8.05,0,0,1
+AddVertex,0.00,3.62,8.05,0,0,1
+AddVertex,0.00,3.62,4.55,0,0,1
+AddVertex,0.805,3.56,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+CreateMeshBuilder,;;meio esquerdo
+AddVertex,-0.805,3.556,8.05,0,0,1
+AddVertex,0.00,3.62,8.05,0,0,1
+AddVertex,0.00,3.62,4.55,0,0,1
+AddVertex,-0.805,3.556,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,-0.88,  3.54,8.05,0,0,1
+AddVertex,-0.805,3.556,8.05,0,0,1
+AddVertex,-0.805,3.556,4.55,0,0,1
+AddVertex,-0.88,  3.545,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.8,  1
+SetTextureCoordinates,1,0.8,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-0.88,  3.54,8.05,0,0,1
+AddVertex,-1.0205,3.49,8.05,0,0,1
+AddVertex,-1.0205,3.503,4.55,0,0,1
+AddVertex,-0.88,  3.545,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.5,  1
+SetTextureCoordinates,1,0.5,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,;;reto esquerdo
+AddVertex,-1.0025,3.49,8.05,0,0,1
+AddVertex,-1.0025,3.503,8.05,0,0,1
+AddVertex,-1.0025,3.503,4.55,0,0,1
+AddVertex,-1.0025,3.49,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,-1.50,3.272,8.05,0,0,1
+AddVertex,-1.45,3.313,8.05,0,0,1
+AddVertex,-1.45,3.32,4.55,0,0,1
+AddVertex,-1.50,3.27,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0.83,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0.83,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.38,3.362,8.05,0,0,1
+AddVertex,-1.45,3.313,8.05,0,0,1
+AddVertex,-1.45,3.32,4.55,0,0,1
+AddVertex,-1.38,3.36,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.83,  1
+SetTextureCoordinates,1,0.83,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.38,3.362,8.05,0,0,1
+AddVertex,-1.30,3.398,8.05,0,0,1
+AddVertex,-1.30,3.398,4.55,0,0,1
+AddVertex,-1.38,3.36,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0.8,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0.8,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.19,3.44,8.05,0,0,1
+AddVertex,-1.30,3.398,8.05,0,0,1
+AddVertex,-1.30,3.398,4.55,0,0,1
+AddVertex,-1.19,3.44,4.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.7,  1
+SetTextureCoordinates,1,0.7,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,-1.19,3.44,8.05,0,0,1
+AddVertex,-1.0,3.498,8.05,0,0,1
+AddVertex,-1.0,3.498,4.55,0,0,1
+AddVertex,-1.19,3.44,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.5,  1
+SetTextureCoordinates,1,0.5,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+;;piso
+CreateMeshBuilder,
+AddVertex,-1.40, 1.15,8.05,0,0,1
+AddVertex, 1.40, 1.15,8.05,0,0,1
+AddVertex, 1.40, 1.15,4.55,0,0,1
+AddVertex,-1.40, 1.15,4.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,piso.png,piso.png
+SetTextureCoordinates,3,0,2
+SetTextureCoordinates,2,3,2
+SetTextureCoordinates,1,3,0
+SetTextureCoordinates,0,0,0
+SetColor,125,125,125
+
+CreateMeshBuilder,
+AddVertex,-1.50, 1.145,8.05,0,0,1
+AddVertex, 1.50, 1.145,8.05,0,0,1
+AddVertex, 1.50, 1.145,4.55,0,0,1
+AddVertex,-1.50, 1.145,4.55,0,0,1
+AddFace,3,2,1,0,
+SetColor,12,12,12
+
+CreateMeshBuilder,;;piso em baixo
+AddVertex,-1.35, 1.30,8.05,0,0,1
+AddVertex,-1.35, 1.15,8.05,0,0,1
+AddVertex,-1.35, 1.15,4.55,0,0,1
+AddVertex,-1.35, 1.30,4.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,piso.png,piso.png,
+SetTextureCoordinates,0,0.5,0
+SetTextureCoordinates,1,0.5,0.5
+SetTextureCoordinates,2,3,0.5
+SetTextureCoordinates,3,3,0
+SetColor,125,125,125
+;;
+
+CreateMeshBuilder,;;piso em baixo
+AddVertex,1.35, 1.30,8.05,0,0,1
+AddVertex,1.35, 1.15,8.05,0,0,1
+AddVertex,1.35, 1.15,4.55,0,0,1
+AddVertex,1.35, 1.30,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,piso.png,piso.png,
+SetTextureCoordinates,0,0.5,0
+SetTextureCoordinates,1,0.5,0.5
+SetTextureCoordinates,2,3,0.5
+SetTextureCoordinates,3,3,0
+SetColor,125,125,125
+
+
+;;;;Interior
+
+;;parte de baixo da parede abaixo da janela
+CreateMeshBuilder,
+AddVertex,-1.40, 2.05,8.05,0,0,1
+AddVertex,-1.35, 1.30,8.05,0,0,1
+AddVertex,-1.35, 1.30,4.55,0,0,1
+AddVertex,-1.40, 2.05,4.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,;;0
+AddVertex,-1.40, 2.25,8.05,0,0,1
+AddVertex,-1.40, 2.05,8.05,0,0,1
+AddVertex,-1.40, 2.05,7.125,0,0,1
+AddVertex,-1.40, 2.25,7.125,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,;;1
+AddVertex,-1.40, 2.25,4.55,0,0,1
+AddVertex,-1.40, 2.05,4.55,0,0,1
+AddVertex,-1.40, 2.05,5.55,0,0,1
+AddVertex,-1.40, 2.25,5.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+;; paredes modificadas
+CreateMeshBuilder,;;0
+AddVertex,-1.34, 2.9025,8.05,0,0,1
+AddVertex,-1.40, 2.25,8.05,0,0,1
+AddVertex,-1.40, 2.25,7.123,0,0,1
+AddVertex,-1.34, 2.90,7.123,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,;;1
+AddVertex,-1.34, 2.90,4.55,0,0,1
+AddVertex,-1.40, 2.25,4.55,0,0,1
+AddVertex,-1.40, 2.25,5.55,0,0,1
+AddVertex,-1.34, 2.9025,5.55,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+;;cima
+CreateMeshBuilder
+AddVertex,-1.36, 2.985,4.55,0,0,1
+AddVertex,-1.34, 2.90,4.55,0,0,1
+AddVertex,-1.34, 2.90,8.05,0,0,1
+AddVertex,-1.36, 2.985,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int1.png,int1.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+
+;;tampa do bagui na parte de cima
+CreateMeshBuilder
+AddVertex,-1.36, 3.025,4.55,0,0,1
+AddVertex,-1.36, 2.985,4.55,0,0,1
+AddVertex,-1.36, 2.985,8.05,0,0,1
+AddVertex,-1.36, 3.025,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int2.png,int2.png,
+SetTextureCoordinates,0,0.9,1
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,0,0
+SetTextureCoordinates,3,0.9,0
+SetColor,172,172,172
+CreateMeshBuilder
+AddVertex,-1.35, 3.035,4.55,0,0,1
+AddVertex,-1.36, 3.025,4.55,0,0,1
+AddVertex,-1.36, 3.025,8.05,0,0,1
+AddVertex,-1.35, 3.035,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+CreateMeshBuilder;;Mudar textura!
+AddVertex,-1.23, 3.275,4.55,0,0,1
+AddVertex,-1.35, 3.035,4.55,0,0,1
+AddVertex,-1.35, 3.035,8.05,0,0,1
+AddVertex,-1.23, 3.275,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+
+CreateMeshBuilder;;Mudar textura (Colocar de lampada)!
+AddVertex,-0.72, 3.2751,4.55,0,0,1
+AddVertex,-1.23, 3.2751,4.55,0,0,1
+AddVertex,-1.23, 3.2751,8.05,0,0,1
+AddVertex,-0.72, 3.2751,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+CreateMeshBuilder;;Mudar textura (Modelar o AC)!
+AddVertex,-0.5, 3.2852,4.55,0,0,1
+AddVertex,-0.75, 3.2852,4.55,0,0,1
+AddVertex,-0.75, 3.2852,8.05,0,0,1
+AddVertex,-0.5, 3.2852,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\ac.png,objetos\ac.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,2
+
+SetTextureCoordinates,2,10,2
+SetTextureCoordinates,3,10,0
+SetColor,165,165,165
+
+CreateMeshBuilder;;Mudar textura (metade do meio)!
+AddVertex, 0.0, 3.27,4.55,0,0,1
+AddVertex,-0.5, 3.275,4.55,0,0,1
+AddVertex,-0.5, 3.275,8.05,0,0,1
+AddVertex, 0.0, 3.27,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+CreateMeshBuilder;;Mudar textura (metade do meio)!
+AddVertex, 0.5, 3.275,4.55,0,0,1
+AddVertex, 0.0, 3.27,4.55,0,0,1
+AddVertex, 0.0, 3.27,8.05,0,0,1
+AddVertex, 0.5, 3.275,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+
+;;Outro lado geral
+;;parte de baixo da parede abaixo da janela
+CreateMeshBuilder,
+AddVertex,1.40, 2.05,8.05,0,0,1
+AddVertex,1.35, 1.30,8.05,0,0,1
+AddVertex,1.35, 1.30,4.55,0,0,1
+AddVertex,1.40, 2.05,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,;;0
+AddVertex,1.40, 2.25,8.05,0,0,1
+AddVertex,1.40, 2.05,8.05,0,0,1
+AddVertex,1.40, 2.05,7.125,0,0,1
+AddVertex,1.40, 2.25,7.125,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,;;1
+AddVertex,1.40, 2.25,4.55,0,0,1
+AddVertex,1.40, 2.05,4.55,0,0,1
+AddVertex,1.40, 2.05,5.55,0,0,1
+AddVertex,1.40, 2.25,5.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+
+;; paredes modificadas
+CreateMeshBuilder,;;0
+AddVertex,1.34, 2.9025,8.05,0,0,1
+AddVertex,1.40, 2.25,8.05,0,0,1
+AddVertex,1.40, 2.25,7.123,0,0,1
+AddVertex,1.34, 2.90,7.123,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,;;1
+AddVertex,1.34, 2.90,4.55,0,0,1
+AddVertex,1.40, 2.25,4.55,0,0,1
+AddVertex,1.40, 2.25,5.55,0,0,1
+AddVertex,1.34, 2.9025,5.55,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+
+;;cima
+CreateMeshBuilder
+AddVertex,1.36, 2.985,4.55,0,0,1
+AddVertex,1.34, 2.90,4.55,0,0,1
+AddVertex,1.34, 2.90,8.05,0,0,1
+AddVertex,1.36, 2.985,8.05,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int1.png,int1.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+
+;;tampa do bagui na parte de cima
+CreateMeshBuilder
+AddVertex,1.36, 3.025,4.55,0,0,1
+AddVertex,1.36, 2.985,4.55,0,0,1
+AddVertex,1.36, 2.985,8.05,0,0,1
+AddVertex,1.36, 3.025,8.05,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int2.png,int2.png,
+SetTextureCoordinates,0,0.9,1
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,0,0
+SetTextureCoordinates,3,0.9,0
+SetColor,172,172,172
+CreateMeshBuilder
+AddVertex,1.35, 3.035,4.55,0,0,1
+AddVertex,1.36, 3.025,4.55,0,0,1
+AddVertex,1.36, 3.025,8.05,0,0,1
+AddVertex,1.35, 3.035,8.05,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+CreateMeshBuilder;;Mudar textura!
+AddVertex,1.23, 3.275,4.55,0,0,1
+AddVertex,1.35, 3.035,4.55,0,0,1
+AddVertex,1.35, 3.035,8.05,0,0,1
+AddVertex,1.23, 3.275,8.05,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+
+CreateMeshBuilder;;Mudar textura (Colocar de lampada)!
+AddVertex,0.72, 3.2751,4.55,0,0,1
+AddVertex,1.23, 3.2751,4.55,0,0,1
+AddVertex,1.23, 3.2751,8.05,0,0,1
+AddVertex,0.72, 3.2751,8.05,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+CreateMeshBuilder;;Mudar textura (Modelar o AC)!
+AddVertex,0.5, 3.2852,4.55,0,0,1
+AddVertex,0.75, 3.2852,4.55,0,0,1
+AddVertex,0.75, 3.2852,8.05,0,0,1
+AddVertex,0.5, 3.2852,8.05,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\ac.png,objetos\ac.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,2
+
+SetTextureCoordinates,2,10,2
+SetTextureCoordinates,3,10,0
+SetColor,165,165,165
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CreateMeshBuilder,;;B
+AddVertex,-1.50, 2.08,7.125,0,0,1
+AddVertex,-1.40, 2.05,7.125,0,0,1
+AddVertex,-1.40, 2.05,5.55,0,0,1
+AddVertex,-1.50, 2.08,5.55,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,0,0,0
+SetColor,165,165,165
+
+CreateMeshBuilder,;;teto janela
+AddVertex,-1.50, 2.8675,7.125,0,0,1
+AddVertex,-1.34, 2.90775,7.125,0,0,1
+AddVertex,-1.34, 2.9025,5.55,0,0,1
+AddVertex,-1.50, 2.8675,5.55,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,0,0,0
+SetColor,165,165,165
+
+
+CreateMeshBuilder,
+;;L1
+AddVertex, -1.40,  2.25,7.125,0,0,1
+
+AddVertex, -1.34,2.908,7.125,0,0,1
+
+AddVertex, -1.5,  2.908,7.125,0,0,1
+
+AddVertex, -1.5,  2.25,7.125,0,0,1
+
+AddFace,3,2,1,0
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,165,165,165 ;;>>>>>>>>>>>
+CreateMeshBuilder,
+;;L1
+AddVertex, -1.40,  2.05,7.125,0,0,1
+
+AddVertex, -1.40,2.25,7.125,0,0,1
+
+AddVertex, -1.5,  2.25,7.125,0,0,1
+
+AddVertex, -1.5,  2.08,7.125,0,0,1
+
+AddFace,3,2,1,0
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,165,165,165
+;;
+
+CreateMeshBuilder,
+;;L2
+AddVertex, -1.40,  2.25,5.55,0,0,1
+
+AddVertex, -1.34,2.905,5.55,0,0,1
+
+AddVertex, -1.50,  2.905,5.55,0,0,1
+
+AddVertex, -1.50,  2.25,5.55,0,0,1
+
+AddFace2,3,2,1,0
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,165,165,165
+
+
+;; curva da janela
+CreateMeshBuilder,
+AddVertex, -1.40,  2.05,5.55,0,0,1
+AddVertex, -1.40,2.25,5.55,0,0,1
+AddVertex, -1.5,  2.25,5.55,0,0,1
+AddVertex, -1.5,  2.08,5.55,0,0,1
+
+AddVertex, -1.40,  2.05,5.58,0,0,1
+AddVertex, -1.40,2.12,5.55,0,0,1
+AddVertex, -1.5,  2.12,5.55,0,0,1
+AddVertex, -1.5,  2.08,5.58,0,0,1
+
+AddVertex, -1.40,  2.05,5.62,0,0,1
+AddVertex, -1.40,2.10,5.56,0,0,1
+AddVertex, -1.5,  2.10,5.56,0,0,1
+AddVertex, -1.5,  2.06,5.62,0,0,1
+AddFace,0,1,2,3
+AddFace,4,5,6,7
+AddFace,8,9,10,11
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,4,0,1
+SetTextureCoordinates,5,1,1
+SetTextureCoordinates,6,1,0
+SetTextureCoordinates,7,0,0
+SetTextureCoordinates,8,0,1
+SetTextureCoordinates,9,1,1
+SetTextureCoordinates,10,1,0
+SetTextureCoordinates,11,0,0
+SetColor,165,165,165
+
+;;fechamento da janela cima esquerdo
+
+CreateMeshBuilder,
+AddVertex,-1.341, 2.90,-9.581,0,0,1
+AddVertex,-1.345, 2.85,-9.581,0,0,1
+AddVertex,-1.345, 2.85,-9.579,0,0,1
+AddVertex,-1.342, 2.90,-9.559,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+translate,-0.004,-0.05,15.13,
+CreateMeshBuilder,
+AddVertex,-1.338, 2.957,-9.495,0,0,1
+AddVertex,-1.342, 2.90,-9.56,0,0,1
+AddVertex,-1.341, 2.90,-9.581,0,0,1
+AddVertex,-1.336, 2.95,-9.581,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+translate,-0.004,-0.05,15.13,
+
+CreateMeshBuilder,
+AddVertex, -1.345,  2.85,9.56,0,0,1
+AddVertex, -1.342,  2.90,9.58,0,0,1
+AddVertex, -1.495,  2.90,9.58,0,0,1
+AddVertex, -1.495,  2.85,9.56,0,0,1
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,165,165,165
+translate,-0.004,-0.05,-4.01,
+CreateMeshBuilder,
+AddVertex, -1.342,  2.90,9.50,0,0,1
+AddVertex, -1.336,   2.957,9.56,0,0,1
+AddVertex, -1.495,  2.957,9.56,0,0,1
+AddVertex, -1.495,  2.90,9.50,0,0,1
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,165,165,165
+translate,-0.004,-0.05,-3.93,
+
+
+
+
+
+;;;;;;
+
+CreateMeshBuilder,
+AddVertex,-1.342, 2.90,9.559,0,0,1
+AddVertex,-1.342, 2.863,9.579,0,0,1
+AddVertex,-1.344, 2.863,9.575,0,0,1
+AddVertex,-1.34, 2.90,9.575,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+translate,-0.004,-0.05,-2.45,
+CreateMeshBuilder,
+AddVertex,-1.338, 2.957,9.495,0,0,1
+AddVertex,-1.342, 2.90,9.56,0,0,1
+AddVertex,-1.34, 2.90,9.575,0,0,1
+AddVertex,-1.336, 2.95,9.575,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+translate,-0.004,-0.05,-2.45,
+CreateMeshBuilder,
+AddVertex, -1.345,  2.85,9.58,0,0,1
+AddVertex, -1.342,  2.90,9.56,0,0,1
+AddVertex, -1.495,  2.90,9.56,0,0,1
+AddVertex, -1.495,  2.85,9.58,0,0,1
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,165,165,165
+translate,-0.004,-0.05,-2.45,
+CreateMeshBuilder,
+AddVertex, -1.342,  2.90,9.56,0,0,1
+AddVertex, -1.336,   2.957,9.50,0,0,1
+AddVertex, -1.495,  2.957,9.50,0,0,1
+AddVertex, -1.495,  2.90,9.56,0,0,1
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,165,165,165
+translate,-0.004,-0.05,-2.45,
+
+
+;;;;;; direito
+
+
+CreateMeshBuilder,
+AddVertex,1.341, 2.90,-9.581,0,0,1
+AddVertex,1.345, 2.85,-9.581,0,0,1
+AddVertex,1.345, 2.85,-9.579,0,0,1
+AddVertex,1.342, 2.90,-9.559,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+translate,0.004,-0.05,15.13,
+CreateMeshBuilder,
+AddVertex,1.338, 2.957,-9.495,0,0,1
+AddVertex,1.342, 2.90,-9.56,0,0,1
+AddVertex,1.341, 2.90,-9.581,0,0,1
+AddVertex,1.336, 2.95,-9.581,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+translate,0.004,-0.05,15.13,
+
+CreateMeshBuilder,
+AddVertex, 1.353,  2.85,9.56,0,0,1
+AddVertex, 1.349,  2.90,9.58,0,0,1
+AddVertex, 1.495,  2.90,9.58,0,0,1
+AddVertex, 1.495,  2.85,9.56,0,0,1
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,165,165,165
+translate,-0.004,-0.05,-4.01,
+CreateMeshBuilder,
+AddVertex, 1.349,  2.90,9.50,0,0,1
+AddVertex, 1.346,   2.957,9.56,0,0,1
+AddVertex, 1.495,  2.957,9.56,0,0,1
+AddVertex, 1.495,  2.90,9.50,0,0,1
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,165,165,165
+translate,-0.004,-0.05,-3.93,
+
+
+
+
+
+;;;;;;
+
+CreateMeshBuilder,
+AddVertex,1.342, 2.90,9.559,0,0,1
+AddVertex,1.344, 2.863,9.575,0,0,1
+AddVertex,1.344, 2.863,9.575,0,0,1
+AddVertex,1.34, 2.90,9.575,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+translate,0.004,-0.05,-2.45,
+CreateMeshBuilder,
+AddVertex,1.338, 2.957,9.495,0,0,1
+AddVertex,1.342, 2.90,9.56,0,0,1
+AddVertex,1.34, 2.90,9.575,0,0,1
+AddVertex,1.336, 2.95,9.575,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+translate,0.004,-0.05,-2.45,
+CreateMeshBuilder,
+AddVertex, 1.353,  2.85,9.58,0,0,1
+AddVertex, 1.349,  2.90,9.56,0,0,1
+AddVertex, 1.495,  2.90,9.56,0,0,1
+AddVertex, 1.495,  2.85,9.58,0,0,1
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,165,165,165
+translate,-0.004,-0.05,-2.45,
+CreateMeshBuilder,
+AddVertex, 1.349,  2.90,9.56,0,0,1
+AddVertex, 1.347,   2.957,9.50,0,0,1
+AddVertex, 1.495,  2.957,9.50,0,0,1
+AddVertex, 1.495,  2.90,9.56,0,0,1
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,165,165,165
+translate,-0.004,-0.05,-2.45,
+
+;; fechamento das pontas
+
+CreateMeshBuilder,
+AddVertex, -1.40,  2.02,5.58,0,0,1
+AddVertex, -1.40, 2.085,5.58,0,0,1
+AddVertex, -1.40,  2.05,5.62,0,0,1
+AddVertex, -1.40,  2.02,5.62,0,0,
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,175,175,175
+
+
+
+CreateMeshBuilder,
+AddVertex, -1.40,  2.02,5.55,0,0,1
+AddVertex, -1.40, 2.12,5.55,0,0,1
+AddVertex, -1.40,  2.085,5.58,0,0,1
+AddVertex, -1.40,  2.02,5.58,0,0,
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,175,175,175
+
+;; curva 2
+CreateMeshBuilder,
+AddVertex, -1.40,  2.15,7.13,0,0,1
+AddVertex, -1.40,2.05,7.09,0,0,1
+AddVertex, -1.5,  2.08,7.09,0,0,1
+AddVertex, -1.5,  2.15,7.13,0,0,1
+
+AddVertex, -1.40,  2.10,7.11,0,0,1
+AddVertex, -1.40,2.05,7.05,0,0,1
+AddVertex, -1.5,  2.06,7.05,0,0,1
+AddVertex, -1.5,  2.10,7.11,0,0,1
+AddFace2,0,1,2,3
+AddFace2,4,5,6,7
+LoadTexture,int1.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,4,0,1
+SetTextureCoordinates,5,1,1
+SetTextureCoordinates,6,1,0
+SetTextureCoordinates,7,0,0
+SetColor,165,165,165
+
+;; fechamento das pontas 2
+
+CreateMeshBuilder,
+AddVertex, -1.40,  2.02,7.10,0,0,1
+AddVertex, -1.40, 2.08,7.10,0,0,1
+AddVertex, -1.40,  2.14,7.125,0,0,1
+AddVertex, -1.40,  2.02,7.125,0,0,
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,175,175,175
+
+CreateMeshBuilder,
+AddVertex, -1.40,  2.02,7.05,0,0,1
+AddVertex, -1.40, 2.05,7.05,0,0,1
+AddVertex, -1.40,  2.10,7.11,0,0,1
+AddVertex, -1.40,  2.02,7.11,0,0,
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,175,175,175
+
+
+;;Outro lado -.-
+
+;; curva da janela
+CreateMeshBuilder,
+
+AddVertex, 1.40,  2.05,5.58,0,0,1
+AddVertex, 1.40,2.12,5.55,0,0,1
+AddVertex, 1.5,  2.12,5.55,0,0,1
+AddVertex, 1.5,  2.08,5.58,0,0,1
+
+AddVertex, 1.40,  2.05,5.62,0,0,1
+AddVertex, 1.40,2.10,5.56,0,0,1
+AddVertex, 1.5,  2.10,5.56,0,0,1
+AddVertex, 1.5,  2.06,5.62,0,0,1
+AddFace,3,2,1,0
+AddFace,7,6,5,4
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,4,0,1
+SetTextureCoordinates,5,1,1
+SetTextureCoordinates,6,1,0
+SetTextureCoordinates,7,0,0
+SetColor,165,165,165
+
+;; fechamento das pontas
+
+CreateMeshBuilder,
+AddVertex, 1.40,  2.02,5.58,0,0,1
+AddVertex, 1.40, 2.085,5.58,0,0,1
+AddVertex, 1.40,  2.05,5.62,0,0,1
+AddVertex, 1.40,  2.02,5.62,0,0,
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,175,175,175
+
+
+
+CreateMeshBuilder,
+AddVertex, 1.40,  2.02,5.55,0,0,1
+AddVertex, 1.40, 2.12,5.55,0,0,1
+AddVertex, 1.40,  2.085,5.58,0,0,1
+AddVertex, 1.40,  2.02,5.58,0,0,
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,175,175,175
+
+;; curva 2
+CreateMeshBuilder,
+AddVertex, 1.40,  2.15,7.13,0,0,1
+AddVertex, 1.40,2.05,7.09,0,0,1
+AddVertex, 1.5,  2.08,7.09,0,0,1
+AddVertex, 1.5,  2.15,7.13,0,0,1
+
+AddVertex, 1.40,  2.10,7.11,0,0,1
+AddVertex, 1.40,2.05,7.05,0,0,1
+AddVertex, 1.5,  2.06,7.05,0,0,1
+AddVertex, 1.5,  2.10,7.11,0,0,1
+AddFace,3,2,1,0
+AddFace,7,6,5,4
+LoadTexture,int1.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,4,0,1
+SetTextureCoordinates,5,1,1
+SetTextureCoordinates,6,1,0
+SetTextureCoordinates,7,0,0
+SetColor,165,165,165
+
+;; fechamento das pontas 2
+
+CreateMeshBuilder,
+AddVertex, 1.40,  2.02,7.10,0,0,1
+AddVertex, 1.40, 2.08,7.10,0,0,1
+AddVertex, 1.40,  2.14,7.125,0,0,1
+AddVertex, 1.40,  2.02,7.125,0,0,
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,175,175,175
+
+CreateMeshBuilder,
+AddVertex, 1.40,  2.02,7.05,0,0,1
+AddVertex, 1.40, 2.05,7.05,0,0,1
+AddVertex, 1.40,  2.10,7.11,0,0,1
+AddVertex, 1.40,  2.02,7.11,0,0,
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,175,175,175
+
+
+
+
+CreateMeshBuilder,;;B
+AddVertex,1.50, 2.08,7.125,0,0,1
+AddVertex,1.40, 2.05,7.125,0,0,1
+AddVertex,1.40, 2.05,5.55,0,0,1
+AddVertex,1.50, 2.08,5.55,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,0,0,0
+SetColor,165,165,165
+CreateMeshBuilder,;;C
+AddVertex,1.50, 2.8575,7.125,0,0,1
+AddVertex,1.34, 2.90775,7.125,0,0,1
+AddVertex,1.34, 2.9025,5.55,0,0,1
+AddVertex,1.50, 2.8575,5.55,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,0,0,0
+SetColor,165,165,165
+
+CreateMeshBuilder,
+;;L1
+AddVertex, 1.40,  2.25,7.125,0,0,1
+
+AddVertex, 1.34,2.905,7.125,0,0,1
+
+AddVertex, 1.5,  2.905,7.125,0,0,1
+
+AddVertex, 1.5,  2.25,7.125,0,0,1
+
+AddFace,0,1,2,3
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,165,165,165
+CreateMeshBuilder,
+;;L1
+AddVertex, 1.40,  2.05,7.125,0,0,1
+
+AddVertex, 1.40,2.25,7.125,0,0,1
+
+AddVertex, 1.5,  2.25,7.125,0,0,1
+
+AddVertex, 1.5,  2.08,7.125,0,0,1
+
+AddFace,0,1,2,3
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,165,165,165
+
+CreateMeshBuilder,
+;;L2
+AddVertex, 1.40,  2.25,5.55,0,0,1
+
+AddVertex, 1.34,2.905,5.55,0,0,1
+
+AddVertex, 1.5,  2.905,5.55,0,0,1
+
+AddVertex, 1.5,  2.25,5.55,0,0,1
+
+AddFace,3,2,1,0
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,165,165,165
+CreateMeshBuilder,
+;;L2
+AddVertex, 1.40,  2.05,5.55,0,0,1
+
+AddVertex, 1.40,2.25,5.55,0,0,1
+
+AddVertex, 1.5,  2.25,5.55,0,0,1
+
+AddVertex, 1.5,  2.08,5.55,0,0,1
+
+AddFace,3,2,1,0
+LoadTexture,int1.png,int1.png
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,0,0,1
+SetColor,165,165,165
+
+;;Lampada
+CreateMeshBuilder
+AddVertex,-0.75, 3.274,4.55,0,0,1
+AddVertex,-1.25, 3.274,4.55,0,0,1
+AddVertex,-1.25, 3.274,8.05,0,0,1
+AddVertex,-0.75, 3.274,8.05,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\lam.png,objetos\lam.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,2,1
+SetTextureCoordinates,3,2,0
+SetColor,220,220,220
+SetDecalTransparentColor,0
+CreateMeshBuilder
+AddVertex,0.75, 3.274,4.55,0,0,1
+AddVertex,1.25, 3.274,4.55,0,0,1
+AddVertex,1.25, 3.274,8.05,0,0,1
+AddVertex,0.75, 3.274,8.05,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\lam.png,objetos\lam.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,2,1
+SetTextureCoordinates,3,2,0
+SetColor,220,220,220
+SetDecalTransparentColor,0
+

@@ -1,0 +1,174 @@
+ 
+;;;;;tarmac roads
+CreateMeshBuilder,
+AddVertex, -2.5, -0, 0.0,
+AddVertex, -2.5, -0, 25.2,
+AddVertex,  2.7, -0, 25.2,
+AddVertex,  2.7, -0, 0.0,
+AddFace,  0,1,2,3,
+GenerateNormals,
+LoadTexture,road1.bmp,
+SetTextureCoordinates, 0, 2, 0,
+SetTextureCoordinates, 1, 0, 0,
+SetTextureCoordinates, 2, 0, 1,
+SetTextureCoordinates, 3, 2, 1,
+;;;
+CreateMeshBuilder,
+AddVertex, 10.1, -0, 0.0,
+AddVertex, 10.1, -0, 25.2,
+AddVertex,  4.7, -0, 25.2,
+AddVertex,  4.7, -0, 0.0,
+AddFace, 3,2,1,0,
+GenerateNormals,
+LoadTexture,road1.bmp,
+SetTextureCoordinates, 0, 2, 0,
+SetTextureCoordinates, 1, 0, 0,
+SetTextureCoordinates, 2, 0, 1,
+SetTextureCoordinates, 3, 2, 1,
+
+
+
+;;;;;lamp posts
+CreateMeshBuilder,
+Cylinder, 5, 0.17, 0.19, 12.00,
+Translate, 3.00, 4.70, 0.00,
+SetColor, 172,172,172,
+
+;;
+CreateMeshBuilder,
+Cylinder, 5, 0.17, 0.19, 12.00,
+Translate, 4.25, 4.70, 0.00,
+SetColor, 172,172,172,
+
+;;middle
+CreateMeshBuilder,
+Cylinder, 5, 0.17, 0.19, 12.00,
+Translate, -2.80, 4.70, 12.500,
+SetColor, 172,172,172,
+
+
+;;;;;lamp
+CreateMeshBuilder,
+AddVertex, -1.65, 8.25, 0,
+AddVertex,  2.87, 8.25, 0,
+AddVertex,  2.87, 5.00, 0,
+AddVertex, -1.65, 5.00, 0,
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture,luminari.bmp,
+SetTextureCoordinates, 0,0,0,
+SetTextureCoordinates, 1,1,0,
+SetTextureCoordinates, 2,1,1,
+SetTextureCoordinates, 3,0,1,
+SetDecalTransparentColor, 0,0,255,
+
+;;;
+CreateMeshBuilder,
+AddVertex, 8.90, 8.25, 0,
+AddVertex, 4.40, 8.25, 0,
+AddVertex, 4.40, 5.00, 0,
+AddVertex, 8.90, 5.00, 0,
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture,luminari.bmp,
+SetTextureCoordinates, 0,0,0,
+SetTextureCoordinates, 1,1,0,
+SetTextureCoordinates, 2,1,1,
+SetTextureCoordinates, 3,0,1,
+SetDecalTransparentColor, 0,0,255,
+
+;;;middle
+CreateMeshBuilder,
+AddVertex, -2.65, 8.25, 12.50,
+AddVertex, 1.40, 8.25, 12.50,
+AddVertex, 1.40, 5.00, 12.50,
+AddVertex, -2.65, 5.00, 12.50,
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture,luminari.bmp,
+SetTextureCoordinates, 0,0,0,
+SetTextureCoordinates, 1,-1,0,
+SetTextureCoordinates, 2,-1,1,
+SetTextureCoordinates, 3,0,1,
+SetDecalTransparentColor, 0,0,255,
+
+;;;;;head
+CreateMeshBuilder,
+AddVertex,  4.30, 10.50, 0,
+AddVertex,  1.00, 10.50, 0,
+AddVertex,  1.00, 9.00, 0,
+AddVertex,  4.30, 9.00, 0,
+AddFace2,  0,1,2,3,
+GenerateNormals,
+LoadTexture,mast4head.bmp,
+SetTextureCoordinates, 0,0,0,
+SetTextureCoordinates, 1,-1,0,
+SetTextureCoordinates, 2,-1,1,
+SetTextureCoordinates, 3,0,1,
+SetDecalTransparentColor,  0,0,255,
+
+
+;;=========upper wires
+CreateMeshBuilder,
+AddVertex, 2.2, 11, 25.10,
+AddVertex, 2.2, 11, 0.0,
+AddVertex, 2.2, 9, 0.0,
+AddVertex, 2.2, 9, 25.10,
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture,hv_wires.bmp,
+SetTextureCoordinates, 0, 0, 0,
+SetTextureCoordinates, 1, 1, 0,
+SetTextureCoordinates, 2, 1, 1,
+SetTextureCoordinates, 3, 0, 1,
+SetDecalTransparentColor,  0,0,255,
+
+CreateMeshBuilder,
+AddVertex, 1.8, 11, 25.10,
+AddVertex, 1.8, 11, 0.0,
+AddVertex, 1.8, 9, 0.0,
+AddVertex, 1.8, 9, 25.10,
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture,hv_wires.bmp,
+SetTextureCoordinates, 0, 0, 0,
+SetTextureCoordinates, 1, 1, 0,
+SetTextureCoordinates, 2, 1, 1,
+SetTextureCoordinates, 3, 0, 1,
+SetDecalTransparentColor,  0,0,255,
+;;
+CreateMeshBuilder,
+AddVertex, 1.4, 11, 25.10,
+AddVertex, 1.4, 11, 0.0,
+AddVertex, 1.4, 9, 0.0,
+AddVertex, 1.4, 9, 25.10,
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture,hv_wires.bmp,
+SetTextureCoordinates, 0, 0, 0,
+SetTextureCoordinates, 1, 1, 0,
+SetTextureCoordinates, 2, 1, 1,
+SetTextureCoordinates, 3, 0, 1,
+SetDecalTransparentColor,  0,0,255,
+
+
+;;;;lower wires
+CreateMeshBuilder,
+AddVertex, 2.8, 7.5, 25.20,
+AddVertex, 2.8, 7.5, 0.00,
+AddVertex, 2.8, 6.5, 0.00,
+AddVertex, 2.8, 6.5, 25.20,
+AddFace2,  0,1,2,3,
+GenerateNormals,
+LoadTexture,hv_wires3.bmp,
+SetTextureCoordinates, 0, 0, 0,
+SetTextureCoordinates, 1, 1, 0,
+SetTextureCoordinates, 2, 1, 1,
+SetTextureCoordinates, 3, 0, 1,
+SetDecalTransparentColor,  0,0,255,
+
+
+
+
+
+

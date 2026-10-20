@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+export LD_LIBRARY_PATH=/app/lib/openbve/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+exec /app/lib/openbve/route-viewer/RouteViewer "$@"

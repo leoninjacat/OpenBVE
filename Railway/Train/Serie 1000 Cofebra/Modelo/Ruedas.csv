@@ -1,0 +1,88 @@
+;;;rodas modernizadas ronaldo ribeiro
+
+CreateMeshBuilder,,,
+Cylinder,100,0.45,0.45,0.07
+SetColor,150,150,150,
+Rotate,0,0,1,90
+Translate  ,-0.74,0,0,
+
+CreateMeshbuilder,
+Cylinder,100,0.50,0.50,0.02,
+Setcolor,20,20,10,
+Rotate,0,0,90,90,
+Translate,-0.695,0.00,0.00,
+
+CreateMeshBuilder,,,
+AddVertex, -0.78, -0.45, -0.45,
+AddVertex, -0.78,  0.45, -0.45,
+AddVertex, -0.78,  0.45,  0.45,
+AddVertex, -0.78, -0.45,  0.45,
+AddFace,0,3,2,1
+GenerateNormals,,,,
+LoadTexture,sharin.png,
+SetTextureCoordinates,0,0,1,
+SetTextureCoordinates,1,0,0,
+SetTextureCoordinates,2,1,0,
+SetTextureCoordinates,3,1,1,
+SetDecalTransparentColor,255,255,255,
+
+CreateMeshBuilder,,,
+AddVertex, -0.684, -0.50, -0.50,
+AddVertex, -0.684,  0.50, -0.50,
+AddVertex, -0.684,  0.50,  0.50,
+AddVertex, -0.684, -0.50,  0.50,
+AddFace2,0,3,2,1
+GenerateNormals,,,,
+LoadTexture,sharin.png,
+SetTextureCoordinates,0,0,1,
+SetTextureCoordinates,1,0,0,
+SetTextureCoordinates,2,1,0,
+SetTextureCoordinates,3,1,1,
+SetDecalTransparentColor,255,255,255,
+
+CreateMeshBuilder,,,
+Cylinder,100,0.45,0.45,0.07
+SetColor,150,150,150,
+Rotate,0,0,1,90
+Translate  ,0.74,0,0,
+
+CreateMeshbuilder,
+Cylinder,100,0.50,0.50,0.02,
+Setcolor,20,20,10,
+Rotate,0,0,90,90,
+Translate,0.695,0.00,0.00,
+
+CreateMeshBuilder,,,
+AddVertex    ,0.78,-0.45,-0.45,
+AddVertex    ,0.78,0.45,-0.45,
+AddVertex    ,0.78,0.45,0.45,
+AddVertex    ,0.78,-0.45,0.45,
+AddFace,0,1,2,3
+GenerateNormals,,,,
+LoadTexture,sharin.png,
+SetTextureCoordinates,0,0,1,
+SetTextureCoordinates,1,0,0,
+SetTextureCoordinates,2,1,0,
+SetTextureCoordinates,3,1,1,
+SetDecalTransparentColor,255,255,255,
+CreateMeshBuilder,,,
+Cylinder,50,0.08,0.08,1.52
+SetColor,20,20,10,
+Rotate,0,0,1,90
+Translate  ,0,0,0,
+
+CreateMeshBuilder,,,
+AddVertex, 0.684, -0.50, -0.50,
+AddVertex, 0.684,  0.50, -0.50,
+AddVertex, 0.684,  0.50,  0.50,
+AddVertex, 0.684, -0.50,  0.50,
+AddFace2,0,3,2,1
+GenerateNormals,,,,
+LoadTexture,sharin.png,
+SetTextureCoordinates,0,0,1,
+SetTextureCoordinates,1,0,0,
+SetTextureCoordinates,2,1,0,
+SetTextureCoordinates,3,1,1,
+SetDecalTransparentColor,255,255,255,
+
+

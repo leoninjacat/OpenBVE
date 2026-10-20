@@ -1,0 +1,26 @@
+﻿;;botão giratorio;;;
+;;
+
+CreateMeshBuilder
+Cylinder,12,0.014,0.014,0.01
+Rotate,1,0,0,0
+Translate, 0,0.004, -0.01
+SetEmissiveColor, 20,20,20
+SetColor, 20,20,20
+
+CreateMeshBuilder
+Cube, 0.005, 0.015, 0.018,
+SetEmissiveColor, 25,25,25
+SetColor, 20,20,20
+Translate, 0,0.002, -0.015
+
+
+CreateMeshBuilder
+Cube, 0.001, 0.007, 0.018,
+SetEmissiveColor, 150,150,150
+SetColor, 20,20,20
+Translate, 0,0.012, -0.015
+
+
+translateall,0.01,0.10,5.40
+scaleall,1.03,1.11,0.79,

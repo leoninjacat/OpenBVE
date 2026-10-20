@@ -1,0 +1,10 @@
+[Object]
+States = carro1.csv
+Position = 0.00, 0,0
+
+[Include]
+Panto3.Csv
+Position =  0, -0.1, -14.8
+[Include]
+Panto1.Csv
+Position =  0, -0.1, 14.8

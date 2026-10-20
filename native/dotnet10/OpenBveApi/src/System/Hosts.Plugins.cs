@@ -44,7 +44,7 @@ namespace OpenBveApi.Hosts
 						Type[] types;
 						try
 						{
-							assembly = Assembly.LoadFile(file);
+							assembly = Assembly.LoadFrom(file);
 							types = assembly.GetTypes();
 						}
 						catch (Exception ex)

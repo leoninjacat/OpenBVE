@@ -1,0 +1,504 @@
+;pilastras
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,1
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,21
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,51
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,71
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,91
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,151
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,171
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,191
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate 7.5,0.3,200
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate -17.5,0.3,1
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate -17.5,0.3,21
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate -17.5,0.3,51
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate -17.5,0.3,71
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate -17.5,0.3,151
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate -17.5,0.3,171
+Color 160,160,160
+
+[MeshBuilder]
+Cube 0.3,8.5,0.3
+Translate -17.5,0.3,200
+Color 160,160,160
+
+;transversais
+[MeshBuilder]
+Cube 12.7,0.3,0.3
+Translate -5.0,5,1
+Color 160,160,160
+
+[MeshBuilder]
+Cube 12.7,0.3,0.3
+Translate -5.0,5,21
+Color 160,160,160
+
+[MeshBuilder]
+Cube 12.7,0.3,0.3
+Translate -5.0,5,51
+Color 160,160,160
+
+[MeshBuilder]
+Cube 12.7,0.3,0.3
+Translate -5.0,5,71
+Color 160,160,160
+
+[MeshBuilder]
+Cube 12.7,0.3,0.3
+Translate -5.0,5,91
+Color 160,160,160
+
+[MeshBuilder]
+Cube 12.7,0.3,0.3
+Translate -5.0,5,151
+Color 160,160,160
+
+[MeshBuilder]
+Cube 12.7,0.3,0.3
+Translate -5.0,5,171
+Color 160,160,160
+
+[MeshBuilder]
+Cube 12.7,0.3,0.3
+Translate -5.0,5,200
+Color 160,160,160
+
+;teto
+[MeshBuilder]
+Vertex -18, 10, 0.0
+Vertex -18, 10, 200
+Vertex  8, 10, 200
+Vertex  8, 10, 0.0
+Face2  0,1,2,3
+
+[Texture]
+Load Roof.bmp
+Coordinates 1, 1, 0
+Coordinates 0, 1, 0
+Coordinates 0, 1, 0
+Coordinates 1, 1, 0
+
+;inicio
+[MeshBuilder]
+Vertex -18, 10, 0.0
+Vertex -18, 8, 0
+Vertex  8, 8, 0
+Vertex  8, 10, 0.0
+Face2  0,1,2,3
+
+[Texture]
+Load Roof.bmp
+Coordinates 1, 1, 0
+Coordinates 0, 1, 0
+Coordinates 0, 1, 1
+Coordinates 1, 1, 1
+
+;fim
+[MeshBuilder]
+Vertex -18, 10, 200
+Vertex -18, 8, 200
+Vertex  8, 8, 200
+Vertex  8, 10, 200
+Face2  0,1,2,3
+
+[Texture]
+Load Roof.bmp
+Coordinates 1, 1, 0
+Coordinates 0, 1, 0
+Coordinates 0, 1, 1
+Coordinates 1, 1, 1
+
+;lado A
+[MeshBuilder]
+Vertex 8, 10, 200
+Vertex 8, 8, 200
+Vertex  8, 8,  0
+Vertex  8, 10, 0
+Face2  0,1,2,3
+
+[Texture]
+Load Roof.bmp
+Coordinates 1, 4, 0
+Coordinates 0, 4, 0
+Coordinates 0, 4, 1
+Coordinates 1, 4, 1
+
+;lado B
+[MeshBuilder]
+Vertex -18, 10, 200
+Vertex -18, 8, 200
+Vertex  -18, 8,  0
+Vertex  -18, 10, 0
+Face2  0,1,2,3
+
+[Texture]
+Load Roof.bmp
+Coordinates 1, 4, 0
+Coordinates 0, 4, 0
+Coordinates 0, 4, 1
+Coordinates 1, 4, 1
+
+;grades azuis
+
+;1
+[MeshBuilder]
+Vertex -18, 10, 10.0
+Vertex -18, 8, 10
+Vertex  8, 8, 10
+Vertex  8, 10, 10.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;2
+[MeshBuilder]
+Vertex -18, 10, 20.0
+Vertex -18, 8, 20
+Vertex  8, 8, 20
+Vertex  8, 10, 20.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;3
+[MeshBuilder]
+Vertex -18, 10, 30.0
+Vertex -18, 8, 30
+Vertex  8, 8, 30
+Vertex  8, 10, 30.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;4
+[MeshBuilder]
+Vertex -18, 10, 40.0
+Vertex -18, 8, 40
+Vertex  8, 8, 40
+Vertex  8, 10, 40.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;5
+[MeshBuilder]
+Vertex -18, 10, 50.0
+Vertex -18, 8, 50
+Vertex  8, 8, 50
+Vertex  8, 10, 50.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;6
+[MeshBuilder]
+Vertex -18, 10, 60.0
+Vertex -18, 8, 60
+Vertex  8, 8, 60
+Vertex  8, 10, 60.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;7
+[MeshBuilder]
+Vertex -18, 10, 70.0
+Vertex -18, 8, 70
+Vertex  8, 8, 70
+Vertex  8, 10, 70.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;8
+[MeshBuilder]
+Vertex -18, 10, 80.0
+Vertex -18, 8, 80
+Vertex  8, 8, 80
+Vertex  8, 10, 80.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;9
+[MeshBuilder]
+Vertex -18, 10, 90.0
+Vertex -18, 8, 90
+Vertex  8, 8, 90
+Vertex  8, 10, 90.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;10
+[MeshBuilder]
+Vertex -18, 10, 100.0
+Vertex -18, 8, 100
+Vertex  8, 8, 100
+Vertex  8, 10, 100.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;11
+[MeshBuilder]
+Vertex -18, 10, 110.0
+Vertex -18, 8, 110
+Vertex  8, 8, 110
+Vertex  8, 10, 110.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;12
+[MeshBuilder]
+Vertex -18, 10, 120.0
+Vertex -18, 8, 120
+Vertex  8, 8, 120
+Vertex  8, 10, 120.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;13
+[MeshBuilder]
+Vertex -18, 10, 130.0
+Vertex -18, 8, 130
+Vertex  8, 8, 130
+Vertex  8, 10, 130.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;14
+[MeshBuilder]
+Vertex -18, 10, 140.0
+Vertex -18, 8, 140
+Vertex  8, 8, 140
+Vertex  8, 10, 140.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;15
+[MeshBuilder]
+Vertex -18, 10, 150.0
+Vertex -18, 8, 150
+Vertex  8, 8, 150
+Vertex  8, 10, 150.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;16
+[MeshBuilder]
+Vertex -18, 10, 160.0
+Vertex -18, 8, 160
+Vertex  8, 8, 160
+Vertex  8, 10, 160.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;17
+[MeshBuilder]
+Vertex -18, 10, 170.0
+Vertex -18, 8, 170
+Vertex  8, 8, 170
+Vertex  8, 10, 170.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;18
+[MeshBuilder]
+Vertex -18, 10, 180.0
+Vertex -18, 8, 180
+Vertex  8, 8, 180
+Vertex  8, 10, 180.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;19
+[MeshBuilder]
+Vertex -18, 10, 190.0
+Vertex -18, 8, 190
+Vertex  8, 8, 190
+Vertex  8, 10, 190.0
+Face2  0,1,2,3
+
+[Texture]
+Load gradil.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+EmissiveColorAll 20,20,20

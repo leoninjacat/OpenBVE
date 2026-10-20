@@ -1,0 +1,927 @@
+;rails principais da linha
+
+;trilho 1
+0,.rail 1;-5;0;0
+
+;postes
+0,.rail 10;-5;1;10,.rail 11;0;1;11
+
+;muros
+0,.rail 20;7;0;20,.rail 21;-35;0;20
+
+;rua
+0,.rail 335;25;0;35
+
+;mata
+,.rail 300;-50;0;30,.rail 301;70;0;32
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;curvas
+
+;curva saindo de GAT
+1075,.curve -800,.railtype 0;4,.railtype 1;4
+1550,.curve 0,.railtype 0;0,.railtype 1;0
+
+;curva no caminho pra JP2
+2050,.curve -800,.railtype 0;4,.railtype 1;4
+2550,.curve 0,.railtype 0;0,.railtype 1;0
+
+;estacao maria das dores curva
+3950,.curve -1200,.railtype 0;4,.railtype 1;4
+4450,.curve 0,.railtype 0;0,.railtype 1;0
+
+;curva antes da entrada do tunel LAC
+5400,.curve -800,.railtype 0;4,.railtype 1;4
+5625,.curve 0,.railtype 0;0,.railtype 1;0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;objetos da rota
+
+;ponte na saida de GAT
+950,.freeobj 1;1010;0
+
+;casas arredores GAT
+000,.freeobj 0;1000;130,.freeobj 0;1001;-40
+025,.freeobj 0;1001;70,.freeobj 0;1003;-40
+050,.freeobj 0;1002;70,.freeobj 0;1001;-40
+075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+100,.freeobj 0;1001;70,.freeobj 0;1001;-40
+125,.freeobj 0;1003;70,.freeobj 0;1001;-40
+150,.freeobj 0;1002;70,.freeobj 0;1002;-80
+175,.freeobj 0;1003;70,.freeobj 0;1002;-80
+200,.freeobj 0;1000;130,.freeobj 0;1001;-40
+225,.freeobj 0;1001;70,.freeobj 0;1003;-40
+250,.freeobj 0;1002;70,.freeobj 0;1001;-40
+275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+300,.freeobj 0;1001;70,.freeobj 0;1001;-40
+325,.freeobj 0;1003;70,.freeobj 0;1001;-40
+350,.freeobj 0;1002;70,.freeobj 0;1002;-80
+375,.freeobj 0;1003;70,.freeobj 0;1002;-80
+400,.freeobj 0;1000;130
+425,.freeobj 0;1001;70
+450,.freeobj 0;1002;70
+475,.freeobj 0;1003;70,.freeobj 0;1002;-80
+500,.freeobj 0;1001;70,.freeobj 0;1001;-40
+525,.freeobj 0;1003;70,.freeobj 0;1001;-40
+550,.freeobj 0;1002;70,.freeobj 0;1002;-80
+575,.freeobj 0;1003;70,.freeobj 0;1002;-80
+700,.freeobj 0;1000;130,.freeobj 0;1001;-40
+725,.freeobj 0;1001;70,.freeobj 0;1003;-40
+750,.freeobj 0;1002;70,.freeobj 0;1001;-40
+775,.freeobj 0;1003;70,.freeobj 0;1002;-80
+800,.freeobj 0;1001;70,.freeobj 0;1001;-40
+875,.freeobj 0;1003;70,.freeobj 0;1002;-80
+900,.freeobj 0;1000;130
+925,.freeobj 0;1001;70
+950,.freeobj 0;1002;70
+975,.freeobj 0;1003;70,.freeobj 0;1002;-80
+1000,.freeobj 0;1001;70,.freeobj 0;1001;-40
+1025,.freeobj 0;1003;70,.freeobj 0;1001;-40
+1050,.freeobj 0;1002;70,.freeobj 0;1002;-80
+1075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+1100,.freeobj 0;1000;130,.freeobj 0;1001;-40
+1125,.freeobj 0;1001;70,.freeobj 0;1003;-40
+1150,.freeobj 0;1002;70,.freeobj 0;1001;-40
+1175,.freeobj 0;1003;70,.freeobj 0;1000;-80
+1200,.freeobj 0;1001;70,.freeobj 0;1001;-40
+1225,.freeobj 0;1003;70,.freeobj 0;1001;-40
+1250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+1275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+
+;casas descem com a subida pra MIR
+1300,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;-1
+1325,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;-2
+1350,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;-3
+1375,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;-4
+1400,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;-5
+1425,.freeobj 0;1001;70;-6,.freeobj 0;1003;-40;-6
+1450,.freeobj 0;1002;70;-7,.freeobj 0;1001;-40;-7
+1475,.freeobj 0;1003;70;-8,.freeobj 0;1000;-80;-8
+1500,.freeobj 0;1001;70;-9,.freeobj 0;1001;-40;-9
+1525,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+
+;casas arredores de MIR
+1550,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+1575,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+1600,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+1625,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+1650,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+1675,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+1700,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+1725,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+1750,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+1775,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+
+;casas sobem com a descida de MIR
+1800,.freeobj 0;1001;70;-10,.freeobj 0;1000;-40;-10
+1825,.freeobj 0;1003;70;-09,.freeobj 0;1000;-40;-09
+1850,.freeobj 0;1002;70;-08,.freeobj 0;1002;-80;-08
+1875,.freeobj 0;1003;70;-07,.freeobj 0;1002;-80;-07
+1900,.freeobj 0;1001;70;-06,.freeobj 0;1001;-40;-06
+1925,.freeobj 0;1003;70;-05,.freeobj 0;1001;-40;-05
+1950,.freeobj 0;1002;70;-04,.freeobj 0;1002;-80;-04
+1975,.freeobj 0;1003;70;-03,.freeobj 0;1002;-80;-03
+2000,.freeobj 0;1001;70;-02,.freeobj 0;1001;-40;-02
+2025,.freeobj 0;1003;70;-01,.freeobj 0;1001;-40;-01
+2050,.freeobj 0;1002;70;00,.freeobj 0;1002;-80;00
+
+;caminho entre MIR e JP2
+2075,.freeobj 0;1001;70,.freeobj 0;1001;-40
+2100,.freeobj 0;1003;70,.freeobj 0;1001;-40
+2125,.freeobj 0;1002;70,.freeobj 0;1002;-80
+2150,.freeobj 0;1003;70,.freeobj 0;1002;-80
+2175,.freeobj 0;1000;130,.freeobj 0;1001;-40
+2200,.freeobj 0;1001;70,.freeobj 0;1003;-40
+2225,.freeobj 0;1002;70,.freeobj 0;1002;-80
+2250,.freeobj 0;1003;70,.freeobj 0;1002;-80
+2275,.freeobj 0;1000;130,.freeobj 0;1001;-40
+2300,.freeobj 0;1001;70,.freeobj 0;1003;-40
+2125,.freeobj 0;1002;70,.freeobj 0;1002;-80
+2150,.freeobj 0;1003;70,.freeobj 0;1002;-80
+2175,.freeobj 0;1000;130,.freeobj 0;1001;-40
+2200,.freeobj 0;1001;70,.freeobj 0;1003;-40
+2225,.freeobj 0;1002;70,.freeobj 0;1002;-80
+2250,.freeobj 0;1003;70,.freeobj 0;1002;-80
+2275,.freeobj 0;1000;130,.freeobj 0;1001;-40
+2300,.freeobj 0;1001;70,.freeobj 0;1003;-40
+2325,.freeobj 0;1002;70,.freeobj 0;1002;-80
+2350,.freeobj 0;1003;70,.freeobj 0;1002;-80
+2375,.freeobj 0;1000;130,.freeobj 0;1001;-40
+2400,.freeobj 0;1001;70,.freeobj 0;1003;-40
+2425,.freeobj 0;1002;70,.freeobj 0;1002;-80
+2450,.freeobj 0;1003;70,.freeobj 0;1002;-80
+2475,.freeobj 0;1000;130,.freeobj 0;1001;-40
+2500,.freeobj 0;1001;70,.freeobj 0;1003;-40
+2525,.freeobj 0;1002;70,.freeobj 0;1002;-80
+2550,.freeobj 0;1003;70,.freeobj 0;1002;-80
+2575,.freeobj 0;1000;130,.freeobj 0;1001;-40
+2600,.freeobj 0;1001;70,.freeobj 0;1003;-40
+
+;casas descem com a subida pra JP2
+2600,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;-1
+2625,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;-2
+2650,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;-3
+2675,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;-4
+2700,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;-5
+2725,.freeobj 0;1001;70;-6,.freeobj 0;1003;-40;-6
+2750,.freeobj 0;1002;70;-7,.freeobj 0;1001;-40;-7
+2775,.freeobj 0;1003;70;-8,.freeobj 0;1000;-80;-8
+2800,.freeobj 0;1001;70;-9,.freeobj 0;1001;-40;-9
+2825,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+
+;casas arredores de JP2
+2850,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+2875,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2900,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2925,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2950,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+2975,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+3000,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3025,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3050,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3075,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+
+;casas sobem com a descida de JP2
+3200,.freeobj 0;1001;70;-10,.freeobj 0;1000;-40;-10
+3225,.freeobj 0;1003;70;-09,.freeobj 0;1000;-40;-09
+3250,.freeobj 0;1002;70;-08,.freeobj 0;1002;-80;-08
+3275,.freeobj 0;1003;70;-07,.freeobj 0;1002;-80;-07
+3300,.freeobj 0;1001;70;-06,.freeobj 0;1001;-40;-06
+3325,.freeobj 0;1003;70;-05,.freeobj 0;1001;-40;-05
+3350,.freeobj 0;1002;70;-04,.freeobj 0;1002;-80;-04
+3375,.freeobj 0;1003;70;-03,.freeobj 0;1002;-80;-03
+3400,.freeobj 0;1001;70;-02,.freeobj 0;1001;-40;-02
+3425,.freeobj 0;1003;70;-01,.freeobj 0;1001;-40;-01
+3450,.freeobj 0;1002;70;00,.freeobj 0;1002;-80;00
+
+;caminho ate o tunel LAC
+3475,.freeobj 0;1003;70,.freeobj 0;1002;-80
+3500,.freeobj 0;1001;70,.freeobj 0;1001;-40
+3525,.freeobj 0;1003;70,.freeobj 0;1001;-40
+3550,.freeobj 0;1002;70,.freeobj 0;1002;-80
+3575,.freeobj 0;1003;70,.freeobj 0;1002;-80
+3600,.freeobj 0;1001;70,.freeobj 0;1001;-40
+3625,.freeobj 0;1003;70,.freeobj 0;1001;-40
+3650,.freeobj 0;1002;70,.freeobj 0;1002;-80
+3675,.freeobj 0;1003;70,.freeobj 0;1002;-80
+3700,.freeobj 0;1001;70,.freeobj 0;1001;-40
+3725,.freeobj 0;1003;70,.freeobj 0;1001;-40
+3750,.freeobj 0;1002;70,.freeobj 0;1002;-80
+3775,.freeobj 0;1003;70,.freeobj 0;1002;-80
+3800,.freeobj 0;1000;130,.freeobj 0;1001;-40
+3825,.freeobj 0;1001;70,.freeobj 0;1003;-40
+3850,.freeobj 0;1002;70,.freeobj 0;1001;-40
+3875,.freeobj 0;1003;70,.freeobj 0;1002;-80
+3900,.freeobj 0;1001;70,.freeobj 0;1001;-40
+3925,.freeobj 0;1003;70,.freeobj 0;1001;-40
+3950,.freeobj 0;1002;70,.freeobj 0;1002;-80
+3975,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4000,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4025,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4050,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4100,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4125,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4150,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4175,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4200,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4225,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4300,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4325,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4350,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4375,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4400,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4425,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4450,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4475,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4500,.freeobj 0;1000;130,.freeobj 0;1001;-40
+4525,.freeobj 0;1001;70,.freeobj 0;1003;-40
+4550,.freeobj 0;1002;70,.freeobj 0;1001;-40
+4575,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4600,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4625,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4650,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4675,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4700,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4725,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4750,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4775,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4800,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4825,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4850,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4875,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4900,.freeobj 0;1001;70,.freeobj 0;1001;-40
+4925,.freeobj 0;1003;70,.freeobj 0;1001;-40
+4950,.freeobj 0;1002;70,.freeobj 0;1002;-80
+4975,.freeobj 0;1003;70,.freeobj 0;1002;-80
+5000,.freeobj 0;1001;70,.freeobj 0;1001;-40
+5025,.freeobj 0;1003;70,.freeobj 0;1001;-40
+5050,.freeobj 0;1002;70,.freeobj 0;1002;-80
+5075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+5100,.freeobj 0;1000;130,.freeobj 0;1001;-40
+5125,.freeobj 0;1001;70,.freeobj 0;1003;-40
+5150,.freeobj 0;1002;70,.freeobj 0;1001;-40
+5175,.freeobj 0;1003;70,.freeobj 0;1002;-80
+5200,.freeobj 0;1001;70,.freeobj 0;1001;-40
+5225,.freeobj 0;1003;70,.freeobj 0;1001;-40
+5250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+5275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+5300,.freeobj 0;1001;70,.freeobj 0;1001;-40
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;pontes e viadutos ferroviarios
+
+;viaduto de MIR começa
+1300,.rail 6;0;0;6,.rail 7;-5;0;7
+
+;inicio estacao MIR
+1600,.railtype 6;9,.railtype 7;9
+
+;viaduto de MIR termina
+2050,.railtype 6;1,.railtype 7;1
+
+;viaduto de JP2 começa
+2600,.rail 6;0;0;6,.rail 7;-5;0;7
+
+;inicio estacao JP2
+2900,.railtype 6;9,.railtype 7;9
+
+;viaduto de MIR termina
+3350,.railtype 6;1,.railtype 7;1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;topografia
+
+;subida pra MIR
+1300,.pitch 0,.height 0
+1325,.pitch 10,.height 1
+1350,.pitch 20,.height 2
+1375,.pitch 30,.height 3
+1400,.pitch 40,.height 4
+1425,.pitch 50,.height 5
+1450,.pitch 40,.height 6
+1475,.pitch 30,.height 7
+1500,.pitch 20,.height 8
+1525,.pitch 10,.height 9
+1550,.pitch 0,.height 10
+
+;descida apos MIR
+1800,.pitch 0,.height 10
+1825,.pitch -10,.height 9
+1850,.pitch -20,.height 8
+1875,.pitch -30,.height 7
+1900,.pitch -40,.height 6
+1925,.pitch -50,.height 5
+1950,.pitch -40,.height 4
+1975,.pitch -30,.height 3
+2000,.pitch -20,.height 2
+2025,.pitch -10,.height 1
+2050,.pitch 0,.height 0
+
+;subida pra JP2
+2600,.pitch 0,.height 0
+2625,.pitch 10,.height 1
+2650,.pitch 20,.height 2
+2675,.pitch 30,.height 3
+2700,.pitch 40,.height 4
+2725,.pitch 50,.height 5
+2750,.pitch 40,.height 6
+2775,.pitch 30,.height 7
+2800,.pitch 20,.height 8
+2825,.pitch 10,.height 9
+2850,.pitch 0,.height 10
+
+;descida apos JP2
+3100,.pitch 0,.height 10
+3125,.pitch -10,.height 9
+3150,.pitch -20,.height 8
+3175,.pitch -30,.height 7
+3200,.pitch -40,.height 6
+3225,.pitch -50,.height 5
+3250,.pitch -40,.height 4
+3275,.pitch -30,.height 3
+3300,.pitch -20,.height 2
+3325,.pitch -10,.height 1
+3350,.pitch 0,.height 0
+
+;descida tunel LAC
+5500,.pitch 0,.height 0
+5525,.pitch -10,.height 10
+5550,.pitch -20,.height 20
+5575,.pitch -30,.height 30
+5600,.pitch -40,.height 40
+5625,.pitch -30,.height 30
+5650,.pitch -20,.height 20
+5675,.pitch -10,.height 10
+5700,.pitch 0,.height 0
+
+;saida do tunel LAC
+7900,.pitch 0,.height 0
+7925,.pitch 10,.height 10
+7950,.pitch 20,.height 20
+7975,.pitch 30,.height 30
+8000,.pitch 40,.height 40
+8025,.pitch 30,.height 30
+8050,.pitch 20,.height 20
+8075,.pitch 10,.height 10
+8100,.pitch 0,.height 0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;Pátios
+;Pátio Gatos
+0,.rail 1100;-21;0;0,.rail 1101;-26;0;0,.rail 1102;-31;0;0
+
+;trilhos se separam pra entrada de GAT
+350,.rail 1;-5.2;0;2	,.rail 10;-5.2
+375,.rail 1;-5.7;0;2	,.rail 10;-5.7
+400,.rail 1;-7;0;0	,.rail 10;-7
+425,.rail 1;-9.5;0;3	,.rail 10;-9.5
+450,.rail 1;-11.7;0;3	,.rail 10;-11.7
+475,.rail 1;-13.2;0;3	,.rail 10;-13.2
+500,.rail 1;-14;0;0	,.rail 10;-14
+
+;Saida patio GAT
+800,.rail 5;-21;0;3
+825,.rail 5;-19.2;0;3
+850,.rail 5;-16;0;3
+875,.rail 5;-11;0;4
+895,.freeobj 1100;106;0,.freeobj 1101;106;0,.freeobj 1102;106;0
+900,.rail 5;-7;0;4,.railend 1100,.railend 1101,.railend 1102
+925,.railend 5;-5;0;4,.railtype 10;10,.railtype 11;11,.railend 11,.rail 11;0
+
+950,.rail 4;-5;0;3
+975,.rail 4;-4.5;0;3
+1000,.rail 4;-3;0;0
+1025,.rail 4;-1;0;2
+1050,.railend 4;0;0;3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;topografia mata e rua
+
+;subida antes de MIR
+1300,.rail 300;-50; 0;30,.rail 301;70; 0;32,.rail 335;25;0,.rail 336;-33;0;35
+1325,.rail 300;-50;-1;30,.rail 301;70;-1;32,.rail 335;25;-0.2,.rail 336;-35;-0.2
+1350,.rail 300;-50;-2;30,.rail 301;70;-2;32,.rail 335;25;-1.3,.rail 336;-35;-1.3
+1375,.rail 300;-50;-3;30,.rail 301;70;-3;32,.rail 335;25;-2.5,.rail 336;-35;-2.5
+1400,.rail 300;-50;-4;30,.rail 301;70;-4;32,.rail 335;25;-3.5,.rail 336;-35;-3.5
+1425,.rail 300;-50;-5;30,.rail 301;70;-5;32,.rail 335;25;-4.5,.rail 336;-35;-4.5
+1450,.rail 300;-50;-6;30,.rail 301;70;-6;32,.rail 335;25;-5.5,.rail 336;-35;-5.5
+1475,.rail 300;-50;-7;30,.rail 301;70;-7;32,.rail 335;25;-6.5,.rail 336;-35;-6.5
+1500,.rail 300;-50;-8;30,.rail 301;70;-8;32,.rail 335;25;-7.5,.rail 336;-35;-7.5
+1525,.rail 300;-50;-9;30,.rail 301;70;-9;32,.rail 335;25;-8.5,.rail 336;-35;-8.5
+1550,.rail 300;-50;-10;30,.rail 301;70;-10;32,.rail 335;25;-9,.rail 336;-35;-9;
+
+;descida apos MIR
+1800,.rail 300;-50;-10;30,.rail 301;70;-10;32,.rail 335;25;-9,.rail 336;-35;-9;
+1825,.rail 300;-50;-9;30,.rail 301;70;-9;32,.rail 335;25;-8.5,.rail 336;-35;-8.5
+1850,.rail 300;-50;-8;30,.rail 301;70;-8;32,.rail 335;25;-7.5,.rail 336;-35;-7.5
+1875,.rail 300;-50;-7;30,.rail 301;70;-7;32,.rail 335;25;-6.5,.rail 336;-35;-6.5
+1900,.rail 300;-50;-6;30,.rail 301;70;-6;32,.rail 335;25;-5.5,.rail 336;-35;-5.5
+1925,.rail 300;-50;-5;30,.rail 301;70;-5;32,.rail 335;25;-4.5,.rail 336;-35;-4.5
+1950,.rail 300;-50;-4;30,.rail 301;70;-4;32,.rail 335;25;-3.5,.rail 336;-35;-3.5
+1975,.rail 300;-50;-3;30,.rail 301;70;-3;32,.rail 335;25;-2.5,.rail 336;-35;-2.5
+2000,.rail 300;-50;-2;30,.rail 301;70;-2;32,.rail 335;25;-1.3,.rail 336;-35;-1.3
+2025,.rail 300;-50;-1;30,.rail 301;70;-1;32,.rail 335;25;-0.2,.rail 336;-35;-0.2
+2050,.rail 300;-50; 0;30,.rail 301;70; 0;32,.rail 335;25;0,.rail 336;-33;0;35
+
+;subida antes de JP2
+2600,.rail 300;-50; 0;30,.rail 301;70; 0;32,.rail 335;25;0,.rail 336;-33;0;35
+2625,.rail 300;-50;-1;30,.rail 301;70;-1;32,.rail 335;25;-0.2,.rail 336;-35;-0.2
+2650,.rail 300;-50;-2;30,.rail 301;70;-2;32,.rail 335;25;-1.3,.rail 336;-35;-1.3
+2675,.rail 300;-50;-3;30,.rail 301;70;-3;32,.rail 335;25;-2.5,.rail 336;-35;-2.5
+2700,.rail 300;-50;-4;30,.rail 301;70;-4;32,.rail 335;25;-3.5,.rail 336;-35;-3.5
+2725,.rail 300;-50;-5;30,.rail 301;70;-5;32,.rail 335;25;-4.5,.rail 336;-35;-4.5
+2750,.rail 300;-50;-6;30,.rail 301;70;-6;32,.rail 335;25;-5.5,.rail 336;-35;-5.5
+2775,.rail 300;-50;-7;30,.rail 301;70;-7;32,.rail 335;25;-6.5,.rail 336;-35;-6.5
+2800,.rail 300;-50;-8;30,.rail 301;70;-8;32,.rail 335;25;-7.5,.rail 336;-35;-7.5
+2825,.rail 300;-50;-9;30,.rail 301;70;-9;32,.rail 335;25;-8.5,.rail 336;-35;-8.5
+2850,.rail 300;-50;-10;30,.rail 301;70;-10;32,.rail 335;25;-9,.rail 336;-35;-9;
+
+;descida apos JP2
+3100,.rail 300;-50;-10;30,.rail 301;70;-10;32,.rail 335;25;-9,.rail 336;-35;-9;
+3125,.rail 300;-50;-9;30,.rail 301;70;-9;32,.rail 335;25;-8.5,.rail 336;-35;-8.5
+3150,.rail 300;-50;-8;30,.rail 301;70;-8;32,.rail 335;25;-7.5,.rail 336;-35;-7.5
+3175,.rail 300;-50;-7;30,.rail 301;70;-7;32,.rail 335;25;-6.5,.rail 336;-35;-6.5
+3200,.rail 300;-50;-6;30,.rail 301;70;-6;32,.rail 335;25;-5.5,.rail 336;-35;-5.5
+3225,.rail 300;-50;-5;30,.rail 301;70;-5;32,.rail 335;25;-4.5,.rail 336;-35;-4.5
+3250,.rail 300;-50;-4;30,.rail 301;70;-4;32,.rail 335;25;-3.5,.rail 336;-35;-3.5
+3275,.rail 300;-50;-3;30,.rail 301;70;-3;32,.rail 335;25;-2.5,.rail 336;-35;-2.5
+3300,.rail 300;-50;-2;30,.rail 301;70;-2;32,.rail 335;25;-1.3,.rail 336;-35;-1.3
+3325,.rail 300;-50;-1;30,.rail 301;70;-1;32,.rail 335;25;-0.2,.rail 336;-35;-0.2
+3350,.rail 300;-50; 0;30,.rail 301;70; 0;32,.rail 335;25;0,.rail 336;-33;0;35
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;topografia muros
+
+;muros se juntam na saida do pátio GAT
+925,.rail 21;-33
+950,.rail 21;-28
+975,.rail 21;-22
+1000,.rail 21;-15
+
+;muro encerra para ponte antes de MIR
+1300,.railend 20;3,.railend 21;-7.5
+
+;muro retorna apos a descida de MIR
+2050,.rail 20;3,.rail 21;-7.5
+2075,.rail 20;5,.rail 21;-15
+
+;muro encerra para ponte antes de JP2
+2600,.railend 20;3,.railend 21;-7.5
+
+;muro retorna apos a descida de JP2
+3350,.rail 20;3,.rail 21;-7.5
+3375,.rail 20;7.5,.rail 21;-12
+
+;muros ficam altos para o túnel LAC
+5250,.rail 20;7;0,.rail 21;-11;0
+5275,.rail 20;8;1,.rail 21;-12;1
+5300,.rail 20;9;2,.rail 21;-13;2
+5325,.rail 20;10;3,.rail 21;-14;3
+5350,.rail 20;11;4,.rail 21;-15;4
+5375,.rail 20;12;5,.rail 21;-16;5
+5400,.rail 20;13;6,.rail 21;-17;6
+5425,.rail 20;14;7,.rail 21;-18;7
+5450,.rail 20;15;8,.rail 21;-20;8
+5475,.rail 20;16;9,.rail 21;-22;9
+
+;muros descem enquanto o trem sai do túnel LAC
+8000,.rail 20;16;9,.rail 21;-22;9
+8025,.rail 20;15;8,.rail 21;-20;8
+8050,.rail 20;14;7,.rail 21;-18;7
+8075,.rail 20;13;6,.rail 21;-17;6
+8100,.rail 20;12;5,.rail 21;-16;5
+8125,.rail 20;11;4,.rail 21;-15;4
+8150,.rail 20;10;3,.rail 21;-14;3
+8175,.rail 20;9;2,.rail 21;-13;2
+8200,.rail 20;8;1,.rail 21;-12;1
+8225,.rail 20;7;0,.rail 21;-11;0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;tuneis
+;entrada do túnel LAC
+5700,.rail 40;2;0;40,.rail 41;-8;0;41,.rail 42;14;0;41,.rail 43;22;0;40,.railend 20,.railend 21,.railend 10,.railend 11,.freeobj 1;0;0;0,.background 1,.railtype 0;1000,.railtype 1;1000,.railtype 335;1
+,.rail 2;15;0;1000,.rail 3;20;0;1000
+,.ground 1
+
+;saida do túnel LAC
+7700,.background 0
+7850,.rail 20;16;9,.rail 21;-22;9,.rail 10,.rail 11,.rail 20,.rail 21,.freeobj 1;0;0;0,.railtype 0;0,.railtype 1;0,.railend 40,.railend 41,.railend 42,.railend 43,.railtype 335;35,.railend 70,.railend 502,.railend 503
+,.ground 0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;switches
+
+;switcher antes da entrada de GAT
+200,.rail 4;0;0;2
+225,.rail 4;-1;0;0
+250,.rail 4;-3;0;3
+275,.rail 4;-4.5;0;3
+300,.railend 4;-5;0;3
+
+;switcher entrada tunel LAC
+5800,.rail 4;0;0;1002
+5825,.rail 4;-1;0;1000
+5850,.rail 4;-3;0;1003
+5875,.rail 4;-4.5;0;1003
+5900,.railend 4;-5;0;1003,.rail 502;-5;0;502,.rail 503;15;0;502
+
+;switch saida da estacao LAC
+6100,.rail 4;-5;0;1003,.railtype 502;1
+6125,.rail 4;-4.5;0;1003
+6150,.rail 4;-3;0;1000
+6175,.rail 4;-1;0;1002
+6200,.railend 4;0;0;1003
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;Enlaces
+
+;Enlace com a Linha 2
+6200,.railtype 40;1,.railtype 42;1,.freeobj 1;0;0;0
+
+;trilho de conexão com a Linha 2 começa
+6200,.rail 5;15;0;1002
+6225,.rail 4;0;0;1003,.rail 5;14.4;0;1002,.railtype 502;502
+6250,.rail 4;1;0;1000,.rail 5;12.7;0;1002
+6275,.rail 4;3;0;1000,.rail 5;10.1;0;1003
+6300,.rail 4;5;0;1002,.rail 5;8;0;1000
+6325,.rail 4;6;0;1000,.rail 5;6.7;0;1003
+6350,.railend 4;,.rail 5;6;0;1000
+
+6550,.rail 4;6;0;1002
+6575,.rail 4;4.5;0;1000,.rail 5;6.7;0;1003
+6600,.rail 4;2.5;0;1003,.rail 5;8;0;1003
+6625,.rail 4;0.7,.rail 5;10.1;0;1002
+6650,.railend 4;0,.rail 5;12.7
+6675,.rail 5;14.5,.railtype 502;1
+6700,.railend 5;15
+
+6700,.rail 4;0;0;1002
+6725,.rail 4;-1;0;1000
+6750,.rail 4;-3;0;1003
+6775,.rail 4;-4.5;0;1003
+6800,.railend 4;-5;0;1003,.railtype 502;502
+
+6700,.railtype 40;40,.railtype 42;41,.freeobj 1;0;0;0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;estações
+
+;Parada
+0,.sta parada
+200,.stop 0
+
+;GAT
+500,.sta Gatos;;;0;B
+,.freeobj 0;1;0;2
+,.rail 600;0;0;600,.rail 601;-24.5;0;600
+,.freeobj 0;24;0
+,.rail 211;-17.5;0;21
+
+;plataformas
+500,.rail 100;0;0;100,.rail 101;-13.8;0;101,.rail 102;0;0;101
+
+;placas destino
+521,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+551,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+571,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+608,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+651,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+671,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+
+;placas saida
+591,.freeobj 0;33;-6.3;3,.freeobj 0;33;5.6;3
+
+;placas estacao plataforma 1 saida normal
+510,.freeobj 1;25;7.5;2.1;90
+560,.freeobj 1;25;7.5;2.1;90
+
+;placas estacao plataforma 2 saida normal
+510,.freeobj 0;26;6.9;2.1;90
+530,.freeobj 0;27;6.9;2.1;90
+560,.freeobj 0;26;6.9;2.1;90
+
+;placas estacao plataforma 1 saida invertida
+620,.freeobj 1;28;7.5;2.1;90
+660,.freeobj 1;28;7.5;2.1;90
+
+;placas estacao plataforma 2 saida invertida
+618,.freeobj 0;29;6.9;2.1;90
+640,.freeobj 0;27;6.9;2.1;90
+660,.freeobj 0;29;6.9;2.1;90
+680,.freeobj 0;27;6.9;2.1;90
+
+;monitores
+518,.freeobj 0;97;6.5;2;90,.freeobj 1;97;7;2
+578,.freeobj 0;97;6.5;2;90,.freeobj 1;97;7;2
+628,.freeobj 0;97;6.5;2;90,.freeobj 1;97;7;2
+688,.freeobj 0;97;6.5;2;90,.freeobj 1;97;7;2
+
+;poles e muretas
+500,.railtype 10;1,.railtype 11;1,.railtype 20;21
+
+;mezanino
+600,.railend 600,.railend 601
+,.freeobj 0;2;0;0.5
+625,.rail 600,.rail 601
+
+;cadeiras
+530,.freeobj 0;100;5.7;2,.freeobj 1;100;8.0;2
+600,.freeobj 0;100;5.7;2,.freeobj 1;100;8.0;2
+640,.freeobj 0;100;5.7;2,.freeobj 1;100;8.0;2
+678,.freeobj 0;100;5.7;2,.freeobj 1;100;8.0;2
+
+690,.stop 1
+700,.railend 100,.railend 101,.railend 102,.railtype 20;20,.railend 600,.railend 601,.railend 211
+,.freeobj 0;24;0
+
+700,.rail 1;-14;0;0	,.rail 10;-14	
+725,.rail 1;-13.3;0;3	,.rail 10;-13.2	
+750,.rail 1;-11.7;0;3	,.rail 10;-11.7
+775,.rail 1;-9.5;0;2	,.rail 10;-9.5
+800,.rail 1;-7;0;0	,.rail 10;-7
+825,.rail 1;-5.7;0;2	,.rail 10;-5.7
+850,.rail 1;-5.1;0;0	,.rail 10;-5.2
+875,.rail 1;-5;0;0
+
+;MIR
+1600,.Sta Mirueiro;;;0;R,.railtype 10;1,.railtype 11;1,.railtype 6;9,.railtype 7;9,.rail 100;-5,.rail 101;0,.rail 500;-5.2;-1;500,.rail 501;0;-1;501,.rail 502;-5;-1;502
+,.freeobj 0;524;0
+
+;placas com info
+1613,.freeobj 0;40;6.9;2;90;,.freeobj 0;41;-12.1;2;-90;
+1660,.freeobj 0;40;6.9;2;90;,.freeobj 0;41;-12.1;2;-90;
+1713,.freeobj 0;42;6.9;2;90;,.freeobj 0;43;-12.1;2;-90;
+1760,.freeobj 0;42;6.9;2;90;,.freeobj 0;43;-12.1;2;-90;
+
+;placas destino
+1625,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+1650,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+
+1725,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+1750,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+1775,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+
+;placa saida
+1675,.freeobj 0;47;-8;3,.freeobj 0;46;4.5;3
+1700,.freeobj 0;47;-8;3,.freeobj 0;46;4.5;3
+
+;saida
+1675,.railend 500,.railend 501,.freeobj 0;525;0;1.8
+1700,.rail 500,.rail 501
+
+;monitores
+1618,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+1668,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+1722,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+1778,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+
+;cadeiras
+1636,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+1700,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+1736,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+1786,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+
+;placas estacao mirueiro
+1636,.freeobj 0;48;-12;2;-90,.freeobj 0;49;6.9;2;90
+1736,.freeobj 0;48;-12;2;-90,.freeobj 0;49;6.9;2;90
+1786,.freeobj 0;48;-12;2;-90,.freeobj 0;49;6.9;2;90
+
+1790,.stop -1
+1800,.railend 100,.railend 101,.railtype 6;6,.railtype 7;7,.railend 500,.railend 501,.railend 502,.freeobj 0;524;0
+1825,.railtype 10;10,.railtype 11;11
+
+;JP2
+2900,.Sta João Paulo II;;;0;R,.railtype 10;1,.railtype 11;1,.rail 100;-5,.rail 101;0,.railtype 6;9,.railtype 7;9,.rail 500,.rail 501,.rail 502,.freeobj 0;524;0
+
+;placas com info
+2913,.freeobj 0;50;6.9;2;90;,.freeobj 0;51;-12.1;2;-90;
+2960,.freeobj 0;50;6.9;2;90;,.freeobj 0;51;-12.1;2;-90;
+3013,.freeobj 0;52;6.9;2;90;,.freeobj 0;53;-12.1;2;-90;
+3060,.freeobj 0;52;6.9;2;90;,.freeobj 0;53;-12.1;2;-90;
+
+;placas destino
+2925,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+2950,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+3000,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+3025,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+3050,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+3075,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+
+;placa saida
+2975,.freeobj 0;47;-8;3,.freeobj 0;46;4.5;3
+
+;saida
+2975,.railend 500,.railend 501,.freeobj 0;525;0;1.8
+3000,.rail 500,.rail 501
+
+;monitores
+2918,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+2968,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+3022,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+3078,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+
+;cadeiras
+2936,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+3000,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+3036,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+3086,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+
+;placas estacao Joao Paulo II
+2936,.freeobj 0;58;-12;2;-90,.freeobj 0;59;6.9;2;90
+3036,.freeobj 0;58;-12;2;-90,.freeobj 0;59;6.9;2;90
+3086,.freeobj 0;58;-12;2;-90,.freeobj 0;59;6.9;2;90
+
+3090,.stop -1
+3100,.railend 100,.railend 101,.railtype 6;6,.railtype 7;7,.curve 0,.railend 500,.railend 501,.railend 502,.freeobj 0;524;0
+3125,.railtype 10;10,.railtype 11;11
+
+;MAR
+4000,.sta Maria das Dores;;;0;R,.railtype 10;1,.railtype 11;1,.rail 100;-5,.rail 101;0,.railtype 6;9,.railtype 7;9,.freeobj 0;524;
+,.railtype 20;21,.railtype 21;21
+
+;abrigo L
+4000,.rail 70;-5.5;0;800
+
+;abrigo R
+4000,.rail 71;0;0;801
+
+;fim abrigo
+4175,.railend 70,.railend 71
+
+;placas com info
+4013,.freeobj 0;60;6.9;2;90;,.freeobj 0;61;-12.1;2;-90;
+4060,.freeobj 0;60;6.9;2;90;,.freeobj 0;61;-12.1;2;-90;
+4113,.freeobj 0;62;6.9;2;90;,.freeobj 0;63;-12.1;2;-90;
+4160,.freeobj 0;62;6.9;2;90;,.freeobj 0;63;-12.1;2;-90;
+
+;placas destino
+4025,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4050,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4100,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4125,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4150,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4175,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+
+;placa saida
+4075,.freeobj 0;47;-8;3,.freeobj 0;46;4.5;3
+
+;placas estacao Maria das Dores
+4036,.freeobj 0;68;-12;2;-90,.freeobj 0;69;6.9;2;90
+4136,.freeobj 0;68;-12;2;-90,.freeobj 0;69;6.9;2;90
+4186,.freeobj 0;68;-12;2;-90,.freeobj 0;69;6.9;2;90
+
+;monitores
+4018,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+4068,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+4122,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+4178,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+
+;cadeiras
+4036,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+4100,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+4136,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+4186,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+
+4190,.stop -1
+4200,.railend 100,.railend 101,.freeobj 0;524;0,.railtype 20;20,.railtype 21;20
+4225,.railtype 10;10,.railtype 11;11
+
+;CAB
+5000,.sta Cabritas Rede Gatos
+,.freeobj 0;524;
+,.rail 100,.rail 101
+,.railtype 20;21,.railtype 21;21
+,.railtype 10;1,.railtype 11;1
+
+;abrigo L
+5000,.rail 70;-5.5;0;800
+
+;abrigo R
+5000,.rail 71;0;0;801
+
+;fim abrigo
+5175,.railend 70,.railend 71
+
+5200,.stop -1,.railend 100,.railend 101,.railtype 20;20,.railtype 21;20,.freeobj 0;524;
+5225,.railtype 10;10,.railtype 11;11
+
+;LAC
+5900,.sta Central Manoel Lacerda
+,.freeobj 1;0;0;0
+,.railend 40
+,.railend 41
+,.railend 42
+,.railend 43
+,.rail 70;6;8;60
+,.rail 100;-5;0;100
+,.rail 101;0;0;101
+,.rail 102;14.4;0;100
+,.rail 103;20;0;101
+,.rail 270;-3;0;70
+,.rail 280;36;0;70
+
+5975
+,.rail 104;-9.5;0;102
+,.rail 105;33.6;0;102
+,.rail 271;-7.7;0;70
+,.rail 272;40.7;0;70
+,.railend 270
+,.railend 280
+
+6025,.rail 270,.rail 280,.railend 104,.railend 105
+6050,.railend 271,.railend 272
+
+;placas Manoel Lacerda (L1)
+5912,.freeobj 0;80;-11.8;4;90
+5938,.freeobj 0;81;-11.8;3;-90
+5963,.freeobj 0;80;-11.8;4;90
+;pós saída
+6038,.freeobj 0;80;-11.8;4;-90
+6063,.freeobj 0;81;-11.8;3;90
+6086,.freeobj 0;80;-11.8;4;-90
+
+;placas Manoel Lacerda(Central)
+5912,.freeobj 0;82;7.0;4;-90
+5938,.freeobj 0;83;7.0;3;-90
+;pós saída
+5985,.freeobj 0;85;7.0;4;-90
+6015,.freeobj 0;86;7.0;3;-90
+6038,.freeobj 0;85;7.0;4;-90
+6063,.freeobj 0;86;7.0;3;-90
+6086,.freeobj 0;85;7.0;4;-90
+
+;placas Manoel Lacerda (L2)
+5912,.freeobj 0;87;26;4;90
+5938,.freeobj 0;88;26;3;90
+;pós saída
+6085,.freeobj 0;89;26;4;90
+6015,.freeobj 0;90;26;3;-90
+6038,.freeobj 0;89;26;4;90
+6063,.freeobj 0;90;26;3;-90
+6086,.freeobj 0;89;26;4;90
+
+;placas destino
+5925,.freeobj 0;91;-8;4,.freeobj 0;92;4;4,.freeobj 0;93;11;4,.freeobj 0;94;24;4
+5950,.freeobj 0;91;-8;4,.freeobj 0;92;4.5;4,.freeobj 0;93;11;4,.freeobj 0;94;24;4
+5975,.freeobj 0;91;-8;4,.freeobj 0;92;4.5;4,.freeobj 0;93;11;4,.freeobj 0;94;24;4
+6025,.freeobj 0;91;-8;4,.freeobj 0;92;4;4,.freeobj 0;93;11;4,.freeobj 0;94;24;4
+6050,.freeobj 0;91;-8;4,.freeobj 0;92;4;4,.freeobj 0;93;11;4,.freeobj 0;94;24;4
+6075,.freeobj 0;91;-8;4,.freeobj 0;92;4;4,.freeobj 0;93;11;4,.freeobj 0;94;24;4
+
+;monitores
+5923,.freeobj 0;97;6.5;2,.freeobj 1;97;-6.5;2;90,.freeobj 3;97;7.8;2;90
+5973,.freeobj 0;97;6.5;2,.freeobj 1;97;-6.5;2;90,.freeobj 3;97;7.8;2;90
+6028,.freeobj 0;97;6.5;2,.freeobj 1;97;-6.5;2;90,.freeobj 3;97;7.8;2;90
+6078,.freeobj 0;97;6.5;2,.freeobj 1;97;-6.5;2;90,.freeobj 3;97;7.8;2;90
+
+;cadeiras
+5910,.freeobj 0;100;6.9;2,.freeobj 1;100;-6.0;2,.freeobj 2;100;12.0;2
+5960,.freeobj 1;100;-6.0;2
+5995,.freeobj 0;100;6.9;2,.freeobj 2;100;12.0;2
+6037,.freeobj 0;100;6.9;2,.freeobj 1;100;-6.0;2,.freeobj 2;100;12.0;2
+6087,.freeobj 0;100;6.9;2,.freeobj 1;100;-6.0;2,.freeobj 2;100;12.0;2
+
+6095,.stop -1
+6100,.railend 270,.railend 280,.rail 40,.rail 41,.rail 42,.rail 43,.freeobj 1;0;0;0,.railend 100,.railend 101,.railend 102,.railend 103
+
+;SHO
+7000,.sta Shopping
+,.rail 270,.rail 271;16
+,.railtype 40;1,.railend 41,.rail 41;-15,.freeobj 1;0;0;0,.rail 100,.rail 101
+
+7025,.freeobj 0;45;-8;4,.freeobj 0;44;4.5;4
+7050,.freeobj 0;45;-8;4,.freeobj 0;44;4.5;4
+
+7125,.freeobj 0;45;-8;4,.freeobj 0;44;4.5;4
+7150,.freeobj 0;45;-8;4,.freeobj 0;44;4.5;4
+7175,.freeobj 0;45;-8;4,.freeobj 0;44;4.5;4
+
+7200,.stop -1,.railend 100,.railend 101,.freeobj 1;0;0;0,.railtype 40;40,.railend 41,.rail 41;-8,.railend 270,.railend 271
+
+;GUA
+
+;ROS
+
+;VIL
+
+;PES
+
+;SMA
+
+;CAC
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

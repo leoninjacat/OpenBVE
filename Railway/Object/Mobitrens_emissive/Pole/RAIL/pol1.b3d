@@ -1,0 +1,24 @@
+[Meshbuilder]
+Cylinder 12,0.2,0.2,7
+translate -18,3,0
+Color 140,140,140
+
+[MeshBuilder]
+Vertex  3.75, 4.52, 0.00
+Vertex -18, 4.52, 0.00
+Vertex -18, 6.91, 0.00
+Vertex  3.75, 6.92, 0.00
+Face2 0,1,2,3
+color 130,130,130
+[Texture]
+Load rede.bmp
+Coordinates 0,-3,1
+Coordinates 1,0,1
+Coordinates 2,0,0
+Coordinates 3,-3,0
+Transparent 0,0,255
+
+[Meshbuilder]
+Cylinder 14,0.2,0.2,7
+translate 4,3,0
+Color 140,140,140

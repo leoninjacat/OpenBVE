@@ -1,0 +1,15 @@
+[MeshBuilder]
+Vertex -7, 1.1, 0
+Vertex -7, 1.1, 27.1
+Vertex -7, 6.2, 27.1
+Vertex -7, 6.2, 0
+Face2 0, 1, 2, 3
+Color 200,200,200,75
+EmissiveColor 140,140,140
+
+[Texture]
+Load light_spill.png
+Coordinates 0, 0, 0
+Coordinates 1, 1, 0
+Coordinates 2, 1, 1
+Coordinates 3, 0, 1

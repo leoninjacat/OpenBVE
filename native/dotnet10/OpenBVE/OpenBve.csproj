@@ -1,0 +1,109 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup>
+<TargetFramework>net10.0</TargetFramework><AssemblyName>OpenBve</AssemblyName>
+<RootNamespace>OpenBve</RootNamespace>
+<EnableDefaultCompileItems>false</EnableDefaultCompileItems><GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks><NoWarn>$(NoWarn);NU1701</NoWarn>
+<OutputType>Exe</OutputType>
+</PropertyGroup>
+<ItemGroup>
+<Compile Include="../../../source/OpenBVE/Game/AI/AI.cs" />
+<Compile Include="../../../source/OpenBVE/Game/AI/AI.PreTrain.cs" />
+<Compile Include="../../../source/OpenBVE/Game/AI/AI.SimpleHuman.cs" />
+<Compile Include="../../../source/OpenBVE/System/Logging/BlackBox/BlackBox.Brake.cs" />
+<Compile Include="../../../source/OpenBVE/System/Logging/BlackBox/BlackBox.Entry.cs" />
+<Compile Include="../../../source/OpenBVE/System/Logging/BlackBox/BlackBox.Power.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Menu/Menu.Controls.cs" />
+
+
+
+
+<Compile Include="../../../source/OpenBVE/Game/MessageManager.cs" />
+<Compile Include="../../../source/OpenBVE/Game/MessageManager.TextualMessages.cs" />
+<Compile Include="../../../source/OpenBVE/Game/ObjectManager/ObjectManager.cs" />
+<Compile Include="../../../source/OpenBVE/Game/RouteInfoOverlay.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Information.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Menu/Menu.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Score/Score.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Score/Score.Log.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Score/Score.ScoreMessage.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Score/Score.Tokens.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Score/Score.Values.cs" />
+<Compile Include="../../../source/OpenBVE/Game/SwitchChange/SwitchChangeDialog.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/HUD/HUD.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/HUD/HUD.Element.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/HUD/HUD.Image.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/HUD/HUD.Subject.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/HUD/HUD.Transitions.cs" />
+
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Events.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Overlays.Lamp.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Overlays.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Overlays.ATS.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Overlays.Debug.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Overlays.GameMessages.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Overlays.HUD.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Overlays.ScoreMessages.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Touch.cs" />
+<Compile Include="../../../source/OpenBVE/Parsers/Script/TrackFollowingObjectParser.cs" />
+
+<Compile Include="../../../source/OpenBVE/Properties/Resources.Designer.cs" />
+
+
+<Compile Include="../../../source/OpenBVE/System/Input/JoystickManager/AbstractJoystick.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/JoystickManager/AbstractJoystickManager.cs" />
+
+<Compile Include="../../../source/OpenBVE/System/Input/InputDevicePlugin.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/JoystickManager/ConfigurationLink.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/JoystickManager/JoystickManager32.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/JoystickManager/JoystickManager64.cs" />
+
+<Compile Include="../../../source/OpenBVE/System/Input/JoystickManager/StandardJoystick.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/ProcessControls.Analog.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/ProcessControls.Digital.cs" />
+<Compile Include="../../../source/OpenBVE/System/Logging/BlackBox/BlackBox.cs" />
+<Compile Include="../../../source/OpenBVE/System/Logging/Score.cs" />
+
+<Compile Include="../../../source/OpenBVE/System/Program/CommandLine.cs" />
+<Compile Include="../../../source/OpenBVE/System/QuitMode.cs" />
+
+<Compile Include="../../../source/OpenBVE/System/Input/ControlRepeats.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/Keyboard.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/ProcessControls.cs" />
+<Compile Include="../../../source/OpenBVE/System/Scripting.cs" />
+<Compile Include="../../../source/OpenBVE/Audio/Sounds.cs" />
+<Compile Include="../../../source/OpenBVE/Audio/Sounds.Update.cs" />
+
+<Compile Include="../../../source/OpenBVE/Game/ObjectManager/AnimatedObjects/FunctionScripts.cs" />
+<Compile Include="../../../source/OpenBVE/Game/Game.cs" />
+<Compile Include="../../../source/OpenBVE/System/Interface.cs" />
+
+<Compile Include="../../../source/OpenBVE/System/MainLoop.cs" />
+
+
+<Compile Include="../../../source/OpenBVE/Game/TrainManager.cs" />
+<Compile Include="../../../source/OpenBVE/Game/World.cs" />
+
+<Compile Include="../../../source/OpenBVE/System/Input/JoystickManager/RailDriver/RailDriver32.cs" />
+<Compile Include="../../../source/OpenBVE/System/Input/JoystickManager/RailDriver/RailDriver64.cs" />
+<ProjectReference Include="../LibRender2/LibRender2.csproj" />
+<ProjectReference Include="../OpenBveApi/OpenBveApi.csproj" />
+<ProjectReference Include="../Formats.OpenBve/Formats.OpenBve.csproj" />
+<ProjectReference Include="../RouteManager2/RouteManager2.csproj" />
+<ProjectReference Include="../SoundManager/SoundManager.csproj" />
+<ProjectReference Include="../TrainManager/TrainManager.csproj" />
+<PackageReference Include="OpenTK-OpenBVE" Version="1.0.7" />
+<PackageReference Include="SharpCompress" Version="0.50.4" />
+<EmbeddedResource Include="../../../source/OpenBVE/../../assets/Controls/Default.controls" LogicalName="OpenBve.Default.controls" />
+<EmbeddedResource Include="../../../source/OpenBVE/../../assets/Cursors/nk.png" LogicalName="OpenBve.nk.png" />
+<EmbeddedResource Include="../../../source/OpenBVE/../../assets/Cursors/Symbols/plus.png" LogicalName="OpenBve.plus.png" />
+<EmbeddedResource Include="../../../source/OpenBVE/../../assets/Cursors/Symbols/minus.png" LogicalName="OpenBve.minus.png" />
+<Compile Include="../../../source/OpenBVE/UserInterface/LaunchParameters.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/NewRenderer.cs" />
+<Compile Include="Native/**/*.cs" />
+<ProjectReference Include="../NativeGraphics/NativeGraphics.csproj" />
+<Reference Include="PIEHid32Net"><HintPath>../../../dependencies/PIEHid32Net.dll</HintPath></Reference>
+<Reference Include="PIEHid64Net"><HintPath>../../../dependencies/PIEHid64Net.dll</HintPath></Reference>
+<Reference Include="TolkDotNet"><HintPath>../../../dependencies/TolkDotNet.dll</HintPath></Reference>
+</ItemGroup>
+</Project>

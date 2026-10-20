@@ -8,7 +8,6 @@
 *.xml text
 *.csv text
 *.controls text
-
 *.dll binary
 *.exe binary
 *.so binary
@@ -26,3 +25,6 @@
 *.bin binary
 *.dat binary
 *.tgz binary
+Railway/** -text
+Train/** -text
+content-parts/** -text

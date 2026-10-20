@@ -1,0 +1,33 @@
+[MeshBuilder]
+Vertex -20,15,0
+Vertex 0,15,0
+Vertex 0,15,35
+Vertex -20,0,0
+Vertex 0,0,0
+Vertex 0,0,35
+Vertex -20,15,35
+Vertex -20,0,35
+Face 0,1,4,3
+Face 1,2,5,4
+Face 6,0,3,7 
+Face 2,6,7,5
+
+[Texture]
+Load mansyon1.bmp
+Coordinates 0, 0, 0
+Coordinates 1, 0.6, 0
+Coordinates 2, 1, 0
+Coordinates 3, 0, 1
+Coordinates 4, 0.6, 1
+Coordinates 5, 1, 1
+Coordinates 6, 0.6, 0
+Coordinates 7, 0.6, 1
+
+[MeshBuilder]
+Vertex -20,15,10
+Vertex 0,15,10
+Vertex 0,15,0
+Vertex -20,15,0
+Face 0,1,2,3
+Color 160, 160, 160
+

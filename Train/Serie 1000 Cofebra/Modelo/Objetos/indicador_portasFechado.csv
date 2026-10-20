@@ -1,0 +1,37 @@
+﻿CreateMeshBuilder
+Cylinder,12,0.025,0.025,0.080
+Translate,0,0.035,
+Rotate,0,1,0,180
+SetEmissiveColor, 50,5,5
+SetColor, 20,20,20
+TranslateAll, 0, 1, 0
+
+CreateMeshBuilder
+Cylinder,10,0.029,0.029,0.079
+Rotate,0,1,0,180
+Translate,0,1.035,0
+
+LoadTexture,..\metal.png,
+SetTextureCoordinates,0, 0.0, 0
+SetTextureCoordinates,1, 0.0, 0.1
+SetTextureCoordinates,2, 0.11, 0
+SetTextureCoordinates,3, 0.11, 0.1
+SetTextureCoordinates,4, 0.22, 0
+SetTextureCoordinates,5, 0.22, 0.1
+SetTextureCoordinates,6, 0.33, 0
+SetTextureCoordinates,7, 0.33, 0.1
+SetTextureCoordinates,8, 0.44, 0
+SetTextureCoordinates,9, 0.44, 0.1
+SetTextureCoordinates,10,0.55, 0
+SetTextureCoordinates,11,0.55, 0.1
+SetTextureCoordinates,12,0.66, 0
+SetTextureCoordinates,13,0.66, 0.1
+SetTextureCoordinates,14,0.77, 0
+SetTextureCoordinates,15,0.77, 0.1
+SetTextureCoordinates,16,0.88, 0
+SetTextureCoordinates,17,0.88, 0.1
+SetTextureCoordinates,18,0.99, 0
+SetTextureCoordinates,19,0.99, 0.1
+
+
+RotateAll,1,0,0,270

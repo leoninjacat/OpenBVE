@@ -1,0 +1,47 @@
+[Meshbuilder]
+Cylinder 14,0.2,0.2,14
+Translate 2.9,-0.2,0
+Rotate 0,0,0,0
+Color 140,140,140
+
+[MeshBuilder]
+Vertex  2.75, 4.52, 0.00
+Vertex -1.76, 4.52, 0.00
+Vertex -1.76, 6.91, 0.00
+Vertex  2.75, 6.91, 0.00
+Face2 0,1,2,3
+color 130,130,130
+[Texture]
+Load mk_fv_ext.bmp
+Coordinates 0,-1,1
+Coordinates 1,0,1
+Coordinates 2,0,0
+Coordinates 3,-1,0
+Transparent 0,0,255
+
+
+;;telegraph head
+[MeshBuilder]
+Vertex 2.75, 7.6, 0.0
+Vertex 3.95, 7.6, 0.0
+Vertex 3.95, 6.5, 0.0
+vertex 2.75, 6.5, 0.0
+Face2 0,1,2,3
+[Texture]
+Load Teleg_head.bmp
+Coordinates 0,0,0
+Coordinates 1,-1,0
+Coordinates 2,-1,1
+Coordinates 3,0,1
+Transparent 0,0,255
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+[MeshBuilder]
+Vertex -6, 6, 0
+Vertex 0, 6, 0
+Vertex 0, 6, 8
+Vertex -6, 0, 0
+Vertex 0, 0, 0
+Vertex 0, 0, 8
+Face 0, 1, 4, 3
+Face 1, 2, 5, 4
+
+[Texture]
+Load house81.bmp
+Coordinates 0, 0, 0
+Coordinates 1, 0.5, 0 
+Coordinates 2, 1, 0
+Coordinates 3, 0, 1
+Coordinates 4, 0.5, 1
+Coordinates 5, 1, 1
+
+[MeshBuilder]
+Vertex 0.6, 5.7, 8.6
+Vertex 0.6, 5.7, -0.6
+Vertex -6.6, 5.7, -0.6
+Vertex -3, 7.5, 3
+Vertex -3, 7.5, 5
+Face 1, 2, 3 
+Face 0, 1, 3, 4
+Color 48, 48, 48
+

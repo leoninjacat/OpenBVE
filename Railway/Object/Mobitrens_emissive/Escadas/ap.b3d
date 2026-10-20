@@ -1,0 +1,8 @@
+[MeshBuilder]
+Cube 13, 1, 0.3,
+Color 160,160,160
+Translate -2, 8, 0.4
+[MeshBuilder]
+Cube 13,1,0.3
+Color 160,160,160
+Translate -2, 8, -0.4

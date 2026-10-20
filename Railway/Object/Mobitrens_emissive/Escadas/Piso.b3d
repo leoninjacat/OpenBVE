@@ -1,0 +1,15 @@
+
+[MeshBuilder]
+Vertex -2.5, 0, 0.0
+Vertex -2.5, 0, 25.3
+Vertex  2.5, 0, 25.3
+Vertex  2.5, 0, 0.0
+Face2 0,1,2,3
+Color 210,210,210
+[Texture]
+Load Piso.PNG
+Coordinates 0, 1, 1
+Coordinates 1, 1, 0
+Coordinates 2, 0, 0
+Coordinates 3, 0, 1
+Transparent 0,255,0

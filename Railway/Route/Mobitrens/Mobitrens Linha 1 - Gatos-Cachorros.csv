@@ -1,0 +1,1228 @@
+With Route
+.Comment Mobitrens Linha 1 (Rota Fictícia);
+.Timetable Extensao Gatos - Cachorros;
+;.image info1.png;
+.Change 0;
+.Gauge 1067 
+
+With Options,
+.objectvisibility 1,
+
+With Structure;
+.DikeL(1)  Mobitrens\Dike\Dike1L.b3d,
+.DikeR(1)  Mobitrens\Dike\Dike1R.b3d,
+
+.rail(0) Mobitrens\Trilhos\trilho.B3D
+.rail(1) Mobitrens\Trilhos\NULL.b3d;
+.rail(2) Mobitrens\Trilhos\brown-500_overhead.B3D
+.rail(3) Mobitrens\Trilhos\brown500_overhead.B3D
+.rail(4) Mobitrens\Trilhos\brown-1000_overhead.B3D
+.rail(5) Mobitrens\Trilhos\brown1000_overhead.B3D
+.rail(6) Mobitrens\Trilhos\bridgetrack.B3D
+.rail(7) Mobitrens\Trilhos\bridgetrack2.B3D
+.rail(8) Mobitrens\Trilhos\empty.b3d
+.rail(9) Mobitrens\Trilhos\estacaotrack.B3D
+
+.rail(10) Mobitrens\Pole\pol2.b3d
+.rail(11) Mobitrens\Pole\pol1.b3d
+.rail(12) Mobitrens\Pole\pol0.b3d
+
+.rail(20) Mobitrens\Muros\Mureta.b3d
+.rail(21) Mobitrens\Muros\murocomgrade.b3d
+
+.rail(30) Mobitrens\Morros\morro1.csv
+.rail(31) Mobitrens\Morros\morro3.csv
+.rail(32) Mobitrens\Morros\morro2.csv
+.rail(33) Mobitrens\Morros\morro4.csv
+
+.rail(35) Mobitrens\Rua\rua.animated
+
+.rail(40) Mobitrens\tunel\T4.csv
+.rail(41) Mobitrens\tunel\T3.csv
+
+.rail(50) Mobitrens\Telhas\telha.csv
+
+.rail(60) Mobitrens\tunel\teto2.b3d
+
+.rail(70) Mobitrens\Paredes\muro.b3d
+
+.rail(280) Mobitrens\Predios\Condominio 1\Condominio.animated
+.rail(281) Mobitrens\Predios\Condominio 2\Condominio.animated
+.rail(282) Mobitrens\Predios\Condominio 3\Condominio.animated
+.rail(283) Mobitrens\Predios\Condominio 4\Condominio.animated
+.rail(284) Mobitrens\Predios\Condominio 5\Condominio.animated
+
+.rail(100) Mobitrens\Plataformas\FormL.b3d
+.rail(101) Mobitrens\Plataformas\FormR.b3d
+.rail(102) Mobitrens\Plataformas\FormC.b3d
+
+.rail(500) Mobitrens\Estacoes\Elevadas\Elevadas.b3d
+.rail(501) Mobitrens\Estacoes\Elevadas\ElevadB.b3d
+.rail(502) Mobitrens\Estacoes\Elevadas\basecentral.b3d
+
+.rail(600) Mobitrens\Estacoes\GAT\VidroLateral\VidroLateral.b3d
+
+;abrigo estacao Manoel Lacerda
+.rail(800) Mobitrens\Estacoes\LAC\abrigo.b3d
+.rail(801) Mobitrens\Estacoes\LAC\abrigo_L.b3d
+
+;objs estacao Cabritas
+.rail(700) Mobitrens\Estacoes\Ilhas\abrigo.b3d
+
+.rail(802) Mobitrens\Estacoes\ilhas\abrigo_red.b3d
+.rail(803) Mobitrens\Estacoes\LAC\abrigo_c.b3d
+
+.rail(901) Mobitrens\Estacoes\SHO\abrigo_R.b3d
+
+.freeobj(0) Mobitrens\Tapumes\entrada_tunel.csv
+.freeobj(1) Mobitrens\Estacoes\GAT\telhado.b3d
+.freeobj(2) Mobitrens\Estacoes\GAT\mezanino.b3d
+
+.freeobj(19) Mobitrens\Escada rolante\escadarolante.animated
+.freeobj(20) Mobitrens\Escada rolante\rol1.animated
+
+.freeobj(21) Mobitrens\Estacoes\GAT\Escadas\escadb.b3d
+.freeobj(22) Mobitrens\Escadas\escadb.b3d
+.freeobj(23) Mobitrens\Escadas\elevador.csv
+.freeobj(24) Mobitrens\Estacoes\GAT\Tapumes\tapumeinicio.b3d
+
+.freeobj(524) Mobitrens\Estacoes\Elevadas\Tapumes\tapumeinicio.b3d
+.freeobj(525) Mobitrens\Estacoes\Elevadas\mezanino.b3d
+
+;placas estação Gatos
+.freeobj(25) Mobitrens\Placas\GAT\Plataforma 1\placaA.csv
+.freeobj(26) Mobitrens\Placas\GAT\Plataforma 1\placaB.csv
+
+.freeobj(27) Mobitrens\Placas\GAT\Plataforma 2\placa.csv
+
+.freeobj(28) Mobitrens\Placas\GAT\Plataforma 1\placaC.csv
+.freeobj(29) Mobitrens\Placas\GAT\Plataforma 1\placaD.csv
+
+.freeobj(30) Mobitrens\Placas\GAT\Plataforma1A\Destino1a.csv
+.freeobj(31) Mobitrens\Placas\GAT\Plataforma1B\Destino1b.csv
+.freeobj(32) Mobitrens\Placas\GAT\Desembarque\desembarque.csv
+.freeobj(33) Mobitrens\Placas\GAT\Saida\saida.csv
+
+;placas estação Mirueiro
+.freeobj(40) Mobitrens\Placas\MIR\PlacaComInfo\placaA.csv
+.freeobj(41) Mobitrens\Placas\MIR\PlacaComInfo\placaB.csv
+
+.freeobj(42) Mobitrens\Placas\MIR\PlacaComInfo\placaC.csv
+.freeobj(43) Mobitrens\Placas\MIR\PlacaComInfo\placaD.csv
+
+.freeobj(44) Mobitrens\Placas\MIR\DestinoCAC\placa.csv
+.freeobj(45) Mobitrens\Placas\MIR\DestinoGAT\placa.csv
+
+.freeobj(46) Mobitrens\Placas\MIR\Saida\placa.csv
+.freeobj(47) Mobitrens\Placas\MIR\Saida\placa2.csv
+
+.freeobj(48) Mobitrens\Placas\MIR\PlacaestMIR\placa.csv
+.freeobj(49) Mobitrens\Placas\MIR\PlacaestMIR\placa2.csv
+
+;placas estação Joao Paulo II
+.freeobj(50) Mobitrens\Placas\JP2\PlacaComInfo\placaA.csv
+.freeobj(51) Mobitrens\Placas\JP2\PlacaComInfo\placaB.csv
+
+.freeobj(52) Mobitrens\Placas\JP2\PlacaComInfo\placaC.csv
+.freeobj(53) Mobitrens\Placas\JP2\PlacaComInfo\placaD.csv
+
+.freeobj(54) Mobitrens\Placas\JP2\DestinoCAC\placa.csv
+.freeobj(55) Mobitrens\Placas\JP2\DestinoGAT\placa.csv
+
+.freeobj(56) Mobitrens\Placas\JP2\Saida\placa.csv
+.freeobj(57) Mobitrens\Placas\JP2\Saida\placa2.csv
+
+.freeobj(58) Mobitrens\Placas\JP2\PlacaestMIR\placa.csv
+.freeobj(59) Mobitrens\Placas\JP2\PlacaestMIR\placa2.csv
+
+;placas estação Maria das Dores
+.freeobj(60) Mobitrens\Placas\MAR\PlacaComInfo\placaA.csv
+.freeobj(61) Mobitrens\Placas\MAR\PlacaComInfo\placaB.csv
+
+.freeobj(62) Mobitrens\Placas\MAR\PlacaComInfo\placaC.csv
+.freeobj(63) Mobitrens\Placas\MAR\PlacaComInfo\placaD.csv
+
+.freeobj(64) Mobitrens\Placas\MAR\DestinoCAC\placa.csv
+.freeobj(65) Mobitrens\Placas\MAR\DestinoGAT\placa.csv
+
+.freeobj(66) Mobitrens\Placas\MAR\Saida\placa.csv
+.freeobj(67) Mobitrens\Placas\MAR\Saida\placa2.csv
+
+.freeobj(68) Mobitrens\Placas\MAR\PlacaestMIR\placa.csv
+.freeobj(69) Mobitrens\Placas\MAR\PlacaestMIR\placa2.csv
+
+.freeobj(1000) Mobitrens\Buildings\b1.b3d
+.freeobj(1001) Mobitrens\Buildings\b2.b3d
+.freeobj(1002) Mobitrens\Buildings\b3.b3d
+.freeobj(1003) Mobitrens\Buildings\b4.b3d
+
+.freeobj(1010) Mobitrens\Ponte\overbridge.b3d
+
+;placas estação cabritas
+.freeobj(70) Mobitrens\Placas\CAB\Plataforma 1\placaA.csv
+.freeobj(71) Mobitrens\Placas\CAB\Plataforma 1\placaB.csv
+.freeobj(72) Mobitrens\Placas\CAB\DestinoCAC\Placa.csv
+.freeobj(73) Mobitrens\Placas\CAB\DestinoGAT\Placa.csv
+
+.freeobj(170) Mobitrens\Estacoes\CAB\mezanino.b3d
+.freeobj(171) Mobitrens\Estacoes\LAC\mezanino.b3d
+.freeobj(173) Mobitrens\Estacoes\SHO\mezanino.b3d
+
+;placas plataforma 1
+.freeobj(80) Mobitrens\Placas\LAC\Plataforma L1\placa.csv
+.freeobj(81) Mobitrens\Placas\LAC\placa com info\placaA.csv
+
+;placas plataforma 2
+.freeobj(82) Mobitrens\Placas\LAC\plataforma central\placaA.csv
+.freeobj(83) Mobitrens\Placas\LAC\placa com info\placaB.csv
+.freeobj(84) Mobitrens\Placas\LAC\plataforma central\placaB.csv
+.freeobj(85) Mobitrens\Placas\LAC\plataforma central\placaC.csv
+.freeobj(86) Mobitrens\Placas\LAC\placa com info\placaC.csv
+
+;placas plataforma 3
+.freeobj(87) Mobitrens\Placas\LAC\plataforma L2\placaA.csv
+.freeobj(88) Mobitrens\Placas\LAC\placa com info\placaD.csv
+.freeobj(89) Mobitrens\Placas\LAC\plataforma L2\placaB.csv
+.freeobj(90) Mobitrens\Placas\LAC\placa com info\placaD.csv
+
+;placas destino
+.freeobj(91) Mobitrens\Placas\LAC\DestinoGAT\placa.csv
+.freeobj(92) Mobitrens\Placas\LAC\DestinoCAC\placa.csv
+.freeobj(93) Mobitrens\Placas\LAC\DestinoPTO\placa.csv
+.freeobj(94) Mobitrens\Placas\LAC\DestinoROD\placa.csv
+.freeobj(95) Mobitrens\Placas\LAC\DestinoEXP1\placa.csv
+.freeobj(96) Mobitrens\Placas\LAC\DestinoEXP2\placa.csv
+
+.freeobj(97) Mobitrens\Estacoes\Monitor\monitor.csv
+
+.freeobj(100) Mobitrens\Estacoes\Ilhas\cadeira.b3d
+
+.freeobj(106) Mobitrens\Fim de Trilho\Fim de Trilho.csv
+
+.ground(0) Mobitrens\Solo\GroundE.b3d;
+
+With Texture
+.background(0) Mobitrens\Fundos\background1.bmp
+.background(1) Mobitrens\Fundos\black.bmp
+
+Route.TfoXML(Trens_XML/1.XML)
+Route.TfoXML(Trens_XML/2.XML)
+
+With track
+
+;trilho 1
+0,.rail 1;-5;0;0
+
+;trilhos patio
+0,.rail 1100;-21;0;0,.rail 1101;-26;0;0,.rail 1102;-31;0;0
+
+;mata
+,.rail 300;-50;0;30,.rail 301;70;0;32
+
+;muros
+0,.rail 20;7;0;20
+
+;rua
+0,.rail 335;25;0;35
+
+0,.rail 21;-35;0;20
+
+;poles
+0,.rail 10;-5;1;10,.rail 11;0;1;11
+
+;casas
+000,.freeobj 0;1000;130,.freeobj 0;1001;-40
+025,.freeobj 0;1001;70,.freeobj 0;1003;-40
+050,.freeobj 0;1002;70,.freeobj 0;1001;-40
+075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+100,.freeobj 0;1001;70,.freeobj 0;1001;-40
+125,.freeobj 0;1003;70,.freeobj 0;1001;-40
+150,.freeobj 0;1002;70,.freeobj 0;1002;-80
+175,.freeobj 0;1003;70,.freeobj 0;1002;-80
+200,.freeobj 0;1000;130,.freeobj 0;1001;-40
+225,.freeobj 0;1001;70,.freeobj 0;1003;-40
+250,.freeobj 0;1002;70,.freeobj 0;1001;-40
+275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+300,.freeobj 0;1001;70,.freeobj 0;1001;-40
+325,.freeobj 0;1003;70,.freeobj 0;1001;-40
+350,.freeobj 0;1002;70,.freeobj 0;1002;-80
+375,.freeobj 0;1003;70,.freeobj 0;1002;-80
+400,.freeobj 0;1000;130
+425,.freeobj 0;1001;70
+450,.freeobj 0;1002;70
+475,.freeobj 0;1003;70,.freeobj 0;1002;-80
+500,.freeobj 0;1001;70,.freeobj 0;1001;-40
+525,.freeobj 0;1003;70,.freeobj 0;1001;-40
+550,.freeobj 0;1002;70,.freeobj 0;1002;-80
+575,.freeobj 0;1003;70,.freeobj 0;1002;-80
+700,.freeobj 0;1000;130,.freeobj 0;1001;-40
+725,.freeobj 0;1001;70,.freeobj 0;1003;-40
+750,.freeobj 0;1002;70,.freeobj 0;1001;-40
+775,.freeobj 0;1003;70,.freeobj 0;1002;-80
+800,.freeobj 0;1001;70,.freeobj 0;1001;-40
+875,.freeobj 0;1003;70,.freeobj 0;1002;-80
+900,.freeobj 0;1000;130
+925,.freeobj 0;1001;70
+950,.freeobj 0;1002;70
+975,.freeobj 0;1003;70,.freeobj 0;1002;-80
+1000,.freeobj 0;1001;70,.freeobj 0;1001;-40
+1025,.freeobj 0;1003;70,.freeobj 0;1001;-40
+1050,.freeobj 0;1002;70,.freeobj 0;1002;-80
+1075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+1100,.freeobj 0;1000;130,.freeobj 0;1001;-40
+1125,.freeobj 0;1001;70,.freeobj 0;1003;-40
+1150,.freeobj 0;1002;70,.freeobj 0;1001;-40
+1175,.freeobj 0;1003;70,.freeobj 0;1000;-80
+1200,.freeobj 0;1001;70,.freeobj 0;1001;-40
+1225,.freeobj 0;1003;70,.freeobj 0;1001;-40
+1250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+1275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+1300,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;-1
+1325,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;-2
+1350,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;-3
+1375,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;-4
+1400,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;-5
+1425,.freeobj 0;1001;70;-6,.freeobj 0;1003;-40;-6
+1450,.freeobj 0;1002;70;-7,.freeobj 0;1001;-40;-7
+1475,.freeobj 0;1003;70;-8,.freeobj 0;1000;-80;-8
+1500,.freeobj 0;1001;70;-9,.freeobj 0;1001;-40;-9
+1525,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+1550,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+1575,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+1600,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+1625,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+1650,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+1675,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+1700,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+1725,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+1750,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+1775,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+1800,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+1825,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+1850,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+1875,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+1900,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+1925,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+1950,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+1975,.freeobj 0;1003;70;-10,.freeobj 0;1000;-80;-10
+2000,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2025,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2050,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+2075,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2100,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2125,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2150,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+2175,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2200,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2225,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2250,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+2275,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2300,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2325,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2350,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+2375,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2400,.freeobj 0;1000;130;-10,.freeobj 0;1001;-40;-10
+2425,.freeobj 0;1001;70;-10,.freeobj 0;1003;-40;-10
+2450,.freeobj 0;1002;70;-10,.freeobj 0;1001;-40;-10
+2475,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2500,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2525,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2550,.freeobj 0;1002;70;-10,.freeobj 0;1000;-80;-10
+2575,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2600,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2625,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2650,.freeobj 0;1000;130;-10,.freeobj 0;1002;-80;-10
+2675,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2700,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2725,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2750,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+2775,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+2800,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2825,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2850,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+2875,.freeobj 0;1003;70;-10,.freeobj 0;1000;-80;-10
+2900,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+2925,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+2950,.freeobj 0;1000;130;-10,.freeobj 0;1002;-80;-10
+2975,.freeobj 0;1000;130;-10,.freeobj 0;1002;-80;-10
+3000,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3025,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3050,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3075,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+3100,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3125,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3150,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3175,.freeobj 0;1003;70;-10,.freeobj 0;1000;-80;-10
+3200,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3225,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3250,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3275,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+3300,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3325,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3350,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3375,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+3400,.freeobj 0;1000;130;-10,.freeobj 0;1001;-40;-10
+3425,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3450,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3475,.freeobj 0;1003;70;-10,.freeobj 0;1000;-80;-10
+3500,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3525,.freeobj 0;1000;130;-10,.freeobj 0;1001;-40;-10
+3550,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3575,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+3600,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3625,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3650,.freeobj 0;1002;70;-10,.freeobj 0;1000;-80;-10
+3675,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+3700,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3725,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3750,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3775,.freeobj 0;1000;130;-10,.freeobj 0;1002;-80;-10
+3800,.freeobj 0;1001;70;-10,.freeobj 0;1000;-40;-10
+3825,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3850,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+3875,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+3900,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+3925,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+3950,.freeobj 0;1000;130;-10,.freeobj 0;1002;-80;-10
+3975,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+4000,.freeobj 0;1001;70;-10,.freeobj 0;1000;-40;-10
+4025,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+4050,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+4075,.freeobj 0;1003;70;-10,.freeobj 0;1000;-80;-10
+4100,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+4125,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+4150,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+4175,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+4200,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+4225,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+4250,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+4275,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+4300,.freeobj 0;1001;70;-10,.freeobj 0;1001;-40;-10
+4325,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+4350,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+4375,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+4400,.freeobj 0;1000;130;-10,.freeobj 0;1001;-40;-10
+4425,.freeobj 0;1001;70;-10,.freeobj 0;1003;-40;-10
+4450,.freeobj 0;1002;70;-10,.freeobj 0;1001;-40;-10
+4475,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+4500,.freeobj 0;1001;70;-10,.freeobj 0;1000;-40;-10
+4525,.freeobj 0;1003;70;-10,.freeobj 0;1001;-40;-10
+4550,.freeobj 0;1002;70;-10,.freeobj 0;1002;-80;-10
+4575,.freeobj 0;1003;70;-10,.freeobj 0;1002;-80;-10
+4600,.freeobj 0;1001;70;-10,.freeobj 0;1000;-40;-10
+4625,.freeobj 0;1003;70;-09,.freeobj 0;1000;-40;-09
+4650,.freeobj 0;1002;70;-08,.freeobj 0;1002;-80;-08
+4675,.freeobj 0;1003;70;-07,.freeobj 0;1002;-80;-07
+4700,.freeobj 0;1001;70;-06,.freeobj 0;1001;-40;-06
+4725,.freeobj 0;1003;70;-05,.freeobj 0;1001;-40;-05
+4750,.freeobj 0;1002;70;-04,.freeobj 0;1002;-80;-04
+4775,.freeobj 0;1003;70;-03,.freeobj 0;1002;-80;-03
+4800,.freeobj 0;1001;70;-02,.freeobj 0;1001;-40;-02
+4825,.freeobj 0;1003;70;-01,.freeobj 0;1001;-40;-01
+4850,.freeobj 0;1002;70;00,.freeobj 0;1002;-80;00
+4875,.freeobj 0;1003;70,.freeobj 0;1002;-80
+4900,.freeobj 0;1000;130,.freeobj 0;1001;-40
+4925,.freeobj 0;1001;70,.freeobj 0;1003;-40
+4950,.freeobj 0;1002;70,.freeobj 0;1001;-40
+4975,.freeobj 0;1003;70,.freeobj 0;1002;-80
+5000,.freeobj 0;1001;70,.freeobj 0;1001;-40
+5025,.freeobj 0;1003;70,.freeobj 0;1001;-40
+5050,.freeobj 0;1002;70,.freeobj 0;1002;-80
+5075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+5100,.freeobj 0;1000;130,.freeobj 0;1001;-40
+5125,.freeobj 0;1001;70,.freeobj 0;1003;-40
+5150,.freeobj 0;1002;70,.freeobj 0;1001;-40
+5175,.freeobj 0;1003;70,.freeobj 0;1002;-80
+5200,.freeobj 0;1001;70,.freeobj 0;1001;-40
+5225,.freeobj 0;1003;70,.freeobj 0;1001;-40
+5250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+5275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+
+7900,.freeobj 0;1000;130,.freeobj 0;1001;-40
+7925,.freeobj 0;1001;70,.freeobj 0;1003;-40
+7950,.freeobj 0;1002;70,.freeobj 0;1001;-40
+7975,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8000,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8025,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8050,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8100,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8125,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8150,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8175,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8200,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8225,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8300,.freeobj 0;1000;130,.freeobj 0;1001;-40
+8325,.freeobj 0;1001;70,.freeobj 0;1003;-40
+8350,.freeobj 0;1002;70,.freeobj 0;1001;-40
+8375,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8400,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8425,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8450,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8475,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8400,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8425,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8450,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8475,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8500,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8525,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8550,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8575,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8600,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8625,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8650,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8675,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8700,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8725,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8750,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8775,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8800,.freeobj 0;1001;70,.freeobj 0;1001;-40
+8825,.freeobj 0;1003;70,.freeobj 0;1001;-40
+8850,.freeobj 0;1002;70,.freeobj 0;1002;-80
+8875,.freeobj 0;1003;70,.freeobj 0;1002;-80
+8900,.freeobj 0;1000;130,.freeobj 0;1001;-40
+8925,.freeobj 0;1001;70,.freeobj 0;1003;-40
+8950,.freeobj 0;1002;70,.freeobj 0;1001;-40
+8975,.freeobj 0;1003;70,.freeobj 0;1002;-80
+9000,.freeobj 0;1001;70,.freeobj 0;1001;-40
+9025,.freeobj 0;1003;70,.freeobj 0;1001;-40
+9050,.freeobj 0;1002;70,.freeobj 0;1002;-80
+9075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+9100,.freeobj 0;1001;70,.freeobj 0;1001;-40
+9125,.freeobj 0;1003;70,.freeobj 0;1001;-40
+9250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+9275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+9300,.freeobj 0;1001;70,.freeobj 0;1001;-40
+9325,.freeobj 0;1003;70,.freeobj 0;1001;-40
+9350,.freeobj 0;1002;70,.freeobj 0;1002;-80
+9375,.freeobj 0;1003;70,.freeobj 0;1002;-80
+
+;cidade de cachoros surge
+11200,.freeobj 0;1001;70,.freeobj 0;1001;-40
+11225,.freeobj 0;1003;70,.freeobj 0;1001;-40
+11250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+11275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+11300,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;
+11325,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;
+11350,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;
+11375,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;
+11400,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;
+11425,.freeobj 0;1003;70,.freeobj 0;1001;-40
+11450,.freeobj 0;1002;70,.freeobj 0;1002;-80
+11475,.freeobj 0;1003;70,.freeobj 0;1002;-80
+11500,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;
+11525,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;
+11550,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;
+11575,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;
+11600,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;
+11625,.freeobj 0;1003;70,.freeobj 0;1001;-40
+11650,.freeobj 0;1002;70,.freeobj 0;1002;-80
+11675,.freeobj 0;1003;70,.freeobj 0;1002;-80
+11700,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;
+11725,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;
+11750,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;
+11775,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;
+11800,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;
+11825,.freeobj 0;1003;70,.freeobj 0;1001;-40
+11850,.freeobj 0;1002;70,.freeobj 0;1002;-80
+11875,.freeobj 0;1003;70,.freeobj 0;1002;-80
+11900,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;
+11925,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;
+11950,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;
+11975,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;
+12000,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;
+12025,.freeobj 0;1003;70,.freeobj 0;1001;-40
+12050,.freeobj 0;1002;70,.freeobj 0;1002;-80
+12075,.freeobj 0;1003;70,.freeobj 0;1002;-80
+12000,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;
+12125,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;
+12150,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;
+12175,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;
+12200,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;
+12225,.freeobj 0;1003;70,.freeobj 0;1001;-40
+12250,.freeobj 0;1002;70,.freeobj 0;1002;-80
+12275,.freeobj 0;1003;70,.freeobj 0;1002;-80
+12300,.freeobj 0;1001;70;-1,.freeobj 0;1001;-40;
+12325,.freeobj 0;1003;70;-2,.freeobj 0;1001;-40;
+12350,.freeobj 0;1002;70;-3,.freeobj 0;1002;-80;
+12375,.freeobj 0;1003;70;-4,.freeobj 0;1002;-80;
+12400,.freeobj 0;1000;130;-5,.freeobj 0;1001;-40;
+
+
+;parada antes da primeira estação
+0,.sta parada
+100,.stop 0
+
+;Trilho 1, muro 1 e pole 1 se separam
+150,.rail 1;-5.2;0;2	,.rail 10;-5.2	,.rail 4;0;0;2
+175,.rail 1;-5.7;0;2	,.rail 10;-5.7	,.rail 4;-1.6;0;0
+200,.rail 1;-7;0;0	,.rail 10;-7	,.rail 4;-4.2;0;0
+225,.rail 1;-9.5;0;3	,.rail 10;-9.5	,.rail 4;-7;0;0
+250,.rail 1;-11.7;0;3	,.rail 10;-11.7	,.rail 4;-10.1;0;3
+275,.rail 1;-13.2;0;3	,.rail 10;-13.2	,.rail 4;-12.5;0;3
+300,.rail 1;-14;0;0	,.rail 10;-14	,.railend 4;-14
+
+300,.sta Gatos;;;0;B
+,.freeobj 0;1;0;2
+,.rail 600;0;0;600,.rail 601;-24.5;0;600
+,.freeobj 0;24;0
+,.rail 211;-17.5;0;21
+
+;plataformas
+300,.rail 100;0;0;100,.rail 101;-13.8;0;101,.rail 102;0;0;101
+
+;placas destino
+321,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+351,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+371,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+408,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+451,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+471,.freeobj 0;30;-3;3,.freeobj 0;31;-9;3,.freeobj 0;32;4;3
+
+;placas saida
+391,.freeobj 0;33;-6.3;3,.freeobj 0;33;5.6;3
+
+;placas estacao plataforma 1 saida normal
+310,.freeobj 1;25;7.5;2.1;90
+360,.freeobj 1;25;7.5;2.1;90
+
+;placas estacao plataforma 2 saida normal
+310,.freeobj 0;26;6.9;2.1;90
+330,.freeobj 0;27;6.9;2.1;90
+360,.freeobj 0;26;6.9;2.1;90
+
+;placas estacao plataforma 1 saida invertida
+420,.freeobj 1;28;7.5;2.1;90
+460,.freeobj 1;28;7.5;2.1;90
+
+;placas estacao plataforma 2 saida invertida
+418,.freeobj 0;29;6.9;2.1;90
+440,.freeobj 0;27;6.9;2.1;90
+460,.freeobj 0;29;6.9;2.1;90
+480,.freeobj 0;27;6.9;2.1;90
+
+;monitores
+318,.freeobj 0;97;6.5;2;90,.freeobj 1;97;7;2
+378,.freeobj 0;97;6.5;2;90,.freeobj 1;97;7;2
+428,.freeobj 0;97;6.5;2;90,.freeobj 1;97;7;2
+488,.freeobj 0;97;6.5;2;90,.freeobj 1;97;7;2
+
+;poles e muretas
+300,.railtype 10;1,.railtype 11;1,.railtype 20;21
+
+;mezanino
+400,.railend 600,.railend 601
+,.freeobj 0;2;0;0.5
+425,.rail 600,.rail 601
+
+;cadeiras
+330,.freeobj 0;100;5.7;2,.freeobj 1;100;8.0;2
+400,.freeobj 0;100;5.7;2,.freeobj 1;100;8.0;2
+440,.freeobj 0;100;5.7;2,.freeobj 1;100;8.0;2
+478,.freeobj 0;100;5.7;2,.freeobj 1;100;8.0;2
+
+490,.stop 1
+500,.railend 100,.railend 101,.railend 102,.railtype 20;20,.railend 600,.railend 601,.railend 211
+,.freeobj 0;24;0
+
+450,.rail 445;-31;0;3
+475,.rail 445;-30;0;0
+500,.rail 445;-28;0;2
+525,.rail 445;-26.5;0;2
+
+525,.railtype 10;1,.railtype 11;12,.rail 11;-15
+
+550,.railend 445;-26;0;3
+
+575,.rail 444;-26;0;3
+600,.rail 444;-25;0;0
+625,.rail 444;-23;0;2
+650,.rail 444;-21.5;0;2
+675,.railend 444;-21;0;3
+
+;trilho de conexão do pátio
+700,.rail 5;-21;0;3
+725,.rail 5;-19.2;0;3
+750,.rail 5;-16;0;3
+775,.rail 5;-11;0;4
+795,.freeobj 1100;106;0,.freeobj 1101;106;0,.freeobj 1102;106;0
+800,.rail 5;-7;0;4,.railend 1100,.railend 1101,.railend 1102
+825,.railend 5;-5;0;4,.railtype 10;10,.railtype 11;11,.railend 11,.rail 11;0
+
+850,.rail 4;-5;0;3
+875,.rail 4;-4.5;0;3
+900,.rail 4;-3;0;0
+925,.rail 4;-1;0;2
+950,.railend 4;0;0;3
+
+;os trilhos voltam a se juntar
+500,.rail 1;-14;0;0	,.rail 10;-14	
+525,.rail 1;-13.3;0;3	,.rail 10;-13.2	
+550,.rail 1;-11.7;0;3	,.rail 10;-11.7
+575,.rail 1;-9.5;0;2	,.rail 10;-9.5
+600,.rail 1;-7;0;0	,.rail 10;-7
+625,.rail 1;-5.7;0;2	,.rail 10;-5.7
+650,.rail 1;-5.1;0;0	,.rail 10;-5.2
+675,.rail 1;-5;0;0
+
+;muro principal se junta
+825,.rail 21;-33
+850,.rail 21;-28
+875,.rail 21;-22
+900,.rail 21;-15,.rail 336;-33;0;35
+
+1000,.curve -800,.railtype 0;4,.railtype 1;4
+
+820,.freeobj 1;1010;0
+
+1150,.curve 0,.railtype 0;0,.railtype 1;0
+
+;Estação elevada com plataformas laterais após subida
+
+1300,.rail 6;0;0;6,.rail 7;-5;0;7,.railend 20;3,.railend 21;-8,.curve -1000,.railtype 0;4,.railtype 1;4,.rail 300;-50;0;30,.rail 301;70;0;32
+
+;subida mirueiro
+1300,.pitch 0,.height 0
+1325,.pitch 10,.height 1
+1350,.pitch 20,.height 2
+1375,.pitch 30,.height 3
+1400,.pitch 40,.height 4
+1425,.pitch 50,.height 5
+1450,.pitch 40,.height 6
+1475,.pitch 30,.height 7
+1500,.pitch 20,.height 8
+1525,.pitch 10,.height 9
+1550,.pitch 0,.height 10
+
+;rua e mata descem
+1275,.railend 300,.railend 301
+1300,.rail 335;25;0,.rail 336;-33;0;35
+1325,,.rail 300;-50;-1;30,.rail 301;70;-1;32,.rail 335;25;-0.2,.rail 336;-35;-0.2
+1350,.rail 300;-50;-2;30,.rail 301;70;-2;32,.rail 335;25;-1.3,.rail 336;-35;-1.3
+1375,.rail 300;-50;-3;30,.rail 301;70;-3;32,.rail 335;25;-2.5,.rail 336;-35;-2.5
+1400,.rail 300;-50;-4;30,.rail 301;70;-4;32,.rail 335;25;-3.5,.rail 336;-35;-3.5
+1425,.rail 300;-50;-5;30,.rail 301;70;-5;32,.rail 335;25;-4.5,.rail 336;-35;-4.5
+1450,.rail 300;-50;-6;30,.rail 301;70;-6;32,.rail 335;25;-5.5,.rail 336;-35;-5.5
+1475,.rail 300;-50;-7;30,.rail 301;70;-7;32,.rail 335;25;-6.5,.rail 336;-35;-6.5
+1500,.rail 300;-50;-8;30,.rail 301;70;-8;32,.rail 335;25;-7.5,.rail 336;-35;-7.5
+1525,.rail 300;-50;-9;30,.rail 301;70;-9;32,.rail 335;25;-8.5,.rail 336;-35;-8.5
+1550,.curve 0,.rail 335;25;-9,.rail 336;-35;-9,.railtype 0;0,.railtype 1;0,.rail 300;-50;-10;30,.rail 301;70;-10;32
+
+1600,.Sta Mirueiro;;;0;R,.railtype 10;1,.railtype 11;1,.railtype 6;9,.railtype 7;9,.rail 100;-5,.rail 101;0,.rail 500;-5.2;-1;500,.rail 501;0;-1;501,.rail 502;-5;-1;502
+,.freeobj 0;524;0
+
+;placas com info
+1613,.freeobj 0;40;6.9;2;90;,.freeobj 0;41;-12.1;2;-90;
+1660,.freeobj 0;40;6.9;2;90;,.freeobj 0;41;-12.1;2;-90;
+1713,.freeobj 0;42;6.9;2;90;,.freeobj 0;43;-12.1;2;-90;
+1760,.freeobj 0;42;6.9;2;90;,.freeobj 0;43;-12.1;2;-90;
+
+;placas destino
+1625,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+1650,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+
+1725,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+1750,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+1775,.freeobj 0;45;-8;3,.freeobj 0;44;4.5;3
+
+;placa saida
+1675,.freeobj 0;47;-8;3,.freeobj 0;46;4.5;3
+1700,.freeobj 0;47;-8;3,.freeobj 0;46;4.5;3
+
+;saida
+1675,.railend 500,.railend 501,.freeobj 0;525;0;1.8
+1700,.rail 500,.rail 501
+
+;monitores
+1618,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+1668,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+1722,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+1778,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+
+;cadeiras
+1636,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+1700,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+1736,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+1786,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+
+;placas estacao mirueiro
+1636,.freeobj 0;48;-12;2;-90,.freeobj 0;49;6.9;2;90
+1736,.freeobj 0;48;-12;2;-90,.freeobj 0;49;6.9;2;90
+1786,.freeobj 0;48;-12;2;-90,.freeobj 0;49;6.9;2;90
+
+1790,.stop -1
+1800,.railend 100,.railend 101,.railtype 6;6,.railtype 7;7,.railend 500,.railend 501,.railend 502,.freeobj 0;524;0
+1825,.railtype 10;10,.railtype 11;11
+
+1850,.curve 600,.railtype 0;3,.railtype 1;3
+2250,.curve 0,.railtype 0;0,.railtype 1;0
+
+2400,.curve 2000
+
+2900,.Sta João Paulo II;;;0;R,.railtype 10;1,.railtype 11;1,.rail 100;-5,.rail 101;0,.railtype 6;9,.railtype 7;9,.rail 500,.rail 501,.rail 502,.freeobj 0;524;0
+
+;placas com info
+2913,.freeobj 0;50;6.9;2;90;,.freeobj 0;51;-12.1;2;-90;
+2960,.freeobj 0;50;6.9;2;90;,.freeobj 0;51;-12.1;2;-90;
+3013,.freeobj 0;52;6.9;2;90;,.freeobj 0;53;-12.1;2;-90;
+3060,.freeobj 0;52;6.9;2;90;,.freeobj 0;53;-12.1;2;-90;
+
+;placas destino
+2925,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+2950,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+3000,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+3025,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+3050,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+3075,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+
+;placa saida
+2975,.freeobj 0;47;-8;3,.freeobj 0;46;4.5;3
+
+;saida
+2975,.railend 500,.railend 501,.freeobj 0;525;0;1.8
+3000,.rail 500,.rail 501
+
+;monitores
+2918,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+2968,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+3022,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+3078,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+
+;cadeiras
+2936,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+3000,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+3036,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+3086,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+
+;placas estacao Joao Paulo II
+2936,.freeobj 0;58;-12;2;-90,.freeobj 0;59;6.9;2;90
+3036,.freeobj 0;58;-12;2;-90,.freeobj 0;59;6.9;2;90
+3086,.freeobj 0;58;-12;2;-90,.freeobj 0;59;6.9;2;90
+
+3090,.stop -1
+3100,.railend 100,.railend 101,.railtype 6;6,.railtype 7;7,.curve 0,.railend 500,.railend 501,.railend 502,.freeobj 0;524;0
+3125,.railtype 10;10,.railtype 11;11
+
+3350,.curve -900,.railtype 0;4,.railtype 1;4
+
+3800,.curve 0,.railtype 0;0,.railtype 1;0
+
+4000,.sta Maria das Dores;;;0;R,.railtype 10;1,.railtype 11;1,.rail 100;-5,.rail 101;0,.railtype 6;9,.railtype 7;9,.rail 500,.rail 501,.rail 502,.freeobj 0;524;0
+
+;placas com info
+4013,.freeobj 0;60;6.9;2;90;,.freeobj 0;61;-12.1;2;-90;
+4060,.freeobj 0;60;6.9;2;90;,.freeobj 0;61;-12.1;2;-90;
+4113,.freeobj 0;62;6.9;2;90;,.freeobj 0;63;-12.1;2;-90;
+4160,.freeobj 0;62;6.9;2;90;,.freeobj 0;63;-12.1;2;-90;
+
+;placas destino
+4025,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4050,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4100,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4125,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4150,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+4175,.freeobj 0;65;-8;3,.freeobj 0;64;4.5;3
+
+;placa saida
+4075,.freeobj 0;47;-8;3,.freeobj 0;46;4.5;3
+
+;saida
+4075,.railend 500,.railend 501,.freeobj 0;525;0;1.8
+4100,.rail 500,.rail 501
+
+;placas estacao Maria das Dores
+4036,.freeobj 0;68;-12;2;-90,.freeobj 0;69;6.9;2;90
+4136,.freeobj 0;68;-12;2;-90,.freeobj 0;69;6.9;2;90
+4186,.freeobj 0;68;-12;2;-90,.freeobj 0;69;6.9;2;90
+
+;monitores
+4018,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+4068,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+4122,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+4178,.freeobj 0;97;6.5;2;90,.freeobj 1;97;-6;2;90
+
+;cadeiras
+4036,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+4100,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+4136,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+4186,.freeobj 0;100;6.6;2,.freeobj 1;100;-6.6;2
+
+4190,.stop -1
+4200,.railend 100,.railend 101,.railtype 6;6,.railtype 7;7,.curve 0,.railend 500,.railend 501,.railend 502,.freeobj 0;524;0
+4225,.railtype 10;10,.railtype 11;11
+
+4625,.curve -900,.railtype 0;4,.railtype 1;4
+
+4550,.pitch 0,.height 10,.rail 335;25;-9,.rail 336;-35;-9,.rail 300;-50;-9;30,.rail 301;70;-9;32
+4575,.pitch -10,.height 9,.rail 335;25;-9,.rail 336;-35;-9,.rail 300;-50;-9;30,.rail 301;70;-9;32
+4600,.pitch -20,.height 8,.rail 335;25;-8,.rail 336;-35;-8,.rail 300;-50;-8;30,.rail 301;70;-8;32
+4625,.pitch -30,.height 7,.rail 335;25;-7,.rail 336;-35;-7,.rail 300;-50;-7;30,.rail 301;70;-7;32
+4650,.pitch -40,.height 6,.rail 335;25;-6,.rail 336;-35;-6,.rail 300;-50;-6;30,.rail 301;70;-6;32
+4675,.pitch -50,.height 5,.rail 335;25;-5,.rail 336;-35;-5,.rail 300;-50;-5;30,.rail 301;70;-5;32
+4700,.pitch -40,.height 4,.rail 335;25;-4,.rail 336;-35;-4,.rail 300;-50;-4;30,.rail 301;70;-4;32
+4725,.pitch -30,.height 3,.rail 335;25;-3,.rail 336;-35;-3,.rail 300;-50;-3;30,.rail 301;70;-3;32
+4750,.pitch -20,.height 2,.rail 335;25;-2,.rail 336;-35;-2,.rail 300;-50;-2;30,.rail 301;70;-2;32
+4775,.pitch -10,.height 1,.rail 335;25;-1,.rail 336;-35;-1,.rail 300;-50;-1;30,.rail 301;70;-1;32
+4800,.pitch 0,.height 0,.rail 335;25;0,.rail 336;-35;0,.rail 300;-50;0;30,.rail 301;70;0;32,.railtype 0;0
+,.railtype 1;0,.rail 21;-8,.rail 20;3,.curve 0,.railtype 6;1,.railtype 7;1,.railtype 0;0,.railtype 1;0
+4825,.rail 21;-11,.rail 20;6
+
+;Estações de plataforma central única
+;Trilho 1, muro 1 e pole 1 se separam
+4850,.rail 1;-5.2;0;2	,.rail 10;-5.2	,.rail 21;-13
+4875,.rail 1;-5.7;0;2	,.rail 10;-5.7	,.rail 21;-14,.curve 1000,.railtype 0;3
+4900,.rail 1;-7;0;0	,.rail 10;-7	,.rail 21;-15
+4925,.rail 1;-9.5;0;3	,.rail 10;-9.5	,.rail 21;-16
+4950,.rail 1;-11.7;0;3	,.rail 10;-11.7	,.rail 21;-17,.curve -900,.railtype 0;4
+4975,.rail 1;-13.2;0;3	,.rail 10;-13.2	,.rail 21;-18
+5000,.rail 1;-14;0;0	,.rail 10;-14	,.rail 21;-18,.curve 0,.railtype 0;0
+
+5000,.sta Cabritas - Rede Gatos;;;0;L
+
+;plataformas
+5000,.rail 100;0;0;100,.rail 101;-13.8;0;101,.railtype 10;1,.railtype 11;1,.railtype 20;21,.railtype 21;21
+
+;abrigo
+5000,.rail 70;0;0;700
+5025,.railend 70;
+;escada rolante
+5064,.freeobj 0;19;-15.77
+
+;placas com info
+5010,.freeobj 0;70;-7;3;90
+5030,.freeobj 0;70;-7;3;90
+5090,.freeobj 0;71;-7;3;90
+5135,.freeobj 0;71;-7;3;90
+5165,.freeobj 0;71;-7;3;90
+
+;placas destino
+5025,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+5050,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+5075,.freeobj 0;72;-3;3,.freeobj 0;73;-10;3
+
+5125,.freeobj 0;72;-3;3,.freeobj 0;73;-10;3
+5150,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+5175,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+
+;monitores
+5025,.freeobj 0;97;-6.5;2
+5075,.freeobj 0;97;-6.5;2
+5128,.freeobj 0;97;-6.5;2
+5178,.freeobj 0;97;-6.5;2
+
+;cadeiras
+5018,.freeobj 0;100;-6.6;2
+5038,.freeobj 0;100;-6.6;2
+5100,.freeobj 0;100;-6.6;2
+5142,.freeobj 0;100;-6.6;2
+
+5100,.freeobj 0;170;0;-2
+5125,.rail 70
+5175,.railend 70
+
+5190,.stop 1
+5200,.railend 100,.railend 101
+5225,.railtype 20;20,.railtype 21;20,.railtype 10;10,.railtype 11;11
+
+;Minipatio Cabritas
+5250,.rail 4;0;0;2	,.rail 5;-14;0;3
+5275,.rail 4;-0.8;0;0	,.rail 5;-12.7;0;0,.rail 6;-12.7;0;4
+5300,.rail 4;-2;0	,.rail 5;-10.3,.rail 6;-11;0;4
+5325,.rail 4;-3;0	,.rail 5;-8,.rail 6;-10.2;0;0
+5350,.rail 4;-4;0;0;3	,.rail 5;-6;0;2
+5375,.rail 4;-4.7;0;3	,.rail 5;-5;0;0
+5400,.rail 4;-5;0;0;0	,.rail 5;-5,.railtype 10;12,.railtype 11;1
+
+5600,.rail 4;-5;0;0;3	,.rail 5;-5;0;2
+5625,.rail 4;-4.7;0;3	,.rail 5;-5;0;0
+5650,.rail 4;-4;0;0;3	,.rail 5;-6;0;2
+5675,.rail 4;-3;0	,.rail 5;-8;0;0,.rail 6;-10.5;0
+5700,.rail 4;-2;0	,.rail 5;-10.3,.rail 6;-11.3;0;4
+5725,.rail 4;-0.8;0;2	,.rail 5;-12.7;0;3,.railend 6;-12.7;0;4,.railtype 10;10,.railtype 11;11
+5750,.railend 4;0;0;0	,.railend 5;-14;0;0
+
+;os trilhos voltam a se juntar
+5775,.rail 1;-14;0;0	,.rail 10;-14	,.rail 21;-18,.curve -800,.railtype 0;4
+5800,.rail 1;-13.3;0;3	,.rail 10;-13.2	,.rail 21;-17
+5825,.rail 1;-11.7;0;3	,.rail 10;-11.7	,.rail 21;-16,.curve 1200,.railtype 0;5
+5850,.rail 1;-9.5;0;2	,.rail 10;-9.5	,.rail 21;-15
+5875,.rail 1;-7;0;0	,.rail 10;-7	,.rail 21;-14
+5900,.rail 1;-5.7;0;2	,.rail 10;-5.7	,.rail 21;-13,.curve 0,.railtype 0;0
+5925,.rail 1;-5.1;0;0	,.rail 10;-5.2	,.rail 21;-13
+5950,.rail 1;-5;0;0
+
+6100,.curve -800,.railtype 0;4,.railtype 1;4
+6350,.curve 0,.railtype 0;0,.railtype 1;0
+
+6375,.rail 2;14;0;0,.rail 3;19;0;0,.rail 5;33;0;0,.rail 12;14;0;10,.rail 13;19;0;11,.rail 14;33;0;11
+6400,.railtype 20;21,.railend 335,.rail 335;60
+
+6475,.railtype 10;1,.railtype 11;1,.railtype 12;1,.railtype 13;1,.railtype 14;1
+6500,.sta Manoel Lacerda;;;0;R,.railtype 20;1,.railtype 21;21
+
+;plataforma central
+6500,.rail 100;14,.rail 101;0,.rail 102;-5;0;100,.rail 103;19;0;101,.rail 104;33;0;100
+
+;abrigo central
+6500,.rail 70;14,.rail 71;-5;0;801,.rail 72;33;0;802,.railtype 70;803
+6525,.railend 70,.railend 72
+6550,.railend 71
+6625,.rail 70,.rail 71,.rail 72
+6675,.railend 70,.railend 71,.railend 72
+
+;mezanino
+6600,.freeobj 0;171;13.8;-1
+
+;placas Manoel Lacerda (L1)
+6512,.freeobj 0;80;-12;4;90
+6538,.freeobj 0;81;-12;3;-90
+6563,.freeobj 0;80;-12;4;90
+;pós saída
+6638,.freeobj 0;80;-12;4;-90
+6663,.freeobj 0;81;-12;3;90
+6686,.freeobj 0;80;-12;4;-90
+
+;placas Manoel Lacerda(Central)
+6512,.freeobj 0;82;7.0;4;-90
+6538,.freeobj 0;83;7.0;3;-90
+;pós saída
+6585,.freeobj 0;85;7.0;4;-90
+6615,.freeobj 0;86;7.0;3;-90
+6638,.freeobj 0;85;7.0;4;-90
+6663,.freeobj 0;86;7.0;3;-90
+6686,.freeobj 0;85;7.0;4;-90
+
+;placas Manoel Lacerda (L2)
+6512,.freeobj 0;87;26;4;90
+6538,.freeobj 0;88;26;3;90
+;pós saída
+6585,.freeobj 0;89;26;4;90
+6615,.freeobj 0;90;26;3;-90
+6638,.freeobj 0;89;26;4;90
+6663,.freeobj 0;90;26;3;-90
+6686,.freeobj 0;89;26;4;90
+
+;placas destino
+6525,.freeobj 0;91;-8;4,.freeobj 0;92;4;4,.freeobj 0;93;11;4,.freeobj 0;94;23;4,.freeobj 0;95;30;4
+6550,.freeobj 0;91;-8;4,.freeobj 0;92;4.5;4,.freeobj 0;93;11;4,.freeobj 0;94;23;4,.freeobj 0;95;30;4
+6575,.freeobj 0;91;-8;4,.freeobj 0;92;4.5;4,.freeobj 0;93;11;4,.freeobj 0;94;23;4,.freeobj 0;95;30;4
+6625,.freeobj 0;91;-8;4,.freeobj 0;92;4;4,.freeobj 0;93;11;4,.freeobj 0;94;23;4,.freeobj 0;96;30;4
+6650,.freeobj 0;91;-8;4,.freeobj 0;92;4;4,.freeobj 0;93;11;4,.freeobj 0;94;23;4,.freeobj 0;96;30;4
+6675,.freeobj 0;91;-8;4,.freeobj 0;92;4;4,.freeobj 0;93;11;4,.freeobj 0;94;23;4,.freeobj 0;96;30;4
+
+;monitores
+6523,.freeobj 0;97;6.5;2,.freeobj 1;97;-6.5;2;90,.freeobj 3;97;6.5;2
+6579,.freeobj 0;97;6.5;2,.freeobj 1;97;-6.5;2;90,.freeobj 3;97;6.5;2
+6628,.freeobj 0;97;6.5;2,.freeobj 1;97;-6.5;2;90,.freeobj 3;97;6.5;2
+6678,.freeobj 0;97;6.5;2,.freeobj 1;97;-6.5;2;90,.freeobj 3;97;6.5;2
+
+;cadeiras
+6510,.freeobj 0;100;6.9;2,.freeobj 1;100;-6.0;2,.freeobj 2;100;12.0;2
+6560,.freeobj 1;100;-6.0;2
+6595,.freeobj 0;100;6.9;2,.freeobj 2;100;12.0;2
+6637,.freeobj 0;100;6.9;2,.freeobj 1;100;-6.0;2,.freeobj 2;100;12.0;2
+6687,.freeobj 0;100;6.9;2,.freeobj 1;100;-6.0;2,.freeobj 2;100;12.0;2
+
+6700,.stop -1,.railend 100,.railend 101,.railend 102,.railend 103,.railend 104,.railtype 20;21,.railtype 21;20
+6725,.railtype 10;10,.railtype 11;11,.railtype 12;10,.railtype 13;11,.railtype 14;11
+
+6800,.curve -900,.railtype 0;4,.railtype 1;4,.railtype 20;20
+
+7175,.curve 0,.railtype 0;0,.railtype 1;0,.railend 2,.railend 3,.railend 5,.railend 12,.railend 13,.railend 14,.rail 20;7,.railend 335,.rail 335;25
+
+7700,.sta Shopping;;;0;R
+,.railtype 10;1,.railtype 11;1,.railtype 20;21,.railtype 21;21
+,.rail 100;-5,.rail 101
+
+;mezanino Shopping (incluir uma grande passarela ligando a estação ao shopping posteriormente)
+7825,.freeobj 0;173;3;-2
+
+7700,.rail 71,.rail 70;0,.railtype 70;901
+7775,.railend 71,.railend 70
+7850,.rail 71,.rail 70
+7900,.railend 71,.railend 70
+
+;placas destino
+7725,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+7750,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+7800,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+7825,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+7850,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+7875,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+7900,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+
+7900,.stop -1
+7925,.railtype 20;20,.railtype 21;20,.railend 100,.railend 101
+7950,.railtype 10;10,.railtype 11;11
+
+8100,.curve -800,.railtype 0;4,.railtype 1;4
+8600,.curve 0,.railtype 0;0,.railtype 1;0
+
+
+;Estações de plataforma central única
+;Trilho 1, muro 1 e pole 1 se separam
+8750,.rail 1;-5.2;0;2	,.rail 10;-5.2	,.rail 21;-13
+8775,.rail 1;-5.7;0;2	,.rail 10;-5.7	,.rail 21;-14,.curve 1000,.railtype 0;3
+8800,.rail 1;-7;0;0	,.rail 10;-7	,.rail 21;-15
+8825,.rail 1;-9.5;0;3	,.rail 10;-9.5	,.rail 21;-16
+8850,.rail 1;-11.7;0;3	,.rail 10;-11.7	,.rail 21;-17,.curve -900,.railtype 0;4
+8875,.rail 1;-13.2;0;3	,.rail 10;-13.2	,.rail 21;-18
+8900,.rail 1;-14;0;0	,.rail 10;-14	,.rail 21;-18,.curve 0,.railtype 0;0
+
+8900,.sta Rosario;;;0;L
+
+;plataformas
+8900,.rail 100;0;0;100,.rail 101;-13.8;0;101,.railtype 10;1,.railtype 11;1,.railtype 20;21,.railtype 21;21
+
+;abrigo
+8900,.rail 70;0;0;700
+8925,.railend 70;
+;escada rolante
+8964,.freeobj 0;19;-15.77
+
+;placas com info
+;5010,.freeobj 0;70;-7;3;90
+;5030,.freeobj 0;70;-7;3;90
+;5090,.freeobj 0;71;-7;3;90
+;5135,.freeobj 0;71;-7;3;90
+;5165,.freeobj 0;71;-7;3;90
+
+;placas destino
+8925,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+8950,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+8975,.freeobj 0;72;-3;3,.freeobj 0;73;-10;3
+
+9025,.freeobj 0;72;-3;3,.freeobj 0;73;-10;3
+9050,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+9075,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+
+;monitores
+8925,.freeobj 0;97;-6.5;2
+8975,.freeobj 0;97;-6.5;2
+9028,.freeobj 0;97;-6.5;2
+9078,.freeobj 0;97;-6.5;2
+
+;cadeiras
+8918,.freeobj 0;100;-6.6;2
+8938,.freeobj 0;100;-6.6;2
+9000,.freeobj 0;100;-6.6;2
+9042,.freeobj 0;100;-6.6;2
+
+9000,.freeobj 0;170;0;-2
+9025,.rail 70
+9075,.railend 70
+
+9090,.stop 1
+9100,.railend 100,.railend 101
+9125,.railtype 20;20,.railtype 21;20,.railtype 10;10,.railtype 11;11
+
+;os trilhos voltam a se juntar
+9125,.rail 1;-14;0;0	,.rail 10;-14	,.rail 21;-18,.curve -800,.railtype 0;4
+9150,.rail 1;-13.3;0;3	,.rail 10;-13.2	,.rail 21;-17
+9175,.rail 1;-11.7;0;3	,.rail 10;-11.7	,.rail 21;-16,.curve 1200,.railtype 0;5
+9200,.rail 1;-9.5;0;2	,.rail 10;-9.5	,.rail 21;-15
+9225,.rail 1;-7;0;0	,.rail 10;-7	,.rail 21;-14
+9250,.rail 1;-5.7;0;2	,.rail 10;-5.7	,.rail 21;-13,.curve 0,.railtype 0;0
+9275,.rail 1;-5.1;0;0	,.rail 10;-5.2	,.rail 21;-13
+9300,.rail 1;-5;0;0
+
+9800,.height 0,.rail 21;-15;0,.rail 20;7;0,.curve -600,.railtype 0;4,.railtype 1;4,.railend 335,.railend 336,.rail 6;0;0;6,.rail 7;-5;0;7,.railend 300,.railend 301
+9825,.height 1,.rail 21;-15;-1,.rail 20;7;-1
+9850,.height 2,.rail 21;-15;-2,.rail 20;7;-2
+9875,.height 3,.rail 21;-15;-3,.rail 20;7;-3
+9900,.height 4,.rail 21;-15;-4,.rail 20;7;-4
+9925,.height 5,.rail 21;-15;-5,.rail 20;7;-5
+9950,.height 6,.rail 21;-15;-6,.rail 20;7;-6
+9975,.height 7,.rail 21;-15;-7,.rail 20;7;-7
+10000,.height 8,.rail 21;-15;-8,.rail 20;7;-8
+10025,.height 9,.rail 21;-15;-9,.rail 20;7;-9
+10050,.height 10,.rail 21;-15;-10,.rail 20;7;-10,.curve 0,.railtype 0;0,.railtype 1;0
+
+10100,.sta Guanabara;;;0;R,.railtype 10;1,.railtype 11;1,.railtype 6;9,.railtype 7;9,.rail 100;-5,.rail 101;0,.rail 500;-5.2;-1;500,.rail 501;0;-1;501,.rail 502;-5;-1;502
+
+;placas destino
+10125,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+10150,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+10200,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+10225,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+10250,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+10275,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+10300,.freeobj 0;55;-8;3,.freeobj 0;54;4.5;3
+
+10300,.stop -1
+10325,.railend 100,.railend 101,.railend 500,.railend 501,.railend 502,.railtype 6;6,.railtype 7;7,.railtype 10;10,.railtype 11;11
+
+10350,.pitch 0,.height 10
+10375,.pitch -10,.height 9
+10400,.pitch -20,.height 8
+10425,.pitch -30,.height 7
+10450,.pitch -40,.height 6,.curve -800,.railtype 0;4,.railtype 1;4
+10475,.pitch -50,.height 5
+10500,.pitch -40,.height 4
+10525,.pitch -30,.height 3
+10550,.pitch -20,.height 2
+10575,.pitch -10,.height 1
+10600,.pitch 0,.height 0
+
+10600,.railend 6,.railend 7,.rail 300;-10;0;300,.rail 301;5;0;301
+
+10900,.curve 600,.railtype 0;5,.railtype 1;5
+11200,.rail 21;-12;0;20,.rail 20;6;0;20,.railend 300,.railend 301
+
+11500,.curve 0,.railtype 0;0,.railtype 1;0;
+
+11800,.sta Vila Independente;;;0;R,.railtype 10;1,.railtype 11;1,.rail 100;-5,.rail 101;0,.rail 500;-5.2;-1;500,.rail 501;0;-1;501,.rail 502;-5;-1;502,.railtype 20;1,.railtype 21;1
+
+12000,.stop -1
+12025,.railend 100,.railend 101,.railend 500,.railend 501,.railend 502,.railtype 10;10,.railtype 11;11,.railtype 20;20,.railtype 21;20
+
+12800,.curve -800,.railtype 0;4,.railtype 1;4
+
+13300,.curve 0,.railtype 0;0,.railtype 1;0;
+
+13300,.sta Padre Espindola;;;0;R,.railtype 10;1,.railtype 11;1,.rail 100;-5,.rail 101;0,.rail 500;-5.2;-1;500,.rail 501;0;-1;501,.rail 502;-5;-1;502,.railtype 20;1,.railtype 21;1
+
+13500,.stop -1
+13525,.railend 100,.railend 101,.railend 500,.railend 501,.railend 502,.railtype 10;10,.railtype 11;11,.railtype 20;20,.railtype 21;20
+
+13700,.curve -700,.railtype 0;4,.railtype 1;4
+
+14200,.curve 700,.railtype 0;3,.railtype 1;3
+
+14600,.curve 0,.railtype 0;0,.railtype 1;0
+
+;rail de ponte antes de smallville
+14800,.rail 6,.rail 7
+
+;subida antes de smallville
+14800,.pitch 0,.height 0
+14825,.pitch 10,.height 1
+14850,.pitch 20,.height 2
+14875,.pitch 30,.height 3
+14900,.pitch 40,.height 4
+14925,.pitch 50,.height 5
+14950,.pitch 40,.height 6
+14975,.pitch 30,.height 7
+15000,.pitch 20,.height 8
+15025,.pitch 10,.height 9
+15050,.pitch 0,.height 10
+
+;muros descem antes de smallville
+14800,.rail 21;-15;0,.rail 20;7;0
+14825,.rail 21;-15;-1,.rail 20;7;-1
+14850,.rail 21;-15;-2,.rail 20;7;-2
+14875,.rail 21;-15;-3,.rail 20;7;-3
+14900,.rail 21;-15;-4,.rail 20;7;-4
+14925,.rail 21;-15;-5,.rail 20;7;-5
+14950,.rail 21;-15;-6,.rail 20;7;-6
+14975,.rail 21;-15;-7,.rail 20;7;-7
+15000,.rail 21;-15;-8,.rail 20;7;-8
+15025,.rail 21;-15;-9,.rail 20;7;-9
+15050,.rail 21;-15;-10,.rail 20;7;-10
+15050,.railtype 21;1,.railtype 20;1
+
+15200,.sta Smallville;;;0;R,.railtype 10;1,.railtype 11;1,.railtype 6;9,.railtype 7;9,.rail 100;-5,.rail 101;0,.rail 500;-5.2;-1;500,.rail 501;0;-1;501,.rail 502;-5;-1;502
+15400,.stop 1
+15425,.railend 100,.railend 101,.railend 500,.railend 501,.railend 502,.railtype 10;10,.railtype 11;11,.railtype 20;20,.railtype 21;20,.railtype 6;6,.railtype 7;7

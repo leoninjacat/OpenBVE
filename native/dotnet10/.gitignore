@@ -1,0 +1,10 @@
+# Generated native engine artifacts and local source backups.
+*.bak
+# The root NuGet ignore also matches this source directory.
+!OpenBveApi/src/Packages/*.cs
+artifacts/
+runtime/
+**/bin/
+**/obj/
+
+routeviewer-runtime/

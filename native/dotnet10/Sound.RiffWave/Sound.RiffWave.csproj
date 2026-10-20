@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup>
+<TargetFramework>net10.0</TargetFramework><AssemblyName>Sound.RiffWave</AssemblyName>
+<RootNamespace>Sound.RiffWave</RootNamespace>
+<EnableDefaultCompileItems>false</EnableDefaultCompileItems><GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks><NoWarn>$(NoWarn);NU1701</NoWarn>
+
+</PropertyGroup>
+<ItemGroup>
+<Compile Include="../../../source/Plugins/Sound.RiffWave/ChunkID.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Chunks/Chunk.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Chunks/CuePoint.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Chunks/DataChunk.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Chunks/SilentChunk.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Formats/WaveFormatAdPcm.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Formats/WaveFormatEx.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Formats/WaveFormatExtensible.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Formats/WaveFormatMp3.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Formats/WaveFormatPcm.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Formats/WFormatTag.cs" />
+
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Plugin.cs" />
+<Compile Include="../../../source/Plugins/Sound.RiffWave/Properties/AssemblyInfo.cs" />
+<ProjectReference Include="../OpenBveApi/OpenBveApi.csproj" />
+<PackageReference Include="NAudio.Core" Version="2.0.0" />
+<PackageReference Include="NLayer" Version="2.0.1" />
+<Compile Include="Native/**/*.cs" />
+<PackageReference Include="NLayer.NAudioSupport" Version="2.0.1" /></ItemGroup>
+</Project>

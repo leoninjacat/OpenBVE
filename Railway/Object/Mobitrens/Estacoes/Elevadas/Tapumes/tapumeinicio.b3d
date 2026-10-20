@@ -1,0 +1,31 @@
+;A
+[MeshBuilder]
+Vertex 	2.1, 	6, 	1
+Vertex 	2.1, 	0, 	1
+Vertex  6.8, 	0, 	1
+Vertex  6.8, 	6, 	1
+Face2  0,1,2,3
+
+[Texture]
+Load gradeado.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,0,255
+
+;B
+[MeshBuilder]
+Vertex 	-11.1, 	6, 	1
+Vertex 	-11.1, 	0, 	1
+Vertex  -6.9, 	0, 	1
+Vertex  -6.9, 	6, 	1
+Face2  0,1,2,3
+
+[Texture]
+Load gradeado.bmp
+Coordinates 0, 0, 0
+Coordinates 2, 0, 1
+Coordinates 0, 2, 0
+Coordinates 1, 2, 1
+Transparent 0,00,255

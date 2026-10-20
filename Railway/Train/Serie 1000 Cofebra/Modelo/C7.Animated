@@ -1,0 +1,251 @@
+[Include]
+numeracoes6.csv
+Position = 0,0,-4.34
+
+[Include]
+Objetos\relogio_dig.animated
+Position = -0.06, 3.02, 6.302
+
+[Include]
+Objetos\relogio_dig1.animated
+Position = -0.42, 3.02, -12.943
+
+[Include]
+objetos/tv.csv
+Position = 0.15, 0.06, -4.20
+
+[Include]
+objetos/tv1.csv
+Position = -0.15, 0.06, -14.40
+
+[Include]
+objetos/tv.csv
+Position = 0.15, 0.06, -9.40
+
+[Include]
+objetos/tv1.csv
+Position = -0.15, 0.06, -9.40
+
+[Include]
+mc_A4.csv
+Position = 0, 0.0, 2.55
+
+
+[Include]
+porta.csv
+Position = 0, 0.0, -4.30
+[Include]
+mc_A2.csv
+Position = 0, 0.0, -4.30
+
+[Include]
+porta.csv
+Position = 0, 0.0, -9.40
+[Include]
+mc_A20.csv
+Position = 0, 0.0, -9.40
+
+[Include]
+porta.csv
+Position = 0, 0.0, -14.50
+[Include]
+mc_A2.csv
+Position = 0, 0.0, -14.50
+
+[Include]
+porta.csv
+Position = 0, 0.0, -19.60
+[Include]
+mc_A3.csv
+Position = 0, 0.0, -16.10
+
+
+
+;;
+[Object]
+States =objetos\porta.csv
+Position =  0.0, 0, -4.30
+TranslateZFunction = -0.82 * if[rightdoors[0]>0.5,1,if[rightdoorstarget==1,rightdoors[0]*2,if[rightdoors[0]<=0.08,min[power[rightdoors[0]*2,2],0.1],max[power[rightdoors[0]*2,2],0.10]]]]
+
+
+[Object]
+States =objetos\porta1.csv
+Position =  0, 0, -4.30
+TranslateZFunction = 0.82 * if[rightdoors[0]>0.5,1,if[rightdoorstarget==1,rightdoors[0]*2,if[rightdoors[0]<=0.08,min[power[rightdoors[0]*2,2],0.1],max[power[rightdoors[0]*2,2],0.10]]]]
+
+;;
+[Object]
+States =objetos\porta2.csv
+Position =  0.0, 0, -4.30
+TranslateZFunction = 0.82 * if[leftdoors[0]>0.5,1,if[leftdoorstarget==1,leftdoors[0]*2,if[leftdoors[0]<=0.08,min[power[leftdoors[0]*2,2],0.1],max[power[leftdoors[0]*2,2],0.10]]]]
+
+
+[Object]
+States =objetos\porta3.csv
+Position =  0, 0, -4.30
+TranslateZFunction = -0.82 * if[leftdoors[0]>0.5,1,if[leftdoorstarget==1,leftdoors[0]*2,if[leftdoors[0]<=0.08,min[power[leftdoors[0]*2,2],0.1],max[power[leftdoors[0]*2,2],0.10]]]]
+
+
+;;
+
+[Object]
+States =objetos\portaa.csv
+Position =  0.0, 0, -9.40
+TranslateZFunction = -0.82 * if[rightdoors[0]>0.5,1,if[rightdoorstarget==1,rightdoors[0]*2,if[rightdoors[0]<=0.08,min[power[rightdoors[0]*2,2],0.1],max[power[rightdoors[0]*2,2],0.10]]]]
+
+
+[Object]
+States =objetos\porta1.csv
+Position =  0, 0, -9.40
+TranslateZFunction = 0.82 * if[rightdoors[0]>0.5,1,if[rightdoorstarget==1,rightdoors[0]*2,if[rightdoors[0]<=0.08,min[power[rightdoors[0]*2,2],0.1],max[power[rightdoors[0]*2,2],0.10]]]]
+
+;;
+[Object]
+States =objetos\porta2.csv
+Position =  0.0, 0, -9.40
+TranslateZFunction = 0.82 * if[leftdoors[0]>0.5,1,if[leftdoorstarget==1,leftdoors[0]*2,if[leftdoors[0]<=0.08,min[power[leftdoors[0]*2,2],0.1],max[power[leftdoors[0]*2,2],0.10]]]]
+
+
+[Object]
+States =objetos\porta3.csv
+Position =  0, 0, -9.40
+TranslateZFunction = -0.82 * if[leftdoors[0]>0.5,1,if[leftdoorstarget==1,leftdoors[0]*2,if[leftdoors[0]<=0.08,min[power[leftdoors[0]*2,2],0.1],max[power[leftdoors[0]*2,2],0.10]]]]
+
+
+;;
+
+[Object]
+States =objetos\porta.csv
+Position =  0.0, 0,  -14.50
+TranslateZFunction = -0.82 * if[rightdoors[0]>0.5,1,if[rightdoorstarget==1,rightdoors[0]*2,if[rightdoors[0]<=0.08,min[power[rightdoors[0]*2,2],0.1],max[power[rightdoors[0]*2,2],0.10]]]]
+
+ 
+[Object]
+States =objetos\porta1.csv
+Position =  0, 0,  -14.50
+TranslateZFunction = 0.82 * if[rightdoors[0]>0.5,1,if[rightdoorstarget==1,rightdoors[0]*2,if[rightdoors[0]<=0.08,min[power[rightdoors[0]*2,2],0.1],max[power[rightdoors[0]*2,2],0.10]]]]
+
+;;
+[Object]
+States =objetos\portaa2.csv
+Position =  0.0, 0,  -14.50
+TranslateZFunction = 0.82 * if[leftdoors[0]>0.5,1,if[leftdoorstarget==1,leftdoors[0]*2,if[leftdoors[0]<=0.08,min[power[leftdoors[0]*2,2],0.1],max[power[leftdoors[0]*2,2],0.10]]]]
+
+
+[Object]
+States =objetos\porta3.csv
+Position =  0, 0,  -14.50
+TranslateZFunction = -0.82 * if[leftdoors[0]>0.5,1,if[leftdoorstarget==1,leftdoors[0]*2,if[leftdoors[0]<=0.08,min[power[leftdoors[0]*2,2],0.1],max[power[leftdoors[0]*2,2],0.10]]]]
+
+
+;;
+[Object]
+States =objetos\porta.csv
+Position =  0.0, 0, -19.60
+TranslateZFunction = -0.82 * if[rightdoors[0]>0.5,1,if[rightdoorstarget==1,rightdoors[0]*2,if[rightdoors[0]<=0.08,min[power[rightdoors[0]*2,2],0.1],max[power[rightdoors[0]*2,2],0.10]]]]
+
+
+[Object]
+States =objetos\porta1.csv
+Position =  0, 0, -19.60
+TranslateZFunction = 0.82 * if[rightdoors[0]>0.5,1,if[rightdoorstarget==1,rightdoors[0]*2,if[rightdoors[0]<=0.08,min[power[rightdoors[0]*2,2],0.1],max[power[rightdoors[0]*2,2],0.10]]]]
+
+;;
+[Object]
+States =objetos\porta2.csv
+Position =  0.0, 0, -19.60
+TranslateZFunction = 0.82 * if[leftdoors[0]>0.5,1,if[leftdoorstarget==1,leftdoors[0]*2,if[leftdoors[0]<=0.08,min[power[leftdoors[0]*2,2],0.1],max[power[leftdoors[0]*2,2],0.10]]]]
+
+
+[Object]
+States =objetos\porta3.csv
+Position =  0, 0, -19.60
+TranslateZFunction = -0.82 * if[leftdoors[0]>0.5,1,if[leftdoorstarget==1,leftdoors[0]*2,if[leftdoors[0]<=0.08,min[power[leftdoors[0]*2,2],0.1],max[power[leftdoors[0]*2,2],0.10]]]]
+
+
+[Include]
+objetos/pega_mao2.csv
+Position = 0, 0.06, -3
+
+
+[Include]
+Objetos\banco_passCar2.csv
+Position = 0, 0.0, -1.80
+
+[Include]
+Objetos\banco_passCar.csv
+Position = 0, 0.0, -4.3
+
+[Include]
+Objetos\banco.csv
+Position = 0, 0.0, -4.30
+
+[Include]
+Objetos\banco2.csv
+Position = 0, 0.0, -7.0
+
+[Include]
+Objetos\banco.csv
+Position = 0, 0.0, 05.90
+
+;;;
+
+[Include]
+Position = 0, 0.00, -2.90
+objetos\rod_ext.csv
+[Include]
+Position = 0, 0.00, -18.10
+objetos\rod_ext.csv
+
+
+[object]
+Position = 0, 0.45, -11.85
+states=objetos/rodas.csv
+RotateXFunction = value + mod[(speedometer * delta),2.7] / 2.7 * 3.14 * 2
+[object]
+Position = 0, 0.45, -9.45
+states=objetos/rodas.csv
+RotateXFunction = value + mod[(speedometer * delta),2.7] / 2.7 * 3.14 * 2
+[object]
+Position = 0, 0.45, 5.75
+states=objetos/rodas.csv
+RotateXFunction = value + mod[(speedometer * delta),2.7] / 2.7 * 3.14 * 2
+[object]
+Position = 0, 0.45, 3.35
+states=objetos/rodas.csv
+RotateXFunction = value + mod[(speedometer * delta),2.7] / 2.7 * 3.14 * 2
+
+;; indicador de fechamento de portas 
+
+[object]
+states = Objetos/RightDoorsLight_off.csv, Objetos/RightDoorsLight_on.csv
+statefunction = Floor[Mod[rightdoors * 10, 2]]
+Position = 0.07, 0.05, -3.19
+
+[object]
+states = Objetos/LeftDoorsLight_off.csv, Objetos/LeftDoorsLight_on.csv
+statefunction = Floor[Mod[leftdoors * 10, 2]]
+Position = -0.07, 0.05, -3.19
+
+[Object]
+Position = -1.55, 3.02, -2.04
+States = Objetos/indicador_portasAberto.csv ,Objetos/indicador_portasFechado.csv 
+statefunction = Ceiling[doors] != 1
+
+[Object]
+Position = 1.55, 3.02, -2.04
+States = Objetos/indicador_portasAberto.csv ,Objetos/indicador_portasFechado.csv 
+statefunction = Ceiling[doors] != 1
+
+;;
+[Object]
+States =objetos\panto1.csv
+Position =  0, -0.45, -2.75
+
+[Object]
+States =objetos\caixa02.csv
+Position =  0, -0.05, -4.5
+
+[Object]
+States =objetos\panto2.csv
+Position =  0, -0.65, -3.75

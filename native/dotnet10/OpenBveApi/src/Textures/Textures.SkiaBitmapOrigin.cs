@@ -32,7 +32,10 @@ namespace OpenBveApi.Textures
                 )
             );
 
-            if (!bitmap.CopyTo(rgbaBitmap))
+            // CopyTo may recreate the destination with the source BGRA / premultiplied
+            // format. ReadPixels explicitly converts into the requested RGBA layout.
+            using var sourceImage = SKImage.FromBitmap(bitmap);
+            if (!sourceImage.ReadPixels(rgbaBitmap.Info, rgbaBitmap.GetPixels(), rgbaBitmap.RowBytes, 0, 0))
                 throw new InvalidOperationException(
                     "Unable to convert bitmap to RGBA8888.");
 

@@ -1,0 +1,32 @@
+[meshbuilder]
+vertex -2.350, -0.170, -0.100
+vertex 2.350, -0.170, -0.100
+vertex -2.350, -0.170, 5.000
+vertex 2.350, -0.170, 5.000
+vertex -2.350, -0.170, 10.000
+vertex 2.350, -0.170, 10.000
+vertex -2.350, -0.170, 15.000
+vertex 2.350, -0.170, 15.000
+vertex -2.350, -0.170, 20.000
+vertex 2.350, -0.170, 20.000
+vertex -2.350, -0.170, 25.100
+vertex 2.350, -0.170, 25.100
+face 2, 3, 1, 0
+face 4, 5, 3, 2
+face 6, 7, 5, 4
+face 8, 9, 7, 6
+face 10, 11, 9, 8
+[texture]
+load schotter1.bmp
+coordinates 0, 3.02, 10
+coordinates 1, -0.02, 10
+coordinates 2, 3.02, 8
+coordinates 3, -0.02, 8
+coordinates 4, 3.02, 6
+coordinates 5, -0.02, 6
+coordinates 6, 3.02, 4
+coordinates 7, -0.02, 4
+coordinates 8, 3.02, 2
+coordinates 9, -0.02, 2
+coordinates 10, 3.02, 0
+coordinates 11, -0.02, 0

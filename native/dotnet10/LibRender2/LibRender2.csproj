@@ -1,0 +1,98 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup>
+<TargetFramework>net10.0</TargetFramework><AssemblyName>LibRender2</AssemblyName>
+<RootNamespace>LibRender2</RootNamespace>
+<EnableDefaultCompileItems>false</EnableDefaultCompileItems><GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks><NoWarn>$(NoWarn);NU1701</NoWarn>
+
+</PropertyGroup>
+<ItemGroup>
+<Compile Include="../../../source/LibRender2/Backgrounds/Background.cs" />
+<Compile Include="../../../source/LibRender2/BaseRenderer.cs" />
+<Compile Include="../../../source/LibRender2/Camera/Camera.cs" />
+<Compile Include="../../../source/LibRender2/Camera/CameraAlignment.cs" />
+<Compile Include="../../../source/LibRender2/Camera/CameraRestriction.cs" />
+
+<Compile Include="../../../source/LibRender2/Fog/Fog.cs" />
+<Compile Include="../../../source/LibRender2/Lighting/Lighting.cs" />
+<Compile Include="../../../source/LibRender2/Loading/Loading.cs" />
+<Compile Include="../../../source/LibRender2/Menu/Menu.OptionType.cs" />
+<Compile Include="../../../source/LibRender2/Menu/Menu.RouteState.cs" />
+<Compile Include="../../../source/LibRender2/Menu/AbstractMenu.cs" />
+<Compile Include="../../../source/LibRender2/Menu/MenuBase.cs" />
+<Compile Include="../../../source/LibRender2/Menu/MenuEntries/MenuEntry.Caption.cs" />
+<Compile Include="../../../source/LibRender2/Menu/MenuEntries/MenuEntry.Command.cs" />
+<Compile Include="../../../source/LibRender2/Menu/MenuEntries/MenuEntry.cs" />
+<Compile Include="../../../source/LibRender2/Menu/MenuEntries/MenuEntry.Error.cs" />
+<Compile Include="../../../source/LibRender2/Menu/MenuEntries/MenuOption.cs" />
+<Compile Include="../../../source/LibRender2/Menu/MenuTag.cs" />
+<Compile Include="../../../source/LibRender2/Menu/MenuType.cs" />
+<Compile Include="../../../source/LibRender2/MotionBlur/MotionBlur.cs" />
+<Compile Include="../../../source/LibRender2/MotionBlur/MotionBlurMode.cs" />
+<Compile Include="../../../source/LibRender2/Objects/FaceState.cs" />
+<Compile Include="../../../source/LibRender2/Objects/ObjectLibrary.cs" />
+<Compile Include="../../../source/LibRender2/Objects/VisibilityUpdate.cs" />
+<Compile Include="../../../source/LibRender2/openGL/FrameBufferObject.cs" />
+<Compile Include="../../../source/LibRender2/openGL/IndexBufferObject.cs" />
+<Compile Include="../../../source/LibRender2/openGL/ShaderLayout.cs" />
+<Compile Include="../../../source/LibRender2/openGL/VertexArrayObject.cs" />
+<Compile Include="../../../source/LibRender2/openGL/VertexBufferObject.cs" />
+<Compile Include="../../../source/LibRender2/Overlays/DisplayedTimetable.cs" />
+<Compile Include="../../../source/LibRender2/Overlays/DistanceToNextStationDisplayMode.cs" />
+<Compile Include="../../../source/LibRender2/Overlays/GradientDisplayMode.cs" />
+<Compile Include="../../../source/LibRender2/Overlays/Keys.cs" />
+<Compile Include="../../../source/LibRender2/Overlays/Marker.cs" />
+<Compile Include="../../../source/LibRender2/Overlays/RailPath.cs" />
+<Compile Include="../../../source/LibRender2/Overlays/SpeedDisplayMode.cs" />
+<Compile Include="../../../source/LibRender2/Overlays/TimeTableMode.cs" />
+<Compile Include="../../../source/LibRender2/Primitives/Button.cs" />
+<Compile Include="../../../source/LibRender2/Primitives/Cube.cs" />
+<Compile Include="../../../source/LibRender2/Primitives/GLControl.cs" />
+<Compile Include="../../../source/LibRender2/Primitives/Label.cs" />
+<Compile Include="../../../source/LibRender2/Primitives/Particle.cs" />
+<Compile Include="../../../source/LibRender2/Primitives/Picturebox.cs" />
+<Compile Include="../../../source/LibRender2/Primitives/Rectangle.cs" />
+<Compile Include="../../../source/LibRender2/openGL/Vertex.cs" />
+<Compile Include="../../../source/LibRender2/Primitives/Textbox.cs" />
+<Compile Include="../../../source/LibRender2/Properties/AssemblyInfo.cs" />
+<Compile Include="../../../source/LibRender2/Screen/InterfaceType.cs" />
+<Compile Include="../../../source/LibRender2/Screen/OutputModes.cs" />
+<Compile Include="../../../source/LibRender2/Screen/Resolution.cs" />
+<Compile Include="../../../source/LibRender2/Screen/Screen.cs" />
+<Compile Include="../../../source/LibRender2/Shaders/AbstractShader.cs" />
+<Compile Include="../../../source/LibRender2/Shaders/Shader.cs" />
+<Compile Include="../../../source/LibRender2/Shaders/ShadowDepthShader.cs" />
+<Compile Include="../../../source/LibRender2/Smoke/Particle.cs" />
+<Compile Include="../../../source/LibRender2/Smoke/ParticleSource.cs" />
+<Compile Include="../../../source/LibRender2/Smoke/ParticleType.cs" />
+<Compile Include="../../../source/LibRender2/Shadows/CascadedShadowCaster.cs" />
+<Compile Include="../../../source/LibRender2/Shadows/CascadedShadowMap.cs" />
+<Compile Include="../../../source/LibRender2/Shadows/FrustumUtils.cs" />
+<Compile Include="../../../source/LibRender2/Shadows/Shadows.cs" />
+
+<Compile Include="../../../source/LibRender2/Text/Fonts.BlockedFonts.cs" />
+
+
+<Compile Include="../../../source/LibRender2/Text/OpenGlFontChar.cs" />
+
+<Compile Include="../../../source/LibRender2/Text/OpenGlString.cs" />
+<Compile Include="../../../source/LibRender2/Trains/CarSection.cs" />
+<Compile Include="../../../source/LibRender2/Trains/CarSection.Type.cs" />
+<Compile Include="../../../source/LibRender2/Trains/ElementsGroup.cs" />
+<Compile Include="../../../source/LibRender2/Trains/Panel/TouchElement.cs" />
+<Compile Include="../../../source/LibRender2/Viewport/ViewportChangeModes.cs" />
+<Compile Include="../../../source/LibRender2/Viewport/ViewportModes.cs" />
+<ProjectReference Include="../OpenBveApi/OpenBveApi.csproj" />
+<PackageReference Include="OpenTK-OpenBVE" Version="1.0.7" />
+<EmbeddedResource Include="../../../source/LibRender2/../../assets/Shaders/default.frag" LogicalName="LibRender2.default.frag" />
+<EmbeddedResource Include="../../../source/LibRender2/../../assets/Shaders/default.vert" LogicalName="LibRender2.default.vert" />
+<EmbeddedResource Include="../../../source/LibRender2/../../assets/Shaders/picking.frag" LogicalName="LibRender2.picking.frag" />
+<EmbeddedResource Include="../../../source/LibRender2/../../assets/Shaders/rectangle.frag" LogicalName="LibRender2.rectangle.frag" />
+<EmbeddedResource Include="../../../source/LibRender2/../../assets/Shaders/rectangle.vert" LogicalName="LibRender2.rectangle.vert" />
+<EmbeddedResource Include="../../../source/LibRender2/../../assets/Shaders/text.vert" LogicalName="LibRender2.text.vert" />
+<EmbeddedResource Include="../../../source/LibRender2/../../assets/Shaders/shadow_depth.vert" LogicalName="LibRender2.shadow_depth.vert" />
+<EmbeddedResource Include="../../../source/LibRender2/../../assets/Shaders/shadow_depth.frag" LogicalName="LibRender2.shadow_depth.frag" />
+<Compile Include="Native/**/*.cs" />
+<ProjectReference Include="../NativeGraphics/NativeGraphics.csproj" />
+</ItemGroup>
+</Project>

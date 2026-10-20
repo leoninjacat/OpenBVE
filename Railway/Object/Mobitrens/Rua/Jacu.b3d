@@ -1,0 +1,191 @@
+
+[MeshBuilder]
+Vertex  10.0,-1,0
+Vertex -10.0,-1,0
+Vertex -10.0,-1,25
+Vertex  10.0,-1,25
+Face2 0,1,2,3
+[Texture]
+Load Grama.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 3
+Coordinates 2, 5, 3
+Coordinates 3, 5, 0
+
+[MeshBuilder]
+Vertex  30.0,-1,0
+Vertex  20.0,-1,0
+Vertex  20.0,-1,25
+Vertex  30.0,-1,25
+Face2 0,1,2,3
+[Texture]
+Load Grama.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 3
+Coordinates 2, 5, 3
+Coordinates 3, 5, 0
+
+Rua ;;;;;;;;;;;;;;;;;;;;;;;
+
+[MeshBuilder]
+Vertex  10,-0.9,0
+Vertex  20,-0.9,0
+Vertex  20,-0.9,25
+Vertex  10,-0.9,25
+Face2 0,1,2,3
+[Texture]
+Load Rua.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 5, 1
+Coordinates 3, 5, 0
+
+[MeshBuilder]
+Vertex  -20,-0.9,0
+Vertex  -10,-0.9,0
+Vertex  -10,-0.9,25
+Vertex  -20,-0.9,25
+Face2 0,1,2,3
+[Texture]
+Load Rua.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 5, 1
+Coordinates 3, 5, 0
+
+Mureta;;;;;;;;;;;;;
+
+[MeshBuilder]
+Vertex  10,-1.0,0
+Vertex  10, 0.9,0
+Vertex  10, 0.9,25
+Vertex  10,-1.0,25
+Face2 0,1,2,3
+[Texture]
+Load Concreto.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 5, 1
+Coordinates 3, 5, 0
+
+[MeshBuilder]
+Vertex  9.8,-1.0,0
+Vertex  9.8, 0.9,0
+Vertex  9.8, 0.9,25
+Vertex  9.8,-1.0,25
+Face2 0,1,2,3
+[Texture]
+Load Concreto.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 5, 1
+Coordinates 3, 5, 0
+
+[MeshBuilder]
+Vertex  10., 0.9,0
+Vertex  9.8, 0.9,0
+Vertex  9.8, 0.9,25
+Vertex  10., 0.9,25
+Face2 0,1,2,3
+[Texture]
+Load Concreto1.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 5, 1
+Coordinates 3, 5, 0
+
+Outro Lado;;;;;;;;;;;
+
+[MeshBuilder]
+Vertex  -10,-1.0,0
+Vertex  -10, 0.9,0
+Vertex  -10, 0.9,25
+Vertex  -10,-1.0,25
+Face2 0,1,2,3
+[Texture]
+Load Concreto.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 5, 1
+Coordinates 3, 5, 0
+
+[MeshBuilder]
+Vertex  -9.8,-1.0,0
+Vertex  -9.8, 0.9,0
+Vertex  -9.8, 0.9,25
+Vertex  -9.8,-1.0,25
+Face2 0,1,2,3
+[Texture]
+Load Concreto.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 5, 1
+Coordinates 3, 5, 0
+
+[MeshBuilder]
+Vertex  -10., 0.9,0
+Vertex  -9.8, 0.9,0
+Vertex  -9.8, 0.9,25
+Vertex  -10., 0.9,25
+Face2 0,1,2,3
+[Texture]
+Load Concreto1.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 5, 1
+Coordinates 3, 5, 0
+
+
+Calcada;;;;;;;;;;;;;;;
+
+[MeshBuilder]
+Vertex  20, -0.7,0
+Vertex  22, -0.7,0
+Vertex  22, -0.7,25
+Vertex  20, -0.7,25
+Face2 0,1,2,3
+[Texture]
+Load Calcada.png
+Coordinates 0, 0, 1
+Coordinates 1, 0, 0
+Coordinates 2, 5, 0
+Coordinates 3, 5, 1
+
+[MeshBuilder]
+Vertex  20, -0.7,0
+Vertex  20, -0.9,0
+Vertex  20, -0.9,25
+Vertex  20, -0.7,25
+Face2 0,1,2,3
+[Texture]
+Load Guia.png
+Coordinates 0, 0, 1
+Coordinates 1, 0, 0
+Coordinates 2, 5, 0
+Coordinates 3, 5, 1
+
+[MeshBuilder]
+Vertex  -22, -0.7,0
+Vertex  -20, -0.7,0
+Vertex  -20, -0.7,25
+Vertex  -22, -0.7,25
+Face2 0,1,2,3
+[Texture]
+Load Calcada.png
+Coordinates 0, 0, 1
+Coordinates 1, 0, 0
+Coordinates 2, 5, 0
+Coordinates 3, 5, 1
+
+[MeshBuilder]
+Vertex  -20, -0.7,0
+Vertex  -20, -0.9,0
+Vertex  -20, -0.9,25
+Vertex  -20, -0.7,25
+Face2 0,1,2,3
+[Texture]
+Load Guia.png
+Coordinates 0, 0, 1
+Coordinates 1, 0, 0
+Coordinates 2, 5, 0
+Coordinates 3, 5, 1

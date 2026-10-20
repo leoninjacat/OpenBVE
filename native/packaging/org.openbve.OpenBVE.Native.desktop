@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OpenBVE Native
+Comment=Simulador ferroviário nativo para Linux
+Exec=openbve-native
+Icon=org.openbve.OpenBVE.Native
+Terminal=false
+Categories=Game;Simulation;
+StartupNotify=true

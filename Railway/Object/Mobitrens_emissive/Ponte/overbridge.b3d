@@ -1,0 +1,430 @@
+[Meshbuilder]
+Vertex -12,9,4.5
+Vertex 12,9,4.5
+Vertex 12,7.5,4.5
+Vertex -12,7.5,4.5
+Vertex -12,7.5,5
+Vertex 12,7.5,5
+Face2 0,1,2,3
+Face2 3,2,5,4
+[Texture]
+Load concrete.bmp
+Coordinates 0,0,0
+Coordinates 1,14,0
+Coordinates 2,14,0.9
+Coordinates 3,0,0.9
+Coordinates 4,0,1
+Coordinates 5,14,1
+[Meshbuilder]
+Vertex -12,7.5,5
+Vertex 12,7.5,5
+Vertex 12,6.0,5
+Vertex -12,6.0,5
+Vertex -12,6.0,15
+Vertex 12,6.0,15
+Face2 0,1,2,3
+Face2 3,2,5,4
+[Texture]
+Load kyoukyaku2.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0,0.5
+Coordinates 4,0,1
+Coordinates 5,1,1;;;;;;;;;;;;;;;;;;;;;;;unit
+[Meshbuilder]
+Vertex -36,8,4.5
+Vertex -12,9,4.5
+Vertex -12,7.5,4.5
+Vertex -36,6.5,4.5
+Vertex -36,6.5,5
+Vertex -12,7.5,5
+Face2 0,1,2,3
+Face2 3,2,5,4
+[Texture]
+Load concrete.bmp
+Coordinates 0,0,0
+Coordinates 1,14,0
+Coordinates 2,14,0.9
+Coordinates 3,0,0.9
+Coordinates 4,0,1
+Coordinates 5,14,1
+[Meshbuilder]
+Vertex -36,6.5,5
+Vertex -12,7.5,5
+Vertex -12,6.0,5
+Vertex -36,5.0,5
+Vertex -36,5.0,15
+Vertex -12,6.0,15
+Face2 0,1,2,3
+Face2 3,2,5,4
+[Texture]
+Load kyoukyaku2.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0,0.5
+Coordinates 4,0,1
+Coordinates 5,1,1;;;;;;;;;;;;;;;;;;;;;;;unit
+[Meshbuilder]
+Vertex -108,2,4.5
+Vertex -36,8,4.5
+Vertex -36,6.5,4.5
+Vertex -108,0.5,4.5
+Vertex -108,0.5,5
+Vertex -36,6.5,5
+Face2 0,1,2,3
+Face2 3,2,5,4
+[Texture]
+Load concrete.bmp
+Coordinates 0,0,0
+Coordinates 1,14,0
+Coordinates 2,14,0.9
+Coordinates 3,0,0.9
+Coordinates 4,0,1
+Coordinates 5,14,1
+[Meshbuilder]
+Vertex -108,0.5,5
+Vertex -36,6.5,5
+Vertex -36,5.0,5
+Vertex -108,-1.0,5
+Vertex -108,-1.0,15
+Vertex -36,5.0,15
+Face2 0,1,2,3
+Face2 3,2,5,4
+[Texture]
+Load kyoukyaku2.bmp
+Coordinates 0,0,0
+Coordinates 1,3,0
+Coordinates 2,3,0.5
+Coordinates 3,0,0.5
+Coordinates 4,0,1
+Coordinates 5,3,1;;;;;;;;;;;;;;;;;;;;;;;unit(L)
+[Meshbuilder]
+Vertex 36,8,4.5
+Vertex 12,9,4.5
+Vertex 12,7.5,4.5
+Vertex 36,6.5,4.5
+Vertex 36,6.5,5
+Vertex 12,7.5,5
+Face2 1,0,3,2
+Face2 2,3,4,5
+[Texture]
+Load concrete.bmp
+Coordinates 0,0,0
+Coordinates 1,14,0
+Coordinates 2,14,0.9
+Coordinates 3,0,0.9
+Coordinates 4,0,1
+Coordinates 5,14,1
+[Meshbuilder]
+Vertex 36,6.5,5
+Vertex 12,7.5,5
+Vertex 12,6.0,5
+Vertex 36,5.0,5
+Vertex 36,5.0,15
+Vertex 12,6.0,15
+Face2 1,0,3,2
+Face2 2,3,4,5
+[Texture]
+Load kyoukyaku2.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0,0.5
+Coordinates 4,0,1
+Coordinates 5,1,1;;;;;;;;;;;;;;;;;;;;;;;unit
+[Meshbuilder]
+Vertex 108,2,4.5
+Vertex 36,8,4.5
+Vertex 36,6.5,4.5
+Vertex 108,0.5,4.5
+Vertex 108,0.5,5
+Vertex 36,6.5,5
+Face2 1,0,3,2
+Face2 2,3,4,5
+[Texture]
+Load concrete.bmp
+Coordinates 0,0,0
+Coordinates 1,14,0
+Coordinates 2,14,0.9
+Coordinates 3,0,0.9
+Coordinates 4,0,1
+Coordinates 5,14,1
+[Meshbuilder]
+Vertex 108,0.5,5
+Vertex 36,6.5,5
+Vertex 36,5.0,5
+Vertex 108,-1.0,5
+Vertex 108,-1.0,15
+Vertex 36,5.0,15
+Face2 1,0,3,2
+Face2 2,3,4,5
+[Texture]
+Load kyoukyaku2.bmp
+Coordinates 0,0,0
+Coordinates 1,3,0
+Coordinates 2,3,0.5
+Coordinates 3,0,0.5
+Coordinates 4,0,1
+Coordinates 5,3,1;;;;;;;;;;;;;;;;;;;;;;;unit(R)
+
+[Meshbuilder]
+Vertex -11,5.8,5
+Vertex -11,5.8,15
+Vertex -11,4.8,15
+Vertex -11,3.8,12.5
+Vertex -11,3.8,7.5
+Vertex -11,4.8,5
+Vertex -11,-5,12.5
+Vertex -11,-5,7.5
+Vertex -13,5.8,5
+Vertex -13,4.8,5
+Vertex -13,3.8,7.5
+Vertex -13,-5,7.5
+Face2 0,1,2,3,4,5
+Face2 4,3,6,7
+Face2 8,0,5,9
+Face2 9,5,4,10
+Face2 10,4,7,11
+[Texture]
+Load kyoukyaku.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0.75,1
+Coordinates 4,0.25,1
+Coordinates 5,0,0.5
+Coordinates 6,0.75,0
+Coordinates 7,0.25,0
+Coordinates 8,-1,0
+Coordinates 9,-1,0.5
+Coordinates 10,-1,1
+Coordinates 11,-1,0;;;;;;;;;;;;;;;;   runit
+[Meshbuilder]
+Vertex -35,4.8,5
+Vertex -35,4.8,15
+Vertex -35,3.8,15
+Vertex -35,2.8,12.5
+Vertex -35,2.8,7.5
+Vertex -35,3.8,5
+Vertex -35,-5,12.5
+Vertex -35,-5,7.5
+Vertex -37,4.8,5
+Vertex -37,3.8,5
+Vertex -37,2.8,7.5
+Vertex -37,-5,7.5
+Face2 0,1,2,3,4,5
+Face2 4,3,6,7
+Face2 8,0,5,9
+Face2 9,5,4,10
+Face2 10,4,7,11
+[Texture]
+Load kyoukyaku.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0.75,1
+Coordinates 4,0.25,1
+Coordinates 5,0,0.5
+Coordinates 6,0.75,0
+Coordinates 7,0.25,0
+Coordinates 8,-1,0
+Coordinates 9,-1,0.5
+Coordinates 10,-1,1
+Coordinates 11,-1,0;;;;;;;;;;;;;;;;   runit
+[Meshbuilder]
+Vertex -59,2.8,5
+Vertex -59,2.8,15
+Vertex -59,1.8,15
+Vertex -59,0.8,12.5
+Vertex -59,0.8,7.5
+Vertex -59,1.8,5
+Vertex -59,-5,12.5
+Vertex -59,-5,7.5
+Vertex -61,2.8,5
+Vertex -61,1.8,5
+Vertex -61,0.8,7.5
+Vertex -61,-5,7.5
+Face2 0,1,2,3,4,5
+Face2 4,3,6,7
+Face2 8,0,5,9
+Face2 9,5,4,10
+Face2 10,4,7,11
+[Texture]
+Load kyoukyaku.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0.75,1
+Coordinates 4,0.25,1
+Coordinates 5,0,0.5
+Coordinates 6,0.75,0
+Coordinates 7,0.25,0
+Coordinates 8,-1,0
+Coordinates 9,-1,0.5
+Coordinates 10,-1,1
+Coordinates 11,-1,0;;;;;;;;;;;;;;;;   runit
+
+[Meshbuilder]
+Vertex 14,5.8,5
+Vertex 14,5.8,15
+Vertex 14,4.8,15
+Vertex 14,3.8,12.5
+Vertex 14,3.8,7.5
+Vertex 14,4.8,5
+Vertex 14,-5,12.5
+Vertex 14,-5,7.5
+Vertex 16,5.8,5
+Vertex 16,4.8,5
+Vertex 16,3.8,7.5
+Vertex 16,-5,7.5
+Face2 5,4,3,2,1,0
+Face2 3,4,7,6
+Face2 0,8,9,5
+Face2 5,9,10,4
+Face2 4,10,11,7
+[Texture]
+Load kyoukyaku.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0.75,1
+Coordinates 4,0.25,1
+Coordinates 5,0,0.5
+Coordinates 6,0.75,0
+Coordinates 7,0.25,0
+Coordinates 8,-1,0
+Coordinates 9,-1,0.5
+Coordinates 10,-1,1
+Coordinates 11,-1,0;;;;;;;;;;;;;;;;   runit
+[Meshbuilder]
+Vertex 35,4.8,5
+Vertex 35,4.8,15
+Vertex 35,3.8,15
+Vertex 35,2.8,12.5
+Vertex 35,2.8,7.5
+Vertex 35,3.8,5
+Vertex 35,-5,12.5
+Vertex 35,-5,7.5
+Vertex 37,4.8,5
+Vertex 37,3.8,5
+Vertex 37,2.8,7.5
+Vertex 37,-5,7.5
+Face2 5,4,3,2,1,0
+Face2 3,4,7,6
+Face2 0,8,9,5
+Face2 5,9,10,4
+Face2 4,10,11,7
+[Texture]
+Load kyoukyaku.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0.75,1
+Coordinates 4,0.25,1
+Coordinates 5,0,0.5
+Coordinates 6,0.75,0
+Coordinates 7,0.25,0
+Coordinates 8,-1,0
+Coordinates 9,-1,0.5
+Coordinates 10,-1,1
+Coordinates 11,-1,0;;;;;;;;;;;;;;;;   runit
+[Meshbuilder]
+Vertex 59,2.8,5
+Vertex 59,2.8,15
+Vertex 59,1.8,15
+Vertex 59,0.8,12.5
+Vertex 59,0.8,7.5
+Vertex 59,1.8,5
+Vertex 59,-5,12.5
+Vertex 59,-5,7.5
+Vertex 61,2.8,5
+Vertex 61,1.8,5
+Vertex 61,0.8,7.5
+Vertex 61,-5,7.5
+Face2 5,4,3,2,1,0
+Face2 7,6,3,4
+Face2 9,5,0,8
+Face2 10,4,5,9
+Face2 11,7,4,10
+[Texture]
+Load kyoukyaku.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0.75,1
+Coordinates 4,0.25,1
+Coordinates 5,0,0.5
+Coordinates 6,0.75,0
+Coordinates 7,0.25,0
+Coordinates 8,-1,0
+Coordinates 9,-1,0.5
+Coordinates 10,-1,1
+Coordinates 11,-1,0;;;;;;;;;;;;;;;;   runit
+
+
+[Meshbuilder]
+Vertex 83,0.8,5
+Vertex 83,0.8,15
+Vertex 83,-0.2,15
+Vertex 83,-1.2,12.5
+Vertex 83,-1.2,7.5
+Vertex 83,-0.2,5
+Vertex 83,-5,12.5
+Vertex 83,-5,7.5
+Vertex 85,1.8,5
+Vertex 85,-0.2,5
+Vertex 85,-1.2,7.5
+Vertex 85,-5,7.5
+Face2 5,4,3,2,1,0
+Face2 3,4,7,6
+Face2 0,8,9,5
+Face2 5,9,10,4
+Face2 4,10,11,7
+[Texture]
+Load kyoukyaku.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0.75,1
+Coordinates 4,0.25,1
+Coordinates 5,0,0.5
+Coordinates 6,0.75,0
+Coordinates 7,0.25,0
+Coordinates 8,-1,0
+Coordinates 9,-1,0.5
+Coordinates 10,-1,1
+Coordinates 11,-1,0;;;;;;;;;;;;;;;;   runit
+[Meshbuilder]
+Vertex -83,0.8,5
+Vertex -83,0.8,15
+Vertex -83,-0.2,15
+Vertex -83,-1.2,12.5
+Vertex -83,-1.2,7.5
+Vertex -83,-0.2,5
+Vertex -83,-5,12.5
+Vertex -83,-5,7.5
+Vertex -85,0.8,5
+Vertex -85,-0.2,5
+Vertex -85,-1.2,7.5
+Vertex -85,-5,7.5
+Face2 0,1,2,3,4,5
+Face2 4,3,6,7
+Face2 8,0,5,9
+Face2 9,5,4,10
+Face2 10,4,7,11
+[Texture]
+Load kyoukyaku.bmp
+Coordinates 0,0,0
+Coordinates 1,1,0
+Coordinates 2,1,0.5
+Coordinates 3,0.75,1
+Coordinates 4,0.25,1
+Coordinates 5,0,0.5
+Coordinates 6,0.75,0
+Coordinates 7,0.25,0
+Coordinates 8,-1,0
+Coordinates 9,-1,0.5
+Coordinates 10,-1,1
+Coordinates 11,-1,0;;;;;;;;;;;;;;;;   runit

@@ -1,0 +1,35 @@
+CreateMeshBuilder,
+Cube, 0.025, 0.005, 0.035
+SetColor, 100,100,100
+translate, -1.33,2.9,7.74
+CreateMeshBuilder,
+Cube, 0.024, 0.006, 0.032
+SetColor, 147,73,0,230
+translate, -1.33,2.89,7.74
+
+CreateMeshBuilder,
+Cube, 0.025, 0.005, 0.035
+SetColor, 100,100,100
+translate, -1.33,2.9,-7.565
+CreateMeshBuilder,
+Cube, 0.024, 0.006, 0.032
+SetColor, 147,73,0,230
+translate, -1.33,2.89,-7.565
+
+CreateMeshBuilder,
+Cube, 0.025, 0.005, 0.035
+SetColor, 100,100,100
+translate, -1.33,2.9,-2.46
+CreateMeshBuilder,
+Cube, 0.024, 0.006, 0.032
+SetColor, 147,73,0,230
+translate, -1.33,2.89,-2.46
+
+CreateMeshBuilder,
+Cube, 0.025, 0.005, 0.035
+SetColor, 100,100,100
+translate, -1.33,2.9,2.635
+CreateMeshBuilder,
+Cube, 0.024, 0.006, 0.032
+SetColor, 147,73,0,230
+translate, -1.33,2.89,2.635

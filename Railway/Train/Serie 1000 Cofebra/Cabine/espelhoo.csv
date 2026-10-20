@@ -1,0 +1,23 @@
+﻿;Open Bve Criações Brasil 
+;Serie 2000 
+;       (C) 2014
+;http://openbvecriacoesbrasil.blogspot.com.br/
+;Todos Direitos Reservados 
+
+
+CreateMeshBuilder,
+AddVertex,0,2.85,-0.16,0,0,1
+AddVertex,0,2.85,0.04,0,0,1
+AddVertex,0,2.45,0.05,0,0,1
+AddVertex,0,2.45,-0.16,0,0,1
+AddFace2,0,1,2,3,
+GenerateNormals,
+LoadTexture,esp.png,
+SetTextureCoordinates,0,0,1,
+SetTextureCoordinates,1,0,0,
+SetTextureCoordinates,2,1,0,
+SetTextureCoordinates,3,1,1,
+SetDecalTransparentColor,255,255,255,
+
+
+scaleall,1.13,1.25,1.16,

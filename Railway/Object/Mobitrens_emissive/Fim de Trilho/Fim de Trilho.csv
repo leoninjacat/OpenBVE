@@ -1,0 +1,97 @@
+CreateMeshBuilder,
+AddVertex,-0.82, -0.144, 0,
+AddVertex,-0.82, 1.42, 0.3,
+AddVertex,-0.82, -0.144, 2.5,
+AddVertex,-0.62, -0.144, 2.5,
+AddVertex,-0.62, 1.42, 0.3,
+AddVertex,-0.62, -0.144, 0.0,
+
+AddVertex,0.82, -0.144, 0,
+AddVertex,0.82, 1.42, 0.3,
+AddVertex,0.82, -0.144, 2.5,
+AddVertex,0.62, -0.144, 2.5,
+AddVertex,0.62, 1.42, 0.3,
+AddVertex,0.62, -0.144, 0.0,
+
+AddVertex,-0.82,0.05,2.22,
+AddVertex,0.82,0.05,2.22,
+AddVertex,0.82,0.05,0.04,
+AddVertex,-0.82,0.05,0.04,
+
+AddVertex,-0.82,0.05,3.4,
+AddVertex,0.82,0.05,3.4,
+AddVertex,0.82,0.05,3,
+AddVertex,-0.82,0.05,3,
+AddVertex,-0.82,0.05,4.4,
+AddVertex,0.82,0.05,4.4,
+AddVertex,0.82,0.05,4,
+AddVertex,-0.82,0.05,4,
+AddFace2,0,1,4,5,
+AddFace2,2,1,4,3,
+AddFace2,5,4,3
+AddFace2,6,7,10,11,
+AddFace2,8,7,10,9,
+AddFace2,9,10,11
+AddFace,12,13,14,15,
+AddFace,16,17,18,19,
+AddFace,20,21,22,23,
+SetColor,150,0,0,
+GenerateNormals,
+
+;Beam
+CreateMeshBuilder,
+Cube,1.15,0.25,0.1,
+Translate,0,1.17,0.2,
+SetColor,150,0,0
+GenerateNormals,
+
+CreateMeshBuilder,
+AddVertex,-1.15,1.2,0.09,
+AddVertex,-1.15,1.275,0.09,
+AddVertex,1.15,1.27,0.09,
+AddVertex,1.15,1.2,0.09,
+AddFace,0,1,2,3
+SetColor,220,220,220
+GenerateNormals,
+
+;Buffer stops
+CreateMeshBuilder
+Cube,0.17,0.17,0.1,
+Translate,-0.85,1.23,0
+SetColor,50,50,50
+GenerateNormals,
+
+CreateMeshBuilder
+Cube,0.17,0.17,0.1,
+Translate,0.85,1.23,0
+SetColor,50,50,50
+GenerateNormals,
+
+;Coupler stop
+CreateMeshBuilder
+Cube,0.19,0.14,0.1,
+Translate,0.0,1.16,0
+SetColor,50,50,50
+GenerateNormals,
+
+
+CreateMeshBuilder,
+AddVertex,-0.08,0,1.09,
+AddVertex,-0.08,0.24,1.09
+AddVertex,0.08,0.24,1.09
+AddVertex,0.08,0,1.09
+AddFace,3,2,1,0,
+SetColor,100,100,100,
+GenerateNormals,
+Translate,-0.5,2.08,
+
+CreateMeshBuilder,
+AddVertex,-0.08,0,1.09,
+AddVertex,-0.08,0.24,1.09
+AddVertex,0.08,0.24,1.09
+AddVertex,0.08,0,1.09
+AddFace,3,2,1,0,
+SetColor,100,100,100,
+GenerateNormals,
+Translate,-0.5,2.88,
+

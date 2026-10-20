@@ -1,0 +1,42 @@
+; lamp.csv - LED fria (sem texturas)
+; Prova de conceito: tubo emissivo + halo + mancha no chão (chapada)
+; Ajuste escala/altura na rota depois.
+
+; =========================
+; 1) TUBO (barra fina)
+; =========================
+CreateMeshBuilder,
+; Caixa bem fina (substitui cilindro)
+AddVertex, -0.60,  0.02,  0.06,
+AddVertex,  0.60,  0.02,  0.06,
+AddVertex,  0.60, -0.02,  0.06,
+AddVertex, -0.60, -0.02,  0.06,
+AddVertex, -0.60,  0.02, -0.06,
+AddVertex,  0.60,  0.02, -0.06,
+AddVertex,  0.60, -0.02, -0.06,
+AddVertex, -0.60, -0.02, -0.06,
+
+; Faces
+AddFace2, 0,1,2,3,
+AddFace2, 4,5,6,7,
+AddFace2, 0,4,5,1,
+AddFace2, 3,7,6,2,
+AddFace2, 0,3,7,4,
+AddFace2, 1,5,6,2,
+
+; Cor base (fria)
+SetColor, 235,245,255
+; "Acende" (não depende do sol)
+SetEmissiveColor, 200,220,255
+; Aura suave
+SetBlendMode, Additive, 80, DivideExponent4
+
+; =========================
+; 2) HALO (plano perto do tubo)
+; =========================
+CreateMeshBuilder,
+; Um quad um pouco maior que o tubo, para dar “glow” local
+AddVertex, -0.90, 0.00,  0.20,
+AddVertex,  0.90, 0.00,  0.20,
+AddVertex,  0
+

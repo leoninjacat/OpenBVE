@@ -1,0 +1,48 @@
+[Object]
+States = carro.csv
+Position = -8.00, 0,0
+TrackFollowerFunction = +mod[30 * time, 2000] + 0
+
+
+[Object]
+States = carro1.csv
+Position = -8.00, 0,0
+TrackFollowerFunction = +mod[30 * time, 2000]  -22.5
+
+[Object]
+States = carro2.csv
+Position = -8.00, 0,0
+TrackFollowerFunction = +mod[30 * time, 2000]  -45.0
+
+[Object]
+States = carro.csv
+Position = -8.00, 0,0
+TrackFollowerFunction = +mod[30 * time, 2000]  -67.5
+
+[Object]
+States = carro1.csv
+Position = -8.00, 0,0
+TrackFollowerFunction = +mod[30 * time, 2000]  -90
+
+
+[Object]
+States = carro2.csv
+Position = -8.00, 0,0
+TrackFollowerFunction = +mod[30 * time, 2000]  -112.5
+
+
+
+[Object]
+States = p100.csv
+Position = -8.00, 0,0
+TrackFollowerFunction = +mod[30 * time, 2000]  -83.5
+
+
+
+[Object]
+States = p100.csv
+Position = -8.00, 0,0
+TrackFollowerFunction = +mod[30 * time, 2000]  -15.5 
+
+
+

@@ -1,0 +1,87 @@
+CreateMeshBuilder,
+AddVertex,-0.40,0.40,0.0
+AddVertex,1.90,0.40,0.0
+AddVertex,1.90,0.05,0.0
+AddVertex,-0.40,0.05,0.0
+AddFace2,0,1,2,3
+LoadTexture,bg_relogio.png
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,0,1
+
+CreateMeshBuilder,
+AddVertex,-0.40,0.40,0.02
+AddVertex,1.90,0.40,0.02
+AddVertex,1.90,0.05,0.02
+AddVertex,-0.40,0.05,0.02
+AddFace2,0,1,2,3
+LoadTexture,P.png
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,0,1
+
+CreateMeshBuilder,
+AddVertex,-0.40,0.40,0.00
+AddVertex,1.90,0.40,0.00
+AddVertex,1.90,0.40,0.02
+AddVertex,-0.40,0.40,0.02
+AddFace2,0,1,2,3
+LoadTexture,P.png
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,0,1
+
+CreateMeshBuilder,
+AddVertex,-0.40,0.05,0.00
+AddVertex,1.90,0.05,0.00
+AddVertex,1.90,0.05,0.02
+AddVertex,-0.40,0.05,0.02
+AddFace2,0,1,2,3
+LoadTexture,P.png
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,0,1
+
+CreateMeshBuilder,
+AddVertex,-0.40,0.40,0.00
+AddVertex,-0.40,0.05,0.00
+AddVertex,-0.40,0.05,0.02
+AddVertex,-0.40,0.40,0.02
+AddFace2,0,1,2,3
+LoadTexture,P.png
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,0,1
+
+CreateMeshBuilder,
+AddVertex,1.90,0.40,0.00
+AddVertex,1.90,0.05,0.00
+AddVertex,1.90,0.05,0.02
+AddVertex,1.90,0.40,0.02
+AddFace2,0,1,2,3
+LoadTexture,P.png
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,0,1
+
+CreateMeshBuilder,
+Cylinder, 50, 0.05, 0.05, 1.7,
+Rotate, 0,0,90, 90,
+Translate, 0.75,0.44,0,
+setcolor, 128,128,128,
+
+CreateMeshBuilder,
+Cube, 0.02, 0.8, 0.02,
+Translate, -0.0, 1.25, 0,
+SetColor, 128,128,128,
+
+CreateMeshBuilder,
+Cube, 0.02, 0.8, 0.02,
+Translate, 1.5, 1.25, 0,
+SetColor, 128,128,128,

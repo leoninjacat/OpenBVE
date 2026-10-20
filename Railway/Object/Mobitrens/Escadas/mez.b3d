@@ -1,0 +1,53 @@
+;Primeira leva
+[MeshBuilder]
+Cube 24.5, 0.2, 10,
+Color 160,160,160
+Translate 9.9, 8, 14.5
+
+;Segunda parte
+[MeshBuilder]
+Cube 5, 0.2,36,
+Color 160,160,160
+Translate -9.6, 8,40.5
+
+;Ponte
+[MeshBuilder]
+Cube 5, 0.2, 20,
+Color 160,160,160
+Translate -44, 8,75.5
+Rotate 0,30,0,30
+
+;Terceira Parte
+[MeshBuilder]
+Cube 5, 0.2, 49,
+Color 160,160,160
+Translate 53,0,75.5
+Translate -44, 8,75.5
+
+;Paredes
+[MeshBuilder]
+Cube 19, 1.8, 0.5,
+Color 200,200,200
+Translate 15, 9, 25
+
+[MeshBuilder]
+Cube 19, 1.8, 0.5,
+Color 200,200,200
+Translate 15, 9, 4
+
+[MeshBuilder]
+Cube 0.5, 1.8, 23,
+Color 200,200,200
+Translate -4.4, 9, 47.6
+
+[MeshBuilder]
+Cube 0.5, 1.8, 19,
+Color 200,200,200
+Translate -48.4, 9, 76.6
+Rotate 0,30,0,30
+
+[MeshBuilder]
+Cube 0.5, 1.8, 19,
+Color 200,200,200
+Translate -38.8, 9, 76.6
+Rotate 0,30,0,30

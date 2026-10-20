@@ -1,0 +1,53 @@
+[MeshBuilder]; predio frente
+Vertex 25,0,-20
+Vertex 2,0,-20
+Vertex 2,30,-20
+Vertex 25,30,-20
+Face2 0,1,2,3
+[Texture]Load condominio2.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 1, 1
+Coordinates 3, 1, 0
+Transparent 0,255,0
+
+[MeshBuilder]; predio tras
+Vertex 25,0,-30
+Vertex 2,0,-30
+Vertex 2,30,-30
+Vertex 25,30,-30
+Face2 0,1,2,3
+[Texture]Load condominio2.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 1, 1
+Coordinates 3, 1, 0
+Transparent 0,255,0
+
+[MeshBuilder]; predio lateral
+Vertex 25,0,-20
+Vertex 25,0,-30
+Vertex 25,30,-30
+Vertex 25,30,-20
+Face2 0,1,2,3
+[Texture]Load condominio2.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 1, 1
+Coordinates 3, 1, 0
+Transparent 0,255,0
+
+[MeshBuilder]; predio frente
+Vertex 2,0,-20
+Vertex 2,0,-30
+Vertex 2,30,-30
+Vertex 2,30,-20
+Face2 0,1,2,3
+[Texture]Load condominio2.png
+Coordinates 0, 0, 0
+Coordinates 1, 0, 1
+Coordinates 2, 1, 1
+Coordinates 3, 1, 0
+Transparent 0,255,0
+
+ScaleAll 0.5,0.8,0.8

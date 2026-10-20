@@ -1,0 +1,12 @@
+[Object]
+States = predio1.b3d
+Position = 0.0, 0, 0
+
+[Object]
+States = predio2.b3d
+Position = 0.0, 0, 0
+
+[Object]
+States = predio3.b3d
+Position = 0.0, 0, 0
+

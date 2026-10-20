@@ -1,0 +1,7 @@
+Larguras e comprimentos (tá errado eu sei porra) do banco.
+
+Area total: 545 - 230 
+Espaço dentro desta area: 315
+Dividido por 3 bancos : 105 
+Com 2 encostos: 52.5 
+Dividido por 3 ( que são as curvas que formam o encosto): 17.5

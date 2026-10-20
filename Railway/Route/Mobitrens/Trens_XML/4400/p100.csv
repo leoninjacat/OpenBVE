@@ -1,0 +1,81 @@
+;;(c) Joao Carlos Goncalves, July 2008
+;;Please seek permission to use this object
+;in your own route
+;http://www.bvebrasil.com.br
+
+
+;;;;;Faiveley type=================
+;;;up
+CreateMeshBuilder,
+AddVertex, -0.650, 5.100, 0.050,
+addVertex,  0.650, 5.100, 0.050,
+addVertex,  0.650, 4.300, 1.400,
+addVertex, -0.650, 4.300, 1.400,
+AddFace2, 0,1,2,3,
+setColor, 222,227,215,
+LoadTexture, panto_up.bmp,
+SetTextureCoordinates, 0,0,1,
+SetTextureCoordinates, 1,0,0,
+SetTextureCoordinates, 2,1,0,
+SetTextureCoordinates, 3,1,1,
+SetDecalTransparentColor, 0,0,255,
+
+
+;;;;;base=========
+CreateMeshbuilder,
+cylinder, 4, 0.05, 0.05, 1.7500075
+translate, 0.00000, 2.410000021, -3.1335000005    
+rotate, 61,0,0,61
+setcolor, 92,5,5 
+;;//####
+CreateMeshbuilder,
+cylinder, 4, 0.04, 0.04, 1.7500075
+translate, 0.00000, 2.123207000020, -3.435000005    
+rotate, 64,0,0,64
+setcolor, 91,6,6
+
+
+
+;;;;;---1st
+CreateMeshbuilder,
+cylinder, 4, 0.04, 0.04, 0.3500075
+translate, 4.3400034, 0.000000, 1.3700037    
+rotate, 0,0,90,90
+setcolor, 91,4,6
+
+;;;---2nd
+CreateMeshbuilder,
+cylinder, 4, 0.04, 0.04, 0.39000039
+translate, 4.45000045, 0.000000, 1.14000014   
+rotate, 0,0,90,90
+setcolor, 93,5,4
+
+
+;;;;;collectors==========
+CreateMeshBuilder,
+AddVertex, -1.10, 5.10, 0.40,
+AddVertex, -1.10, 5.10, 0.20,
+AddVertex, -0.60, 5.20, 0.20,
+AddVertex, -0.60, 5.20, 0.40,
+AddVertex,  1.10, 5.10, 0.40,
+AddVertex,  1.10, 5.10, 0.20,
+AddVertex,  0.60, 5.20, 0.20,
+AddVertex,  0.60, 5.20, 0.40,
+AddFace2, 0,1,2,3,
+AddFace2, 7,6,5,4,
+AddFace2, 6,7,3,2,
+SetColor, 90,90,90,
+
+CreateMeshBuilder,
+AddVertex, -1.10, 5.10, 0.00,
+AddVertex, -1.10, 5.10, -0.20,
+AddVertex, -0.60, 5.20, -0.20,
+AddVertex, -0.60, 5.20, 0.00,
+AddVertex,  1.10, 5.10, 0.00,
+AddVertex,  1.10, 5.10, -0.20,
+AddVertex,  0.60, 5.20, -0.20,
+AddVertex,  0.60, 5.20, 0.00,
+AddFace2, 0,1,2,3,
+AddFace2, 7,6,5,4,
+AddFace2, 6,7,3,2,
+SetColor, 90,90,91,

@@ -1,0 +1,64 @@
+;front
+CreateMeshBuilder,
+AddVertex, 3.3, 5.60, 0.2,
+AddVertex, -3.3, 5.60, 0.2,
+AddVertex, -3.3, 4, 0.2,
+AddVertex, 3.3,4,0.2,
+AddFace2,  0,1,2,3,
+LoadTexture, 01.png,
+SetDecalTransparentColor,  0,255,0,
+SetTextureCoordinates, 1,1,0
+SetTextureCoordinates, 2,1,1
+SetTextureCoordinates, 3,0,1
+SetEmissiveColor, 100,100,100
+
+;verse
+CreateMeshBuilder,
+AddVertex, -3.3, 5.60, -0.2,
+AddVertex,  3.3, 5.60, -0.2,
+AddVertex, 3.3, 4, -0.2,
+AddVertex, -3.3, 4, -0.2,
+AddFace2,  0,1,2,3,
+LoadTexture, 01b.png,
+SetDecalTransparentColor,  0,255,0,
+SetTextureCoordinates, 1,1,0
+SetTextureCoordinates, 2,1,1
+SetTextureCoordinates, 3,0,1
+
+;roof
+CreateMeshBuilder,
+AddVertex, -3.30, 5.6, 0.2,
+AddVertex,  3.30, 5.6, 0.2,
+AddVertex, 3.30, 5.6, -0.2,
+AddVertex, -3.30, 5.6,-0.2,
+AddFace2,  0,1,2,3,
+setcolor, 0,0,0
+
+;L
+CreateMeshBuilder,
+AddVertex, -3.30, 5.60,0.2,
+AddVertex,  -3.30, 5.60, -0.2,
+AddVertex,-3.30, 4, -0.2,
+AddVertex, -3.30, 4,0.2,
+AddFace2,  0,1,2,3,
+setcolor, 0,0,0
+
+;R
+CreateMeshBuilder,
+AddVertex, 3.30, 5.60,0.2,
+AddVertex, 3.30, 5.60, -0.2,
+AddVertex, 3.30, 4, -0.2,
+AddVertex, 3.30, 4,0.2,
+AddFace2,  0,1,2,3,
+setcolor, 0,0,0
+
+;floor
+CreateMeshBuilder,
+AddVertex, -3.30, 4, 0.2,
+AddVertex,  3.30, 4, 0.2,
+AddVertex, 3.30,  4, -0.2,
+AddVertex, -3.30, 4,-0.2,
+AddFace2,  0,1,2,3,
+setcolor, 0,0,0
+
+scaleall, 1,0.4,0.3

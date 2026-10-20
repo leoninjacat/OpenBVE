@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+# Keep application and development data separate. Flatpak provides XDG_CONFIG_HOME.
+mkdir -p "$XDG_CONFIG_HOME/OpenBVE-Native/Settings"
+export LD_LIBRARY_PATH=/app/lib/openbve/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+exec /app/lib/openbve/openbve-launcher "$@"

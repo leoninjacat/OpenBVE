@@ -1,0 +1,40 @@
+[MeshBuilder]
+Vertex -100, -0.3, 25.1
+Vertex  100, -0.3, 25.1
+Vertex  100, -0.3, 0.0
+Vertex -100, -0.3, 0.0
+Face 0,1,2,3
+[Texture]
+Load embankE.bmp
+Coordinates 0, 0, 13
+Coordinates 1, 0, 0
+Coordinates 2, 1, 0
+Coordinates 3, 1, 13
+
+;;;===
+[MeshBuilder]
+Vertex -100, -0.3, 0
+Vertex  100, -0.3, 0
+Vertex  100, -4.3, -10
+Vertex -100, -4.3, -10
+Face 0,1,2,3
+[Texture]
+Load embankE.bmp
+Coordinates 0, 0, 13
+Coordinates 1, 0, 0
+Coordinates 2, 1, 0
+Coordinates 3, 1, 13
+
+;;;opp
+[MeshBuilder]
+Vertex -100, -0.3, 25
+Vertex  100, -0.3, 25
+Vertex  100, -4.3, 35
+Vertex -100, -4.3, 35
+Face2 0,1,2,3
+[Texture]
+Load embankE.bmp
+Coordinates 0, 0, 13
+Coordinates 1, 0, 0
+Coordinates 2, 1, 0
+Coordinates 3, 1, 13

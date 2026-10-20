@@ -1,0 +1,79 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup>
+<TargetFramework>net10.0</TargetFramework><AssemblyName>Route.CsvRw</AssemblyName>
+<RootNamespace>Route.CsvRw</RootNamespace>
+<EnableDefaultCompileItems>false</EnableDefaultCompileItems><GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks><NoWarn>$(NoWarn);NU1701</NoWarn>
+
+</PropertyGroup>
+<ItemGroup>
+<Compile Include="../../../source/Plugins/Route.CsvRw/Compatability/RoutefilePatch.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.ApplyRouteData.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.CompatibilityObjects.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Control.Commands.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Cycle.Commands.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Options.Commands.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Route.Commands.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Structure.Commands.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Train.Commands.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/Track/Track.Commands.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/Track/Track.Functions.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/AbstractStructure.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Block.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Direction.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Expression.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.Functions.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.ObjectDictionary.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.ObjectLoader.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.Preprocess.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.PreprocessOptions.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/CsvRwRouteParser.RouteData.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NameSpaces.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Cycle.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Options.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Route.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Signal.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Structure.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/NonTrack/Train.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Namespaces/Track/Track.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Plugin.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Properties/AssemblyInfo.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Miscellaneous/PointOfInterest.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Miscellaneous/Sound.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/RoutefileFormat.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/Crack.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/Form.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/FreeObject.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/PatternObj.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/Pole.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/Rail.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/RailCycle.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/Station.Stop.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Route/WallDike.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Signals/Section.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Signals/Signal.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Signals/SignalData.BVE4.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Signals/Transponder.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/StructureData.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Tracks/RailSound.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Tracks/Switch.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Trains/Brightness.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Trains/DestinationEvent.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Trains/HornBlow.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Trains/LightingChange.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Trains/Limit.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Trains/Marker.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/Structures/Trains/StopRequest.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/XML/RoutePatchDatabase.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/XML/DynamicBackground.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/XML/DynamicLight.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/XML/MarkerScript.cs" />
+<Compile Include="../../../source/Plugins/Route.CsvRw/XML/StationXml.cs" />
+<ProjectReference Include="../OpenBveApi/OpenBveApi.csproj" />
+<ProjectReference Include="../RouteManager2/RouteManager2.csproj" />
+<ProjectReference Include="../TrainManager/TrainManager.csproj" />
+<ProjectReference Include="../Formats.OpenBve/Formats.OpenBve.csproj" />
+<Compile Include="Native/**/*.cs" />
+</ItemGroup>
+</Project>

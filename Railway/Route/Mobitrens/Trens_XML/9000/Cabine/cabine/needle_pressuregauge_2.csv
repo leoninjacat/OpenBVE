@@ -1,0 +1,27 @@
+;; Série 1600 V1
+;; Cabine 3D por Raphael N. - Mega Rail Brasil
+
+CreateMeshBuilder,
+AddVertex, -1, -1, 0
+AddVertex, -1, 1, 0
+AddVertex, 1, 1, 0
+AddVertex, 1, -1, 0
+AddFace2, 0, 1, 2, 3
+LoadTexture, ..\needle_pressuregauge_upper.png, ..\needle_pressuregauge_upper.png
+SetColor, 160,160,160
+SetTextureCoordinates, 0, 0, 1
+SetTextureCoordinates, 1, 0, 0
+SetTextureCoordinates, 2, 1, 0
+SetTextureCoordinates, 3, 1, 1
+GenerateNormals,
+Scale, 0.125, 1.000, 1.000
+Scale, 0.050, 0.030, 0.050
+
+CreateMeshBuilder
+Cylinder,6,0.007,0.007,0.02
+Rotate,1,0,0,90
+Translate,0,0,0.005
+SetColor, 15,15,15
+
+rotateall,1,0,0,-50,
+

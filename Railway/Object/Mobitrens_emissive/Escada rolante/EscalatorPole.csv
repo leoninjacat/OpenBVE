@@ -1,0 +1,15 @@
+;//階段,,,
+;------ポール------,,,,
+;左
+CreateMeshBuilder,,;//前面,,
+AddVertex,4.0, 2.00, -1.9,
+AddVertex,4.0, 1.40, -1.9,
+AddVertex,4.2, 1.40, -1.9,
+AddVertex,4.2, 2.00, -1.9,
+AddFace,3, 2, 1, 0,
+LoadTexture,LED1.bmp,
+SetTextureCoordinates,0, 0, 0,
+SetTextureCoordinates,1, 0, 1,
+SetTextureCoordinates,2, 1, 1,
+SetTextureCoordinates,3, 1, 0,
+SetEmissiveColor,255,255,255

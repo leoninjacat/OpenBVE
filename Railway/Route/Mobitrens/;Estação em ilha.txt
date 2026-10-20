@@ -1,0 +1,58 @@
+;Estação em ilha
+
+;Trilho 1, muro 1 e pole 1 se separam
+50,.rail 1;-5.2;0;2	,.rail 10;-5.2	,.rail 21;-13
+75,.rail 1;-5.7;0;2	,.rail 10;-5.7	,.rail 21;-14,.curve 1000,.railtype 0;3
+00,.rail 1;-7;0;0	,.rail 10;-7	,.rail 21;-15
+25,.rail 1;-9.5;0;3	,.rail 10;-9.5	,.rail 21;-16
+50,.rail 1;-11.7;0;3	,.rail 10;-11.7	,.rail 21;-17,.curve -900,.railtype 0;4
+75,.rail 1;-13.2;0;3	,.rail 10;-13.2	,.rail 21;-18
+00,.rail 1;-14;0;0	,.rail 10;-14	,.rail 21;-18,.curve 0,.railtype 0;0
+
+00,.sta Vila Independente;;;0;L
+
+;plataformas
+00,.rail 100;0;0;100,.rail 101;-13.8;0;101,.railtype 10;1,.railtype 11;1,.railtype 20;21,.railtype 21;21
+
+;abrigo
+00,.rail 70;0;0;700
+25,.railend 70;
+
+;placas destino
+25,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+50,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+75,.freeobj 0;72;-3;3,.freeobj 0;73;-10;3
+
+25,.freeobj 0;72;-3;3,.freeobj 0;73;-10;3
+50,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+75,.freeobj 0;72;-3;4,.freeobj 0;73;-10;4
+
+;monitores
+25,.freeobj 0;97;-6.5;2
+75,.freeobj 0;97;-6.5;2
+28,.freeobj 0;97;-6.5;2
+78,.freeobj 0;97;-6.5;2
+
+;cadeiras
+18,.freeobj 0;100;-6.6;2
+38,.freeobj 0;100;-6.6;2
+00,.freeobj 0;100;-6.6;2
+42,.freeobj 0;100;-6.6;2
+
+00,.freeobj 0;170;0;-2
+25,.rail 70
+75,.railend 70
+
+90,.stop 1
+00,.railend 100,.railend 101
+25,.railtype 20;20,.railtype 21;20,.railtype 10;10,.railtype 11;11
+
+;os trilhos voltam a se juntar
+25,.rail 1;-14;0;0	,.rail 10;-14	,.rail 21;-18,.curve -800,.railtype 0;4
+50,.rail 1;-13.3;0;3	,.rail 10;-13.2	,.rail 21;-17
+75,.rail 1;-11.7;0;3	,.rail 10;-11.7	,.rail 21;-16,.curve 1200,.railtype 0;5
+00,.rail 1;-9.5;0;2	,.rail 10;-9.5	,.rail 21;-15
+25,.rail 1;-7;0;0	,.rail 10;-7	,.rail 21;-14
+50,.rail 1;-5.7;0;2	,.rail 10;-5.7	,.rail 21;-13,.curve 0,.railtype 0;0
+75,.rail 1;-5.1;0;0	,.rail 10;-5.2	,.rail 21;-13
+00,.rail 1;-5;0;0

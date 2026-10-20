@@ -1,0 +1,123 @@
+ 
+;;basic tarmac road
+CreateMeshBuilder,
+AddVertex, -2.5, -0, 0.0,
+AddVertex, -2.5, -0, 25.2,
+AddVertex,  2.5, -0, 25.2,
+AddVertex,  2.5, -0, 0.0,
+AddFace,  0,1,2,3,
+GenerateNormals,
+LoadTexture, road1.bmp,
+SetTextureCoordinates, 0, 2, 0,
+SetTextureCoordinates, 1, 0, 0,
+SetTextureCoordinates, 2, 0, 1,
+SetTextureCoordinates, 3, 2, 1,
+
+;;=========post=============
+CreateMeshBuilder,
+Cylinder, 5, 0.170, 0.190, 12.000,
+Translate, -3.300, 4.700, 0.000,
+SetColor, 172,172,172,
+
+;;;;;lamp
+CreateMeshBuilder,
+AddVertex, -3.2, 9.0, 0,
+AddVertex,  2.2, 9.0, 0,
+AddVertex,  2.2, 5.2, 0,
+AddVertex, -3.2, 5.2, 0,
+AddFace2,  0,1,2,3,
+SetColor, 120,120,120,
+GenerateNormals,
+LoadTexture, luminari.bmp,
+SetTextureCoordinates, 0,0,0,
+SetTextureCoordinates, 1,-1,0,
+SetTextureCoordinates, 2,-1,1,
+SetTextureCoordinates, 3,0,1,
+SetDecalTransparentColor,  0,0,255,
+
+;;;;;head
+CreateMeshBuilder,
+AddVertex,  -4.70, 10.50, 0,
+AddVertex,  -1.40, 10.50, 0,
+AddVertex,  -1.40, 8.90, 0,
+AddVertex,  -4.70, 8.90, 0,
+AddFace, 0,1,2,3,
+AddFace, 3,2,1,0,
+GenerateNormals,
+LoadTexture, mast4head.bmp,
+SetTextureCoordinates, 0,0,0,
+SetTextureCoordinates, 1,-1,0,
+SetTextureCoordinates, 2,-1,1,
+SetTextureCoordinates, 3,0,1,
+SetDecalTransparentColor,  0,0,255,
+
+
+;;=========upper wires
+CreateMeshBuilder,
+AddVertex, -2.6, 11, 25.10,
+AddVertex, -2.6, 11, 0.0,
+AddVertex, -2.6, 9, 0.0,
+AddVertex, -2.6, 9, 25.10,
+AddFace2,  3,2,1,0,
+GenerateNormals,
+LoadTexture, hv_wires.bmp,
+SetTextureCoordinates, 0, 0, 0,
+SetTextureCoordinates, 1, 1, 0,
+SetTextureCoordinates, 2, 1, 1,
+SetTextureCoordinates, 3, 0, 1,
+SetDecalTransparentColor, 0,0,255,
+
+CreateMeshBuilder,
+AddVertex, -2.1, 11, 25.10,
+AddVertex, -2.1, 11, 0.0,
+AddVertex, -2.1, 9, 0.0,
+AddVertex, -2.1, 9, 25.10,
+AddFace2,  3,2,1,0,
+GenerateNormals,
+LoadTexture, hv_wires.bmp,
+SetTextureCoordinates, 0, 0, 0,
+SetTextureCoordinates, 1, 1, 0,
+SetTextureCoordinates, 2, 1, 1,
+SetTextureCoordinates, 3, 0, 1,
+SetDecalTransparentColor, 0,0,255,
+;;
+CreateMeshBuilder,
+AddVertex, -1.7, 11, 25.10,
+AddVertex, -1.7, 11, 0.0,
+AddVertex, -1.7, 9, 0.0,
+AddVertex, -1.7, 9, 25.10,
+AddFace2,  3,2,1,0,
+GenerateNormals,
+LoadTexture, hv_wires.bmp,
+SetTextureCoordinates, 0, 0, 0,
+SetTextureCoordinates, 1, 1, 0,
+SetTextureCoordinates, 2, 1, 1,
+SetTextureCoordinates, 3, 0, 1,
+SetDecalTransparentColor,  0,0,255,
+
+
+
+;;;=====lower wires
+CreateMeshBuilder,
+AddVertex, -3.1, 7.5, 25.10,
+AddVertex, -3.1, 7.5, 0.00,
+AddVertex, -3.1, 6.5, 0.00,
+AddVertex, -3.1, 6.5, 25.10,
+AddFace2,  0,1,2,3,
+GenerateNormals,
+LoadTexture, hv_wires3.bmp,
+SetTextureCoordinates, 0, 0, 0,
+SetTextureCoordinates, 1, 1, 0,
+SetTextureCoordinates, 2, 1, 1,
+SetTextureCoordinates, 3, 0, 1,
+SetDecalTransparentColor,  0,0,255,
+
+
+
+
+
+
+
+
+
+

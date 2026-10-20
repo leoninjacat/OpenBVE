@@ -1,0 +1,372 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;piso do mezanino
+[MeshBuilder]
+cube 44,1,27
+translate -2,16,0
+color 100,100,100
+
+;teto do mezanino
+[MeshBuilder]
+cube 42,0.2,25.2
+translate -2.4,8.6,0
+color 100,100,100
+
+;pilastras transversais do mezanino
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -1,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate 2,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate 5,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate 8,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate 11,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -24,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -21,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -18,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -14,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -10,8.2,0
+color 100,100,100
+
+[MeshBuilder]
+cube 0.5,0.5,25
+translate -4,8.2,0
+color 100,100,100
+
+;acesso ao mezanino A
+[MeshBuilder]
+Vertex -7, 9, -25.0
+Vertex -7, 16, 0
+Vertex  7, 16, 0
+Vertex  7, 9, -25.0
+Face2  0,1,2,3
+Color 71,91,111
+translate -7,0,-25
+
+[MeshBuilder]
+Vertex 0, 17, -26
+Vertex 0, 14, -26
+Vertex  0, 8,  -50
+Vertex  0, 10, -50
+Face2  0,1,2,3
+Color 101,101,101
+
+[MeshBuilder]
+Vertex -3, 17, -26
+Vertex -3, 14, -26
+Vertex -3, 8,  -50
+Vertex -3, 10, -50
+Face2  0,1,2,3
+Color 81,81,81
+
+[MeshBuilder]
+Vertex -6, 17, -26
+Vertex -6, 14, -26
+Vertex -6, 8,  -50
+Vertex -6, 10, -50
+Face2  0,1,2,3
+Color 81,81,81
+
+[MeshBuilder]
+Vertex -9, 17, -26
+Vertex -9, 14, -26
+Vertex -9, 8,  -50
+Vertex -9, 10, -50
+Face2  0,1,2,3
+Color 81,81,81
+
+[MeshBuilder]
+Vertex -11.5, 17, -26
+Vertex -11.5, 14, -26
+Vertex -11.5, 8,  -50
+Vertex -11.5, 10, -50
+Face2  0,1,2,3
+Color 81,81,81
+
+[MeshBuilder]
+Vertex -14, 17, -26
+Vertex -14, 14, -26
+Vertex -14, 8,  -50
+Vertex -14, 10, -50
+Face2  0,1,2,3
+Color 101,101,101
+
+;acesso ao mezanino B
+[MeshBuilder]
+Vertex 12, 9, -25.0
+Vertex 12, 16, 0
+Vertex 26, 16, 0
+Vertex 26, 9, -25.0
+Face2  0,1,2,3
+Color 71,91,111
+translate -7,0,-25
+
+;detalhes telhado B
+[MeshBuilder]
+Vertex 5, 17, -26
+Vertex 5, 14, -26
+Vertex 5, 8,  -50
+Vertex 5, 10, -50
+Face2  0,1,2,3
+Color 101,101,101
+
+[MeshBuilder]
+Vertex 7, 17, -26
+Vertex 7, 14, -26
+Vertex 7, 8,  -50
+Vertex 7, 10, -50
+Face2  0,1,2,3
+Color 81,81,81
+
+[MeshBuilder]
+Vertex 10, 17, -26
+Vertex 10, 14, -26
+Vertex 10, 8,  -50
+Vertex 10, 10, -50
+Face2  0,1,2,3
+Color 81,81,81
+
+[MeshBuilder]
+Vertex 13, 17, -26
+Vertex 13, 14, -26
+Vertex 13, 8,  -50
+Vertex 13, 10, -50
+Face2  0,1,2,3
+Color 81,81,81
+
+[MeshBuilder]
+Vertex 16, 17, -26
+Vertex 16, 14, -26
+Vertex 16, 8,  -50
+Vertex 16, 10, -50
+Face2  0,1,2,3
+Color 81,81,81
+
+[MeshBuilder]
+Vertex 19, 17, -26
+Vertex 19, 14, -26
+Vertex 19, 8,  -50
+Vertex 19, 10, -50
+Face2  0,1,2,3
+Color 101,101,101
+
+;teto acesso B
+[MeshBuilder]
+Vertex 9.5, 6, -38
+Vertex 9.5, 14,-25
+Vertex 14.0, 14, -25
+Vertex 14.0, 6, -38
+Face2  0,1,2,3
+Color 111,111,111
+
+;teto base acesso B
+[MeshBuilder]
+Vertex 9.5, 6, -42
+Vertex 9.5, 6,-38
+Vertex 14, 6, -38
+Vertex 14, 6, -42
+Face2  0,1,2,3
+Color 111,111,111
+
+;escadaria B
+[MeshBuilder]
+Vertex 9.5, 8.5, -25
+Vertex 9.5, 0,-38
+Vertex 14, 0, -38
+Vertex 14, 8.5, -25
+Face2  0,1,2,3
+Color 111,111,111
+
+;paredes acesso B
+[MeshBuilder]
+Vertex 9.5, 14, -25
+Vertex 9.5, 8.5, -25
+Vertex 9.5, 0,  -38
+Vertex 9.5, 6, -38
+Face2  0,1,2,3
+
+;paredes base b
+[MeshBuilder]
+Vertex 9.5, 6, -38
+Vertex 9.5, 0, -38
+Vertex 9.5, 0,  -42
+Vertex 9.5, 6, -42
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex 14, 6, -38
+Vertex 14, 0, -38
+Vertex 14, 0,  -42
+Vertex 14, 6, -42
+Face2  0,1,2,3
+
+
+[MeshBuilder]
+Vertex 14, 14, -25
+Vertex 14, 8.5, -25
+Vertex 14, 0,  -38
+Vertex 14, 6, -38
+Face2  0,1,2,3
+
+;paredes acesso A
+[MeshBuilder]
+Vertex -5, 14, -25
+Vertex -5, 8.5, -25
+Vertex -5, 0,  -38
+Vertex -5, 6, -38
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -8.5, 14, -25
+Vertex -8.5, 8.5, -25
+Vertex -8.5, 0,  -38
+Vertex -8.5, 6, -38
+Face2  0,1,2,3
+
+;teto acesso A
+[MeshBuilder]
+Vertex -8.5, 6, -38
+Vertex -8.5, 14,-25
+Vertex -5, 14, -25
+Vertex -5, 6, -38
+Face2  0,1,2,3
+Color 111,111,111
+
+;teto base acesso A
+[MeshBuilder]
+Vertex -8.5, 6, -42
+Vertex -8.5, 6,-38
+Vertex -5, 6, -38
+Vertex -5, 6, -42
+Face2  0,1,2,3
+Color 111,111,111
+
+[MeshBuilder]
+Vertex -8.5, 8.5, -25
+Vertex -8.5, 0,-38
+Vertex -5, 0, -38
+Vertex -5, 8.5, -25
+Face2  0,1,2,3
+Color 111,111,111
+
+;base acesso
+[MeshBuilder]
+Vertex -5, 6, -42
+Vertex -5, 5.5,-42
+Vertex -8.5,5.5, -42
+Vertex -8.5, 6, -42
+Face2  0,1,2,3
+Color 111,111,111
+
+[MeshBuilder]
+Vertex -5, 6, -38
+Vertex -5, 0, -38
+Vertex -5, 0,  -42
+Vertex -5, 6, -42
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -8.5, 6, -38
+Vertex -8.5, 0, -38
+Vertex -8.5, 0,  -42
+Vertex -8.5, 6, -42
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -26, 16.5, -25
+Vertex -26, 9, -25
+Vertex  22, 9, -25
+Vertex  22, 16.5, -25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -26, 16.5, 25
+Vertex -26, 9, 25
+Vertex  22, 9, 25
+Vertex  22, 16.5, 25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -44, 16.5, -25
+Vertex -44, 0, -25
+Vertex -26, 0, -25
+Vertex -26, 16.5, -25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex -44, 16.5, 25
+Vertex -44, 0, 25
+Vertex -26, 0, 25
+Vertex -26, 16.5, 25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex 22, 16.5, -25
+Vertex 22, 0, -25
+Vertex 39, 0, -25
+Vertex 39, 16.5, -25
+Face2  0,1,2,3
+
+[MeshBuilder]
+Vertex 22, 16.5, 25
+Vertex 22, 0, 25
+Vertex 39, 0, 25
+Vertex 39, 16.5, 25
+Face2  0,1,2,3
+
+;paredes mezanino A
+[MeshBuilder]
+cube 0.2,8,25
+translate -26,8.2,0
+color 150,150,150
+
+[MeshBuilder]
+cube 0.2,8,25
+translate -44,8.2,0
+color 150,150,150
+
+;paredes mezanino B
+[MeshBuilder]
+cube 0.2,8,25
+translate 22,8.2,0
+color 150,150,150
+
+[MeshBuilder]
+cube 0.2,8,25
+translate 39,8.2,0
+color 150,150,150

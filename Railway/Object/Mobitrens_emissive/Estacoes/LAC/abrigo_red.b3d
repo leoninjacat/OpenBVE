@@ -1,0 +1,83 @@
+;pilastra A
+[MeshBuilder]
+cube 0.2,0.66,25
+Color 200,200,200
+translate -0.2,7.64,25
+
+;pilastra B
+[MeshBuilder]
+cube 0.2,0.66,25
+Color 200,200,200
+translate -13.8,7.64,25
+
+;pilastra luzes A
+[MeshBuilder]
+cube 0.5,0.2,25
+Color 180,40,40
+translate -1,7,25
+
+;pilastra luzes B
+[MeshBuilder]
+cube 0.5,0.2,25
+Color 180,40,40
+translate -13,7,25
+
+;pilastra transversal
+[MeshBuilder]
+cube 0.2,0.2,25
+Color 180,40,40
+translate -7,7,25
+
+;teto A
+[MeshBuilder]
+Vertex -7, 7, 0.0
+Vertex -7, 7, 50
+Vertex  0, 8, 50
+Vertex  0, 8, 0.0
+Face2  0,1,2,3
+Color 111,111,111
+
+;teto B
+[MeshBuilder]
+Vertex -14, 8, 0.0
+Vertex -14, 8, 50
+Vertex -7, 7, 50
+Vertex -7, 7, 0.0
+Face2  0,1,2,3
+Color 111,111,111
+
+;inicio
+[MeshBuilder]
+cube 7,0.7,0.2
+translate -7,7.6,0
+color 200,200,200
+
+;pilarcentral 1A
+[MeshBuilder]
+cube 0.3,8,0.3
+translate -6,-0.7,0
+Color 180,40,40
+
+;pilarcentral 1B
+[MeshBuilder]
+cube 0.3,8,0.3
+translate -8,-0.7,0
+Color 180,40,40
+
+;pilarcentral 2A
+[MeshBuilder]
+cube 0.3,8,0.3
+translate -6,-0.7,50
+Color 180,40,40
+
+;pilarcentral 2B
+[MeshBuilder]
+cube 0.3,8,0.3
+translate -8,-0.7,50
+Color 180,40,40
+
+;fim
+[MeshBuilder]
+cube 7,0.7,0.2
+translate -7,7.6,50
+color 200,200,200

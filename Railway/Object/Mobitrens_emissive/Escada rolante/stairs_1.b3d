@@ -1,0 +1,23 @@
+﻿[MeshBuilder]
+Vertex 6.1, 1, 0
+Vertex 7.1, 1, 0
+Vertex 7.1, 1.05, 3
+Vertex 6.1, 1.05, 3
+Vertex 6.1, 4.9, 11
+Vertex 7.1, 4.9, 11
+Vertex 7.1, 4.9, 11
+Vertex 6.1, 4.9, 11
+Face 3, 2, 1, 0
+Face2 4, 5, 2, 3
+Face 7, 6, 5, 4
+Load stairs_1.bmp
+Coordinates 0, 0, 0
+Coordinates 1, 1, 0
+Coordinates 2, 1, -2
+Coordinates 3, 0, -2
+Coordinates 4, 0, -18
+Coordinates 5, 1, -18
+Coordinates 6, 1, -20
+Coordinates 7, 0, -20
+
+ScaleAll 1,1.8,1.8

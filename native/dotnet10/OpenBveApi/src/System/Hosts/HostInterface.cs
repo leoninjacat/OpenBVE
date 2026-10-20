@@ -788,10 +788,10 @@ namespace OpenBveApi.Hosts {
 		 */
 
 		/// <summary>The event raised when the 32-bit host application signals it is ready to accept connections from clients</summary>
-		public static readonly EventWaitHandle Win32PluginHostReady = new EventWaitHandle(false, EventResetMode.AutoReset, @"eventHostReady");
+		public static readonly EventWaitHandle Win32PluginHostReady = new EventWaitHandle(false, EventResetMode.AutoReset, OperatingSystem.IsWindows() ? @"eventHostReady" : null);
 
 		/// <summary>The event raised when the proxy client quits and the host should stop</summary>
-		public static readonly EventWaitHandle Win32PluginHostStopped = new EventWaitHandle(false, EventResetMode.AutoReset, @"eventHostShouldStop");
+		public static readonly EventWaitHandle Win32PluginHostStopped = new EventWaitHandle(false, EventResetMode.AutoReset, OperatingSystem.IsWindows() ? @"eventHostShouldStop" : null);
 
 		/// <summary>The base pipe address</summary>
 		public const string pipeBaseAddress = @"net.pipe://localhost";

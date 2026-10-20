@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>	
+<openBVE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">	
+<!--OpenBve Criações Brasil -->	
+  <TrackFollowingObject>	
+	
+    <Definition>	
+        	<AppearanceTime>000.000</AppearanceTime> <!--tempo que o trem vai aparecer no jogo-->
+        	<AppearanceStartPosition>0</AppearanceStartPosition> <!--posicao negativa-->
+        	<AppearanceEndPosition>1000</AppearanceEndPosition> <!--posicao positiva-->
+        	<LeaveTime>00.2000</LeaveTime> <!--deixa esse valor-->
+    </Definition>	
+    <Train>	
+        	<Directory>9000</Directory> <!--nome da pasta do trem-->
+    </Train>	
+	
+    <Stops>	
+	
+ 	
+     <!--ponto onde o trem inicia parado-->	
+      <Stop>	
+        	<Decelerate>1.65</Decelerate>
+        	<StopPosition>7890</StopPosition>
+        	<Doors>R</Doors>
+        	<StopTime>00.0000</StopTime>
+        	<Accelerate>1.65</Accelerate>
+        	<TargetSpeed>80</TargetSpeed>
+        	<Direction>-1</Direction>
+        	<Rail>1</Rail>
+      </Stop>
+
+	<!--Parada Manoel Lacerda-->	
+      	  <Stop>	
+        	<Decelerate>1.65</Decelerate>
+        	<StopPosition>6690</StopPosition> <!--posicao do STOP da estação-->
+        	<Doors>L</Doors> <!--R ou L define se o trem vai abrir portas, caso contrario coloca 0-->
+        	<StopTime>00.0020</StopTime> <!--tempo que as portas vao ficar abertas-->
+        	<Accelerate>1.65</Accelerate> <!--taxa de aceleracao, qt maior mais rapido o trem sai-->
+        	<TargetSpeed>80</TargetSpeed> <!--velocidade que o trem vai atingir-->
+        	<Direction>-1</Direction> <!--sentido que o trem vai trafegar-->
+        	<Rail>1</Rail> <!--nº do trilho que o trem vai prosseguir-->
+	  </Stop>
+
+	<!--Parada Cabritas Rede Gatos-->	
+      	  <Stop>	
+        	<Decelerate>1.65</Decelerate>
+        	<StopPosition>5190</StopPosition> <!--posicao do STOP da estação-->
+        	<Doors>R</Doors> <!--R ou L define se o trem vai abrir portas, caso contrario coloca 0-->
+        	<StopTime>00.0020</StopTime> <!--tempo que as portas vao ficar abertas-->
+        	<Accelerate>1.65</Accelerate> <!--taxa de aceleracao, qt maior mais rapido o trem sai-->
+        	<TargetSpeed>80</TargetSpeed> <!--velocidade que o trem vai atingir-->
+        	<Direction>-1</Direction> <!--sentido que o trem vai trafegar-->
+        	<Rail>1</Rail> <!--nº do trilho que o trem vai prosseguir-->
+	  </Stop>
+
+	<!--Parada Maria das Dores-->	
+      	  <Stop>	
+        	<Decelerate>1.65</Decelerate>
+        	<StopPosition>4190</StopPosition> <!--posicao do STOP da estação-->
+        	<Doors>L</Doors> <!--R ou L define se o trem vai abrir portas, caso contrario coloca 0-->
+        	<StopTime>00.0020</StopTime> <!--tempo que as portas vao ficar abertas-->
+        	<Accelerate>1.65</Accelerate> <!--taxa de aceleracao, qt maior mais rapido o trem sai-->
+        	<TargetSpeed>80</TargetSpeed> <!--velocidade que o trem vai atingir-->
+        	<Direction>-1</Direction> <!--sentido que o trem vai trafegar-->
+        	<Rail>1</Rail> <!--nº do trilho que o trem vai prosseguir-->
+	  </Stop>
+
+
+	<!--Parada Joao Paulo II-->	
+      	  <Stop>	
+        	<Decelerate>1.65</Decelerate>
+        	<StopPosition>3090</StopPosition> <!--posicao do STOP da estação-->
+        	<Doors>L</Doors> <!--R ou L define se o trem vai abrir portas, caso contrario coloca 0-->
+        	<StopTime>00.0020</StopTime> <!--tempo que as portas vao ficar abertas-->
+        	<Accelerate>1.65</Accelerate> <!--taxa de aceleracao, qt maior mais rapido o trem sai-->
+        	<TargetSpeed>80</TargetSpeed> <!--velocidade que o trem vai atingir-->
+        	<Direction>-1</Direction> <!--sentido que o trem vai trafegar-->
+        	<Rail>1</Rail> <!--nº do trilho que o trem vai prosseguir-->
+	  </Stop>
+
+
+	<!--Parada Mirueiro-->	
+      	  <Stop>	
+        	<Decelerate>1.65</Decelerate>
+        	<StopPosition>1790</StopPosition> <!--posicao do STOP da estação-->
+        	<Doors>L</Doors> <!--R ou L define se o trem vai abrir portas, caso contrario coloca 0-->
+        	<StopTime>00.0020</StopTime> <!--tempo que as portas vao ficar abertas-->
+        	<Accelerate>1.65</Accelerate> <!--taxa de aceleracao, qt maior mais rapido o trem sai-->
+        	<TargetSpeed>80</TargetSpeed> <!--velocidade que o trem vai atingir-->
+        	<Direction>-1</Direction> <!--sentido que o trem vai trafegar-->
+        	<Rail>1</Rail> <!--nº do trilho que o trem vai prosseguir-->
+	  </Stop>
+	
+	
+      <!--Parada Gatos-->	
+      	  <Stop>	
+        	<Decelerate>1.65</Decelerate>
+        	<StopPosition>490</StopPosition> <!--posicao do STOP da estação-->
+        	<Doors>L</Doors> <!--R ou L define se o trem vai abrir portas, caso contrario coloca 0-->
+        	<StopTime>00.0020</StopTime> <!--tempo que as portas vao ficar abertas-->
+        	<Accelerate>1.65</Accelerate> <!--taxa de aceleracao, qt maior mais rapido o trem sai-->
+        	<TargetSpeed>80</TargetSpeed> <!--velocidade que o trem vai atingir-->
+        	<Direction>-1</Direction> <!--sentido que o trem vai trafegar-->
+        	<Rail>1</Rail> <!--nº do trilho que o trem vai prosseguir-->
+	  </Stop>
+
+      <!--Ultima Parada(Não Mexer)-->	 
+	  <Stop>	
+        	<Decelerate>1.65</Decelerate>
+        	<StopPosition>0</StopPosition> <!--posicao-->
+        	<Doors>0</Doors> <!--R ou L define se o trem vai abrir portas, caso contrario coloca 0-->
+        	<StopTime>00.0020</StopTime> <!--tempo que as portas vao ficar abertas-->
+        	<Accelerate>1.65</Accelerate> <!--taxa de aceleracao, qt maior mais rapido o trem sai-->
+        	<TargetSpeed>100</TargetSpeed> <!--velocidade que o trem vai atingir-->
+        	<Direction>-1</Direction> <!--sentido que o trem vai trafegar-->
+        	<Rail>1</Rail> <!--nº do trilho que o trem vai prosseguir-->
+      </Stop> 
+
+    </Stops>	
+  </TrackFollowingObject>	
+</openBVE>	

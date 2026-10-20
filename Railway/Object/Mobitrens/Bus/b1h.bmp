@@ -1,0 +1,3366 @@
+;;By Roger Natael & Gabriel Souza
+
+
+;;Lateral
+CreateMeshBuilder,
+AddVertex,-1.50,1.15,4.55,0,0,1
+AddVertex,-1.50,3.15,4.55,0,0,1
+AddVertex,-1.50,3.15,2.80,0,0,1
+AddVertex,-1.50,1.15,2.80,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral1.png,
+SetTextureCoordinates,0,0,0.925
+
+SetTextureCoordinates,1,0,0
+
+SetTextureCoordinates,2,1,0
+
+SetTextureCoordinates,3,1,0.925
+
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+CreateMeshBuilder,
+AddVertex,-1.50,3.15,4.55,0,0,1
+AddVertex,-1.50,3.275,4.55,0,0,1
+AddVertex,-1.50,3.275,2.80,0,0,1
+AddVertex,-1.50,3.15,2.80,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,3,0,0.05
+SetTextureCoordinates,2,0,0.01
+SetTextureCoordinates,1,1,0.01
+SetTextureCoordinates,0,1,0.05
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+CreateMeshBuilder,
+AddVertex,-1.50,1.00,4.55,0,0,1
+AddVertex,-1.50,1.15,4.55,0,0,1
+AddVertex,-1.50,1.15,2.80,0,0,1
+AddVertex,-1.50,1.00,2.80,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,0,0,0.925
+
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0.925
+
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,1.50,1.15,4.55,0,0,1
+AddVertex,1.50,3.15,4.55,0,0,1
+AddVertex,1.50,3.15,2.80,0,0,1
+AddVertex,1.50,1.15,2.80,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral1.png,
+SetTextureCoordinates,0,0,0.925
+
+SetTextureCoordinates,1,0,0
+
+SetTextureCoordinates,2,1,0
+
+SetTextureCoordinates,3,1,0.925
+
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+CreateMeshBuilder,
+AddVertex,1.50,3.15,4.55,0,0,1
+AddVertex,1.50,3.275,4.55,0,0,1
+AddVertex,1.50,3.275,2.80,0,0,1
+AddVertex,1.50,3.15,2.80,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,3,0,0.05
+SetTextureCoordinates,2,0,0.01
+SetTextureCoordinates,1,1,0.01
+SetTextureCoordinates,0,1,0.05
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+CreateMeshBuilder,
+AddVertex,1.50,1.00,4.55,0,0,1
+AddVertex,1.50,1.15,4.55,0,0,1
+AddVertex,1.50,1.15,2.80,0,0,1
+AddVertex,1.50,1.00,2.80,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,Lateral.png,
+SetTextureCoordinates,0,0,0.925
+
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0.925
+
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+
+;;teto
+CreateMeshBuilder,
+AddVertex,1.50,3.272,4.55,0,0,1
+AddVertex,1.45,3.313,4.55,0,0,1
+AddVertex,1.45,3.32,2.80,0,0,1
+AddVertex,1.50,3.27,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0.83,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0.83,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.38,3.362,4.55,0,0,1
+AddVertex,1.45,3.313,4.55,0,0,1
+AddVertex,1.45,3.32,2.80,0,0,1
+AddVertex,1.38,3.36,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.83,  1
+SetTextureCoordinates,1,0.83,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.38,3.362,4.55,0,0,1
+AddVertex,1.30,3.398,4.55,0,0,1
+AddVertex,1.30,3.398,2.80,0,0,1
+AddVertex,1.38,3.36,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0.8,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0.8,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.19,3.44,4.55,0,0,1
+AddVertex,1.30,3.398,4.55,0,0,1
+AddVertex,1.30,3.398,2.80,0,0,1
+AddVertex,1.19,3.44,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.7,  1
+SetTextureCoordinates,1,0.7,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,1.19,3.44,4.55,0,0,1
+AddVertex,1.0,3.498,4.55,0,0,1
+AddVertex,1.0,3.498,2.80,0,0,1
+AddVertex,1.19,3.44,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.5,  1
+SetTextureCoordinates,1,0.5,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,;;
+AddVertex,1.0205,3.49,4.55,0,0,1
+AddVertex,1.0205,3.503,4.55,0,0,1
+AddVertex,1.0205,3.503,2.80,0,0,1
+AddVertex,1.0205,3.49,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,0.88,  3.545,4.55,0,0,1
+AddVertex,1.0205,3.503,4.55,0,0,1
+AddVertex,1.0205,3.503,2.80,0,0,1
+AddVertex,0.88,  3.545,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.5,  1
+SetTextureCoordinates,1,0.5,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,0.88,  3.545,4.55,0,0,1
+AddVertex,0.805,3.56,4.55,0,0,1
+AddVertex,0.805,3.56,2.80,0,0,1
+AddVertex,0.88,  3.545,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.8,  1
+SetTextureCoordinates,1,0.8,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,;;meio direito
+AddVertex,0.805,3.56,4.55,0,0,1
+AddVertex,0.00,3.62,4.55,0,0,1
+AddVertex,0.00,3.62,2.80,0,0,1
+AddVertex,0.805,3.56,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+CreateMeshBuilder,;;meio esquerdo
+AddVertex,-0.805,3.556,4.55,0,0,1
+AddVertex,0.00,3.62,4.55,0,0,1
+AddVertex,0.00,3.62,2.80,0,0,1
+AddVertex,-0.805,3.556,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,-0.88,  3.54,4.55,0,0,1
+AddVertex,-0.805,3.556,4.55,0,0,1
+AddVertex,-0.805,3.556,2.80,0,0,1
+AddVertex,-0.88,  3.545,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.8,  1
+SetTextureCoordinates,1,0.8,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-0.88,  3.54,4.55,0,0,1
+AddVertex,-1.0205,3.49,4.55,0,0,1
+AddVertex,-1.0205,3.503,2.80,0,0,1
+AddVertex,-0.88,  3.545,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.5,  1
+SetTextureCoordinates,1,0.5,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,;;reto esquerdo
+AddVertex,-1.0025,3.49,4.55,0,0,1
+AddVertex,-1.0025,3.503,4.55,0,0,1
+AddVertex,-1.0025,3.503,2.80,0,0,1
+AddVertex,-1.0025,3.49,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetDecalTransparentColor,0,255,0,
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,-1.50,3.272,4.55,0,0,1
+AddVertex,-1.45,3.313,4.55,0,0,1
+AddVertex,-1.45,3.32,2.80,0,0,1
+AddVertex,-1.50,3.27,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0.83,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0.83,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.38,3.362,4.55,0,0,1
+AddVertex,-1.45,3.313,4.55,0,0,1
+AddVertex,-1.45,3.32,2.80,0,0,1
+AddVertex,-1.38,3.36,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.83,  1
+SetTextureCoordinates,1,0.83,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.38,3.362,4.55,0,0,1
+AddVertex,-1.30,3.398,4.55,0,0,1
+AddVertex,-1.30,3.398,2.80,0,0,1
+AddVertex,-1.38,3.36,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,0.8,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0.8,0
+Setcolor,195,195,195,
+
+CreateMeshBuilder,
+AddVertex,-1.19,3.44,4.55,0,0,1
+AddVertex,-1.30,3.398,4.55,0,0,1
+AddVertex,-1.30,3.398,2.80,0,0,1
+AddVertex,-1.19,3.44,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.7,  1
+SetTextureCoordinates,1,0.7,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+
+CreateMeshBuilder,
+AddVertex,-1.19,3.44,4.55,0,0,1
+AddVertex,-1.0,3.498,4.55,0,0,1
+AddVertex,-1.0,3.498,2.80,0,0,1
+AddVertex,-1.19,3.44,2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,teto.png,
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,2,0.5,  1
+SetTextureCoordinates,1,0.5,  0
+SetTextureCoordinates,0,1,0
+Setcolor,195,195,195,
+
+;;fundo DIREITO
+ 
+CreateMeshBuilder,
+AddVertex, 0.745, 3.27, 2.80,0,0,1
+AddVertex, 1.5, 3.27, 2.80,0,0,1
+AddVertex, 1.5, 1.00, 2.80,0,0,1
+AddVertex, 0.745, 1.00, 2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+CreateMeshBuilder,
+AddVertex, 0.0, 3.27, 2.80,0,0,1
+AddVertex, 1.45, 3.27, 2.80,0,0,1
+AddVertex, 1.45, 3.32, 2.80,0,0,1
+AddVertex, 0.0, 3.32, 2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+;; PONTA
+CreateMeshBuilder,
+AddVertex, 1.45, 3.27, 2.80,0,0,1
+AddVertex, 1.5, 3.27, 2.80,0,0,1
+AddVertex, 1.5, 3.27, 2.80,0,0,1
+AddVertex, 1.45, 3.32, 2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+
+
+CreateMeshBuilder,
+AddVertex, 1.25, 3.42, 2.80,0,0,1
+AddVertex, 1.38, 3.362, 2.80,0,0,1
+AddVertex, 1.45, 3.32, 2.80,0,0,1
+AddVertex, 1.25, 3.32, 2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+Setcolor,235,235,235,
+
+
+CreateMeshBuilder,
+AddVertex, 1.0, 3.51, 2.80,0,0,1
+AddVertex, 1.25, 3.42, 2.80,0,0,1
+AddVertex, 1.25, 3.32, 2.80,0,0,1
+AddVertex, 1.0, 3.32, 2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+CreateMeshBuilder,
+AddVertex, 0.80, 3.57, 2.80,0,0,1
+AddVertex, 1.0, 3.51, 2.80,0,0,1
+AddVertex, 1.0, 3.32, 2.80,0,0,1
+AddVertex, 0.80, 3.32, 2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+Setcolor,235,235,235,
+
+CreateMeshBuilder,
+AddVertex, 0.80, 3.57,2.80,0,0,1
+AddVertex, 0.0,   3.62,      2.80,0,0,1
+AddVertex, 0.0,   3.32,    2.80,0,0,1
+AddVertex, 0.80, 3.32,    2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+;; fundo ESQUERDO
+
+ 
+CreateMeshBuilder,
+AddVertex, -0.745, 3.27, 2.80,0,0,1
+AddVertex, -1.5, 3.27, 2.80,0,0,1
+AddVertex, -1.5, 1.00, 2.80,0,0,1
+AddVertex, -0.745, 1.00, 2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+CreateMeshBuilder,
+AddVertex, -0.0, 3.27, 2.80,0,0,1
+AddVertex, -1.45, 3.27, 2.80,0,0,1
+AddVertex, -1.45, 3.32, 2.80,0,0,1
+AddVertex, -0.0, 3.32, 2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+;; PONTA
+CreateMeshBuilder,
+AddVertex, -1.45, 3.27, 2.80,0,0,1
+AddVertex, -1.5, 3.27, 2.80,0,0,1
+AddVertex, -1.5, 3.27, 2.80,0,0,1
+AddVertex, -1.45, 3.32, 2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+
+
+CreateMeshBuilder,
+AddVertex, -1.25, 3.42, 2.80,0,0,1
+AddVertex, -1.38, 3.362, 2.80,0,0,1
+AddVertex, -1.45, 3.32, 2.80,0,0,1
+AddVertex, -1.25, 3.32, 2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+Setcolor,235,235,235,
+
+
+CreateMeshBuilder,
+AddVertex, -1.0, 3.51, 2.80,0,0,1
+AddVertex, -1.25, 3.42, 2.80,0,0,1
+AddVertex, -1.25, 3.32, 2.80,0,0,1
+AddVertex, -1.0, 3.32, 2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+CreateMeshBuilder,
+AddVertex, -0.80, 3.57, 2.80,0,0,1
+AddVertex, -1.0, 3.51, 2.80,0,0,1
+AddVertex, -1.0, 3.32, 2.80,0,0,1
+AddVertex, -0.80, 3.32, 2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+Setcolor,235,235,235,
+
+CreateMeshBuilder,
+AddVertex, -0.80, 3.57,2.80,0,0,1
+AddVertex, -0.0,   3.62,      2.80,0,0,1
+AddVertex, -0.0,   3.32,    2.80,0,0,1
+AddVertex, -0.80, 3.32,    2.80,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,fundo.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0,0
+Setcolor,235,235,235,
+
+;;piso
+CreateMeshBuilder,;;menor para colocar o bagui da passagem
+AddVertex,-1.40, 1.15,4.55,0,0,1
+AddVertex, 1.40, 1.15,4.55,0,0,1
+AddVertex, 1.40, 1.15,3.00,0,0,1
+AddVertex,-1.40, 1.15,3.00,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture,piso.png,piso.png
+SetTextureCoordinates,3,0,2
+SetTextureCoordinates,2,3,2
+SetTextureCoordinates,1,3,0
+SetTextureCoordinates,0,0,0
+SetColor,125,125,125
+
+CreateMeshBuilder,;;menor para colocar o bagui da passagem
+AddVertex,-1.50, 1.145,4.55,0,0,1
+AddVertex, 1.50, 1.145,4.55,0,0,1
+AddVertex, 1.50, 1.145,3.00,0,0,1
+AddVertex,-1.50, 1.145,3.00,0,0,1
+AddFace,3,2,1,0,
+SetColor,12,12,12
+
+CreateMeshBuilder;;piso das paredes
+AddVertex,1.35, 1.15,3.75,0,0,1
+AddVertex,1.35, 1.30,3.75,0,0,1
+AddVertex,1.35, 1.30,4.55,0,0,1
+AddVertex,1.35, 1.15,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,piso.png,piso.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,125,125,125
+CreateMeshBuilder;;piso das paredes
+AddVertex,-1.35, 1.15,3.75,0,0,1
+AddVertex,-1.35, 1.30,3.75,0,0,1
+AddVertex,-1.35, 1.30,4.55,0,0,1
+AddVertex,-1.35, 1.15,4.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,piso.png,piso.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,125,125,125
+;;passagem dos carros Interior
+CreateMeshBuilder,
+AddVertex,0.60,1.15,2.80,0,0,1
+AddVertex,0.75,1.50,2.80,0,0,1
+AddVertex,0.75,1.50,2.25,0,0,1
+AddVertex,0.60,1.15,2.25,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,objetos\pass_car.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,2,1
+SetTextureCoordinates,3,2,0
+Setcolor,165,165,165,
+CreateMeshBuilder,
+AddVertex,0.75,1.50,2.80,0,0,1
+AddVertex,0.75,3.30,2.80,0,0,1
+AddVertex,0.75,3.30,2.25,0,0,1
+AddVertex,0.75,1.50,2.25,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,objetos\pass_car.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,2,1
+SetTextureCoordinates,3,2,0
+Setcolor,165,165,165,
+;;
+CreateMeshBuilder,
+AddVertex,-0.60,1.15,2.80,0,0,1
+AddVertex,-0.75,1.50,2.80,0,0,1
+AddVertex,-0.75,1.50,2.25,0,0,1
+AddVertex,-0.60,1.15,2.25,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,objetos\pass_car.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,2,1
+SetTextureCoordinates,3,2,0
+Setcolor,165,165,165,
+CreateMeshBuilder,
+AddVertex,-0.75,1.50,2.80,0,0,1
+AddVertex,-0.75,3.30,2.80,0,0,1
+AddVertex,-0.75,3.30,2.25,0,0,1
+AddVertex,-0.75,1.50,2.25,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,objetos\pass_car.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,2,1
+SetTextureCoordinates,3,2,0
+Setcolor,165,165,165,
+
+CreateMeshBuilder,
+AddVertex,0.755,1.125,2.25,0,0,1
+AddVertex,0.749,3.30,2.25,0,0,1
+AddVertex,0.755,3.30,2.25,0,0,1
+AddVertex,0.749,1.125,2.25,0,0,1
+AddFace2,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+Setcolor,225,225,225,
+;;passagem dos carros Exterior
+CreateMeshBuilder,
+AddVertex,0.755,1.125,2.80,0,0,1
+AddVertex,0.755,3.30,2.80,0,0,1
+AddVertex,0.755,3.30,2.25,0,0,1
+AddVertex,0.755,1.125,2.25,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+CreateMeshBuilder,
+AddVertex,0.70,1.05,2.80,0,0,1
+AddVertex,0.749,1.125,2.80,0,0,1
+AddVertex,0.749,1.125,2.25,0,0,1
+AddVertex,0.70,1.05,2.25,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+CreateMeshBuilder,
+AddVertex,0.60,1.025,2.80,0,0,1
+AddVertex,0.70,1.05,2.80,0,0,1
+AddVertex,0.70,1.05,2.25,0,0,1
+AddVertex,0.60,1.025,2.25,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+CreateMeshBuilder,;;meio baixo (Esse nγo mexe)
+AddVertex,-0.60,1.025,2.80,0,0,1
+AddVertex,0.60,1.025,2.80,0,0,1
+AddVertex,0.60,1.025,2.25,0,0,1
+AddVertex,-0.60,1.025,2.25,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+
+CreateMeshBuilder,
+AddVertex,-0.755,1.125,2.25,0,0,1
+AddVertex,-0.749,3.30,2.25,0,0,1
+AddVertex,-0.755,3.30,2.25,0,0,1
+AddVertex,-0.749,1.125,2.25,0,0,1
+AddFace2,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+Setcolor,225,225,225,
+;;
+CreateMeshBuilder,
+AddVertex,-0.755,1.125,2.80,0,0,1
+AddVertex,-0.755,3.30,2.80,0,0,1
+AddVertex,-0.755,3.30,2.25,0,0,1
+AddVertex,-0.755,1.125,2.25,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+CreateMeshBuilder,
+AddVertex,-0.70,1.05,2.80,0,0,1
+AddVertex,-0.749,1.125,2.80,0,0,1
+AddVertex,-0.749,1.125,2.25,0,0,1
+AddVertex,-0.70,1.05,2.25,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+CreateMeshBuilder,
+AddVertex,-0.60,1.025,2.80,0,0,1
+AddVertex,-0.70,1.05,2.80,0,0,1
+AddVertex,-0.70,1.05,2.25,0,0,1
+AddVertex,-0.60,1.025,2.25,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+;;meio cima
+CreateMeshBuilder,
+AddVertex,-0.749,3.30,2.80,0,0,1
+AddVertex,-0.725,3.325,2.80,0,0,1
+AddVertex,-0.725,3.325,2.25,0,0,1
+AddVertex,-0.749,3.30,2.25,0,0,1
+AddFace2,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+CreateMeshBuilder,
+AddVertex,-0.725,3.325,2.80,0,0,1
+AddVertex,-0.70,3.335,2.80,0,0,1
+AddVertex,-0.70,3.335,2.25,0,0,1
+AddVertex,-0.725,3.325,2.25,0,0,1
+AddFace2,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+CreateMeshBuilder,;;meio q naum mexe
+AddVertex,0.725,3.335,2.80,0,0,1
+AddVertex,-0.725,3.335,2.80,0,0,1
+AddVertex,-0.725,3.335,2.25,0,0,1
+AddVertex,0.725,3.335,2.25,0,0,1
+AddFace2,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+;;
+CreateMeshBuilder,
+AddVertex,0.749,3.30,2.80,0,0,1
+AddVertex,0.725,3.325,2.80,0,0,1
+AddVertex,0.725,3.325,2.25,0,0,1
+AddVertex,0.749,3.30,2.25,0,0,1
+AddFace2,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+CreateMeshBuilder,
+AddVertex,0.725,3.325,2.80,0,0,1
+AddVertex,0.70,3.335,2.80,0,0,1
+AddVertex,0.70,3.335,2.25,0,0,1
+AddVertex,0.725,3.325,2.25,0,0,1
+AddFace2,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\pass_carext.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,4,1
+SetTextureCoordinates,3,4,0
+Setcolor,225,225,225,
+
+;;Piso da passagem dos carros interior
+CreateMeshBuilder,
+AddVertex,-0.75, 1.165,2.80,0,0,1
+AddVertex, 0.75, 1.165,2.80,0,0,1
+AddVertex, 0.75, 1.15,3.00,0,0,1
+AddVertex,-0.75, 1.15,3.00,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,objetos\pass_pisometal.png,objetos\pass_pisometal.png
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+Setcolor,125,125,125,
+CreateMeshBuilder,
+AddVertex,-0.65, 1.165,2.80,0,0,1
+AddVertex, 0.65, 1.165,2.80,0,0,1
+AddVertex, 0.65, 1.165,2.25,0,0,1
+AddVertex,-0.65, 1.165,2.25,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_pisocar.png,objetos\pass_pisocar.png
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+setcolor,165,165,165,
+CreateMeshBuilder,
+AddVertex,-0.76, 1.165,2.25,0,0,1
+AddVertex, 0.76, 1.165,2.25,0,0,1
+AddVertex, 0.76, 1.15,1.98,0,0,1
+AddVertex,-0.76, 1.15,1.98,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_pisometal.png,objetos\pass_pisometal.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+Setcolor,125,125,125,
+
+CreateMeshBuilder,
+AddVertex,-0.76, 1.15,2.0,0,0,1
+AddVertex, 0.76, 1.15,2.0,0,0,1
+AddVertex, 0.76, 1.14,1.95,0,0,1
+AddVertex,-0.76, 1.145,1.95,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\pass_pisometal.png,objetos\pass_pisometal.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+Setcolor,125,125,125,
+
+;;
+CreateMeshBuilder,;;baixo
+AddVertex,-0.75, 1.50, 2.25,0,0,1
+AddVertex,-0.75, 1.50, 2.25,0,0,1
+AddVertex,-0.60, 1.15, 2.25,0,0,1
+AddVertex,-0.75, 1.15, 2.25,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,objetos\pass_car.png,
+SetTextureCoordinates,0,0.5,0.1
+SetTextureCoordinates,1,1,0.1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0.5,0
+Setcolor,135,135,135,
+CreateMeshBuilder,;;baixo
+AddVertex,-0.75, 1.50, 2.80,0,0,1
+AddVertex,-0.75, 1.50, 2.80,0,0,1
+AddVertex,-0.60, 1.15, 2.80,0,0,1
+AddVertex,-0.75, 1.15, 2.80,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,objetos\pass_car.png,
+SetTextureCoordinates,0,0.5,0.1
+SetTextureCoordinates,1,1,0.1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0.5,0
+Setcolor,135,135,135,
+CreateMeshBuilder,;;baixo
+AddVertex,0.75, 1.50, 2.25,0,0,1
+AddVertex,0.75, 1.50, 2.25,0,0,1
+AddVertex,0.60, 1.15, 2.25,0,0,1
+AddVertex,0.75, 1.15, 2.25,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,objetos\pass_car.png,
+SetTextureCoordinates,0,0.5,0.1
+SetTextureCoordinates,1,1,0.1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0.5,0
+Setcolor,135,135,135,
+CreateMeshBuilder,;;baixo
+AddVertex,0.75, 1.50, 2.80,0,0,1
+AddVertex,0.75, 1.50, 2.80,0,0,1
+AddVertex,0.60, 1.15, 2.80,0,0,1
+AddVertex,0.75, 1.15, 2.80,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,objetos\pass_car.png,objetos\pass_car.png,
+SetTextureCoordinates,0,0.5,0.1
+SetTextureCoordinates,1,1,0.1
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,0.5,0
+Setcolor,135,135,135,
+
+;;interior
+CreateMeshBuilder,
+AddVertex,-1.40, 2.05,4.55,0,0,1
+AddVertex,-1.35, 1.30,4.55,0,0,1
+AddVertex,-1.35, 1.30,3.75,0,0,1
+AddVertex,-1.40, 2.05,3.75,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,;;0
+AddVertex,-1.40, 2.25,4.55,0,0,1
+AddVertex,-1.40, 2.05,4.55,0,0,1
+AddVertex,-1.40, 2.05,3.75,0,0,1
+AddVertex,-1.40, 2.25,3.75,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,
+AddVertex,-1.34, 2.90,4.55,0,0,1
+AddVertex,-1.40, 2.25,4.55,0,0,1
+AddVertex,-1.40, 2.25,3.75,0,0,1
+AddVertex,-1.34, 2.90,3.75,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,
+AddVertex,-1.36, 2.985,4.55,0,0,1
+AddVertex,-1.34, 2.90,4.55,0,0,1
+AddVertex,-1.34, 2.90,3.75,0,0,1
+AddVertex,-1.36, 2.985,3.75,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+
+
+
+;;tampa do bagui na parte de cima
+CreateMeshBuilder
+AddVertex,-1.36, 3.025,3.75,0,0,1
+AddVertex,-1.36, 2.985,3.75,0,0,1
+AddVertex,-1.36, 2.985,4.55,0,0,1
+AddVertex,-1.36, 3.025,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int2.png,int2.png,
+SetTextureCoordinates,0,0.9,1
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,0,0
+SetTextureCoordinates,3,0.9,0
+
+SetColor,172,172,172
+CreateMeshBuilder
+AddVertex,-1.35, 3.035,3.75,0,0,1
+AddVertex,-1.36, 3.025,3.75,0,0,1
+AddVertex,-1.36, 3.025,4.55,0,0,1
+AddVertex,-1.35, 3.035,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+CreateMeshBuilder;;Mudar textura!
+AddVertex,-1.23, 3.275,3.75,0,0,1
+AddVertex,-1.35, 3.035,3.75,0,0,1
+AddVertex,-1.35, 3.035,4.55,0,0,1
+AddVertex,-1.23, 3.275,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+
+CreateMeshBuilder;;Mudar textura (Colocar de lampada)!
+AddVertex,-0.72, 3.2751,3.75,0,0,1
+AddVertex,-1.23, 3.2751,3.75,0,0,1
+AddVertex,-1.23, 3.2751,4.55,0,0,1
+AddVertex,-0.72, 3.2751,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+CreateMeshBuilder;;Mudar textura (Modelar o AC)!
+AddVertex,-0.5, 3.2852,3.70,0,0,1
+AddVertex,-0.75, 3.2852,3.70,0,0,1
+AddVertex,-0.75, 3.2852,4.55,0,0,1
+AddVertex,-0.5, 3.2852,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,objetos\ac.png,objetos\ac.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,2
+
+SetTextureCoordinates,2,1,2
+SetTextureCoordinates,3,1,0
+SetColor,150,150,150
+
+CreateMeshBuilder;;Mudar textura (metade do meio)!
+AddVertex, 0.0, 3.275,3.75,0,0,1
+AddVertex,-0.5, 3.275,3.75,0,0,1
+AddVertex,-0.5, 3.275,4.55,0,0,1
+AddVertex, 0.0, 3.27,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+CreateMeshBuilder;;Mudar textura (metade do meio)!
+AddVertex, 0.5, 3.275,3.75,0,0,1
+AddVertex, 0.0, 3.275,3.75,0,0,1
+AddVertex, 0.0, 3.27,4.55,0,0,1
+AddVertex, 0.5, 3.275,4.55,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+
+;;outro lado
+CreateMeshBuilder,
+AddVertex,1.40, 2.05,4.55,0,0,1
+AddVertex,1.35, 1.30,4.55,0,0,1
+AddVertex,1.35, 1.30,3.75,0,0,1
+AddVertex,1.40, 2.05,3.75,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,;;0
+AddVertex,1.40, 2.25,4.55,0,0,1
+AddVertex,1.40, 2.05,4.55,0,0,1
+AddVertex,1.40, 2.05,3.75,0,0,1
+AddVertex,1.40, 2.25,3.75,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+CreateMeshBuilder,
+AddVertex,1.34, 2.90,4.55,0,0,1
+AddVertex,1.40, 2.25,4.55,0,0,1
+AddVertex,1.40, 2.25,3.75,0,0,1
+AddVertex,1.34, 2.90,3.75,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,175,175,175
+
+CreateMeshBuilder,
+AddVertex,1.36, 2.985,4.55,0,0,1
+AddVertex,1.34, 2.90,4.55,0,0,1
+AddVertex,1.34, 2.90,3.75,0,0,1
+AddVertex,1.36, 2.985,3.75,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+;;
+
+
+;;tampa do bagui na parte de cima
+CreateMeshBuilder
+AddVertex,1.36, 3.025,3.75,0,0,1
+AddVertex,1.36, 2.985,3.75,0,0,1
+AddVertex,1.36, 2.985,4.55,0,0,1
+AddVertex,1.36, 3.025,4.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int2.png,int2.png,
+SetTextureCoordinates,0,0.9,1
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,0,0
+SetTextureCoordinates,3,0.9,0
+
+SetColor,172,172,172
+CreateMeshBuilder
+AddVertex,1.35, 3.035,3.75,0,0,1
+AddVertex,1.36, 3.025,3.75,0,0,1
+AddVertex,1.36, 3.025,4.55,0,0,1
+AddVertex,1.35, 3.035,4.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+CreateMeshBuilder;;Mudar textura!
+AddVertex,1.23, 3.275,3.75,0,0,1
+AddVertex,1.35, 3.035,3.75,0,0,1
+AddVertex,1.35, 3.035,4.55,0,0,1
+AddVertex,1.23, 3.275,4.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+
+CreateMeshBuilder
+AddVertex,0.72, 3.2751,3.75,0,0,1
+AddVertex,1.23, 3.2751,3.75,0,0,1
+AddVertex,1.23, 3.2751,4.55,0,0,1
+AddVertex,0.72, 3.2751,4.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+CreateMeshBuilder;;Mudar textura (Modelar o AC)!
+AddVertex,0.5, 3.2852,3.70,0,0,1
+AddVertex,0.72, 3.2852,3.70,0,0,1
+AddVertex,0.72, 3.2852,4.55,0,0,1
+AddVertex,0.5, 3.2852,4.55,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\ac.png,objetos\ac.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,2
+
+SetTextureCoordinates,2,1,2
+SetTextureCoordinates,3,1,0
+SetColor,150,150,150
+CreateMeshBuilder,;;lampada e ac (Local)
+AddVertex,-1.40, 3.275,3.75,0,0,1
+AddVertex, 0.00, 3.275,3.75,0,0,1
+AddVertex, 0.00, 3.275,3.15,0,0,1
+AddVertex,-1.40, 3.275,3.15,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetColor,168,168,168
+CreateMeshBuilder,;;lampada e ac (Local)
+AddVertex, 0.00, 3.275,3.75,0,0,1
+AddVertex, 1.40, 3.275,3.75,0,0,1
+AddVertex, 1.40, 3.275,3.15,0,0,1
+AddVertex, 0.00, 3.275,3.15,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetColor,168,168,168
+
+;;Baguilo da passagem dos carros #tenso
+CreateMeshBuilder
+AddVertex,-0.75, 3.275,2.85,0,0,1
+AddVertex,-0.75, 1.30,2.85,0,0,1
+AddVertex,-0.75, 1.30,3.75,0,0,1
+AddVertex,-0.75, 3.275,3.75,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,painel.png,painel.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,172,172,172
+
+CreateMeshBuilder
+AddVertex,-0.749, 1.55,3.2,0,0,1
+AddVertex,-0.749, 1.40,3.2,0,0,1
+AddVertex,-0.749, 1.40,3.4,0,0,1
+AddVertex,-0.749, 1.55,3.4,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,grade.png,grade.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,172,172,172
+
+
+CreateMeshBuilder
+AddVertex,-0.75, 1.15,2.85,0,0,1
+AddVertex,-0.75, 1.30,2.85,0,0,1
+AddVertex,-0.75, 1.30,3.75,0,0,1
+AddVertex,-0.75, 1.15,3.75,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,piso.png,piso.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,125,125,125
+CreateMeshBuilder,;;Nγo mexe
+AddVertex,-0.75, 3.275,2.80,0,0,1
+AddVertex,-0.75, 1.15,2.80,0,0,1
+AddVertex,-0.75, 1.15,2.85,0,0,1
+AddVertex,-0.75, 3.275,2.85,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,fundo.png,fundo.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,172,172,172
+
+CreateMeshBuilder,
+;;reto
+AddVertex, -0.75,1.30,3.75,0,0,1
+AddVertex, -0.75,3.275,3.75,0,0,1
+AddVertex, -1.45,3.275,3.75,0,0,1
+AddVertex, -1.45,1.30,3.75,0,0,1
+AddFace2,3,2,1,0
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,170,170,170
+
+CreateMeshBuilder,
+;;reto
+AddVertex, -0.98,2.77,3.751,0,0,1
+AddVertex, -0.98,2.88,3.751,0,0,1
+AddVertex, -1.08,2.88,3.751,0,0,1
+AddVertex, -1.08,2.77,3.751,0,0,1
+AddFace2,3,2,1,0
+LoadTexture,objetos\placa_ext.png,objetos\placa_ext.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,1
+SetColor,172,172,172
+SetDecalTransparentColor,0
+
+CreateMeshBuilder,
+;;reto
+AddVertex, -0.91,2.20,3.751,0,0,1
+AddVertex, -0.91,2.75,3.751,0,0,1
+AddVertex, -1.15,2.75,3.751,0,0,1
+AddVertex, -1.15,2.20,3.751,0,0,1
+AddFace2,3,2,1,0
+LoadTexture,objetos\int_ext.png,objetos\int_ext.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,1
+SetColor,172,172,172
+
+CreateMeshBuilder,
+;;reto
+AddVertex, -0.75,1.15,3.75,0,0,1
+
+AddVertex, -0.75,1.30,3.75,0,0,1
+
+AddVertex, -1.35,1.30,3.75,0,0,1
+
+AddVertex, -1.35,1.15,3.75,0,0,1
+
+AddFace,0,1,2,3
+LoadTexture,piso.png,piso.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,125,125,125
+;;
+CreateMeshBuilder
+AddVertex,0.75, 3.275,2.85,0,0,1
+AddVertex,0.75, 1.30,2.85,0,0,1
+AddVertex,0.75, 1.30,3.75,0,0,1
+AddVertex,0.75, 3.275,3.75,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,painel.png,painel.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,172,172,172
+
+CreateMeshBuilder
+AddVertex,0.749, 1.55,3.2,0,0,1
+AddVertex,0.749, 1.40,3.2,0,0,1
+AddVertex,0.749, 1.40,3.4,0,0,1
+AddVertex,0.749, 1.55,3.4,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,grade.png,grade.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,172,172,172
+
+
+CreateMeshBuilder
+AddVertex,0.749, 2.55,3.10,0,0,1
+AddVertex,0.749, 2.10,3.10,0,0,1
+AddVertex,0.749, 2.10,3.5,0,0,1
+AddVertex,0.749, 2.55,3.5,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,objetos\sms.png,objetos\sms.png,
+SetTextureCoordinates,0,1,0
+SetTextureCoordinates,1,1,1
+SetTextureCoordinates,2,0,1
+SetTextureCoordinates,3,0,0
+SetColor,172,172,172
+
+
+CreateMeshBuilder
+AddVertex,0.75, 1.15,2.85,0,0,1
+AddVertex,0.75, 1.30,2.85,0,0,1
+AddVertex,0.75, 1.30,3.75,0,0,1
+AddVertex,0.75, 1.15,3.75,0,0,1
+AddFace,3,2,1,0
+GenerateNormals,
+LoadTexture,piso.png,piso.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,125,125,125
+CreateMeshBuilder
+AddVertex,0.75, 3.275,2.80,0,0,1
+AddVertex,0.75, 1.15,2.80,0,0,1
+AddVertex,0.75, 1.15,2.85,0,0,1
+AddVertex,0.75, 3.275,2.85,0,0,1
+AddFace,0,1,2,3
+GenerateNormals,
+LoadTexture,fundo.png,fundo.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,172,172,172
+CreateMeshBuilder,
+;;reto
+AddVertex, 0.75,1.30,3.75,0,0,1
+
+AddVertex, 0.75,3.275,3.75,0,0,1
+
+AddVertex, 1.45,3.275,3.75,0,0,1
+
+AddVertex, 1.45,1.30,3.75,0,0,1
+
+AddFace2,3,2,1,0
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,172,172,172
+CreateMeshBuilder,
+;;reto
+AddVertex, 0.75,1.15,3.75,0,0,1
+
+AddVertex, 0.75,1.30,3.75,0,0,1
+
+AddVertex, 1.35,1.30,3.75,0,0,1
+
+AddVertex, 1.35,1.15,3.75,0,0,1
+
+AddFace,3,2,1,0
+LoadTexture,piso.png,piso.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,125,125,125
+
+;;parte de cima onde fica o indicador e etc...
+CreateMeshBuilder,
+;;reto
+AddVertex,-0.75,3.00,3.15,0,0,1
+
+AddVertex,-0.75,3.275,3.15,0,0,1
+
+AddVertex, 0.75,3.275,3.15,0,0,1
+
+AddVertex, 0.75,3.00,3.15,0,0,1
+
+AddFace,3,2,1,0
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+CreateMeshBuilder,
+AddVertex,-1.40, 3.00,3.15,0,0,1
+AddVertex, 1.40, 3.00,3.15,0,0,1
+AddVertex, 1.40, 3.00,2.85,0,0,1
+AddVertex,-1.40, 3.00,2.85,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetColor,168,168,168
+
+CreateMeshBuilder,
+;;reto
+AddVertex,-0.75,3.00,2.85,0,0,1
+
+AddVertex,-0.75,3.275,2.85,0,0,1
+
+AddVertex, 0.75,3.275,2.85,0,0,1
+
+AddVertex, 0.75,3.00,2.85,0,0,1
+
+AddFace,0,1,2,3
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,0,1
+
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,1,0
+SetColor,168,168,168
+
+CreateMeshBuilder,
+AddVertex,-1.40, 3.00,2.85,0,0,1
+AddVertex, 1.40, 3.00,2.85,0,0,1
+AddVertex, 1.40, 3.30,2.80,0,0,1
+AddVertex,-1.40, 3.30,2.80,0,0,1
+AddFace,3,2,1,0,
+GenerateNormals,
+LoadTexture,int.png,int.png,
+SetTextureCoordinates,3,0,1
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,0,0,0
+SetColor,168,168,168
+
+
+;;lampada e ac
+CreateMeshBuilder,;;lampada e ac (Local)
+AddVertex, 0.75, 3.274,3.80,0,0,1
+AddVertex,-0.85, 3.274,3.80,0,0,1
+AddVertex,-0.85, 3.274,3.40,0,0,1
+AddVertex, 0.75, 3.274,3.40,0,0,1
+AddFace2,3,2,1,0,
+GenerateNormals,
+LoadTexture,objetos\lam.png,objetos\lam.png,
+SetTextureCoordinates,0,0,0
+SetTextureCoordinates,1,1,0
+SetTextureCoordinates,2,1,1
+SetTextureCoordinates,3,0,1
+SetDecalTransparentColor,0
+
+
+CreateMeshBuilder,
+;;reto
+AddVertex,-0.32,3.045,3.151,0,0,1
+
+AddVertex,-0.32,3.127,3.151,0,0,1
+
+AddVertex, 0.32,3.127,3.151,0,0,1
+
+AddVertex, 0.32,3.045,3.151,0,0,1
+
+AddFace,3,2,1,0
+SetColor,15,15,15
+
+CreateMeshBuilder,
+;;placa
+AddVertex,0.65,3.10,3.151
+AddVertex,0.65,3.25,3.151
+AddVertex,0.40,3.25,3.151
+AddVertex,0.40,3.10,3.151
+AddFace,0,1,2,3
+SetColor,175,175,175
+GenerateNormals,
+LoadTexture,objetos\pl_ext.png,objetos\pl_ext.png,
+SetTextureCoordinates,0,0,1
+SetTextureCoordinates,1,0,0
+SetTextureCoordinates,2,1,0
+SetTextureCoordinates,3,1,1
+SetDecalTransparentColor,255,255,255
+
+;;;
+
+
+;; ========================================== ;;
+;; Direcionadores de Ar Condicionado By RNT 
+;; ========================================== ;;
+
+CreateMeshBuilder,
+AddVertex,   0.525, 3.275,3.75, 0,0,1
+AddVertex,   0.546875, 3.285,3.75, 0,0,1
+AddVertex,   0.546875, 3.285,4.60, 0,0,1
+AddVertex,   0.525, 3.275,4.60, 0,0,1
+AddVertex,   0.5595, 3.275,3.75, 0,0,1
+AddVertex,   0.5795, 3.285,3.75, 0,0,1
+AddVertex,   0.5795, 3.285,4.60, 0,0,1
+AddVertex,   0.5595, 3.275,4.60, 0,0,1
+
+AddVertex,   0.596875, 3.275,3.75, 0,0,1
+AddVertex,   0.6125, 3.285,3.75, 0,0,1
+AddVertex,   0.6125, 3.285,4.60, 0,0,1
+AddVertex,   0.596875, 3.275,4.60, 0,0,1
+
+
+AddVertex,   0.643125, 3.275,3.75, 0,0,1
+AddVertex,   0.6275, 3.285,3.75, 0,0,1
+AddVertex,   0.6275, 3.285,4.60, 0,0,1
+AddVertex,   0.643125, 3.275,4.60, 0,0,1
+
+
+AddVertex,   0.67925, 3.275,3.75, 0,0,1
+AddVertex,   0.65925, 3.285,3.75, 0,0,1
+AddVertex,   0.65925, 3.285,4.60, 0,0,1
+AddVertex,   0.67925, 3.275,4.60, 0,0,1
+
+AddVertex,   0.71, 3.275,3.75, 0,0,1
+AddVertex,   0.691875, 3.285,3.75, 0,0,1
+AddVertex,   0.691875, 3.285,4.60, 0,0,1
+AddVertex,   0.71, 3.275,4.60, 0,0,1
+
+addface2,0,1,2,3,
+
+addface2,4,5,6,7,
+
+addface2,8,9,10,11,
+
+addface2,12,13,14,15,
+
+addface2,16,17,18,19,
+
+addface2,20,21,22,23,
+
+
+
+LoadTexture,objetos\ban1.png,objetos\ban1.png,
+SetColor,190,190,190
+
+CreateMeshBuilder,
+AddVertex,   0.50, 3.275,3.75, 0,0,1
+AddVertex,   0.525, 3.275,3.75, 0,0,1
+AddVertex,   0.525, 3.275,4.60, 0,0,1
+AddVertex,   0.50, 3.275,4.60, 0,0,1
+
+AddVertex,   0.6275, 3.285,3.75, 0,0,1
+AddVertex,   0.6125, 3.285,3.75, 0,0,1
+AddVertex,   0.6125, 3.285,4.60, 0,0,1
+AddVertex,   0.6275, 3.285,4.60, 0,0,1
+
+AddVertex,   0.71, 3.275,3.75, 0,0,1
+AddVertex,   0.735, 3.275,3.75, 0,0,1
+AddVertex,   0.735, 3.275,4.60, 0,0,1
+AddVertex,   0.71, 3.275,4.60, 0,0,1
+addface2,0,1,2,3,
+
+addface2,4,5,6,7,
+
+addface2,8,9,10,11,
+
+LoadTexture,objetos\ban1.png,objetos\ban1.png,
+SetColor,185,185,185
+
+
+CreateMeshBuilder,
+AddVertex,   0.50, 3.275,3.75, 0,0,1
+AddVertex,   0.50, 3.285,3.75, 0,0,1
+AddVertex,   0.50, 3.285,4.60, 0,0,1
+AddVertex,   0.50, 3.275,4.60, 0,0,1
+AddVertex,   0.735, 3.275,3.75, 0,0,1
+AddVertex,   0.735, 3.285,3.75, 0,0,1
+AddVertex,   0.735, 3.285,4.60, 0,0,1
+AddVertex,   0.735, 3.275,4.60, 0,0,1
+addface2,0,1,2,3,
+
+addface2,4,5,6,7,
+LoadTexture,objetos\ban1.png,objetos\ban1.png,
+SetColor,175,175,175
+
+
+
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> outro lado
+
+;; ========================================== ;;
+;; Direcionadores de Ar Condicionado By GBS kk
+;; ========================================== ;;
+
+CreateMeshBuilder,
+AddVertex,   -0.525, 3.275,3.75, 0,0,1
+AddVertex,   -0.546875, 3.285,3.75, 0,0,1
+AddVertex,   -0.546875, 3.285,4.60, 0,0,1
+AddVertex,   -0.525, 3.275,4.60, 0,0,1
+AddVertex,   -0.5595, 3.275,3.75, 0,0,1
+AddVertex,   -0.5795, 3.285,3.75, 0,0,1
+AddVertex,   -0.5795, 3.285,4.60, 0,0,1
+AddVertex,   -0.5595, 3.275,4.60, 0,0,1
+
+AddVertex,   -0.596875, 3.275,3.75, 0,0,1
+AddVertex,   -0.6125, 3.285,3.75, 0,0,1
+AddVertex,   -0.6125, 3.285,4.60, 0,0,1
+AddVertex,   -0.596875, 3.275,4.60, 0,0,1
+
+
+AddVertex,   -0.643125, 3.275,3.75, 0,0,1
+AddVertex,   -0.6275, 3.285,3.75, 0,0,1
+AddVertex,   -0.6275, 3.285,4.60, 0,0,1
+AddVertex,   -0.643125, 3.275,4.60, 0,0,1
+
+
+AddVertex,   -0.67925, 3.275,3.75, 0,0,1
+AddVertex,   -0.65925, 3.285,3.75, 0,0,1
+AddVertex,   -0.65925, 3.285,4.60, 0,0,1
+AddVertex,   -0.67925, 3.275,4.60, 0,0,1
+
+AddVertex,   -0.71, 3.275,3.75, 0,0,1
+AddVertex,   -0.691875, 3.285,3.75, 0,0,1
+AddVertex,   -0.691875, 3.285,4.60, 0,0,1
+AddVertex,   -0.71, 3.275,4.60, 0,0,1
+
+addface2,0,1,2,3,
+
+addface2,4,5,6,7,
+
+addface2,8,9,10,11,
+
+addface2,12,13,14,15,
+
+addface2,16,17,18,19,
+
+addface2,20,21,22,23,
+
+
+
+LoadTexture,objetos\ban1.png,objetos\ban1.png,
+SetColor,190,190,190
+
+CreateMeshBuilder,
+AddVertex,   -0.50, 3.275,3.75, 0,0,1
+AddVertex,   -0.525, 3.275,3.75, 0,0,1
+AddVertex,   -0.525, 3.275,4.60, 0,0,1
+AddVertex,   -0.50, 3.275,4.60, 0,0,1
+
+AddVertex,   -0.6275, 3.285,3.75, 0,0,1
+AddVertex,   -0.6125, 3.285,3.75, 0,0,1
+AddVertex,   -0.6125, 3.285,4.60, 0,0,1
+AddVertex,   -0.6275, 3.285,4.60, 0,0,1
+
+AddVertex,   -0.71, 3.275,3.75, 0,0,1
+AddVertex,   -0.735, 3.275,3.75, 0,0,1
+AddVertex,   -0.735, 3.275,4.60, 0,0,1
+AddVertex,   -0.71, 3.275,4.60, 0,0,1
+addface2,0,1,2,3,
+
+addface2,4,5,6,7,
+
+addface2,8,9,10,11,
+
+LoadTexture,objetos\ban1.png,objetos\ban1.png,
+SetColor,185,185,185
+
+
+CreateMeshBuilder,
+AddVertex,   -0.50, 3.275,3.75, 0,0,1
+AddVertex,   -0.50, 3.285,3.75, 0,0,1
+AddVertex,   -0.50, 3.285,4.60, 0,0,1
+AddVertex,   -0.50, 3.275,4.60, 0,0,1
+AddVertex,   -0.735, 3.275,3.75, 0,0,1
+AddVertex,   -0.735, 3.285,3.75, 0,0,1
+AddVertex,   -0.735, 3.285,4.60, 0,0,1
+AddVertex,   -0.735, 3.275,4.60, 0,0,1
+addface2,0,1,2,3,
+
+addface2,4,5,6,7,
+
+SetColor,175,175,175
+LoadTexture,objetos\ban1.png,objetos\ban1.png,
+
+;;;;;;;;;;
+
+
+
+;;2
+CreateMeshBuilder,
+AddVertex, -0.78, 2.82,-1.33, 0,0,1
+AddVertex, -0.90, 2.82,-1.33, 0,0,1
+AddVertex, -0.90, 2.80,-1.31, 0,0,1
+AddVertex, -0.78, 2.80,-1.31, 0,0,1
+AddVertex, -0.78, 2.78,-1.33, 0,0,1
+AddVertex, -0.90, 2.78,-1.33, 0,0,1
+AddVertex, -0.90, 2.80,-1.35, 0,0,1
+AddVertex, -0.78, 2.80,-1.35, 0,0,1
+AddFace, 0,1,2,3,
+AddFace, 5,4,3,2,
+AddFace, 4,5,6,7,
+AddFace, 1,0,7,6
+GenerateNormals,
+SetColor,  155, 155, 155,
+LoadTexture, objetos\bal.png,objetos\bal.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,0,1,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,1,0,
+SetTextureCoordinates, 4,1,1,
+SetTextureCoordinates, 5,0,1,
+SetTextureCoordinates, 6,0,0,
+SetTextureCoordinates, 7,1,0,
+translate, 0.12, -0.08, 4.230,
+
+CreateMeshBuilder,
+AddVertex, -0.78, 2.82,-1.33, 0,0,1
+AddVertex, -0.90, 2.82,-1.33, 0,0,1
+AddVertex, -0.90, 2.80,-1.31, 0,0,1
+AddVertex, -0.78, 2.80,-1.31, 0,0,1
+AddVertex, -0.78, 2.78,-1.33, 0,0,1
+AddVertex, -0.90, 2.78,-1.33, 0,0,1
+AddVertex, -0.90, 2.80,-1.35, 0,0,1
+AddVertex, -0.78, 2.80,-1.35, 0,0,1
+AddFace, 0,1,2,3,
+AddFace, 5,4,3,2,
+AddFace, 4,5,6,7,
+AddFace, 1,0,7,6
+GenerateNormals,
+SetColor,  155, 155, 155,
+LoadTexture, objetos\bal.png,objetos\bal.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,0,1,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,1,0,
+SetTextureCoordinates, 4,1,1,
+SetTextureCoordinates, 5,0,1,
+SetTextureCoordinates, 6,0,0,
+SetTextureCoordinates, 7,1,0,
+translate, 0.12, -0.69, 4.230,
+
+
+CreateMeshBuilder,
+AddVertex, -0.74, 3.74,0.02, 0,0,1
+AddVertex, -0.74, 3.10,0.02, 0,0,1
+AddVertex, -0.72, 3.09,0.00, 0,0,1
+AddVertex, -0.72, 3.74,0.00, 0,0,1
+AddVertex, -0.74, 3.74,-0.02, 0,0,1
+AddVertex, -0.74, 3.10,-0.02, 0,0,1
+AddVertex, -0.76, 3.11,0.00, 0,0,1
+AddVertex, -0.76, 3.74,0.00, 0,0,1
+AddFace, 0,1,2,3,
+AddFace, 5,4,3,2,
+AddFace, 4,5,6,7,
+AddFace, 1,0,7,6
+GenerateNormals,
+SetColor,  155, 155, 155,
+LoadTexture, objetos\bal.png,objetos\bal.png,
+SetTextureCoordinates, 0,1,0,
+SetTextureCoordinates, 1,0,0,
+SetTextureCoordinates, 2,0,1,
+SetTextureCoordinates, 3,1,1,
+SetTextureCoordinates, 4,1,0,
+SetTextureCoordinates, 5,0,0,
+SetTextureCoordinates, 6,0,1,
+SetTextureCoordinates, 7,1,1,
+translate, 0.08, -1.0, 2.90,
+
+
+;;;; outro lado
+
+CreateMeshBuilder,
+AddVertex, 0.78, 2.82,-1.33, 0,0,1
+AddVertex, 0.90, 2.82,-1.33, 0,0,1
+AddVertex, 0.90, 2.80,-1.31, 0,0,1
+AddVertex, 0.78, 2.80,-1.31, 0,0,1
+AddVertex, 0.78, 2.78,-1.33, 0,0,1
+AddVertex, 0.90, 2.78,-1.33, 0,0,1
+AddVertex, 0.90, 2.80,-1.35, 0,0,1
+AddVertex, 0.78, 2.80,-1.35, 0,0,1
+AddFace, 3,2,1,0,
+AddFace, 2,3,4,5,
+AddFace, 7,6,5,4,
+AddFace, 6,7,0,1
+GenerateNormals,
+SetColor,  155, 155, 155,
+LoadTexture, objetos\bal.png,objetos\bal.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,0,1,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,1,0,
+SetTextureCoordinates, 4,1,1,
+SetTextureCoordinates, 5,0,1,
+SetTextureCoordinates, 6,0,0,
+SetTextureCoordinates, 7,1,0,
+translate, -0.12, -0.08, 4.230,
+
+CreateMeshBuilder,
+AddVertex, 0.78, 2.82,-1.33, 0,0,1
+AddVertex, 0.90, 2.82,-1.33, 0,0,1
+AddVertex, 0.90, 2.80,-1.31, 0,0,1
+AddVertex, 0.78, 2.80,-1.31, 0,0,1
+AddVertex, 0.78, 2.78,-1.33, 0,0,1
+AddVertex, 0.90, 2.78,-1.33, 0,0,1
+AddVertex, 0.90, 2.80,-1.35, 0,0,1
+AddVertex, 0.78, 2.80,-1.35, 0,0,1
+AddFace, 3,2,1,0,
+AddFace, 2,3,4,5,
+AddFace, 7,6,5,4,
+AddFace, 6,7,0,1
+GenerateNormals,
+SetColor,  155, 155, 155,
+LoadTexture, objetos\bal.png,objetos\bal.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,0,1,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,1,0,
+SetTextureCoordinates, 4,1,1,
+SetTextureCoordinates, 5,0,1,
+SetTextureCoordinates, 6,0,0,
+SetTextureCoordinates, 7,1,0,
+translate, -0.12, -0.69, 4.230,
+
+
+CreateMeshBuilder,
+AddVertex, 0.74, 3.74,0.02, 0,0,1
+AddVertex, 0.74, 3.10,0.02, 0,0,1
+AddVertex, 0.72, 3.09,0.00, 0,0,1
+AddVertex, 0.72, 3.74,0.00, 0,0,1
+AddVertex, 0.74, 3.74,-0.02, 0,0,1
+AddVertex, 0.74, 3.10,-0.02, 0,0,1
+AddVertex, 0.76, 3.11,0.00, 0,0,1
+AddVertex, 0.76, 3.74,0.00, 0,0,1
+AddFace, 3,2,1,0,
+AddFace, 2,3,4,5,
+AddFace, 7,6,5,4,
+AddFace, 6,7,0,1
+GenerateNormals,
+SetColor,  155, 155, 155,
+LoadTexture, objetos\bal.png,objetos\bal.png,
+SetTextureCoordinates, 0,1,0,
+SetTextureCoordinates, 1,0,0,
+SetTextureCoordinates, 2,0,1,
+SetTextureCoordinates, 3,1,1,
+SetTextureCoordinates, 4,1,0,
+SetTextureCoordinates, 5,0,0,
+SetTextureCoordinates, 6,0,1,
+SetTextureCoordinates, 7,1,1,
+translate, -0.08, -1.0, 2.90,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      RIFF  WAVEfmt      €»   ξ     LIST   INFOISFT   Lavf55.19.104 dataΐÿ                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   	 	       ϋÿϋÿυÿυÿρÿρÿρÿρÿσÿσÿςÿςÿνÿνÿζÿζÿγÿγÿηÿηÿμÿμÿοÿοÿξÿξÿνÿνÿλÿλÿηÿηÿΰÿΰÿΫÿΫÿΫÿΫÿίÿίÿεÿεÿνÿνÿυÿυÿωÿωÿφÿφÿπÿπÿπÿπÿωÿωÿ    ώÿώÿώÿώÿ              " " + + 1 1 2 2 , , $ $             * * 2 2 / / $ $                 υÿυÿιÿιÿαÿαÿίÿίÿίÿίÿΫÿΫÿΟÿΟÿΎÿΎÿ²ÿ²ÿ°ÿ°ÿµÿµÿΉÿΉÿ²ÿ²ÿ΅ÿ΅ÿÿÿ}ÿ}ÿnÿnÿ^ÿ^ÿMÿMÿ@ÿ@ÿ7ÿ7ÿ-ÿ-ÿ'ÿ'ÿ*ÿ*ÿ8ÿ8ÿBÿBÿ=ÿ=ÿ/ÿ/ÿ-ÿ-ÿ?ÿ?ÿQÿQÿTÿTÿVÿVÿ[ÿ[ÿfÿfÿpÿpÿPÿPÿÿÿρώρώ%ÿ%ÿÿÿ  \ \ p p w w ” ” Φ Φ 44΅΅
+
+bb¥¥γγ11$$½½ZZρρ……ΎΎmm'	'	η	η	
+
+AAΖΖ99®®99ΩΩ„„++ΗΗ[[υυ΅΅cc%%ΙΙ99³³νν55ΰΰ11jj††··®®LLΦΦ..EE""ΰΰ  uujj~~¨¨ΪΪ$$DDii‘‘wwNN77KK††ΙΙζζ»»GG­­""ΞΞ³³ΈΈµµ••WWΤΤ¨¨FFρρ''ΩΩΆΆrr55ββJJ88UU‡‡©©ΆΆnn""γγÒÒωωGGέέϋϋχχααΚΚΏΏΛΛξξHH\\SS22ήήΑΑ°°¦¦‡‡iiAAίίΉΉ®®ΒΒιιΫΫwwϋϋPPCCVVmmqqYY++ωωΜΜªª~~{{’’ΔΔUU‹‹™™xx--ΚΚhh  ddΦΦUUΚΚ$$^^€€±±ΟΟνν		  μμΦΦΘΘΝΝλλ  ff――ιιεεΌΌ––wwWW))άάiiάάLLΣΣ~~LL--ΘΘccββWWΜΜCC΄΄ii«
+«
+κ	κ	6	6	››’’ppΡΡ00——ll¬¬Ο Ο ίÿίÿηώηώψύψύύύTόTό§ϋ§ϋ	ϋ	ϋ]ϊ]ϊ©ω©ωφψφψPψPψΓχΓχMχMχέφέφYφYφ³υ³υοτοτττYσYσ΄ς΄ς:ς:ςζρζρ¦ρ¦ρhρhρ(ρ(ρκπκπµπµπ‰π‰πaπaπ5π5πϋοϋο²ο²οdοdο$ο$οοοοοοοKοKοuοuοοοοο•ο•οοο‰ο‰ο’ο’οªοªοΡοΡοώοώο%π%π=π=π@π@π4π4π$π$π&π&πIπIπππαπαπ)ρ)ρLρLρCρCρρρεπεπΡπΡπππππ=ρ=ρρρχρχρ1ς1ςLςLςVςVςhςhςςς½ς½ςδςδςκςκςΡςΡς®ς®ςΆςΆςΗςΗς#σ#σσσ
+τ
+τCτCτ;τ;τττΜσΜσ¬σ¬σ²σ²σÒσÒσρσρσϊσϊσξσξσεσεσϊσϊσ;τ;τττυυTυTυvυvυ|υ|υ„υ„υ°υ°υφφφφ;χ;χΝχΝχDψDψ ψ ψνψνψ;ω;ω‘ω‘ωξωξωOϊOϊ΄ϊ΄ϊ!ϋ!ϋϋϋ%ό%ό·ό·όLύLύΪύΪύaώaώζώζώmÿmÿυÿυÿw w η η CCΪΪ55¦¦((©©ΑΑλλ>>yyΑΑiiΕΕ--¤¤((΄΄=	=	¶	¶	
+
+^
+^
+”
+”
+Ε
+Ε
+ύ
+ύ
+EEόόaaΘΘ00——όό]]··
+
+ZZ««ϋϋBByy””gg00φφΖΖªª§§µµΝΝμμ33YY™™‹‹aa%%ΰΰ]]&&φφΛΛ££~~[[::υυΕΕƒƒ..ΖΖPPΫΫmm–
+–
+%
+%
+΅	΅			^^µµ„„ςςXXΉΉ‹‹„„ψ ψ ^ ^ ·ÿ·ÿÿÿTώTώ©ύ©ύύύ”ό”ό4ό4όιϋιϋϋϋ<ϋ<ϋµϊµϊϊϊnωnωιψιψ–ψ–ψsψsψbψbψDψDψψψ°χ°χ<χ<χΐφΐφOφOφηυηυυυυυΐτΐτfτfτ τ τÿσÿσλσλσγσγσασασΩσΩσΰσΰσξσξσχσχσφσφσγσγσ¶σ¶σ{σ{σFσFσ*σ*σ.σ.σOσOσ†σ†σΟσΟσ"τ"τ{τ{τΤτΤτυυ>υ>υ,υ,υχτχτΒτΒτ­τ­τΙτΙτυυbυbυ§υ§υΠυΠυάυάυΦυΦυΜυΜυΛυΛυΥυΥυΰυΰυίυίυΛυΛυ¤υ¤υpυpυ:υ:υυυυυ3υ3υ]υ]υtυtυaυaυ υ υΘτΘτ{τ{τOτOτKτKτgτgτ‹τ‹τττ΅τ΅τ τ τ­τ­τΚτΚτλτλτφτφτΥτΥτ‹τ‹τ'τ'τΓσΓσ{σ{σcσcσ{σ{σ―σ―σζσζσττττΥσΥσ†σ†σ0σ0σρςρςζςζςσσ@σ@σ`σ`σPσPσσσµςµςiςiςDςDςCςCςLςLς;ς;ςόρόρρρAρAρρρρρAρAρrρrρ…ρ…ρkρkρ)ρ)ρΥπΥπ‰π‰πLπLπππ²ο²ο5ο5οξξξξνν9ν9νννΪμΪμ–μ–μ*μ*μ–λ–λωκωκlκlκϋιϋι¨ι¨ιpιpιDιDιιιΤθΤθ‰θ‰θ0θ0θΤηΤη‡η‡ηGηGηηηΣζΣζ­ζ­ζζζ¨ζ¨ζΤζΤζ1η1ηΎηΎη[θ[θλθλθ_ι_ι°ι°ιήιήικκPκPκΗκΗκtλtλNμNμ/ν/νκνκνkξkξ¶ξ¶ξγξγξοο}ο}οππιπιπΘρΘρςςLσLσΧσΧσMτMτΒτΒτ@υ@υΛυΛυaφaφψφψφχχ%ψ%ψΔψΔψhωhω
+ϊ
+ϊ¤ϊ¤ϊ)ϋ)ϋϋϋόό“ό“ό7ύ7ύ ώ ώηώηώΦÿΦÿΉ Ή ‰‰@@ζζ‡‡))ΛΛggφφyyσσllθθllυυ		
+
+
+
+kkΈΈιι33iiΉΉ††ΧΧ
+
+!!99vvΫΫXXΦΦCCεε99££&&²²33™™ήή$$OO™™
+
+““jj™™  ™™™™  ZZΩΩΎΎΕΕίίζζΙΙƒƒAAφφΓΓddΈΈJJέέkk••&&ΏΏdd°°CCΈΈffΉΉq
+q
+Ψ	Ψ	E	E	¶¶22©©ooΉΉχχ66yyΑΑiiΘ Θ - - ‘ÿ‘ÿδώδώ*ώ*ώoύoύΙόΙόVόVό ό όόόόόόόΖϋΖϋ^ϋ^ϋλϊλϊ‰ϊ‰ϊFϊFϊ"ϊ"ϊϊϊχωχωαωαωΠωΠωΣωΣωξωξωϊϊWϊWϊϊϊΌϊΌϊζϊζϊϋϋ:ϋ:ϋlϋlϋ¦ϋ¦ϋζϋζϋ,ό,όqόqό­ό­όέόέόύύ9ύ9ύ‰ύ‰ύώώώώ;ÿ;ÿΜÿΜÿ= = ’ ’ β β GGΜΜnnΐΐ\\ττ••??μμΆΆ)	)	Ύ	Ύ	e
+e
+££uuΔΔ‰‰¨¨LLρρ‡‡ΙΙββααίίφφ00††ζζ<<||ªªΟΟφφ!!IIddkkZZII<<αα››YY..$$44IIFFΟΟzz77ΞΞxxΟΟ§§ΆΆ‚‚OOθθΧΧααφφ  ιι¬¬YYΪΪΝΝΤΤΚΚwwΪΪttaaοο))¬¬ύύ??¨
+¨
+T
+T
+?
+?
+E
+E
+9
+9
+ό	ό	’	’			ΏΏ΅΅ΓΓ		9	9	;	;			££JJ33[[ppnn^^PPPP\\mm{{††””««ΓΓΟΟΏΏƒƒΆΆ((ΗΗppooyy‚‚……}}jjOO,,ΥΥ\\¶¶XX  ¶¶ww„„¤¤ΛΛλλωωσσήήΙΙΒΒΞΞκκ,,>>FFKKVVnn»»λλ!!^^ΆΆιι--ii½½έέψψ
+
+ϊϊΣΣ££wwZZNNMMJJ;;ρρΌΌ}}11ΥΥggππ{{ΔΔƒƒJJΫΫªªyyyyuubb66φ φ ³ ³ ‚ ‚ n n y y — — Ύ Ύ κ κ ccΊΊjj››££iiOOEEEEAA33$$99==ΫΫ‚‚((Ω Ω ’ ’ N N   ΈÿΈÿsÿsÿ9ÿ9ÿÿÿΗώΗώgώgώβύβύDύDύ¬ό¬ό8ό8όοϋοϋΒϋΒϋϋϋ9ϋ9ϋ¶ϊ¶ϊϊϊqωqωλψλψ‰ψ‰ψ?ψ?ψόχόχ±χ±χbχbχχχίφίφ±φ±φφφ?φ?φευευ~υ~υυυΩτΩτ±τ±τττττvτvτZτZτDτDτAτAτQτQτiτiτtτtτgτgτCτCτττόσόσ τ τ!τ!τUτUτττ³τ³τάτάτυυNυNυ¤υ¤υώυώυGφGφrφrφφφ~φ~φφφΒφΒφ&χ&χªχªχ4ψ4ψ¥ψ¥ψηψηψτψτψίψίψΑψΑψ·ψ·ψΣψΣψωω€ω€ωτωτωeϊeϊΘϊΘϊϋϋrϋrϋΕϋΕϋόό\ό\όόό¤ό¤ό¨ό¨ό«ό«όΐόΐόσόσόEύEύ§ύ§ύώώ]ώ]ώ¨ώ¨ώτώτώMÿMÿ¶ÿ¶ÿ& & ‘ ‘ η η ''YYΞΞxxΩΩ@@΄΄<<ΥΥqqϋϋ^^––ªª²²ΔΔλλ%%ee΅΅ΧΧYY³³		[	[	v	v	W	W			££PP((00VVyy~~\\έέ――  ¨¨²²§§{{11ΨΨ††II##		μμΑΑ……??  ÒÒ»»ΈΈΏΏΗΗΙΙΗΗΏΏ――’’^^½½ppAA55BBSSOO44QQ»»33……‰‰>>ΖΖXX%%>>‘‘ωωRR­­ΑΑÒÒγγρρόό		88JJ??
+
+²²QQΰΰΰΰιιΪΪ΅΅==ΑΑAAΚΚ^^φ φ   * * ÒÿÒÿÿÿQÿQÿÿÿΠώΠώpώpώϋύϋύ|ύ|ύύύΆόΆόUόUόόόμϋμϋΌϋΌϋ†ϋ†ϋGϋGϋϋϋÒϊÒϊ®ϊ®ϊΆϊΆϊ¨ϊ¨ϊΈϊΈϊΗϊΗϊÒϊÒϊάϊάϊκϊκϊ ϋ ϋϋϋϋϋςϊςϊ―ϊ―ϊZϊZϊϊϊνωνωÿωÿω;ϊ;ϊ‹ϊ‹ϊΠϊΠϊψϊψϊύϊύϊζϊζϊ»ϊ»ϊ‰ϊ‰ϊWϊWϊ1ϊ1ϊϊϊϊϊ&ϊ&ϊ-ϊ-ϊϊϊιωιωωωOωOωωωωω%ω%ωLωLωhωhωjωjωSωSω3ω3ωωωωωωωωωωωηψηψµψµψwψwψ6ψ6ψÿχÿχάχάχΠχΠχΫχΫχοχοχϋχϋχοχοχΗχΗχ’χ’χdχdχOχOχVχVχjχjχrχrχ^χ^χ-χ-χπφπφΎφΎφ¦φ¦φ¤φ¤φ­φ­φ­φ­φ›φ›φ{φ{φ^φ^φTφTφfφfφ•φ•φΪφΪφ,χ,χχχΞχΞχ	ψ	ψ)ψ)ψ(ψ(ψψψήχήχ«χ«χ‚χ‚χnχnχwχwχχχβχβχ6ψ6ψψψΪψΪψωω+ω+ω:ω:ωJωJωdωdω‡ω‡ω¨ω¨ωΊωΊωΉωΉω­ω­ω¤ω¤ω¨ω¨ω»ω»ωΡωΡωΰωΰωθωθωφωφωϊϊbϊbϊΊϊΊϊϋϋ?ϋ?ϋIϋIϋ8ϋ8ϋ&ϋ&ϋ)ϋ)ϋCϋCϋfϋfϋ|ϋ|ϋ{ϋ{ϋhϋhϋVϋVϋVϋVϋjϋjϋϋϋ¥ϋ¥ϋµϋµϋΓϋΓϋΩϋΩϋύϋύϋ&ό&ό@ό@ό:ό:όόόΤϋΤϋϋϋϋϋ…ϋ…ϋϋϋ³ϋ³ϋΒϋΒϋΜϋΜϋγϋγϋόόbόbόΑόΑόύύcύcύ‹ύ‹ύύύύύ‘ύ‘ύ‹ύ‹ύ’ύ’ύ­ύ­ύαύαύ+ώ+ώ}ώ}ώΖώΖώπώπώϊώϊώοώοώηώηώϋώϋώ4ÿ4ÿ‚ÿ‚ÿΗÿΗÿδÿδÿΚÿΚÿ~ÿ~ÿÿÿΛώΛώ£ώ£ώ¥ώ¥ώΕώΕώεώεώμώμώΡώΡώ™ώ™ώVώVώώώρύρύΥύΥύ½ύ½ύ›ύ›ύkύkύ4ύ4ύύύίόίόΜόΜόΓόΓό¶ό¶όόόzόzόYόYόMόMό`ό`ό•ό•όζόζόHύHύ²ύ²ύώώ„ώ„ώζώζώ<ÿ<ÿ„ÿ„ÿ»ÿ»ÿγÿγÿ  " " L L   ή ή VVυυµµ‹‹bb((ΚΚJJ®®ddΘΘ11		‡	‡	
+
+Μ
+Μ
+™™oo77ήή]]ΌΌZZ®®XXΗΗααοοϊϊ
+
+%%LLyy§§ΚΚΤΤΏΏ‰‰77ÒÒjj°°dd$$σσΟΟΈΈªª‡‡ff<<ιιΙΙ°°››ΌΌθθ  NN½½YY––ςςϊϊΠΠ««££½½ψψMMΈΈ22ΊΊHHΥΥZZΣΣ@@ªª……ττWW©©ηηffÒÒkk))οοnn¦¦έέ$$wwΕΕόό&&WWΈΈ΄΄‚‚44εε¬¬’’‹‹……ll66γγ{{„„ύύttξξss££JJσσ<<ήή))ΤΤ||¶¶HHαα‘‘bbOOEE''δδyyώώ––ddllΠΠδδΠΠ¥¥……‹‹½½UU€€„„gg::ΝΝ……((··==ΗΗ\\ϋϋ΅΅IIππ??άάccΕΕϋ
+ϋ
+
+
+ςςΨΨΞΞθθ44³³aa**χχ΄΄NNΕΕ%%κ κ l l   ¥ÿ¥ÿHÿHÿμώμώ—ώ—ώWώWώ3ώ3ώ*ώ*ώ/ώ/ώ1ώ1ώ ώ ώχύχύΐύΐύ‰ύ‰ύ_ύ_ύGύGύ=ύ=ύ6ύ6ύ+ύ+ύύύύύψόψόσόσόρόρόμόμόήόήόΝόΝόΐόΐόΘόΘόθόθόύύNύNύwύwύ‹ύ‹ύύύύύύύ’ύ’ύ›ύ›ύΆύΆύ«ύ«ύΐύΐύνύνύ4ώ4ώ‰ώ‰ώΩώΩώÿÿÿÿÿÿΰώΰώΔώΔώΉώΉώΉώΉώΌώΌώ³ώ³ώώώtώtώDώDώώώΡύΡύ‹ύ‹ύ9ύ9ύήόήόzόzόόόϋϋ"ϋ"ϋ΅ϊ΅ϊϊϊ΅ω΅ω(ω(ω­ψ­ψ%ψ%ψχχΰφΰφ9φ9φ¬υ¬υGυGυ	υ	υβτβτ·τ·τvτvτττ°σ°σLσLσόςόςΐςΐς‰ς‰ςCςCςγργρkρkρξπξπ„π„πAπAπ+π+π8π8πRπRπbπbπaπaπQπQπ>π>π0π0π$π$πππΩοΩο‡ο‡ο(ο(οΩξΩξ·ξ·ξΚξΚξώξώξ*ο*ο'ο'οηξηξzξzξ
+ξ
+ξΌνΌν¥ν¥ν»ν»νβνβνϋνϋνχνχνΦνΦν¨ν¨νxνxνIνIνννάμάμ›μ›μ^μ^μ0μ0μμμ	μ	μ μ μλλλλΗλΗλ™λ™λlλlλMλMλHλHλ\λ\λ„λ„λ±λ±λÒλÒλΧλΧλΉλΉλλλ>λ>λλλξκξκπκπκλλλλ$λ$λ1λ1λJλJλsλsλªλªλβλβλμμ'μ'μ=μ=μ`μ`μμμξμξμAνAνƒνƒν«ν«νΒνΒνίνίνξξkξkξΣξΣξ>ο>οΆοΆοππqπqπχπχπ•ρ•ρ?ς?ςδςδςyσyσωσωσpτpτητητfυfυμυμυφφ%χ%χέχέχ¦ψ¦ψ{ω{ωIϊIϊϋϋϋϋ"ό"όόόύύύύώώ°ώ°ώNÿNÿρÿρÿ” ” 00ΉΉ''||ΗΗxxιι__ΟΟ22ζζ@@εε##^^©©££F	F	ΰ	ΰ	_
+_
+½
+½
+UU±±ΤΤKKγγ\\χχ««rrAA
+
+»»FF§§ζζ\\――gg««ΪΪÿÿ22~~γγQQ±±φφ((++22??XXww––««±±¥¥‰‰iiSSJJNNUUPP<<χχΣΣ®®~~==ηη‡‡++ΫΫ——XXΡΡ‰‰JJΩΩ••::ΘΘMMΪΪ??ηη²²kk©©::ΙΙWWγγggββSSΕΕCCΧ
+Χ
+‚
+‚
+8
+8
+ε	ε	q	q	ΨΨ((ϊϊ££mm55ΫΫJJΎΎόόYYÒÒXXΪ Ϊ R R ΑÿΑÿ5ÿ5ÿ²ώ²ώ9ώ9ώΏύΏύ8ύ8ύ ό όωϋωϋHϋHϋ“ϊ“ϊΪωΪωωωVψVψχχΓφΓφ	φ	φdυdυΥτΥτRτRτΜσΜσ6σ6σςςΚρΚρρρQπQπ·ο·ο<ο<οΧξΧξ{ξ{ξξξ―ν―ν@ν@νΨμΨμ€μ€μ3μ3μκλκλ“λ“λ*λ*λΈκΈκRκRκκκϊιϊι
+κ
+κ&κ&κ0κ0κκκλιλιΈιΈι ι ι±ι±ιζιζι+κ+κgκgκκκ”κ”κ”κ”κ™κ™κ¬κ¬κΛκΛκκκκκλλλλ)λ)λFλFλmλmλ—λ—λ¶λ¶λΔλΔλΔλΔλΓλΓλΥλΥλμμEμEμμμΠμΠμχμχμννννώμώμνν'ν'ν[ν[νννμνμν<ξ<ξξξΪξΪξ'ο'οuοuοΚοΚο(π(πππωπωπjρjρΰρΰρ\ς\ςήςής]σ]σΝσΝσ#τ#τWτWτpτpτ‚τ‚τ§τ§τωτωτ|υ|υ%φ%φΩφΩφ}χ}χόχόχTψTψψψ²ψ²ψΠψΠψρψρψωω?ω?ωoωoωªωªωρωρωBϊBϊ›ϊ›ϊφϊφϊNϋNϋ ϋ ϋιϋιϋ)ό)όaόaό–ό–όΞόΞόύύXύXύ«ύ«ύώώVώVώ¥ώ¥ώξώξώ.ÿ.ÿhÿhÿÿÿΛÿΛÿωÿωÿ* * ^ ^   · · Ξ Ξ Φ Φ Ϋ Ϋ μ μ VV••··ªªqq''μ μ Χ Χ δ δ υ υ ζ ζ ΅ ΅ , , §ÿ§ÿ:ÿ:ÿÿώÿώςώςώόώόώύώύώίώίώ£ώ£ώYώYώώώΛύΛύ‰ύ‰ύ8ύ8ύΠόΠόVόVόγϋγϋ’ϋ’ϋtϋtϋ‡ϋ‡ϋΈϋΈϋδϋδϋπϋπϋÒϋÒϋ•ϋ•ϋSϋSϋ#ϋ#ϋϋϋϋϋ)ϋ)ϋ/ϋ/ϋ)ϋ)ϋ ϋ ϋ&ϋ&ϋHϋHϋ‡ϋ‡ϋΡϋΡϋόό5ό5ό<ό<ό3ό3ό.ό.ό=ό=όdόdόόόίόίόύύYύYύ’ύ’ύΜύΜύώώ_ώ_ώΒώΒώ9ÿ9ÿΎÿΎÿL L Ρ Ρ FF§§  __ΞΞQQάάbbΫΫJJµµ''††μμSSΗΗM	M	ά	ά	c
+c
+Ο
+Ο
+``¬¬””  ££dd¬¬ξξ&&CC99ΔΔ††««ιι))®®KKξξ¥¥ll99ÿÿΉΉjj²²NNι
+ι
+‰
+‰
+8
+8
+ÿ	ÿ	ΰ	ΰ	Χ	Χ	Ò	Ò	Λ	Λ	΄	΄			V	V			ΞΞ''ΜΜxx99σσΔΔss88ΪΪyyppΒΒ		WWΉ Ή 2 2 ½ÿ½ÿRÿRÿλώλώώώώώ“ύ“ύÿόÿόUόUόϋϋδϊδϊ>ϊ>ϊ΄ω΄ωBωBωβψβψψψ5ψ5ψξχξχΎχΎχ¨χ¨χ¦χ¦χ§χ§χ¤χ¤χ—χ—χ‰χ‰χ‡χ‡χ•χ•χµχµχήχήχψψBψBψ„ψ„ψΧψΧψ=ω=ω―ω―ω%ϊ%ϊϊϊϋϋ•ϋ•ϋόό‹ό‹όλόλό0ύ0ύgύgύ©ύ©ύ
+ώ
+ώ“ώ“ώ4ÿ4ÿΡÿΡÿS S ¶ ¶ ||ΛΛ——TTοοffΖΖ  {{ΩΩ66™™O	O	
+
+ΐ
+ΐ
+GGΖΖζζuuξξppήή$$CCIILL__‡‡»»ζζψψιιΔΔ““²²ΩΩυυϋϋμμΡΡ³³——jj[[YYmmζζ;;ΥΥ((--::]]ώώooΰΰ==}}ΆΆµµΔΔΩΩωω%%__¥¥κκζζ{{¨¨³³σσρρ{{ΧΧ55ΊΊii++ΪΪffάά[[  ΠΠΊΊ££uu33λλ³³tt]]FF5577XXÒÒ??__uu……ΆΆΐΐάάίίΎΎ==$$]]¤¤ΥΥÒÒ––11ΏΏ\\ιιΧΧΥΥααυυ((  έέ¥¥jj44ώ
+ώ
+&&//1177MMyyµµττ##9955ώώΦΦ§§rr99		κ
+κ
+ή
+ή
+β
+β
+η
+η
+ΰ
+ΰ
+Ζ
+Ζ
+
+
+p
+p
+I
+I
+1
+1
+)
+)
+'
+'
+!
+!
+
+
+ρ	ρ	Μ	Μ	©	©	’	’					¶	¶	Ο	Ο	α	α	ο	ο	
+
++
++
+l
+l
+Δ
+Δ
+&&‚‚ΟΟEE}}··ππCCbb……··χχBBάά''ttΏΏώώ""λλOOππθθλλεεΜΜ]]ΘΘ||33ξξªªgg$$ηη³³‹‹kkIIΛ
+Λ
+f
+f
+υ	υ			(	(	ΠΠnnοοOO  
+
+®®——――ΖΖ¬¬EEΥΥhhÒÒ::  ΧÿΧÿ!ÿ!ÿ‰ώ‰ώώώΕύΕύuύuύύύ‘ό‘όόόϋϋ/ϋ/ϋωϊωϊΣϊΣϊΆϊΆϊSϊSϊζωζωmωmωϋψϋψψψ[ψ[ψ)ψ)ψψψςχςχωχωχψψQψQψ…ψ…ψ¤ψ¤ψΆψΆψ‰ψ‰ψkψkψbψbψ{ψ{ψ®ψ®ψλψλψωω7ω7ω8ω8ω,ω,ωωωωωωωωωωωωωωωωωωωύψύψιψιψΤψΤψΐψΐψ«ψ«ψψψbψbψ$ψ$ψάχάχ•χ•χ]χ]χ>χ>χ7χ7χ>χ>χ@χ@χ0χ0χ
+χ
+χΝφΝφƒφƒφ6φ6φςυςυΉυΉυ“υ“υ€υ€υ~υ~υ‡υ‡υ•υ•υΆυΆυ¦υ¦υυυ„υ„υ]υ]υ/υ/υυυατατΣτΣτήτήτυυ8υ8υ}υ}υΖυΖυφφKφKφ}φ}φφφ­φ­φ·φ·φΘφΘφοφοφ0χ0χ‡χ‡χβχβχ1ψ1ψgψgψ„ψ„ψ–ψ–ψ­ψ­ψΥψΥψωωJωJω‚ω‚ω¨ω¨ωΐωΐωΚωΚωΟωΟωÒωÒωΥωΥωΧωΧωΧωΧωΤωΤωΞωΞωΖωΖωΎωΎω¶ω¶ω°ω°ω¦ω¦ω‘ω‘ωeωeωωω§ψ§ψ&ψ&ψ±χ±χeχeχRχRχkχkχ‘χ‘χχχmχmχχχqφqφΪυΪυ`υ`υυυλτλτΩτΩτΔτΔτττZτZτττΆσΆσMσMσσσϊςϊςώςώςσσχςχςΏςΏς_ς_ςνρνρ‘ρ‘ρgρgρ{ρ{ρΐρΐρςςpςpς°ς°ςΪςΪςφςφςσσ$σ$σ<σ<σ_σ_σ“σ“σίσίσ?τ?τ¥τ¥τύτύτ7υ7υUυUυoυoυΆυΆυφφ”φ”φ;χ;χΩχΩχRψRψ£ψ£ψΥψΥψϊψϊψωω;ω;ωOωOωQωQωDωDω3ω3ω*ω*ω0ω0ω?ω?ωLωLωGωGω,ω,ωωωΥψΥψ³ψ³ψ£ψ£ψ¨ψ¨ψ¶ψ¶ψΒψΒψΔψΔψ°ψ°ψψψTψTψψψζχζχΎχΎχ§χ§χ χ χ¥χ¥χ·χ·χΦχΦχψψNψNψ¨ψ¨ψωωrωrωΛωΛωϊϊGϊGϊwϊwϊ±ϊ±ϊϋϋnϋnϋσϋσϋόόύύkύkύ­ύ­ύΟύΟύίύίύλύλύώύώύώώ>ώ>ώjώjώ¨ώ¨ώÿÿÿÿ  ΅ ΅ η η t t οÿοÿ†ÿ†ÿYÿYÿkÿkÿ¨ÿ¨ÿπÿπÿ' ' > > 1 1 
+ 
+ ΣÿΣÿÿÿkÿkÿRÿRÿRÿRÿfÿfÿ‚ÿ‚ÿ‘ÿ‘ÿ€ÿ€ÿRÿRÿÿÿδώδώήώήώÿÿeÿeÿΛÿΛÿ" " X X s s ‡ ‡ ® ® χ χ ZZΑΑ7777%%++__±±^^――ΆΆvv11ηη©©‡‡††››­­££hhόόqqΰ ΰ d d   ΤÿΤÿ³ÿ³ÿÿÿyÿyÿSÿSÿ%ÿ%ÿφώφώΝώΝώ±ώ±ώ§ώ§ώ­ώ­ώΔώΔώαώαώÿώÿώÿÿ!ÿ!ÿ'ÿ'ÿ0ÿ0ÿDÿDÿiÿiÿÿÿΰÿΰÿ, ,   Τ Τ $$ee‘‘΅΅……ssmmyy””··ΪΪωω11MMii‰‰ƒƒllNN33''..GGccvvyyooeemm““ΦΦ**€€ΘΘ11``””ΛΛύύ""3355--%%,,GGzzΑΑ
+
+AAPP22ππ££jjZZrrΖΖΞΞ±±ss##ΞΞ}}77ηηππNNuuzzXX##ϊϊσσJJxx‰‰{{ddWWcc΅΅ee@@((ΡΡ‚‚ΑΑhhmmvvee**ΖΖOOέ έ ƒ ƒ @ @   ·ÿ·ÿLÿLÿΔώΔώ1ώ1ώ©ύ©ύBύBύÿόÿόΡόΡό¨ό¨όqόqό,ό,όαϋαϋ΅ϋ΅ϋqϋqϋNϋNϋ(ϋ(ϋςϊςϊ¨ϊ¨ϊVϊVϊϊϊηωηωΰωΰωςωςωϊϊϊϊϊϊϊϊϊϊ8ϊ8ϊdϊdϊϊϊ΅ϊ΅ϊϊϊ†ϊ†ϊyϊyϊϊϊΕϊΕϊϋϋxϋxϋΛϋΛϋόόEόEόόόυόυό„ύ„ύ,ώ,ώΧώΧώiÿiÿΥÿΥÿ  B B d d ’ ’ Ϊ Ϊ ??½½LLίίmmμμYYΊΊooΨΨTTαα||――-	-	‹	‹	Ι	Ι	π	π	
+
+H
+H
+£
+£
+,,ΪΪ››[[‹‹ππ66ff¶¶ρρCC¬¬  έέ))88@@33ΞΞHHωωέέµµ{{//ήήmmbbllxxrrKK
+
+ΏΏ‚‚bbbbxx••――ΒΒΣΣζζψψ
+
+!!66AA66ΟΟ‚‚44ξξ³³ƒƒaaII99##όόΊΊaaϊϊHHλ
+λ
+Ò
+Ò
+Γ
+Γ
+Α
+Α
+Τ
+Τ
+ψ
+ψ
+##FFVVXXZZpp¥¥ρρAA‚‚­­ΜΜσσ33ττZZ®®ςς00wwΠΠ::®®xx½½ξξ::hhΫΫCCrr««ϋϋ``ΜΜ((hh³³ωωuuΞΞ\\°°ΣΣζζccΤΤDD™™ΦΦggδδzz[[||{{xxΗΗBBaallvv¥¥··©©ss¶¶\\κκΗΗΆΆnn))ÒÒiiσσssρρooσσuuρρZZªªαα22uuίίss""ΠΠggΦΦ!!``­­ªªNNυυ‘‘  ®®BBζ
+ζ
+•
+•
+H
+H
+ό	ό	®	®	_	_			½½ffµµbbΌΌQQΞΞAAΓΓmmFF99  ΦΦTT¬¬vv      xÿxÿ¶ώ¶ώώύώύpύpύύύδόδόµόµόqόqόόό™ϋ™ϋ&ϋ&ϋΒϊΒϊoϊoϊ(ϊ(ϊΰωΰω”ω”ωBωBωλψλψψψ ψ ψªχªχ3χ3χΙφΙφzφzφHφHφ'φ'φ φ φΒυΒυgυgυωτωτ‰τ‰τ'τ'τίσίσ®σ®σ‰σ‰σdσdσ/σ/σθςθς’ς’ς;ς;ςφρφρΣρΣρΤρΤρλρλρύρύρτρτρΘρΘρρρ^ρ^ρQρQρcρcρzρzρnρnρ-ρ-ρΎπΎπHπHπϊοϊονονοππZπZπ…π…π‚π‚πQπQπππΟοΟο«ο«οοο‹ο‹οlοlο7ο7οοξοξ ξ ξXξXξξξτντνΡνΡνªνªνpνpνννμμμμuλuλφκφκ•κ•κTκTκ%κ%κόιόιΧιΧιΑιΑιΗιΗιμιμι!κ!κLκLκPκPκ$κ$κΩιΩιιιTιTιAιAιKιKι_ι_ιnιnιxιxι‰ι‰ι­ι­ιειει(κ(κbκbκκκ”κ”κκκƒκƒκκκ‡κ‡κκκΐκΐκνκνκ λ λNλNλnλnλvλvλhλhλLλLλ+λ+λλλξκξκΚκΚκκκfκfκ+κ+κφιφιΛιΛι¨ι¨ι…ι…ιbιbιAιAι*ι*ι%ι%ι2ι2ιJιJιfιfι€ι€ιιιΊιΊιειεικκGκGκmκmκ†κ†κ›κ›κΌκΌκτκτκGλGλ­λ­λμμ‰μ‰μσμσμcνcνενεν~ξ~ξ&ο&οΠοΠοkπkπιπιπGρGρ‹ρ‹ρΕρΕρςςVςVς»ς»ς/σ/σªσªσ-τ-τΎτΎτiυiυ4φ4φχχÿχÿχΛψΛψgωgωΝωΝωϊϊAϊAϊ†ϊ†ϊκϊκϊlϋlϋόό¨ό¨ό]ύ]ύ%ώ%ώÿÿηÿηÿΗ Η ””IIξξ00ΙΙKK­­φφ??©©EEζζ©	©	;
+;
+
+
+Ω
+Ω
+NN——ήήRRΛΛttΓΓϊϊ""11KKpp  ΨΨBB``kkddTTAA//χχιιΠΠΆΆXXττ„„$$ηηΪΪοο  ΐΐEE¤¤ÿ
+ÿ
+p
+p
+
+
+«	«	]	]	
+	
+	°°[[ΨΨPPγγXXΓΓ;;ΛΛqq··99©©  Η Η ƒ ƒ P P . .   ϋÿϋÿΚÿΚÿxÿxÿÿÿώώUώUώEώEώmώmώ·ώ·ώÿώÿώ1ÿ1ÿIÿIÿ_ÿ_ÿ‡ÿ‡ÿΝÿΝÿ" " m m › › ¬ ¬ µ µ Φ Φ %%ΆΆ88ΚΚBBΡΡ77„„κκffλλcc»»κκωω__ΐΐ''}}¶¶έέ		D	D	’	’	Ϊ	Ϊ	
+
+ύ	ύ	Φ	Φ	©	©	“	“	 	 	Δ	Δ	ν	ν	
+
+6
+6
+g
+g
+―
+―
+@@GG{
+{
+Ο	Ο	$	$	¨¨00ªª‹‹‡‡€€κκLL¬¬z z ιÿιÿWÿWÿΔώΔώ-ώ-ώ“ύ“ύψόψόcόcόΨϋΨϋ[ϋ[ϋνϊνϊϊϊ>ϊ>ϊÿωÿωΤωΤωΑωΑωΑωΑωΓωΓω¶ω¶ωωω@ω@ωλψλψ¤ψ¤ψψψ€ψ€ψ–ψ–ψªψªψ®ψ®ψ£ψ£ψψψ£ψ£ψΏψΏψβψβψυψυψςψςψβψβψέψέψώψώψHωHω§ω§ωύωύω*ϊ*ϊ)ϊ)ϊϊϊΫωΫωΎωΎω·ω·ωΖωΖωιωιω$ϊ$ϊ€ϊ€ϊόϊόϊϋϋόό‰ό‰όÒόÒόόόόόύύAύAύrύrύ¥ύ¥ύΛύΛύέύέύαύαύιύιύώώCώCώώώήώήώÿÿIÿIÿfÿfÿwÿwÿ}ÿ}ÿpÿpÿKÿKÿÿÿΝώΝώ•ώ•ώrώrώgώgώgώgώ_ώ_ώHώHώ!ώ!ώψύψύέύέύΨύΨύιύιύώώώώ$ώ$ώώώώώ	ώ	ώώώ'ώ'ώEώEώXώXώXώXώEώEώ.ώ.ώ(ώ(ώEώEώ‚ώ‚ώΙώΙώÿÿÿÿÿÿφώφώυώυώÿÿXÿXÿÿÿΘÿΘÿΡÿΡÿΕÿΕÿΖÿΖÿμÿμÿ; ; £ £ >>SSPPNNZZuu””¬¬ΒΒΰΰ		;;bbllOOλλζζvvδδ::^^JJΎΎtt==,,TTίί77άά0011!!ÿÿ//xxγγnnΖΖ€€**°°		M	M	„	„	Ρ	Ρ	G
+G
+ι
+ι
+§§ddzzΟΟ
+
+77[[~~¤¤ΧΧcc¬¬άάήή®®[[µµ††ooZZ00λλ––BBωωΏΏ??ΩΩXXΗ
+Η
+-
+-
+		εε55††νν€€HH44%%ϋϋ££
+
+¥¥RRωω‰‰  vv		Λ Λ Ί Ί Ή Ή ­ ­ ‚ ‚ > > φÿφÿΑÿΑÿ©ÿ©ÿ¨ÿ¨ÿ­ÿ­ÿ®ÿ®ÿ«ÿ«ÿ―ÿ―ÿΘÿΘÿϊÿϊÿD D   ω ω SS®®χχ{{ΉΉvvAAάά››O	O	 
+ 
+·
+·
+xxAAηηΎΎCCΪΪSSΈΈ''ΏΏIIµµ@@††ίίAA””½½µµ‹‹]]IIWWzzµµΎΎΛΛηη33FF<<%%  EE™™qqΉΉÒÒΔΔΆΆ‚‚ss{{΅΅κκVVαα{{tt  ‰‰BBζζ““eeggΖΖοουυΣΣ••RR""66KKMM66
+
+ΠΠLLΪΪ¬¬~~DDοο}}ψψvvΗΗ••aaΉΉRRςς  OOββDDss¦¦οοppΥΥƒƒ~~ΠΠS
+S
+–	–	αα66““ρρFFΠΠcc»»RR} } ÿÿΛώΛώ ώ ώ£ύ£ύDύDύεόεόfόfό½ϋ½ϋσϊσϊ"ϊ"ϊaωaωΈψΈψ#ψ#ψ–χ–χχχtφtφευευYυYυΡτΡτHτHτΎσΎσ3σ3σ®ς®ς/ς/ςµρµρ5ρ5ρ©π©πππ…ο…οοοÒξÒξ³ξ³ξΆξΆξ~ξ~ξ/ξ/ξµνµννν‡μ‡μμμªλªλkλkλ?λ?λλλλλνκνκΤκΤκ΄κ΄κκκgκgκEκEκ.κ.κ%κ%κ*κ*κ4κ4κ<κ<κBκBκEκEκHκHκYκYκκκΐκΐκ λ λλλμμμμννsνsνΔνΔνξξtξtξζξζξdοdοΫοΫο>π>πππΙπΙπρρkρkρερερpςpςύςύςvσvσΥσΥσττ`τ`τ¥τ¥τυτυτKυKυ¤υ¤υψυψυDφDφφφΚφΚφχχ4χ4χbχbχ’χ’χΘχΘχψψMψMψ“ψ“ψΨψΨψωω\ω\ω ω ωγωγωϊϊ8ϊ8ϊ4ϊ4ϊϊϊίωίω³ω³ω¤ω¤ωΉωΉωνωνω.ϊ.ϊgϊgϊƒϊƒϊ{ϊ{ϊRϊRϊϊϊΙωΙω{ω{ω(ω(ωΗψΗψQψQψΚχΚχ>χ>χΏφΏφ\φ\φφφιυιυΉυΉυqυqυυυ|τ|τγσγσSσSσήςήςςςDςDςςςΈρΈρaρaρρρµπµπtπtπCπCπππΰοΰοοοMοMοώξώξΔξΔξ¦ξ¦ξξξ¤ξ¤ξ¬ξ¬ξ²ξ²ξ²ξ²ξ³ξ³ξ΄ξ΄ξ²ξ²ξªξªξξξ‰ξ‰ξ€ξ€ξ…ξ…ξ“ξ“ξ ξ ξ¤ξ¤ξ΅ξ΅ξ¤ξ¤ξΖξΖξοο–ο–ο-π-π»π»π(ρ(ρqρqρ¥ρ¥ρΫρΫρςςoςoςΏςΏςσσeσeσεσεσ¥τ¥τ¤υ¤υΎφΎφΑχΑχƒψƒψϋψϋψLωLω­ω­ωKϊKϊ1ϋ1ϋ>ό>όAύAύώώ›ώ›ώÿώÿώdÿdÿηÿηÿ‘ ‘ QQ­­11  €€ÿÿ––PP{{ΆΆΘΘqqΪΪ2	2	f	f			‘	‘	°	°	θ	θ	-
+-
+g
+g
+„
+„
+{
+{
+[
+[
+6
+6
+
+
+
+
+ 
+ 
+δ	δ	µ	µ	~	~	M	M	0	0	%	%			 	 	ΗΗqq««NNσσ‹‹gg¶¶ooρρ……""ΌΌVVσ σ ™ ™ A A έÿέÿ]ÿ]ÿΈώΈώχύχύ;ύ;ύ¤ό¤όNόNό7ό7όCόCόLόLό5ό5όχϋχϋΆϋΆϋKϋKϋϋϋΕϊΕϊϊϊ"ϊ"ϊ±ω±ω?ω?ωβψβψ®ψ®ψ¥ψ¥ψΈψΈψΥψΥψιψιψσψσψωψωψÿψÿψωωόψόψθψθψΟψΟψΎψΎψΒψΒψήψήψωω1ω1ωOωOωeωeω{ω{ω™ω™ωΏωΏωαωαωςωςωνωνωάωάωΦωΦωμωμω$ϊ$ϊrϊrϊΓϊΓϊϋϋ2ϋ2ϋSϋSϋvϋvϋ¨ϋ¨ϋκϋκϋ=ό=ό ό όύύ…ύ…ύϊύϊύ\ώ\ώώώΉώΉώΏώΏώΘώΘώλώλώ2ÿ2ÿ‘ÿ‘ÿπÿπÿ= = t t ¥ ¥ ι ι NNΤΤffννZZ««ξξ..vvΌΌϋϋ++PPss››ΜΜ..NN``pp‹‹ΌΌ^^ΌΌPPww““――ΟΟχχ$	$	L	L	p	p	‘	‘	µ	µ	ή	ή	
+
+4
+4
+Q
+Q
+\
+\
+O
+O
+/
+/
+
+
+Μ	Μ			m	m	Q	Q	C	C	A	A	;	;	&	&	ττxxΎΎώώBB””ρρSS±±HH‹ ‹ ΩÿΩÿ?ÿ?ÿΒώΒώXώXώςύςύύύύύόόόό­ϋ­ϋqϋqϋJϋJϋ'ϋ'ϋψϊψϊΊϊΊϊuϊuϊ8ϊ8ϊϊϊϊϊϊϊ4ϊ4ϊ]ϊ]ϊ‡ϊ‡ϊ®ϊ®ϊΟϊΟϊηϊηϊχϊχϊ ϋ ϋ
+ϋ
+ϋϋϋ0ϋ0ϋNϋNϋkϋkϋ‚ϋ‚ϋ‘ϋ‘ϋΆϋΆϋΎϋΎϋξϋξϋ2ό2ό~ό~όΏόΏόΰόΰόΦόΦό¤ό¤ό`ό`ό#ό#όόόόόAόAόόό¶ό¶όΧόΧόζόζόσόσόύύJύJύύύφύφύ@ώ@ώkώkώuώuώoώoώtώtώώώκώκώ\ÿ\ÿΫÿΫÿP P « « ι ι FF……ΨΨ::χχ;;kk‘‘³³ΧΧώώ&&SSΥΥ77¨¨hh™™¨¨§§££““rr11ΪΪ……HH..&&ΤΤeeΩΩPPΰΰ‹‹99ΗΗD D XÿXÿώώΡύΡύAύAύ½ό½ό1ό1όϋϋϋϋ„ϊ„ϊ
+ϊ
+ϊ‘ω‘ωωωXψXψ¥χ¥χχχ…φ…φ1φ1φςυςυ¥υ¥υ4υ4υ§τ§τττσσJσJσσσΒςΒςYςYςΟρΟρBρBρΥπΥπ¦π¦π­π­πΙπΙπΠπΠπ§π§πLπLπΤοΤοYοYομξμξ‡ξ‡ξξξ”ν”ννν’μ’μBμBμ μ μμμμμςλςλ£λ£λBλBλσκσκΩκΩκϋκϋκIλIλ¦λ¦λχλχλ5μ5μgμgμ μ μξμξμPνPνΏνΏν0ξ0ξ§ξ§ξ.ο.οΞοΞοππlρlρ[ς[ςTσTσVτVτjυjυ‘φ‘φΚχΚχωω2ϊ2ϊ<ϋ<ϋ#ό#όρόρό·ύ·ύ„ώ„ώ^ÿ^ÿG G >>GGii΅΅ββ
+
+ΘΘR	R	Ι	Ι	V
+V
+σσΩΩ00ύύ~~--ϋϋ½½LL““  ™™¨¨γγIIΙΙKK½½''••¦¦44ªªόό**IIpp――iiΘΘcc¦¦ξξ55rr——››iiQQJJNNKK44ΟΟ¨¨°°ΚΚΙΙ΅΅WWδδωωAA™™ΧΧΰΰΊΊZZii±±””``ΎΎ##——‰‰χχ\\ΕΕ< < Η Η ^!^!ς!ς!w"w"δ"δ"?#?###Ψ#Ψ#$$9$9$E$E$;$;$,$,$1$1$^$^$²$²$%%|%|%Ε%Ε%ξ%ξ%&&&&6&6&Z&Z&|&|&&&&&‘&‘& & &Μ&Μ&''_'_'¨'¨'θ'θ'#(#(n(n(Ο(Ο(E)E)ΐ)ΐ)-*-*y*y*΅*΅*―*―*Ή*Ή*Π*Π*ώ*ώ*H+H+΅+΅+ϋ+ϋ+=,=,T,T,8,8,μ+μ+‚+‚+++»*»***z*z*****Ά*Ά***S*S*ρ)ρ)i)i)Ώ(Ώ(((>'>'‹&‹&π%π%m%m%ψ$ψ$„$„$$$‚#‚#ϊ"ϊ"z"z"""¨!¨!H!H!α α e e ÒÒ**uu½½nnββiiχχ‚‚……ώώssαα@@““ΰΰ44΅΅PPddbbqq――  HHOO?
+?
+C	C	yyααZZΏΏςςψψκκρρ((’’― ― ( ( ÿÿΉώΉώθύθύύύhόhόΝϋΝϋKϋKϋΨϊΨϊlϊlϊύωύω‡ω‡ωωωψψ6ψ6ψέχέχ‹χ‹χ8χ8χΧφΧφhφhφτυτυ…υ…υ$υ$υΜτΜτqτqτ	τ	τσσσσyςyςςρςρlρlρΪπΪπ5π5π}ο}οΕξΕξ%ξ%ξ«ν«νQνQννν¤μ¤μ$μ$μλλνκνκdκdκφιφι™ι™ι;ι;ιΙθΙθBθBθΈηΈηBηBηοζοζΑζΑζ¬ζ¬ζζζζζ|ζ|ζnζnζmζmζwζwζζζxζxζWζWζζζΡεΡεεεfεfεhεhε‘ε‘εΟεΟεζζ9ζ9ζKζKζLζLζJζJζLζLζSζSζUζUζGζGζ*ζ*ζ	ζ	ζϊεϊεζζLζLζ¤ζ¤ζωζωζ3η3ηCηCη)η)ησζσζ²ζ²ζuζuζEζEζ'ζ'ζζζ'ζ'ζEζEζqζqζ΅ζ΅ζΝζΝζξζξζηηηη4η4ηWηWηyηyη‰η‰ηxηxηCηCηφζφζ¨ζ¨ζpζpζ\ζ\ζcζcζrζrζqζqζQζQζζζΡεΡεεεxεxεrεrε‚ε‚ε›ε›εΈεΈεΦεΦεςεςεζζζζύεύεέεέε±ε±εεεxεxε{ε{ε‘ε‘ε²ε²εΧεΧεζζ?ζ?ζ“ζ“ζηη…η…ηθθuθuθΔθΔθψθψθιιJιJιιιΩιΩι6κ6κ•κ•κοκοκIλIλ­λ­λ$μ$μ¬μ¬μ?ν?νΞνΞνOξOξΒξΒξ,ο,οοοππ£π£π9ρ9ρΣρΣρlςlςσσσσ?τ?τατατ|υ|υÿυÿυeφeφ³φ³φωφωφKχKχΊχΊχFψFψιψιψ”ω”ωAϊAϊξϊξϊϋϋMόMόπόπόxύxύήύήύ&ώ&ώcώcώ§ώ§ώϊώϊώPÿPÿÿÿΨÿΨÿ	 	 I I ± ± CCννhh««ρρLL΄΄KKWWCC,,00``»»..υυ))>>EEQQpp¥¥ίίυυΊΊxxFF,,%%##ώώΫΫ¶¶dd**ίί……++αα±±™™‹‹wwTT  ΰΰGGββaaΚΚ00― ― ] ] ? ? D D M M G G * *   ιÿιÿΩÿΩÿΞÿΞÿΉÿΉÿÿÿ[ÿ[ÿ*ÿ*ÿÿÿÿÿDÿDÿvÿvÿ©ÿ©ÿέÿέÿ  ] ] ¥ ¥ κ κ $$[[ψψrrύύ††ϋϋUU••ΔΔκκ11[[¤¤††ρρ33>>δδΈΈ¬¬ΖΖÿÿDD……µµΠΠΧΧΞΞΑΑ··»»ΟΟππJJ{{°°θθ		D	D	O	O	<	<			ττλλ		8	8	m	m			Ά	Ά	®	®	Λ	Λ	 
+ 
+=
+=
+`
+`
+N
+N
+ÿ	ÿ	„	„			™™MMΧΧƒƒΉΉhh44σσΒΒyyΎΎrr@@--''ϊϊ½½nn""ννΤΤΠΠΡΡΙΙ¶¶¥¥££µµΥΥξξσσήήΉΉ‹‹\\++ςς²²uuHH>>\\ίί33((ϊϊ±±VVυ υ ’ ’ 6 6 ζÿζÿ«ÿ«ÿ†ÿ†ÿrÿrÿcÿcÿMÿMÿ%ÿ%ÿξώξώ°ώ°ώxώxώKώKώ"ώ"ώμύμύύύ*ύ*ύ©ό©ό.ό.όΜϋΜϋ†ϋ†ϋRϋRϋ$ϋ$ϋρϊρϊΎϊΎϊ‘ϊ‘ϊoϊoϊQϊQϊ-ϊ-ϊψωψωµωµωrωrω>ω>ω!ω!ωωωωωωωωωωωωωBωBω‹ω‹ωνωνω`ϊ`ϊΥϊΥϊ;ϋ;ϋ}ϋ}ϋϋϋxϋxϋSϋSϋAϋAϋ]ϋ]ϋ¬ϋ¬ϋόόόόκόκό-ύ-ύfύfύ¨ύ¨ύόύόύ^ώ^ώΊώΊώχώχώÿÿÿώÿώΨώΨώ®ώ®ώώώ‚ώ‚ώ‡ώ‡ώ›ώ›ώΉώΉώάώάώÿÿ-ÿ-ÿXÿXÿ|ÿ|ÿÿÿÿÿeÿeÿ'ÿ'ÿήώήώώώlώlώQώQώAώAώ4ώ4ώώώώώεύεύΙύΙύ®ύ®ύύύgύgύ-ύ-ύηόηό ό όeόeό>ό>ό&ό&όόόμϋμϋªϋªϋHϋHϋΞϊΞϊHϊHϊΔωΔωIωIωΧψΧψmψmψψψΚχΚχχχwχwχ]χ]χ=χ=χχχΪφΪφ φ φiφiφ.φ.φηυηυυυ&υ&υΔτΔτ|τ|τ]τ]τbτbτ{τ{τ“τ“τ¦τ¦τΌτΌτζτζτ2υ2υ™υ™υφφ[φ[φ‹φ‹φφφ¬φ¬φΦφΦφ0χ0χΈχΈχXψXψφψφψ|ω|ωκωκωNϊNϊ½ϊ½ϊDϋDϋέϋέϋuόuόωόωόfύfύΚύΚύ?ώ?ώΧώΧώ’ÿ’ÿZ Z ¨¨††χχwwÿÿςςccγγ……EEΑΑI	I	 	 	Ω	Ω	
+
+Q
+Q
+΄
+΄
+55ΙΙbbχχ……¨¨DDΦΦNN¥¥γγffÒÒ__µµ``ώώƒƒρρVV――χχ%%::;;88>>TTxx¦¦ΨΨYYΚΚΠΠ>>ΔΔKKεε55ΣΣggώώ§§aaΑΑBB΅΅ττWWΪΪ{{%%ΐΐ<<δδ22••¥¥??ΣΣ\\δδ}}66ω
+ω
+Ρ
+Ρ
+€
+€
+	
+	
+z	z	εεYYγγ‹‹VVDDLL``ddJJΝΝ››””»»όό>>jj‚‚™™ΜΜ++®®:	:	®	®	ϊ	ϊ	%
+%
+I
+I
+
+
+λ
+λ
+hhγγEE‹‹ΗΗ‰‰ΏΏRRΖΖ""vvΣΣ99™™ήήόόττΧΧΎΎΉΉΛΛππNN||¨¨ÒÒφφ    υυέέ±±ggόό~~¨¨tt__MM""ΤΤppΕΕxxGGππllΘΘooΠ
+Π
+7
+7
+ 	 			mmΦΦFFΌΌ77··>>ΜΜ__οοttεε88nn  ―ÿ―ÿαώαώ3ώ3ώΆύΆύ!ύ!ύ›ό›όόόeϋeϋΖϊΖϊ:ϊ:ϊΚωΚωnωnωωω³ψ³ψHψHψήχήχƒχƒχ=χ=χχχÒφÒφφφdφdφ3φ3φφφφφφφ/φ/φQφQφzφzφ®φ®φλφλφ8χ8χχχψψΏψΏψwωwω,ϊ,ϊΏϊΏϊϋϋ=ϋ=ϋDϋDϋSϋSϋ‹ϋ‹ϋϊϋϊϋ’ό’ό<ύ<ύΰύΰύpώpώμώμώUÿUÿ«ÿ«ÿοÿοÿ  B B c c   Τ Τ 00mmΔΔ88XXiiqqttxxƒƒΣΣ**££66ΡΡ[[ΐΐυυϊϊέέ――„„jjiiƒƒ¶¶ψψ>>{{¤¤΄΄««cc11ϊϊΏΏFFεεΔΔ©©ll88ππ––22ΡΡ}}BB$$  &&((γγBBδδ„„  ° ° 5 5 ¶ÿ¶ÿGÿGÿτώτώΕώΕώ¬ώ¬ώ“ώ“ώ]ώ]ώφύφύ\ύ\ύόόΝϋΝϋϋϋVϊVϊΉωΉω!ω!ω€ψ€ψΝχΝχχχSφSφ³υ³υ7υ7υΩτΩτƒτƒτττ‡σ‡σΦςΦςςςdρdρΜπΜπOπOπβοβοuοuοÿξÿξ…ξ…ξξξ―ν―νoνoνTνTν`ν`νννΙνΙνξξ#ξ#ξ#ξ#ξξξηνηνίνίνξξWξWξΞξΞξSοSοΣοΣοHπHπΊπΊπ8ρ8ρΠρΠρ„ς„ςKσKσττΖτΖτRυRυΈυΈυφφSφSφΎφΎφSχSχψψΧψΧψ•ω•ω1ϊ1ϊ¨ϊ¨ϊϋϋ]ϋ]ϋΎϋΎϋ6ό6όΗόΗόnύnύ'ώ'ώηώηώ¤ÿ¤ÿN N Ϊ Ϊ HHέέ\\  δδ''nnΌΌ››  ••ςς==||½½RRΧΧ		4	4	q	q	Η	Η	/
+/
+
+
+π
+π
+++VVΣΣ44’’ΘΘΑΑƒƒ++ΰΰΎΎΒΒÒÒΝΝEEί
+ί
+‰
+‰
+Y
+Y
+T
+T
+n
+n
+
+
+£
+£
+“
+“
+P
+P
+Π	Π			,,..>>wwκκII  ""““##ΐ ΐ J J ±ÿ±ÿσώσώ#ώ#ώ]ύ]ύΉόΉόCόCόπϋπϋªϋªϋaϋaϋϋϋΗϊΗϊ•ϊ•ϊϊϊyϊyϊgϊgϊ3ϊ3ϊΩωΩωrωrω!ω!ωωωωωNωNωxωxω€ω€ωcωcω6ω6ωωω
+ω
+ωωω-ω-ωJωJωrωrω΄ω΄ωϊϊϊϊωϊωϊKϋKϋuϋuϋ‚ϋ‚ϋ‹ϋ‹ϋ©ϋ©ϋδϋδϋ0ό0όyόyό­ό­όΕόΕόΞόΞόΩόΩόρόρόύύUύUύ•ύ•ύΥύΥύώώVώVώώώιώιώ0ÿ0ÿbÿbÿqÿqÿTÿTÿÿÿΊώΊώhώhώ2ώ2ώ$ώ$ώ8ώ8ώ_ώ_ώ„ώ„ώ•ώ•ώ‰ώ‰ώdώdώ0ώ0ώόύόύΣύΣύΎύΎύΌύΌύΓύΓύΖύΖύΉύΉύύύyύyύ]ύ]ύTύTύ[ύ[ύiύiύsύsύsύsύnύnύsύsύύύΈύΈύμύμύώώ2ώ2ώ:ώ:ώ=ώ=ώJώJώiώiώώώ―ώ―ώ―ώ―ώώώDώDώώώβύβύϊύϊύIώIώµώµώÿÿDÿDÿ6ÿ6ÿϊώϊώ¨ώ¨ώYώYώώώΜύΜύ}ύ}ύ&ύ&ύΠόΠό’ό’όrόrόdόdόSόSό(ό(όΰϋΰϋϋϋSϋSϋ;ϋ;ϋ<ϋ<ϋ6ϋ6ϋϋϋ­ϊ­ϊ,ϊ,ϊ©ω©ωCωCωώψώψΛψΛψ‹ψ‹ψ+ψ+ψ°χ°χ/χ/χΏφΏφmφmφ2φ2φ φ φΗυΗυ‰υ‰υQυQυ(υ(υυυττττΔτΔτvτvτττ«σ«σ`σ`σCσCσPσPσsσsσ‘σ‘σσσ…σ…σdσdσKσKσMσMσtσtσΓσΓσ1τ1τ±τ±τ3υ3υ©υ©υφφHφHφmφmφφφ‘φ‘φ®φ®φβφβφ,χ,χχχΟχΟχψψ!ψ!ψ3ψ3ψVψVψ΅ψ΅ψωω―ω―ω4ϊ4ϊ†ϊ†ϊ™ϊ™ϊϊϊcϊcϊlϊlϊ΅ϊ΅ϊιϊιϊϋϋϋϋεϊεϊ ϊ ϊzϊzϊ’ϊ’ϊλϊλϊnϋnϋφϋφϋlόlόΖόΖό
+ύ
+ύAύAύqύqύ ύ ύΥύΥύώώ…ώ…ώ	ÿ	ÿÿÿ  n n › › ± ± Σ Σ BBππρρ**@@HHTToo™™ΛΛϋϋ!!99BB88ιιªªjj22ΪΪ¦¦ZZσσvvοοiiκ κ r r   §ÿ§ÿ[ÿ[ÿÿÿεώεώώώ=ώ=ώΑύΑύ:ύ:ύ»ό»όRόRόόόΝϋΝϋ£ϋ£ϋ„ϋ„ϋuϋuϋ|ϋ|ϋ›ϋ›ϋΗϋΗϋπϋπϋόόόόιϋιϋΗϋΗϋ«ϋ«ϋ΅ϋ΅ϋ²ϋ²ϋέϋέϋόό]ό]ό›ό›όΜόΜόρόρόύύ/ύ/ύOύOύiύiύvύvύrύrύdύdύXύXύ\ύ\ύsύsύύύαύαύ;ώ;ώ®ώ®ώ5ÿ5ÿ¶ÿ¶ÿ  , ,     «ÿ«ÿaÿaÿUÿUÿΆÿΆÿ; ; ψ ψ °°LLΜΜBB³³hh‘‘ΙΙ@@ϊϊΥΥ§§NNΖΖ!	!	z	z	ε	ε	b
+b
+ε
+ε
+__ΜΜ00		€€ςςVV¬¬ύύQQ­­bb©©ββ^^ΌΌ77ΔΔVVΪΪDD‹‹΄΄ΙΙΨΨρρddΓΓ77ΊΊCCΔΔ00xx¨¨¦¦¦¦­­ΈΈΓΓΣΣοοbb¥¥ΣΣΦΦ±±qq33ΪΪ©©__ϋϋ‰‰ΔΔrr““σσ@@™™°°ddµµAAΘΘ\\ΛΛ33ΒΒFFββ΄΄ΘΘYY‘‘‹‹¤¤ήή%%``{{xxccMM??66//))--BBhh’’®®°°TT
+
+ΎΎww<<μμΟΟ°°YY**κκήήΩΩΤΤΟΟΝΝΚΚΑΑ­­ll``zz··::DDηηΔΔΠΠyyαα--TTYYEE''ώώ))ee――ψψ//RRii††ΉΉllΤΤ**``xx‘‘··ωωMMΪΪGG’’‰‰KKVV((ΰΰ§§ΓΓbb§§ee;;##""99dd  ίί!!ώώ««;;ΠΠss››¤¤XXίί··ΆΆ––‰‰ww\\<<μμΉΉyy))ΝΝllªªCCΝΝGGΉΉ55ΙΙ{{99ααUU‹‹‘
+‘
+‡	‡	ΊΊOO‹‹ªª――¥¥  ƒÿƒÿtώtώ_ύ_ύCόCό&ϋ&ϋϊϊόψόψϊχϊχχχφφ1υ1υLτLτlσlσ–ς–ςΘρΘρϋπϋπ'π'πDοDοYξYξyνyν»μ»μ*μ*μΏλΏλ]λ]λμκμκ\κ\κ·ι·ιιι€θ€θθθ§η§η@η@ηΕζΕζ8ζ8ζΆεΆεεεδδδδ­γ­γCγCγΪβΪβsβsβββ¬α¬αLαLαμΰμΰ‰ΰ‰ΰΰΰ¦ί¦ί%ί%ί§ή§ή@ή@ήήήφέφέήή&ή&ή(ή(ήήήΎέΎέvέvέDέDέ7έ7έMέMέwέwέªέªέέέέέήήNήNήήήΞήΞή
+ί
+ί=ί=ίkίkίίίΩίΩί(ΰ(ΰΰΰαααα(β(β®β®βγγiγiγ—γ—γ®γ®γ΄γ΄γ³γ³γ΄γ΄γΐγΐγζγζγ1δ1δ§δ§δ?ε?ειειε‰ζ‰ζηηXηXηzηzηwηwηZηZη5η5ηηη η ηηη η ηNηNηηη¬η¬ηΗηΗηΤηΤηΪηΪηήηήηαηαηήηήηΞηΞη­η­η€η€ηUηUη<η<ηAηAηdηdηηηάηάηθθ2θ2θ;θ;θ1θ1θθθθθώηώηθθ8θ8θ„θ„θκθκθVιVι·ι·ιύιύι$κ$κ:κ:κPκPκxκxκΈκΈκλλWλWλλλΩλΩλμμsμsμπμπμννDξDξςξςξ…ο…οοοοο5π5πdπdπππΛπΛπρρxρxρΨρΨρ0ς0ςςςΞςΞς!σ!σ}σ}σήσήσ>τ>τ™τ™τστστWυWυΞυΞυXφXφνφνφ}χ}χώχώχpψpψέψέψOωOωΜωΜωSϊSϊήϊήϊhϋhϋπϋπϋzόzόύύ‘ύ‘ύ%ώ%ώΛώΛώÿÿs s yy‡‡}}@@ΘΘ((ϋϋ««••§§Κ	Κ	δ
+δ
+ζζΠΠ©©ddXXXXVVBBΌΌSSδδ‚‚==ΚΚOO΅΅άά))¦¦XX((ρρ– – !!w!w!Ϋ!Ϋ!O"O"Π"Π"M#M#³#³#ψ#ψ##$#$A$A$a$a$$$Η$Η$%%S%S%“%“%Ε%Ε%ή%ή%ά%ά%Β%Β%%%l%l%?%?%%%λ$λ$Ό$Ό$„$„$<$<$δ#δ#y#y#ώ"ώ"}"}"ÿ!ÿ!‰!‰!!!Ά Ά   vvΝΝ00――MMωω  22――  ssδδWWΨΨ||II8833ηη‡‡„„  ­­??ΜΜTTΫΫhh  ¦¦UU}}ΞΞ~~ττ€€°
+°
+G
+G
+α	α	…	…	2	2	εε””55ΖΖMMΤΤccωω‘‘$$®®55ΑΑXXϋϋ  ==ΘΘ??© ©   sÿsÿδώδώ_ώ_ώΰύΰύaύaύέόέόTόTόΗϋΗϋ:ϋ:ϋ―ϊ―ϊϊϊ‡ω‡ωγψγψ7ψ7ψ“χ“χ
+χ
+χªφªφnφnφCφCφ
+φ
+φ―υ―υ.υ.υττττ¬σ¬σiσiσ>σ>σσσήςής”ς”ς=ς=ςηρηρρρUρUρρρΡπΡπππ?π?πυουο²ο²οvοvοBοBοοοΫξΫξ¤ξ¤ξkξkξ0ξ0ξφνφν»ν»νxνxν(ν(νΛμΛμiμiμμμÒλÒλΏλΏλΩλΩλμμmμmμΔμΔμνν;ν;νPνPνPνPνDνDν9ν9ν7ν7ν?ν?νPνPνiνiν‰ν‰ν±ν±νδνδνξξOξOξqξqξ‚ξ‚ξξξξξΜξΜξοοuοuοΗοΗοϋοϋοππππϊοϊοψοψο π πππππππόοόοππππ"π"π$π$πππύούοξοξοψοψοππ^π^π£π£πβπβπρρ=ρ=ρVρVρaρaρ_ρ_ρRρRρAρAρ6ρ6ρ7ρ7ρCρCρTρTρeρeρtρtρ…ρ…ρρρΖρΖρόρόρ>ς>ςςςΤςΤςσσSσSσvσvσƒσƒσσσ~σ~σ…σ…σσσ¶σ¶σΣσΣσοσοσττPτPτ«τ«τυυυυιυιυ"φ"φGφGφtφtφΔφΔφ:χ:χΑχΑχ9ψ9ψ‡ψ‡ψ­ψ­ψΖψΖψφψφψPωPωΠωΠω[ϊ[ϊΧϊΧϊ:ϋ:ϋ‘ϋ‘ϋτϋτϋvόvόύύ΄ύ΄ύBώBώ΄ώ΄ώÿÿsÿsÿρÿρÿ  ??δδmmΧΧ11ÿÿ‰‰GGήή¨	¨	V
+V
+θ
+θ
+qqΰΰδδ		..33
+
+ΊΊ^^ÒÒ§§yy88έέyyέέ½½²²¥¥~~22ΑΑ55——μμ7 7 w w ® ® δ δ !!W!W!!!·!·!Ξ!Ξ!Υ!Υ!Ϊ!Ϊ!μ!μ!""A"A"b"b"_"_"/"/"ί!ί!!!R!R!>!>!G!G!M!M!5!5!ο ο ‚ ‚   LL''$$33DDEE$$ΪΪjjαα\\ξξ^^ΖΖXXββww""ίί  WW®®ee**σσ――WWππCCγγ®®cc		΄΄yyZZLL::ΜΜwwΘΘvv$$ΜΜoo··YYςς}}ψψiiΪΪRRΧΧii¨¨FFΧ
+Χ
+W
+W
+Κ	Κ	?	?	ΔΔaaΪΪ››QQ  µµ||[[PPOOOOJJDD??@@NNkk››έέ++||ΒΒψψ$$QQ‘‘δδ?	?			±	±	­	­			l	l	g	g	…	…	Ό	Ό	ν	ν	
+
+μ	μ	Έ	Έ	z	z	E	E			ϋϋΝΝ==ρρµµ‹‹ii::χχ¤¤[[//**AAXXYY::ΞΞuuLL!!ψψγγοοUU||{{OOΦΦΓΓΫΫ??XXHHΑΑbb··zzMM''ύύΘΘ„„77λλ««{{YYAA''Ξ Ξ   : : ζÿζÿÿÿ[ÿ[ÿ'ÿ'ÿυώυώ»ώ»ώqώqώώώΘύΘύύύIύIύύύηόηό΅ό΅όKόKόσϋσϋ¬ϋ¬ϋ}ϋ}ϋbϋbϋHϋHϋϋϋδϊδϊ¤ϊ¤ϊrϊrϊZϊZϊVϊVϊPϊPϊ3ϊ3ϊυωυω§ω§ωdωdωAωAωDωDω_ω_ωuωuωwωwωbωbωGωGω9ω9ωAωAω[ω[ωyωyωωωωωwωwω`ω`ωIωIω8ω8ω1ω1ω:ω:ω^ω^ω¨ω¨ωϊϊµϊµϊZϋZϋρϋρϋeόeό²ό²όεόεόύύZύZύΊύΊύ-ώ-ώ¤ώ¤ώÿÿoÿoÿΛÿΛÿ5 5 » » aaΨΨ,,ΖΖaa  ™™##’’θθ11ήήN	N	Ζ	Ζ	5
+5
+
+
+Φ
+Φ
+??ss®®σσDDΆΆ{{ββ22__ffNN,,--__««¨¨‡‡XX**ΫΫ¨¨dd½½uu77ττ‘‘ψ
+ψ
+%
+%
+*	*	))@@‡‡ÿÿFFξξ„„ssέέPPΣΣaaπ π p p ΫÿΫÿAÿAÿµώµώQώQώώώϋύϋύΨύΨύύύύύ‘ό‘ό	ό	ό£ϋ£ϋgϋgϋBϋBϋϋϋΡϊΡϊeϊeϊγωγωcωcωφψφψ΅ψ΅ψRψRψυχυχ{χ{χΰφΰφ1φ1φƒυƒυετετYτYτΩσΩσXσXσΠςΠςAςAς·ρ·ρAρAρκπκπµπµπππ—π—π™π™π›π›π‘π‘πwπwπGπGπππ°ο°οZοZοοοΧξΧξ°ξ°ξξξξξξξξξ΅ξ΅ξΉξΉξΞξΞξΣξΣξΒξΒξ™ξ™ξZξZξξξ³ν³νRνRνιμιμ}μ}μμμ½λ½λuλuλ8λ8λϊκϊκ±κ±κTκTκειειoιoιώθώθ™θ™θ=θ=θηηηηηη"η"η³ζ³ζFζFζιειε¤ε¤εzεzε`ε`εIεIε(ε(εόδόδΞδΞδ®δ®δ©δ©δΏδΏδεδεδεεεε	ε	εεε#ε#εpεpελελε|ζ|ζηηgηgη§η§ηΨηΨηθθuθuθσθσθ€ι€ικκwκwκΧκΧκ4λ4λλλμμ”μ”μνν›ν›νξξξξ,ο,οΜοΜοzπzπ+ρ+ρÒρÒρ_ς_ςΔςΔςσσ$σ$σBσBσyσyσγσγσ‚τ‚τAυAυώυώυ™φ™φχχDχDχ{χ{χΑχΑχ&ψ&ψªψªψ?ω?ωΥωΥωeϊeϊνϊνϊoϋoϋμϋμϋbόbόΣόΣόBύBύ΄ύ΄ύ.ώ.ώ―ώ―ώ-ÿ-ÿ ÿ ÿ  [ [ ² ² qqΝΝ@@MMGG99))ύύΣΣ““??ά ά n n ψÿψÿ{ÿ{ÿύώύώ…ώ…ώώώ½ύ½ύhύhύύύ•ό•όϋϋϋϋEϋEϋ†ϊ†ϊάωάωXωXωωωΓψΓψ„ψ„ψ-ψ-ψ΄χ΄χ(χ(χ΅φ΅φ:φ:φφφώυώυφφEφEφ_φ_φ[φ[φ2φ2φρυρυ®υ®υυυxυxυ™υ™υΥυΥυφφAφAφTφTφPφPφCφCφ6φ6φ-φ-φ!φ!φφφςυςυΡυΡυ²υ²υ•υ•υwυwυPυPυυυζτζτ³τ³τττ~τ~τ}τ}τ‡τ‡τττµτµτετετ)υ)υzυzυΕυΕυωυωυφφφφφφφφ^φ^φÒφÒφrχrχ)ψ)ψδψδψ•ω•ω:ϊ:ϊΪϊΪϊ†ϋ†ϋFόFόύύύύύύΟώΟώ‚ÿ‚ÿ  ‡ ‡ ό ό ……''ΧΧ}}		xxΣΣ++ƒƒΥΥ....##""33LLVV99ρρ½½oo--μμªªppJJ<<>>99ββ__DDKKcc||ttbbYY\\kkxx‡‡‘‘¨¨ΖΖγγσσσσλλλλ  &&MM``QQ$$ννΓΓΈΈΛΛνν%%11JJrrΌΌΗΗΒΒΎΎΘΘιιGGjj……¦¦γγJJΧΧyy‘‘νν33vvΙΙ2	2	ª	ª	#
+#
+”
+”
+ÿ
+ÿ
+ooοο±±//’’ζζ<<ΆΆ΅΅$$ƒƒύύzzλλHHΟΟ~~οοWW΅΅ΓΓΞΞΰΰmmββRR¥¥ΠΠάάΪΪάάιι((eeΌΌ,,ΆΆώώ!!ψψ		‘‘DD**//00άά99όόΩΩΖΖ±±JJφφ™™<<δδ””RR%%,,[[’’ΊΊΒΒ««„„°°½½oo‘‘ηη##YY——ΰΰ))mm®®ωω\\έέppχχVVzzgg88ωωυυµµccΔΔ€€<<μμ""――88ΎΎCCΕΕGGΝΝUUήήffννxx§§EEέέiiννvvΡΡ  qq--ΘΘKKΗΗRRωωΊΊ††OO
+
+ΉΉ\\ψψ
+
+χ	χ	R	R	¨¨qqσσ<<σσ¥¥CCΕΕ--δδOOΝΝ^^ϊ ϊ ¤ ¤ ^ ^ 2 2 % % 2 2 P P o o   ‚ ‚ u u c c U U L L I I J J L L T T f f ‹ ‹ ΐ ΐ FF  ¤¤‹‹WW² ² G G ΡÿΡÿTÿTÿάώάώwώwώ-ώ-ώϊύϊύΤύΤύ£ύ£ύTύTύΰόΰόMόMόªϋªϋ
+ϋ
+ϋtϊtϊθωθω]ω]ωΞψΞψBψBψΕχΕχbχbχχχεφεφ¨φ¨φSφSφγυγυeυeυμτμτ‰τ‰τ=τ=τώσώσ½σ½σvσvσ/σ/σχςχςΣςΣς·ς·ς’ς’ςKςKςΰρΰρ`ρ`ρθπθπ•π•πpπpπmπmπsπsπpπpπbπbπWπWπcπcπππÒπÒπρρAρAρNρNρBρBρ2ρ2ρ2ρ2ρNρNρρρθρθρ[ς[ςήςήςhσhσυσυσ{τ{τωτωτtυtυουουqφqφψφψφ}χ}χψχψχeψeψΛψΛψ6ω6ω―ω―ω4ϊ4ϊ»ϊ»ϊ3ϋ3ϋ‘ϋ‘ϋÒϋÒϋόό.ό.όcόcό¥ό¥όςόςόHύHύ§ύ§ύώώ‰ώ‰ώÿÿ—ÿ—ÿ  ƒ ƒ Τ Τ GG‡‡ήήQQήήuu””‹‹™™55ΤΤhhλλ`	`	Ω	Ω	f
+f
+ΫΫ――ww''ΑΑJJΟΟQQΜΜ44„„ΔΔHH  ggΏΏ		JJƒƒ³³ΟΟΘΘSS»»``11εεzzυυllλλuuwwιιkkϋϋzz·
+·
+Ϋ	Ϋ	 	 	HHΙΙƒƒeeMMΡΡllΔΔJJαα??~~ΗΗAAϋϋιιξξοοεεΫΫααÿÿ$$55ΜΜ``σ σ     t t h h l l t t } }   £ £ Ό Ό Π Π Τ Τ Θ Θ ³ ³ ™ ™ | | O O   ›ÿ›ÿÿÿ΅ώ΅ώIώIώ!ώ!ώώώ%ώ%ώώώΛύΛύTύTύΌόΌόόό…ϋ…ϋόϊόϊxϊxϊιωιωCωCωƒψƒψ΄χ΄χηφηφ.φ.φ›υ›υ2υ2υοτοτΐτΐτ‘τ‘τMτMτξσξσrσrσγςγςOςOςΏρΏρ:ρ:ρΔπΔπbπbπππςοςονονοππ'π'πOπOπqπqπ‹π‹π¤π¤πΐπΐπΰπΰπρρ$ρ$ρDρDρgρgρ“ρ“ρΛρΛρςςRςRς’ς’ςΘςΘςϋςϋς6σ6σ…σ…σξσξσiτiτιτιτYυYυ¬υ¬υΩυΩυίυίυΙυΙυυυfυfυ)υ)υξτξτΊτΊτττττ»τ»τυυfυfυΜυΜυφφ8φ8φ#φ#φγυγυ“υ“υMυMυ$υ$υυυ$υ$υ/υ/υ-υ-υυυυυλτλτΫτΫτΪτΪτιτιτυυ>υ>υzυzυ°υ°υΟυΟυΙυΙυυυ`υ`υ+υ+υυυυυ8υ8υJυJυCυCυ(υ(υυυυυ'υ'υJυJυRυRυ&υ&υΗτΗτUτUτόσόσάσάστστσ#τ#τ<τ<τ"τ"τέσέσ‘σ‘σoσoσ‘σ‘συσυσtτtτβτβτ"υ"υ0υ0υ&υ&υ'υ'υOυOυ΅υ΅υφφφφςφςφEχEχ…χ…χΏχΏχψψUψUψΉψΉψ(ω(ωωωÿωÿω^ϊ^ϊΉϊΉϊϋϋƒϋƒϋσϋσϋZόZό¨ό¨όΡόΡόΫόΫόάόάόνόνό'ύ'ύ‹ύ‹ύώώwώwώΒώΒώΩώΩώΓώΓώ›ώ›ώ|ώ|ώwώwώώώ§ώ§ώ―ώ―ώ’ώ’ώNώNώψύψύ®ύ®ύύύ¨ύ¨ύτύτύXώXώ―ώ―ώίώίώβώβώΕώΕώ ώ ώώώ†ώ†ώώώ–ώ–ώώώ„ώ„ώƒώƒώώώΰώΰώ<ÿ<ÿ ÿ ÿσÿσÿ- - K K ] ] k k z z     ΄ ΄ ζ ζ 99®®//ΠΠΒΒyy®®ggDD<<??BB>>774466;;BBIIPPZZffoooo\\77
+
+θ θ γ γ YYΕΕ77ιι..οο‚‚''ΕΕ@@ΏΏμμ++„„λλJJ½½δδ		d	d	Β	Β	
+
+f
+f
+‘
+‘
+¨
+¨
+½
+½
+Ϊ
+Ϊ
+''@@IIJJMMZZmmzzyyjjWWQQ]]ww““¤¤§§¥¥ªªΌΌΨΨννξξΩΩ²²__44ώ
+ώ
+¶
+¶
+c
+c
+
+
+α	α	Ν	Ν	Π	Π	Π	Π	³	³	n	n			¥¥RRννΞΞ΅΅rrTTSSmm””hh  jjΓΓ))µµmmBB&&ΰΰ»»££΅΅99ΟΟUUββZZIINN]]kkvv€€‹‹……rrTT--
+
+υ υ ϊ ϊ !!bb°°ττόόΤΤΌΌΐΐίίύύΗΗ……JJ  Ϋ Ϋ £ £ Z Z   ΦÿΦÿΊÿΊÿ·ÿ·ÿ΄ÿ΄ÿÿÿqÿqÿ?ÿ?ÿ,ÿ,ÿYÿYÿΟÿΟÿy y --ΊΊφφααφφCCΊΊ<<¦¦εεÿÿ22σσuuηη11PPYYii‘‘ΞΞΑΑpp//ϋϋΫΫ  WWόόόόόόΟΟ——dd??&&ϋϋιιηηόό++ffΗΗάάηηππύύ  (($$ώώώώ
+
+
+
+  κκΑΑ‡‡??σσ©©mm??  ώώςςθθζζμμύύ77TThhuu‹‹  ΐΐκκ  aa°°llΜΜ&&zzÒÒ55¬¬..ªª		H	H	i	i	†	†	µ	µ	
+
+p
+p
+έ
+έ
+..TTRR99!!""22??CCBBAABBEEBB55  		ω
+ω
+υ
+υ
+ύ
+ύ
+""==^^½½ωω::~~ΕΕ\\©©ππ33uuΉΉ^^ΌΌ{{ÒÒ  dd››ΐΐΤΤΧΧÒÒΓΓ®®‹‹WW½½jj!!ββ¥¥YYππjjΧΧQQκκ§§||NN  ϊ
+ϊ
+e
+e
+κ	κ			y	y	g	g	F	F	ύύττ__ζζ••bb33ππ‰‰		‡‡ΝΝccªª$$ª ª P P ÿÿÿÿ·ÿ·ÿzÿzÿTÿTÿHÿHÿMÿMÿUÿUÿTÿTÿNÿNÿPÿPÿnÿnÿ΄ÿ΄ÿ  † † δ δ ,,ssήή‘‘™™ββ>>@	@	Ο	Ο	K
+K
+Μ
+Μ
+XXλλ€€――YYΤΤ‘‘88ΑΑ++zz²²ΤΤΪΪΏΏ%%»»SSόό½½’’ppEEÿÿAAξξΓΓyy’’­
+­
+[
+[
+ 
+ 
+ρ	ρ	Δ	Δ	™	™	n	n	L	L	2	2			ϊϊΎΎccοοssύύ&&®®{{ΤΤ@@ΗΗccώώ}}Ψ Ψ   TÿTÿ¦ώ¦ώώώύύ ύ ύόόίϋίϋ+ϋ+ϋ‰ϊ‰ϊϊϊ³ω³ωpωpω)ω)ωΜψΜψ[ψ[ψήχήχmχmχχχΞφΞφ—φ—φ\φ\φφφ®υ®υ@υ@υΥτΥτ~τ~τJτJτ=τ=τNτNτmτmτƒτƒτ…τ…τsτsτWτWτAτAτ6τ6τ0τ0τττεσεσ‰σ‰σσσ–ς–ς/ς/ςγργρªρªρsρsρ1ρ1ρηπηπ©π©πππ•π•πµπµπΚπΚπµπµπgπgποοοοsοsοοοιξιξκξκξ ο οοοοοοοοο?ο?οzοzοΔοΔοππPπPπππΗπΗπ ρ ρ0ρ0ρGρGρ>ρ>ρρρύπύπύπύπ,ρ,ρ†ρ†ρορορDςDςsςsςςς…ς…ς§ς§ςχςχςhσhσΦσΦσττττΩσΩσ}σ}σ/σ/σσσσσ-σ-σ=σ=σ-σ-σώςώςΚςΚς±ς±ςΗςΗςσσeσeσΊσΊσρσρσττττττττ5τ5τYτYτ€τ€τªτªτάτάτυυfυfυ±υ±υλυλυφφόυόυΩυΩυ²υ²υ—υ—υ“υ“υ΅υ΅υ·υ·υΕυΕυΔυΔυ·υ·υΆυΆυ”υ”υυυυυυυkυkυ0υ0υΪτΪτ~τ~τ4τ4τττ'τ'τYτYτττ£τ£τττaτaτ9τ9τ=τ=τ}τ}τκτκτ\υ\υ©υ©υΎυΎυ£υ£υ}υ}υuυuυυυσυσυ^φ^φΖφΖφ#χ#χχχνχνχtψtψωω™ω™ω	ϊ	ϊUϊUϊ’ϊ’ϊήϊήϊOϋOϋθϋθϋ“ό“ό0ύ0ύ£ύ£ύδύδύ ώ ώώώώώ=ώ=ώhώhώώώΨώΨώ+ÿ+ÿÿÿ- - Π Π llλλAAww΅΅ΦΦ""„„ππSS­­aaΦΦccύύVV±±ΩΩ		V	V	¬	¬	
+
+v
+v
+γ
+γ
+PP²²ÿÿ))..αα°°‹‹zzwwwwooUU++τ
+τ
+΄
+΄
+o
+o
+ 
+ 
+Ε	Ε	Z	Z	ιιzzΠΠmm>>ΔΔ„„QQ11ήήPP  44««NNρρll¬¬ΌΌΊΊΟΟ&	&	Π	Π	|
+|
+''ΨΨ‘‘KKυυΰΰCCYYddggddeeww››ΕΕέέΛΛƒƒ‘‘!!ΜΜ‘‘WW——cc·
+·
+
+
+q	q	ααccϋϋ΅΅LLςς((ΠΠ``77ύύ££//΄΄KKήήΒΒ΅΅qq:://66±±11° ° O O       ωÿωÿΌÿΌÿZÿZÿκώκώώώTώTώQώQώxώxώµώµώςώςώÿÿ)ÿ)ÿÿÿόώόώάώάώΜώΜώΥώΥώϋώϋώ4ÿ4ÿsÿsÿ©ÿ©ÿΚÿΚÿΧÿΧÿÒÿÒÿΗÿΗÿΌÿΌÿµÿµÿ―ÿ―ÿΆÿΆÿ‰ÿ‰ÿ`ÿ`ÿ,ÿ,ÿϊώϊώΧώΧώΞώΞώΨώΨώγώγώΩώΩώ¤ώ¤ώCώCώΎύΎύ)ύ)ύόόςϋςϋDϋDϋ}ϊ}ϊΆωΆωΓψΓψχχχχOχOχΙφΙφVφVφδυδυdυdυΦτΦτ<τ<τσσλςλς0ς0ςmρmρµπµπππ΄ο΄ο}ο}ο`ο`οEοEοοοΞξΞξξξ;ξ;ξξξ	ξ	ξξξ1ξ1ξLξLξbξbξqξqξvξvξrξrξjξjξgξgξtξtξξξηξηξIοIο±ο±οππMπMπvπvπ–π–πΘπΘπρρ‚ρ‚ριριρ)ς)ς(ς(ςπρπρ¦ρ¦ρ€ρ€ρ΅ρ΅ρςς¤ς¤ς;σ;σ°σ°σÿσÿσ4τ4τeτeτ—τ—τΊτΊτΐτΐτ¨τ¨τƒτƒτuτuτττϊτϊτ…υ…υ φ φΈφΈφEχEχΠχΠχbψbψόψόψ‘ω‘ωϊϊfϊfϊϊϊϊϊvϊvϊiϊiϊϊϊξϊξϊϋϋ}ό}όaύaύ ώ ώ΅ώ΅ώοώοώ)ÿ)ÿlÿlÿΔÿΔÿ  ] ] j j J J   υÿυÿφÿφÿ  U U   έ έ OOlljjMM))&&MMookk44Ϊ Ϊ „ „ S S T T w w   ΄ ΄ µ µ ³ ³ Δ Δ μ μ !!LLYYGG$$ώ ώ   ''  τ τ YYΜΜBB––­­‹‹KKννααήήΡΡΌΌµµΥΥ&&vv¬¬ΓΓΟΟΰΰυυjjΥΥΗΗ΄΄……1	1	Γ	Γ	K
+K
+ά
+ά
+[[LLGG11ξξxxββRRξξΕΕΚΚΪΪΦΦ­­iiΔΔkkFF··OOΉΉύύ66zzΣΣ5 5 ‹ ‹ Η Η ο ο !!`!`!Υ!Υ!t"t"'#'#Ο#Ο#P$P$$$Ζ$Ζ$Ϋ$Ϋ$ÿ$ÿ$G%G%Ί%Ί%M&M&σ&σ&''D(D(μ(μ(–)–)<*<*Π*Π*<+<+x+x+++++++Ύ+Ύ+υ+υ+4,4,m,m,™,™,ΐ,ΐ,π,π,0-0-ƒ-ƒ-ά-ά-/./.n.n.“.“.™.™.}.}.=.=.ά-ά-`-`-ή,ή,f,f,,,Ψ+Ψ+Ι+Ι+Ν+Ν+Λ+Λ+©+©+R+R+Ό*Ό*ϊ)ϊ)()()g(g(Ξ'Ξ'W'W'μ&μ&m&m&Ζ%Ζ%χ$χ$$$N#N#¥"¥"#"#"Ώ!Ώ!j!j!!!Ζ Ζ g g ξξJJrrmmWWSS||άάaaττ{{ξξOO¨¨ggΠΠ::υυ77bb||¨¨ΟΟ44ee
+
+γ	γ	U	U	σσ­­[[ΩΩ33  ΡΡ||||η η d d   ΗÿΗÿ™ÿ™ÿfÿfÿÿÿΉώΉώAώAώΑύΑύDύDύΥόΥό}ό}όAόAόόό ό όΡϋΡϋqϋqϋΛϊΛϊδωδωΦψΦψΡχΡχώφώφtφtφ*φ*φώυώυΗυΗυgυgυΥτΥτττHσHσwςwςµρµρ
+ρ
+ρ}π}π	π	πªοªοSοSοψξψξ™ξ™ξ?ξ?ξωνωνΤνΤνΛνΛνΔνΔν ν νBνBν­μ­μόλόλ]λ]λφκφκΨκΨκωκωκ:λ:λ€λ€λ΄λ΄λΟλΟλΣλΣλΒλΒλ›λ›λ[λ[λλλ¥κ¥κ=κ=κΨιΨιvιvιιι―θ―θMθMθυηυη³η³η‹η‹ηηη‹η‹ηηη³η³ηΑηΑηΗηΗηΔηΔηµηµη™η™ηoηoη@η@ηηηηηCηCη§η§η0θ0θΉθΉθιι4ι4ι	ι	ι¶θ¶θfθfθ=θ=θEθEθlθlθθθθθ{θ{θDθDθ
+θ
+θάηάηΓηΓηΊηΊη½η½ηΙηΙηβηβηθθ+θ+θJθJθVθVθNθNθ6θ6θθθςηςηΔηΔηηηRηRη(η(η%η%ηYηYηΏηΏη@θ@θΉθΉθιιWιWιιιΛιΛι"κ"κκκπκπκ;λ;λ^λ^λ[λ[λDλDλ/λ/λ0λ0λPλPλλλθλθλ\μ\μθμθμννKξKξοοέοέοππρρgρgρ”ρ”ρ¬ρ¬ρΦρΦρ5ς5ςκςκςττ‹υ‹υYχYχKωKω+ϋ+ϋΥόΥό6ώ6ώVÿVÿR R KKMMKK››¦¦CC™™εε^^&&>>ιι--??±±..  ώώδόδό(ϋ(ϋωω>ψ>ψWχWχΣφΣφφφφφ‰φ‰φ™φ™φΕφΕφχχ”χ”χ3ψ3ψδψδψωωLϊLϊσϊσϊϋϋόόόό ύ ύ²ύ²ύ·ώ·ώ  ――GG§§¶¶‹‹ffτ	τ	µµFF΄΄ΘΘhhΓΓAALL©©[[II††Ο Ο e"e"##e$e$ο$ο$‚%‚%\&\&''ÿ(ÿ(o*o*¦+¦+„,„,
+-
+-M-M-j-j-u-u-r-r-Z-Z-+-+-ε,ε,‹,‹,,,£+£+++h*h*±)±)ϋ(ϋ(X(X(Κ'Κ'>'>'‘&‘&%%Z$Z$Φ"Φ"<!<!΄΄NNττ€€ΥΥϊϊaaρρΌΌ••NNΡΡ((q
+q
+ΗΗ,,’’ζζ,,z z οώοώ§ύ§ύªόªόψϋψϋϋϋVϋVϋXϋXϋƒϋƒϋΑϋΑϋόϋόϋ%ό%ό4ό4ό+ό+ό
+ό
+όÒϋÒϋ‹ϋ‹ϋJϋJϋ7ϋ7ϋ‚ϋ‚ϋHόHόύύ#ÿ#ÿλ λ »»~~''  ΕΕo	o			b	b			όό.	.	’	’	θ	θ	ψ	ψ	±	±	6	6	ΎΎqqTTRRXXbb~~··ώώ/	/			²²ϋϋMM££**ζζΦΦύύWWΡΡHH™™««00ΡΡss¦¦aa||ppL L 'ÿ'ÿώώ)ύ)ύhόhόΟϋΟϋUϋUϋρϊρϊ’ϊ’ϊϊϊnωnω[ψ[ψΥφΥφωτωτσσ’ρ’ρΗπΗπΥπΥπ ρ ρΨςΨς%τ%τDυDυφφφφδφδφχχ5χ5χ„χ„χψψΝψΝψzωzωΘωΘω|ω|ω“ψ“ψLχLχφφυυXτXτΚσΚσ"σ"σHςHς`ρ`ρ΅π΅π1π1πχοχο΅ο΅οÒξÒξNνNνλλdθdθ‚ε‚εΑβΑβaΰaΰήή—έ—έOέOέ‘έ‘έόέόέ+ή+ήκέκέQέQέΐάΐάάά έ έ.ή.ήgίgίdΰdΰκΰκΰααμΰμΰρΰρΰEαEαχαχαπβπβ
+δ
+δ#ε#ε!ζ!ζώζώζΓηΓη~θ~θ;ι;ιριρικκΓκΓκ®κ®κWκWκώιώιμιμιKκKκλλÿλÿλΎμΎμ	ν	νΒμΒμϋλϋλλκλκίιίι.ι.ι'ι'ιÿιÿιΊλΊλξξΐπΐπ&σ&σϋτϋτ,φ,φοφοφ›χ›χ€ψ€ψΕωΕωbϋbϋ4ύ4ύÿÿϋ ϋ ήήΔΔ――B
+B
+³³ΥΥ¶¶}}UU[[„„ΦΦ΄΄ΙΙeeκ
+κ
+­­ΰΰ––ΗΗPPωωssnn» » dώdώ°ϋ°ϋύψύψ›φ›φ τ τνςνςTρTρΎοΎοCξCξννJμJμΧλΧλxλxληκηκκκιι?θ?θ	θ	θ‹θ‹θιιγκγκύλύλ³μ³μννννννννννννννννEνEνΞνΞν”ξ”ξoοoο,π,π¬π¬πυπυπ'ρ'ρjρjρΜρΜρ?ς?ς΅ς΅ςΩςΩςεςεςΦςΦςΑςΑς­ς­ς‰ς‰ςHςHςςρςρµρµρΡρΡρyςyς®σ®σEυEυφφφφ‰ψ‰ψφωφωYϋYϋΪόΪόώώZ Z ((ήή‚‚77		11^^oo<<ΏΏ^^ΤΤΗΗ
+
+ ! !Ξ"Ξ"ξ#ξ#y$y$›$›$—$—$¶$¶$%%Η%Η%&&9'9'®'®'ί'ί'Π'Π'''%'%'—&—&π%π%@%@%›$›$$$€#€#ώ"ώ"{"{"χ!χ!v!v!σ σ a a ®®έέqqOOΑΑ΄΄ααο ο ”!”!¶!¶!h!h!γ γ _ _       < < ΄ ΄ V!V!""Ι"Ι"ƒ#ƒ#C$C$$%$%B&B&²'²'r)r)d+d+T-T-	/	/[0[0<1<1Ό1Ό1ύ1ύ1#2#2K2K2€2€2Ε2Ε233‘3‘3'4'4ί4ί4¥5¥5P6P6©6©6†6†6Ρ5Ρ54433G1G1…/…/Χ-Χ-A,A,Ή*Ή*.).)‹'‹'Έ%Έ%¦#¦#V!V!έέ__δδώώ>>‚‚ΈΈήή@@		ζζ;;ΦΦ@@έÿέÿ³ώ³ώΐύΐύξόξό+ό+όkϋkϋ®ϊ®ϊχωχωFωFω›ψ›ψχχχχ]χ]χΤφΤφ^φ^φφυφυυυυυττττuσuσχςχς™ς™ςYςYς-ς-ςςςΜρΜρρρJρJρρρΨπΨπ§π§πqπqπ.π.πηοηο®ο®οοο»ο»οππ‘π‘πρρ ρ ρςςςςυςυςyσyσττΖτΖτυυzφzφχχ»ψ»ψϊϊOϋOϋόόύύtώtώIÿIÿ  χ χ εεββςςNN––γγ&
+&
+ZZ  ½½ΩΩκκηηΘΘ‰‰&&——ΤΤήήΏΏaaGG77ίίqqΦΦXX‡‡§§ΉΉΕΕάάjjέ
+έ
+U
+U
+ΐ	ΐ			kkΜΜKKππΊΊ¥¥®®ΦΦ||ααCCϋϋe	e	α	α	d
+d
+Μ
+Μ
+χ
+χ
+Ν
+Ν
+O
+O
+•	•	ΖΖ__ΟΟ>>””ΑΑΒΒ¤¤qq1 1 δώδώ…ύ…ύόό‡ϊ‡ϊπψπψUχUχΗυΗυQτQτσσηρηρρρSπSπΡοΡοxοxοNοNοlοlοσοσορρ©ς©ςΚτΚτ3χ3χ΅ω΅ωκϋκϋώύώύςÿςÿμμ		QQ³³ZZxxjj11ΛΛ22^^PP……ΕΕΕΕ‚‚[[ΆΆ––cc44γγ½½ΒΒλλ++~
+~
+η	η	h	h			ΒΒ’’nnPP11ωωθθδδξξόόÿÿΰΰTT――ΖΖΐΐƒƒ  <ώ<ώIόIόFϊFϊTψTψ…φ…φήτήτZσZσκρκρ‡π‡π'ο'οΛνΛνvμvμ0λ0λκκϋθϋθθθpηpηξζξζ“ζ“ζ]ζ]ζPζPζvζvζΫζΫζ‰η‰ηzθzθ ι ιζκζκ0μ0μpνpν΅ξ΅ξΞοΞορρGςGς›σ›σρτρτ<φ<φtχtχψψΎωΎωήϊήϊψϋψϋύύούούΎώΎώwÿwÿ( ( ί ί aaΟΟ‰‰[[SSmm““©	©	
+
+iiΙΙ~~==  ΌΌkk””ύύ44//λλyyοοccΰΰ``ΤΤ++^^ss{{…
+…
+		ΛΛ]]ΐΐ66ΐΐ^^ΥΥµµ··αα44ªª77ΟΟhhΆΆI	I	ω	ω	ª
+ª
+NNΪΪII››ΨΨ
+
+55XXnnii<<ΫΫDD~~
+
+Ό	Ό	ςςMMΝΝjjΜΜccVVii——ΪΪ**‚‚ήή==ωωW	W	Α	Α	=
+=
+Ν
+Ν
+ggϋϋxxΡΡ		''22))°°((jjy
+y
+_	_	''ήή‘‘XXHHvvνν±±»»  ooώώ΅΅SSκκΩΩααύύ 
+ 
+@@WWkk‹‹ΒΒrrΕΕρρΨΨeeJJ¤¤΅΅II¥¥··……‰‰κκRRÒ Ò dώdώψϋψϋxωxωΣφΣφ	τ	τ(ρ(ρJξJξλλιιζζζζεε™γ™γ^β^βKαKαOΰOΰoίoίΗήΗή}ή}ή­ή­ή[ί[ίkΰkΰ¶α¶α γ γªδªδdζdζeθeθªκªκννaοaοyρyρSσSσυυΣφΣφΛψΛψχϊχϊ@ύ@ύ„ÿ„ÿ®®ΉΉ¬¬Z	Z	¬¬??ΨΨzz††µµ^^%%GG——ζζ88S S „!„!Σ"Σ"'$'$U%U%1&1&¨&¨&Δ&Δ&®&®&–&–&&&Λ&Λ&''F'F'G'G'ύ&ύ&j&j&¤%¤%Ρ$Ρ$$$m#m#ί"ί"M"M"!!· ·   ``ÿÿ‡‡ωωVV§§ττKK°°  ‘‘ÿÿmmβ	β	nnΡΡ››ff33ΫÿΫÿ±ώ±ώvύvύόόϊϊσψσψaχaχφφύτύτ>τ>τ¨σ¨σσσbςbς΅ρ΅ρππππ{π{πXπXπ|π|πΙπΙπρρuρuρέρέρxςxςVσVσjτjτυυφφjχjχ4ψ4ψ"ω"ωhϊhϊόό"ώ"ώO O qqkk::ηηy	y	κ
+κ
+33PPLL66ΩΩll¶¶³³xx**ζζ°°xx!!››μμ**qqΧΧZZξξ‡‡""Δ
+Δ
+}
+}
+Z
+Z
+_
+_
+„
+„
+·
+·
+β
+β
+ϊ
+ϊ
+ό
+ό
+ύ
+ύ
+nnλλΰΰΉΉFFrr??ΕΕ""kk§§ΤΤκ
+κ
+κ	κ	ΞΞ@@ΔΔ$$ll®ÿ®ÿτύτύ<ό<όrϊrϊxψxψ;φ;φ½σ½σρρ†ξ†ξ$μ$μκκ@θ@θ¥ζ¥ζ'ε'εΑγΑγ}β}βjαjα–ΰ–ΰωίωίxίxίψήψήiήiήΦέΦέ_έ_έ(έ(έKέKέΚέΚέήήzίzίoΰoΰ^α^αFβFβ+γ+γδδόδόδσεσεηηLθLθΡιΡιλλlνlν@ο@ολπλπcςcςΎσΎσ(υ(υΖφΖφΆψΆψ«ϊ«ϊ·ό·ό ώ ώ[ [ υυ99αα¦
+¦
+99¤¤””ttRR--ύύΈΈTTÒÒ88††ΎΎÒÒ··__ΙΙωωψψΝΝ{{++(
+(
+		9	9	ΖΖ((>>dd‰‰“ “ ΉÿΉÿ*ÿ*ÿςώςώλώλώΥώΥώxώxώΔύΔύΫόΫόχϋχϋAϋAϋΏϊΏϊLϊLϊ»ω»ωοψοψμχμχΜφΜφ°υ°υ΅τ΅τσσ„ς„ςhρhρaπaπ–ο–ο#ο#οοο$ο$οRοRοƒοƒοÒοÒοyπyπ―ρ―ρσσουου¤ψ¤ψlϋlϋ)ώ)ώα α ªª|	|	GGΝΝ66‹‹??WWΖ!Ζ!ƒ$ƒ$΄&΄&_(_(¥)¥)**@+@+++L+L+¥*¥*Ά)Ά)d(d(ώ&ώ&k%k%##L!L!ΆΆ­­¤¤ΕΕ7722WWt	t	γγmm@@TT‘‘θ θ W W κÿκÿ³ÿ³ÿΊÿΊÿύÿύÿn n ··‡‡††^^οοkkττl	l	©	©			$	$	””ΡΡ³³‹‹GGΒΒ„„¬ ¬ ΰÿΰÿκώκώ­ύ­ύ3ό3ό΅ϊ΅ϊ$ω$ωΫχΫχΠφΠφωυωυKυKυΕτΕτnτnτMτMτaτaτττπτπτPυPυΑυΑυTφTφχχψψωωςωςω¬ϊ¬ϊ5ϋ5ϋ¨ϋ¨ϋ6ό6όύύ!ώ!ώwÿwÿη η SS¶¶„„		}}γγJJΐΐCCΔΔ,,jjzz``""ΑΑ;;ΎΎΩΩμμ  ÿÿΌΌ??}}FFςς΅΅kkWWXXXXKK::>>qqάάhhσ
+σ
+]
+]
+Ά	Ά	ΩΩ%%77ΤΤTT¬¬ππEEΜΜ‰‰iiKKΉΉ??――		C C YÿYÿPώPώ=ύ=ύ6ό6όLϋLϋzϊzϊΈωΈωυψυψ1ψ1ψ|χ|χμφμφ•φ•φyφyφ‹φ‹φ¶φ¶φηφηφ(χ(χ‹χ‹χ6ψ6ψDωDωΐϊΐϊόό΄ώ΄ώθ θ \\――3
+3
+σσηηςςρρΔΔ__ΒΒρρθ!θ!—#—#λ$λ$Χ%Χ%^&^&&&q&q&&&`%`%S$S$α"α"!!  ΔΔss
+
+ΕΕΤΤ»»“	“	xx}}¤ ¤ θύθύCϋCϋΌψΌψdφdφSτSτ›ς›ςCρCρIπIπ ο οFοFο?ο?ο”ο”οJπJπWρWρςςÿσÿσ`υ`υ½φ½φ+ψ+ψΒωΒωϋϋ~ύ~ύkÿkÿ((››ΛΛΦΦάάθθηη²²'	'	:	:	όό  [[††ll  JJ] ] KώKώόόΞωΞωbχbχητητyςyς9π9π8ξ8ξrμrμΘκΘκιιlηlηΐεΐε<δ<δγγ%β%β™α™αGαGααααα:α:α®α®αxβxβ‹γ‹γΗδΗδζζ5η5ηTθTθ€ι€ιήκήκμμ‹ξ‹ξÒπÒπDσDσΕυΕυFψFψΔϊΔϊBύBύΐÿΐÿ11‡‡³³±±‹
+‹
+UU!!ύύμμγγΡΡ££HH――ΡΡ««DD­­φφ**IIJJΆΆήήΩΩªªnn88δδ  ..ΙΙVVΙ
+Ι
+R	R	ΪΪPP³³V V <ÿ<ÿ6ώ6ώ&ύ&ύύϋύϋΌϊΌϊ}ω}ωWψWψXχXχ|φ|φ°υ°υητητττ`σ`σ²ς²ςςς|ρ|ρήπήπ3π3πƒοƒοΰξΰξXξXξπνπν¤ν¤νkνkνGνGν?ν?νaνaνµνµν;ξ;ξκξκξΊοΊοªπªπΔρΔρσσ¦τ¦τuφuφzψzψ¤ϊ¤ϊπόπόYÿYÿζζssf
+f
+ee[[55εεcc±±ΩΩδδΣ Σ "" $ $I%I%ύ%ύ%9&9&&&y%y%΅$΅$##""O O ,,ΉΉ((3322//2
+2
+PP))  "ώ"ώ~ό~ό	ϋ	ϋ»ω»ωψψ΄χ΄χχχΞφΞφέφέφ?χ?χξχξχθψθψ-ϊ-ϊΊϋΊϋ…ύ…ύ{ÿ{ÿ……••¤¤ΌΌζ	ζ	""\\uuMMΤΤΑΑJJllθθΨΨyyνν,,&&ΦΦD	D	ΧΧ33ªώªώ6ό6όΤωΤωχχBυBυ%σ%σ0ρ0ρcοcοΎνΎνHμHμ	λ	λκκhιhιιιÿθÿθ%ι%ιvιvιξιξι‘κ‘κiλiλ{μ{μΗνΗνDοDοίπίπςςττ–υ–υώφώφ^ψ^ψΔωΔω<ϋ<ϋΖόΖόYώYώιÿιÿnnππww°°Q	Q	ΰ
+ΰ
+OOέέ__  ΜΜΞΞ>>ΎΎ..ΧΧ
+
+ππ»»mmÿÿcc€€OOΩΩ¥¥``ξξ==Z	Z	]]llππZ Z ΝώΝώNύNύσϋσϋΦϊΦϊÿωÿω_ω_ωÒψÒψ4ψ4ψvχvχ£φ£φΨυΨυ2υ2υ½τ½τrτrτDτDτ&τ&τττ&τ&τHτHτsτsτ‘τ‘τττjτjτ9τ9τττ τ τWτWτ΄τ΄τ&υ&υ υ υφφφφχχχχπχπχ;ψ;ψ|ψ|ψΞψΞψPωPωϊϊ6ϋ6ϋΆόΆόQώQώ8 8 GGss©©ήή..OOuu  ΘΘέέÒÒ——[[@@ΓΓγγ««//¥¥‘‘,,dd00››ΐΐ··““__((ώώϋώϋώ8ό8όΘωΘω­χ­χΫυΫυBτBτΥςΥς—ρ—ρ”π”πάοάο{ο{οpοpο¶ο¶οDπDπρρ2ς2ς‘σ‘σ/υ/υώφώφνψνψσϊσϊ	ύ	ύ0ÿ0ÿgg  ΕΕΉΉh	h	Ο
+Ο
+ϋϋώώγγ¨¨88wwNN΄΄¬¬CC†
+†
+‚‚BBΥΥII¨ώ¨ώωϋωϋ<ω<ωvφvφ―σ―σςπςπOξOξΞλΞλqιqι2η2ηεεγγSαSαλίλίξήξήaήaή4ή4ήPήPή¥ή¥ή+ί+ίαίαίΜΰΜΰηαηα+γ+γ‘δ‘δζζΖηΖηιιλλΊνΊνλολο-ς-ςττχχΑωΑω“ό“ό]ÿ]ÿρρ66--ωωΔ	Δ	ªªªª®®bb
+
+¤¤44――ϊϊωω¦¦ZZ——ΜΜννννΔΔ||!!ΊΊ;;••ΊΊ――‰‰__AA,,κκ΄΄€€]]UU__lluu|
+|
+		½½ƒƒ¨¨QQΗΗ‚‚&&ªªEEllƒƒ‘ ‘ —ÿ—ÿ ώ ώ³ύ³ύΥόΥόύϋύϋϋϋϊϊΩψΩψχχ>φ>φυυττ3σ3σiςiς¬ρ¬ρρρ—π—π€π€πΠπΠπ|ρ|ρjςjς~σ~σ¬τ¬τÿυÿυχχcωcωϋϋψύψύ¦ ¦ ™™Ε	Ε	ϊϊεε‰‰ΥΥΰ!ΰ!“#“#ή$ή$Μ%Μ%n&n&Ò&Ò&φ&φ&Ύ&Ύ&&&Κ$Κ$σ"σ"  ςς;;ee  οοUUΠ
+Π
+ddÒÒ««΅ÿ΅ÿ»ύ»ύόό‰ϊ‰ϊKωKωQψQψχχBχBχFχFχ®χ®χxψxψωωΥϊΥϊ4ό4όύύÿÿ² ² ƒƒΗΗ		ZZ……‹‹ff¨¨……gg{{RRγγ%%ΈΈOOQQ""½	½	))zzΛΛ1ÿ1ÿΌόΌόgϊgϊ*ψ*ψώυώυδσδσηρηρππ€ξ€ξ*ν*νμμ>λ>λ κ κ:κ:κκκκκaκaκλκλκΌλΌλΟμΟμξξ‚ο‚οϊπϊπmςmςÒσÒσ-υ-υ‡φ‡φξχξχjωjωϋϋΌόΌό”ώ”ώ  ‘‘||;
+;
+ΪΪ^^ΘΘ55((ππ™™55ΞΞaaδδDDzzƒƒkk88ννkkΖΖ$$ϊϊ``°°ηη33aa——ΞΞϋ
+ϋ
+&
+&
+Z	Z	®®00ΩΩ””==ΌΌφφηημ μ   CÿCÿ‡ώ‡ώΗύΗύξόξόξϋξϋΒϊΒϊwωwωψψΖφΖφ{υ{υ4τ4τεςες‡ρ‡ρππ©ξ©ξMνMνμμλλ8κ8κ—ι—ι)ι)ισθσθύθύθOιOιξιξιΪκΪκμμ‡ν‡ν:ο:ο$ρ$ρAσAσ“υ“υψψΫϊΫϊΤύΤύÿ ÿ HH––Λ
+Λ
+ΤΤ¥¥FFΕΕ44””ΩΩλλ¬ ¬ ""ή"ή"A#A#4#4#Γ"Γ"ύ!ύ!ξ ξ ΅΅jj}}EEηηkkΪΪ>>›	›	ττQQ½½KÿKÿύύ$ϋ$ϋ…ω…ω0ψ0ψχχCφCφυυ0υ0υύτύτυυDυDυ·υ·υXφXφ(χ(χ$ψ$ψJωJω“ϊ“ϊψϋψϋwύwύÿÿ· · ss00ΫΫ\\¤¤―	―	}
+}
+ccwwFFΤ
+Τ
+$
+$
+;	;	µµ		Ώ Ώ 8ώ8ώϋϋΑψΑψυυυυ.σ.σ{π{πονον›λ›λιιΊηΊηζζ¦δ¦δEγEγϊαϊαΜΰΜΰΘίΘίÿήÿήzήzήGήGήqήqή ί ίςίςί:α:αΉβΉβKδKδΤεΤεLηLη»θ»θ8κ8κΨλΨλ¤ν¤νοο«ρ«ρΡσΡσ	φ	φWψWψΈϊΈϊ#ύ#ύƒÿƒÿΓΓΟΟ¥¥PPααg
+g
+ζζSS··““33ΩΩψψ++00εε‰‰55ιι±±zz//ΚΚRRΪΪyy66		ήή88――e
+e
+Β	Β	%	%	ƒƒΘΘΰΰΑΑmmφφrrχÿχÿώώ*ύ*ύ½ϋ½ϋ2ϊ2ϊ„ψ„ψΊφΊφδτδτσσRρRρΆοΆο ξ ξoμoμυκυκ ι ιwθwθ}η}η΄ζ΄ζζζΔεΔεΎεΎεζζΦζΦζοηοηTιTιϊκϊκδμδμ%ο%οΛρΛρΧτΧτ2ψ2ψµϋµϋ@ÿ@ÿΒΒ>>Ώ	Ώ	IIΞΞ00ZZ@@ννqqΣ!Σ!$$ς%ς%|'|'((_)_)ή)ή)'*'*<*<***z)z)}(}(''j%j%##!!¤¤··ΣΣυυ22AADDEENNjj›
+›
+άά%%qqΚΚBBζ ζ ΓÿΓÿÒώÒώ
+ώ
+ώaύaύΪόΪό€ό€ό^ό^ό~ό~όέόέόuύuύ:ώ:ώÿÿ  ΦΦwwδδ,,nnΔΔ88ΈΈ''llxxjjggeeIIςςMMddQQ44  
+ÿ
+ÿλύλύ±ό±όXϋXϋλωλωxψxψχχΉυΉυ}τ}τZσZσXςXςzρzρΔπΔπ5π5πΘοΘοsοsο/ο/οχξχξΖξΖξ—ξ—ξfξfξ1ξ1ξÿνÿνανανρνρνKξKξοο,π,π―ρ―ρzσzσnυnυpχpχmωmωcϋcϋVύVύPÿPÿWWkk„„——		oo;;μμyyΣΣξξΖΖccΧΧ88——ωωQQ„„yynnuuFFππ€€ϋϋmmηηzz88!
+!
+*	*	>>OO^^uu¥¥σσSS±±ωω&&F F lÿlÿ£ώ£ώιύιύ4ύ4ύ|ό|όΙϋΙϋ+ϋ+ϋ¶ϊ¶ϊlϊlϊ9ϊ9ϊ ϊ ϊ¥ω¥ωωωhψhψχχ²φ²φ²υ²υ‘τ‘τWσWσςςρρFπFπΞοΞο’ο’οmοmο=ο=οώξώξΏξΏξ΅ξ΅ξΑξΑξ0ο0οκοκοηπηπςςoσoσΰτΰτ^φ^φΰχΰχhωhω ϋ ϋΊόΊό΅ώ΅ώ® ® ΠΠππ
+	
+	..LLXX77ΦΦ77jj‡‡zzNN  οο++55““υυ;;nn‡‡kkϊϊ''ϋϋ$$΄΄K	K	έέ``ΩΩ`ÿ`ÿύύοϊοϊωωLχLχ¶υ¶υFτFτ	σ	σςςMρMρΑπΑπXπXπππΚοΚοΉοΉογογοRπRπρρμρμρώςώς4τ4τυυώφώφψψÿωÿωaϋaϋ–ό–όύύqώqώ$ÿ$ÿΉÿΉÿ- - x x   ‹ ‹ W W   “ÿ“ÿ ÿ ÿCώCώUύUύ8ό8όψϊψϊ¤ω¤ωHψHψθφθφ‚υ‚υττ…ς…ςεπεπ1ο1οpνpν­λ­λςιςιQθQθήζήζ°ε°εΪδΪδmδmδjδjδΞδΞδεεζζεηεηfιfιλλάμάμΑξΑξΒπΒπβςβς#υ#υ‚χ‚χςωςωcόcόΖώΖώff··‰
+‰
+φφNN††——??ΖΖ  ίί^^‡‡nn%%¶¶##mm——¬¬°°kkkk±±ϊϊhh
+
+Χ	Χ	――zz..ΦΦrr‰‰Π Π 9 9 ΎÿΎÿWÿWÿÿÿ»ώ»ώrώrώώώ΄ύ΄ύ>ύ>ύΘόΘό\ό\όϊϋϊϋ™ϋ™ϋ-ϋ-ϋ±ϊ±ϊ,ϊ,ϊ«ω«ω6ω6ωΝψΝψbψbψηχηχVχVχ³φ³φφφ{υ{υυυ±τ±τ~τ~τiτiτjτjτvτvτ€τ€τyτyτYτYτ&τ&τφσφσκσκσττ“τ“τOυOυ@φ@φ\χ\χ£ψ£ψϊϊΘϋΘϋ§ύ§ύ£ÿ£ÿ¦¦  „„		½½‡‡³³__§§  ;";"$$™%™%θ&θ&	(	(ό(ό(¬)¬) * *δ)δ)Z)Z)t(t(K'K'σ%σ%k$k$«"«"¦ ¦ \\ΦΦ$$TThh__99
+
+ΗΗ  µύµύϊϊϊϊiψiψφφϊσϊσAςAςμπμπόοόοqοqοIοIο‹ο‹ο9π9πMρMρ°ς°ςEτEτλυλυχχ*ω*ωΔϊΔϊcόcόώώ½ÿ½ÿxx@@ÿÿββ§
+§
+..ccFFββFFxxss))™™ΗΗΐΐ‹‹!
+!
+vv~~DDεε”ÿ”ÿ{ύ{ύ¶ϋ¶ϋJϊJϊ-ω-ωTψTψΉχΉχVχVχ#χ#χχχωφωφΫφΫφΌφΌφ¶φ¶φπφπφ‹χ‹χ’ψ’ψψωψω§ϋ§ϋύύ“ÿ“ÿΉΉφφ@@Ο
+Ο
+ZZ¶¶((££YYcc} } x!x!""H"H">">"""Π!Π!!!@!@!Δ Δ όόΣΣIInnZZ&&δδΆΆff55κ	κ	ΔΔ––hhLL_ÿ_ÿ·ύ·ύeόeόhϋhϋ³ϊ³ϊ9ϊ9ϊμωμωΖωΖωΎωΎωΕωΕωΘωΘω°ω°ωsωsωωωΗψΗψψψΕψΕψLωLω$ϊ$ϊ+ϋ+ϋ7ό7ό!ύ!ύΣύΣύHώHώ†ώ†ώ’ώ’ώwώwώ9ώ9ώβύβύzύzύύύόόόόWϋWϋ‰ϊ‰ϊωωψψ”χ”χ›φ›φ²υ²υΧτΧτ
+τ
+τQσQσΐςΐςcςcςBςBςYςYςςςρςρςaσaσφσφσΓτΓτίυίυXχXχ1ω1ωhϋhϋτύτύΛ Λ ΪΪ1
+1
+II??ΦΦ~~  LLOO!!b"b"s#s#/$/$$$l$l$Υ#Υ#Μ"Μ"g!g!ΌΌΥΥ°°FF––©©””cc
+
+ηηÿÿϋϋZχZχισισβπβπFξFξμμ3κ3κΗθΗθάηάη}η}η η η&θ&θνθνθΨιΨιβκβκμμiνiνξξξξ–π–π[ς[ς?τ?τGφGφzψzψΛϊΛϊύύGÿGÿ,,ΏΏ		υυ  ππ{{ΚΚήή²²AA  ®ώ®ώΈόΈόΕϊΕϊμψμψ6χ6χ±υ±υiτiτkσkσΉςΉςJςJςςςΜρΜρρρPρPρρρρρρρNρNρ ρ ρςςςς`σ`σqτqτΩυΩυχχ…ω…ω¥ϋ¥ϋγύγύ4 4 ζζ''E	E	==ιι¶¶||))¨¨μμσσΛΛϋϋ&&ΩΩeeΒΒοοηη©©99¤¤ψψCCεεGGΉ	Ή	AAάά……33ήή‰‰@ @ ÿÿ(ώ(ώyύyύύύ»ό»ό…ό…όUόUό)ό)όόό
+ό
+ό3ό3όόόύύΞύΞύ©ώ©ώΆÿΆÿ­ ­ ··――‡‡44²²ώώήήmmΒΒρρ++; ; .ÿ.ÿλύλύdόdό¤ϊ¤ϊΐψΐψΩφΩφυυUσUσΕρΕρWπWποολνλνφμφμ1μ1μ›λ›λ8λ8λλλGλGλγλγλυμυμyξyξ]π]π“ς“ςυυΛχΛχΌϊΌϊΞύΞύβ β ΧΧ)	)	aa……``θθ!!••ΌΌwwΛΛΎΎVVVV¦¦††h	h	ΓΓAAψώψώρϋρϋ7ω7ωΣφΣφΜτΜτ σ σΎρΎρ“π“ποο«ξ«ξσνσν{ν{νPνPνtνtνένένξξ\ο\οoπoπΎρΎρDσDσρτρτ¬φ¬φ`ψ`ψϊϊϋϋ2ύ2ύΝώΝώg g σσ\\‘‘††44••««uunnΕΕgg΄΄όόJJ± ± A A ώÿώÿΧÿΧÿ¤ÿ¤ÿ?ÿ?ÿ’ώ’ώ ύ ύ…ό…όiϋiϋgϊgϊ”ω”ωοψοψxψxψ+ψ+ψψψ*ψ*ψψψωωΐωΐω΅ϊ΅ϊ©ϋ©ϋΤόΤόώώ}ÿ}ÿα α CC¥¥—	—	ξ
+ξ
+γγ••>>ϋϋΝΝΆΆYYΤΤ		υυ΅΅<<°°ωω
+
+ΩΩ""­ ­ >ώ>ώδϋδϋ©ω©ωχχυυσσΘρΘρππ–ξ–ξOνOν6μ6μ6λ6λ7κ7κ3ι3ι9θ9θkηkηκζκζΞζΞζηηάηάηÿθÿθ‡κ‡κlμlμ ξ ξ
+ρ
+ρ„σ„σπυπυ:ψ:ψ`ϊ`ϊgόgόUώUώ( ( ΫΫccΒΒχχόόΙΙHHjj++έέ77]]jjOO•ÿ•ÿώώ“ό“όϋϋ·ω·ωmψmψKχKχhφhφΩυΩυ¦υ¦υΙυΙυ0φ0φΒφΒφnχnχ/ψ/ψωωϊϊIϋIϋΌόΌόlώlώM M QQddoobb3
+3
+δδ||uuΡΡύύ®®11ƒƒXX²²''ll””ΗΗ΅
+΅
+S	S	..,,HHƒƒήή^^ΪΪΤΤλλ22OOpp¦¦€€ΊΊ°°rr((χχρρ((++µµLLÒÒKK¶¶\\®®• • : :   ωÿωÿ    ~ ~ ggqqFF  ··uu99Ϊ Ϊ Η Η Ω Ω hhΖΖee¨¨ρρHH­­!!¦¦DDββΝΝ®®r	r	
+
+­
+­
+FFρρªªii''ηη··’’uu))››ΡΡθθωωΘΘNN­­ωω88bbff::ΰΰhhα	α	UUΐΐvvΥΥL L ηώηώ£ύ£ύtόtόYϋYϋZϊZϊωωωωυψυψ4ω4ωΊωΊωrϊrϊKϋKϋAόAόSύSύώώΑÿΑÿ;;__ttj	j	(
+(
+Ό
+Ό
+GGAAέ
+έ
+£
+£
+q
+q
+C
+C
+
+
+§	§			??@@%%γγΜΜΌΌ± ± ®ÿ®ÿΌώΌώίύίύύύeόeό»ϋ»ϋϋϋcϊcϊ³ω³ωωωyψyψψψΙχΙχ΄χ΄χΜχΜχψψTψTψ¨ψ¨ψυψυψ5ω5ωhωhωωωΦωΦωϊϊrϊrϊΊϊΊϊδϊδϊΰϊΰϊ±ϊ±ϊiϊiϊ!ϊ!ϊλωλωΡωΡωÒωÒωθωθωϊϊSϊSϊ΄ϊ΄ϊ9ϋ9ϋΫϋΫϋόόHύHύώώ·ώ·ώjÿjÿ  ² ² ::――##¨¨HHωωAAΰΰ  ό ό ρÿρÿφώφώώώXύXύ°ό°όόό^ϋ^ϋ£ϊ£ϊιωιωGωGωΜψΜψ~ψ~ψZψZψ\ψ\ψ‡ψ‡ψκψκψωωtϊtϊ…ϋ…ϋόόύύsώsώÿÿ¥ÿ¥ÿ# #     &&ΈΈ^^ςςΜΜ““44¬¬iiΪΪddύύ“	“	
+
+£
+£
+++ΈΈ>>££ΡΡ»»mmύύ……±
+±
+^
+^
+!
+!
+
+
+
+
+ 
+ 
+7
+7
+/
+/
+χ	χ	–	–	%	%	ΔΔ^^GG,,ίίΌΌ  €€IIμμffΐΐ..88Ύ Ύ =ÿ=ÿ«ύ«ύ&ό&όΏϊΏϊ‚ω‚ωoψoψ‡χ‡χΛφΛφ@φ@φκυκυΒυΒυΊυΊυΕυΕυαυαυφφ{φ{φχχψψ+ω+ω|ϊ|ϊγϋγϋIύIύ¦ώ¦ώρÿρÿ++ZZ††ΑΑ΅΅T	T	))μμ΄΄WWΠΠ99))σσ¦¦PPϊϊ΅΅00  ZZΏΏήήΙΙ——UUΠΠAAΣΣ//II%
+%
+ΪΪ„„==
+ÿ
+ÿύύIϋIϋ¨ω¨ωNψNψKχKχφφ φ φΓυΓυjυjυυυΊτΊτ„τ„τxτxτττιτιτeυeυφφσφσφ	ψ	ψPωPω½ϊ½ϊPόPόώώ  qqδδ³
+³
+SS¨¨°°vvYYffZZ77»»ττλλ¦¦''vv¤¤ΒΒάάρ	ρ	ψψζζ··ooÿÿΔόΔόyϊyϊFψFψ<φ<φtτtτσσ&ς&ςΡρΡρςς¬ς¬ς›σ›σ§τ§τ²υ²υ¬φ¬φ”χ”χqψqψOωOω;ϊ;ϊ@ϋ@ϋjόjόΕύΕύUÿUÿννÒÒ°°€€A
+A
+φφ¤¤DDÒÒBB’’ΏΏΖΖΆΆGG――ÒÒ¶¶ccββ;;tt’’ΆΆ°°ΘΘοο%%ff΄΄##ΗΗll……ώ
+ώ
+|
+|
+
+
+¶	¶	n	n	.	.	ππ³³ww44ΧΧMM……TT••  qώqώΎόΎό
+ϋ
+ϋpωpωψψΙφΙφµυµυ¶τ¶τΑσΑσΪςΪςςςrρrρρρΊπΊπππ{π{π…π…πµπµπρρρρ7ς7ςηςης¥σ¥σττ‡υ‡υΒφΒφ0ψ0ψΗωΗωϋϋ_ύ_ύkÿkÿ¤¤ÿÿXX††k
+k
+ώώPP||™™――··««……EEμμll――&&FFƒƒ±±’’[[^^GG/ÿ/ÿόόωωχυχυΡςΡς°ο°ο·μ·μ	κ	κΏηΏηάεάεTδTδγγββ8α8α…ΰ…ΰμίμίfίfίξήξήήή`ή`ήwήwήμήμήΝίΝίααήβήβ
+ε
+ε™η™η}κ}κννΦπΦπττ'χ'χϊϊνόνό—ÿ—ÿrr™™8
+8
+££ΒΒ22  ήήttαα!!//
+
+ΘΘccγγBByyƒ ƒ iώiώ>ό>όϊϊψψXφXφάτάτΌσΌσσσΕςΕςϊςϊς™σ™σ†τ†τυυ½φ½φΎχΎχ‘ψ‘ψ3ω3ω¬ω¬ωϊϊ|ϊ|ϊϋϋ³ϋ³ϋόόΕύΕύ+ÿ+ÿΜ Μ ||hhD
+D
+ΝΝvvύύNNUUccnn**  ΨΨμμώώ22==ττ$$„„ΝΝBB^
+^
+M	M	——――cc::7 7 ^ÿ^ÿΎώΎώ`ώ`ώ@ώ@ώGώGώQώQώGώGώώώήύήύύύ!ύ!ύ„ό„ό΅ϋ΅ϋvϊvϊ$ω$ωΰχΰχαφαφBφBφϋυϋυνυνυχυχυφφφφ8φ8φnφnφµφµφχχTχTχ­χ­χψψ¨ψ¨ψSωSωϊϊΧϊΧϊϋϋ_ό_ό,ύ,ύ
+ώ
+ώφώφώυÿυÿWWννδδ99Μ
+Μ
+iiΨΨσσ««((ξξ¶¶xx>>ήή««eeϊϊ``‘‘„„00‡‡%%ccKKίί%%ΣΣ\\ΦΦdd ώ ώϋϋDψDψΆυΆυ*σ*σίπίπΙξΙξκμκμFλFλΦιΦι™θ™θηη°ζ°ζζζ ε εdεdεVεVε}ε}ελελε¶ζ¶ζρηρη¤ι¤ιΗλΗλIξIξρρ"τ"τTχTχ”ϊ”ϊ½ύ½ύª ª AAss6	6	Ϋ
+Ϋ
+eeΝΝμμ³³kkoo@@••••NNΘΘώώθ
+θ
+ƒƒΧΧϊϊ  1ύ1ύ€ϊ€ϊψψνυνυ%τ%τΑςΑς½ρ½ρρρ π πVπVπππθοθοΝοΝοΩοΩοππ|π|πρρρρ)ς)ςάςάςΔσΔσωτωτzφzφ-ψ-ψτωτω»ϋ»ϋύύ|ÿ|ÿΈΈJJψ	ψ	¦¦ϊϊήήVVpp99··χχττÒÒ££ee¤¤**ªª((››ςς
+
+ΙΙiiϋ
+ϋ
+		((ΙΙtt00[[ζ ζ ° ° Ά Ά ™ ™ p p   XÿXÿoώoώoύoύsόsόϋϋΐϊΐϊϊϊSωSω±ψ±ψ+ψ+ψΘχΘχ„χ„χNχNχχχΡφΡφ‡φ‡φFφFφ φ φφφ+φ+φFφFφ`φ`φyφyφ”φ”φµφµφάφάφχχ4χ4χnχnχΡχΡχuψuψqωqωΗϊΗϊmόmόJώJώF F MMPPBB¦	¦	φ
+φ
+ÿÿΝΝzz½½YYέέ::mm––  ””WWΥΥΰΰ””*
+*
+››νν''[[––ΨÿΨÿώώIόIόlϊlϊ‰ψ‰ψ°φ°φμτμτ<σ<σρρππ ξ ξ_ν_νfμfμΎλΎλ_λ_λ6λ6λ.λ.λBλBλyλyλελελ–μ–μ”ν”νΩξΩξWπWπόρόρ»σ»συυCχCχψψψψ•ϊ•ϊόόvύvύ°ώ°ώΗÿΗÿΖ Ζ ΎΎΚΚϊϊRRΑΑ//‚	‚	±
+±
+ΐΐ¶¶[[μμ;;AA‡‡ΡΡΩΩ••
+
+EEmm΅΅χχuu  έώέώΠύΠύύύvόvό+ό+ό
+ό
+όψϋψϋΰϋΰϋΒϋΒϋ¬ϋ¬ϋ―ϋ―ϋΪϋΪϋ,ό,ό›ό›ό!ύ!ύΌύΌύ{ώ{ώqÿqÿ° ° ??""OO…
+…
+΄΄ΜΜΑΑpp¶¶ΚΚγγψψσσ··//TT++ΐΐMMNN##ΜΜEE””ee’’$	$	ΦΦ³³ΐΐύ ύ qÿqÿ1ώ1ώPύPύΤόΤό¬ό¬ό²ό²όΈόΈόόόZόZόϊϋϊϋ—ϋ—ϋNϋNϋ.ϋ.ϋDϋDϋϋϋόό³ό³όmύmύ$ώ$ώΗώΗώRÿRÿΨÿΨÿz z UUwwΣΣHH±±σσ		ε	ε	
+
+''~~vv~~ΩΩ  ΡΡPPκκqqΒΒΛΛ„„ππÿÿΘΘnnzz³³__®®νν""NNkkooLLÿÿhhΔΔVV½½ννRR„„ΈΈυυ@@u
+u
+α	α	>	>	ƒƒ΅΅‹‹==ΑΑ33Ί Ί xÿxÿώώΨύΨύzύzύgύgύ¥ύ¥ύ9ώ9ώÿÿ  σσυυ==tt––••iiΚΚ––««ΜΜΦΦΐΐ••cc..λλ……ν ν * * GÿGÿNώNώ;ύ;ύωϋωϋvϊvϊ­ψ­ψµφµφ·τ·τΦςΦς!ρ!ρ‘ο‘οξξ‡μ‡μλλ”ι”ιZθZθfηfη³ζ³ζ*ζ*ζ®ε®ε/ε/ε·δ·δaδaδPδPδδδQεQε\ζ\ζ§η§ηιιΊκΊκμμxξxξ¥π¥πσσƒυƒυ%ψ%ψηϊηϊΛύΛύΚ Κ ΣΣΚΚ—	—	88ΌΌ88³³11ΪΪώώ¶¶88½½bb»»		––ΖΖ¤¤..XXΆΆ¥¥««ΔΔψψGGΊ Ί dώdώZόZό―ϊ―ϊeωeωpψpψ»χ»χ3χ3χΟφΟφφφpφpφtφtφφφφφ—φ—φtφtφ;φ;φφφξυξυφφLφLφΕφΕφhχhχ:ψ:ψAωAω}ϊ}ϊέϋέϋCύCύώώÿÿR R β β ^^ίίmm‘‘μμccδδeeÒÒ9955ννίίΤΤΘΘ½½µµ¶¶ΏΏΜΜΥΥΩΩΩΩββσσ		δδ‹‹ggΜΜ@@ΓΓJJΟΟVVμμ  nnEEΌ Ό S S θÿθÿ“ÿ“ÿ\ÿ\ÿ8ÿ8ÿÿÿίώίώώώfώfώEώEώJώJώsώsώΌώΌώ&ÿ&ÿΌÿΌÿ  ¶¶κκ		ϋϋ»»JJ±±ϋϋ00aa¦¦		Ι	Ι	Έ
+Έ
+ΠΠοολλέέ  αα­­""_	_	‚‚ΉΉΪΪ  =ώ=ώόόλϊλϊNωNω¬χ¬χφφdτdτθςθς΅ρ΅ρππ–ο–ο›ξ›ξνν?μ?μήκήκlιlιφηφη~ζ~ζεεγγ^β^βmαmαθΰθΰΧΰΧΰ2α2αβαβαΡβΡβφγφγNεNεήζήζ¥θ¥θκκΑμΑμ	ο	οuρuρττ­φ­φbωbωόό―ώ―ώ88»»JJππ±±FFττ{{άάBBCC!!""¨#¨#P$P$‹$‹$d$d$κ#κ#*#*##"#"Σ Σ 66LL¶¶++””		AAς	ς	ττ""-ÿ-ÿGόGό¨ω¨ω|χ|χΜυΜυττσσιςιςgςgςςςςςςςaςaςΉςΉς#σ#σ σ σ9τ9τοτοτΊυΊυ‡φ‡φGχGχσχσχ‰ψ‰ψωωωωϊωϊωdϊdϊΠϊΠϊQϋQϋχϋχϋΟόΟόΜύΜύΤώΤώΌÿΌÿf f Β Β Ϊ Ϊ Μ Μ · · ¬ ¬ © ©   u u * * ΘÿΘÿeÿeÿÿÿνώνώΨώΨώΝώΝώΔώΔώΖώΖώξώξώ[ÿ[ÿ  --{{δδRR²²ϊϊ		
+
+Δ
+Δ
+EEδδ99))ΥΥ66]
+]
+f	f	ss™™ΰΰIIΤΤ‚‚RR77$$ΔΔqqάάΞΞ΅΅››ρρO
+O
+±±22΅΅¬¬cc77ττ½½``ΔΔΝ Ν o!o!­!­!¥!¥!!!Z!Z!?!?!!!!!β β _ _ ~~&&>>±±tt••BBΉ	Ή	>>$ύ$ύωω\φ\φYσYσ‡π‡πΫνΫνCλCλ«θ«θζζRγRγ¦ΰ¦ΰ$ή$ήξΫξΫΪΪ‘Ψ‘ΨQΧQΧ>Φ>ΦJΥJΥyΤyΤΣΣΣΣhΣhΣ@Σ@ΣZΣZΣ΄Σ΄ΣOΤOΤ5Υ5ΥrΦrΦΨΨΪΪZάZάάήάή€α€α>δ>δηη&κ&κgνgνγπγπττfψfψ\ό\όl l ‹‹¤¤““22hh55΄΄ZZ­­υ!υ!$$ω%ω%''Ρ(Ρ(Η)Η)p*p*Λ*Λ*Χ*Χ***'*'*))±(±(­'­'a&a&Ή$Ή$¨"¨"4 4 tt““¦¦ΕΕθθ  		
+
+2 2 ”ύ”ύ<ϋ<ϋ)ω)ωVχVχ»υ»υYτYτ/σ/σ?ς?ςρρξπξπ|π|π"π"πίοίο«ο«ο}ο}οEοEοωξωξ”ξ”ξ"ξ"ξ¶ν¶ν^ν^ν"ν"ν ν νπμπμτμτμννZνZνΠνΠνtξtξ8ο8ο
+π
+πΧπΧπ—ρ—ρJςJςσςσςσσQτQτυυιυιυΘφΘφ¥χ¥χvψvψ=ω=ωϊϊφϊφϊόό{ύ{ύÿÿ― ― GGΕΕ,,……ΪΪ,	,	n
+n
+’’‘‘ccww¬¬ΆΆ``ξξUU™™°°•
+•
+H	H	ΨΨZZθθQQ..$ $ <ÿ<ÿ‚ώ‚ώϋύϋύ¤ύ¤ύsύsύYύYύQύQύYύYύzύzύ»ύ»ύ$ώ$ώΌώΌώÿÿ  ΖΖ‰‰υυhhττ²
+²
+µµϋϋqqρρ\\™™——PP½½ΪΪ¨¨2 2   µ µ Β Β ª ª h h υυLLee::ΌΌΰΰ©©&&ss¬¬αα
+
+3355ÒύÒύƒϊƒϊ7χ7χχσχσΜπΜπ¶ν¶νΉκΉκΫηΫηεεxβxβιίιίbέbέΩΪΩΪOΨOΨΡΥΡΥuΣuΣVΡVΡƒΟƒΟΞΞγΜγΜΜΜ¦Λ¦ΛΛΛΜΜςΜςΜ^Ξ^ΞEΠEΠÒÒJΥJΥPΨPΨ¦Ϋ¦ΫBίBίγγ$η$ηNλNλοοβσβσ5ψ5ψtόtό  <<΅΅Ύ
+Ύ
+ΊΊΑΑψψjj——ϊ!ϊ!ώ$ώ$''t)t)Τ*Τ*®+®+,, , ,Ω+Ω+I+I+r*r*X)X)	(	(—&—&%%p#p#΄!΄!ΗΗ¤¤OOΪΪZZΫΫbbοο;
+;
+==ll• • ΄ώ΄ώΨόΨόϋϋωω?ψ?ψ$χ$χ8φ8φtυtυΧτΧτ]τ]τπσπσqσqσ½ς½ςΏρΏρzπzπ	ο	οννRμRμQλQλ£κ£κKκKκBκBκκκλλ½λ½λªμªμ½ν½νπξπξ=π=π ρ ρ!σ!σΘτΘτφφψψΗϊΗϊ ύ ύ-ÿ-ÿ99ΛΛbbηηb	b	Ψ
+Ψ
+SSάά~~88ΖΖbbΕΕζζΒΒZZ¨¨¨¨WWΒΒϋϋρρ••ςςζζ  I
+I
+οο››ccaa±ÿ±ÿ_ώ_ώeύeύ«ό«όόόϋϋϋϋΊϊΊϊƒϊƒϊ{ϊ{ϊ¦ϊ¦ϊϋϋϋϋ|ό|όύύ ÿ ÿ  00ΪΪ‹‹HH		φφββ½½††>>νν‹‹GG<<ΪΪ))>>,,ΞΞ„„••ίίωωίί::66υυuuµ	µ	··††5 5 έόέό“ω“ωbφbφFσFσ7π7π/ν/ν3κ3κSηSηΆδΆδ)β)βζίζίΞέΞέΨΫΨΫΪΪSΨSΨΣΦΣΦ‡Υ‡ΥpΤpΤ‰Σ‰ΣΫÒΫÒuÒuÒjÒjÒΗÒΗÒ‰Σ‰ΣΆΤΆΤÿΥÿΥ–Χ–ΧhΩhΩ}Ϋ}Ϋάέάέ„ΰ„ΰkγkγ‡ζ‡ζΟιΟι;ν;νΎπΎπ=τ=τχχΏϊΏϊ¤ύ¤ύ_ _ υυ		hhεεccΎΎΣΣήήΔ Δ H"H"x#x#b$b$%%%%Ϋ%Ϋ%&&D&D&&&Β&Β&τ&τ&μ&μ&&&•%•%0$0$m"m"o o YYAA22//55>>::ÒÒ\\ΑΑ``½ ½ 4ώ4ώΡϋΡϋωω΅χ΅χέυέυHτHτΝςΝςTρTρΟοΟο:ξ:ξ¦μ¦μ.λ.λπιπι	ι	ιƒθƒθZθZθxθxθ»θ»θιιJιJιιιμιμι{κ{κJλJλSμSμ‚ν‚νΕξΕξππ‘ρ‘ρ;σ;σ$υ$υ?χ?χqωqω™ϋ™ϋύύƒÿƒÿNNΘΘzz##½	½	JJΖΖ##UUMMνν11SSBBζζ..ΕΕ66ƒƒ²	²	ΑΑ­­ww--γώγώ²ό²ό±ϊ±ϊλψλψhχhχ%φ%φυυLτLτΉσΉσgσgσ[σ[σ•σ•σττ²τ²τ|υ|υaφaφ^χ^χtψtψ©ω©ωϋϋόό?ώ?ώ  υυΕ	Ε	‹‹RR&&ππΥΥªªggyy¶¶――VV¥¥””$$VV44ΙΙ&&YYppqq\\11οο–
+–
+**±±88Κ Κ uώuώ=ό=όϊϊψψιυιυ·σ·σxρxρ:ο:οννλλ5ι5ιmηmη―ε―εωγωγSβSβΚΰΚΰfίfί&ή&ήέέςΫςΫύΪύΪ-Ϊ-Ϊ‰Ω‰ΩΩΩ°Ψ°ΨcΨcΨ'Ψ'Ψ
+Ψ
+ΨΨΨyΨyΨΩΩθΩθΩαΪαΪυΫυΫ$έ$έuήuήιίιίvαvαγγδδζζ¦η¦ηGιGιλλνν[ο[οΘρΘρXτXτÿφÿφ¬ω¬ωVόVόνώνώhhΐΐμμδδ		NNWWGG..
+
+ΔΔ==YY
+
+ZZ__11ββ}}
+
+¤¤MM!!1166. . ÿÿώώύύόό,ϋ,ϋlϊlϊΠωΠωXωXωωψωψ¥ψ¥ψJψJψΰχΰχiχiχςφςφ”φ”φbφbφjφjφ¬φ¬φχχ«χ«χWψWψ%ω%ω!ϊ!ϊSϋSϋ®ό®όώώwÿwÿ£ £ gg++ÿÿHHtt		’
+’
+}}PPΣΣKKωω……ΫΫςςΠΠ‰‰00ΞΞZZΓΓχχςςΎΎp
+p
+		ΉΉNNΚΚ""VVkÿkÿrύrύzϋzϋ—ω—ωΨχΨχGφGφξτξτΛσΛσάςάςςςρρ,ρ,ρρρ3ρ3ρ‘ρ‘ρςς«ς«ςBσBσΥσΥσtτtτ1υ1υ φ φHχHχ΅ψ΅ψϊϊªϋªϋFύFύϋώϋώΩ Ω νν66΅΅
+
+ff……TT¥¥,,‘‘ΒΒ­­@@pp@@ΎΎ??ΦΦ==¬¬§§KKρρ‡‡ssΩΩBB®®‚‚οοoo°°IIΈΈμμς
+ς
+ν	ν			BB§§ƒƒΪΪ&&pp¶¶ρρ((> > rÿrÿΨώΨώqώqώ*ώ*ώμύμύ¤ύ¤ύPύPύςόςόόόόό‚ϋ‚ϋΘϊΘϊτωτωωωcψcψίχίχχχχχΞχΞχ*ψ*ψ¦ψ¦ψ;ω;ωβωβωϊϊ6ϋ6ϋΛϋΛϋDόDό“ό“ό΄ό΄όόόQόQόΧϋΧϋ=ϋ=ϋ‘ϊ‘ϊεωεω?ω?ω¦ψ¦ψψψ”χ”χχχ©φ©φDφDφςυςυ·υ·υ™υ™υ–υ–υ©υ©υΗυΗυευευϊυϊυφφςυςυΗυΗυxυxυυυττόσόσσσƒσƒσ»σ»σFτFτυυ"φ"φKχKχ}ψ}ψ¥ω¥ω―ϊ―ϊ—ϋ—ϋfόfό3ύ3ύώώ;ÿ;ÿ  //ττΧΧΛΛΗ	Η	ΈΈ††PP55ÒÒAAÿÿccΖΖTTggVV**χχΣΣΟΟρρ00{{½½ίίÒÒ††ξξΔΔBB““ÒÒ{	{	²²‰‰††††h h >ÿ>ÿώώύύόόHϋHϋϊϊϊϊωωCωCωϊψϊψΉψΉψsψsψψψ­χ­χ+χ+χφφφφυυ#υ#υΥτΥτ«τ«τττ¦τ¦τΉτΉτÒτÒτϋτϋτAυAυ¬υ¬υ6φ6φΚφΚφNχNχ±χ±χψχψχ5ψ5ψ„ψ„ψχψχψωω=ϊ=ϊπϊπϊ‘ϋ‘ϋόόPόPόMόMόόό„ϋ„ϋχϊχϊ†ϊ†ϊPϊPϊ\ϊ\ϊ–ϊ–ϊκϊκϊIϋIϋ½ϋ½ϋWόWό#ύ#ύώώÿÿσÿσÿΆ Ά   ΩΩ88ώώQQ’’ΈΈ»»——OOυυ¨¨±±%%ΨΨΌΌΒΒέέ		
+
+Ε
+Ε
+++CC$$λ
+λ
+²
+²
+‰
+‰
+r
+r
+g
+g
+`
+`
+T
+T
+A
+A
++
++
+
+
+
+
+
+
+#
+#
+4
+4
+8
+8
+'
+'
+ώ	ώ	Ε	Ε	„	„	<	<	νν‘‘%%²²BBββ——ZZΎΎ==’’ΐΐΥΥΪΪΥ Υ ΚÿΚÿ·ώ·ώ›ύ›ύwόwόRϋRϋ/ϊ/ϊωω ψ ψÿφÿφφφ[υ[υΡτΡτ~τ~τSτSτ9τ9τττδσδσσσPσPσσσΐςΐςvςvς%ς%ςέρέρΊρΊργργρmςmςSσSσtτtτ¨υ¨υΥφΥφόχόχ0ω0ω„ϊ„ϊόϋόϋ„ύ„ύ	ÿ	ÿ~ ~ κκ^^ζζxxj	j	ª
+ª
+ΜΜββϊϊ  μμκκώώιιrr»»ΠΠΏΏCCΥΥBBΕΕλλ..YYÒÒ##‚‚οοllψψ  ££__
+
+Ò	Ò			wwΠΠΛΛμμQQyy™™µµΣΣππÿÿωωέέ»»ªªΐΐ				
+
+»
+»
+aa••……ΨΨCCnnΗΗμμψψήή””ff––ΉΉθ
+θ
+0
+0
+		#	#	ΑΑllΧΧ55ΌΌJJgg‹‹ÒÒMMφφΑΑ——mm88ψ ψ « « L L ίÿίÿkÿkÿ ÿ ÿ®ώ®ώ}ώ}ώiώiώeώeώ`ώ`ώXώXώVώVώhώhώ—ώ—ώΪώΪώÿÿ=ÿ=ÿ6ÿ6ÿÿÿψώψώÿÿBÿBÿ­ÿ­ÿ# # } } © © ­ ­ ¥ ¥ ³ ³ δ δ <<ªª##¤¤55ΰΰ§§~~VVΎΎ;;‹‹©©77²²ooÒÒ99––ΪΪόόϋ ϋ νÿνÿίώίώΜύΜύ¬ό¬ό{ϋ{ϋ>ϊ>ϊόψόψ½χ½χ‡φ‡φYυYυ4τ4τσσύρύριπιπΦοΦοΔξΔξ»ν»νΝμΝμμμλλTλTλ[λ[λλλβλβλLμLμΡμΡμuνuν=ξ=ξ!ο!οππρρ3ς3ςiσiσΣτΣτ}φ}φkψkψϊϊΠόΠόÿÿBBGG««<	<	H
+H
+44ύύ  ||ΙΙ\\ΙΙΜΜBBΚΚDD±±DDQ
+Q
+1	1	κκ‹‹²²MMυ υ ±ÿ±ÿƒώƒώmύmύgόgόjϋjϋoϊoϊlωlω`ψ`ψKχKχ)φ)φϊτϊτ½σ½σuςuς-ρ-ρυουοήξήξφνφνBνBνΌμΌμWμWμμμ½λ½λ‡λ‡λnλnλ…λ…λΠλΠλGμGμΥμΥμdνdνλνλνqξqξοοΰοΰοηπηπςς]σ]σ–τ–τΈυΈυΔφΔφΚχΚχΨψΨψχωχω!ϋ!ϋKόKόiύiύtώtώmÿmÿT T 22ηηΖΖªª……HHέέ55NN00σσ±±}}eeaaccVV..ππ¬¬ttPP55¥¥  %%55WW¥ ¥   ¥ÿ¥ÿ(ÿ(ÿ™ώ™ώώώyύyύύύαόαόάόάό ύ ύCύCύ£ύ£ύώώώώÿÿ…ÿ…ÿΫÿΫÿ  X X ™ ™ γ γ 55ττooΧΧΏΏ°°‘‘RRοοwwωω†	†	
+
+¶
+¶
+HHΘΘ::¤¤ttΡΡ==CC,,ώώ΄΄AA••Q
+Q
+ΡΡ''ffΙΙ    PώPώΛόΛό}ϋ}ϋaϊaϊdωdωjψjψ]χ]χ7φ7φύτύτΑσΑσ”ς”ς€ρ€ρππΛοΛο5ο5οΥξΥξ±ξ±ξÒξÒξCοCοππHρHραςαςΛτΛτθφθφωωLϋLϋzύzύ¤ÿ¤ÿΠΠύύ&&JJl
+l
+““ΏΏγγρρΥΥ““77ΣΣccΣΣ  ΠΠIIΕΕ  Z Z ‹ ‹ x x   bb‹‹©©ΘΘδδςςρροοφφ		
+
+ΗΗHH——ΙΙππO	O	  ΫΫννOOιι’’  ss„ „ `ÿ`ÿ&ώ&ώυόυόβϋβϋσϊσϊϊϊZωZω£ψ£ψ ψ ψ{χ{χχχÒφÒφφφrφrφKφKφ7φ7φEφEφφφαφαφXχXχΣχΣχBψBψ΅ψ΅ψσψσψ=ω=ω‚ω‚ωΖωΖωϊϊϊϊϋϋεϋεϋΪόΪόιύιύόώόώ
+ 
+ %%??\\ggAAΧΧ##..αα±±JJώώ””wwάά@@λλ+ + 1ÿ1ÿGώGώ‡ύ‡ύύύΉόΉό®ό®όΫόΫό?ύ?ύΤύΤύώώUÿUÿ  © © gg££έέ""xxδδkkΨΨ»»²²³³ΈΈΊ	Ί	±
+±
+––ddΑΑXXίίJJ——qq""»»CCΉΉ__²
+²
+Ζ	Ζ	ΏΏll™™Ί Ί γώγώύύfϋfϋΊωΊω$ψ$ψ―φ―φ`υ`υ0τ0τσσΟρΟρ}π}ποοΝνΝνμμ—λ—λ©κ©κ½ι½ιΛθΛθΫηΫηηηfζfζζζγεγεϊεϊεIζIζΞζΞζ”η”η™θ™θΨιΨιDλDλÒμÒμyξyξ+π+πΪρΪρtσtσετετ*φ*φRχRχ}ψ}ψΡωΡωlϋlϋZύZύÿÿττiiΡΡ		εε__‘‘‡‡VVΙΙ‹‹^^BB00ξξEE44ββTT••®®¬¬††‹‹——©©ΐΐηη,,II##ΰΰ§§hh$$Τ
+Τ
+j
+j
+έ	έ	3	3	}}ΩΩWWώώΕΕ››uuNN''ÿÿΜΜξξQQΖΖ]]  33uuΗΗ==AAΟΟaaΥΥ))m m ΈÿΈÿ,ÿ,ÿεώεώιώιώ'ÿ'ÿ}ÿ}ÿΕÿΕÿζÿζÿΥÿΥÿ“ÿ“ÿ%ÿ%ÿώώΨύΨύύύ:ό:όzϋzϋΤϊΤϊEϊEϊΌωΌω+ω+ωψψζχζχFχFχ¶φ¶φ4φ4φ½υ½υKυKυΰτΰτ‰τ‰τQτQτ;τ;τ=τ=τBτBτ<τ<τ$τ$τττφσφσττWτWτετετ΄υ΄υΎφΎφωχωχYωYωΜϊΜϊBόBό©ύ©ύτώτώ  &&ώώλλννggθθ“
+“
+ZZ((δδssΐΐΊΊ\\¦¦QQΗΗ33BBHHQQmm¨¨­­yyccOO!!ΔΔ55|
+|
+­	­	ΨΨ))JJddΚΚAAϋϋττ``¥¥ΰΰ++AAII??ββ\\;;OO¤¤;;		όό  ύύήή–	–	
+
+g
+g
+…
+…
+}
+}
+d
+d
+K
+K
+E
+E
+e
+e
+®
+®
+§§::ΘΘLLΔΔ22””ααιιOOuu~
+~
+		ΒΒ((··YYττwwαα::ήή##RReee e ^ÿ^ÿeώeώ€ύ€ύ΄ό΄όψϋψϋGϋGϋϊϊÿωÿωoωoωσψσψψψJψJψ(ψ(ψ)ψ)ψEψEψqψqψ›ψ›ψ¶ψ¶ψ»ψ»ψ¬ψ¬ψψψψψ–ψ–ψΗψΗψ&ω&ω¶ω¶ωrϊrϊKϋKϋ1ό1όύύίύίύώώCÿCÿδÿδÿƒ ƒ ²²;;ΊΊ88ΑΑ^^ΜΜ‚‚""  ώώBBww¨¨ίί#	#	€	€	ÿ	ÿ	¥
+¥
+ll??››μμξξ¦¦hhΘ
+Θ
+
+
+}	}	!	!	υυεεΦΦ««XXάά??ΧΧ  ooΜΜ>>ΘΘjj!!αα  RRπ π x x πÿπÿjÿjÿÿώÿώΎώΎώ°ώ°ώΔώΔώήώήώΰώΰώ­ώ­ώ;ώ;ώ‰ύ‰ύ£ό£ό•ϋ•ϋlϊlϊ8ω8ω
+ψ
+ψψφψφφφoυoυυυΙτΙτ¬τ¬τ‘τ‘τaτaτττhσhσ™ς™ς©ρ©ρ³π³πΟοΟοοοgξgξΫνΫνeνeνννβμβμξμξμ,ν,ν…ν…νίνίν#ξ#ξPξPξqξqξ›ξ›ξίξίξ>ο>ο²ο²ο1π1π²π²π6ρ6ρΖρΖρjςjς,σ,σττυυ.φ.φMχMχaψaψ]ω]ωBϊBϊϋϋςϋςϋΩόΩόΜύΜύΕώΕώΉÿΉÿΆ Ά ~~LLΐΐ``υυ66υυΘΘm	m	.
+.
+δ
+δ
+••>>ΤΤJJΦΦJJ££
+
+llΈΈζζϋϋώώφφΰΰ»»††GGγγΚΚ½½°°™™vvLL&&φφλλίίΜΜ――‚‚BBθθqqίί==¤
+¤
+0
+0
+ό	ό	
+
+y
+y
+ΫΫFFΌΌττξξµµ]]όό››::ΝΝEE
+
+Ν	Ν	ββάά¶¶nn		PP< < sÿsÿθώθώ|ώ|ώ	ώ	ώvύvύ¶ό¶όΟϋΟϋΠϊΠϊΗωΗωΘψΘψηχηχ5χ5χ»φ»φuφuφRφRφ?φ?φ-φ-φ"φ"φ(φ(φCφCφlφlφφφ¤φ¤φ¬φ¬φΖφΖφχχχχiψiψQωQω/ϊ/ϊτϊτϊ¥ϋ¥ϋTόTόύύίύίύ®ώ®ώqÿqÿ$ $ Κ Κ mm††ΠΠΨΨ¤¤SSΨΨΥΥύύKK½½UUηηΙΙ¦¦oo¤¤		U	U			›	›	²	²	Ρ	Ρ	
+
+@
+@
+‚
+‚
+Ό
+Ό
+β
+β
+ς
+ς
+λ
+λ
+Ò
+Ò
+¨
+¨
+o
+o
+%
+%
+Θ	Θ	Z	Z	ΫΫMM――  99QQ@@  ώώνόνόpϋpϋϊϊπψπψφχφχχχQφQφ}υ}υττσσoςoςZρZρaπaπ›ο›οοορξρξ&ο&ο·ο·ο•π•πρρ¬ς¬ς‘σ‘σ5τ5τττ°τ°τ«τ«τττττττΥτΥτ<υ<υΦυΦυφφ|χ|χ^ψ^ψ+ω+ωÒωÒωKϊKϊ’ϊ’ϊ«ϊ«ϊ΅ϊ΅ϊϊϊ}ϊ}ϊ”ϊ”ϊΫϊΫϊOϋOϋίϋίϋpόpόλόλόAύAύmύmύoύoύMύMύύύΝόΝόόόόόΑόΑό,ύ,ύΖύΖύtώtώÿÿ¬ÿ¬ÿ  k k © © δ δ ..’’³³]]¨¨>>ΓΓ22~~••xxiiκκ„„AA		Ή	Ή	\
+\
+κ
+κ
+eeΝΝ!!ccΪΪSS||{{bbNNMM``  ΈΈ½½¨¨oo
+
+yyΘΘJ
+J
+ 	 			¥¥]]??NNƒƒΙΙ				
+	
+	ΜΜwwÒÒ——nnYYZZrrΥΥεε££YYΥΥ™™TTÿÿ••ΝΝϋϋψ ψ ΩÿΩÿΐώΐώ½ύ½ύΩόΩόόόiϋiϋΣϊΣϊPϊPϊΩωΩωlωlωωωΆψΆψLψLψψψψψOψOψΤψΤψ™ω™ω‘ϊ‘ϊ­ϋ­ϋίόίόώώFÿFÿS S 44ηη||°°{{ll{{ΘΘς	ς	  ½½==½½εε
+
+ÒÒffββ[[δδ€€++γ
+γ
+¥
+¥
+t
+t
+M
+M
+$
+$
+ι	ι					yyίίTTηη}}~~έέ..ΫΫ??==··44ΝΝύύ%%FF__nnt t zÿzÿώώΌύΌύύύ΅ό΅όJόJόϊϋϊϋ‘ϋ‘ϋύϊύϊ<ϊ<ϊ^ω^ω|ψ|ψ¥χ¥χΪφΪφφφ>υ>υcτcτσσΣςΣςLςLςώρώρΰρΰρήρήριριρυρυρ ς ς
+ς
+ςςςςςςςςςςς@ς@ςςςψςψςyσyσττ”τ”τυυ—υ—υυυυυ3φ3φNφNφQφQφLφLφOφOφjφjφ¨φ¨φχχ¥χ¥χeψeψHωHω<ϊ<ϊ-ϋ-ϋ
+ό
+όΡόΡόύύEώEώÿÿεÿεÿΙ Ι µµ¨¨¤¤­­ΉΉ¶¶’’>>ΏΏ-	-	ª	ª	P
+P
+,,77[[””‰‰ZZ……ίίQQ——  ——RRΛΛ\\ΊΊββΟΟ{{ίίύύοοόό99ΆΆ!!φφ55[[kkbb66γ	γ	qqττƒƒ..φφΤΤΑ Α ΊÿΊÿΓώΓώΧύΧύοόοό ό ό ϋ ϋψωψωχψχψψψ^χ^χΟφΟφ]φ]φψυψυυυBυBυυυΰτΰτβτβτυυWυWυΒυΒυJφJφεφεφ†χ†χ!ψ!ψ―ψ―ψ,ω,ωωωχωχω?ϊ?ϊlϊlϊvϊvϊaϊaϊ6ϊ6ϊÿωÿωΘωΘω“ω“ωhωhωOωOωSωSωyωyωΌωΌωϊϊSϊSϊƒϊƒϊϊϊϊϊϊϊϊϊ{ϊ{ϊPϊPϊϊϊΩωΩωΙωΙωϊϊΉϊΉϊΙϋΙϋύύ{ώ{ώΕÿΕÿβ β ΣΣ££ccΟΟ……JJ//KK¤	¤	33έέ——llΩΩ??µµ««uuλλεε’’  ­­NNίίΑΑ¥¥‚‚MMψψvvΌΌΚΚ¬¬vv<<ααµµ{{--ÒÒyy1
+1
+		οοδδΡΡªªss;;  +ÿ+ÿ\ώ\ώ”ύ”ύΛόΛόόό9ϋ9ϋtϊtϊ«ω«ωΨψΨψωχωχχχ<φ<φ~υ~υάτάτNτNτΓσΓσ*σ*σςςΞρΞρρρbπbπ­ο­οχξχξGξGξ¨ν¨ν-ν-νγμγμΛμΛμήμήμννQνQν¦ν¦νξξ’ξ’ξ6ο6οππύπύπ-ς-ςσσυυ¦φ¦φ-ψ-ψ™ω™ωΰϊΰϊόόύύ$ώ$ώBÿBÿƒ ƒ χχΆΆwwaaG	G	ίίUUΫΫήή¨¨SSϋϋΆΆ33¦¦‚‚EE  44..ώώ¬¬JJΰΰllαα66pp¥¥οο^^ττ  QQώώ««ff88  ΚΚllεεGGυυEE΅
+΅
+”	”	““°°ίίmmΡΡHHΚΚFF¦¦ή ή μÿμÿΧώΧώ¬ύ¬ύtόtό8ϋ8ϋϊϊΫψΫψΡχΡχμφμφ2φ2φ¥υ¥υEυEυυυϋτϋτυυ%υ%υMυMυyυyυ±υ±υφφrφrφώφώφ–χ–χ!ψ!ψψψΩψΩψωω.ω.ωDωDωHωHω8ω8ωωωωω;ω;ωωω/ϊ/ϊΦϊΦϊmϋmϋίϋίϋ,ό,ό`ό`όόόΆόΆό§ό§όόόcόcό6ό6όόό ό ό2ό2ό=ό=ό3ό3όόόςϋςϋίϋίϋγϋγϋσϋσϋωϋωϋθϋθϋΖϋΖϋ©ϋ©ϋ®ϋ®ϋεϋεϋMόMόΧόΧόpύpύ
+ώ
+ώ§ώ§ώSÿSÿ  π π ΪΪΔΔΆΆuuCCσσÒÒ¦¦\	\	π	π	f
+f
+Ζ
+Ζ
+]]‰‰––‰‰xx··ΗΗΒΒ^^©©Β
+Β
+Μ	Μ	αα55^^ppee;;υυ  0ÿ0ÿ½ύ½ύDόDόΛϊΛϊWωWωτχτχ®φ®φ”υ”υªτªτςσςσgσgσÿςÿς­ς­ςaςaςςς›ρ›ρρρgπgπΎοΎο'ο'ο°ξ°ξSξSξωνωνννννrμrμόλόλΔλΔλδλδλUμUμννΣνΣν±ξ±ξ–ο–οƒπƒπtρtρ\ς\ς+σ+σΥσΥσUτUτ·τ·τυυWυWυ³υ³υφφφφ4χ4χεχεχ΄ψ΄ψ¥ω¥ω¶ϊ¶ϊβϋβϋ ύ ύkώkώΉÿΉÿCCkkrrQQ°°UUννκ	κ	ϊ
+ϊ
+!!  ΣΣMMff””ννNNΘΘWWρρ//ΰΰ΅΅jj$$½½++w
+w
+ª	ª	ÒÒξξώώ;;’’ΕΕuupp„„²²ωωQQ­­όό,,77&&::((ΧΧ••ZZΟΟZZ¨¨««ggυυvvµµ~~XX>>..$$ÒÒ€€««TT  		ψψΠΠyyππGG΅΅$$μ μ   VVΦΦmm――FFΒΒΌΌBBΓΓkkUU§§llCCθθÿÿ=	=	U	U	W	W	O	O	<	<			ΫΫCCÿÿTT««				"
+"
+£
+£
+&&¦
+¦
+
+
+†	†	ϋϋ‡‡++ήή““GGψψ¬¬ff%%αα00ΘΘbb»»jjÿÿdd——« « ΎÿΎÿςώςώ^ώ^ώ	ώ	ώούούώύώύ$ώ$ώHώHώQώQώ+ώ+ώΘύΘύ&ύ&ύRόRόaϋaϋgϊgϊzωzω®ψ®ψψψΏχΏχΈχΈχύχύχ}ψ}ψωω«ω«ωϊϊNϊNϊFϊFϊϊϊ«ω«ωIωIωωωφψφψ&ω&ω‡ω‡ωύωύωpϊpϊΣϊΣϊ*ϋ*ϋϋϋήϋήϋ6ό6όqόqό…ό…όzόzόpόpόόόιόιόxύxύώώ›ώ›ώηώηώϋώϋώκώκώΔώΔώ–ώ–ώ\ώ\ώώώΚύΚύƒύƒύLύLύύύΨόΨόaόaό¥ϋ¥ϋ¦ϊ¦ϊ€ω€ω]ψ]ψbχbχ¨φ¨φ8φ8φφφ φ φeφeφΛφΛφ<χ<χΆχΆχνχνχψψ6ψ6ψJψJψgψgψ›ψ›ψοψοψnωnω#ϊ#ϊϋϋKόKόΈύΈύOÿOÿΐΐ‡‡QQΟ	Ο	ffΝΝώώωωΛΛ‚‚&&ΐΐNNΥΥYYΫΫ]]ΩΩCC³³°°„„,,ΕΕ››%%yyΉΉz
+z
+!	!	  xxΠΠ>>¬¬mmχ χ eÿeÿΝύΝύHόHόμϊμϊΠωΠωωω—ψ—ψiψiψ\ψ\ψKψKψ"ψ"ψαχαχ–χ–χYχYχ4χ4χ.χ.χGχGχχχΪχΪχYψYψυψυψωωJϊJϊμϊμϊϋϋ:ό:όύύώώMÿMÿΓ Γ kk77κκ›	›	BB22οο””99ττΪΪυυ??££όό!!οοXXaa™™δδϋϋάά²²yynneeWW??χ	χ	ΕΕ‚‚%%§§\\¨ÿ¨ÿώώtόtόϋϋΚωΚω°ψ°ψ»χ»χξφξφMφMφέυέυυυyυyυjυjυYυYυ>υ>υυυχτχτβτβτατατρτρτυυ8υ8υ{υ{υθυθυφφtχtχψψπωπωmϋmϋύύΈώΈώv v 66νν‘‘‹‹ε	ε	--hhΥΥrrδδjjχχuuΟΟοοΙΙUUffssΈΈΠΠΐΐ‘‘NNύύ¤¤AAΦΦbbεεddβ	β	ffύύ――hhSS++εÿεÿ†ώ†ώ(ύ(ύνϋνϋρϊρϊBϊBϊάωάω±ω±ω΄ω΄ωΥωΥωϊϊ9ϊ9ϊYϊYϊ^ϊ^ϊPϊPϊEϊEϊSϊSϊ‹ϊ‹ϊιϊιϊUϋUϋ·ϋ·ϋÿϋÿϋ.ό.όMόMόdόdόtόtόwόwόkόkόYόYόVόVό{ό{όÒόÒόZύZύώύώύ§ώ§ώ@ÿ@ÿ·ÿ·ÿ      ΒÿΒÿfÿfÿÿÿΎώΎώ›ώ›ώ§ώ§ώδώδώWÿWÿ  ζ ζ φφ..ΌΌ((mm΅΅ΧΧSS„„‡‡QQ°°ppVVee––ΫΫ$$kk®®νν##CC<<  ,,ΞΞ­­ζζjj€	€	—
+—
+55••­­}}……ÒÒrr\\nn††}}BBΝΝ!!EE66όό§§TT    KKyywwAA³³WW""((o
+o
+ό	ό	Σ	Σ	υ	υ	O
+O
+ΐ
+ΐ
+..ν
+ν
+]
+]
+£	£	εεHHΨΨ””oo\\MM44		»»EE§§ρρ;;³³WWττ{{ι ι D D ÿÿΔώΔώάύάύΝόΝόϋϋ_ϊ_ϊ5ω5ω<ψ<ψχχψφψφφφ%φ%φ®υ®υ!υ!υ|τ|τΑσΑσξςξςςςρρ4π4π†ο†ο ο οοοCοCο«ο«ο/π/πΏπΏπRρRργργρpςpςρςρς`σ`σΊσΊσττGτGτ”τ”τώτώτ–υ–υjφjφχχÒψÒψTϊTϊτϋτϋύύEÿEÿέ έ ^^ΓΓ<<[[rr		{
+{
+]]!!ΪΪ¨¨ªªππjjςςYY}}YYττXX……ppff  ΈΈΤΤζζάά³³ss00ςςµ
+µ
+d	d	μμFFzzΘ Θ ÿÿNύNύϋϋΥωΥωϋχϋχφφττςςππ"ξ"ξSμSμ«κ«κ5ι5ιόηόηηηBζBζΆεΆεεεoδoδΐγΐγγγSβSβ―α―α"α"α¬ΰ¬ΰTΰTΰ!ΰ!ΰ"ΰ"ΰZΰZΰΏΰΏΰ8α8α¦α¦αυαυα(β(βXβXβ¨β¨β-γ-γξγξγίδίδλελεηη!θ!θAιAιhκhκ›λ›λέμέμ8ξ8ξ²ο²οOρOρσσήτήτΌφΌφ£ψ£ψϊϊόόµώµώΡ Ρ άάΐΐnnζζ4	4	h
+h
+““ΑΑφφ22oo¦¦ΜΜΫΫΠΠªªkkδδ,,++ΩΩqqΤΤ**JJ{{ΒΒwwέέLLΔΔ??¬¬ÿÿ66ZZ}}¬
+¬
+μ	μ	7	7	„„ΝΝ[[ΆΆζζLLww­­ώ ώ s s   ÒÿÒÿ΄ÿ΄ÿ±ÿ±ÿΐÿΐÿΤÿΤÿΪÿΪÿΑÿΑÿ|ÿ|ÿÿÿ_ώ_ώ£ύ£ύιόιόSόSόÿϋÿϋύϋύϋDόDόΏόΏόIύIύΖύΖύ&ώ&ώoώoώ¦ώ¦ώΩώΩώÿÿ.ÿ.ÿOÿOÿwÿwÿΌÿΌÿ2 2 Ϊ Ϊ ©©>>ΞΞ&&JJDD&&				AAΉΉcc££ήήΉΉEE££ώώnnώώ®®{{bbhh……§§³³‹‹  zz¶¶ϋ ϋ i i   θÿθÿδÿδÿρÿρÿ  6 6 z z Τ Τ 77““ΩΩ--XX——ξξ\\έέqqΦΦ¦¦ƒƒggT	T	L
+L
+UUggtthh11ΜΜ@@κκ33qq²²ªªnnbb}}ΎΎ
+
+55wwrr  ²²MMÿ
+ÿ
+Ζ	Ζ	ooUUQQaattqqHHϋÿϋÿώώ9ύ9ύηϋηϋ¥ϊ¥ϊqωqωOψOψIχIχhφhφ­υ­υυυ\τ\τ”σ”σ°ς°ςΎρΎρίπίπ+π+π±ο±οrοrο_ο_οlοlοοο­ο­οΔοΔοΓοΓο¨ο¨οtοtο9ο9οοοςξςξοοοοLπLπvρvρξςξςττφφBχBχψψdψdψcψcψ1ψ1ψωχωχηχηχ#ψ#ψΔψΔψΠωΠω0ϋ0ϋµόµό&ώ&ώYÿYÿ: : έ έ ddςςZZ..ττθθεεΧΧ©	©	B
+B
+
+
+™
+™
+u
+u
+J
+J
+J
+J
+Ά
+Ά
+oo――==ΨΨ88##~~QQΗΗttQQίί††‡‡··΄΄99½½<<aa­­NNSS¨¨„„°°YY  ®®uuZZUUWWGGΆΆώώ**665
+5
+<	<	\\ªª55==xx¤¤°°::³³LL©©;;))""λλ‰‰¬¬OOωω››66Υ Υ – – … … ¦ ¦ ι ι 66€€½½θθόόοοΏΏuu%%θ θ Κ Κ Ε Ε Ε Ε ² ² v v   kÿkÿ¤ώ¤ώΖύΖύδόδόόόxϋxϋϋϋΚϊΚϊ™ϊ™ϊ]ϊ]ϊ
+ϊ
+ϊ ω ω'ω'ω§ψ§ψψψ}χ}χ»φ»φΧυΧυατατξσξσσσXςXςΖρΖρ[ρ[ρρρϋπϋπωπωπρρρρ(ρ(ρVρVρ»ρ»ρnςnςtσtσ³τ³τφφNχNχyψyψ‹ω‹ω”ϊ”ϊ£ϋ£ϋΓόΓόχύχύCÿCÿ° ° FF		υυϋϋ	
+	
+
+
+οο¦¦!!PP))­­δδηηΞΞ³³¨¨µµέέff¤¤½½FF³³//©©22Κ
+Κ
+h	h	  ‰‰vvδδQ Q »ώ»ώ)ύ)ύ¤ϋ¤ϋ@ϊ@ϊωωψψ]χ]χΖφΖφ@φ@φ»υ»υ,υ,υττδσδσ,σ,σnςnςµρµρρρyπyπππ¤ο¤οUοUοοοΜξΜξ“ξ“ξcξcξ9ξ9ξξξπνπνίνίνξνξν.ξ.ξ¦ξ¦ξOοOοππΠπΠπjρjρΚρΚρθρθρΠρΠρ¦ρ¦ρ™ρ™ρΩρΩρ„ς„ςσσυυ΅φ΅φ0ψ0ψωωΩϊΩϊαϋαϋ®ό®ό9ύ9ύύύύύύύªύªύώώ°ώ°ώ’ÿ’ÿ„ „ ``€€ΒΒΰΰκκωω++™™KK11  κκbbLLιι||""ςς  VVϊϊθθ		6
+6
+KK%%΄΄  ""DD""--uuΈΈΦΦµµII‰‰tt……σσιιvv22››ωωμμ€€ίί::ΔΔ§§φφ©©££»»ΘΘ®®__έέ,,_
+_
+		¨¨ηηOOλλΊΊ°°³³««11ΡΡaa„„ζζppρρ))##ΤΤ77WWVVbb££**ππΨΨΓΓGGΖΖ
+
+  ΘώΘώUύUύΧϋΧϋxϊxϊ^ω^ωψψ-ψ-ψώχώχυχυχσχσχΰχΰχ£χ£χ/χ/χ†φ†φ·υ·υΦτΦτόσόσ6σ6σςςςς£ρ£ρrρrρyρyρΈρΈρ!ς!ς ς ς#σ#σ¤σ¤σ&τ&τ±τ±τQυQυφφφφφφψψfωfωγϊγϊfόfόΌύΌύΓώΓώxÿxÿ      ——
+
+μμ;	;	@@		ΜΜ½½]]²²ΦΦκκnnααθθ1122ννKKFFππiiΣΣJJΩΩ}},,άάƒƒ¤¤ww³³ΖΖ°°}}LLGG44ΧΧPPu
+u
+f	f	LLLLrr··ZZ©©φφBBƒƒ³ ³ ΜÿΜÿΩώΩώιύιύύύ_ό_όΡϋΡϋgϋgϋ ϋ ϋϋϋϋϋPϋPϋϋϋÒϋÒϋΒϋΒϋPϋPϋ}ϊ}ϊmωmωYψYψzχzχτφτφΟφΟφχφχφJχJχ«χ«χψψSψSψƒψƒψψψoψoψ"ψ"ψΈχΈχPχPχχχχχ9χ9χχχψψψψωω™ω™ωϊϊ†ϊ†ϊΣϊΣϊνϊνϊΠϊΠϊ‘ϊ‘ϊSϊSϊ8ϊ8ϊMϊMϊ‹ϊ‹ϊΪϊΪϊ$ϋ$ϋhϋhϋ³ϋ³ϋ ό όΎόΎόύύuώuώbÿbÿI I 11++IIΞΞυυάάwwÒÒ		Z	Z	Μ	Μ	q
+q
+CC44..ξξζζϋϋddΨΨOO££ΌΌWW§§++qqnn11λλΧ
+Χ
+ 
+ 
+Θ	Θ	―	―	¦	¦	ƒ	ƒ	8	8	ΣΣjjΖΖ„„88ίίzz®®PPψψªªllEE44..ρρ§§MMίίοο""ZZvvbb&&ÒÒ~~44ππ££AAΛ Λ I I ΗÿΗÿCÿCÿ°ώ°ώψύψύύύΨϋΨϋϊϊωωΜχΜχ¨φ¨φ·υ·υξτξτ@τ@τσσσσ_ς_ς®ρ®ρδπδπ π ποοξξννRμRμ΄λ΄λ7λ7λΜκΜκeκeκώιώι™ι™ι=ι=ιλθλθ›θ›θ@θ@θΣηΣη\η\ησζσζ΄ζ΄ζΌζΌζηηΞηΞηΛθΛθόιόιLλLλ¤μ¤μξνξνοοππδπδπ›ρ›ρOςOςσσγσγσΉτΉτ~υ~υ*φ*φΙφΙφvχvχSψSψuωuωΤϊΤϊSόSόΙύΙύÿÿ  ΰ ΰ zzυυccΠΠBBΒΒPPοοWW&&"	"	I
+I
+nnkkffXXΣΣΈΈΩΩ00¤¤ΦΦ))ƒƒμμ\\ΙΙ**ΖΖόόκκoozz::οο   
+ 
+4	4	++ΗΗuu„„έÿέÿ/ώ/ώ™ό™ό;ϋ;ϋϊϊωωψψυφυφ—υ—υττ’ς’ς"ρ"ρΗοΗοlξlξψμψμeλeλΎιΎι"θ"θ―ζ―ζwεwεyδyδ―γ―γγγΉβΉβ¦β¦βδβδβgγgγδδΖδΖδfεfεσεσε~ζ~ζ'η'ηÿηÿηιικκλλόλόλΜμΜμ±ν±νΧξΧξVπVπ"ς"ςττγυγυχχωω΅ϊ΅ϊXόXόGώGώc c ‹‹¥¥ªª§§ª
+ª
+±±²²hh++ψψΞΞ••..ΘΘ22bb——¨¨||::  ΑΑ((\\xx““³³ΗΗΎΎ<<ζζ¦¦‘‘©©κκQQζζ½½ββMMΤΤDDssPPμμiiκκ||&&θθΥΥ‚‚FFΝΝλλ^^¤¤ξξZZιι((Β
+Β
+`
+`
+
+
+Β	Β	~	~	1	1	ÒÒbbμμzz––ςςύύ££ζζίÿίÿΈύΈύϋϋ ω ωΥχΥχ>φ>φατατΕσΕσπςπςWςWςΫρΫρKρKρxπxπJοJοΜνΜν"μ"μ‚κ‚κιιδηδηψζψζFζFζΕεΕεyεyεeεeε‘ε‘εχεχε’ζ’ζ]η]ηVθVθ}ι}ιΡκΡκGμGμΠνΠνVοVοΛπΛπ(ς(ςvσvσΛτΛτAφAφφχφχϊωϊωWόWόÿÿττ>>__NNηη±±γγΝΝΒΒaaΊΊ  x!x!Μ"Μ"φ#φ#Ϊ$Ϊ$o%o%½%½%ζ%ζ%
+&
+&;&;&r&r&”&”&&& & &z%z%¨$¨$Τ#Τ#'#'#Ί"Ί"‘"‘"•"•" " "…"…"#"#"f!f!T T ÿÿ††\\OOrrΉΉ__‘‘ll``qq>>ΪΪaaττªª}ÿ}ÿZύZύ&ϋ&ϋΥψΥψ{φ{φAτAτTςTςΜπΜποο’ξ’ξoνoνόλόλ κ κεηεηkεkεΪβΪβWΰWΰϋέϋέΨΫΨΫÿΩÿΩ€Ψ€ΨaΧaΧΦΦ!Φ!ΦΘΥΘΥoΥoΥόΤόΤeΤeΤ°Σ°ΣκÒκÒ-Ò-Ò–Ρ–ΡHΡHΡgΡgΡÒÒVΣVΣ&Υ&Υ\Χ\ΧΐΩΐΩάάRήRή[ΰ[ΰKβKβ@δ@δTζTζθθΩκΩκ"ν"νMοMοKρKρσσάτάτφφ‚ψ‚ψϊϊχόχό—ÿ—ÿyy““ΧΧ++ffWWΜΜ¦¦ΫΫ}}±±§§““¥¥½½ΡΡHH##vv>>΅΅εεFFζζΏΏªª€€~~[[½½ttHHIIƒƒσσ==ΪΪCC__((Ί
+Ί
+F	F	&&ΊΊ»»
+
+ώώhh――ΟΟΡΡΕΕΏΏΟΟχχ,	,	`	`			Ί	Ί	ψ	ψ	P
+P
+Ί
+Ί
+>>²
+²
+)
+)
+΄	΄	ƒ	ƒ	Ά	Ά	ώ	ώ	g
+g
+ª
+ª
+
+
+.
+.
+^	^	::ΤΤ>>ΐΐφÿφÿ;ώ;ώ™ό™όϋϋ΅ω΅ω0ψ0ψ±φ±φυυ[σ[σ‡ρ‡ροο¥ν¥νλλιι‰η‰η¥ε¥εÿγÿγªβªβααΓΰΓΰυίυίίί!ή!ή&έ&έ@ά@άΫΫΫΫδΪδΪκΪκΪ*Ϋ*Ϋ¨Ϋ¨Ϋjάjάtέtέ»ή»ή1ΰ1ΰΖαΖαrγrγ=ε=ε5η5ηcιcιΙλΙλXξXξύπύπªσªσ_φ_φ)ω)ωόό*ÿ*ÿSSppcc±±AAυυάάννυυ©!©!$$7&7&((•)•)³*³*i+i+Ò+Ò+,,‰,‰,4-4- . .+/+/00Ι0Ι011$1$1σ0σ0£0£0F0F0ζ/ζ/‹/‹/=/=/ύ.ύ.Β.Β.t.t.υ-υ-0-0- , ,Ϊ*Ϊ*†)†)M(M(G'G'x&x&Ν%Ν%'%'%q$q$ # #΄"΄"΄!΄!  ggττ44##ΣΣddϊϊ¦¦ff&&Ò	Ò	bbάάQQΖÿΖÿ=ύ=ύ©ϊ©ϊψψbυbυΧςΧς‰π‰πξξΠμΠμ;λ;λ¨ι¨ιθθTζTζΌδΌδZγZγ=β=β^α^α¨ΰ¨ΰ	ΰ	ΰίίίίνήνήϊήϊή<ί<ίίίΰΰ‰ΰ‰ΰααΧαΧαΐβΐβΥγΥγεε^ζ^ζΜηΜη[ι[ιλλβμβμΐξΐξππDςDςίσίσmυmυχχ±ψ±ψoϊoϊ2ό2όδύδύzÿzÿρ ρ YYΑΑ>>ΤΤ||
+
+΅΅ττ
+
+  ώώϊϊοοήήÒÒΣΣάάÒÒζζΪΪÿÿ††))λλΉΉ……BBμμ~~ρρ??kk³³““QQ--όόέέ²²nnϋϋEEDDΌΌ†
+†
+‘	‘	ςς§§——££©©››yyYYOOmm¬¬χχ,	,	/	/	ςςss··ΕΕ§§ii  κκζ ζ ' ' §ÿ§ÿQÿQÿÿÿ›ώ›ώώώ,ύ,ύόόªϊªϊόψόψχχυυψςψςρρlοlοξξνν$μ$μ^λ^λ–κ–κ³ι³ι¤θ¤θ_η_ηΰεΰε1δ1δbβbβΰΰÒήÒήFέFέψΫψΫζΪζΪΪΪBΩBΩ’Ψ’ΨύΧύΧ“Χ“ΧiΧiΧ’Χ’ΧΨΨΝΨΝΨ΄Ω΄Ω§Ϊ§ΪΫΫMάMάήάήά6έ6έ`έ`έtέtέέέήήχήχή]ΰ]ΰ7β7βcδcδΉζΉζιιbλbλ’ν’νοο€ρ€ρ>σ>σβτβτyφyφψψΒωΒωϋϋ€ύ€ύ ÿ ÿοοbbααD	D	ff..——ΈΈ¬¬jjBBΣΣKKρρξξQQ¨¨χχύύƒ ƒ « « v v ξξυυήήττLLθθ΄΄bb››μμώώΜΜWW©©ΜΜΕΕ$
+$
+„„ΑΑϊϊKÿKÿΗόΗόgϊgϊψψ°υ°υ-σ-σ‰π‰πΟνΟνλλ5θ5θYεYεtβtβίίηάηάΪΪ„Ψ„ΨψΦψΦΧΥΧΥΥΥΤΤ8Τ8ΤΤΤΤΤΤΤ"Τ"Τ"Τ"ΤΤΤηΣηΣΘΣΘΣΜΣΜΣΤΤΤΤ}Υ}Υ¬Φ¬Φ(Ψ(ΨόΩόΩ0ά0άΛήΛήΓαΓαόδόδUθUθ¦λ¦λΣξΣξΞρΞρττχχ;ω;ω-ϋ-ϋιόιόώώ9 9 ÿÿ;;R
+R
+KKΞΞWWΌΌϋϋννΓΓ››{{__66σσ
+
+~~ύύ		YYQQέέρρΈΈuu66		TT//΅΅++••ΐΐ¨¨^^ππggΏΏώώ11qqΞΞDDΏΏ((wwΌΌ°°––ΖΖ--¶¶NNθθ}}€€εε88ƒƒΠΠ,,ΆΆ::λλ((\\UU--ΟΟmm****ffΎΎ!!ww©© 
+ 
+_	_	ττ{{όόE E YώYώ@ό@ό
+ϊ
+ϊΒχΒχiυiυυςυςdπdπΕνΕν<λ<λσθσθηηεε•δ•δίγίγZγZγκβκβwβwβχαχαkαkαδΰδΰuΰuΰ8ΰ8ΰ<ΰ<ΰ‰ΰ‰ΰααααααΡβΡβΨγΨγζδζδοεοενζνζαηαηΤθΤθÒιÒιακακμμEνEν¨ξ¨ξ?π?πςς!τ!τWφWφ•ψ•ψΏϊΏϊΘόΘό½ώ½ώµ µ ΓΓσσ66{	{	¨¨§§ccΚΚΣΣ??::||ιιbbΠΠ11‡‡ΦΦ  >!>!I"I";#;#$$%%ι%ι%Ξ&Ξ&¬'¬'y(y(.).)½)½)**)*)*φ)φ)‹)‹) ) )k(k(Ξ'Ξ'''@&@&,%,%β#β#x"x"!!§§vv――»»**ΓΓΪΪΞΞ’’ÿÿ`ϋ`ϋ‹χ‹χΔσΔσ5π5πςμςμριριηηPδPδ–α–αϊήϊήάάVΪVΪMΨMΨcΦcΦ‹Τ‹ΤΖÒΖÒΡΡ–Ο–Ο<Ξ<ΞΝΝ!Μ!ΜlΛlΛύΚύΚΠΚΠΚΧΚΧΚωΚωΚ#Λ#ΛMΛMΛ€Λ€ΛΝΛΝΛBΜBΜκΜκΜΙΝΙΝγΞγΞ=Π=ΠίΡίΡΘΣΘΣξΥξΥ7Ψ7ΨΪΪάάάά#ί#ίgαgα²γ²γζζzθzθρκρκaνaνΉοΉοιριρεσεσ®υ®υPχPχίψίψnϊnϊόό¥ύ¥ύHÿHÿι ι BBφφλ	λ	ΦΦ››$$iippMMθθΗΗ­­††::ΈΈÿÿ00DDcc§§ΉΉ½½»»½½ΕΕΤΤεερρσσηηΟΟ­­††bb@@θθ;;ΕΕDDΕΕMMάάxx##γγ½½³³ΎΎάάXX²²KKNNΘΘόό++MM[[HHΤΤ‡‡3
+3
+ΛΛEE¥¥ττFF¥ ¥ ÿÿqύqύΓϋΓϋϊϊEψEψ•φ•φότότlσlσΙρΙρυουοζνζν§λ§λXιXι%η%η-ε-εƒγƒγ$β$βόΰόΰψίψί	ί	ί/ή/ή|έ|έέέγάγάέέ—έ—έOήOή*ί*ίΰΰ*α*αPβPβγγηδηδPζPζΘηΘηOιOιεκεκμμ<ξ<ξωοωοΗρΗρ΄σ΄σΜυΜυψψrϊrϊΛόΛόψώψώθ θ ¦¦TT
+
++
++
+ffΆΆΡΡττ33II;;μμOOhhQ Q .!.!""&#&#D$D$`%`%j&j&]']'=(=()) * *π*π*ε+ε+Σ,Σ,΄-΄-ƒ.ƒ.=/=/Ϊ/Ϊ/Q0Q0›0›0²0²0Ά0Ά0v0v04040ά/ά/d/d/Ε.Ε...9-9-t,t,Ώ+Ώ+
++
++/*/*)){'{'’%’%o#o#=!=!,,44&&ύύΏΏzz44μμ”	”	pp’’ώώwϋwϋqψqψυυΩςΩςEπEπΕνΕνFλFλΔθΔθFζFζίγίγ΅α΅αίίβέβέjάjά2Ϋ2Ϋ(Ϊ(Ϊ6Ω6ΩJΨJΨ^Χ^Χ}Φ}Φ»Υ»Υ+Υ+ΥΠΤΠΤ›Τ›ΤvΤvΤSΤSΤ:Τ:ΤJΤJΤ©Τ©ΤmΥmΥΦΦηΧηΧLΩLΩ›Ϊ›ΪΝΫΝΫσάσά,ή,ή‘ί‘ί0α0α	γ	γεεJηJη›ι›ιωλωλYξYξ°π°πόςόςAυAυ‚χ‚χΎωΎωρϋρϋώώ' ' 66TTιιKK­­uuττ>>vv½½**ΎΎll››ΰΰΦ Φ ~!~!ε!ε!""?"?"X"X"u"u"""Ρ"Ρ"##@#@#V#V#=#=#β"β"@"@"[![!A A ΈΈxx__‚‚θθ‡‡>>δδZZ‘‘‘‘ttQQ55""σσΟΟªª““¥
+¥
+Ο	Ο	
+	
+	QQ  ττHHκκ;;‹‹ΣΣ  ω ω ©ÿ©ÿώώ=ό=ό_ϊ_ϊ§ψ§ψ6χ6χφφ<υ<υyτyτ¬σ¬σΓςΓςΒρΒρΐπΐπΡοΡουξυξξξννγλγλsκsκνθνθηηaζaζ¦ε¦εIεIε(ε(εεεςδςδ«δ«δCδCδΖγΖγFγFγΟβΟβmβmβ*β*βββββKβKβ΅β΅βγγ³γ³γzδzδrεrε”ζ”ζΟηΟηιιFκFκsλsλ¦μ¦μυνυνjοjοψπψπwςwςΏσΏσ―τ―τLυLυΊυΊυ5φ5φρφρφψψvωvωϋϋ¬ό¬ό+ώ+ώ…ÿ…ÿΗ Η ώώ));;ΗΗ;;””ττssΒΒs	s	
+
+®
+®
+EEΰΰ££''±±PPγγΏΏ••ggFFHHxxΟΟ00§§¬¬xxQ Q ω ω X!X!k!k!F!F!!!Σ Σ ³ ³ ΅ ΅   T T όόƒƒρρBBddBBΕΕλλΗΗxx――::΄
+΄
+{{εε] ] ΡύΡύ"ϋ"ϋ6ψ6ψυυÒρÒρµξµξξλξλ‘ι‘ιηηΆεΆε®γ®γ”α”αZίZί$έ$έΫΫYΩYΩβΧβΧ®Φ®Φ«Υ«ΥΟΤΟΤΤΤ|Σ|ΣϊÒϊÒ‡Ò‡ÒÒÒΈΡΈΡmΡmΡNΡNΡqΡqΡβΡβΡÒÒΣΣΓΤΓΤΦΦ¤Χ¤ΧeΩeΩXΫXΫhέhέsίsί\α\αγγΚδΚδζζ—θ—θξκξκ‚ν‚ν+π+π½ς½ς(υ(υsχsχΈωΈωόό}ώ}ώφ φ llΨΨDDΌ
+Ό
+CCΗΗ,,NN!!­­YYΞΞέέΉΉbbεεM M Ά Ά έ έ σ σ Ψ Ψ   ( ( ··MMλλ‡‡||ΗΗϊϊ""FFccppeeEE##AAll‰‰¶¶‰‰
+
+ό	ό	:	:	TTSSEE::JJηηεειιΑΑKK~~m m =ÿ=ÿώώύύόόHϋHϋsϊsϊωωψψχχ›φ›φ–υ–υ‘τ‘τσσ—ς—ςΊρΊρρρ}π}π π πήοήο ο οSοSοκξκξZξZξνν΄μ΄μªλªλ’κ’κ•ι•ιΦθΦθsθsθlθlθªθªθιιTιTιƒιƒιιι‘ι‘ιιιΘιΘι&κ&κ»κ»κλλ•μ•μΖνΖνοοRπRπρρ®ς®ςΕσΕσέτέτόυόυ$χ$χVψVψ–ω–ωηϊηϊXόXόθύθύ’ÿ’ÿ@@ΩΩDDsskk44αα~~		΅	΅	 
+ 
+…
+…
+Π
+Π
+""::IIEEΞ
+Ξ
+T
+T
+Ζ	Ζ	>	>	ΝΝuu''ÒÒmm££ii``‹‹λλƒƒRRU	U	z
+z
+¦¦½½··ΆΆ——­­δδ$$PPTT99!!,,iiΙΙ''[[QQ΅΅# # — — μ μ !!ΰ ΰ e e ¤¤³³gg
+
+€€ΕΕγγιιααΝΝ¨¨ff		™™..ΨΨÿÿfύfύ!ϋ!ϋΊψΊψ1φ1φσσρρΑξΑξ“μ“μ|κ|κfθfθ?ζ?ζδδταταϋίϋί7ή7ή¥ά¥ά:Ϋ:ΫπΩπΩΣΨΣΨςΧςΧ^Χ^ΧΧΧΧΧAΧAΧ}Χ}ΧΟΧΟΧIΨIΨΩΩΪΪUΫUΫΗάΗάCήCήΎίΎίDαDαςβςβέδέδηηRιRι›λ›λΛνΛνηοηοςςpτpτχχωωωωςόςόΰÿΰÿΈΈ‹‹ttQQ  ››hh11ΨΨ€!€!Ϊ"Ϊ"Φ#Φ#{${$ΰ$ΰ$%%E%E%`%`%u%u%‰%‰% % %¶%¶%Ί%Ί%–%–%1%1%}$}$|#|#>">"ή ή mmϊϊƒƒxxννqqΞΞ’’88ΆΆΚΚΠΠο	ο	``??}}ζζGG††¬¬ΫΫ..ªª==Μ Μ O O ΦÿΦÿ|ÿ|ÿTÿTÿUÿUÿ[ÿ[ÿDÿDÿÿώÿώώώ@ώ@ώώώώώPώPώ”ώ”ώΗώΗώίώίώαώαώΧώΧώΘώΘώ°ώ°ώ‡ώ‡ώDώDώζύζύrύrύοόοό`ό`όΝϋΝϋ:ϋ:ϋ¶ϊ¶ϊRϊRϊ!ϊ!ϊ%ϊ%ϊRϊRϊϊϊ¥ϊ¥ϊ†ϊ†ϊ%ϊ%ϊωω	ω	ω¬ψ¬ψΆψΆψοψοψyωyωϊϊ’ϊ’ϊθϊθϊϋϋIϋIϋϋϋΘϋΘϋόόhόhό®ό®όσόσόKύKύΑύΑύSώSώοώοώwÿwÿΨÿΨÿ  7 7 c c ― ― $$ΏΏtt88ώώΈΈSS³³ΕΕ€€ττBB””··‰‰cc**ΗΗ66} } §ÿ§ÿΒώΒώέύέύύύ_ό_όζϋζϋ›ϋ›ϋfϋfϋ%ϋ%ϋ³ϊ³ϊϊϊωω,ψ,ψaχaχλφλφέφέφ5χ5χαχαχΐψΐψΉωΉωΉϊΉϊΊϋΊϋΕόΕόζύζύ(ÿ(ÿ’ ’ ΌΌggίίΚ
+Κ
+ββ$$~~ΣΣ		αα||ββÿÿΗ Η v!v!""W"W"i"i"4"4"Λ!Λ!@!@!    ΰΰββ»»„„  WWªª||τ	τ	jjΣΣ))iÿiÿ’ό’ό¬ω¬ωΕφΕφκσκσ$ρ$ρwξwξέλέλTιTιΨζΨζjδjδ	β	β·ί·ίwέwέVΫVΫgΩgΩΓΧΓΧ|Φ|Φ“Υ“ΥÿΤÿΤ¥Τ¥ΤoΤoΤPΤPΤBΤBΤFΤFΤXΤXΤyΤyΤ―Τ―ΤΥΥΚΥΚΥόΦόΦΌΨΌΨΫΫ―έ―έΰΰrγrγJζJζιιΘλΘλtξtξρρ¦σ¦σ3φ3φΞψΞψ’ϋ’ϋ•ώ•ώΨΨIIΖΖ..ffff55ΰΰssςςVV!!†#†#&%&%_&_&-'-'''Γ'Γ'Δ'Δ'Ώ'Ώ'Θ'Θ'α'α'σ'σ'ΰ'ΰ'‡'‡'Ψ&Ψ&ά%ά%¨$¨$\#\#
+"
+"¬ ¬ ++llbbΉΉnn^^””””''Έ
+Έ
+S	S	!!VVxxjj**Ò Ò ‘ÿ‘ÿώώώώΤύΤύεύεύώώ3ώ3ώ9ώ9ώ"ώ"ώώύώύαύαύβύβύώώyώyώÿÿ¶ÿ¶ÿW W Ω Ω 88ΜΜ++——όό==NN;;**<<‚‚οο]]¤¤©©rrΙΙ¬¬ιιAAαα--LL||ΌΌύύ((22!!++„„ΫΫ				1	1	ύύzz½½ζζrr
+
+γγμμββOOΛΛ––WW——££%%  ωÿωÿ+ÿ+ÿ7ώ7ώ+ύ+ύ&ό&όNϋNϋΌϊΌϊϊϊ‰ϊ‰ϊ»ϊ»ϊιϊιϊλϊλϊ¨ϊ¨ϊϊϊ]ω]ω~ψ~ψχχΖφΖφφφcυcυήτήτ{τ{τ:τ:τττττ?τ?τ‘τ‘τυυκυκυπφπφψψ]ω]ω ϊ ϊκϋκϋMύMύΫώΫώ™ ™ ||jjJJΤ	Τ	¨¨©©ΰΰ==ζζψψΧΧ««k k ψ!ψ!'#'#Ω#Ω#$$Κ#Κ#R#R#Ο"Ο"["["ϋ!ϋ!–!–!!!? ? {{ppχχ''ύύ
+
+ε ε ‹ύ‹ύ ϊ ϊΐφΐφ‚σ‚σiπiπ`ν`νMκMκ(η(ηδδααVήVήάά:Ϊ:ΪΨΨΧΧaΥaΥ•Σ•ΣΓΡΓΡΠΠ·Ξ·ΞΑΝΑΝ1Ν1ΝχΜχΜΝΝPΝPΝγΝγΝΕΞΕΞσΟσΟ`Ρ`ΡυÒυÒ¤Τ¤ΤqΦqΦpΨpΨ΄Ϊ΄ΪIέIέ#ΰ#ΰ2γ2γcζcζ±ι±ινν­π­πHτHτΝχΝχϋϋώώο ο ΌΌ΄΄ς	ς	aaΧΧζζοο΄΄"!"!%"%"»"»"##,#,#h#h#Ν#Ν#N$N$Ύ$Ύ$ζ$ζ$$$Σ#Σ#–"–"!!IInnƒƒww``EE%%ψψ³³P
+P
+ΣΣQQάά  5ώ5ώχϋχϋΐωΐω§χ§χΞυΞυWτWτIσIσƒςƒςΕρΕρΡπΡπ†ο†οχνχνXμXμικικΦιΦι&ι&ιΒθΒθθθyθyθ…θ…θΌθΌθ!ι!ι¨ι¨ι9κ9κΏκΏκ7λ7λ³λ³λUμUμ5ν5νZξZξ¶ο¶ο(ρ(ρ“ς“ςΰσΰσυυφφχχςχςχΖψΖψ”ω”ωjϊjϊ`ϋ`ϋ‡ό‡όαύαύWÿWÿ½ ½ θθΊΊ33ffww““ΊΊ__‡‡κκW	W	“
+“
+ooααϋϋββµµƒƒIIΈ
+Έ
+o
+o
+6
+6
+
+
+ΰ	ΰ	—	—			ee††ΕΕ__ΊΊ//88    κώκώ–ύ–ύ*ό*ό΄ϊ΄ϊLωLωψψχχxφxφφφθυθυ―υ―υPυPυΌτΌτώσώσ.σ.σgςgςΏρΏρDρDρόπόπξπξπρρvρvρπρπρfςfςΎςΎςηςηςζςζςΠςΠςΎςΎςΊςΊςΗςΗςΪςΪςκςκςόςόςσσRσRσ―σ―σ/τ/τΞτΞτυυ}φ}φ«χ«χ ω ωΪϊΪϊΌόΌό¨ώ¨ώ~ ~ 99ζζ  “	“	ΝΝ__““΄΄ÒÒψψ**ggΓ!Γ!Μ#Μ#°%°%c'c'Ò(Ò(η)η)–*–*ΰ*ΰ*Ϊ*Ϊ*΅*΅*L*L*β)β)Y)Y)((''X&X&Κ$Κ$τ"τ"Ι Ι 77;;ζζccθθ‹
+‹
+››®®©©ώώtϋtϋtψtψυυοςοςYπYπΥνΥνjλjλ.ι.ι6η6ηεε)δ)δυβυβααααθΰθΰΰΰίίUίUίyίyίκίκί‘ΰ‘ΰ[α[α@β@βFγFγδδόεόεΏηΏηΎιΎιδλδλ'ξ'ξππϊςϊςυυ[ψ[ψ8ϋ8ϋ$ώ$ώ::o
+o
+))::έέHH¶¶QQκκ  ""c#c#{${$j%j%&&y&y&a&a&Υ%Υ%υ$υ$ν#ν#γ"γ"ή!ή!Ξ Ξ ““\\qqllYY55όό³³qqUUt	t	ΔΔ$$aaTTχÿχÿmύmύπϊπϊµψµψΧφΧφOυOυ τ τΡςΡςΌρΌρÒπÒπ(π(πΘοΘοοο‰ο‰οbοbοοο½ξ½ξhξhξ7ξ7ξ:ξ:ξnξnξΝξΝξWοWοππ*ρ*ρςς%τ%τΪυΪυχχϊψϊψJϊJϊ„ϋ„ϋΔόΔόώώÿÿθ θ JJ¥¥..Φ	Φ	``««――……TTEE^^„„‹‹JJΈΈλλ&&DDNN33χχΏΏΉΉ**‡‡ώώ½½MMΤΤhh&&**ΟΟRRd
+d
+μμυυ³³aa) )  ώ ώ=ό=όrϊrϊ·ψ·ψχχuυuυτστσ‚ς‚ςρροοςνςν`μ`μυκυκΧιΧιιιΒθΒθ­θ­θ®θ®θθθTθTθΰηΰηNηNη·ζ·ζ4ζ4ζΦεΦε°ε°εÒεÒεKζKζηηθθ%ι%ικκκκβκβκ
+λ
+λEλEλΌλΌλxμxμdνdν`ξ`ξYοYοLπLπCρCρIςIς[σ[σlτlτxυxυ…φ…φ―χ―χωωΜϊΜϊΗόΗόκώκώ33GGdd		λλQQ³³  22MM__pp‚‚‹!‹!i#i#%%•&•&Ε'Ε'(())$)$)ι(ι(r(r(Υ'Υ'''K&K&P%P%$$®"®"!!##ππ——II[[UUQ
+Q
+cc““ΪΪ.ÿ.ÿ„ό„όίωίωHχHχΠτΠτςς†π†πΗξΗξQνQν!μ!μ3λ3λ}κ}κυιυι‘ι‘ιLιLι#ι#ι ι ιLιLι΄ι΄ιWκWκ+λ+λμμννϋνϋνεξεξαοαο
+ρ
+ρrςrςττχυχυνχνχκωκωαϋαϋΚύΚύ¦ÿ¦ÿxxGG##.	.	VVnnGG»»ΌΌ]]ΓΓooΝΝ%%nn««ααήή<<""££ζζ$$„„Ψ	Ψ	――11®®σσ
+
+ÿÿύύSϋSϋΜωΜω‡ψ‡ψwχwχƒφƒφυυ©τ©τ²σ²σΈςΈςΐρΐρΨπΨπππpοpοοοÿξÿξLοLο π πρρ‚ς‚ςττ¨υ¨υχχψψΝψΝψjωjωϊϊόϊόϊ0ό0ό§ύ§ύMÿMÿμμλλO	O	””ΏΏΒΒbb**ϊϊΝΝ’’33©©νν    ΰ ΰ !!""h"h"Ο"Ο"Z#Z#$$%%ρ%ρ%«&«&''ε&ε&U&U&n%n%[$[$>#>#."."3!3!P P ΓΓWW‰‰[[ννQQΪΪ!!uuΦΦEEΐΐC
+C
+ΚΚBBÒÒεεηÿηÿσύσύ!ό!όvϊvϊιψιψcχcχΝυΝυττRςRςππΥξΥξIνIνθλθλ¥κ¥κwιwιYθYθXηXηζζζζΙεΙεΓεΓεΧεΧεθεθεθεθεήεήεΨεΨεγεγεζζ)ζ)ζNζNζnζnζζζΕζΕζηηηηθθθθ8ι8ικικιªκªκtλtλ<μ<μτμτμνν7ξ7ξβξβξ¬ο¬ο›π›π¤ρ¤ρΉςΉςΡσΡσττττ5φ5φªχªχ]ω]ωIϋIϋ\ύ\ύ}ÿ}ÿΑΑξξ99µ
+µ
+``''θθww»»――oo''ώώ!!%#%#>%>%#'#'΄(΄(ε)ε)Έ*Έ*?+?+‚+‚+++\+\+ω*ω*`*`*))u(u(''\%\%i#i#L!L!ΛΛbbΛΛώώNNΕ	Ε	~~\\88ς ς €ώ€ώςϋςϋdωdωτφτφ¶τ¶τ«ς«ςΙπΙποο^ν^νΰλΰλΆκΆκΊιΊι1ι1ι ι ιιι0ι0ιMιMιQιQι:ι:ιιιϊθϊθφθφθιιVιVιΎιΎιHκHκπκπκ―λ―λμμcνcνVξVξ\ο\οzπzπ®ρ®ρφςφςKτKτ¨υ¨υχχ_ψ_ψ¨ω¨ωΝϊΝϊ·ϋ·ϋWόWό§ό§όΌόΌόΐόΐόβόβόGύGύόύόύθώθώΨÿΨÿ‘ ‘ η η Η Η ? ? tÿtÿ‘ώ‘ώµύµύξόξό;ό;ό‘ϋ‘ϋβϊβϊ'ϊ'ϊVωVωhψhψXχXχ%φ%φέτέτ•σ•σiςiςsρsρΎπΎπKπKπππόοόοππππ+π+π/π/πππχοχοΝοΝο¶ο¶οΡοΡο2π2πίπίπΣρΣρϋςϋςBτBτ”υ”υγφγφ+ψ+ψrωrωΗϊΗϊ:ό:όΧύΧύ›ÿ›ÿyy[[--ΰΰttξ	ξ	SS¨¨ξξ$$JJdduuƒƒ””¬¬ΚΚκκϊϊββιιϊϊΦΦnnTTLLCCΖΖ22aaZZ,,ηηaa66ρρΔΔw
+w
+		ppΘΘ&&§§]]P P kÿkÿ‘ώ‘ώ¤ύ¤ύόόSϋSϋχωχωψψχχυυ'τ'τ³ς³ςMρMρώοώοΛξΛξ±ν±ν¥μ¥μ™λ™λ…κ…κlιlιVθVθUηUηxζxζΘεΘεBεBεΪδΪδ‚δ‚δ,δ,δΠγΠγsγsγγγγβγβΟβΟβθβθβ+γ+γγγυγυγOδOδ‡δ‡δ“δ“δδδkδkδyδyδΛδΛδqεqεcζcζ„η„η³θ³θΫιΫιυκυκ
+μ
+μ$ν$νBξBξWοWοQπQπ$ρ$ρΧρΧρςς=σ=σ%τ%τ=υ=υφφζχζχaωaωυϊυϊªόªόώώ¤ ¤ ξξddωω
+
+DDάάSSªª**ΙΙzzTT[![!~#~#%% ' 'k)k)ψ*ψ*>,>,3-3-Μ-Μ-ω-ω-Ί-Ί---=,=,=+=+2*2*))ρ'ρ'&&%%w#w#Ό!Ό!ϊϊ00II//ΡΡ00aa}}Ψ	Ψ	00¬¬NN  ώώMόMό¥ϊ¥ϊωω–χ–χφφ·τ·τtσtσhςhςρρρρΐπΐπππiπiπHπHπ π πλολοοο5ο5ο½ξ½ξQξQξξξ4ξ4ξµξµξοοππ‡ρ‡ρIςIςΜςΜς σ σjσjσΚσΚσUτUτ
+υ
+υίυίυΘφΘφΌχΌχ³ψ³ψΆωΆωuϊuϊϋϋpϋpϋϋϋiϋiϋ:ϋ:ϋ!ϋ!ϋ>ϋ>ϋϋϋ.ό.όήόήό„ύ„ύώώKώKώWώWώ3ώ3ώξύξύ›ύ›ύEύEύρόρόΆόΆόSόSόωϋωϋϋϋϋϋϊϊ,ϊ,ϊνωνωοωοω4ϊ4ϊ¥ϊ¥ϊ"ϋ"ϋ‹ϋ‹ϋΦϋΦϋ
+ό
+ό>ό>ό…ό…όβόβόIύIύ§ύ§ύσύσύ3ώ3ώ‚ώ‚ώύώύώΈÿΈÿ³ ³ ήή]]‹‹®®ΟΟχχ.
+.
+kk  ¶¶››EEΊΊiiΫΫxx@@""ΣΣqqΩΩ""((66DD??ΈΈ77¦¦  μμϊϊΪΪ»»o
+o
+5	5	ρρ³³’’ΑΑooΙΙI I xÿxÿ¬ώ¬ώτύτύTύTύΚόΚόKόKόΘϋΘϋ5ϋ5ϋϊϊΥωΥωωωUψUψ©χ©χχχ§φ§φLφLφψυψυ™υ™υ υ υ‰τ‰τΰσΰσ5σ5σ›ς›ςςςΈρΈρdρdρρρΖπΖπwπwπ-π-πκοκο«ο«οgοgοοοΈξΈξWξWξξξΪνΪνΫνΫνξξEξEξ{ξ{ξξξ™ξ™ξξξ–ξ–ξΔξΔξ$ο$ο±ο±ο^π^πρρκρκρΐςΐς›σ›σrτrτ6υ6υΩυΩυTφTφ­φ­φοφοφ*χ*χiχiχ°χ°χψψrψrψωωΟωΟωΨϊΨϊόόύύÿÿΈ Έ ee$$ώώχχ
+
+
+
+//\\‰‰――ΘΘΞΞΉΉ……--¶¶++™ ™ ""”#”# % %Ά&Ά&φ'φ'))°)°)****Ò)Ò)|)|)	)	)z(z(Θ'Θ'π&π&ξ%ξ%Ό$Ό$T#T#¨!¨!²²uuÿÿjjΛΛ..™™#	#	εεΤΤμμ3ÿ3ÿ;ύ;ύ5ϋ5ϋ6ω6ωbχbχΣυΣυ•τ•τ΅σ΅σίςίς6ς6ςρρΫπΫπππ`ο`ο«ξ«ξξξgνgνΣμΣμCμCμΉλΉλDλDλχκχκβκβκλλ\λ\λΕλΕλ'μ'μmμmμ’μ’μ΅μ΅μµμµμλμλμ\ν\νξξοο-π-πNρNρGςGςϋςϋςcσcσ‘σ‘σ§σ§σΛσΛσττ τ τQυQυφφυφυφÒχÒχΊψΊψ¶ω¶ωΘϊΘϊνϋνϋύύ(ώ(ώÿÿμÿμÿ  55ΎΎ;;¨¨[[――vvκκ[[ΑΑjjΒΒ..³³LLλλ‚	‚	
+
+r
+r
+Μ
+Μ
+jj··[[ΉΉ''­­LLΐΐuu€€ΑΑΥΥΖΖ¤¤~~eellψψrrρρYY••¤¤••~~llZZ66θθhh½½ϋϋ99‚‚ΠΠKKll~~
+
+΅	΅	ΉΉΧΧώώ;;——®®IIΞΞ**^^ww  ΉÿΉÿ	ÿ	ÿ‚ώ‚ώώώΜύΜύ€ύ€ύ.ύ.ύΝόΝόTόTόΑϋΑϋϋϋDϊDϊkωkω•ψ•ψΪχΪχNχNχςφςφΊφΊφφφJφJφαυαυKυKυ•τ•τΞσΞσσσFςFς”ρ”ρφπφπrπrπ	π	πΈοΈοkοkοοο”ξ”ξχνχνMνMν¶μ¶μOμOμ,μ,μIμIμμμ	ν	ν‡ν‡νξξ”ξ”ξοο—ο—ο
+π
+π|π|πώπώπ¥ρ¥ρ„ς„ςσσΪτΪτφφAχAχ+ψ+ψΟψΟψ6ω6ωsωsωωωΖωΖωόωόωGϊGϊ¨ϊ¨ϊ'ϋ'ϋΓϋΓϋ}ό}όRύRύ?ώ?ώ@ÿ@ÿT T {{µµ^^ΚΚHHά	ά	JJΪΪσσ88]]€€ΌΌ))ΗΗ……DDα α ?"?"Q#Q#$$±$±$ % %|%|%Ε%Ε%χ%χ%&&δ%δ%…%…%δ$δ$$$ι"ι"!!) ) ——ιι%%JJVVNN33δδ³³~
+~
+GGV V ΛώΛώdύdύόό­ϊ­ϊ7ω7ω§χ§χφφbτbτΨςΨς€ρ€ρiπiπ–ο–ορξρξWξWξ¦ν¦νΑμΑμªλªλzκzκ^ι^ι‚θ‚θθθιηιηθθ„θ„θωθωθfιfιΈιΈιμιμικκ,κ,κeκeκΟκΟκwλwλ[μ[μiνiν‰ξ‰ξ¤ο¤ο«π«πρρ„ς„ςaσaσ6τ6τυυΑυΑυ~φ~φGχGχ-ψ-ψ<ω<ωsϊsϊΓϋΓϋύύAώAώ<ÿ<ÿόÿόÿ„ „ ΰ ΰ ??OONNBB11##
+
+μ μ ― ― O O ΡÿΡÿIÿIÿΚώΚώdώdώώώχύχύνύνύϋύϋύ"ώ"ώ]ώ]ώ ώ ώΰώΰώÿÿ$ÿ$ÿ.ÿ.ÿ>ÿ>ÿhÿhÿΌÿΌÿ; ; ή ή ››gg==ηη--ΡΡzzύύ
+
+,,88  ίί}}ÿÿiiΉΉοο99ll΄΄\\\\ϊϊssΝΝ::__‘‘θθoo  ί
+ί
+
+
+ϊ	ϊ	(	(	άά——]]>>>>ZZ… … ±ÿ±ÿΖώΖώ―ύ―ύWόWόΊϊΊϊεψεψχφχφυυdσdσφρφρΝπΝπγογο*ο*οξξ,ξ,ξΩνΩν”ν”νCνCνÒμÒμ,μ,μVλVλcκcκrιrι΅θ΅θθθ–η–ηPηPη%η%ηηηηηDηDη‡η‡ηΪηΪη0θ0θθθΧθΧθJιJιριριΩκΩκϊλϊλ@ν@νξξΠοΠοϋπϋπςςσσττυυϊυϊυνφνφηχηχιψιψρωρωνϊνϊΠϋΠϋ‰ό‰όύύzύzύΏύΏύμύμύώώώώ+ώ+ώ^ώ^ώΠώΠώÿÿΛ Λ ==ΕΕ++II¶¶RR		2
+2
+ΆΆoo¤¤ΑΑΣΣΰΰλλττωωόόόόψψρρλλκκκκγ γ Ί!Ί!T"T"™"™"„"„"""""!!Ϊ Ϊ   μμgg……ooss¤¤ωω``ΐΐS
+S
+φφiiξξwwχ χ eÿeÿ»ύ»ύωϋωϋ"ϊ"ϊ@ψ@ψfφfφ―τ―τ9σ9σςςPρPρΝπΝπnπnππποοοοaξaξ¶ν¶ννν{μ{μφλφλλλMλMλFλFλ~λ~λξλξλ€μ€μννµνµνMξMξωξωξΚοΚοΘπΘπιριρσσ'τ'τυυφυφυΎφΎφ„χ„χLψLψωωΖωΖωoϊoϊϋϋΟϋΟϋ®ό®όΉύΉύθώθώ' ' ``††nn!!——ΓΓ΅΅;;ªªyyÿÿRRδδΉΉ@@Θ Θ   JÿJÿ|ώ|ώαύαύύύ»ύ»ύ ώ ώ£ώ£ώÿÿkÿkÿ›ÿ›ÿ»ÿ»ÿήÿήÿ  X X ² ² ''ΓΓ’’––ΐΐννÿÿίί‹‹				)
+)
+Υ
+Υ
+¥¥››¶¶ππ;;}}––mmύύVVρρhh  ΆΆ88²²WW‰‰››uuOOkkƒƒΔΔDDϊϊΜΜ““66©©ρρόόΔΔvv$$Χ	Χ	’’CCΥΥ77ii€ € ›ώ›ώΣόΣό9ϋ9ϋΖωΖωtψtψ;χ;χ$φ$φ:υ:υττπσπσkσkσΠςΠς	ς	ςρρπποοξξDνDν‚μ‚μΓλΓλλλaκaκθιθι±ι±ιΏιΏιÿιÿιOκOκ–κ–κΕκΕκζκζκλλ5λ5λyλyλÒλÒλDμDμΥμΥμ“ν“νƒξƒξοοΕπΕπΫρΫρΖςΖςσσττ®τ®τTυTυ
+φ
+φΓφΓφfχfχδχδχ@ψ@ψ†ψ†ψΚψΚψωωXωXω–ω–ωΝωΝω	ϊ	ϊfϊfϊωϊωϊΖϋΖϋΎόΎόΓύΓύΈώΈώÿÿR R ίίΕΕΐΐΗΗΩΩϋϋ99		ξξ00RRjjΡΡ**ρρJJ΅΅ώώ``ΊΊςςξ ξ  ! !""/"/"""""ή!ή![![!  vv((ΑΑbbννΔΔ‹‹55ΏΏ//ΰΰ))kk«	«	ςςFF§§
+
+ffµÿµÿ ώ ώ_ό_όηϊηϊ«ω«ω¦ψ¦ψΖχΖχτφτφφφKυKυ‡τ‡τΰσΰσ^σ^σσςσς‹ς‹ςςς‰ρ‰ρρρππππΎπΎπOρOρςςσσφσφσΛτΛτυυφφ—φ—φχχ¥χ¥χMψMψωωθωθωΏϊΏϊƒϋƒϋ.ό.όΖόΖό^ύ^ύώώΪώΪώΏÿΏÿ¦ ¦ vv""――22ΑΑbbςςττ  GG~~ΕΕ%%&&³ ³ 3 3 —ÿ—ÿΥώΥώμύμύθόθόαϋαϋσϊσϊ3ϊ3ϊ®ω®ωcωcωLωLωaωaω›ω›ωφωφωlϊlϊοϊοϊsϋsϋιϋιϋPόPό°ό°όύύªύªύ`ώ`ώ<ÿ<ÿ2 2 66CC^^ΫΫ<<¨¨
+
+||εεYYέέffγγAAss‚‚††——――ΈΈRRΫΫFF΅΅ττ<<qqvv88ΘΘ##IIEE--00mmΗΗ%%ddnn::ΤΤEE––ΖΖΠΠ¶	¶	‡‡``]]‘‘χÿχÿxώxώόόόόtϋtϋγωγω\ψ\ψφφφφΑυΑυΊτΊτΨσΨσσσMςMς›ρ›ρφπφπYπYπµοµοόξόξ$ξ$ξ5ν5νLμLμλλλλήκήκϊκϊκKλKλΉλΉλ0μ0μ¦μ¦μννrνrνΑνΑνξξHξHξ¨ξ¨ξ?ο?οππFρFρςςττYυYυφφχχvψvψHωHωϊϊ―ϊ―ϊFϋFϋÒϋÒϋbόbόύύΟύΟύ¤ώ¤ώoÿoÿ    Ό Ό ΰ ΰ 		PPµµ--¥¥bb¨¨ιι**mm··
+
+tt»»΅΅¥¥µ	µ	Ύ
+Ύ
+¶¶pp??ΧΧ««³³yyύύttΓΓΤΤ™™,,ÿÿππ..__‰‰©©³³––KKΦΦHH³³##——O
+O
+qqgg==		άÿάÿΒύΒύΎϋΎϋΜωΜωθχθχφφSτSτ±ς±ς;ρ;ρροροΦξΦξάνάνωμωμ!μ!μOλOλκκέιέιYιYιιιήθήθάθάθςθςθιιAιAι…ι…ιξιξικκTλTλFμFμKνKνJξJξ+ο+οεοεοtπtπγπγπFρFρ―ρ―ρ5ς5ςβςβς»σ»σΈτΈτΛυΛυίφίφΰχΰχΏψΏψrωrωχωχωVϊVϊ›ϊ›ϊΦϊΦϊϋϋhϋhϋÒϋÒϋNόNόΟόΟό;ύ;ύxύxύrύrύ&ύ&ύΆόΆόόό_ϋ_ϋΠϊΠϊUϊUϊβωβωfωfωΥψΥψ0ψ0ψ€χ€χΠφΠφ$φ$φrυrυ°τ°τίσίσσσoςoςςς1ς1ς°ς°ςzσzσ]τ]τ'υ'υ³υ³υφυφυόυόυγυγυÒυÒυμυμυOφOφχχ
+ψ
+ψMωMω²ϊ²ϊ ό ό…ύ…ύΰώΰώ> > °°BBξξ66£	£	β
+β
+22wwΧΧ??ΆΆyy««==άάΘΘΝΝ––&&ªªµµ±±――΄΄»»ΊΊ¨¨……]]==((
+
+ββss³³©©ttCÿCÿEύEύ”ϋ”ϋ1ϊ1ϊωωφχφχλφλφήυήυÒτÒτÒσÒσζςζςςςNρNρ¤π¤πππ§ο§ο[ο[ο-ο-οοοώξώξπξπξμξμξψξψξοοKοKο„ο„ο»ο»ορορο,π,πππρπρπ„ρ„ρ+ς+ςΥςΥςqσqσϋσϋσwτwτρτρτtυtυφφ¶φ¶φ„χ„χyψyψ—ω—ωΣϊΣϊόό:ύ:ύ!ώ!ώµώµώωώωώÿÿÿÿ"ÿ"ÿmÿmÿμÿμÿ‘ ‘ ??ββkkΪΪ77ΦΦ==EE,,όόΚΚ««¬¬ΦΦzzάάCC¶¶HHC	C	
+
+ξξΔΔUUγγ””€€­­22ΔΔDD  ΜΜΊΊbbΗΗςςρρΞΞ--§§υυΙΙllύύ‰‰¶¶GGΉΉωωÿÿΥ	Υ	™™aa@@447ÿ7ÿAύAύRϋRϋ{ω{ωÒχÒχdφdφ3υ3υ+τ+τ.σ.σ*ς*ςρρππCοCοΌξΌξ“ξ“ξ¶ξ¶ξοοRοRο‚ο‚οοοοο‘ο‘οΜοΜοMπMπρρςςIσIσuτuτ†υ†υhφhφχχ”χ”χψψ΅ψ΅ψoωoω~ϊ~ϊΌϋΌϋύύNώNώpÿpÿs s [[))ÒÒDDuummPPDDllΜΜPPΝΝΡΡDD‰‰³³ΛΛΨ Ψ αÿαÿςώςώώώSύSύ¨ό¨όόόTϋTϋƒϊƒϊ”ω”ωψψΈχΈχχχΊφΊφ·φ·φφφφφdχdχμχμχƒψƒψωω­ω­ω,ϊ,ϊ™ϊ™ϊϋϋϋϋ8ό8ό=ύ=ύ’ώ’ώ# # ΥΥ““ZZ11		ξξ©©..……ΙΙxxεε@@iiKKεεII‹‹ΏΏκκσσ··XXΣΣ!!99ΔΔQQΤΤYYαα``ΓΓ(
+(
+II~~ΠΠ99¥¥    EώEώ{ό{ό¶ϊ¶ϊωωtχtχψυψυττ$σ$σΖρΖρsπsπ1ο1οξξομομϋλϋλ1λ1λ™κ™κ4κ4κϊιϊιΩιΩιΎιΎιιιιιqιqι†ι†ιΜιΜι@κ@κΡκΡκeλeλζλζλNμNμ§μ§μννƒνƒνξξΣξΣξοο>π>πΰπΰπƒρƒρ6ς6ςσσÿσÿσυυφφμφμφΊχΊχvψvψ0ω0ωχωχωΟϊΟϊ΄ϋ΄ϋ™ό™όpύpύ,ώ,ώΒώΒώ0ÿ0ÿÿÿΗÿΗÿ  • • 55ξξ¥¥99™™ΓΓΔΔ±±ddEE((==||ΝΝ%%ΩΩ;;³³JJββάάε	ε	ξ
+ξ
+κκΞΞ››VVΨΨ»»ΌΌΦΦϋϋ55;;--ΌΌDD••­­‘‘OOξξssΦΦάά88ηη››EEΝΝ$$J
+J
+TT[[tt¨¨ς ς GÿGÿύύωϋωϋ[ϊ[ϊΝψΝψNχNχίυίυ}τ}τ4σ4σςς!ρ!ρtπtπ	π	πΡοΡοΏοΏοΙοΙομομο%π%πqπqπΐπΐπρρ.ρ.ρGρGρiρiρ³ρ³ρCςCςσσ0τ0τVυVυoφoφiχiχLψLψ.ω.ω'ϊ'ϊCϋCϋ~ό~όΛύΛύÿÿa a ΠΠιιΨΨ††μμ??ϊϊrrββ@@ΗΗλλμμ»»TTΌΌ
+
+TT¬¬““§§GGÿÿΣΣΐΐΊΊΎΎΠΠ  ccÿÿΙΙ££nn§§88ππκ	κ	--££55ΛΛ]]ξξ……  ··;;΅΅δδξξ««> > ¬ ¬  ! !J!J!!!η!η!."."V"V"P"P"""­!­!"!"!  ΝΝςς¤¤33°°((¥¥‡‡ΥΥ!!*	*	==__””έέ7 7 ώώώόώόPϋPϋωωΏχΏχώυώυeτeτσσβρβρεπεπσοσοϊξϊξχνχνφμφμμμSλSλΝκΝκzκzκPκPκFκFκVκVκ}κ}κΐκΐκ"λ"λ§λ§λMμMμννΰνΰν±ξ±ξpοpοππ’π’πωπωπZρZρΛρΛρ`ς`ς'σ'σττ=υ=υpφpφ£χ£χΓψΓψΔωΔωΆϊΆϊ]ϋ]ϋ ό ό•ό•ό-ύ-ύÒύÒύώώdÿdÿC C ΪΪssηηAA””ξξYYΣΣXXίί__ΛΛ55ΨΨkkκκkk  ΈΈ¨¨ΩΩ  kk§§ΘΘΞΞΔΔ½½ΠΠ//υυΎΎs	s	
+
+
+
+ο
+ο
+kk΄΄zzDDΫΫ®®‡‡[[››ααββΆΆ''xx««¬¬®®³³――‰‰+
++
+ΐΐΩΩρρKÿKÿƒύƒύ΄ϋ΄ϋέωέωψψ4φ4φuτuτΚςΚς0ρ0ρ£ο£ο ξ ξ­μ­μWλWλ,κ,κ8ι8ι„θ„θθθΚηΚη±η±η»η»ηεηεη+θ+θ†θ†θιθιθEιEι‰ι‰ι·ι·ιίιίικκ€κ€κ!λ!λώλώλννIξIξ”ο”οδπδπ*ς*ςVσVσ`τ`τHυHυφφΰφΰφ®χ®χ‰ψ‰ψhωhω?ϊ?ϊόϊόϊ•ϋ•ϋ	ό	όZόZόόό―ό―όΎόΎόΔόΔόΛόΛόγόγόύύύύώώώώÿÿhÿhÿcÿcÿÿÿ€ώ€ώΪύΪύ7ύ7ύ®ό®ό>ό>όβϋβϋ”ϋ”ϋWϋWϋ0ϋ0ϋ$ϋ$ϋ+ϋ+ϋ:ϋ:ϋBϋBϋ<ϋ<ϋ0ϋ0ϋ.ϋ.ϋEϋEϋϋϋβϋβϋdόdόύύ»ύ»ύώώyÿyÿz z ‡‡±±ΜΜμμ66Y	Y	x
+x
+••µµάά11HH==™™[[――ƒƒχχYY——¨¨‹‹IIεεbb½½ττ$$++3311ππ¨
+¨
+D	D	ΛΛBB®®™™- - έώέώ¤ύ¤ύxόxόOϋOϋ ϊ ϊηψηψ­χ­χ{φ{φ`υ`υfτfτσσΞςΞςςς^ρ^ρ΅π΅πθοθοGοGοΚξΚξyξyξQξQξNξNξjξjξªξªξοο΅ο΅οRπRπρρηρηρ°ς°ςpσpσ$τ$τΗτΗτ\υ\υβυβυaφaφδφδφtχtχψψΑψΑψpωpωϊϊÒϊÒϊ”ϋ”ϋgόgόIύIύ&ώ&ώιώιώ„ÿ„ÿωÿωÿZ Z Β Β EEκκªªqq$$²²JJllΜΜ**££  ‰‰ΝΝκκεεΜΜ¤¤kk®®&&““——WWIIeeΔΔÒÒΌΌmm{{ÒÒssGG--ΌΌ^	^	ω	ω	΅
+΅
+aa99##&&DD~~ÒÒ77™™ααφφΖΖHH}}oo,,ΖΖNNΟΟOOΖΖ,,uu™™››„„__--μμ|
+|
+ΩΩ@@ΑΑ[[²²Z Z ÿÿΒύΒύ΅ό΅ό®ϋ®ϋγϊγϊ;ϊ;ϊ©ω©ω*ω*ωΏψΏψnψnψ9ψ9ψψψψψώχώχαχαχ±χ±χoχoχ*χ*χρφρφΦφΦφβφβφχχxχxχςχςχ|ψ|ψ
+ω
+ωωωχωχωFϊFϊϊϊªϊªϊάϊάϊ!ϋ!ϋyϋyϋΪϋΪϋ1ό1όnόnόόόόό«ό«όΔόΔόλόλόύύXύXύ—ύ—ύδύδύ@ώ@ώ¬ώ¬ώÿÿ€ÿ€ÿΙÿΙÿρÿρÿÿÿÿÿώÿώÿχÿχÿμÿμÿΦÿΦÿ®ÿ®ÿpÿpÿ"ÿ"ÿΝώΝώ~ώ~ώ:ώ:ώώώΝύΝύύύzύzύhύhύvύvύ«ύ«ύώώ}ώ}ώώώώώ}ÿ}ÿπÿπÿY Y ΐ ΐ //――DDλλ΅΅bb**υυΒΒ’’ggG	G	5
+5
+004400ÒÒhhάά;;ΪΪSStt„„……~~ooQQΗΗVVΡΡ==  φφ66\\kkn
+n
+u	u	――άά))CC\\||©©α α ! ! `ÿ`ÿώώΛύΛύρόρόόό'ϋ'ϋDϊDϊpωpωµψµψψψ”χ”χ&χ&χΕφΕφqφqφ+φ+φÿυÿυρυρυφφ4φ4φoφoφªφªφέφέφ	χ	χ;χ;χ}χ}χΤχΤχ;ψ;ψ£ψ£ψχψχψ)ω)ω5ω5ω&ω&ωωωωωωω1ω1ωdωdω ω ωέωέωϊϊVϊVϊϊϊ¬ϊ¬ϊµϊµϊ ϊ ϊyϊyϊPϊPϊ<ϊ<ϊJϊJϊ{ϊ{ϊΑϊΑϊ
+ϋ
+ϋDϋDϋfϋfϋpϋpϋhϋhϋWϋWϋFϋFϋ?ϋ?ϋHϋHϋhϋhϋϋϋΥϋΥϋόό"ό"όόόόόμϋμϋάϋάϋΪϋΪϋίϋίϋίϋίϋΡϋΡϋΈϋΈϋ£ϋ£ϋΆϋΆϋΐϋΐϋυϋυϋ7ό7όxόxόµόµόψόψόQύQύΝύΝύoώoώ0ÿ0ÿ  Ϊ Ϊ ®®OO&&		##XX£	£	ϋ
+ϋ
+XXµµqqΛΛJJ\\FFκκΠΠ}}ψψ__ΎΎ..  ίίyy@
+@
+μμ‘‘--ΖΖkk**φÿφÿλώλώήύήύΡόΡόΝϋΝϋβϊβϊϊϊoωoωηψηψzψzψψψΚχΚχoχoχχχ~φ~φηυηυOυOυΙτΙτkτkτAτAτNτNτ†τ†τΤτΤτυυUυUυkυkυeυeυQυQυ>υ>υ7υ7υBυBυaυaυ—υ—υλυλυcφcφϋφϋφ΅χ΅χ9ψ9ψ±ψ±ψωωNωNωΆωΆωϊϊΐϊΐϊ„ϋ„ϋUόUό'ύ'ύωύωύΞώΞώ¦ÿ¦ÿu u ((««ωω  ::hh¦¦ρρAAΦΦXX››γγ44ώώxxψψppΤΤ""ffªªϊϊS	S	­	­	
+
+e
+e
+γ
+γ
+nnggXX§§ϋϋ''==CC::))**WWΫΫόόιι))££..ΓΓVVέέSSΉΉl
+l
+Ν	Ν	8	8	ªª‹‹ύύzz  AAέέiiάά88yy¨¨Ο Ο   cÿcÿύώύώΨώΨώγώγώ ÿ ÿÿÿÿÿρώρώΜώΜώ―ώ―ώ¥ώ¥ώ®ώ®ώΙώΙώςώςώ'ÿ'ÿeÿeÿ§ÿ§ÿθÿθÿ# # U U | | • •     e e , , οÿοÿΊÿΊÿ“ÿ“ÿwÿwÿ\ÿ\ÿ8ÿ8ÿÿÿ½ώ½ώdώdώψύψύ}ύ}ύϋόϋό~ό~όόόΣϋΣϋ³ϋ³ϋ¬ϋ¬ϋ«ϋ«ϋϋϋϋϋFϋFϋϋϊϋϊ΅ϊ΅ϊCϊCϊθωθωωωpωpωdωdωwωwω ω ωΤωΤω
+ϊ
+ϊAϊAϊvϊvϊ©ϊ©ϊΥϊΥϊοϊοϊτϊτϊθϊθϊΫϊΫϊίϊίϊÿϊÿϊ?ϋ?ϋ›ϋ›ϋόόόόύύ‰ύ‰ύώώ¥ώ¥ώ9ÿ9ÿΪÿΪÿ” ” vv€€§§ΦΦϊϊώώ
+
+
+
+//llΉΉjjΖΖ  qq¬¬ΙΙΔΔ™™GGΜΜ99ΡΡhhππvvϊϊ||ππQQ””°°ZZννggΥΥEE½
+½
+A	A	ΡΡppΧΧ––OOύÿύÿ ώ ώHύHύόόγϊγϊπωπω'ω'ω†ψ†ψψψχχ@χ@χέφέφ`φ`φΎυΎυÿτÿτ4τ4τ}σ}σπςπς›ς›ςxςxςyςyςςςςςςς‰ς‰ςbςbς*ς*ςνρνρΏρΏρ²ρ²ρÒρÒρ!ς!ς”ς”ςσσΆσΆσ τ τ‰τ‰τΨτΨτυυ>υ>υlυlυ±υ±υφφ·φ·φƒχƒχvψvψ„ω„ωϊϊ¦ϋ¦ϋ”ό”όUύUύαύαύ<ώ<ώpώpώώώ¥ώ¥ώΒώΒώνώνώ,ÿ,ÿ€ÿ€ÿηÿηÿX X Β Β QQnn||‰‰  ΒΒκκ::cc²²ΝΝΨΨΤΤΝΝΟΟθθ""~~ϊϊ44ΪΪnnγγ00YYffbbXXOOOO``††ΐΐ==[[OOΉΉBBΒΒHHββ™™pp[[GGΞΞ]]έέaaχχ££ZZΒΒqq!!Φ Φ ‰ ‰ 1 1 ΗÿΗÿJÿJÿΐώΐώ6ώ6ώµύµύGύGύυόυόΐόΐό¤ό¤όόό—ό—όόόuόuόSόSό-ό-ό
+ό
+όνϋνϋΡϋΡϋ΄ϋ΄ϋ“ϋ“ϋwϋwϋhϋhϋjϋjϋ|ϋ|ϋϋϋ–ϋ–ϋ†ϋ†ϋ`ϋ`ϋ$ϋ$ϋέϊέϊϊϊCϊCϊϋωϋω»ω»ωωωLωLωωωΣψΣψ‡ψ‡ψ6ψ6ψθχθχχχVχVχχχ¥φ¥φ9φ9φΤυΤυυυυυ®υ®υφφmφmφΏφΏφδφδφΧφΧφφφTφTφφφφφ%φ%φ…φ…φχχ²χ²χKψKψΟψΟψ8ω8ω•ω•ωσωσω\ϊ\ϊΜϊΜϊ:ϋ:ϋϋϋξϋξϋ9ό9ό‹ό‹όπόπόkύkύϊύϊύ’ώ’ώ)ÿ)ÿ»ÿ»ÿH H Ψ Ψ rr((		ggΩΩVVΏ	Ώ	ω
+ω
+ϊϊΝΝSS99GG{{ΕΕll°°άάμμΣΣ‰‰		NNZZ55μμ##ΈΈHHΝΝ<<®®――XXΟΟ‡‡>>ππ——-
+-
+²²--§§//ΛΛ~~G G $ÿ$ÿώώύύ:ό:όxϋxϋΝϊΝϊ*ϊ*ϊ…ω…ωΦψΦψ!ψ!ψoχoχΙφΙφ1φ1φ΅υ΅υυυ‘τ‘τττΉσΉσ‚σ‚σuσuσ„σ„σ›σ›σ©σ©σ¥σ¥σ“σ“σσσvσvσ„σ„σ°σ°σϊσϊσbτbτζτζτzυzυφφ”φ”φόφόφEχEχ~χ~χΏχΏχ$ψ$ψ»ψ»ψ†ω†ωyϊyϊ€ϋ€ϋ…ό…ό{ύ{ύ[ώ[ώ'ÿ'ÿγÿγÿ  **²²%%‡‡ίί33ξξOO§§οο$$FF[[ffoo{{‘‘¶¶ξξ44zz­­ΔΔΏΏ­­¤¤¶¶λλ::‘‘δδ//{{ΣΣ>	>	·	·	-
+-
+
+
+Η
+Η
+Φ
+Φ
+Ι
+Ι
+±
+±
+Ά
+Ά
+¨
+¨
+Δ
+Δ
+ρ
+ρ
+##SSxx‹‹„„\\¦
+¦
+4
+4
+Π	Π			s	s	m	m	i	i	Q	Q			ΜΜmm››**µµBBάάJJΘΘllωωwwςςrrχχ  4 4 ΧÿΧÿÿÿCÿCÿÿÿΏώΏώnώnώώώύύύύ|ό|όÿϋÿϋ—ϋ—ϋCϋCϋόϊόϊ»ϊ»ϊzϊzϊ;ϊ;ϊ ϊ ϊΜωΜω•ω•ωUωUωωω°ψ°ψ\ψ\ψψψΰχΰχ±χ±χ|χ|χ<χ<χσφσφ²φ²φƒφƒφjφjφ[φ[φEφEφφφΪυΪυ“υ“υZυZυDυDυ]υ]υ£υ£υφφ‡φ‡φχχoχoχΜχΜχψψ`ψ`ψ«ψ«ψωωgωgωΨωΨωSϊSϊΥϊΥϊ`ϋ`ϋυϋυϋ’ό’ό4ύ4ύÒύÒύgώgώοώοώiÿiÿΥÿΥÿ5 5   ζ ζ JJΎΎHHήήxx44έέ¤¤Μ	Μ	hhΐΐ
+
+88BB))φφΈΈzzDDψψΰΰΙΙ¥¥ddωωcc««ΪΪυυυυΖΖWWΆΆ――••jj88ΓΓvv®®88¶¶''		ηη<<ΰΰ11„ÿ„ÿαύαύRόRόΫϊΫϊ~ω~ω6ψ6ψχχηυηυιτιτττWσWσ»ς»ς2ς2ς¶ρ¶ρIρIρλπλπππBπBπΪοΪοYοYοΘξΘξBξBξζνζνΘνΘνκνκν;ξ;ξΆξΆξοοοοροροnπnπφπφπ‰ρ‰ρ%ς%ςΟςΟς‹σ‹σYτYτ2υ2υ
+φ
+φΣφΣφχχ2ψ2ψάψάψ•ω•ω`ϊ`ϊ<ϋ<ϋ!ό!ό
+ύ
+ύχύχύνώνώπÿπÿύ ύ ψψ²²<<››αα""nnΜΜ55χχAA€€µµααύύ		κκΔΔ΅΅——±±μμ;	;			Ψ	Ψ	
+
+@
+@
+f
+f
+
+
+³
+³
+μ
+μ
+??¶¶UUλλΒΒ22¶¶YYΌΌυυ@@΅΅  ''››θθδδ¤¤UUλλήήζζςςόόϊϊηη΄΄TTΒΒ**TT––ϋϋ{{‚‚νν??{{¤
+¤
+»	»	ΖΖΞΞίί@@––xxσσiiΣΣ--u u ―ÿ―ÿΰώΰώώώKύKύ–ό–όύϋύϋ‚ϋ‚ϋ*ϋ*ϋλϊλϊΉϊΉϊ„ϊ„ϊBϊBϊφωφω§ω§ω`ω`ω&ω&ωσψσψΌψΌψψψ?ψ?ψ	ψ	ψγχγχΞχΞχΏχΏχªχªχχχgχgχQχQχRχRχiχiχχχ°χ°χΞχΞχςχςχ)ψ)ψƒψƒψόψόψωωϊϊ“ϊ“ϊώϊώϊ]ϋ]ϋ½ϋ½ϋ*ό*ό©ό©ό=ύ=ύΰύΰύ‰ώ‰ώ4ÿ4ÿάÿάÿ‚ ‚ **ΨΨ‡‡11ΛΛOOΏΏ!!έέBB²²44ΦΦ		
+
+‹‹zz]]FFKKttΎΎKKhhbbDDεε¨¨ZZόό‘‘!!²²AAΕΕ--oo„„jj$$µµHH>>ϊϊ‡‡ψψ__ΓΓ$$xxΉΉθθC	C	‚‚ΙΙIIy y ¥ώ¥ώάόάό$ϋ$ϋωωμχμχcφcφλτλτσσJςJς4ρ4ρIπIποοϋξϋξ‘ξ‘ξFξFξξξΫνΫνννSνSνωμωμ’μ’μ)μ)μΕλΕλtλtλJλJλTλTλλλμμΗμΗμννNξNξοοΞοΞο‰π‰π?ρ?ρυρυρ°ς°ςzσzσ^τ^τZυZυ`φ`φTχTχψψµψµψ$ω$ω‹ω‹ωϊϊ©ϊ©ϊwϋwϋhόhόlύlύwώwώ}ÿ}ÿl l 44ΖΖ  FFKK>>&&γγΎΎ¨¨¬¬ΝΝώώ""έέddΖ Ζ % % ÿÿBÿBÿÿÿ"ÿ"ÿKÿKÿ‡ÿ‡ÿΝÿΝÿ  W W — — Χ Χ kkΝΝIIδδttZZHH00»»D	D	 	 	ά	ά	
+
+[
+[
+Ò
+Ò
+~~LLΚΚ<<hhUUΕΕrr..όόααΫΫββκκγγΉΉZZΎΎκ
+κ
+ρ	ρ	ννυυKK‹‹ΙΙ??}}½½υ υ   (ÿ(ÿ%ώ%ώ%ύ%ύ:ό:όnϋnϋ»ϊ»ϊϊϊeωeω®ψ®ψξχξχ)χ)χaφaφυυµτµτΣσΣσφςφς3ς3ς—ρ—ρ%ρ%ρÒπÒπππHπHπώοώο³ο³οmοmο/ο/οτξτξ³ξ³ξhξhξξξΕνΕν‰ν‰νjνjνgνgνqνqνxνxνmνmνPνPν-ν-ννννννν9ν9ν[ν[ν~ν~ν®ν®νωνωνiξiξύξύξ¤ο¤οNπNπθπθπqρqρορορnςnςψςψςσσ3τ3τγτγτ υ υlφlφJχJχ4ψ4ψωωϊωϊωΏϊΏϊhϋhϋχϋχϋvόvόνόνόaύaύΧύΧύVώVώγώγώ†ÿ†ÿD D κκΑΑƒƒ::  ρρ!!		­­[[iiRR&&μμ§§YYΜΜ££‘‘PPιι@@XXAA°°00  rrKKάά))^	^	µµ++±±::ΒΒK K ΫώΫώqύqύόό’ϊ’ϊωω—χ—χ3φ3φώτώτττRσRσΧςΧς‡ς‡ςWςWς>ς>ς5ς5ς5ς5ς5ς5ς'ς'ςςςΓρΓρsρsρ'ρ'ρόπόπρρOρOρÒρÒρuςuς σ σΑσΑσSτSτατατvυvυφφΧφΧφχχqψqψQωQωCϊCϊDϋDϋIόIό>ύ>ύώώΚώΚώfÿfÿϊÿϊÿ“ “ 88αα--ΦΦUUΟΟVV¥¥ΒΒΌΌ¥¥‡‡cc55ωω²²ll..ύύΣΣ΅΅UUηη]]ΙΙGGμμΐΐΑΑΰΰMM’’ΪΪ  ]]””ΝΝ™™JJ((##'	'	+
++
+''ωω»»UUΘΘ((··tt..ΛΛ::ss€€kkGG!!ττννεεΣΣ¬¬mm		ZZ™™ΣΣZZ££ααH
+H
+…	…	ΤΤ,,xx¥¥®®¥¥©©ΠΠή ή ! ! IÿIÿbώbώ{ύ{ύόόΙϋΙϋύϊύϊ<ϊ<ϊωωωωψψ2ψ2ψΫχΫχχχχχΏφΏφgφgφφφÒυÒυυυDυDυυυΛτΛτ¤τ¤τττττττ–τ–τ•τ•τττlτlτGτGτ%τ%τττ τ τ?τ?τjτjτττΟτΟτυυuυuυσυσυ„φ„φχχ›χ›χψψƒψƒψϋψϋψzωzωψωψωfϊfϊΌϊΌϊϋϋVϋVϋΑϋΑϋPόPόϊόϊό¬ύ¬ύPώPώέώέώOÿOÿ¬ÿ¬ÿϊÿϊÿ> > ~ ~ Ε Ε ··WWππ‚‚ΔΔ––••ΒΒ
+
+vvααHHΫΫυυκκµµ``ωω””FF――5

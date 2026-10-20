@@ -4,6 +4,38 @@
 
 ## OpenBVE Source Code - Readme
 
+## Linux nativo: instalar e testar com conteúdo incluído
+
+Este fork inclui OpenBVE + Route Viewer / Editor para Linux x86_64 e as pastas
+`Railway/` e `Train/` para testes. Instale `git`, `curl` e `flatpak`
+pelo gerenciador de pacotes da sua distribuição e execute:
+
+```bash
+git clone --branch feat/linux-native https://github.com/leoninjacat/OpenBVE.git
+cd OpenBVE
+bash native/install-linux.sh
+bash native/run-demo.sh viewer
+# Para dirigir o trem incluído:
+bash native/run-demo.sh train
+```
+
+O instalador baixa do GitHub o Flatpak da versão indicada no repositório,
+verifica SHA-256 e instala OpenBVE e Route Viewer / Editor no menu. O .NET já
+está no pacote; o Flatpak obtém o runtime GNOME 50 no Flathub. É necessário ter
+internet na primeira instalação e uma sessão gráfica com OpenGL e X11/XWayland.
+As rotas e o trem vêm do próprio clone, sem downloads manuais de conteúdo.
+O instalador recompõe automaticamente um áudio grande a partir das partes
+versionadas no repositório, verificando SHA-256. Reserve espaço para cerca de
+920 MB de conteúdo, o histórico Git, o aplicativo e o runtime Flatpak.
+
+No visualizador, **F8** abre o editor e **F9** mostra as mensagens da rota.
+As mensagens podem ser expandidas pela seta para ler os caminhos completos.
+Também é possível selecionar qualquer arquivo em `Railway/Route/` e a pasta
+`Train/Serie 1000 Cofebra` pelo launcher. Veja [conteúdo e limitações](CONTEUDO.md)
+e [instalação/compilação Linux](native/packaging/README.md).
+
+## Projeto original
+
 This repository contains the source code for the Train Simulator OpenBVE, a 3D cab based simulator.
 
 Supported route formats:

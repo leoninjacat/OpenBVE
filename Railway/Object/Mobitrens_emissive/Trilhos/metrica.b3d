@@ -1,0 +1,98 @@
+;;trilho
+[Meshbuilder] 
+vertex 0.5, 0, 0
+vertex 0.5, -0.18, 0
+vertex 0.5, -0.18, 25
+vertex 0.5, 0, 25
+face2 0,1,2,3
+[texture]
+load trilhol.bmp
+coordinates 0,0,0
+coordinates 1,1,0
+coordinates 2,1,1
+coordinates 3,0,1
+Transparent 0,0,255
+
+[Meshbuilder] 
+vertex 0.55, 0, 0
+vertex 0.45, 0, 0
+vertex 0.45, 0, 25
+vertex 0.55, 0, 25
+face2 0,1,2,3
+[texture]
+load trilho.bmp
+coordinates 0,0,0
+coordinates 1,1,0
+coordinates 2,1,1
+coordinates 3,0,1
+Transparent 0,0,255
+
+[Meshbuilder] 
+vertex -0.5, 0, 0
+vertex -0.5, -0.18, 0
+vertex -0.5, -0.18, 25
+vertex -0.5, 0, 25
+face2 0,1,2,3
+[texture]
+load trilhol.bmp
+coordinates 0,0,0
+coordinates 1,1,0
+coordinates 2,1,1
+coordinates 3,0,1
+Transparent 0,0,255
+
+[Meshbuilder] 
+vertex -0.55, 0, 0
+vertex -0.45, 0, 0
+vertex -0.45, 0, 25
+vertex -0.55, 0, 25
+face2 0,1,2,3
+[texture]
+load trilho.bmp
+coordinates 0,0,0
+coordinates 1,1,0
+coordinates 2,1,1
+coordinates 3,0,1
+Transparent 0,0,255
+
+[Meshbuilder] 
+vertex 1, -0.18, 0
+vertex -1, -0.18, 0
+vertex -1, -0.18, 25
+vertex 1, -0.18, 25
+face2 0,1,2,3
+[texture]
+load schwellen1.bmp
+coordinates 0,0,0
+coordinates 1,1,0
+coordinates 2,1,15
+coordinates 3,0,15
+Transparent 0,0,255
+
+[Meshbuilder] 
+vertex -10, -6.5, 0
+vertex -1, -0.18, 0
+vertex -1, -0.18, 25
+vertex -10, -6.5, 25
+face2 0,1,2,3
+[texture]
+load schotter1.bmp
+coordinates 0,0,0
+coordinates 1,1,0
+coordinates 2,1,15
+coordinates 3,0,15
+Transparent 0,0,255
+
+[Meshbuilder] 
+vertex 10, -6.5, 25
+vertex 1, -0.18, 25
+vertex 1, -0.18, 0
+vertex 10, -6.5, 0
+face2 0,1,2,3
+[texture]
+load schotter1.bmp
+coordinates 0,0,0
+coordinates 1,1,0
+coordinates 2,1,15
+coordinates 3,0,15
+Transparent 0,0,255

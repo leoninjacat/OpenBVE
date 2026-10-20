@@ -1,0 +1,378 @@
+;piso
+[MeshBuilder]
+Vertex -38, 5, 0.0
+Vertex -38, 5, 25
+Vertex  38, 5, 25
+Vertex  38, 5, 0.0
+Face2  0,1,2,3
+Color 150,150,150
+
+;edge 1A
+[MeshBuilder]
+Vertex -38, 6.5, 0.0
+Vertex -38, 5, 0
+Vertex  -8, 5, 0
+Vertex  -8, 6.5, 0.0
+Face2  0,1,2,3
+
+;edge 1B
+[MeshBuilder]
+Vertex -5.5, 6.5, 0.0
+Vertex -5.5, 5, 0
+Vertex  4, 5, 0
+Vertex  4, 6.5, 0.0
+Face2  0,1,2,3
+
+;edge 1C
+[MeshBuilder]
+Vertex 7, 6.5, 0.0
+Vertex 7, 5, 0
+Vertex  38, 5, 0
+Vertex  38, 6.5, 0.0
+Face2  0,1,2,3
+
+;edge 2A
+[MeshBuilder]
+Vertex -38, 6.5, 25
+Vertex -38, 5, 25
+Vertex  -8, 5, 25
+Vertex  -8, 6.5, 25
+Face2  0,1,2,3
+
+;edge 2B
+[MeshBuilder]
+Vertex -5.5, 6.5, 25
+Vertex -5.5, 5, 25
+Vertex  4, 5, 25
+Vertex  4, 6.5, 25
+Face2  0,1,2,3
+
+;edge 2C
+[MeshBuilder]
+Vertex 7, 6.5, 25
+Vertex 7, 5, 25
+Vertex  38, 5, 25
+Vertex  38, 6.5, 25
+Face2  0,1,2,3
+
+;teto 1a
+[MeshBuilder]
+Vertex 	7, 	9.5, 	0.0
+Vertex 	7, 	9.5, 	25
+Vertex  38, 	9.5, 	25
+Vertex  38, 	9.5, 	0.0
+Face2  0,1,2,3
+Color 150,150,150
+
+;teto 2a
+[MeshBuilder]
+Vertex 	-38, 	9.5, 	0.0
+Vertex 	-38, 	9.5, 	25
+Vertex  -17, 	9.5, 	25
+Vertex  -17, 	9.5, 	0.0
+Face2  0,1,2,3
+Color 150,150,150
+
+;edgeteto 2a
+[MeshBuilder]
+Vertex -38, 9.5, 0.0
+Vertex -38, 8.5, 0
+Vertex  58, 8.5, 0
+Vertex  58, 9.5, 0.0
+Face2  0,1,2,3
+
+;edgeteto 2b
+[MeshBuilder]
+Vertex -38, 9.5, 25.0
+Vertex -38, 8.5, 25
+Vertex  58, 8.5, 25
+Vertex  58, 9.5, 25.0
+Face2  0,1,2,3
+
+;acesso A
+[Meshbuilder]
+Vertex 38,	15, 	0
+Vertex 38, 	15, 	25
+Vertex 38, 	9.5, 	25
+Vertex 38, 	9.5, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+;acesso A
+[Meshbuilder]
+Vertex 38,	5, 	0
+Vertex 38, 	5, 	25
+Vertex 38, 	0, 	25
+Vertex 38, 	0, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+;acesso A frente
+[MeshBuilder]
+Vertex 38, 15, 0.0
+Vertex 38, 0, 0
+Vertex  50, 0, 0
+Vertex  50, 15, 0.0
+Face2  0,1,2,3
+
+;acesso A verso
+[MeshBuilder]
+Vertex 38, 15, 25.0
+Vertex 38, 0, 25
+Vertex  50, 0, 25
+Vertex  50, 15, 25
+Face2  0,1,2,3
+
+[Meshbuilder]
+Vertex 50,	15, 	0
+Vertex 50, 	15, 	25
+Vertex 50, 	0, 	25
+Vertex 50, 	0, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+;acesso B
+[Meshbuilder]
+Vertex -38,	15, 	0
+Vertex -38, 	15, 	25
+Vertex -38, 	9.5, 	25
+Vertex -38, 	9.5, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+;acesso B
+[Meshbuilder]
+Vertex -38,	5, 	0
+Vertex -38, 	5, 	25
+Vertex -38, 	0, 	25
+Vertex -38, 	0, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+;acesso B frente
+[MeshBuilder]
+Vertex -50, 15, 0.0
+Vertex -50, 0, 0
+Vertex -38, 0, 0
+Vertex -38, 15, 0.0
+Face2  0,1,2,3
+
+;acesso B verso
+[MeshBuilder]
+Vertex -50, 15, 25.0
+Vertex -50, 0, 25
+Vertex -38, 0, 25
+Vertex -38, 15, 25
+Face2  0,1,2,3
+
+[Meshbuilder]
+Vertex -50,	15, 	0
+Vertex -50, 	15, 	25
+Vertex -50, 	0, 	25
+Vertex -50, 	0, 	0
+Face2  0,1,2,3
+Color 150,150,150
+
+
+;lances de escada
+[Meshbuilder]
+Vertex -8,	2.6, 	-3
+Vertex -8, 	5, 	0
+Vertex -5.5, 	5, 	0
+Vertex -5.5, 	2.6, 	-3
+Face2  0,1,2,3
+Color 30,30,30
+
+[Meshbuilder]
+Vertex -8,	2.6, 	-3
+Vertex -8, 	2.6, 	-6
+Vertex -5.5, 	2.6, 	-6
+Vertex -5.5, 	2.6, 	-3
+Face2  0,1,2,3
+Color 30,30,30
+
+[Meshbuilder]
+Vertex -8,	0, 	-9
+Vertex -8, 	2.6, 	-6
+Vertex -5.5, 	2.6, 	-6
+Vertex -5.5, 	0, 	-9
+Face2  0,1,2,3
+Color 30,30,30
+
+;parede da escada A
+[Meshbuilder]
+Vertex -5.5,	4, 	-3
+Vertex -5.5, 	6.5, 	0
+Vertex -5.5, 	5, 	0
+Vertex -5.5, 	2.6, 	-3
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex -5.5,	4, 	-6
+Vertex -5.5, 	4, 	-3
+Vertex -5.5, 	2.6, 	-3
+Vertex -5.5, 	2.6, 	-6
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex -5.5,	1.47, 	-9
+Vertex -5.5, 	4, 	-6
+Vertex -5.5, 	2.6, 	-6
+Vertex -5.5, 	0, 	-9
+Face2  0,1,2,3
+Color 150,150,150
+
+;parede da escada B
+[Meshbuilder]
+Vertex -8,	4, 	-3
+Vertex -8, 	6.5, 	0
+Vertex -8, 	5, 	0
+Vertex -8, 	2.6, 	-3
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex -8,	4, 	-6
+Vertex -8, 	4, 	-3
+Vertex -8, 	2.6, 	-3
+Vertex -8, 	2.6, 	-6
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex -8,	1.47, 	-9
+Vertex -8, 	4, 	-6
+Vertex -8, 	2.6, 	-6
+Vertex -8, 	0, 	-9
+Face2  0,1,2,3
+Color 150,150,150
+
+;escadaB
+
+;lances de escada
+[Meshbuilder]
+Vertex 6.8,	2.6, 	-3
+Vertex 6.8, 	5, 	0
+Vertex 3.96, 	5, 	0
+Vertex 3.96, 	2.6, 	-3
+Face2  0,1,2,3
+Color 30,30,30
+
+[Meshbuilder]
+Vertex 6.8,	2.6, 	-3
+Vertex 6.8, 	2.6, 	-6
+Vertex 3.96, 	2.6, 	-6
+Vertex 3.96, 	2.6, 	-3
+Face2  0,1,2,3
+Color 30,30,30
+
+[Meshbuilder]
+Vertex 6.8,	0, 	-9
+Vertex 6.8, 	2.6, 	-6
+Vertex 3.96, 	2.6, 	-6
+Vertex 3.96, 	0, 	-9
+Face2  0,1,2,3
+Color 30,30,30
+
+;parede da escada A
+[Meshbuilder]
+Vertex 3.96,	4, 	-3
+Vertex 3.96, 	6.5, 	0
+Vertex 3.96, 	5, 	0
+Vertex 3.96, 	2.6, 	-3
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex 3.96,	4, 	-6
+Vertex 3.96, 	4, 	-3
+Vertex 3.96, 	2.6, 	-3
+Vertex 3.96, 	2.6, 	-6
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex 3.96,	1.47, 	-9
+Vertex 3.96, 	4, 	-6
+Vertex 3.96, 	2.6, 	-6
+Vertex 3.96, 	0, 	-9
+Face2  0,1,2,3
+Color 150,150,150
+
+;parede da escada B
+[Meshbuilder]
+Vertex 6.8,	4, 	-3
+Vertex 6.8, 	6.5, 	0
+Vertex 6.8, 	5, 	0
+Vertex 6.8, 	2.6, 	-3
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex 6.8,	4, 	-6
+Vertex 6.8, 	4, 	-3
+Vertex 6.8, 	2.6, 	-3
+Vertex 6.8, 	2.6, 	-6
+Face2  0,1,2,3
+Color 150,150,150
+
+[Meshbuilder]
+Vertex 6.8,	1.47, 	-9
+Vertex 6.8, 	4, 	-6
+Vertex 6.8, 	2.6, 	-6
+Vertex 6.8, 	0, 	-9
+Face2  0,1,2,3
+Color 150,150,150
+
+;Vidraças acesso A
+[MeshBuilder]
+Vertex -38, 8.5, 0.0
+Vertex -38, 6.5, 0
+Vertex  -8, 6.5, 0
+Vertex  -8, 8.5, 0.0
+Face2  0,1,2,3
+Color 85,95,125,180
+
+[MeshBuilder]
+Vertex -38, 8.5, 25.0
+Vertex -38, 6.5, 25
+Vertex  -8, 6.5, 25
+Vertex  -8, 8.5, 25.0
+Face2  0,1,2,3
+Color 85,95,125,180
+
+;Vidraças acesso B
+[MeshBuilder]
+Vertex 38, 8.5, 0.0
+Vertex 38, 6.5, 0
+Vertex 7, 6.5, 0
+Vertex  7, 8.5, 0.0
+Face2  0,1,2,3
+Color 85,95,125,180
+
+[MeshBuilder]
+Vertex 38, 8.5, 25.0
+Vertex 38, 6.5, 25
+Vertex 7, 6.5, 25
+Vertex 7, 8.5, 25.0
+Face2  0,1,2,3
+Color 85,95,125,180
+
+;Vidraças mezanino 2a
+[MeshBuilder]
+Vertex -5.5, 8.5, 25.0
+Vertex -5.5, 6.5, 25
+Vertex 4, 6.5, 25
+Vertex 4, 8.5, 25.0
+Face2  0,1,2,3
+Color 85,95,125,180
+
+[MeshBuilder]
+Vertex -5.5, 8.5, 0
+Vertex -5.5, 6.5, 0
+Vertex 4, 6.5, 0
+Vertex 4, 8.5, 0
+Face2  0,1,2,3
+Color 85,95,125,180

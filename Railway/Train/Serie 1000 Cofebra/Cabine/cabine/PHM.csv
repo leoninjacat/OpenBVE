@@ -1,0 +1,32 @@
+CreateMeshBuilder,
+AddVertex,0.53, 2.11, 9.47,0,0,-1
+AddVertex,0.29, 2.11, 9.63,0,0,-1
+AddVertex,0.47, 1.90, 9.46,0,0,-1
+AddVertex,0.25, 1.90, 9.62,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\panelada2.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+Setdecaltransparentcolor, 255,255,255
+
+;;;atc ;;;
+
+CreateMeshBuilder,
+AddVertex,-0.778, 2.15, 9.12,0,0,-1
+AddVertex,-0.57, 2.15, 9.45,0,0,-1
+AddVertex,-0.70, 1.90, 9.12,0,0,-1
+AddVertex,-0.494, 1.90, 9.45,0,0,-1
+AddFace2,0,1,3,2,
+GenerateNormals,
+LoadTexture,..\CCTVFALHA.png,
+SetTextureCoordinates,0,0,0,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,1,
+SetTextureCoordinates,3,1,1,
+Setcolor, 235,235,235
+
+translateall,0,0.02,5.34
+scaleall,1.03,1.05,0.79,

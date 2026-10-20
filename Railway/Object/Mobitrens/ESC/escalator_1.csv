@@ -1,0 +1,222 @@
+CreateMeshBuilder
+AddVertex,5.58,6,11
+AddVertex,5.58,2,2.5
+AddVertex,5.58,2,0
+AddVertex,5.58,1,11
+AddVertex,5.58,1,2.5
+AddVertex,5.58,1,0
+AddFace2,0,1,4,3,
+AddFace2,1,2,5,4,
+GenerateNormals
+SetColor,255,255,255,255
+LoadTexture,esca_002.bmp
+SetTextureCoordinates,0,1,0
+SetTextureCoordinates,1,0.5,0.5
+SetTextureCoordinates,2,0.25,0.5
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,4,0.5,1
+SetTextureCoordinates,5,0.25,1
+
+CreateMeshBuilder
+AddVertex,5.58,6,11
+AddVertex,5.58,2,2.5
+AddVertex,5.58,2,0
+AddVertex,5.58,1,0
+AddVertex,6.12,6,11
+AddVertex,6.12,2,2.5
+AddVertex,6.12,2,0
+AddVertex,6.12,1,0
+AddFace,0,4,5,1,
+AddFace,1,5,6,2,
+AddFace,2,6,7,3,
+GenerateNormals
+SetColor,255,255,255,255
+LoadTexture,esca_003.bmp
+SetTextureCoordinates,0,1,0
+SetTextureCoordinates,1,0.75,0
+SetTextureCoordinates,2,0.125,0
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,4,1,1
+SetTextureCoordinates,5,0.75,1
+SetTextureCoordinates,6,0.125,1
+SetTextureCoordinates,7,0,1
+
+CreateMeshBuilder
+AddVertex,6.12,6,11
+AddVertex,6.12,2,2.5
+AddVertex,6.12,2,0
+AddVertex,6.12,1,11
+AddVertex,6.12,1,2.5
+AddVertex,6.12,1,0
+AddFace2,0,1,4,3,
+AddFace2,1,2,5,4,
+GenerateNormals
+SetColor,255,255,255,255
+LoadTexture,esca_003.bmp
+SetTextureCoordinates,0,1,0
+SetTextureCoordinates,1,0.5,0.5
+SetTextureCoordinates,2,0.25,0.5
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,4,0.5,1
+SetTextureCoordinates,5,0.25,1
+
+CreateMeshBuilder
+Cylinder ,10, 0.4, 0.4, 0.5
+Rotate ,0,0,1,90
+Translate ,5.85, 1.6 ,0
+GenerateNormals
+LoadTexture,esca_003.bmp
+SetTextureCoordinates ,0, 0.8, 0
+SetTextureCoordinates ,1, 0.8, 1
+SetTextureCoordinates ,2, 0.9, 0
+SetTextureCoordinates ,3, 0.9, 1
+SetTextureCoordinates ,4, 1, 0
+SetTextureCoordinates ,5, 1, 1
+SetTextureCoordinates ,6, 0, 0
+SetTextureCoordinates ,7, 0, 1
+SetTextureCoordinates ,8, 0.2, 0
+SetTextureCoordinates ,9, 0.2, 1
+SetTextureCoordinates ,10, 0.4, 0
+SetTextureCoordinates ,11, 0.4, 1
+SetTextureCoordinates ,12, 0.6, 0
+SetTextureCoordinates ,13, 0.6, 1
+SetTextureCoordinates ,14, 0.7, 0
+SetTextureCoordinates ,15, 0.7, 1
+SetTextureCoordinates ,16, 0.8, 0
+SetTextureCoordinates ,17, 0.8, 1
+SetTextureCoordinates ,18, 0.9, 0
+SetTextureCoordinates ,19, 0.9, 1
+
+
+CreateMeshBuilder
+ADDVertex ,5.9, 6, 11
+ADDVertex ,5.9, 2, 2.5
+ADDVertex ,5.9, 2, 0
+ADDVertex ,5.9, 6.05, 11
+ADDVertex ,5.9, 2.05, 2.5
+ADDVertex ,5.9, 2.05, 0
+ADDVertex ,6., 6.05, 11
+ADDVertex ,6., 2.05, 2.5
+ADDVertex ,6., 2.05, 0
+ADDFace ,0,3,4,1
+ADDFace ,1,4,5,2
+ADDFace ,3,6,7,4
+ADDFace ,4,7,8,5
+setColor ,48,48,48
+CreateMeshBuilder
+Cylinder ,10, 0.45, 0.45, 0.1
+Rotate ,0,0,1,90
+Translate ,5.95, 1.6 , 0
+setColor, 48,48,48
+
+CreateMeshBuilder
+ADDVertex ,7.2, 6, 11
+ADDVertex ,7.2, 2, 2.5
+ADDVertex ,7.2, 2, 0
+ADDVertex ,7.2, 6.05, 11
+ADDVertex ,7.2, 2.05, 2.5
+ADDVertex ,7.2, 2.05, 0
+ADDVertex ,7.3, 6.05, 11
+ADDVertex ,7.3, 2.05, 2.5
+ADDVertex ,7.3, 2.05, 0
+ADDFace ,0,3,4,1
+ADDFace ,1,4,5,2
+ADDFace ,3,6,7,4
+ADDFace ,4,7,8,5
+setColor ,48,48,48
+CreateMeshBuilder
+Cylinder ,10, 0.45, 0.45, 0.1
+Rotate ,0,0,1,90
+Translate ,7.25, 1.6 , 0
+setColor ,48,48,48
+
+
+
+CreateMeshBuilder
+ADDVertex ,7.1, 6, 11
+ADDVertex ,7.1, 2, 2.5
+ADDVertex ,7.1, 2, 0
+ADDVertex ,7.1, 1, 11
+ADDVertex ,7.1, 1, 2.5
+ADDVertex ,7.1, 1, 0
+ADDFace2 ,0, 1, 4, 3
+ADDFace2 ,1, 2, 5, 4
+GenerateNormals
+SetColor,255,255,255,255
+LoadTexture,esca_003.bmp
+SetTextureCoordinates,0,1,0
+SetTextureCoordinates,1,0.5,0.5
+SetTextureCoordinates,2,0.25,0.5
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,4,0.5,1
+SetTextureCoordinates,5,0.25,1
+
+CreateMeshBuilder
+ADDVertex ,7.62, 6, 11
+ADDVertex ,7.62, 2, 2.5
+ADDVertex ,7.62, 2, 0
+ADDVertex ,7.62, 1, 11
+ADDVertex ,7.62, 1, 2.5
+ADDVertex ,7.62, 1, 0
+ADDFace2 ,0, 1, 4, 3
+ADDFace2 ,1, 2, 5, 4
+GenerateNormals
+SetColor,255,255,255,255
+LoadTexture,esca_002.bmp
+SetTextureCoordinates,0,1,0
+SetTextureCoordinates,1,0.5,0.5
+SetTextureCoordinates,2,0.25,0.5
+SetTextureCoordinates,3,1,1
+SetTextureCoordinates,4,0.5,1
+SetTextureCoordinates,5,0.25,1
+
+CreateMeshBuilder
+ADDVertex ,7.1, 6, 11
+ADDVertex ,7.1, 2, 2.5
+ADDVertex ,7.1, 2, 0
+ADDVertex ,7.1, 1, 0
+ADDVertex ,7.62, 6, 11
+ADDVertex ,7.62, 2, 2.5
+ADDVertex ,7.62, 2, 0
+ADDVertex ,7.62, 1, 0
+ADDFace ,0,4,5,1
+ADDFace ,1,5,6,2
+ADDFace ,2,6,7,3
+GenerateNormals
+SetColor,255,255,255,255
+LoadTexture,esca_003.bmp
+SetTextureCoordinates,0,1,0
+SetTextureCoordinates,1,0.75,0
+SetTextureCoordinates,2,0.125,0
+SetTextureCoordinates,3,0,0
+SetTextureCoordinates,4,1,1
+SetTextureCoordinates,5,0.75,1
+SetTextureCoordinates,6,0.125,1
+SetTextureCoordinates,7,0,1
+
+CreateMeshBuilder
+Cylinder ,10, 0.4, 0.4, 0.5
+Rotate ,0,0,1,90
+Translate ,7.36, 1.6 ,0
+GenerateNormals
+LoadTexture,esca_003.bmp
+SetTextureCoordinates ,0, 0.8, 0
+SetTextureCoordinates ,1, 0.8, 1
+SetTextureCoordinates ,2, 0.9, 0
+SetTextureCoordinates ,3, 0.9, 1
+SetTextureCoordinates ,4, 1, 0
+SetTextureCoordinates ,5, 1, 1
+SetTextureCoordinates ,6, 0, 0
+SetTextureCoordinates ,7, 0, 1
+SetTextureCoordinates ,8, 0.2, 0
+SetTextureCoordinates ,9, 0.2, 1
+SetTextureCoordinates ,10, 0.4, 0
+SetTextureCoordinates ,11, 0.4, 1
+SetTextureCoordinates ,12, 0.6, 0
+SetTextureCoordinates ,13, 0.6, 1
+SetTextureCoordinates ,14, 0.7, 0
+SetTextureCoordinates ,15, 0.7, 1
+SetTextureCoordinates ,16, 0.8, 0
+SetTextureCoordinates ,17, 0.8, 1
+SetTextureCoordinates ,18, 0.9, 0
+SetTextureCoordinates ,19, 0.9, 1

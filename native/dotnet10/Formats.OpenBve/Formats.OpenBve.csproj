@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup>
+<TargetFramework>net10.0</TargetFramework><AssemblyName>Formats.OpenBve</AssemblyName>
+<RootNamespace>Formats.OpenBve</RootNamespace>
+<EnableDefaultCompileItems>false</EnableDefaultCompileItems><GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks><NoWarn>$(NoWarn);NU1701</NoWarn>
+
+</PropertyGroup>
+<ItemGroup>
+<Compile Include="../../../source/Plugins/Formats.OpenBve/CFG/ConfigFile.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/EnumCache.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/CSVB3D/CSVB3DFile.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/CompatibilityObject/CompatibilityObjectKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/CompatibilityObject/CompatibilityObjectSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/CSVB3D/CSVB3DKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/CSVB3D/CSVB3DSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/DynamicBackground/DynamicBackgroundKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/DynamicBackground/DynamicBackgroundSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/DynamicLight/DynamicLightKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/DynamicLight/DynamicLightSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/ExtensionsCfg/ExtensionsCfgKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/ExtensionsCfg/ExtensionsCfgSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/HUD/HUDKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/HUD/HUDSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/MarkerScript/MarkerScriptKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/MarkerScript/MarkerScriptSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/PatchDatabase/PatchDatabaseKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/PatchDatabase/PatchDatabaseSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/SoundCfg/SoundCfgKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/SoundCfg/SoundCfgSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/SoundXML/SoundXMLKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/SoundXML/SoundXMLSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/StationXML/StationXMLKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/StationXML/StationXMLSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/TrackFollowingObjectXML/TrackFollowingObjectKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/TrackFollowingObjectXML/TrackFollowingObjectSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/TrainXML/CargoType.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/TrainXML/TrainXMLKey.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/TrainXML/TrainXMLSection.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Extensions.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Block.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/NumberRange.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/Panel2/Panel2Key.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/Panel2/Panel2Sections.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Enums/Panel2/Panel2Subject.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/Properties/AssemblyInfo.cs" />
+<Compile Include="../../../source/Plugins/Formats.OpenBve/XML/XMLFile.cs" />
+<ProjectReference Include="../OpenBveApi/OpenBveApi.csproj" />
+<Compile Include="Native/**/*.cs" />
+<ProjectReference Include="../NativeGraphics/NativeGraphics.csproj" />
+</ItemGroup>
+</Project>

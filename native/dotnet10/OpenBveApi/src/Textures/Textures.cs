@@ -262,6 +262,11 @@ namespace OpenBveApi.Textures {
 		{
 		}
 
+        /// <summary>Registers raw texture data as a reloadable texture origin.</summary>
+        public Texture(Texture texture) : this(new RawOrigin(texture)) { }
+
+        /// <summary>Creates a texture from an existing origin.</summary>
+
 		public Texture(TextureOrigin origin)
 		{
 			Origin = origin;

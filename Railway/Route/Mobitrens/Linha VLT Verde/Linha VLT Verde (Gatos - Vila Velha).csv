@@ -1,0 +1,302 @@
+With Route
+.Comment Mobitrens Linha 1 (Rota Fictícia);
+.Timetable Extensao Gatos - Cachorros;
+;.image info1.png;
+.Change 0;
+.Gauge 1067 
+
+With Options,
+.objectvisibility 1,
+
+With Structure;
+.DikeL(1)  Mobitrens\Dike\Dike1L.b3d,
+.DikeR(1)  Mobitrens\Dike\Dike1R.b3d,
+
+.rail(0) Mobitrens\Trilhos\metrica.B3D
+.rail(1) Mobitrens\Trilhos\NULL.b3d;
+.rail(2) Mobitrens\Trilhos\brown-500_overhead.B3D
+.rail(3) Mobitrens\Trilhos\brown500_overhead.B3D
+.rail(4) Mobitrens\Trilhos\brown-1000_overhead.B3D
+.rail(5) Mobitrens\Trilhos\brown1000_overhead.B3D
+.rail(6) Mobitrens\Trilhos\bridgetrack.B3D
+.rail(7) Mobitrens\Trilhos\bridgetrack2.B3D
+.rail(8) Mobitrens\Trilhos\empty.b3d
+.rail(9) Mobitrens\Trilhos\estacaotrack.B3D
+.rail(10000)Mobitrens\Trilhos\trilho.b3d
+
+.rail(1000) Mobitrens\Trilhos\TrilhosTunel\trilho.B3D
+.rail(1001) Mobitrens\Trilhos\TrilhosTunel\NULL.b3d;
+.rail(1002) Mobitrens\Trilhos\TrilhosTunel\brown-500_overhead.B3D
+.rail(1003) Mobitrens\Trilhos\TrilhosTunel\brown500_overhead.B3D
+.rail(1004) Mobitrens\Trilhos\TrilhosTunel\brown-1000_overhead.B3D
+.rail(1005) Mobitrens\Trilhos\TrilhosTunel\brown1000_overhead.B3D
+.rail(1006) Mobitrens\Trilhos\TrilhosTunel\bridgetrack.B3D
+.rail(1007) Mobitrens\Trilhos\TrilhosTunel\bridgetrack2.B3D
+.rail(1008) Mobitrens\Trilhos\TrilhosTunel\empty.b3d
+.rail(1009) Mobitrens\Trilhos\TrilhosTunel\estacaotrack.B3D
+
+.rail(10) Mobitrens\Pole\pol2.b3d
+.rail(11) Mobitrens\Pole\pol1.b3d
+.rail(12) Mobitrens\Pole\pol0.b3d
+
+.rail(20) Mobitrens\Muros\Mureta.b3d
+.rail(21) Mobitrens\Muros\murocomgrade.b3d
+
+.rail(30) Mobitrens\Morros\morro1.csv
+.rail(31) Mobitrens\Morros\morro3.csv
+.rail(32) Mobitrens\Morros\morro2.csv
+.rail(33) Mobitrens\Morros\morro4.csv
+
+.rail(35) Mobitrens\Rua\rua.animated
+
+.rail(40) Mobitrens\tunel\T4.csv
+.rail(41) Mobitrens\tunel\T3.csv
+
+.rail(50) Mobitrens\Telhas\telha.csv
+
+.rail(60) Mobitrens\tunel\teto2.b3d
+
+.rail(70) Mobitrens\Paredes\muro.b3d
+
+.rail(280) Mobitrens\Predios\Condominio 1\Condominio.animated
+.rail(281) Mobitrens\Predios\Condominio 2\Condominio.animated
+.rail(282) Mobitrens\Predios\Condominio 3\Condominio.animated
+.rail(283) Mobitrens\Predios\Condominio 4\Condominio.animated
+.rail(284) Mobitrens\Predios\Condominio 5\Condominio.animated
+
+.rail(100) Mobitrens\Plataformas\FormL.b3d
+.rail(101) Mobitrens\Plataformas\FormR.b3d
+.rail(102) Mobitrens\Plataformas\FormC.b3d
+
+.rail(500) Mobitrens\Estacoes\Elevadas\Elevadas.b3d
+.rail(501) Mobitrens\Estacoes\Elevadas\ElevadB.b3d
+.rail(502) Mobitrens\Estacoes\Elevadas\basecentral.b3d
+
+.rail(600) Mobitrens\Estacoes\GAT\VidroLateral\VidroLateral.b3d
+
+.rail(700) Mobitrens\Estacoes\Ilhas\abrigo.b3d
+
+.rail(800) Mobitrens\Estacoes\LAC\abrigo_R.b3d
+.rail(801) Mobitrens\Estacoes\LAC\abrigo_L.b3d
+
+.freeobj(0) Mobitrens\Tapumes\entrada_tunel.csv
+
+;objetos estacao Gatos
+.freeobj(1) Mobitrens\Estacoes\GAT\telhado.b3d
+.freeobj(2) Mobitrens\Estacoes\GAT\mezanino.b3d
+.freeobj(24) Mobitrens\Estacoes\GAT\Tapumes\tapumeinicio.b3d
+
+;placas estação Gatos
+.freeobj(25) Mobitrens\Placas\GAT\Plataforma 1\placaA.csv
+.freeobj(26) Mobitrens\Placas\GAT\Plataforma 1\placaB.csv
+
+.freeobj(27) Mobitrens\Placas\GAT\Plataforma 2\placa.csv
+
+.freeobj(28) Mobitrens\Placas\GAT\Plataforma 1\placaC.csv
+.freeobj(29) Mobitrens\Placas\GAT\Plataforma 1\placaD.csv
+
+.freeobj(30) Mobitrens\Placas\GAT\Plataforma1A\Destino1a.csv
+.freeobj(31) Mobitrens\Placas\GAT\Plataforma1B\Destino1b.csv
+.freeobj(32) Mobitrens\Placas\GAT\Desembarque\desembarque.csv
+.freeobj(33) Mobitrens\Placas\GAT\Saida\saida.csv
+
+;placas estação Mirueiro
+.freeobj(40) Mobitrens\Placas\MIR\PlacaComInfo\placaA.csv
+.freeobj(41) Mobitrens\Placas\MIR\PlacaComInfo\placaB.csv
+
+.freeobj(42) Mobitrens\Placas\MIR\PlacaComInfo\placaC.csv
+.freeobj(43) Mobitrens\Placas\MIR\PlacaComInfo\placaD.csv
+
+.freeobj(44) Mobitrens\Placas\MIR\DestinoCAC\placa.csv
+.freeobj(45) Mobitrens\Placas\MIR\DestinoGAT\placa.csv
+
+.freeobj(46) Mobitrens\Placas\MIR\Saida\placa.csv
+.freeobj(47) Mobitrens\Placas\MIR\Saida\placa2.csv
+
+.freeobj(48) Mobitrens\Placas\MIR\PlacaestMIR\placa.csv
+.freeobj(49) Mobitrens\Placas\MIR\PlacaestMIR\placa2.csv
+
+;placas estação Joao Paulo II
+.freeobj(50) Mobitrens\Placas\JP2\PlacaComInfo\placaA.csv
+.freeobj(51) Mobitrens\Placas\JP2\PlacaComInfo\placaB.csv
+
+.freeobj(52) Mobitrens\Placas\JP2\PlacaComInfo\placaC.csv
+.freeobj(53) Mobitrens\Placas\JP2\PlacaComInfo\placaD.csv
+
+.freeobj(54) Mobitrens\Placas\JP2\DestinoCAC\placa.csv
+.freeobj(55) Mobitrens\Placas\JP2\DestinoGAT\placa.csv
+
+.freeobj(56) Mobitrens\Placas\JP2\Saida\placa.csv
+.freeobj(57) Mobitrens\Placas\JP2\Saida\placa2.csv
+
+.freeobj(58) Mobitrens\Placas\JP2\PlacaestMIR\placa.csv
+.freeobj(59) Mobitrens\Placas\JP2\PlacaestMIR\placa2.csv
+
+;placas estação Maria das Dores
+.freeobj(60) Mobitrens\Placas\MAR\PlacaComInfo\placaA.csv
+.freeobj(61) Mobitrens\Placas\MAR\PlacaComInfo\placaB.csv
+
+.freeobj(62) Mobitrens\Placas\MAR\PlacaComInfo\placaC.csv
+.freeobj(63) Mobitrens\Placas\MAR\PlacaComInfo\placaD.csv
+
+.freeobj(64) Mobitrens\Placas\MAR\DestinoCAC\placa.csv
+.freeobj(65) Mobitrens\Placas\MAR\DestinoGAT\placa.csv
+
+.freeobj(66) Mobitrens\Placas\MAR\Saida\placa.csv
+.freeobj(67) Mobitrens\Placas\MAR\Saida\placa2.csv
+
+.freeobj(68) Mobitrens\Placas\MAR\PlacaestMIR\placa.csv
+.freeobj(69) Mobitrens\Placas\MAR\PlacaestMIR\placa2.csv
+
+;placas estação cabritas
+.freeobj(70) Mobitrens\Placas\CAB\Plataforma 1\placaA.csv
+.freeobj(71) Mobitrens\Placas\CAB\Plataforma 1\placaB.csv
+.freeobj(72) Mobitrens\Placas\CAB\DestinoCAC\Placa.csv
+.freeobj(73) Mobitrens\Placas\CAB\DestinoGAT\Placa.csv
+
+.freeobj(170) Mobitrens\Estacoes\CAB\mezanino.b3d
+.freeobj(171) Mobitrens\Estacoes\LAC\mezanino.b3d
+.freeobj(173) Mobitrens\Estacoes\SHO\mezanino.b3d
+
+;placas plataforma 1
+.freeobj(80) Mobitrens\Placas\LAC\Plataforma L1\placa.csv
+.freeobj(81) Mobitrens\Placas\LAC\placa com info\placaA.csv
+
+;placas plataforma 2
+.freeobj(82) Mobitrens\Placas\LAC\plataforma central\placaA.csv
+.freeobj(83) Mobitrens\Placas\LAC\placa com info\placaB.csv
+.freeobj(84) Mobitrens\Placas\LAC\plataforma central\placaB.csv
+.freeobj(85) Mobitrens\Placas\LAC\plataforma central\placaC.csv
+.freeobj(86) Mobitrens\Placas\LAC\placa com info\placaC.csv
+
+;placas plataforma 3
+.freeobj(87) Mobitrens\Placas\LAC\plataforma L2\placaA.csv
+.freeobj(88) Mobitrens\Placas\LAC\placa com info\placaD.csv
+.freeobj(89) Mobitrens\Placas\LAC\plataforma L2\placaB.csv
+.freeobj(90) Mobitrens\Placas\LAC\placa com info\placaD.csv
+
+;placas destino
+.freeobj(91) Mobitrens\Placas\LAC\DestinoGAT\placa.csv
+.freeobj(92) Mobitrens\Placas\LAC\DestinoCAC\placa.csv
+.freeobj(93) Mobitrens\Placas\LAC\DestinoPTO\placa.csv
+.freeobj(94) Mobitrens\Placas\LAC\DestinoROD\placa.csv
+.freeobj(95) Mobitrens\Placas\LAC\DestinoEXP1\placa.csv
+.freeobj(96) Mobitrens\Placas\LAC\DestinoEXP2\placa.csv
+
+.freeobj(97) Mobitrens\Estacoes\Monitor\monitor.csv
+
+.freeobj(100) Mobitrens\Estacoes\Ilhas\cadeira.b3d
+
+.freeobj(106) Mobitrens\Fim de Trilho\Fim de Trilho.csv
+
+.freeobj(524) Mobitrens\Estacoes\Elevadas\Tapumes\tapumeinicio.b3d
+.freeobj(525) Mobitrens\Estacoes\Elevadas\mezanino.b3d
+
+.freeobj(1000) Mobitrens\Buildings\b1.b3d
+.freeobj(1001) Mobitrens\Buildings\b2.b3d
+.freeobj(1002) Mobitrens\Buildings\b3.b3d
+.freeobj(1003) Mobitrens\Buildings\b4.b3d
+
+.freeobj(1010) Mobitrens\Ponte\overbridge.b3d
+
+.freeobj(1020) Mobitrens\ESC\rol1.animated
+
+.ground(0) Mobitrens\Solo\GroundE.b3d;
+.ground(1) Mobitrens\Solo\GroundT.b3d;
+
+With Texture
+.background(0) Mobitrens\Fundos\background1.bmp
+.background(1) Mobitrens\Fundos\black.bmp
+
+With track
+
+;rua
+0,.rail 335;12;0;35,.rail 336;-35;0;35
+
+;trilhos do patio do vlt
+0,.rail 800;-15;0;0
+0,.rail 801;-8
+
+;trilhos da estacao gatos da mobitrens
+0,.rail 990;36;0;10000,.rail 991;50;0;10000
+
+;muros
+0,.rail 20;5;0;21,.rail 21;-20;0;21
+
+;muros estacao gatos mobitrens
+0,.rail 200;28;0;20,.rail 201;53;0;20,.railtype 20;20,.railtype 21;20
+900,.railtype 200;21,.railtype 201;21,.railtype 20;21,.railtype 21;21
+1100,.railtype 200;20,.railtype 20;20,.railtype 21;20,.railtype 201;20
+
+700,.sta parada
+800,.stop 1
+
+825,.rail 1;0;
+850,.rail 1;-2;
+875,.rail 1;-5.5;
+900,.rail 1;-10;
+925,.rail 1;-13.5;
+950,.rail 1;-15;0;
+
+875,.rail 801;-8.7;
+900,.rail 801;-11;0
+925,.railend 801;-13.5
+
+;Estacao Gatos da Mobitrens
+
+;plataformas da estacao Gatos da Mobitrens
+900,.rail 1000;36;0;100,.rail 1001;36;0;101,.rail 1002;50;0;100
+
+;vidros laterais da estacao gatos da mobitrens
+900,.rail 600;21.4;0;600,.rail 601;46.5;0;600
+1100,.railend 600,.railend 601
+
+;gradil de inicio da estacao gatos da mobitrens
+900,.freeobj 990;24;0;0;180;0
+
+1100,.railend 1000,.railend 1001,.railend 1002
+
+;gradil de final da estacao gatos da mobitrens
+1100,.freeobj 990;24;0;0;180;0
+
+;teto da estacao gatos da mobitrens
+1100,.freeobj 990;1;0;2;180;0;0;0
+
+1000,.sta Gatos (VLT);;;0;L
+
+;o patio se encerra
+1000,.railend 800
+
+;plataformas
+1000,.rail 100;0;0;100,.rail 101;-14;0;101
+
+1000,.rail 70;0;0;700
+1075,.railend 70
+
+;mezanino e acesso a estação Gatos de trem
+1000,.freeobj 0;2;36.5;0;180;0;0
+1100,.railend 100,.railend 101
+
+1085,.stop 1
+
+1100,.curve -900
+
+1200,.curve 800
+
+;via fica singela
+1125,.rail 1;-14.5;,.rail 21;-20
+1150,.rail 1;-13;,.rail 21;-18
+1175,.rail 1;-11;,.rail 21;-15
+1200,.rail 1;-7.5,.rail 21;-12
+1225,.rail 1;-4;0;0,.railend 21;-9,.railend 20
+1250,.rail 1;-1.5
+1275,.rail 1;0
+
+;a estação Gatos acaba
+1300,.railend 990,.railend 991
+1350,.railend 200;400,.railend 201
+
+1225,.rail 335;14,.rail 336;-24
+1250,.rail 335;12,.rail 336;-19
+1275,.rail 335;10,.rail 336;-16
+1300,.rail 335;8,.rail 336;-15,.curve 0

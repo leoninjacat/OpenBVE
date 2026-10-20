@@ -1,0 +1,77 @@
+[MeshBuilder]
+Vertex +0,+0,+0
+Vertex +0,+2.8,+0
+Vertex +2.4,+2.8,+0
+Vertex +2.4,+0,+0
+Face 0,1,2,3
+[Texture]
+Load b1h.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,1,0
+Coordinates 3,1,1
+
+[MeshBuilder]
+Vertex +0,+0,+0
+Vertex +0,+0,+11.5
+Vertex +0,+2.8,+11.5
+Vertex +0,+2.8,+0
+Face 0,1,2,3
+[Texture]
+Load b1l.bmp
+Coordinates 0,0,1
+Coordinates 1,1,1
+Coordinates 2,1,0
+Coordinates 3,0,0
+
+[MeshBuilder]
+Vertex +0,+0,+0
+Vertex +2.4,+0,+0
+Vertex +2.4,+0,+11.5
+Vertex +0,+0,+11.5
+Face 0,1,2,3
+[Texture]
+Load wall.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,1,0
+Coordinates 3,1,1
+
+[MeshBuilder]
+Vertex +0,+2.8,+0
+Vertex +2.4,+2.8,+0
+Vertex +2.4,+2.8,+11.5
+Vertex +0,+2.8,+11.5
+Face 3,2,1,0
+[Texture]
+Load b1d.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,1,0
+Coordinates 3,1,1
+
+[MeshBuilder]
+Vertex +2.4,+0,+0
+Vertex +2.4,+0,+11.5
+Vertex +2.4,+2.8,+11.5
+Vertex +2.4,+2.8,+0
+Face 3,2,1,0
+[Texture]
+Load b1r.bmp
+Coordinates 0,0,1
+Coordinates 1,1,1
+Coordinates 2,1,0
+Coordinates 3,0,0
+
+[MeshBuilder]
+Vertex +0,+0,+11.5
+Vertex +0,+2.8,+11.5
+Vertex +2.4,+2.8,+11.5
+Vertex +2.4,+0,+11.5
+Face 3,2,1,0
+[Texture]
+Load b1f.bmp
+Coordinates 0,0,1
+Coordinates 1,0,0
+Coordinates 2,1,0
+Coordinates 3,1,1

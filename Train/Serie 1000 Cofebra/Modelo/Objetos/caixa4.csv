@@ -1,0 +1,602 @@
+;By: Roger Natael - OCB - 2015 
+
+;;Coisinha escrota em cima da mascara '-' 
+CreateMeshBuilder,
+
+AddVertex,-0.250,3.55,10.25,0,0,1
+
+AddVertex,-0.250,3.80,10.50,0,0,1
+
+AddVertex,-0.250,3.80,10.00,0,0,1
+AddVertex,-0.250,3.55,10.00,0,0,1
+
+AddFace2,0,1,2,3,
+LoadTexture,..\metal1.png,
+
+SetTextureCoordinates,0,1,1,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,0,
+
+SetTextureCoordinates,3,0,1,
+
+CreateMeshBuilder,
+
+AddVertex,0.250,3.55,10.25,0,0,1
+
+AddVertex,0.250,3.80,10.50,0,0,1
+
+AddVertex,0.250,3.80,10.00,0,0,1
+AddVertex,0.250,3.55,10.00,0,0,1
+
+AddFace2,0,1,2,3,
+LoadTexture,..\metal1.png,
+
+SetTextureCoordinates,0,1,1,
+SetTextureCoordinates,1,1,0,
+SetTextureCoordinates,2,0,0,
+
+SetTextureCoordinates,3,0,1,
+
+CreateMeshBuilder
+
+Cylinder, 6, 0.025, 0.025, 0.25
+
+Rotate, 0,1,0, 90
+;Rotate, 0,0,0,00,
+
+Translate, 0,3.675,10.20,
+
+SetColor,200,200,200
+CreateMeshBuilder
+Cube, 0.275, 0.0075, 0.25,
+Translate,-0.0,3.80,10.25
+setcolor,195,195,195
+LoadTexture,..\metal1.png,
+
+;;Bagui meio retangular, meio triangulo sei lá que diabos é aquilo
+
+CreateMeshBuilder, ;;deitadinha LE
+AddVertex,-0.55, 3.65, 9.90, 0,0,1
+AddVertex,-0.55, 3.95, 9.65, 0,0,1
+AddVertex,-0.55, 3.95, 9.65, 0,0,1
+AddVertex,-0.55, 3.65, 9.65, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, b.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,1,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1,
+SetColor,247,247,247
+CreateMeshBuilder, 
+AddVertex,-0.55, 3.65, 9.65, 0,0,1
+AddVertex,-0.55, 3.95, 9.65, 0,0,1
+AddVertex,-0.55, 3.95, 9.00, 0,0,1
+AddVertex,-0.55, 3.65, 9.00, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, b.png,
+SetTextureCoordinates, 0,6,1,
+SetTextureCoordinates, 1,6,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1,
+SetColor,247,247,247
+CreateMeshBuilder, ;;deitadinha LD
+AddVertex,0.55, 3.65, 9.90, 0,0,1
+AddVertex,0.55, 3.95, 9.65, 0,0,1
+AddVertex,0.55, 3.95, 9.65, 0,0,1
+AddVertex,0.55, 3.65, 9.65, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, b.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,1,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1,
+SetColor,247,247,247
+CreateMeshBuilder, ;;Mudar textura
+AddVertex,0.55, 3.65, 9.65, 0,0,1
+AddVertex,0.55, 3.95, 9.65, 0,0,1
+AddVertex,0.55, 3.95, 9.00, 0,0,1
+AddVertex,0.55, 3.65, 9.00, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, b.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,1,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1,
+SetColor,247,247,247
+CreateMeshBuilder,   ;;reto para frente deitado
+AddVertex,-0.55, 3.65,  9.90, 0,0,1 
+AddVertex,-0.55, 3.95,  9.65, 0,0,1
+AddVertex, 0.55, 3.95,  9.65, 0,0,1
+AddVertex, 0.55, 3.65,  9.90, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, b.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,1,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1,
+SetColor,245,245,245
+CreateMeshBuilder,   ;;reto para tras
+AddVertex,-0.55, 3.65,  9.00, 0,0,1 
+AddVertex,-0.55, 3.95,  9.00, 0,0,1
+AddVertex, 0.55, 3.95,  9.00, 0,0,1
+AddVertex, 0.55, 3.65,  9.00, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, b.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,1,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1,
+SetColor,245,245,245
+CreateMeshBuilder, ;;LD deitado
+AddVertex,-0.55,3.95, 9.65,0,0,1
+AddVertex, 0.55,3.95, 9.65,0,0,1
+AddVertex, 0.55,3.95, 9,0,0,1
+AddVertex,-0.55,3.95, 9,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture, b.png,
+SetTextureCoordinates, 0,1,1,
+SetTextureCoordinates, 1,1,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1,
+SetColor,245,245,245
+CreateMeshBuilder
+Cube, 0.575, 0.0075, 0.475,
+Translate,-0.0,3.65,9.45
+LoadTexture,..\metal1.png,
+
+;;vigas desse bagui ainda
+CreateMeshBuilder
+Cube, 0.575, 0.05, 0.05,
+Translate,-0.0,3.60,9.125
+LoadTexture,..\metal1.png,
+
+CreateMeshBuilder
+Cube, 0.575, 0.05, 0.05,
+Translate,-0.0,3.60,9.85
+LoadTexture,..\metal1.png,
+
+
+;;Finalmente a primeira caixa :D kk 
+
+CreateMeshBuilder, 
+AddVertex,1.15, 3.475, 8.50, 0,0,1
+AddVertex,1.15, 3.90, 8.50, 0,0,1
+AddVertex,1.15, 3.90, 6.00, 0,0,1
+AddVertex,1.15, 3.475, 6.00, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx_ext.png,
+SetTextureCoordinates, 0,2.5,1.10,
+SetTextureCoordinates, 1,2.5,-0.2,
+SetTextureCoordinates, 2,0.25,-0.2,
+SetTextureCoordinates, 3,0.25,1.10,
+SetColor,235,235,235
+CreateMeshBuilder, 
+AddVertex,1.15, 3.475, 6.00, 0,0,1
+AddVertex,1.15, 3.90, 6.00, 0,0,1
+AddVertex,1.15, 3.90, 3.50, 0,0,1
+AddVertex,1.15, 3.475, 3.50, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx_ext.png,
+SetTextureCoordinates, 0,0.25,1.10,
+SetTextureCoordinates, 1,0.25,-0.2,
+SetTextureCoordinates, 2,2.5,-0.2,
+SetTextureCoordinates, 3,2.5,1.10,
+SetColor,235,235,235
+
+CreateMeshBuilder,;;mudar textura
+AddVertex, 1.15,3.9, 8.50,0,0,1
+
+AddVertex, 1.15,3.9, 3.50,0,0,1
+
+AddVertex, 0.50,4.1, 8.50,0,0,1
+
+AddVertex, 0.50,4.1, 3.50,0,0,1
+
+AddVertex,-0.50,4.1, 8.50,0,0,1
+
+AddVertex,-0.50,4.1, 3.50,0,0,1
+
+AddVertex,-1.15,3.9, 8.50,0,0,1
+
+AddVertex,-1.15,3.9, 3.50,0,0,1
+
+AddFace,0,1,3,2,
+AddFace,2,3,5,4,
+AddFace,4,5,7,6,
+LoadTexture,ac_ext.png,
+
+settexturecoordinates, 0,0,1
+settexturecoordinates, 1,0,0
+settexturecoordinates, 2,.2,1
+settexturecoordinates, 3,.2,0
+settexturecoordinates, 4,.8,1
+settexturecoordinates, 5,.8,0
+settexturecoordinates, 6,1,1
+settexturecoordinates, 7,1,0
+SetColor,235,235,235
+;;
+CreateMeshBuilder,
+AddVertex, 1.15,3.9,     8.50,0,0,1
+
+AddVertex, 1.15,3.475, 8.50,0,0,1
+
+AddVertex, 0.5,  4.1,     8.50,0,0,1
+
+AddVertex, 0.5,  3.475, 8.50,0,0,1
+
+AddVertex,-0.5,  4.1,     8.50,0,0,1
+
+AddVertex,-0.5,  3.475, 8.50,0,0,1
+
+AddVertex,-1.15,3.90,   8.50,0,0,1
+
+AddVertex,-1.15,3.475, 8.50,0,0,1
+
+AddFace2,0,1,3,2,
+AddFace2,2,3,5,4,
+AddFace2,4,5,7,6,
+LoadTexture,..\metal.png,
+
+settexturecoordinates, 0,0,1
+settexturecoordinates, 1,0,0
+settexturecoordinates, 2,.2,1
+settexturecoordinates, 3,.2,0
+settexturecoordinates, 4,.8,1
+settexturecoordinates, 5,.8,0
+settexturecoordinates, 6,1,1
+settexturecoordinates, 7,1,0
+SetColor,235,235,235
+CreateMeshBuilder,
+AddVertex, 1.15,3.9,     3.50,0,0,1
+
+AddVertex, 1.15,3.475, 3.50,0,0,1
+
+AddVertex, 0.5,  4.1,     3.50,0,0,1
+
+AddVertex, 0.5,  3.475, 3.50,0,0,1
+
+AddVertex,-0.5,  4.1,     3.50,0,0,1
+
+AddVertex,-0.5,  3.475, 3.50,0,0,1
+
+AddVertex,-1.15,3.90,   3.50,0,0,1
+
+AddVertex,-1.15,3.475, 3.50,0,0,1
+
+AddFace2,0,1,3,2,
+AddFace2,2,3,5,4,
+AddFace2,4,5,7,6,
+LoadTexture,..\metal.png,
+
+settexturecoordinates, 0,0,1
+settexturecoordinates, 1,0,0
+settexturecoordinates, 2,.2,1
+settexturecoordinates, 3,.2,0
+settexturecoordinates, 4,.8,1
+settexturecoordinates, 5,.8,0
+settexturecoordinates, 6,1,1
+settexturecoordinates, 7,1,0
+SetColor,235,235,235
+;;
+CreateMeshBuilder, 
+AddVertex,-1.15, 3.475, 8.50, 0,0,1
+AddVertex,-1.15, 3.90, 8.50, 0,0,1
+AddVertex,-1.15, 3.90, 6.00, 0,0,1
+AddVertex,-1.15, 3.475, 6.00, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx_ext.png,
+SetTextureCoordinates, 0,2.5,1.10,
+SetTextureCoordinates, 1,2.5,-0.2,
+SetTextureCoordinates, 2,0.25,-0.2,
+SetTextureCoordinates, 3,0.25,1.10,
+SetColor,235,235,235
+CreateMeshBuilder, 
+AddVertex,-1.15, 3.475, 6.00, 0,0,1
+AddVertex,-1.15, 3.90, 6.00, 0,0,1
+AddVertex,-1.15, 3.90, 3.50, 0,0,1
+AddVertex,-1.15, 3.475, 3.50, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx_ext.png,
+SetTextureCoordinates, 0,0.25,1.10,
+SetTextureCoordinates, 1,0.25,-0.2,
+SetTextureCoordinates, 2,2.5,-0.2,
+SetTextureCoordinates, 3,2.5,1.10,
+SetColor,235,235,235
+
+;;Segunda feira caixa '-' kk 
+CreateMeshBuilder, ;;cx1
+AddVertex,-1.05, 3.475,2.75, 0,0,1
+AddVertex,-1.05, 4.10,  2.75, 0,0,1
+AddVertex,-1.05, 4.10,  1.20, 0,0,1
+AddVertex,-1.05, 3.475,1.20, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,1.15
+SetTextureCoordinates, 1,3,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1.15
+SetColor,235,235,235
+CreateMeshBuilder, ;;cx1R
+AddVertex,-1.05,4.10, 2.75,0,0,1
+AddVertex, 1.05,4.10, 2.75,0,0,1
+AddVertex, 1.05,4.10, 1.20,0,0,1
+AddVertex,-1.05,4.10, 1.20,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,3
+SetTextureCoordinates, 1,0,3,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,3,0
+SetColor,245,245,245
+CreateMeshBuilder, ;;cx2
+AddVertex,-1.05, 3.475,1.10, 0,0,1
+AddVertex,-1.05, 4.10,  1.10, 0,0,1
+AddVertex,-1.05, 4.10,  -0.45, 0,0,1
+AddVertex,-1.05, 3.475,-0.45, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,1.15
+SetTextureCoordinates, 1,3,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1.15
+SetColor,235,235,235
+
+CreateMeshBuilder, ;;cx1
+AddVertex,1.05, 3.475,2.75, 0,0,1
+AddVertex,1.05, 4.10,  2.75, 0,0,1
+AddVertex,1.05, 4.10,  1.20, 0,0,1
+AddVertex,1.05, 3.475,1.20, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,1.15
+SetTextureCoordinates, 1,3,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1.15
+SetColor,235,235,235
+CreateMeshBuilder, ;;cx1R
+AddVertex,-1.05,4.10, 1.10,0,0,1
+AddVertex, 1.05,4.10, 1.10,0,0,1
+AddVertex, 1.05,4.10, -0.45,0,0,1
+AddVertex,-1.05,4.10, -0.45,0,0,1
+AddFace,0,1,2,3,
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,3
+SetTextureCoordinates, 1,0,3,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,3,0
+SetColor,245,245,245
+CreateMeshBuilder, ;;cx2
+AddVertex,1.05, 3.475,1.10, 0,0,1
+AddVertex,1.05, 4.10,  1.10, 0,0,1
+AddVertex,1.05, 4.10,  -0.45, 0,0,1
+AddVertex,1.05, 3.475,-0.45, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,1.15
+SetTextureCoordinates, 1,3,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1.15
+SetColor,235,235,235
+;;reto
+CreateMeshBuilder,   ;;r1
+AddVertex,-1.05, 3.475,  2.75, 0,0,1 
+AddVertex,-1.05, 4.10,  2.75, 0,0,1
+AddVertex, 1.05, 4.10,  2.75, 0,0,1
+AddVertex, 1.05, 3.475,  2.75, 0,0,1
+AddFace, 3,2,1,0
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,1.15
+SetTextureCoordinates, 1,3,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1.15
+SetColor,235,235,235
+CreateMeshBuilder,   ;;r2
+AddVertex,-1.05, 3.475,1.20, 0,0,1 
+AddVertex,-1.05, 4.10,  1.20, 0,0,1
+AddVertex, 1.05, 4.10,  1.20, 0,0,1
+AddVertex, 1.05, 3.475,1.20, 0,0,1
+AddFace, 0,1,2,3
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,1.15
+SetTextureCoordinates, 1,3,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1.15
+SetColor,235,235,235
+CreateMeshBuilder,   ;;r3
+AddVertex,-1.05, 3.475,1.10, 0,0,1 
+AddVertex,-1.05, 4.10,  1.10, 0,0,1
+AddVertex, 1.05, 4.10,  1.10, 0,0,1
+AddVertex, 1.05, 3.475,1.10, 0,0,1
+AddFace, 3,2,1,0
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,1.15
+SetTextureCoordinates, 1,3,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1.15
+SetColor,235,235,235
+CreateMeshBuilder,   ;;r4
+AddVertex,-1.05, 3.475,-0.45, 0,0,1 
+AddVertex,-1.05, 4.10,  -0.45, 0,0,1
+AddVertex, 1.05, 4.10,  -0.45, 0,0,1
+AddVertex, 1.05, 3.475,-0.45, 0,0,1
+AddFace, 0,1,2,3
+GenerateNormals,
+LoadTexture, cx3.png,
+SetTextureCoordinates, 0,3,1.15
+SetTextureCoordinates, 1,3,0,
+SetTextureCoordinates, 2,0,0,
+SetTextureCoordinates, 3,0,1.15
+SetColor,235,235,235
+
+;;Terceira caixa 
+CreateMeshBuilder, 
+AddVertex,1.15, 3.475, -6.50, 0,0,1
+AddVertex,1.15, 3.90, -6.50, 0,0,1
+AddVertex,1.15, 3.90, -4.00, 0,0,1
+AddVertex,1.15, 3.475, -4.00, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx_ext.png,
+SetTextureCoordinates, 0,2.5,1.10,
+SetTextureCoordinates, 1,2.5,-0.2,
+SetTextureCoordinates, 2,0.25,-0.2,
+SetTextureCoordinates, 3,0.25,1.10,
+SetColor,235,235,235
+CreateMeshBuilder, 
+AddVertex,1.15, 3.475, -4.00, 0,0,1
+AddVertex,1.15, 3.90, -4.00, 0,0,1
+AddVertex,1.15, 3.90, -1.50, 0,0,1
+AddVertex,1.15, 3.475, -1.50, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx_ext.png,
+SetTextureCoordinates, 0,0.25,1.10,
+SetTextureCoordinates, 1,0.25,-0.2,
+SetTextureCoordinates, 2,2.5,-0.2,
+SetTextureCoordinates, 3,2.5,1.10,
+SetColor,235,235,235
+
+CreateMeshBuilder,;;mudar textura
+AddVertex, 1.15,3.9, -6.50,0,0,1
+
+AddVertex, 1.15,3.9, -1.50,0,0,1
+
+AddVertex, 0.50,4.1, -6.50,0,0,1
+
+AddVertex, 0.50,4.1, -1.50,0,0,1
+
+AddVertex,-0.50,4.1, -6.50,0,0,1
+
+AddVertex,-0.50,4.1, -1.50,0,0,1
+
+AddVertex,-1.15,3.9, -6.50,0,0,1
+
+AddVertex,-1.15,3.9, -1.50,0,0,1
+
+AddFace,2,3,1,0,
+AddFace,4,5,3,2,
+AddFace,6,7,5,4,
+LoadTexture,ac_ext.png,
+
+settexturecoordinates, 0,0,1
+settexturecoordinates, 1,0,0
+settexturecoordinates, 2,.2,1
+settexturecoordinates, 3,.2,0
+settexturecoordinates, 4,.8,1
+settexturecoordinates, 5,.8,0
+settexturecoordinates, 6,1,1
+settexturecoordinates, 7,1,0
+SetColor,235,235,235
+;;
+CreateMeshBuilder,
+AddVertex, 1.15,3.9,     -6.50,0,0,1
+
+AddVertex, 1.15,3.475, -6.50,0,0,1
+
+AddVertex, 0.5,  4.1,     -6.50,0,0,1
+
+AddVertex, 0.5,  3.475, -6.50,0,0,1
+
+AddVertex,-0.5,  4.1,     -6.50,0,0,1
+
+AddVertex,-0.5,  3.475, -6.50,0,0,1
+
+AddVertex,-1.15,3.90,   -6.50,0,0,1
+
+AddVertex,-1.15,3.475, -6.50,0,0,1
+
+AddFace2,0,1,3,2,
+AddFace2,2,3,5,4,
+AddFace2,4,5,7,6,
+LoadTexture,..\metal.png,
+
+settexturecoordinates, 0,0,1
+settexturecoordinates, 1,0,0
+settexturecoordinates, 2,.2,1
+settexturecoordinates, 3,.2,0
+settexturecoordinates, 4,.8,1
+settexturecoordinates, 5,.8,0
+settexturecoordinates, 6,1,1
+settexturecoordinates, 7,1,0
+SetColor,235,235,235
+CreateMeshBuilder,
+AddVertex, 1.15,3.9,     -1.50,0,0,1
+
+AddVertex, 1.15,3.475, -1.50,0,0,1
+
+AddVertex, 0.5,  4.1,     -1.50,0,0,1
+
+AddVertex, 0.5,  3.475, -1.50,0,0,1
+
+AddVertex,-0.5,  4.1,     -1.50,0,0,1
+
+AddVertex,-0.5,  3.475, -1.50,0,0,1
+
+AddVertex,-1.15,3.90,   -1.50,0,0,1
+
+AddVertex,-1.15,3.475, -1.50,0,0,1
+
+AddFace2,0,1,3,2,
+AddFace2,2,3,5,4,
+AddFace2,4,5,7,6,
+LoadTexture,..\metal.png,
+
+settexturecoordinates, 0,0,1
+settexturecoordinates, 1,0,0
+settexturecoordinates, 2,.2,1
+settexturecoordinates, 3,.2,0
+settexturecoordinates, 4,.8,1
+settexturecoordinates, 5,.8,0
+settexturecoordinates, 6,1,1
+settexturecoordinates, 7,1,0
+SetColor,235,235,235
+;;
+CreateMeshBuilder, 
+AddVertex,-1.15, 3.475, -6.50, 0,0,1
+AddVertex,-1.15, 3.90, -6.50, 0,0,1
+AddVertex,-1.15, 3.90, -4.00, 0,0,1
+AddVertex,-1.15, 3.475, -4.00, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx_ext.png,
+SetTextureCoordinates, 0,2.5,1.10,
+SetTextureCoordinates, 1,2.5,-0.2,
+SetTextureCoordinates, 2,0.25,-0.2,
+SetTextureCoordinates, 3,0.25,1.10,
+SetColor,235,235,235
+CreateMeshBuilder, 
+AddVertex,-1.15, 3.475, -4.00, 0,0,1
+AddVertex,-1.15, 3.90, -4.00, 0,0,1
+AddVertex,-1.15, 3.90, -1.50, 0,0,1
+AddVertex,-1.15, 3.475, -1.50, 0,0,1
+AddFace2, 0,1,2,3,
+GenerateNormals,
+LoadTexture, cx_ext.png,
+SetTextureCoordinates, 0,0.25,1.10,
+SetTextureCoordinates, 1,0.25,-0.2,
+SetTextureCoordinates, 2,2.5,-0.2,
+SetTextureCoordinates, 3,2.5,1.10,
+SetColor,235,235,235
+
+
+
