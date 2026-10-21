@@ -60,12 +60,44 @@ class Tests
         Check(gif.GetFrameBytes(1)[0] == 1, "GIF repeat seek");
         try { SkiaDecoder.Decode(new byte[] { 0, 1, 2 }); throw new Exception("Invalid image accepted"); }
         catch (InvalidDataException) { }
+        CheckImage(".png", "iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAIAAAB7QOjdAAAABnRSTlMA/wAAAACkwsAdAAAAD0lEQVR4nGP4z8DA8J8BAAf/Af8Bf4mnAAAAAElFTkSuQmCC", image => {
+            Check(image.Width==2&&image.Height==1,"RGB tRNS dimensions");
+            Check(image.GetAlpha(0)==0&&image.GetAlpha(1)==255&&image.GetPixel(1).G==255,"RGB tRNS color key without palette");
+        });
+        CheckImage(".bmp", "Qk1GAAAAAAAAADYAAAAoAAAAAgAAAAIAAAABABgAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA/wAA////AAAAAP8A/wAAAA==", image => {
+            Check(image.Width==2&&image.Height==2,"BMP dimensions");
+            Check(image.GetPixel(0).R==255&&image.GetPixel(1).G==255&&image.GetPixel(2).B==255,"BMP padding, orientation and RGB channels");
+            Check(image.GetAlpha(0)==255&&image.GetAlpha(3)==255,"BMP opaque alpha");
+        });
+        string damaged=Path.Combine(Path.GetTempPath(),Guid.NewGuid()+".bmp");
+        try {
+            File.WriteAllText(damaged,"<?xml version=\"1.0\"?><invalid-image/>");
+            var plugin=new Plugin.Plugin();plugin.Load(new TestHost(),null,new TestOptions());
+            Check(!plugin.CanLoadTexture(damaged),"XML disguised as BMP is rejected");
+            Check(!plugin.LoadTexture(damaged,out var invalid)&&invalid==null,"Invalid image decode returns false without throwing");
+        } finally {File.Delete(damaged);}
         Console.WriteLine("Native graphics/texture tests passed.");
+    }
+    static void CheckImage(string extension,string encoded,Action<Texture> inspect)
+    {
+        string file=Path.Combine(Path.GetTempPath(),Guid.NewGuid()+extension);
+        try {
+            File.WriteAllBytes(file,Convert.FromBase64String(encoded));
+            var host=new TestHost();var plugin=new Plugin.Plugin();plugin.Load(host,null,new TestOptions());
+            Check(plugin.CanLoadTexture(file),"Fixture signature "+extension);
+            Check(plugin.QueryTextureDimensions(file,out int width,out int height),"Fixture dimensions "+extension);
+            Check(plugin.LoadTexture(file,out var image),"Fixture decode "+extension);
+            Check(image.Width==width&&image.Height==height,"Queried / decoded fixture dimensions "+extension);
+            Check(host.Errors.Count==0,"No false image diagnostics: "+string.Join("; ",host.Errors));
+            inspect(image);
+        } finally {File.Delete(file);}
     }
 }
 
 sealed class TestOptions : OpenBveApi.BaseOptions { public override void Save(string path) => throw new NotSupportedException(); }
 sealed class TestHost : OpenBveApi.Hosts.HostInterface {
+    internal readonly System.Collections.Generic.List<string> Errors=new();
     public TestHost() : base(OpenBveApi.Hosts.HostApplication.OpenBve) { }
+    public override void ReportProblem(OpenBveApi.Hosts.ProblemType type,string text)=>Errors.Add(type+": "+text);
     public override OpenBveApi.Trains.AbstractTrain ParseTrackFollowingObject(string file, string folder) => throw new NotSupportedException();
 }

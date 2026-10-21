@@ -6,7 +6,6 @@ using OpenBveApi.Textures;
 using OpenBveApi.Math;
 using Plugin.BMP;
 using Plugin.GIF;
-using Plugin.PNG;
 namespace Plugin { public partial class Plugin {
 		private bool Parse(string file, out Texture texture)
 		{
@@ -25,7 +24,7 @@ namespace Plugin { public partial class Plugin {
 					if (fs.Length > buffer.Length)
 					{
 						// ReSharper disable once MustUseReturnValue
-						fs.Read(buffer, 0, buffer.Length);
+						fs.ReadExactly(buffer);
 					}
 					gifHeader = buffer.SequenceEqual(GifDecoder.GIF87Header) || buffer.SequenceEqual(GifDecoder.GIF89Header);
 					bmpHeader = Encoding.ASCII.GetString(buffer, 0, 2) == "BM";
@@ -101,25 +100,19 @@ namespace Plugin { public partial class Plugin {
 
 				if (pngHeader)
 				{
-					// NB: GDI+ decoders are curerntly enabled by default as they are marginally faster (~10ms or so per texture unless massively interlaced which is worse)
-					//     If / when mobile device support is added, these will likely be removed
-					using (PngDecoder decoder = new PngDecoder())
-					{
-						if (decoder.Read(file))
-						{
-							texture = new Texture(decoder.Width, decoder.Height, (OpenBveApi.Textures.PixelFormat)decoder.BytesPerPixel, decoder.pixelBuffer, (OpenBveApi.Colors.Color24[])null);
-							return true;
-						}
-					}
+					// RGB PNGs can use a tRNS color key without a PLTE palette.
+					// Skia supports this and rejects incomplete pixel data.
+					texture = SkiaDecoder.Decode(file);
+					return true;
 				}
+				texture = SkiaDecoder.Decode(file);
+				return true;
 			}
 			catch
 			{
 				texture = null;
 				return false;
 			}
-            texture = SkiaDecoder.Decode(file);
-            return true;
         }
 
 } }

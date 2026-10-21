@@ -30,6 +30,7 @@ internal static class Program
     internal static string CapturePath;
     internal static double SmokeSeconds;
     internal static bool CameraSmoke;
+    internal static bool TextureTest;
     internal static bool ReloadSmoke;
     internal static string SwitchSmoke;
     internal static int LoadCount;
@@ -43,7 +44,7 @@ internal static class Program
     {
         try {
             if (Array.IndexOf(args, "--help") >= 0) {
-                Console.WriteLine("Route Viewer Native\nRouteViewer [FILE.csv|FILE.rw] [--smoke=SECONDS] [--capture=FILE] [--camera-test] [--reload-test] [--switch=FILE] [--size=WIDTHxHEIGHT]");
+                Console.WriteLine("Route Viewer Native\nRouteViewer [FILE.csv|FILE.rw] [--smoke=SECONDS] [--capture=FILE] [--camera-test] [--texture-test] [--reload-test] [--switch=FILE] [--size=WIDTHxHEIGHT]");
                 return 0;
             }
             NativeLibraries.Configure();
@@ -55,6 +56,7 @@ internal static class Program
                 else if (arg == "--editor-test") EditorTest = true;
                 else if (arg == "--ui-test") UiTest = true;
                 else if (arg == "--camera-test") CameraSmoke = true;
+                else if (arg == "--texture-test") TextureTest = true;
                 else if (arg == "--reload-test") ReloadSmoke = true;
                 else if (arg.StartsWith("--switch=")) SwitchSmoke = ResolvePath(arg.Substring(9));
                 else if (arg.StartsWith("--size=")) {

@@ -38,8 +38,8 @@ SHA-256 na release do GitHub e instala no escopo do usuário. Funciona em Linux
 x86_64 com Flatpak, OpenGL e X11/XWayland, sem exigir o SDK .NET ou um compilador.
 O Flathub é adicionado no escopo do usuário para fornecer GNOME Platform 50.
 O script recompõe o áudio grande a partir de `content-parts/`, validando SHA-256.
-Veja [os detalhes do conteúdo](../../CONTEUDO.md), incluindo as texturas inválidas
-já presentes no pacote original.
+Veja [os detalhes do conteúdo](../../CONTEUDO.md), incluindo a restauração das
+42 texturas BMP danificadas do pacote original.
 
 Configurações e logs ficam em:
 `~/.var/app/org.openbve.OpenBVE.Native/config/OpenBVE-Native/Settings/`.

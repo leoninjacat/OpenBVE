@@ -8,7 +8,7 @@ namespace RouteViewer;
 internal static class ViewerSmoke
 {
     static Stopwatch timer;
-    static bool captured, tested;
+    static bool captured, tested, texturesTested;
     static int frames, phase, originalObjects;
     static Vector3 savedEye;
     internal static void Rendered(ViewerWindow window)
@@ -16,6 +16,30 @@ internal static class ViewerSmoke
         if(!Loading.Complete || Program.CurrentRouteFile==null) return;
         timer ??= Stopwatch.StartNew();
         frames++;
+        if(Program.TextureTest&&!texturesTested&&frames>10) {
+            int count=Program.Renderer.TextureManager.RegisteredTexturesCount,failed=0;
+            for(int i=0;i<count;i++) {
+                var texture=LibRender2.Textures.TextureManager.RegisteredTextures[i];
+                if(texture==null)continue;
+                if(!Program.CurrentHost.LoadTexture(ref texture,OpenBveApi.Textures.OpenGlTextureWrapMode.ClampClamp)) {
+                    failed++;
+                    Console.Error.WriteLine("VIEWER_TEXTURE_FAILED: "+(texture?.Origin is OpenBveApi.Textures.PathOrigin origin?origin.Path:$"texture {i}"));
+                }
+            }
+            foreach(var message in Interface.GetLogSnapshot()) {
+                if(message.Type is not (OpenBveApi.Interface.MessageType.Error or OpenBveApi.Interface.MessageType.Critical))continue;
+                bool diagnostic=message.Text.IndexOf(".bmp",StringComparison.OrdinalIgnoreCase)>=0
+                    || message.Text.IndexOf(" at LoadTexture",StringComparison.OrdinalIgnoreCase)>=0
+                    || message.Text.IndexOf(" at QueryTextureDimensions",StringComparison.OrdinalIgnoreCase)>=0
+                    || message.Text.IndexOf(" at CanLoadTexture",StringComparison.OrdinalIgnoreCase)>=0
+                    || message.Text.StartsWith("No plugin found that is capable of loading texture",StringComparison.OrdinalIgnoreCase)
+                    || message.Text.StartsWith("Zero-byte texture file encountered",StringComparison.OrdinalIgnoreCase);
+                if(diagnostic){failed++;Console.Error.WriteLine("VIEWER_TEXTURE_DIAGNOSTIC: "+message.Text);}
+            }
+            if(failed>0)throw new Exception($"Texture loading failed: {failed}/{count}");
+            texturesTested=true;
+            Console.WriteLine($"VIEWER_TEXTURES_OK: uploaded={count}, failed=0");
+        }
         if(Program.CameraSmoke && !tested && frames>10) {
             tested=true;
             var rig=Program.Camera;

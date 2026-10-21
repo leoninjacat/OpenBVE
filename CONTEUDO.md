@@ -28,10 +28,12 @@ O conteúdo mantém sua autoria e os avisos que acompanham os arquivos; sua
 inclusão não o relicencia sob a licença do motor OpenBVE. Não foram encontrados
 arquivos separados de licença nas pastas originais.
 
-Algumas texturas originais com extensão `.bmp` têm conteúdo inválido. Elas foram
-preservadas como recebidas e podem gerar mensagens no visualizador; a inclusão
-no repositório não corrige esses arquivos. O port nativo também não tem suporte
-a todos os plugins da versão Mono. Veja `native/packaging/README.md`.
+Em 21/10/2026, 42 texturas `.bmp` danificadas em `Mobitrens` foram restauradas
+usando as cópias válidas dos mesmos caminhos em `Mobitrens_emissive`. O pacote
+Linux agora verifica todas as imagens com o plugin que será distribuído e
+interrompe a geração se houver falha de decodificação ou diagnóstico de erro.
+O port nativo ainda não tem suporte a todos os plugins da versão Mono.
+Veja `native/packaging/README.md`.
 
 Após instalar o aplicativo, execute da raiz:
 
