@@ -26,6 +26,20 @@
 		StopTime,
 		Doors,
 		Direction,
-		PassingSpeed
+		PassingSpeed,
+		RepeatInterval,
+		ServiceId,
+		NextService,
+		TriggeredStart,
+		JourneyTime,
+		CompletionWait,
+		SpawnInterval,
+		FleetSize,
+		BirthClearance,
+		ContinuousHandoff,
+		WarmStart,
+		ProtectedTraffic,
+		ConflictZones,
+		PreferStationWaiting
 	}
 }

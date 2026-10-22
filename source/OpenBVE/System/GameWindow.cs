@@ -815,6 +815,8 @@ namespace OpenBve
 				}
 			}
 
+			Program.TrainManager.InitializeScriptedTraffic();
+
 			// ReSharper disable once PossibleInvalidCastExceptionInForeachLoop
 			foreach (ScriptedTrain Train in Program.TrainManager.TFOs)  //Must not use var, as otherwise the wrong inferred type
 			{

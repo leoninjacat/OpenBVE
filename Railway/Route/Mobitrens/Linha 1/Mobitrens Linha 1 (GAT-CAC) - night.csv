@@ -216,8 +216,16 @@ With Texture
 .background(0) Mobitrens\Fundos\background1night.bmp
 .background(1) Mobitrens\Fundos\black.bmp
 
-;Route.TfoXML(Trens_XML/1.XML)
-;Route.TfoXML(Trens_XML/2.XML)
+; Linha 1 - ciclo encadeado CAC > GAT > CAC
+Route.TfoXML(Trens_XML/L1_GAT.XML)
+Route.TfoXML(Trens_XML/L1_CAC.XML)
+; INICIO TESTE IA LINHA 2 - repeticao nativa, um XML por sentido
+; Linha 2 - rail 2: sentido PTO
+Route.TfoXML(Trens_XML/L2_PTO.XML)
+; Linha 2 - rail 3: sentido ROD
+Route.TfoXML(Trens_XML/L2_ROD.XML)
+; FIM TESTE IA LINHA 2
+
 
 Route.DynamicLight xmls/Dynamic.XML
 
@@ -226,7 +234,7 @@ With track
 ;rails principais da linha
 
 ;trilho 1
-0,.rail 1;-5;0;0
+0,.rail 1;0;0;0
 
 ;postes
 0,.rail 10;-5;1;10,.rail 11;0;1;11
@@ -245,12 +253,16 @@ With track
 0,.sta parada
 200,.stop 1
 
+;trilho falso do pátio
+0,.rail 994;-5;0;0
+325,.railend 994
+
 ;switcher antes da entrada de GAT
-225,.rail 4;0;0;2
-250,.rail 4;-1;0;0
-275,.rail 4;-3;0;3
-300,.rail 4;-4.5;0;3
-325,.railend 4;-5;0;3
+225,.rail 1;0;0;2
+250,.rail 1;-1;0;0
+275,.rail 1;-3;0;3
+300,.rail 1;-4.5;0;3
+325,.rail 1;-5;0;3
 
 ;trilhos se separam pra entrada de GAT
 350,.rail 1;-5.2;0;2	,.rail 10;-5.2
@@ -1186,11 +1198,12 @@ With track
 ;CAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;switcher antes de CAC
-15400,.rail 4;-5;0;5
-15425,.rail 4;-4.4;0;5
-15450,.rail 4;-3;0;4
-15475,.rail 4;-1.1
-15500,.railend 4;0;0;0
+15450,.rail 4;-5;0;5
+15475,.rail 4;-4.4;0;5
+15500,.rail 4;-3;0;4
+15525,.rail 4;-1.1
+15550,.rail 4;0;0;0
+15575,.railend 4;0;0;0
 
 ;desvio do rail 1 antes de CAC
 15600,.rail 1;-5;0;0,.curve -900,.railtype 0;4
@@ -1218,9 +1231,9 @@ With track
 15650,.rail 50;5;0;2
 15675,.rail 50;8.5;0;2
 15700,.rail 50;11;0;0
-15725,.rail 50;13;0
-15750,.rail 50;14.4;0
-15775,.rail 50;15
+15725,.rail 50;12.4;0
+15750,.rail 50;13.5;0
+15775,.rail 50;14
 
 ;postes se separam antes de CAC
 15625,.rail 11;2,.rail 10;-3.5
@@ -1231,7 +1244,7 @@ With track
 15750,.rail 11;14.4,.rail 10;0
 15775,.rail 11;15,.rail 10;0
 
-15800,.sta Cachorros;;;0;R,.rail 1;15,.railend 50
+15800,.sta Cachorros;;;0;R,.rail 50;14;0;0
 
 ;luzes
 15800,.rail 900;0,.rail 901;5
@@ -1249,7 +1262,7 @@ With track
 16000,.railend 100,.railend 101
 16025,.railtype 20;20,.railtype 21;20,.railtype 10;10,.railtype 11;11
 
-16025,.freeobj 0;106;0,.freeobj 1;106;0,.railtype 0;1,.railtype 1;1,.railtype 10;1,.railtype 11;1
+16025,.freeobj 0;106;0,.freeobj 1;106;0,.railtype 0;1,.railtype 1;1,.railtype 10;1,.railtype 11;1,.railend 50
 
 ;muros fecham, fim da linha
 16100,.railend 20;-400,.railend 21;400

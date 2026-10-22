@@ -40,6 +40,7 @@ for plugin in Route.CsvRw Train.OpenBve Object.CsvB3d Object.Animated Sound.Riff
 done
 dotnet run --project "$native/CameraTests" -c Release
 dotnet run --project "$native/NativeTests" -c Release
+dotnet run --project "$native/RepeatTests" -c Release -- "$repo/Railway/Route/Mobitrens/Linha 1/Trens_XML"
 viewer="$files/lib/openbve/route-viewer"
 dotnet publish "$native/RouteViewer/RouteViewer.csproj" -c Release -r linux-x64 --self-contained true -o "$viewer" -v:minimal
 rm -f "$viewer/libcoreclrtraceptprovider.so"

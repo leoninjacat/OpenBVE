@@ -200,3 +200,29 @@ a partir da raiz do repositório.
 Atualização instalada e validada também no Flatpak, com os mesmos argumentos,
 `VIEWER_TRACK_ORBIT_OK`, `VIEWER_FEEDBACK_OK`, `VIEWER_SMOKE_OK` e saída zero.
 Commit instalado: `5a0a52928c15c2dd80a7e81739af52d67a0908a9dbe9e85e7bc693342c2451f3`.
+
+## Serviços de IA e circulação — 22/10/2026
+
+- Repetição e múltiplas instâncias por XML, com frota limitada e reutilizável.
+- Serviços encadeados, troca contínua nos terminais, distribuição inicial
+  balanceada e preferência por espera na estação antes do trecho ocupado.
+- Separação em movimento e reservas conjuntas de garganta/plataforma para
+  GAT e CAC, sem bloquear o jogador estacionado na via paralela de CAC.
+- 93 verificações de tráfego aprovadas em Release, incluindo quatro horas
+  simuladas com os roteiros versionados e cenários de bloqueio pelo jogador.
+- A rota noturna versionada registra L1_GAT, L1_CAC, L2_PTO e L2_ROD;
+  o modelo 9000 é referenciado sem duplicar seus arquivos.
+- O empacotamento executa RepeatTests junto dos testes de câmera, gráficos,
+  texturas, documentos e launcher. O instalador fixa a release
+  linux-native-2026.10.22.1.
+
+Os testes de circulação usam geometria reta de teste e dispensam o renderer
+na troca de representações. Não substituem a inspeção visual das manobras no
+mapa real nem implementam proteção automática do trem do jogador.
+
+O bundle desta versão foi instalado sobre o Flatpak existente no escopo do
+usuário (commit a83f111aa79a2941a734ab0f5942480b0d7a64c1bcc38c7c9bd882d5ba4a04ad).
+O motor dentro do pacote carregou a rota noturna versionada, renderizou 477
+quadros e encerrou com NATIVE_SMOKE_OK. A captura foi inspecionada; o conteúdo
+mantém avisos de recursos ausentes e a cortina inicial da cabine do trem de
+teste, portanto essa carga não é uma validação de ausência de avisos visuais.
