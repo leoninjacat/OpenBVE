@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -981,7 +981,7 @@ namespace OpenBve
 				}
 			}
 			//Create AI driver for the player train if specified via the command line
-			if (Game.InitialAIDriver)
+			if (Game.InitialAIDriver || CcoMode.Enabled)
 			{
 				TrainManager.PlayerTrain.AI = new Game.SimpleHumanDriverAI(TrainManager.PlayerTrain, double.PositiveInfinity);
 				if (TrainManager.PlayerTrain.Plugin != null && TrainManager.PlayerTrain.Plugin.SupportsAI == AISupport.None)
@@ -991,6 +991,7 @@ namespace OpenBve
 				}
 			}
 			
+			CcoMode.Initialize();
 			// warnings / errors
 			List<LogMessage> logSnapshot = Interface.GetLogSnapshot();
 			if (logSnapshot.Count != 0)

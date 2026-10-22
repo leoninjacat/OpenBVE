@@ -76,6 +76,7 @@
 
 <Compile Include="../../../source/OpenBVE/Game/ObjectManager/AnimatedObjects/FunctionScripts.cs" />
 <Compile Include="../../../source/OpenBVE/Game/Game.cs" />
+<Compile Include="../../../source/OpenBVE/Game/CcoMode.cs" />
 <Compile Include="../../../source/OpenBVE/System/Interface.cs" />
 
 <Compile Include="../../../source/OpenBVE/System/MainLoop.cs" />

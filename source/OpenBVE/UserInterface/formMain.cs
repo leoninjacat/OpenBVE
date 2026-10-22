@@ -312,6 +312,13 @@ namespace OpenBve {
 				}
 			}
 			// modes
+            var gameMode = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList,
+                Location = new System.Drawing.Point(300, comboboxMode.Top),
+                Size = new System.Drawing.Size(180, 24), Anchor = comboboxMode.Anchor };
+            gameMode.Items.AddRange(new object[] { "Normal", "Modo CCO (Beta)" });
+            gameMode.SelectedIndex = CcoMode.Enabled ? 1 : 0;
+            gameMode.SelectedIndexChanged += (sender, e) => CcoMode.Enabled = gameMode.SelectedIndex == 1;
+            panelStart.Controls.Add(gameMode);
 			comboboxMode.Items.Clear();
 			comboboxMode.Items.AddRange(new object[] { "", "", "" });
 			comboboxMode.SelectedIndex = Interface.CurrentOptions.GameMode == GameMode.Arcade ? 0 : Interface.CurrentOptions.GameMode == GameMode.Expert ? 2 : 1;

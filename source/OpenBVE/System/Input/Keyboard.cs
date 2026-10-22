@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using LibRender2.Menu;
 using LibRender2.Screens;
 using OpenTK.Input;
@@ -15,7 +15,7 @@ namespace OpenBve
 			{
 				//If in kiosk mode, reset the timer and disable AI on keypress
 				kioskModeTimer = 0;
-				TrainManager.PlayerTrain.AI = null;
+				if (!CcoMode.Enabled) TrainManager.PlayerTrain.AI = null;
 			}
 			if (Loading.Complete && e.Key == Key.F4 && e.Alt)
 			{
@@ -89,7 +89,7 @@ namespace OpenBve
 			{
 				//If in kiosk mode, reset the timer and disable AI on keypress
 				kioskModeTimer = 0;
-				TrainManager.PlayerTrain.AI = null;
+				if (!CcoMode.Enabled) TrainManager.PlayerTrain.AI = null;
 			}
 			if (Program.Renderer.PreviousInterface >= InterfaceType.Menu & Program.Renderer.CurrentInterface == InterfaceType.Normal)
 			{

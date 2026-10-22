@@ -386,6 +386,7 @@ namespace OpenBve
 					}
 						break;
 					case Translations.Command.CameraPOIPrevious:
+                        if (CcoMode.Enabled) { CcoMode.Cycle(-1); break; }
 						//If we are in the exterior train view, shift down one car until we hit the last car
 						if (Program.Renderer.Camera.CurrentMode == CameraViewMode.Exterior)
 						{
@@ -429,6 +430,7 @@ namespace OpenBve
 
 						break;
 					case Translations.Command.CameraPOINext:
+                        if (CcoMode.Enabled) { CcoMode.Cycle(1); break; }
 						//If we are in the exterior train view, shift up one car until we hit index 0
 						if (Program.Renderer.Camera.CurrentMode == CameraViewMode.Exterior)
 						{
@@ -475,6 +477,7 @@ namespace OpenBve
 
 						break;
 					case Translations.Command.CameraReset:
+                        if (CcoMode.ResetCamera()) break;
 						// camera: reset
 						if (Program.Renderer.Camera.CurrentMode == CameraViewMode.Interior |
 						    Program.Renderer.Camera.CurrentMode == CameraViewMode.InteriorLookAhead)
@@ -846,6 +849,7 @@ namespace OpenBve
 						Interface.CurrentOptions.ShowEvents = !Interface.CurrentOptions.ShowEvents;
 						break;
 					case Translations.Command.MiscAI:
+                        if (CcoMode.Enabled) break;
 						// option: AI
 						if (Interface.CurrentOptions.GameMode == GameMode.Expert)
 						{

@@ -15,9 +15,11 @@ namespace OpenBve
         private static bool captured;
         private static double captureAfter = 3;
         private static int frame;
+        private static bool testCco;
         internal static void Configure(string[] args)
         {
             foreach (string arg in args) {
+                if (arg == "/native-cco-test") testCco = true;
                 if (arg.StartsWith("/native-smoke=", StringComparison.Ordinal)) {
                     if (!double.TryParse(arg.Substring(14), NumberStyles.Float, CultureInfo.InvariantCulture, out seconds) || seconds <= 0)
                         throw new ArgumentException("/native-smoke must be a positive duration in seconds.");
@@ -49,6 +51,46 @@ namespace OpenBve
             if (!ready) return;
             if (timer == null) {
                 timer = Stopwatch.StartNew();
+                if (testCco) {
+                    if (!CcoMode.Enabled || TrainManager.PlayerTrain.AI == null)
+                        throw new InvalidOperationException("CCO must start with AI.");
+                    var train = TrainManager.PlayerTrain;
+                    double position = train.Cars[0].FrontAxle.Follower.TrackPosition;
+                    double time = Program.CurrentRoute.SecondsSinceMidnight;
+                    CcoMode.SelectStation(0);
+                    Program.Renderer.Camera.Alignment.Yaw = 0.42;
+                    CcoMode.Cycle(1);
+                    CcoMode.Cycle(-1);
+                    if (Math.Abs(Program.Renderer.Camera.Alignment.Yaw - 0.42) > 0.000001)
+                        throw new InvalidOperationException("Station camera state was not restored.");
+                    CcoMode.SelectStation(Program.CurrentRoute.Stations.Length - 1);
+                    double stationPosition = Program.Renderer.Camera.Alignment.TrackPosition;
+                    string stationName = CcoMode.StationName;
+                    Program.Renderer.Camera.Alignment.Position = new OpenBveApi.Math.Vector3(30, 20, 10);
+                    Program.Renderer.Camera.Alignment.TrackPosition += 250;
+                    Program.Renderer.Camera.Alignment.Yaw = 1.2;
+                    Program.Renderer.Camera.Alignment.Zoom = 0.5;
+                    if (!CcoMode.ResetCamera() ||
+                        Program.Renderer.Camera.Alignment.TrackPosition != stationPosition ||
+                        Program.Renderer.Camera.Alignment.Position.X != 6 ||
+                        Program.Renderer.Camera.Alignment.Position.Y != 4 ||
+                        Program.Renderer.Camera.Alignment.Position.Z != 0 ||
+                        Program.Renderer.Camera.Alignment.Yaw != -0.35 ||
+                        Program.Renderer.Camera.Alignment.Zoom != 0 ||
+                        CcoMode.StationName != stationName)
+                        throw new InvalidOperationException("Reset did not restore the selected station camera.");
+                    CcoMode.Cycle(1);
+                    CcoMode.Cycle(-1);
+                    if (Program.Renderer.Camera.Alignment.TrackPosition != stationPosition ||
+                        Program.Renderer.Camera.Alignment.Yaw != -0.35)
+                        throw new InvalidOperationException("Reset camera was not preserved after cycling.");
+                    Console.WriteLine("CCO_RESET_OK: selected station default restored and retained after cycling.");
+                    if (train.Cars[0].FrontAxle.Follower.TrackPosition != position ||
+                        Program.CurrentRoute.SecondsSinceMidnight != time || train.AI == null)
+                        throw new InvalidOperationException("Camera selection changed train or clock.");
+                    CcoMode.Cycle(1);
+                    Console.WriteLine("CCO_TEST_OK: AI active, independent station cameras, cycle, train and clock preserved.");
+                }
                 Console.WriteLine($"NATIVE_SCENE: static={Program.Renderer.StaticObjectStates.Count}, opaque={Program.Renderer.VisibleObjects.OpaqueFaces.Count}, alpha={Program.Renderer.VisibleObjects.AlphaFaces.Count}, camera={Program.Renderer.Camera.AbsolutePosition}, direction={Program.Renderer.Camera.AbsoluteDirection}");
                 Console.WriteLine("NATIVE_READY: route loaded, simulation running on " + System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription);
             }

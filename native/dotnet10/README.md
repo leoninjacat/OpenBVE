@@ -39,6 +39,17 @@ Também é possível executar o motor diretamente:
 native/dotnet10/runtime/OpenBve '/route=/caminho/rota.csv' '/train=/caminho/trem'
 ```
 
+O dropdown **Modo de jogo** oferece **Normal** e **Modo CCO (Beta)**.
+No CCO, o trem começa com piloto automático e Ctrl+A não o desativa.
+Numpad 1/7 selecionam a câmera da estação anterior/seguinte, em ciclo.
+Cada estação mantém seus ajustes de câmera durante a sessão. **Numpad 5** restaura
+a posição, orientação e zoom iniciais da câmera da estação selecionada, mesmo
+quando o trem está em outra estação. O nome da estação observada permanece
+visível no canto superior direito. **Pular para estação**
+seleciona a câmera sem mover o trem ou adiantar o relógio. As câmeras iniciais são
+geradas ao lado da via principal, usando o ponto de parada de cada estação.
+Pela linha de comando, use `/mode=cco` (padrão: `/mode=normal`).
+
 `/ai=true` ativa o piloto automático. `/width=1280 /height=720` ajusta a janela.
 `--help` mostra o uso. As configurações ficam em `~/.config/OpenBVE-Native/Settings`,
 isoladas da instalação Mono (ou sob `$XDG_CONFIG_HOME`). O log fica nessa pasta,

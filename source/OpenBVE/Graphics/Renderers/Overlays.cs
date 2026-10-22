@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DavyKager;
 using LibRender2.Overlays;
 using LibRender2.Screens;
@@ -134,7 +134,19 @@ namespace OpenBve.Graphics.Renderers
 					break;
 			}
 
-			// air brake debug output
+			// Persistent station identity follows the observation camera, not the train.
+            if (!string.IsNullOrEmpty(CcoMode.StationName))
+            {
+                string stationLabel = "CCO: " + CcoMode.StationName;
+                Vector2 size = renderer.Fonts.NormalFont.MeasureString(stationLabel);
+                double right = renderer.Screen.Width - 16;
+                renderer.Rectangle.Draw(null, new Vector2(right - size.X - 10, 10),
+                    new Vector2(size.X + 20, size.Y + 12), new Color128(0, 0, 0, 0.75f));
+                renderer.OpenGlString.Draw(renderer.Fonts.NormalFont, stationLabel,
+                    new Vector2(right, 16), TextAlignment.TopRight, Color128.White, true);
+            }
+
+            // air brake debug output
 			if (Interface.CurrentOptions.GameMode != GameMode.Expert & renderer.OptionBrakeSystems)
 			{
 				RenderBrakeSystemDebug();

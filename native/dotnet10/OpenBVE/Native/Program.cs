@@ -63,9 +63,10 @@ namespace OpenBve {
 		[STAThread]
 		private static void Run(string[] args) {
 			if (args.Length == 0 || Array.IndexOf(args, "--help") >= 0) {
-                Console.WriteLine("OpenBVE Native (.NET 10)\nUsage: OpenBve /route=FILE /train=FOLDER [/ai=true] [/width=1280 /height=720]");
+                Console.WriteLine("OpenBVE Native (.NET 10)\nUsage: OpenBve /route=FILE /train=FOLDER [/ai=true] [/mode=normal|cco] [/width=1280 /height=720]");
                 return;
             }
+            CcoMode.Enabled = Array.Exists(args, arg => string.Equals(arg, "/mode=cco", StringComparison.OrdinalIgnoreCase));
             NativeSmoke.Configure(args);
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             // --- load options and controls ---
