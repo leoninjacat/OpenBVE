@@ -8,6 +8,7 @@ namespace OpenBve
 {
 	internal static partial class MainLoop
 	{
+		private static bool ccoViewKeyDown;
 		/// <summary>Called when a KeyDown event is generated</summary>
 		internal static void KeyDownEvent(object sender, KeyboardKeyEventArgs e)
 		{
@@ -21,6 +22,14 @@ namespace OpenBve
 			{
 				// Catch standard ALT + F4 quit and push confirmation prompt
 				Game.Menu.PushMenu(MenuType.Quit);
+				return;
+			}
+
+			if (Loading.Complete && CcoMode.Enabled && Program.Renderer.CurrentInterface == InterfaceType.Normal &&
+				e.Key == Key.F7 && !e.Alt && !e.Control && !e.Shift)
+			{
+				if (!ccoViewKeyDown) CcoMode.CycleTrafficView();
+				ccoViewKeyDown = true;
 				return;
 			}
 
@@ -85,6 +94,12 @@ namespace OpenBve
 		/// <summary>Called when a KeyUp event is generated</summary>
 		internal static void KeyUpEvent(object sender, KeyboardKeyEventArgs e)
 		{
+			if (e.Key == Key.F7 && ccoViewKeyDown)
+			{
+				ccoViewKeyDown = false;
+				return;
+			}
+
 			if (Interface.CurrentOptions.KioskMode && Program.Renderer.CurrentInterface != InterfaceType.GLMainMenu)
 			{
 				//If in kiosk mode, reset the timer and disable AI on keypress

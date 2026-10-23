@@ -13,14 +13,45 @@ namespace OpenBve
     /// <summary>Station observation cameras, independent of the AI train.</summary>
     internal static class CcoMode
     {
+        internal enum TrafficView { Curves, Diagram, Hidden }
+        internal static TrafficView View { get; private set; } = TrafficView.Curves;
+        internal static void CycleTrafficView()
+        {
+            View = (TrafficView)(((int)View + 1) % 3);
+        }
+
         internal static bool Enabled;
+        internal static int MapVersion { get; private set; }
+        internal static int SelectedStation => station;
         private static readonly Dictionary<int, CameraAlignment> Cameras = new Dictionary<int, CameraAlignment>();
         private static int station = -1;
+        private static double cachorrosStop = double.NaN;
+
+        /// <summary>Maps the terminal connection onto diagram via 1; excludes unrelated rails.</summary>
+        internal static int TrafficRail(int rail, double position)
+        {
+            if (rail == 0 || rail == 1) return rail;
+            // Mobitrens Cachorros: rail 4 starts 540 m before the stop, rail 50
+            // starts 415 m before it, and the terminal ends 35 m after it.
+            if ((rail == 4 || rail == 50) && position >= cachorrosStop - (rail == 4 ? 540 : 415) &&
+                position <= cachorrosStop + 35) return 1;
+            return -1;
+        }
 
         internal static void Initialize()
         {
             Cameras.Clear();
+            View = TrafficView.Curves;
+            MapVersion++;
             station = -1;
+            cachorrosStop = double.NaN;
+            if (Program.CurrentRoute.Tracks.ContainsKey(4) && Program.CurrentRoute.Tracks.ContainsKey(50))
+                foreach (var stop in Program.CurrentRoute.Stations)
+                    if (string.Equals(stop.Name?.Trim(), "Cachorros", StringComparison.OrdinalIgnoreCase))
+                    {
+                        cachorrosStop = stop.GetStopPosition(TrainManager.PlayerTrain);
+                        break;
+                    }
             if (Enabled && Program.CurrentRoute.Stations.Length > 0)
                 SelectStation(Math.Max(0, TrainManager.PlayerTrain.Station));
         }

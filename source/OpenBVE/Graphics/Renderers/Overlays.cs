@@ -56,7 +56,7 @@ namespace OpenBve.Graphics.Renderers
 				case OutputMode.Default:
 
 					//Route info overlay (if selected)
-					Game.RouteInfoOverlay.Show();
+					if (!CcoMode.Enabled) Game.RouteInfoOverlay.Show();
 
 					//HUD
 					foreach (HUD.Element element in HUD.CurrentHudElements)
@@ -134,8 +134,10 @@ namespace OpenBve.Graphics.Renderers
 					break;
 			}
 
+			if (CcoMode.Enabled) RenderCcoTraffic();
+
 			// Persistent station identity follows the observation camera, not the train.
-            if (!string.IsNullOrEmpty(CcoMode.StationName))
+            if (CcoMode.View != CcoMode.TrafficView.Hidden && !string.IsNullOrEmpty(CcoMode.StationName))
             {
                 string stationLabel = "CCO: " + CcoMode.StationName;
                 Vector2 size = renderer.Fonts.NormalFont.MeasureString(stationLabel);

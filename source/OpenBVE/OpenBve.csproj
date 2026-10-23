@@ -340,6 +340,7 @@
     <Compile Include="Game\ObjectManager\AnimatedObjects\FunctionScripts.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\CcoMode.cs" />
+    <Compile Include="Graphics\Renderers\Overlays.Cco.cs" />
     <Compile Include="System\Interface.cs" />
     <Compile Include="System\Loading.cs" />
     <Compile Include="System\MainLoop.cs" />

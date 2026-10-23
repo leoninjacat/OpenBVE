@@ -48,6 +48,27 @@ quando o trem está em outra estação. O nome da estação observada permanece
 visível no canto superior direito. **Pular para estação**
 seleciona a câmera sem mover o trem ou adiantar o relógio. As câmeras iniciais são
 geradas ao lado da via principal, usando o ponto de parada de cada estação.
+**F7** alterna as visualizações do CCO: **mapa com curvas → diagrama simplificado
+→ oculto → mapa com curvas**. A sessão começa pelo mapa. No estado oculto,
+os painéis e o nome da estação somem; as câmeras e o piloto automático continuam
+ativos. Segurar F7 não percorre vários estados.
+
+O diagrama semitransparente maior mostra as vias 0 e 1 em paralelo,
+estações numeradas e nomes ao lado. A estação 1 fica embaixo; o espaçamento entre
+estações é uniforme e a posição dos trens é interpolada entre suas paradas.
+Os indicadores têm corpo retangular e ponta no sentido de circulação: azul para
+IA e verde para o trem condutor em movimento. Qualquer trem parado fica vermelho
+(tolerância de 0,01 m/s); ao retomar o movimento, recupera sua cor. Os serviços XML mantêm o sentido planejado
+mesmo nas paradas. Sem sentido definido, o indicador fica retangular.
+O mapa com as curvas é exibido separadamente, mantendo a proporção do
+traçado. As duas visões destacam em amarelo a estação da câmera selecionada e mostram
+apenas trens ativos nas vias 0 e 1, inclusive em Central Manoel Lacerda. Em
+Cachorros, a ligação pelas vias 4 e 50 também fica visível, representada como
+continuação da via 1 no diagrama e pela geometria real no mapa. A exceção se
+limita ao trecho do terminal: via 4 desde 540 m antes da parada, via 50 desde
+415 m antes, até 35 m após a parada. Trens nas demais vias (como os da Linha 2)
+e nas vias 4/50 fora desse trecho continuam filtrados.
+
 Pela linha de comando, use `/mode=cco` (padrão: `/mode=normal`).
 
 `/ai=true` ativa o piloto automático. `/width=1280 /height=720` ajusta a janela.

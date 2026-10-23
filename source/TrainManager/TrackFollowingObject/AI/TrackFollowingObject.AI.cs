@@ -54,6 +54,8 @@ namespace TrainManager.Trains
 		private double CurrentPosition;
 		private double CurrentMileage;
 		private TravelDirection CurrentDirection;
+		/// <summary>The planned direction, including while stopped at a station.</summary>
+		public TravelDirection Direction => CurrentDirection;
 		private double HeldTime;
 		private double InitialElapsed;
 		public double WaitingStationPosition { get; private set; } = double.NaN;

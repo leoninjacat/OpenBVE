@@ -90,6 +90,49 @@ namespace OpenBve
                         throw new InvalidOperationException("Camera selection changed train or clock.");
                     CcoMode.Cycle(1);
                     Console.WriteLine("CCO_TEST_OK: AI active, independent station cameras, cycle, train and clock preserved.");
+                    var viewKey = new OpenTK.Input.KeyboardKeyEventArgs();
+                    typeof(OpenTK.Input.KeyboardKeyEventArgs).GetProperty("Key").SetValue(viewKey, OpenTK.Input.Key.F7);
+                    if (CcoMode.View != CcoMode.TrafficView.Curves)
+                        throw new InvalidOperationException("CCO must start with the geographical map.");
+                    MainLoop.KeyDownEvent(window, viewKey);
+                    MainLoop.KeyDownEvent(window, viewKey);
+                    if (CcoMode.View != CcoMode.TrafficView.Diagram)
+                        throw new InvalidOperationException("F7 must advance once, including when held.");
+                    MainLoop.KeyUpEvent(window, viewKey);
+                    MainLoop.KeyDownEvent(window, viewKey);
+                    MainLoop.KeyUpEvent(window, viewKey);
+                    if (CcoMode.View != CcoMode.TrafficView.Hidden)
+                        throw new InvalidOperationException("Second F7 must hide the CCO overlays.");
+                    MainLoop.KeyDownEvent(window, viewKey);
+                    MainLoop.KeyUpEvent(window, viewKey);
+                    if (CcoMode.View != CcoMode.TrafficView.Curves || !CcoMode.Enabled ||
+                        train.AI == null || train.Cars[0].FrontAxle.Follower.TrackPosition != position ||
+                        Program.CurrentRoute.SecondsSinceMidnight != time)
+                        throw new InvalidOperationException("F7 must wrap to the map without changing the simulation.");
+                    Console.WriteLine("CCO_VIEWS_OK: F7 cycles map, diagram, hidden; held key advances once; simulation preserved.");
+                    double savedSpeed = train.CurrentSpeed;
+                    try {
+                        train.CurrentSpeed = 0;
+                        if (Graphics.Renderers.Overlays.CcoTrainColor(train) != OpenBveApi.Colors.Color128.Red)
+                            throw new InvalidOperationException("Stopped CCO indicator must be red.");
+                        foreach (double speed in new[] { -1.0, 1.0 }) {
+                            train.CurrentSpeed = speed;
+                            if (Graphics.Renderers.Overlays.CcoTrainColor(train) == OpenBveApi.Colors.Color128.Red)
+                                throw new InvalidOperationException("Moving CCO indicator must regain its train color.");
+                        }
+                    } finally { train.CurrentSpeed = savedSpeed; }
+                    foreach (var stop in Program.CurrentRoute.Stations) {
+                        if (!string.Equals(stop.Name?.Trim(), "Cachorros", StringComparison.OrdinalIgnoreCase) ||
+                            !Program.CurrentRoute.Tracks.ContainsKey(4) || !Program.CurrentRoute.Tracks.ContainsKey(50)) continue;
+                        double terminal = stop.GetStopPosition(train);
+                        if (CcoMode.TrafficRail(4, terminal - 200) != 1 || CcoMode.TrafficRail(50, terminal) != 1 ||
+                            CcoMode.TrafficRail(4, terminal - 600) != -1 || CcoMode.TrafficRail(50, terminal + 100) != -1 ||
+                            CcoMode.TrafficRail(2, terminal) != -1 || CcoMode.TrafficRail(3, terminal) != -1)
+                            throw new InvalidOperationException("Cachorros must retain terminal connections without admitting Linha 2.");
+                        Console.WriteLine("CCO_TERMINAL_OK: Cachorros rails 4/50 retained on via 1; unrelated rails and positions excluded.");
+                        break;
+                    }
+                    Console.WriteLine("CCO_STOPPED_OK: stopped trains red; moving in either direction restores normal color.");
                 }
                 Console.WriteLine($"NATIVE_SCENE: static={Program.Renderer.StaticObjectStates.Count}, opaque={Program.Renderer.VisibleObjects.OpaqueFaces.Count}, alpha={Program.Renderer.VisibleObjects.AlphaFaces.Count}, camera={Program.Renderer.Camera.AbsolutePosition}, direction={Program.Renderer.Camera.AbsoluteDirection}");
                 Console.WriteLine("NATIVE_READY: route loaded, simulation running on " + System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription);
