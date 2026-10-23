@@ -81,7 +81,25 @@ namespace TrainManager.Trains
 			}
 		}
 
+		private int preservedTimeJumpStation = -1;
+
 		public override void Jump(int stationIndex, int trackKey)
+		{
+			Jump(stationIndex, trackKey, false);
+		}
+
+		/// <summary>Whether the active jump must leave the traffic simulation intact.</summary>
+		public bool PreservingTrafficOnJump { get; private set; }
+
+		/// <summary>Moves this train, optionally retaining the simulation clock and live traffic.</summary>
+		public void Jump(int stationIndex, int trackKey, bool preserveTime)
+		{
+			PreservingTrafficOnJump = preserveTime;
+			try { JumpCore(stationIndex, trackKey, preserveTime); }
+			finally { PreservingTrafficOnJump = false; }
+		}
+
+		private void JumpCore(int stationIndex, int trackKey, bool preserveTime)
 		{
 			if (IsPlayerTrain)
 			{
@@ -172,7 +190,7 @@ namespace TrainManager.Trains
 					TrainManagerBase.CurrentRoute.UpdateAllSections();
 				}
 
-				if (IsPlayerTrain)
+				if (IsPlayerTrain && !preserveTime)
 				{
 					if (TrainManagerBase.CurrentRoute.Stations[stationIndex].JumpTime > 0.0)
 					{
@@ -200,6 +218,13 @@ namespace TrainManager.Trains
 					Plugin?.EndJump();
 				}
 
+				preservedTimeJumpStation = preserveTime && IsPlayerTrain ? stationIndex : -1;
+				if (preserveTime && IsPlayerTrain)
+				{
+					Station = stationIndex;
+					CurrentSpeed = 0;
+					Specs.CurrentAverageAcceleration = 0;
+				}
 				StationState = TrainStopState.Pending;
 				if (IsPlayerTrain)
 				{

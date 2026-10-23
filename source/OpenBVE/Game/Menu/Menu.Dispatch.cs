@@ -261,9 +261,7 @@ namespace OpenBve
 								// simulation commands
 							case MenuTag.JumpToStation:         // JUMP TO STATION
 								Reset();
-								if (CcoMode.Enabled) { CcoMode.SelectStation((int)menuItem.Data); break; }
-                                TrainManagerBase.PlayerTrain.Jump((int)menuItem.Data, 0);
-								Program.TrainManager.JumpTFO();
+								CcoMode.JumpToStation((int)menuItem.Data);
 								break;
 							case MenuTag.ExitToMainMenu:        // BACK TO MAIN MENU
 								Reset();

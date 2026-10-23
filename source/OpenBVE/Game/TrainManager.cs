@@ -106,6 +106,7 @@ namespace OpenBve
 					}
 				}
 			});
+			CabinAnnouncements.Update();
 		}
 	}
 }

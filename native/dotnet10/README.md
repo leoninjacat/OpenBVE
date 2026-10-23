@@ -49,7 +49,9 @@ visível no canto superior direito. **Pular para estação**
 seleciona a câmera sem mover o trem ou adiantar o relógio. As câmeras iniciais são
 geradas ao lado da via principal, usando o ponto de parada de cada estação.
 **F7** alterna as visualizações do CCO: **mapa com curvas → diagrama simplificado
-→ oculto → mapa com curvas**. A sessão começa pelo mapa. No estado oculto,
+→ oculto → mapa com curvas**. No modo CCO, a sessão começa pelo mapa; **no modo normal, começa oculto e F7
+abre o mapa sem mudar a câmera, o piloto automático, o relógio ou o tráfego IA**.
+A estação destacada no modo normal é a do trem do jogador. No estado oculto,
 os painéis e o nome da estação somem; as câmeras e o piloto automático continuam
 ativos. Segurar F7 não percorre vários estados.
 
@@ -68,6 +70,59 @@ continuação da via 1 no diagrama e pela geometria real no mapa. A exceção se
 limita ao trecho do terminal: via 4 desde 540 m antes da parada, via 50 desde
 415 m antes, até 35 m após a parada. Trens nas demais vias (como os da Linha 2)
 e nas vias 4/50 fora desse trecho continuam filtrados.
+
+### Salto manual para estação
+
+No modo normal, **Pular para estação** move apenas o trem do jogador, mantendo o
+relógio, as posições e o andamento dos serviços de IA. O menu não reinicializa
+mais os trens de tráfego. A parada de destino começa um novo tempo de embarque
+no horário atual, sem obrigar a esperar o horário futuro da tabela; os avisos
+CCO continuam aguardando o fim desse tempo de parada. A fila de áudio anterior
+do jogador é limpa, sem desligar o rádio.
+
+No modo CCO, a mesma opção continua selecionando apenas a câmera da estação.
+Saltos automáticos definidos pela rota conservam seu comportamento original.
+Para testar o salto manual, use `/mode=normal /native-jump-test /native-smoke=6`
+com a rota Mobitrens Linha 1. O teste salta para Manoel Lacerda e retorna duas
+vezes, verificando relógio, todos os eixos, estados e temporizadores dos trens
+IA, a frota e o novo tempo de parada. O sucesso imprime `STATION_JUMP_OK`.
+
+### Rádio CCO e anúncios na cabine
+
+O trem do jogador reproduz o anúncio da estação ao iniciar a parada para embarque,
+na posição do condutor, uma vez por visita. Na Mobitrens, os arquivos opcionais são
+`Railway/Sound/Mobitrens/Anuncios/announce_*.wav`, os mesmos usados pelos serviços IA.
+Em Gatos, a cabine usa `destino_cachorros.wav`, em vez de `announce_gatos.wav`.
+Os avisos do jogador são enfileirados para não se sobreporem entre si.
+
+O rádio CCO funciona também no modo normal, sem ativar piloto automático nem mudar
+a câmera. **Ctrl+F7** liga/desliga somente o rádio; os anúncios de estação continuam.
+O rádio começa ligado quando os dois WAVs existem na pasta de conteúdo da rota:
+`Railway/Sound/Mobitrens/CCO/aguarde.wav` e `liberado.wav`.
+**Os avisos do CCO só começam depois de terminar o tempo de parada**, e esperam
+qualquer anúncio da estação que ainda esteja tocando.
+
+Enquanto o jogador permanece parado na estação, o CCO observa trens ativos no
+mesmo trilho, entre o jogador e a próxima estação. Uma ocupação dispara o aviso de
+espera uma vez. A liberação requer um segundo de situação livre estável; sinal
+fechado/desconhecido impede o aviso de liberação. Esses avisos são orientações:
+não alteram sinais, comandos, reservas de tráfego nem o horário de partida.
+O rádio não calcula um novo itinerário através de AMVs; sua observação de tráfego
+usa o trilho atual e a sinalização carregada da rota.
+
+Para verificar o rádio de forma reproduzível, acrescente `/native-cabin-test
+/native-smoke=6` ao comando do motor nativo, usando a rota Mobitrens Linha 1 com
+os áudios instalados. Esse teste temporário verifica um trem no ponto de parada
+da próxima estação na mesma via: nenhum aviso antes do fim da parada e áudio
+de espera depois. Também verifica que trens na outra via não bloqueiam, que
+sinal fechado/desconhecido não produz liberação e que a cabine em Gatos usa
+`destino_cachorros.wav`. O cenário é restaurado antes de continuar a simulação;
+o processo imprime `CABIN_TEST_OK` e encerra após seis segundos de execução.
+
+Arquivos ausentes são opcionais e não causam erro em outras rotas. O atalho informa
+quando os WAVs do rádio não estão disponíveis. Os áudios seguem ligados ao carro do
+condutor e acompanham o trem. A fila é limpa ao trocar de estação, pular de local
+ou recuar o relógio; nenhum histórico de estações é reproduzido.
 
 Pela linha de comando, use `/mode=cco` (padrão: `/mode=normal`).
 

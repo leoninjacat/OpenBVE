@@ -621,7 +621,8 @@ namespace OpenBve {
 
 		public override void ProcessJump(AbstractTrain Train, int StationIndex, int TrackIndex)
 		{
-			ObjectManager.ProcessJump(Train);
+			bool preserveTraffic = Train is TrainBase jumpingTrain && jumpingTrain.PreservingTrafficOnJump;
+			ObjectManager.ProcessJump(Train, preserveTraffic);
 			if (Train.IsPlayerTrain)
 			{
 				if (Game.CurrentScore.ArrivalStation <= StationIndex)
@@ -630,7 +631,8 @@ namespace OpenBve {
 				}
 				Game.CurrentScore.DepartureStation = StationIndex;
 				Program.Renderer.CurrentInterface = InterfaceType.Normal;
-				Program.TrainManager.UnderailTrains();
+				if (preserveTraffic) TrainManager.UnderailTrain((TrainBase)Train);
+				else Program.TrainManager.UnderailTrains();
 			}
 		}
 

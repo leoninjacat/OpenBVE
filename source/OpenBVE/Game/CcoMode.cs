@@ -22,7 +22,7 @@ namespace OpenBve
 
         internal static bool Enabled;
         internal static int MapVersion { get; private set; }
-        internal static int SelectedStation => station;
+        internal static int SelectedStation => Enabled ? station : TrainManager.PlayerTrain?.Station ?? -1;
         private static readonly Dictionary<int, CameraAlignment> Cameras = new Dictionary<int, CameraAlignment>();
         private static int station = -1;
         private static double cachorrosStop = double.NaN;
@@ -41,7 +41,8 @@ namespace OpenBve
         internal static void Initialize()
         {
             Cameras.Clear();
-            View = TrafficView.Curves;
+            CabinAnnouncements.Initialize();
+            View = Enabled ? TrafficView.Curves : TrafficView.Hidden;
             MapVersion++;
             station = -1;
             cachorrosStop = double.NaN;
@@ -54,6 +55,14 @@ namespace OpenBve
                     }
             if (Enabled && Program.CurrentRoute.Stations.Length > 0)
                 SelectStation(Math.Max(0, TrainManager.PlayerTrain.Station));
+        }
+
+        /// <summary>Menu station selection preserves all traffic; CCO only changes its camera.</summary>
+        internal static void JumpToStation(int index)
+        {
+            if (Enabled) { SelectStation(index); return; }
+            TrainManager.PlayerTrain.Jump(index, 0, true);
+            CabinAnnouncements.ResetVisit();
         }
 
         internal static void Cycle(int direction)

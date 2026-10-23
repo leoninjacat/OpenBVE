@@ -9,6 +9,7 @@ namespace OpenBve
 	internal static partial class MainLoop
 	{
 		private static bool ccoViewKeyDown;
+		private static bool ccoRadioKeyDown;
 		/// <summary>Called when a KeyDown event is generated</summary>
 		internal static void KeyDownEvent(object sender, KeyboardKeyEventArgs e)
 		{
@@ -25,7 +26,15 @@ namespace OpenBve
 				return;
 			}
 
-			if (Loading.Complete && CcoMode.Enabled && Program.Renderer.CurrentInterface == InterfaceType.Normal &&
+			if (Loading.Complete && Program.Renderer.CurrentInterface == InterfaceType.Normal &&
+				e.Key == Key.F7 && e.Control && !e.Shift && !e.Alt)
+			{
+				if (!ccoRadioKeyDown) CabinAnnouncements.ToggleRadio();
+				ccoRadioKeyDown = true;
+				return;
+			}
+
+			if (Loading.Complete && Program.Renderer.CurrentInterface == InterfaceType.Normal &&
 				e.Key == Key.F7 && !e.Alt && !e.Control && !e.Shift)
 			{
 				if (!ccoViewKeyDown) CcoMode.CycleTrafficView();
@@ -94,6 +103,11 @@ namespace OpenBve
 		/// <summary>Called when a KeyUp event is generated</summary>
 		internal static void KeyUpEvent(object sender, KeyboardKeyEventArgs e)
 		{
+			if (e.Key == Key.F7 && ccoRadioKeyDown)
+			{
+				ccoRadioKeyDown = false;
+				return;
+			}
 			if (e.Key == Key.F7 && ccoViewKeyDown)
 			{
 				ccoViewKeyDown = false;

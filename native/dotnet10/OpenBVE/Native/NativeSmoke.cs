@@ -16,10 +16,16 @@ namespace OpenBve
         private static double captureAfter = 3;
         private static int frame;
         private static bool testCco;
+        private static bool testCabin;
+        private static bool testMap;
+        private static bool testJump;
         internal static void Configure(string[] args)
         {
             foreach (string arg in args) {
                 if (arg == "/native-cco-test") testCco = true;
+                if (arg == "/native-cabin-test") testCabin = true;
+                if (arg == "/native-map-test") testMap = true;
+                if (arg == "/native-jump-test") testJump = true;
                 if (arg.StartsWith("/native-smoke=", StringComparison.Ordinal)) {
                     if (!double.TryParse(arg.Substring(14), NumberStyles.Float, CultureInfo.InvariantCulture, out seconds) || seconds <= 0)
                         throw new ArgumentException("/native-smoke must be a positive duration in seconds.");
@@ -51,6 +57,9 @@ namespace OpenBve
             if (!ready) return;
             if (timer == null) {
                 timer = Stopwatch.StartNew();
+                if (testJump) NativeStationJumpTests.Run();
+                if (testCabin) NativeCabinTests.Run();
+                if (testMap && CcoMode.View == CcoMode.TrafficView.Hidden) CcoMode.CycleTrafficView();
                 if (testCco) {
                     if (!CcoMode.Enabled || TrainManager.PlayerTrain.AI == null)
                         throw new InvalidOperationException("CCO must start with AI.");
@@ -146,6 +155,7 @@ namespace OpenBve
             if (seconds > 0 && timer.Elapsed.TotalSeconds >= seconds) {
                 var train = TrainManager.PlayerTrain;
                 Console.WriteLine($"NATIVE_SMOKE_OK: frames={frame}, speed={train.CurrentSpeed.ToString(CultureInfo.InvariantCulture)} m/s, position={train.Cars[0].FrontAxle.Follower.TrackPosition.ToString(CultureInfo.InvariantCulture)} m");
+                Console.WriteLine($"CABIN_STATS: stations={CabinAnnouncements.StationClipsPlayed}, radio={CabinAnnouncements.RadioClipsPlayed}, enabled={CabinAnnouncements.RadioEnabled}");
                 seconds = 0;
                 window.Close();
             }

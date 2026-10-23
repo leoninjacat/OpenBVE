@@ -56,7 +56,7 @@ namespace OpenBve.Graphics.Renderers
 				case OutputMode.Default:
 
 					//Route info overlay (if selected)
-					if (!CcoMode.Enabled) Game.RouteInfoOverlay.Show();
+					if (!CcoMode.Enabled && CcoMode.View == CcoMode.TrafficView.Hidden) Game.RouteInfoOverlay.Show();
 
 					//HUD
 					foreach (HUD.Element element in HUD.CurrentHudElements)
@@ -134,7 +134,7 @@ namespace OpenBve.Graphics.Renderers
 					break;
 			}
 
-			if (CcoMode.Enabled) RenderCcoTraffic();
+			RenderCcoTraffic();
 
 			// Persistent station identity follows the observation camera, not the train.
             if (CcoMode.View != CcoMode.TrafficView.Hidden && !string.IsNullOrEmpty(CcoMode.StationName))

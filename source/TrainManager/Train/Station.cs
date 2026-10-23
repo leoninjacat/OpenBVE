@@ -189,7 +189,12 @@ namespace TrainManager.Trains
 								}
 
 								StationArrivalTime = TrainManagerBase.CurrentRoute.SecondsSinceMidnight;
-								StationDepartureTime = TrainManagerBase.CurrentRoute.Stations[i].DepartureTime - TimetableDelta;
+								// A manual reposition starts a fresh dwell at the current time,
+								// rather than waiting for this station's future timetable entry.
+								StationDepartureTime = preservedTimeJumpStation == i
+									? StationArrivalTime + TrainManagerBase.CurrentRoute.Stations[i].StopTime
+									: TrainManagerBase.CurrentRoute.Stations[i].DepartureTime - TimetableDelta;
+								preservedTimeJumpStation = -1;
 								if (StationDepartureTime - TrainManagerBase.CurrentRoute.SecondsSinceMidnight < TrainManagerBase.CurrentRoute.Stations[i].StopTime)
 								{
 									StationDepartureTime = TrainManagerBase.CurrentRoute.SecondsSinceMidnight + TrainManagerBase.CurrentRoute.Stations[i].StopTime;
