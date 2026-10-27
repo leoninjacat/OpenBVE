@@ -31,7 +31,7 @@ arquivos separados de licença nas pastas originais.
 As 42 texturas `.bmp` danificadas da pasta `Object/Mobitrens` foram restauradas
 a partir das cópias válidas nos mesmos caminhos de `Object/Mobitrens_emissive`.
 A validação verifica assinatura, dimensões e decodificação completa, sem
-substituições genéricas. O empacotador Windows bloqueia a criação de ZIP se
+substituições genéricas. Os empacotadores Windows e Linux bloqueiam a geração do pacote se
 qualquer imagem incluída falhar no plugin que será distribuído.
 O port nativo também não tem suporte
 a todos os plugins da versão Mono. Veja `native/packaging/README.md`.

@@ -47,7 +47,7 @@ internal static class Program
     {
         try {
             if (Array.IndexOf(args, "--help") >= 0) {
-                Console.WriteLine("OpenBVE Route Editor By LT ARTS\nRouteViewer [FILE.csv|FILE.rw] [--smoke=SECONDS] [--capture=FILE] [--camera-test] [--reload-test] [--switch=FILE] [--size=WIDTHxHEIGHT]");
+                Console.WriteLine("OpenBVE Route Editor By LT ARTS\nRouteViewer [FILE.csv|FILE.rw] [--smoke=SECONDS] [--capture=FILE] [--camera-test] [--texture-test] [--reload-test] [--switch=FILE] [--size=WIDTHxHEIGHT]");
                 return 0;
             }
             NativeLibraries.Configure();
@@ -59,10 +59,10 @@ internal static class Program
                 else if (arg == "--feedback-test") FeedbackTest = true;
                 else if (arg == "--editor-test") EditorTest = true;
                 else if (arg == "--keyboard-test") KeyboardTest = true;
-                else if (arg == "--texture-test") TextureTest = true;
                 else if (arg == "--new-route") CreateOnStart = true;
                 else if (arg == "--ui-test") UiTest = true;
                 else if (arg == "--camera-test") CameraSmoke = true;
+                else if (arg == "--texture-test") TextureTest = true;
                 else if (arg == "--reload-test") ReloadSmoke = true;
                 else if (arg.StartsWith("--switch=")) SwitchSmoke = ResolvePath(arg.Substring(9));
                 else if (arg.StartsWith("--size=")) {

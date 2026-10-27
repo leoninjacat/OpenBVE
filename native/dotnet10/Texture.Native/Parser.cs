@@ -6,7 +6,6 @@ using OpenBveApi.Textures;
 using OpenBveApi.Math;
 using Plugin.BMP;
 using Plugin.GIF;
-using Plugin.PNG;
 namespace Plugin { public partial class Plugin {
 		private bool Parse(string file, out Texture texture)
 		{
@@ -25,7 +24,7 @@ namespace Plugin { public partial class Plugin {
 					if (fs.Length > buffer.Length)
 					{
 						// ReSharper disable once MustUseReturnValue
-						fs.Read(buffer, 0, buffer.Length);
+						fs.ReadExactly(buffer);
 					}
 					gifHeader = buffer.SequenceEqual(GifDecoder.GIF87Header) || buffer.SequenceEqual(GifDecoder.GIF89Header);
 					bmpHeader = Encoding.ASCII.GetString(buffer, 0, 2) == "BM";
@@ -106,14 +105,14 @@ namespace Plugin { public partial class Plugin {
 					texture = SkiaDecoder.Decode(file);
 					return true;
 				}
+				texture = SkiaDecoder.Decode(file);
+				return true;
 			}
 			catch
 			{
 				texture = null;
 				return false;
 			}
-            texture = SkiaDecoder.Decode(file);
-            return true;
         }
 
 } }
