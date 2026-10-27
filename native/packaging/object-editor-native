@@ -3,4 +3,7 @@ set -eu
 export LD_LIBRARY_PATH=/app/lib/openbve/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 # GTK reparents the OpenGL viewport; disable Mesa's threaded presentation.
 export mesa_glthread=false
+# GTK reparenting can restore driver vsync and throttle XWayland to 1 FPS.
+# The viewer already limits rendering to 60 FPS.
+export vblank_mode=0
 exec /app/lib/openbve/object-editor/ObjectEditor "$@"

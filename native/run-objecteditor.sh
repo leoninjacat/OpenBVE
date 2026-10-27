@@ -7,4 +7,7 @@ if [[ ! -x "$editor" ]]; then
 fi
 # Avoid Mesa GL thread stalls when the viewport is reparented by GTK.
 export mesa_glthread=false
+# GTK reparenting can restore driver vsync and throttle XWayland to 1 FPS.
+# The viewer already limits rendering to 60 FPS.
+export vblank_mode=0
 exec "$editor" "$@"
