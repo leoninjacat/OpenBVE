@@ -43,8 +43,17 @@ Texturas usam os caminhos relativos ao arquivo original.
 - Clique numa peça na vista 3D para selecionar seu bloco `[MeshBuilder]` / `CreateMeshBuilder`.
   Um retângulo azul destaca a seleção; clicar no fundo limpa a seleção.
 - O painel mostra identificação, vértices, faces e dimensões do mesh selecionado.
-- Arraste com o botão esquerdo para mover no plano da câmera. Os campos X/Y/Z
-  permitem ajustes numéricos de posição, rotação em graus e escala positiva.
+- Na barra superior, escolha **Mover**, **Girar** ou **Escalar** e depois o eixo
+  **X**, **Y** ou **Z**. Arraste o mesh com o botão esquerdo para manipular somente
+  o eixo escolhido. Nenhuma transformação acontece antes de escolher o eixo.
+- **Escalar** oferece também **ALL**: a mesma proporção é aplicada aos três eixos
+  do mesh selecionado. As outras peças do arquivo permanecem intactas.
+- Na rotação e escala, arrastar para a direita/cima aumenta o valor; para a
+  esquerda/baixo diminui. Na movimentação, o gesto acompanha a projeção do eixo
+  na tela; eixos de frente para a câmera usam o gesto para cima/direita.
+- **Esc** volta à seleção. Os campos X/Y/Z do painel permitem ajustes numéricos
+  de posição, **rotação em graus nos três eixos** e escala positiva. O painel,
+  a geometria e o código são atualizados tanto pelo arraste quanto pelos campos.
 - **Dimensões (m)** mostra as medidas reais X/Y/Z da caixa delimitadora nos eixos
   do modelo e permite digitar medidas diretamente. O editor calcula o redimensionamento
   após a rotação, considerando também comandos `*All` posteriores. Eixos planos
@@ -70,8 +79,7 @@ native/run-objecteditor.sh native/dotnet10/ObjectEditor/Samples/meshes.b3d
 ```
 
 Esta etapa trabalha com blocos MeshBuilder explícitos em linhas separadas.
-Ainda não inclui criação de primitivas, edição de faces, seleção de texturas ou
-manipuladores de eixo. A edição gráfica deve ser feita com o código sintaticamente
+Ainda não inclui criação de primitivas, edição de faces ou seleção de texturas. A edição gráfica deve ser feita com o código sintaticamente
 válido; diagnósticos do parser continuam disponíveis em F9.
 
 Validação integrada (modifica a cópia, dobrando a geometria):
@@ -82,10 +90,11 @@ native/run-objecteditor.sh /tmp/object-test.b3d --editor-test --smoke=14
 ```
 
 Exigir saída zero, `OBJECT_EDITOR_GEOMETRY_OK`, `VIEWER_EDITOR_OK`, `OBJECT_EDITOR_GRAPH_OK`,
-`OBJECT_EDITOR_PROPERTIES_OK` e `VIEWER_SMOKE_OK`. O teste percorre os três layouts, salva pelo widget GTK e
+`OBJECT_EDITOR_PROPERTIES_OK`, `OBJECT_EDITOR_TOOLS_OK` e `VIEWER_SMOKE_OK`. O teste percorre os três layouts, salva pelo widget GTK e
 confere a nova geometria e a câmera preservada. Também seleciona o primeiro mesh,
 altera a escala pelo widget de propriedades, verifica a prévia sem salvar, desfaz,
 move e salva novamente. Confere a cor carregada, altera RGBA pelo seletor, desfaz,
 redimensiona meshes normais, rotacionados e planos, e testa a direção do globo. Em arquivos com vários meshes, verifica que a alteração
-não afetou as outras peças. Repetir com `cube.csv` testa CSV; uma cópia de
+não afetou as outras peças. Os botões de mover/girar/escalar são testados em cada
+eixo, incluindo ALL, sincronização dos campos de rotação e desfazer. Repetir com `cube.csv` testa CSV; uma cópia de
 `meshes.b3d` testa a seleção de cilindros e a independência entre blocos.

@@ -23,6 +23,9 @@ static int mesh_id;
 static guint preview_timer,property_timer;
 static int graph_requests;
 static gboolean save_after_graph;
+static GQueue graph_queue=G_QUEUE_INIT;
+static void save(void);
+static void drain_graph_queue(void);
 static char *current_text(void) {
     GtkTextIter start,end;gtk_text_buffer_get_bounds(buffer,&start,&end);
     return gtk_text_buffer_get_text(buffer,&start,&end,FALSE);
@@ -61,7 +64,7 @@ static gboolean preview(gpointer data) {
     (void)data;preview_timer=0;g_autofree char *text=current_text();emit("PREVIEW",text);return G_SOURCE_REMOVE;
 }
 static gboolean apply_properties(gpointer data) {
-    (void)data;property_timer=0;if(!mesh_id||!mesh_edits)return G_SOURCE_REMOVE;
+    (void)data;property_timer=0;if(!mesh_id||!mesh_edits||graph_requests)return G_SOURCE_REMOVE;
     GString *value=g_string_new(NULL);g_string_append_printf(value,"%d %d",mesh_id,mesh_edits);
     mesh_edits=0;mesh_changing=TRUE;
     for(int i=0;i<12;i++){
@@ -84,6 +87,22 @@ static void property_changed(GtkSpinButton *spin,gpointer data) {
 }
 static void color_changed(GObject *object,GParamSpec *spec,gpointer data) {
     (void)object;(void)spec;(void)data;queue_property(4);
+}
+
+// Requests from the viewport wait for outstanding panel edits. Take the current
+// text only when sending, so a drag never overwrites a preceding property patch.
+static void drain_graph_queue(void) {
+    if(graph_requests)return;
+    if(mesh_edits){
+        if(property_timer){g_source_remove(property_timer);property_timer=0;}
+        apply_properties(NULL);if(graph_requests)return;
+    }
+    if(!g_queue_is_empty(&graph_queue)){
+        g_autofree char *request=g_queue_pop_head(&graph_queue);char *value=strchr(request,'\n');if(!value)return;*value++=0;
+        g_autofree char *text=current_text();g_autofree char *payload=g_strconcat(value,"\n",text,NULL);
+        graph_requests++;emit(request,payload);return;
+    }
+    if(save_after_graph){save_after_graph=FALSE;save();}
 }
 
 // GTK owns the outer window and text controls. The existing OpenTK X11
@@ -137,8 +156,8 @@ static void layout_changed(GObject *object,GParamSpec *spec,gpointer data) {
 }
 static void save(void) {
     if(waiting)return;
-    if(object_editor && property_timer){g_source_remove(property_timer);property_timer=0;apply_properties(NULL);}
-    if(object_editor && graph_requests){save_after_graph=TRUE;return;}
+    if(object_editor && mesh_edits){if(property_timer)g_source_remove(property_timer);property_timer=0;apply_properties(NULL);}
+    if(object_editor && (graph_requests||!g_queue_is_empty(&graph_queue))){save_after_graph=TRUE;drain_graph_queue();return;}
     if(preview_timer){g_source_remove(preview_timer);preview_timer=0;}
     GtkTextIter start,end;gtk_text_buffer_get_bounds(buffer,&start,&end);
     g_autofree char *text=gtk_text_buffer_get_text(buffer,&start,&end,FALSE);
@@ -193,6 +212,14 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
     else if(testing&&object_editor&&g_str_equal(line,"TEST-SIZE")){
         g_auto(GStrv) sizes=g_strsplit(value," ",-1);if(g_strv_length(sizes)==3)for(int i=0;i<3;i++)gtk_spin_button_set_value(mesh_sizes[i],g_ascii_strtod(sizes[i],NULL));
     }
+    else if(testing&&object_editor&&g_str_equal(line,"TEST-ROTATION")){
+        gtk_spin_button_set_value(mesh_values[3],17);gtk_spin_button_set_value(mesh_values[4],-23);gtk_spin_button_set_value(mesh_values[5],41);
+    }
+    else if(testing&&object_editor&&g_str_equal(line,"TEST-READ-TRANSFORM")){
+        GString *result=g_string_new(NULL);
+        for(int i=0;i<9;i++){char number[G_ASCII_DTOSTR_BUF_SIZE];g_ascii_dtostr(number,sizeof(number),gtk_spin_button_get_value(mesh_values[i]));if(i)g_string_append_c(result,' ');g_string_append(result,number);}
+        emit("TEST-TRANSFORM",result->str);g_string_free(result,TRUE);
+    }
     else if(testing&&object_editor&&g_str_equal(line,"TEST-READ-PROPERTIES")){
         const GdkRGBA *rgba=gtk_color_dialog_button_get_rgba(mesh_color);
         char report[256];g_snprintf(report,sizeof(report),"%d %d %d %d",(int)(rgba->red*255+.5),(int)(rgba->green*255+.5),(int)(rgba->blue*255+.5),(int)(rgba->alpha*255+.5));
@@ -211,7 +238,7 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
         if(!*value){mesh_id=0;gtk_label_set_text(mesh_heading,"Selecione um mesh na vista 3D");gtk_label_set_text(mesh_info,"");gtk_label_set_text(mesh_dimensions,"");gtk_widget_set_sensitive(mesh_panel,FALSE);}
         else {
             g_auto(GStrv) fields=g_strsplit(value,"\t",-1);
-            if(g_strv_length(fields)==20 && !((property_timer||graph_requests) && mesh_id==atoi(fields[0]))){
+            if(g_strv_length(fields)==20 && !((property_timer||graph_requests||mesh_edits) && mesh_id==atoi(fields[0]))){
                 mesh_changing=TRUE;mesh_id=atoi(fields[0]);
                 g_autofree char *heading=g_strdup_printf("Mesh %d",mesh_id);gtk_label_set_text(mesh_heading,heading);
                 g_autofree char *info=g_strdup_printf("%s vértices · %s faces",fields[1],fields[2]);gtk_label_set_text(mesh_info,info);
@@ -227,11 +254,10 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
             }
         }
     }
-    else if(object_editor&&g_str_equal(line,"MOVE-REQUEST")){
-        if(property_timer){g_source_remove(property_timer);property_timer=0;apply_properties(NULL);}
-        g_autofree char *text=current_text();g_autofree char *request_text=g_strconcat(value,"\n",text,NULL);graph_requests++;emit("GRAPH-MOVE",request_text);
+    else if(object_editor&&(g_str_equal(line,"MOVE-REQUEST")||g_str_equal(line,"TOOL-REQUEST"))){
+        g_queue_push_tail(&graph_queue,g_strconcat(g_str_equal(line,"TOOL-REQUEST")?"GRAPH-TOOL":"GRAPH-MOVE","\n",value,NULL));drain_graph_queue();
     }
-    else if(object_editor&&g_str_equal(line,"GRAPH-ERROR")){if(graph_requests>0)graph_requests--;save_after_graph=FALSE;gtk_label_set_text(mesh_error,value);}
+    else if(object_editor&&g_str_equal(line,"GRAPH-ERROR")){if(graph_requests>0)graph_requests--;save_after_graph=FALSE;gtk_label_set_text(mesh_error,value);drain_graph_queue();}
     else if(object_editor&&g_str_equal(line,"PATCH")){
         if(graph_requests>0)graph_requests--;
         if(preview_timer){g_source_remove(preview_timer);preview_timer=0;}
@@ -245,7 +271,7 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
                 changing=TRUE;GtkTextIter start,end;gtk_text_buffer_begin_user_action(buffer);gtk_text_buffer_get_bounds(buffer,&start,&end);gtk_text_buffer_delete(buffer,&start,&end);gtk_text_buffer_insert(buffer,&start,newline+1,-1);gtk_text_buffer_end_user_action(buffer);changing=FALSE;title();emit("PREVIEW",newline+1);
             }
         }
-        if(save_after_graph && !graph_requests){save_after_graph=FALSE;save();}
+        drain_graph_queue();
     }
     else if(g_str_equal(line,"TEXT")){
         changing=TRUE;gtk_text_buffer_begin_irreversible_action(buffer);gtk_text_buffer_set_text(buffer,value,-1);gtk_text_buffer_end_irreversible_action(buffer);gtk_text_buffer_set_modified(buffer,FALSE);changing=FALSE;title();
@@ -342,5 +368,5 @@ int main(int argc,char **argv) {
     gdk_x11_display_error_trap_push(gdk_display_get_default());
     XUnmapWindow(display,parent);XReparentWindow(display,parent,DefaultRootWindow(display),0,0);XRemoveFromSaveSet(display,parent);XSync(display,FALSE);
     gdk_x11_display_error_trap_pop_ignored(gdk_display_get_default());
-    gtk_window_destroy(floating_window);gtk_window_destroy(host_window);g_io_channel_unref(channel);g_main_loop_unref(loop);g_free(pending_action);g_free(pending_value);g_free(route_name);return 0;
+    g_queue_clear_full(&graph_queue,g_free);gtk_window_destroy(floating_window);gtk_window_destroy(host_window);g_io_channel_unref(channel);g_main_loop_unref(loop);g_free(pending_action);g_free(pending_value);g_free(route_name);return 0;
 }

@@ -56,6 +56,9 @@ internal static class ViewerIcons
                 case "orbit-ring":pen.StrokeWidth=.35f;canvas.DrawCircle(16,16,15,pen);break;
                 case "plate": pen.Style=SKPaintStyle.Fill;canvas.DrawRoundRect(1,1,30,30,6,6,pen);break;
                 case "folder":Path(5,25,5,8,13,8,16,11,27,11,27,14);Path(5,25,9,15,29,15,25,25,5,25);break;
+                case "move":Line(16,4,16,28);Line(4,16,28,16);Path(11,9,16,4,21,9);Path(11,23,16,28,21,23);Path(9,11,4,16,9,21);Path(23,11,28,16,23,21);break;
+                case "rotate":canvas.DrawArc(new SKRect(6,6,26,26),-55,295,false,pen);Path(26,4,26,12,18,12);canvas.DrawCircle(16,16,2,pen);break;
+                case "scale":canvas.DrawRect(5,18,9,9,pen);Line(13,19,27,5);Path(18,5,27,5,27,14);break;
                 case "reload":canvas.DrawArc(new SKRect(7,7,25,25),-55,290,false,pen);Path(25,5,25,12,18,12);break;
                 case "previous":case "next":
                     canvas.DrawCircle(16,12,5,pen);Line(8,22,25,22);if(name=="previous")Path(12,18,7,22,12,26);else Path(21,18,26,22,21,26);break;

@@ -17,7 +17,7 @@ internal static class ObjectGraph
     static readonly Regex Blocks = new(@"(?im)^[ \t]*(?:\[\s*(?:CreateMeshBuilder|MeshBuilder)\s*\]|(?:CreateMeshBuilder|MeshBuilder)(?=[,;\s]|$))[^\r\n]*");
     static readonly Regex ColorEdit = new(@"(?m)^; @openbve-color\r?\n[\s\S]*?^; @openbve-color-end[^\r\n]*(?:\r?\n)?");
     static readonly Regex Edit = new(@"(?m)^; @openbve-editor ([^\r\n]+)\r?\n[\s\S]*?^; @openbve-editor-end[^\r\n]*(?:\r?\n)?");
-    internal static void Reset(string source) { Source=source;Selected=0;PendingMove=Vector3.Zero; }
+    internal static void Reset(string source) { Source=source;Selected=0;PendingMove=Vector3.Zero;ObjectTools.Reset(); }
     static (int Start,int End) Range(string text,int id)
     {
         var matches=Blocks.Matches(text);
@@ -138,7 +138,7 @@ internal static class ObjectGraph
             var colors=Program.Renderer.StaticObjectStates.SelectMany(state=>state.Prototype.Mesh.Faces.Where(f=>f.SourceMesh==Selected).Select(f=>state.Prototype.Mesh.Materials[f.Material].Color)).GroupBy(c=>(c.R,c.G,c.B,c.A)).Select(g=>g.First()).ToArray();
             var color=colors[0];
             window.Editor.Send("MESH",$"{Selected}\t{vertices.Count}\t{faces}\t"+string.Join("\t",values.Take(9).Select(v=>v.ToString("G17",Inv)))+$"\t{size.X.ToString("R",Inv)}\t{size.Y.ToString("R",Inv)}\t{size.Z.ToString("R",Inv)}\t{color.R}\t{color.G}\t{color.B}\t{color.A}\t{(colors.Length>1?1:0)}");
-            Program.Status=$"Mesh {Selected} selecionado · arraste para mover no plano da câmera";
+            Program.Status=$"Mesh {Selected} · "+ObjectTools.Hint;
         }catch(Exception error){window.Editor.Send("GRAPH-ERROR",error.Message);}
     }
     internal static void DrawSelection(NewRenderer renderer,ViewerWindow window)

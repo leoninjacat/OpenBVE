@@ -9,7 +9,7 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using SoundManager;
 namespace RouteViewer;
-internal enum DragMode { None, Orbit, Globe, Pan, Zoom, Look, ObjectMove }
+internal enum DragMode { None, Orbit, Globe, Pan, Zoom, Look, ObjectMove, ObjectTransform }
 internal sealed class ViewerWindow : GameWindow
 {
     internal readonly RouteEditor Editor = new();
@@ -41,7 +41,7 @@ internal sealed class ViewerWindow : GameWindow
         WindowIdentity.GrabCursor(WindowInfo.Handle,Drag!=DragMode.None);
     }
     internal void EndInteraction() {
-        PointerInteraction=false;Drag=DragMode.None;Held=null;
+        PointerInteraction=false;Drag=DragMode.None;Held=null;ObjectTools.EndDrag();
         WindowIdentity.GrabCursor(WindowInfo.Handle,false);
     }
     internal void PollInteraction() {
@@ -193,7 +193,7 @@ internal sealed class ViewerWindow : GameWindow
         if (e.Button == MouseButton.Left && ViewerOverlay.Press(this, e.X, e.Y)) {BeginInteraction(e.Button);return;}
         if (!Loading.Complete || Help || ShowLog) return;
         if (Program.ObjectMode && e.Button == MouseButton.Left) {
-            if(ObjectGraph.Pick(this,e.X,e.Y))Drag=DragMode.ObjectMove;
+            if(ObjectGraph.Pick(this,e.X,e.Y)&&ObjectTools.BeginDrag(this))Drag=DragMode.ObjectTransform;
         } else if (e.Button == MouseButton.Middle) {
             Keys.Capture(ViewportFocused);
             var keys = Keys;
@@ -205,6 +205,7 @@ internal sealed class ViewerWindow : GameWindow
     internal void DragBy(float dx, float dy)
     {
         switch (Drag) {
+            case DragMode.ObjectTransform: ObjectTools.Drag(dx,dy); break;
             case DragMode.ObjectMove: ObjectGraph.Move(dx,dy,ViewHeight); break;
             case DragMode.Globe: if(Program.ObjectMode)Program.Camera.Pose.Orbit(-dx,-dy);else Program.Camera.Look(dx,dy); break;
             case DragMode.Orbit: if(Program.ObjectMode)Program.Camera.Pose.Orbit(dx,dy);else Program.Camera.Look(dx,dy); break;
@@ -254,7 +255,7 @@ internal sealed class ViewerWindow : GameWindow
         if(control&&key==Key.N){Program.NewRoute();return;}
         if(key==Key.F10){ToggleInterface();return;}
         if(key==Key.F8){Editor.ToggleVisible();return;}
-        if (key == Key.Escape) { Help = false; ShowLog = false; Drag = DragMode.None; Held = null; return; }
+        if (key == Key.Escape) { Help = false; ShowLog = false; EndInteraction(); if(Program.ObjectMode)ObjectTools.ChooseTool(ObjectTool.Select); return; }
         if (key == Key.F1) { Help = !Help;if(Help)InterfaceVisible=true; return; }
         if (key == Key.F7 || control && key == Key.O) { Program.OpenPicker(); return; }
         if (key == Key.F9) { ShowLog = !ShowLog;if(ShowLog)InterfaceVisible=true; return; }

@@ -70,6 +70,15 @@ internal static class ViewerOverlay
         }
         if(Program.ObjectMode){ids=new[]{"open","reload","home","wire","log","help"};icons=new[]{"folder","reload","home","wire","log","help"};tips=new[]{"Abrir objeto · Ctrl+O","Recarregar · F5","Enquadrar objeto · Home","Aramado · F","Mensagens · F9","Ajuda · F1"};}
         for(int i=0;i<ids.Length;i++)Add(ids[i],icons[i],tips[i],16+i*44,16,ids[i] is "open" or "new"?!Program.Picking:ids[i] is "log" or "help"||ready,ids[i]=="wire"&&Program.Renderer.OptionWireFrame||ids[i]=="events"&&Program.Renderer.OptionEvents);
+        if(Program.ObjectMode){
+            float start=w/2-166;
+            Add("tool-move","move","Mover · escolha um eixo e arraste o mesh",start,16,ready,ObjectTools.Tool==ObjectTool.Move);
+            Add("tool-rotate","rotate","Girar · escolha X, Y ou Z · graus no painel",start+44,16,ready,ObjectTools.Tool==ObjectTool.Rotate);
+            Add("tool-scale","scale","Escalar · escolha X, Y, Z ou ALL",start+88,16,ready,ObjectTools.Tool==ObjectTool.Scale);
+            bool enabled=ready&&ObjectGraph.Selected>0&&ObjectTools.Tool!=ObjectTool.Select;
+            for(int axis=0;axis<3;axis++)Add("axis-"+axis,"","Eixo "+"XYZ"[axis]+" · "+ObjectTools.Name,start+144+axis*44,16,enabled,ObjectTools.Axis==axis);
+            if(ObjectTools.Tool==ObjectTool.Scale)Controls.Add(new("axis-3","","ALL · escala uniforme nos três eixos",start+276,16,52,40,enabled,ObjectTools.Axis==3));
+        }
         if(!Program.ObjectMode)Controls.Add(new("select-track","",$"Selecionar via - Tab alterna vias",w-292,16,136,40,ready,TrackDropdownOpen));
         if(!Program.ObjectMode)Add("mode-track","track","Cabine invisível · via selecionada",w-148,16,ready,!free);
         Add("mode-free","camera","Câmera livre",w-104,16,ready,free);
@@ -146,6 +155,14 @@ internal static class ViewerOverlay
             var background=c.Active?Active:hover&&c.Enabled?(window.DarkTheme?new Color128(.23f,.25f,.27f,.92f):new Color128(.82f,.85f,.88f,.96f)):Plate;
             if(c.Id is "orbit" or "forward" or "back" or "left" or "right")Icon(r,"disc",c.X,c.Y,c.W,c.H,background);
             else PlateAt(r,c.X,c.Y,c.W,c.H,background);
+            if(c.Id.StartsWith("axis-")){
+                int axis=int.Parse(c.Id[5..]);string label=axis==3?"ALL":"XYZ"[axis].ToString();
+                var tint=!c.Enabled?Muted:axis switch {0=>new Color128(1,.4f,.4f,1),1=>new Color128(.4f,.9f,.5f,1),2=>new Color128(.4f,.65f,1,1),_=>White};
+                float textWidth=(float)r.Fonts.SmallFont.MeasureString(label).X/scale;
+                Text(r,label,c.X+(c.W-textWidth)/2,c.Y+11,tint);
+                if(c.Active)Rect(r,c.X+8,c.Y+c.H-4,c.W-16,2,tint);
+                continue;
+            }
             if(c.Id=="select-track" || c.Id.StartsWith("track-option-")) {
                 string label=c.Id=="select-track"?$"Via {Program.Camera.SelectedTrack}  v":$"Via {c.Id[13..]}";
                 Text(r,label,c.X+10,c.Y+8,c.Enabled?White:Muted);
@@ -156,6 +173,12 @@ internal static class ViewerOverlay
             if(c.Active)Rect(r,c.X+12,c.Y+c.H-4,c.W-24,2,White);
         }
         if(!window.InterfaceVisible)return;
+        if(Program.ObjectMode){
+            string hint=ObjectTools.Hint;
+            float textWidth=(float)r.Fonts.SmallFont.MeasureString(hint).X/scale;
+            PlateAt(r,w/2-textWidth/2-8,62,textWidth+16,28,Plate);
+            Text(r,hint,w/2-textWidth/2,68,Muted);
+        }
         if(!Program.ObjectMode)DrawRouteInfo(r);
         bool loaded=Loading.Complete&&Program.CurrentRouteFile!=null;
         string state=Program.Camera.Mode==NavigationMode.Track?$"Via {Program.Camera.SelectedTrack}":"Livre";
@@ -196,7 +219,7 @@ internal static class ViewerOverlay
                 "Roda / controle à esquerda: zoom. Slider inferior: velocidade.",
                 "Page Up/Down: estações. Ctrl+O: abrir. F5: recarregar."
             };
-            if(Program.ObjectMode)lines=new[]{"Clique: selecionar mesh. Arraste: mover no plano da câmera.","Painel: posição, rotação e escala atualizam o código e a prévia.","Ctrl+Z no código: desfazer alterações gráficas.","Ctrl+O: abrir objeto B3D/CSV.","Ctrl+S: salvar o código e atualizar a prévia.","Lateral / Abaixo / Janela independente: posição do editor.","WASD + Q/E: mover câmera. Shift: acelerar.","MMB: orbitar. Botão direito: olhar. Shift+MMB: pan.","Roda: aproximar / afastar. Home: enquadrar objeto.","F: aramado. F5: recarregar arquivo salvo.","F9: mensagens do parser. F8: mostrar / ocultar código."};
+            if(Program.ObjectMode)lines=new[]{"Clique: selecionar mesh. Escolha Mover, Girar ou Escalar.","Escolha X/Y/Z e arraste o mesh. Escalar também oferece ALL.","Painel: posição, rotação X/Y/Z em graus, escala e dimensões.","Ctrl+Z no código: desfazer alterações gráficas.","Ctrl+O: abrir objeto B3D/CSV.","Ctrl+S: salvar o código e atualizar a prévia.","Lateral / Abaixo / Janela independente: posição do editor.","WASD + Q/E: mover câmera. Shift: acelerar.","MMB: orbitar. Botão direito: olhar. Shift+MMB: pan.","Roda: aproximar / afastar. Home: enquadrar objeto.","F: aramado. F5: recarregar arquivo salvo.","F9: mensagens do parser. F8: mostrar / ocultar código."};
             for(int i=0;i<lines.Length;i++){string line=lines[i];if(line.Length>86)line=line[..85]+"…";Text(r,line,x+24,190+i*32,Muted);}
         }
     }
@@ -249,6 +272,14 @@ internal static class ViewerOverlay
             return true;
         }
         if(c==null)return false;if(!c.Enabled)return true;
+        if(c.Id.StartsWith("tool-")){
+            window.EndInteraction();
+            ObjectTools.ChooseTool(c.Id switch {"tool-move"=>ObjectTool.Move,"tool-rotate"=>ObjectTool.Rotate,_=>ObjectTool.Scale});
+            return true;
+        }
+        if(c.Id.StartsWith("axis-")){
+            window.EndInteraction();ObjectTools.ChooseAxis(int.Parse(c.Id[5..]));return true;
+        }
         switch(c.Id) {
             case "toggle-ui":window.ToggleInterface();break;
             case "toggle-editor":window.Editor.ToggleVisible();break;

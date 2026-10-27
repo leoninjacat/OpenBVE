@@ -21,7 +21,7 @@ internal sealed class RouteEditor : IDisposable
     internal bool CloseApproved;
     private bool replacingRoute;
     private bool graphMovePending;
-    internal string TestProperties;
+    internal string TestProperties,TestTransform;
     private long lastGraphMove;
     internal bool Running => process != null && !process.HasExited;
     internal void Open(ViewerWindow window, string path)
@@ -75,6 +75,10 @@ internal sealed class RouteEditor : IDisposable
             var delta=ObjectGraph.PendingMove;ObjectGraph.PendingMove=System.Numerics.Vector3.Zero;
             Send("MOVE-REQUEST",FormattableString.Invariant($"{ObjectGraph.Selected} {delta.X:R} {delta.Y:R} {delta.Z:R}"));
         }
+        if(Program.ObjectMode && !graphMovePending && Environment.TickCount64-lastGraphMove>100 && ObjectTools.TryTake(out var operation)) {
+            graphMovePending=true;lastGraphMove=Environment.TickCount64;
+            Send("TOOL-REQUEST",FormattableString.Invariant($"{operation.Mesh} {(int)operation.Tool} {operation.Axis} {operation.Amount:R}"));
+        }
         while(routes.TryDequeue(out var route)) {if(Running)Send("ROUTE",route);else Program.PendingRoute=route;}
         while(messages.TryDequeue(out var message)) {
             int tab=message.IndexOf('\t');if(tab<0)continue;
@@ -96,12 +100,14 @@ internal sealed class RouteEditor : IDisposable
                 case "LAYOUT":Layout=value;window.UpdateCanvas();break;
                 case "ROUTE":replacingRoute=true;Program.PendingRoute=value;break;
                 case "QUIT":CloseApproved=true;window.Close();break;
+                case "TEST-TRANSFORM":if(Program.EditorTest&&Program.ObjectMode)TestTransform=value;break;
                 case "TEST-PROPERTIES":if(Program.EditorTest&&Program.ObjectMode)TestProperties=value;break;
                 case "PREVIEW":
                     if(Program.ObjectMode){graphMovePending=false;ObjectPreview.Load(value);}
                     break;
                 case "GRAPH-SET":
                 case "GRAPH-MOVE":
+                case "GRAPH-TOOL":
                     if(!Program.ObjectMode)break;
                     try {
                         int newline=value.IndexOf('\n');if(newline<0)break;
@@ -110,7 +116,10 @@ internal sealed class RouteEditor : IDisposable
                         string text=value[(newline+1)..];
                         double Number(int index)=>double.Parse(parts[index],System.Globalization.CultureInfo.InvariantCulture);
                         string updated;
-                        if(command=="GRAPH-MOVE"){
+                        if(command=="GRAPH-TOOL"){
+                            if(parts.Length!=4)throw new InvalidOperationException("Manipulação incompleta.");
+                            updated=ObjectTools.Apply(text,id,(ObjectTool)int.Parse(parts[1],System.Globalization.CultureInfo.InvariantCulture),int.Parse(parts[2],System.Globalization.CultureInfo.InvariantCulture),Number(3));
+                        }else if(command=="GRAPH-MOVE"){
                             var values=ObjectGraph.Values(text,id);
                             for(int i=0;i<3;i++)values[i]+=Number(i+1);
                             updated=ObjectGraph.Transform(text,id,values);
