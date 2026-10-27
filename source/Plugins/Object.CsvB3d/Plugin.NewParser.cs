@@ -49,14 +49,21 @@ namespace Object.CsvB3d
 			this.compatibilityFolder = compatibilityFolder;
 		}
 
-		internal StaticObject ReadObject(string fileName, Encoding textEncoding)
+		internal StaticObject ReadObject(string fileName, Encoding textEncoding, string sourceText = null)
 		{
-			CSVB3DFile<CSVB3DSection, CSVB3DKey> objectFile = new CSVB3DFile<CSVB3DSection, CSVB3DKey>(fileName, currentHost, textEncoding);
+			CSVB3DFile<CSVB3DSection, CSVB3DKey> objectFile = new CSVB3DFile<CSVB3DSection, CSVB3DKey>(fileName, currentHost, textEncoding, sourceText);
 			string basePath = Path.GetDirectoryName(fileName);
 
 			StaticObject staticObject = new StaticObject(currentHost);
 			MeshBuilder currentMeshBuilder = new MeshBuilder(currentHost);
 			List<Vector3> currentNormals = new List<Vector3>();
+			int sourceMesh = 0;
+			Action flush = () => {
+				for (int i = 0; i < currentMeshBuilder.Faces.Count; i++) {
+					var face = currentMeshBuilder.Faces[i]; face.SourceMesh = sourceMesh; currentMeshBuilder.Faces[i] = face;
+				}
+				currentMeshBuilder.Apply(ref staticObject, enabledHacks.BveTsHacks);
+			};
 			Color32? lastTransparentColor = null;
 			currentMeshBuilder.Materials[0].Color = Color32.White;
 
@@ -71,7 +78,8 @@ namespace Object.CsvB3d
 					 * This allows Translate, Rotate etc. commands to be placed after the Texture section
 					 * See also https://github.com/leezer3/OpenBVE/issues/448
 					 */
-					currentMeshBuilder.Apply(ref staticObject, enabledHacks.BveTsHacks);
+					flush();
+					sourceMesh++;
 					currentNormals.Clear();
 					currentMeshBuilder = new MeshBuilder(currentHost);
 				}
@@ -399,7 +407,7 @@ namespace Object.CsvB3d
 					}
 				}
 			}
-			currentMeshBuilder.Apply(ref staticObject, enabledHacks.BveTsHacks);
+			flush();
 			staticObject.Mesh.FinalizeMesh();
 			return staticObject;
 		}

@@ -9,7 +9,7 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using SoundManager;
 namespace RouteViewer;
-internal enum DragMode { None, Orbit, Pan, Zoom, Look }
+internal enum DragMode { None, Orbit, Globe, Pan, Zoom, Look, ObjectMove }
 internal sealed class ViewerWindow : GameWindow
 {
     internal readonly RouteEditor Editor = new();
@@ -192,7 +192,9 @@ internal sealed class ViewerWindow : GameWindow
         if (Program.CurrentlyLoading || e.X>=ViewWidth || e.Y>=ViewHeight) return;
         if (e.Button == MouseButton.Left && ViewerOverlay.Press(this, e.X, e.Y)) {BeginInteraction(e.Button);return;}
         if (!Loading.Complete || Help || ShowLog) return;
-        if (e.Button == MouseButton.Middle) {
+        if (Program.ObjectMode && e.Button == MouseButton.Left) {
+            if(ObjectGraph.Pick(this,e.X,e.Y))Drag=DragMode.ObjectMove;
+        } else if (e.Button == MouseButton.Middle) {
             Keys.Capture(ViewportFocused);
             var keys = Keys;
             Drag = keys.IsKeyDown(Key.ShiftLeft) || keys.IsKeyDown(Key.ShiftRight) ? DragMode.Pan :
@@ -203,6 +205,8 @@ internal sealed class ViewerWindow : GameWindow
     internal void DragBy(float dx, float dy)
     {
         switch (Drag) {
+            case DragMode.ObjectMove: ObjectGraph.Move(dx,dy,ViewHeight); break;
+            case DragMode.Globe: if(Program.ObjectMode)Program.Camera.Pose.Orbit(-dx,-dy);else Program.Camera.Look(dx,dy); break;
             case DragMode.Orbit: if(Program.ObjectMode)Program.Camera.Pose.Orbit(dx,dy);else Program.Camera.Look(dx,dy); break;
             case DragMode.Pan: if(Program.Camera.Mode==NavigationMode.Free) Program.Camera.Pose.Pan(dx,dy,ViewHeight); else Program.Camera.Cab.Offset+=new System.Numerics.Vector3(-dx*.02f,dy*.02f,0); break;
             case DragMode.Zoom: Program.Camera.Zoom(-dy*.08f); break;

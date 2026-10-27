@@ -51,6 +51,14 @@ namespace OpenBveApi.Objects
 		/// <returns>Whether loading the object was successful.</returns>
 		public abstract bool LoadObject(string path, System.Text.Encoding textEncoding, out UnifiedObject unifiedObject);
 
+		/// <summary>Parses an unsaved document, resolving assets relative to its original path.</summary>
+		public virtual bool LoadObjectFromText(string path, string text, out UnifiedObject unifiedObject)
+		{
+			unifiedObject = null;
+			return false;
+		}
+
+
 		/// <summary>Loads the specified object.</summary>
 		/// <param name="path">The path to the file or folder that contains the object.</param>
 		/// <param name="unifiedObject">Receives the object.</param>

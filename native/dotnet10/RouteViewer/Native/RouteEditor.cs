@@ -20,6 +20,9 @@ internal sealed class RouteEditor : IDisposable
     internal void ToggleVisible() {Visible=!Visible;Send("VISIBLE",Visible?"1":"0");}
     internal bool CloseApproved;
     private bool replacingRoute;
+    private bool graphMovePending;
+    internal string TestProperties;
+    private long lastGraphMove;
     internal bool Running => process != null && !process.HasExited;
     internal void Open(ViewerWindow window, string path)
     {
@@ -52,7 +55,7 @@ internal sealed class RouteEditor : IDisposable
                     }
                 });
             }
-            document=next;replacingRoute=false;
+            document=next;replacingRoute=false;graphMovePending=false;
             Send("PATH",path);Send("TEXT",document.Text);Resize(window);
         } catch(Exception error) { Program.Status="Editor: "+error.Message;Console.Error.WriteLine(Program.Status); }
     }
@@ -67,6 +70,11 @@ internal sealed class RouteEditor : IDisposable
     internal void RequestRoute(string path) => routes.Enqueue(path);
     internal void Pump(ViewerWindow window)
     {
+        if(Program.ObjectMode && ObjectGraph.PendingMove.LengthSquared()>0 && !graphMovePending && Environment.TickCount64-lastGraphMove>100) {
+            graphMovePending=true;lastGraphMove=Environment.TickCount64;
+            var delta=ObjectGraph.PendingMove;ObjectGraph.PendingMove=System.Numerics.Vector3.Zero;
+            Send("MOVE-REQUEST",FormattableString.Invariant($"{ObjectGraph.Selected} {delta.X:R} {delta.Y:R} {delta.Z:R}"));
+        }
         while(routes.TryDequeue(out var route)) {if(Running)Send("ROUTE",route);else Program.PendingRoute=route;}
         while(messages.TryDequeue(out var message)) {
             int tab=message.IndexOf('\t');if(tab<0)continue;
@@ -88,6 +96,35 @@ internal sealed class RouteEditor : IDisposable
                 case "LAYOUT":Layout=value;window.UpdateCanvas();break;
                 case "ROUTE":replacingRoute=true;Program.PendingRoute=value;break;
                 case "QUIT":CloseApproved=true;window.Close();break;
+                case "TEST-PROPERTIES":if(Program.EditorTest&&Program.ObjectMode)TestProperties=value;break;
+                case "PREVIEW":
+                    if(Program.ObjectMode){graphMovePending=false;ObjectPreview.Load(value);}
+                    break;
+                case "GRAPH-SET":
+                case "GRAPH-MOVE":
+                    if(!Program.ObjectMode)break;
+                    try {
+                        int newline=value.IndexOf('\n');if(newline<0)break;
+                        var parts=value[..newline].Split(' ',StringSplitOptions.RemoveEmptyEntries);
+                        int id=int.Parse(parts[0],System.Globalization.CultureInfo.InvariantCulture);
+                        string text=value[(newline+1)..];
+                        double Number(int index)=>double.Parse(parts[index],System.Globalization.CultureInfo.InvariantCulture);
+                        string updated;
+                        if(command=="GRAPH-MOVE"){
+                            var values=ObjectGraph.Values(text,id);
+                            for(int i=0;i<3;i++)values[i]+=Number(i+1);
+                            updated=ObjectGraph.Transform(text,id,values);
+                        }else{
+                            if(parts.Length!=18)throw new InvalidOperationException("Propriedades incompletas.");
+                            int edits=int.Parse(parts[1],System.Globalization.CultureInfo.InvariantCulture);
+                            updated=text;
+                            if((edits&1)!=0)updated=ObjectGraph.Transform(updated,id,System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(System.Linq.Enumerable.Range(2,9),Number)));
+                            if((edits&2)!=0)updated=ObjectGraph.Resize(updated,id,new[]{Number(11),Number(12),Number(13)});
+                            if((edits&4)!=0)updated=ObjectGraph.SetColor(updated,id,new[]{Number(14),Number(15),Number(16),Number(17)});
+                        }
+                        Send("PATCH",Convert.ToBase64String(Encoding.UTF8.GetBytes(text))+"\n"+updated);
+                    } catch(Exception error){graphMovePending=false;Send("GRAPH-ERROR",error.Message);}
+                    break;
                 case "SAVE":
                     try {document.Save(value);Send("SAVED");Program.Reload=true;}
                     catch(Exception error){Send("ERROR","Não foi possível salvar: "+error.Message);}

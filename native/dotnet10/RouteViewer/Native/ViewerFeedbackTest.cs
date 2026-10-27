@@ -73,7 +73,7 @@ internal static class ViewerFeedbackTest
                 Button(w,false);Program.Camera.SetMode(NavigationMode.Track);Program.Camera.ResetView();eye=Program.Camera.Pose.Position;target=Program.Camera.Pose.Target;track=Program.Camera.Cab.Position;
                 Press(w,"orbit");break;
             case 4:
-                if(!w.PointerInteraction||w.Drag!=DragMode.Orbit)throw new Exception("Globe grab lost on focus transition");
+                if(!w.PointerInteraction||w.Drag!=DragMode.Globe)throw new Exception("Globe grab lost on focus transition");
                 Move(w,point.X+65,point.Y+20);break;
             case 5:
                 if(Vector3.Distance(eye,Program.Camera.Pose.Position)>.02||Vector3.Distance(target,Program.Camera.Pose.Target)<1||Program.Camera.Cab.Position!=track)throw new Exception("Native track globe drag failed");

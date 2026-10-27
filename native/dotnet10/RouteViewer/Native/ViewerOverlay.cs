@@ -61,7 +61,7 @@ internal static class ViewerOverlay
         Add("toggle-ui","eye","Exibir / ocultar interface · F10",w-60,16,true,!window.InterfaceVisible);
         Add("toggle-editor","document","Exibir / ocultar editor · F8",w-60,60,window.Editor.Running,window.Editor.Visible);
         if(!window.InterfaceVisible)return;
-        Controls.Add(new("route-info","",Program.ObjectMode?"Objeto · clique para ver mensagens":"Informações da rota · clique para ver mensagens",16,68,340,140,ready||RouteInfo.Errors>0));
+        if(!Program.ObjectMode)Controls.Add(new("route-info","",Program.ObjectMode?"Objeto · clique para ver mensagens":"Informações da rota · clique para ver mensagens",16,68,340,140,ready||RouteInfo.Errors>0));
         string[] ids={"open","reload","previous","next","home","wire","events","log","help"};
         string[] icons={"folder","reload","previous","next","home","wire","events","log","help"};
         string[] tips={"Abrir rota · Ctrl+O","Recarregar · F5","Estação anterior · Page Up","Próxima estação · Page Down","Restaurar visão · Num 5","Aramado · F","Eventos da rota","Mensagens · F9","Ajuda · F1"};
@@ -70,8 +70,8 @@ internal static class ViewerOverlay
         }
         if(Program.ObjectMode){ids=new[]{"open","reload","home","wire","log","help"};icons=new[]{"folder","reload","home","wire","log","help"};tips=new[]{"Abrir objeto · Ctrl+O","Recarregar · F5","Enquadrar objeto · Home","Aramado · F","Mensagens · F9","Ajuda · F1"};}
         for(int i=0;i<ids.Length;i++)Add(ids[i],icons[i],tips[i],16+i*44,16,ids[i] is "open" or "new"?!Program.Picking:ids[i] is "log" or "help"||ready,ids[i]=="wire"&&Program.Renderer.OptionWireFrame||ids[i]=="events"&&Program.Renderer.OptionEvents);
-        Controls.Add(new("select-track","",$"Selecionar via - Tab alterna vias",w-292,16,136,40,ready,TrackDropdownOpen));
-        Add("mode-track","track","Cabine invisível · via selecionada",w-148,16,ready,!free);
+        if(!Program.ObjectMode)Controls.Add(new("select-track","",$"Selecionar via - Tab alterna vias",w-292,16,136,40,ready,TrackDropdownOpen));
+        if(!Program.ObjectMode)Add("mode-track","track","Cabine invisível · via selecionada",w-148,16,ready,!free);
         Add("mode-free","camera","Câmera livre",w-104,16,ready,free);
         Add("zoom-in","plus","Aproximar",16,h/2-110,ready);
         Add("zoom-out","minus","Afastar",16,h/2+70,ready);
@@ -86,7 +86,7 @@ internal static class ViewerOverlay
         Controls.Add(new("speed-slider","","Velocidade de navegação · km/h",74,h-58,144,26,ready));
         // Globe = orbit; surrounding arrows = translation, independent of track 0.
         float cx=w-108,cy=h-112;
-        Add("orbit","globe",Program.ObjectMode?"Orbitar objeto · arraste":free?"Girar na posição livre · arraste":"Girar na cabine · arraste",cx-50,cy-50,ready,window.Drag==DragMode.Orbit,100);
+        Add("orbit","globe",Program.ObjectMode?"Orbitar objeto · arraste":free?"Girar na posição livre · arraste":"Girar na cabine · arraste",cx-50,cy-50,ready,window.Drag==DragMode.Globe,100);
         Add("forward","up","Voo livre para frente · W",cx-18,cy-91,ready&&free,window.Held=="forward",36);
         Add("back","down","Voo livre para trás · S",cx-18,cy+55,ready&&free,window.Held=="back",36);
         Add("left","left","Voo livre à esquerda · A",cx-91,cy-18,ready&&free,window.Held=="left",36);
@@ -124,6 +124,7 @@ internal static class ViewerOverlay
     {
         var window=(ViewerWindow)r.GameWindow;Build(window);
         float w=window.ViewWidth/scale,h=window.ViewHeight/scale;
+        if(Program.ObjectMode)ObjectGraph.DrawSelection(r,window);
         foreach(var c in Controls) {
             if(c.Id is "close" or "route-info" || c.Id.StartsWith("log-message-"))continue;
             bool hover=window.PointerX>=c.X*scale&&window.PointerY>=c.Y*scale&&window.PointerX<(c.X+c.W)*scale&&window.PointerY<(c.Y+c.H)*scale;
@@ -155,7 +156,7 @@ internal static class ViewerOverlay
             if(c.Active)Rect(r,c.X+12,c.Y+c.H-4,c.W-24,2,White);
         }
         if(!window.InterfaceVisible)return;
-        DrawRouteInfo(r);
+        if(!Program.ObjectMode)DrawRouteInfo(r);
         bool loaded=Loading.Complete&&Program.CurrentRouteFile!=null;
         string state=Program.Camera.Mode==NavigationMode.Track?$"Via {Program.Camera.SelectedTrack}":"Livre";
         string status=Program.ObjectMode?Program.Status:loaded?$"{state}   ·   {r.CameraTrackFollower.TrackPosition:0} m":Program.Status;
@@ -195,7 +196,7 @@ internal static class ViewerOverlay
                 "Roda / controle à esquerda: zoom. Slider inferior: velocidade.",
                 "Page Up/Down: estações. Ctrl+O: abrir. F5: recarregar."
             };
-            if(Program.ObjectMode)lines=new[]{"Ctrl+O: abrir objeto B3D/CSV.","Ctrl+S: salvar o código e atualizar a prévia.","Lateral / Abaixo / Janela independente: posição do editor.","WASD + Q/E: mover câmera. Shift: acelerar.","MMB: orbitar. Botão direito: olhar. Shift+MMB: pan.","Roda: aproximar / afastar. Home: enquadrar objeto.","F: aramado. F5: recarregar arquivo salvo.","F9: mensagens do parser. F8: mostrar / ocultar código."};
+            if(Program.ObjectMode)lines=new[]{"Clique: selecionar mesh. Arraste: mover no plano da câmera.","Painel: posição, rotação e escala atualizam o código e a prévia.","Ctrl+Z no código: desfazer alterações gráficas.","Ctrl+O: abrir objeto B3D/CSV.","Ctrl+S: salvar o código e atualizar a prévia.","Lateral / Abaixo / Janela independente: posição do editor.","WASD + Q/E: mover câmera. Shift: acelerar.","MMB: orbitar. Botão direito: olhar. Shift+MMB: pan.","Roda: aproximar / afastar. Home: enquadrar objeto.","F: aramado. F5: recarregar arquivo salvo.","F9: mensagens do parser. F8: mostrar / ocultar código."};
             for(int i=0;i<lines.Length;i++){string line=lines[i];if(line.Length>86)line=line[..85]+"…";Text(r,line,x+24,190+i*32,Muted);}
         }
     }
@@ -265,7 +266,7 @@ internal static class ViewerOverlay
             case "select-track":TrackDropdownOpen=!TrackDropdownOpen;window.Held=null;window.Drag=DragMode.None;break;
             case "mode-track":Program.Camera.SetMode(NavigationMode.Track);window.Held=null;window.Drag=DragMode.None;break;
             case "mode-free":Program.Camera.SetMode(NavigationMode.Free);window.Held=null;window.Drag=DragMode.None;break;
-            case "orbit":window.Drag=DragMode.Orbit;break;
+            case "orbit":window.Drag=DragMode.Globe;break;
             case "zoom-in":Program.Camera.Zoom(1);break;
             case "zoom-out":Program.Camera.Zoom(-1);break;
             case "rail-play":Program.Camera.Cruise=Program.Camera.Cruise==0?1:0;break;

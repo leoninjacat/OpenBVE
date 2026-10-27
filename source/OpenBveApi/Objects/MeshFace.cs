@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace OpenBveApi.Objects
 {
@@ -12,6 +12,8 @@ namespace OpenBveApi.Objects
 		public ushort Material;
 		/// <summary>A bit mask combining constants of the MeshFace structure.</summary>
 		public FaceFlags Flags;
+		/// <summary>One-based source mesh block, or zero when unavailable. Used by object authoring tools.</summary>
+		public int SourceMesh;
 		/// <summary>The starting position for the face in the VAO</summary>
 		public int IboStartIndex;
 		/// <summary>The starting position for the normals in the VAO</summary>
@@ -44,6 +46,7 @@ namespace OpenBveApi.Objects
 			Flags = 0;
 			IboStartIndex = 0;
 			NormalsIboStartIndex = 0;
+			SourceMesh = 0;
 			if (Type != FaceFlags.NotSet)
 			{
 				Flags |= Type;
@@ -68,6 +71,7 @@ namespace OpenBveApi.Objects
 			Flags = 0;
 			IboStartIndex = 0;
 			NormalsIboStartIndex = 0;
+			SourceMesh = 0;
 		}
 
 		/// <summary>Creates a new MeshFace containing <param name="numVertices">N</param> vertices</summary>
@@ -78,6 +82,7 @@ namespace OpenBveApi.Objects
 			Flags = 0;
 			IboStartIndex = 0;
 			NormalsIboStartIndex = 0;
+			SourceMesh = 0;
 		}
 
 		/// <summary>Appends an array of vertices to the MeshFace</summary>

@@ -17,7 +17,7 @@ internal static class ObjectPreview
         Program.Camera.Pose.LookAt(center+Vector3.Normalize(new Vector3(1,.6f,-1))*radius*3,center);
         Program.Camera.Apply();
     }
-    internal static bool Load()
+    internal static bool Load(string sourceText = null)
     {
         Program.CurrentlyLoading=true;
         RouteInfo.Failure=null;
@@ -28,12 +28,18 @@ internal static class ObjectPreview
                !string.Equals(Path.GetExtension(path),".csv",StringComparison.OrdinalIgnoreCase))
                 throw new InvalidOperationException("Selecione um objeto B3D ou CSV.");
             window.Editor.Open(window,path);
+            UnifiedObject obj=null;
+            if(sourceText!=null) {
+                foreach(var plugin in Program.CurrentHost.Plugins)
+                    if(plugin.Object!=null && plugin.Object.CanLoadObject(path) && plugin.Object.LoadObjectFromText(path,sourceText,out obj))break;
+                if(obj==null)throw new InvalidOperationException("Este parser não aceita pré-visualização de texto.");
+            }
             Game.Reset();
             Interface.CurrentOptions.ObjectDisposalMode=OpenBveApi.Routes.ObjectDisposalMode.Legacy;
             Program.CurrentRoute.AccurateObjectDisposal=OpenBveApi.Routes.ObjectDisposalMode.Legacy;
             Loading.Complete=false;
             Program.CurrentHost.ClearObjectCaches();
-            if(!Program.CurrentHost.LoadObject(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path),out var obj)||obj==null)
+            if(sourceText==null && (!Program.CurrentHost.LoadObject(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path),out obj)||obj==null))
                 throw new InvalidOperationException("Falha ao interpretar objeto. Consulte as mensagens (F9).");
             obj.CreateObject(OpenBveApi.Math.Vector3.Zero,new ObjectCreationParameters(0,0,-100000,100000,1));
             Program.Renderer.Camera.QuadTreeLeaf=null;
@@ -50,9 +56,12 @@ internal static class ObjectPreview
             if(loaded!=path)Frame();else Program.Camera.Apply();
             Program.Renderer.UpdateVisibility(true);
             Program.Renderer.CurrentInterface=LibRender2.Screens.InterfaceType.Normal;
+            if(loaded!=path)ObjectGraph.Reset(sourceText??File.ReadAllText(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path)));
+            else ObjectGraph.Source=sourceText??File.ReadAllText(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path));
             loaded=path;Program.LoadCount++;
             window.Title=Path.GetFileName(path)+" — "+Program.AppTitle;
             Program.Status=Path.GetFileName(path);
+            ObjectGraph.Publish(window);
             Console.WriteLine($"OBJECT_EDITOR_READY: objects={Program.Renderer.StaticObjectStates.Count}, faces={Program.Renderer.VisibleObjects.OpaqueFaces.Count}");
             return true;
         } catch(Exception error) {

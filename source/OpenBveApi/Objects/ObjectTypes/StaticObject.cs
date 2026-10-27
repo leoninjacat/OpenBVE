@@ -60,6 +60,7 @@ namespace OpenBveApi.Objects
 			for (int j = 0; j < Mesh.Faces.Length; j++)
 			{
 				cloneResult.Mesh.Faces[j].Flags = Mesh.Faces[j].Flags;
+				cloneResult.Mesh.Faces[j].SourceMesh = Mesh.Faces[j].SourceMesh;
 				cloneResult.Mesh.Faces[j].Material = Mesh.Faces[j].Material;
 				cloneResult.Mesh.Faces[j].Vertices = new MeshFaceVertex[Mesh.Faces[j].Vertices.Length];
 				for (int k = 0; k < Mesh.Faces[j].Vertices.Length; k++)
@@ -102,6 +103,7 @@ namespace OpenBveApi.Objects
 			for (int j = 0; j < Mesh.Faces.Length; j++)
 			{
 				cloneResult.Mesh.Faces[j].Flags = Mesh.Faces[j].Flags;
+				cloneResult.Mesh.Faces[j].SourceMesh = Mesh.Faces[j].SourceMesh;
 				cloneResult.Mesh.Faces[j].Material = Mesh.Faces[j].Material;
 				cloneResult.Mesh.Faces[j].Vertices = new MeshFaceVertex[Mesh.Faces[j].Vertices.Length];
 				for (int k = 0; k < Mesh.Faces[j].Vertices.Length; k++)

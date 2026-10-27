@@ -426,7 +426,7 @@ namespace RouteViewer
 										{
 											continue;
 										}
-										obj.OptimizeObject(false, Interface.CurrentOptions.ObjectOptimizationBasicThreshold, true);
+										if (!Program.ObjectMode) obj.OptimizeObject(false, Interface.CurrentOptions.ObjectOptimizationBasicThreshold, true);
 										Object = obj;
 
 										if (Object is StaticObject staticObject)

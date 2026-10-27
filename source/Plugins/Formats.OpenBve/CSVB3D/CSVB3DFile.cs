@@ -206,9 +206,9 @@ namespace Formats.OpenBve
 	}
 	public class CSVB3DFile <T1, T2> : CSVB3DBlock<T1, T2> where T1 : struct, Enum where T2 : struct, Enum
 	{
-		public CSVB3DFile(string myFile, HostInterface currentHost, System.Text.Encoding Encoding) : base(myFile, currentHost)
+		public CSVB3DFile(string myFile, HostInterface currentHost, System.Text.Encoding Encoding, string sourceText = null) : base(myFile, currentHost)
 		{
-			List<string> Lines = File.ReadAllLines(myFile, Encoding).ToList();
+			List<string> Lines = sourceText == null ? File.ReadAllLines(myFile, Encoding).ToList() : sourceText.Replace("\r\n", "\n").Replace('\r', '\n').Split('\n').ToList();
 
 			CSVB3DFileSection<T1, T2> currentSection = null;
 

@@ -137,6 +137,12 @@ namespace Object.CsvB3d
 		    }
 	    }
 
+    public override bool LoadObjectFromText(string path, string text, out UnifiedObject unifiedObject)
+    {
+        unifiedObject = new NewParser(currentHost, enabledHacks, CompatibilityFolder).ReadObject(path, System.Text.Encoding.UTF8, text);
+        return true;
+    }
+
     public override bool LoadObject(string path, System.Text.Encoding textEncoding, out UnifiedObject unifiedObject)
     {
 	    HostInterface host = currentHost;
