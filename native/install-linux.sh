@@ -38,5 +38,5 @@ fi
 # Supplies GNOME Platform 50 automatically when installing the bundle.
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install --user --reinstall --noninteractive -y "$output/$bundle"
-printf '\nInstalled OpenBVE and Route Viewer / Editor. Test the included content:\n'
+printf '\nInstalled OpenBVE, Route Viewer / Editor and Object Editor (local builds). Test the included content:\n'
 printf '  bash %q viewer\n  bash %q train\n' "$here/run-demo.sh" "$here/run-demo.sh"

@@ -70,3 +70,5 @@ debian/debhelper-build-stamp
 /.codex/
 /native/dotnet10/openbve-windows/
 /native/dotnet10/openbve-windows-beta/
+
+/native/dotnet10/objecteditor-runtime/

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Threading;
 using LibRender2.Viewports;
@@ -61,7 +61,7 @@ internal sealed class ViewerWindow : GameWindow
     internal int ExpandedLogMessage=-1, LogScroll;
     internal int PointerX, PointerY;
     private bool initialized;
-    internal ViewerWindow() : base(Program.WindowWidth, Program.WindowHeight, new GraphicsMode(32,24,8,0), "OpenBVE Route Editor By LT ARTS") { VSync = VSyncMode.Off; TargetRenderFrequency=60; }
+    internal ViewerWindow() : base(Program.WindowWidth, Program.WindowHeight, new GraphicsMode(32,24,8,0), Program.AppTitle) { VSync = VSyncMode.Off; TargetRenderFrequency=60; }
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
@@ -203,7 +203,7 @@ internal sealed class ViewerWindow : GameWindow
     internal void DragBy(float dx, float dy)
     {
         switch (Drag) {
-            case DragMode.Orbit: Program.Camera.Look(dx,dy); break;
+            case DragMode.Orbit: if(Program.ObjectMode)Program.Camera.Pose.Orbit(dx,dy);else Program.Camera.Look(dx,dy); break;
             case DragMode.Pan: if(Program.Camera.Mode==NavigationMode.Free) Program.Camera.Pose.Pan(dx,dy,ViewHeight); else Program.Camera.Cab.Offset+=new System.Numerics.Vector3(-dx*.02f,dy*.02f,0); break;
             case DragMode.Zoom: Program.Camera.Zoom(-dy*.08f); break;
             case DragMode.Look: Program.Camera.Look(dx,dy); break;
@@ -246,6 +246,7 @@ internal sealed class ViewerWindow : GameWindow
     void HandleKey(Key key,bool control)
     {
         if (Program.CurrentlyLoading) return;
+        if(control&&key==Key.S){Editor.Send("SAVE-REQUEST");return;}
         if(control&&key==Key.N){Program.NewRoute();return;}
         if(key==Key.F10){ToggleInterface();return;}
         if(key==Key.F8){Editor.ToggleVisible();return;}

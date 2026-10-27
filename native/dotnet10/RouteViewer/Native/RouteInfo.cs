@@ -24,6 +24,7 @@ internal static class RouteInfo
     internal static string Time(double seconds)=>seconds<0?"—":$"{(int)(seconds/3600):00}:{(int)(seconds/60)%60:00}:{(int)seconds%60:00}";
     internal static string[] StationLines()
     {
+        if(Program.ObjectMode)return new[]{System.IO.Path.GetFileName(Program.CurrentRouteFile), $"{Program.Renderer.StaticObjectStates.Count} objeto(s) · B3D / CSV", "Ctrl+S: salvar e atualizar"};
         double position=Program.Renderer.CameraTrackFollower.TrackPosition;
         var stops=Program.CurrentRoute.Stations.Where(s=>!s.Dummy&&s.Stops!=null).SelectMany(s=>s.Stops.Select(stop=>(Station:s,Position:stop.TrackPosition))).OrderBy(s=>s.Position).ToArray();
         if(stops.Length==0)return new[]{"Sem estações com ponto de parada","Posição na rota: "+position.ToString("0")+" m"};

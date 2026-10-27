@@ -84,3 +84,22 @@ O visualizador de rotas tem câmera livre, órbita também no modo trilho, globo
 de orientação e editor de texto ancorável na lateral/abaixo ou em janela
 independente. Salvar recarrega a prévia 3D. O pacote permite gravação na pasta
 pessoal para editar as rotas. Veja [o guia do Route Viewer](../dotnet10/RouteViewer/README.md).
+
+## OpenBVE Object Editor
+
+Os builds deste commit também incluem **OpenBVE Object Editor** no menu de
+aplicativos, com viewport B3D/CSV e código editável na lateral, abaixo ou em
+janela independente. Ctrl+S salva e atualiza a geometria preservando a câmera.
+
+Para instalar esta versão, use `bash native/install-linux.sh --build`.
+O download padrão continua seguindo a release fixada em `release-version`;
+esta novidade precisa de uma nova release para chegar por esse download.
+
+```sh
+flatpak run --command=object-editor-native org.openbve.OpenBVE.Native
+# Ou abrir um objeto diretamente:
+flatpak run --command=object-editor-native org.openbve.OpenBVE.Native /caminho/objeto.b3d
+```
+
+Configurações: `~/.var/app/org.openbve.OpenBVE.Native/config/ObjectEditor-Native/Settings/`.
+Veja [o guia do Object Editor](../dotnet10/ObjectEditor/README.md).

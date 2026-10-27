@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+export LD_LIBRARY_PATH=/app/lib/openbve/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+# GTK reparents the OpenGL viewport; disable Mesa's threaded presentation.
+export mesa_glthread=false
+exec /app/lib/openbve/object-editor/ObjectEditor "$@"

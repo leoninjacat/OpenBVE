@@ -1,0 +1,4 @@
+; OpenBVE Object Editor - exemplo editável
+[MeshBuilder]
+Cube 1, 1, 1
+Color 70, 160, 220

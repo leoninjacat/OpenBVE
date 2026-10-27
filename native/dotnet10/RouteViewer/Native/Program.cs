@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using OpenBve.Native.Desktop;
@@ -14,6 +14,8 @@ using RouteManager2;
 namespace RouteViewer;
 internal static class Program
 {
+    internal static readonly bool ObjectMode = typeof(Program).Assembly.GetName().Name == "ObjectEditor";
+    internal static string AppTitle => ObjectMode ? "OpenBVE Object Editor" : "OpenBVE Route Editor By LT ARTS";
     internal static FileSystem FileSystem;
     internal static Host CurrentHost;
     internal static NewRenderer Renderer;
@@ -47,7 +49,7 @@ internal static class Program
     {
         try {
             if (Array.IndexOf(args, "--help") >= 0) {
-                Console.WriteLine("OpenBVE Route Editor By LT ARTS\nRouteViewer [FILE.csv|FILE.rw] [--smoke=SECONDS] [--capture=FILE] [--camera-test] [--texture-test] [--reload-test] [--switch=FILE] [--size=WIDTHxHEIGHT]");
+                Console.WriteLine(ObjectMode ? "OpenBVE Object Editor\nObjectEditor [FILE.b3d|FILE.csv] [--editor-test --smoke=15]" : "OpenBVE Route Editor By LT ARTS\nRouteViewer [FILE.csv|FILE.rw] [--smoke=SECONDS] [--capture=FILE] [--camera-test] [--texture-test] [--reload-test] [--switch=FILE] [--size=WIDTHxHEIGHT]");
                 return 0;
             }
             NativeLibraries.Configure();
@@ -80,9 +82,9 @@ internal static class Program
             FileSystem = FileSystem.FromCommandLineArgs(Array.Empty<string>(), CurrentHost);
             FileSystem.SettingsFolder = File.Exists(System.IO.Path.Combine(AppContext.BaseDirectory,"portable.flag"))
                 ? System.IO.Path.Combine(AppContext.BaseDirectory,"UserData","Settings")
-                : System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "RouteViewer-Native", "Settings");
+                : System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ObjectMode ? "ObjectEditor-Native" : "RouteViewer-Native", "Settings");
             FileSystem.CreateFileSystem();
-            FileSystem.AppendToLogFile("OpenBVE Route Editor By LT ARTS .NET 10");
+            FileSystem.AppendToLogFile(AppTitle+" .NET 10");
             Options.LoadOptions();
             Interface.CurrentOptions.ViewingDistance = 1000;
             Toolkit.Init(OperatingSystem.IsLinux()
@@ -102,7 +104,7 @@ internal static class Program
             return Environment.ExitCode;
         } catch (Exception error) {
             Console.Error.WriteLine(error);
-            try { File.WriteAllText(System.IO.Path.Combine(AppContext.BaseDirectory,"routeviewer-error.log"),error.ToString()); } catch { }
+            try { File.WriteAllText(System.IO.Path.Combine(AppContext.BaseDirectory,ObjectMode?"objecteditor-error.log":"routeviewer-error.log"),error.ToString()); } catch { }
             try { FileSystem?.AppendToLogFile(error.ToString()); } catch { }
             return 1;
         }
@@ -110,6 +112,7 @@ internal static class Program
 
     internal static bool LoadRoute()
     {
+        if (ObjectMode) return ObjectPreview.Load();
         CurrentlyLoading = true;
         RouteInfo.Failure=null;
         try {
@@ -150,6 +153,7 @@ internal static class Program
         var start = new System.Diagnostics.ProcessStartInfo(System.IO.Path.Combine(AppContext.BaseDirectory, OperatingSystem.IsWindows() ? "RouteViewer.Desktop.exe" : "route-picker")) {
             UseShellExecute = false, RedirectStandardOutput = true, RedirectStandardError = true
         };
+        if (ObjectMode) start.Environment["OPENBVE_OBJECT_EDITOR"] = "1";
         if (OperatingSystem.IsWindows()) start.ArgumentList.Add(create?"--new-route":"--pick");
         if (path != null) { start.ArgumentList.Add("--resolve"); start.ArgumentList.Add(path); }
         using var process = System.Diagnostics.Process.Start(start);
@@ -169,7 +173,7 @@ internal static class Program
     }
     internal static async void NewRoute()
     {
-        if(!OperatingSystem.IsWindows()||Picking||CurrentlyLoading)return;
+        if(ObjectMode||!OperatingSystem.IsWindows()||Picking||CurrentlyLoading)return;
         var editor=((ViewerWindow)Renderer.GameWindow).Editor;
         if(editor.Running){editor.Send("NEW");return;}
         Picking=true;

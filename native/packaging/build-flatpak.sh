@@ -49,6 +49,14 @@ make -C "$repo/native/linux-launcher" build/route-picker build/route-editor
 cp "$repo/native/linux-launcher/build/route-picker" "$repo/native/linux-launcher/build/route-editor" "$viewer/"
 install -m755 "$here/route-viewer-native" "$files/bin/route-viewer-native"
 install -m644 "$here/$app_id.RouteViewer.desktop" "$files/share/applications/"
+object_editor="$files/lib/openbve/object-editor"
+dotnet publish "$native/ObjectEditor/ObjectEditor.csproj" -c Release -r linux-x64 --self-contained true -o "$object_editor" -v:minimal
+rm -f "$object_editor/libcoreclrtraceptprovider.so"
+ln -s ../engine/Data "$object_editor/Data"
+cp "$repo/native/linux-launcher/build/route-picker" "$repo/native/linux-launcher/build/route-editor" "$object_editor/"
+install -m755 "$here/object-editor-native" "$files/bin/object-editor-native"
+install -m644 "$here/$app_id.ObjectEditor.desktop" "$files/share/applications/"
+
 make -C "$repo/native/linux-launcher" all check check-paths
 cp "$repo/native/linux-launcher/build/openbve-launcher" "$files/lib/openbve/"
 # Fedora's XML parser uses SONAME 2; GNOME 50 ships SONAME 16. Bundle the
@@ -85,8 +93,9 @@ flatpak build-finish --command=openbve-native --share=ipc --socket=x11 \
 # Exercise the bundled .NET runtime and all ELF dependencies inside the target runtime.
 flatpak build "$app" /app/lib/openbve/engine/OpenBve --help
 flatpak build "$app" /app/lib/openbve/route-viewer/RouteViewer --help
+flatpak build "$app" /app/lib/openbve/object-editor/ObjectEditor --help
 flatpak build --env=LD_LIBRARY_PATH=/app/lib/openbve/lib "$app" sh -ec '
-    for binary in /app/lib/openbve/openbve-launcher /app/lib/openbve/engine/*.so /app/lib/openbve/route-viewer/*.so /app/lib/openbve/route-viewer/route-picker /app/lib/openbve/route-viewer/route-editor; do
+    for binary in /app/lib/openbve/openbve-launcher /app/lib/openbve/engine/*.so /app/lib/openbve/route-viewer/*.so /app/lib/openbve/route-viewer/route-picker /app/lib/openbve/route-viewer/route-editor /app/lib/openbve/object-editor/*.so /app/lib/openbve/object-editor/route-picker /app/lib/openbve/object-editor/route-editor; do
         result=$(ldd "$binary" 2>&1) || { echo "$result"; exit 1; }
         case "$result" in *"not found"*) echo "$result"; exit 1;; esac
     done

@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+static gboolean object_editor;
 static GtkWindow *window,*host_window,*floating_window;
 static GtkPaned *paned;
 static GtkWidget *viewer_area;
@@ -29,9 +30,9 @@ static void emit(const char *verb,const char *value) {
 }
 static void title(void) {
     gboolean dirty=gtk_text_buffer_get_modified(buffer);
-    g_autofree char *heading=g_strdup_printf("%s%s — Route Viewer Native",dirty?"● ":"",route_name?route_name:"Editor de rotas");
+    g_autofree char *heading=g_strdup_printf("%s%s — %s",dirty?"● ":"",route_name?route_name:"Editor",object_editor?"OpenBVE Object Editor":"Route Viewer Native");
     gtk_window_set_title(host_window,heading);
-    gtk_window_set_title(floating_window,dirty?"● Editor da rota — alterações não salvas":"Editor da rota");
+    gtk_window_set_title(floating_window,dirty?"● Código — alterações não salvas":"Código");
 }
 static void changed(GtkTextBuffer *b,gpointer data){(void)b;(void)data;if(!changing)title();}
 // GTK owns the outer window and text controls. The existing OpenTK X11
@@ -103,7 +104,7 @@ static void request(const char *action,const char *value) {
     if(pending_action||waiting)return;
     pending_action=g_strdup(action);pending_value=g_strdup(value);
     if(!gtk_text_buffer_get_modified(buffer)){finish_action();return;}
-    g_autoptr(GtkAlertDialog) dialog=gtk_alert_dialog_new("Salvar as alterações da rota?");
+    g_autoptr(GtkAlertDialog) dialog=gtk_alert_dialog_new("Salvar as alterações do arquivo?");
     const char *buttons[]={"Cancelar","Descartar","Salvar e continuar",NULL};
     gtk_alert_dialog_set_buttons(dialog,buttons);gtk_alert_dialog_set_cancel_button(dialog,0);gtk_alert_dialog_set_default_button(dialog,2);
     gtk_alert_dialog_choose(dialog,window,NULL,choice,NULL);
@@ -139,6 +140,7 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
     else if(g_str_equal(line,"TEXT")){
         changing=TRUE;gtk_text_buffer_begin_irreversible_action(buffer);gtk_text_buffer_set_text(buffer,value,-1);gtk_text_buffer_end_irreversible_action(buffer);gtk_text_buffer_set_modified(buffer,FALSE);changing=FALSE;title();
     } else if(g_str_equal(line,"PATH")){gtk_label_set_text(status,value);g_free(route_name);route_name=g_path_get_basename(value);title();}
+    else if(g_str_equal(line,"SAVE-REQUEST"))save();
     else if(g_str_equal(line,"ROUTE"))request("ROUTE",value);
     else if(g_str_equal(line,"QUIT"))request("QUIT","");
     else if(g_str_equal(line,"EXIT"))g_main_loop_quit(loop);
@@ -154,8 +156,8 @@ static void theme_changed(AdwStyleManager *manager,GParamSpec *spec,gpointer dat
 }
 int main(int argc,char **argv) {
     if(argc!=2 && !(argc==3&&g_str_equal(argv[2],"--test")))return 2;
-    testing=argc==3;
-    g_set_prgname("openbve-routeviewer");g_set_application_name("Route Viewer Native");
+    testing=argc==3;object_editor=g_getenv("OPENBVE_OBJECT_EDITOR")!=NULL;
+    g_set_prgname(object_editor?"openbve-objecteditor":"openbve-routeviewer");g_set_application_name(object_editor?"OpenBVE Object Editor":"Route Viewer Native");
     g_setenv("GDK_BACKEND","x11",TRUE);adw_init();parent=strtoul(argv[1],NULL,10);
     host_window=GTK_WINDOW(gtk_window_new());window=host_window;
     floating_window=GTK_WINDOW(gtk_window_new());gtk_window_set_default_size(floating_window,760,680);
@@ -169,7 +171,7 @@ int main(int argc,char **argv) {
     GtkWidget *bar=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,8);gtk_box_append(GTK_BOX(box),bar);
     GtkWidget *layout=gtk_drop_down_new_from_strings(layouts);gtk_widget_set_hexpand(layout,TRUE);gtk_box_append(GTK_BOX(bar),layout);
     GtkWidget *button=gtk_button_new_with_label("Salvar e atualizar");gtk_box_append(GTK_BOX(bar),button);
-    status=GTK_LABEL(gtk_label_new("Abra uma rota para editar"));gtk_label_set_ellipsize(status,PANGO_ELLIPSIZE_MIDDLE);gtk_box_append(GTK_BOX(box),GTK_WIDGET(status));
+    status=GTK_LABEL(gtk_label_new(object_editor?"Abra um objeto B3D/CSV para editar":"Abra uma rota para editar"));gtk_label_set_ellipsize(status,PANGO_ELLIPSIZE_MIDDLE);gtk_box_append(GTK_BOX(box),GTK_WIDGET(status));
     GtkWidget *scroll=gtk_scrolled_window_new();gtk_scrolled_window_set_overlay_scrolling(GTK_SCROLLED_WINDOW(scroll),FALSE);gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scroll),GTK_POLICY_ALWAYS,GTK_POLICY_ALWAYS);gtk_widget_set_vexpand(scroll,TRUE);gtk_box_append(GTK_BOX(box),scroll);
     GtkWidget *text=gtk_text_view_new();gtk_text_view_set_monospace(GTK_TEXT_VIEW(text),TRUE);gtk_text_view_set_left_margin(GTK_TEXT_VIEW(text),12);gtk_text_view_set_top_margin(GTK_TEXT_VIEW(text),10);gtk_text_view_set_right_margin(GTK_TEXT_VIEW(text),12);gtk_text_view_set_bottom_margin(GTK_TEXT_VIEW(text),10);
     gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(text),GTK_WRAP_NONE);gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scroll),text);buffer=gtk_text_view_get_buffer(GTK_TEXT_VIEW(text));gtk_text_buffer_set_enable_undo(buffer,TRUE);
@@ -188,7 +190,7 @@ int main(int argc,char **argv) {
     GtkEventController *keys=gtk_event_controller_key_new();gtk_event_controller_set_propagation_phase(keys,GTK_PHASE_CAPTURE);g_signal_connect(keys,"key-pressed",G_CALLBACK(key_pressed),NULL);gtk_widget_add_controller(box,keys);
     gtk_window_present(host_window);GdkSurface *surface=gtk_native_get_surface(GTK_NATIVE(host_window));
     display=gdk_x11_display_get_xdisplay(gdk_surface_get_display(surface));xid=gdk_x11_surface_get_xid(surface);
-    XClassHint identity={.res_name="openbve-routeviewer",.res_class="OpenBVE-RouteViewer"};XSetClassHint(display,xid,&identity);
+    XClassHint identity={.res_name=object_editor?"openbve-objecteditor":"openbve-routeviewer",.res_class=object_editor?"OpenBVE-ObjectEditor":"OpenBVE-RouteViewer"};XSetClassHint(display,xid,&identity);
     gtk_widget_realize(GTK_WIDGET(floating_window));XSetClassHint(display,gdk_x11_surface_get_xid(gtk_native_get_surface(GTK_NATIVE(floating_window))),&identity);
     XAddToSaveSet(display,parent);arrange();title();g_timeout_add(30,place_viewer,NULL);
     loop=g_main_loop_new(NULL,FALSE);GIOChannel *channel=g_io_channel_unix_new(STDIN_FILENO);g_io_add_watch(channel,G_IO_IN|G_IO_HUP|G_IO_ERR,input,NULL);

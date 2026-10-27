@@ -37,6 +37,7 @@ internal sealed class CameraRig
     }
     internal void SetMode(NavigationMode mode)
     {
+        if (Program.ObjectMode && mode == NavigationMode.Track) return;
         if (Mode == mode) return;
         Cruise=0;
         if (mode == NavigationMode.Track) { Cab.Position=Program.Renderer.CameraTrackFollower.TrackPosition; Cab.Reset(); }
@@ -62,6 +63,7 @@ internal sealed class CameraRig
         Program.Renderer.UpdateViewport(LibRender2.Viewports.ViewportChangeMode.NoChange);
     }
     internal void ResetView() {
+        if(Program.ObjectMode){ObjectPreview.Frame();return;}
         if(Mode==NavigationMode.Track) { Cab.Reset(); FieldOfView=MathF.PI/4; SetProjection(); Apply(); }
         else {
             var eye=Pose.Position;
@@ -135,6 +137,7 @@ internal sealed class CameraRig
         camera.AbsoluteSide = ToWorld(Pose.Right);
         camera.AbsoluteUp = ToWorld(Pose.Up);
         camera.CurrentMode = CameraViewMode.Track;
+        if(Program.ObjectMode) { renderer.UpdateViewingDistances(1000); return; }
         // Route visibility and environment events need a track anchor even when
         // the user is flying away from the rails. Choose the nearest main-track
         // segment, projecting onto it rather than snapping in whole block steps.

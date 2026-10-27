@@ -10,6 +10,13 @@ internal static class ViewerEditorTest
     static Stopwatch timer,step;
 
     static Vector3 eye;
+    static double extent;
+    static double Extent() {
+        double result=0;
+        foreach(var state in Program.Renderer.StaticObjectStates)
+            foreach(var vertex in state.Prototype.Mesh.Vertices)result=Math.Max(result,vertex.Coordinates.NormSquared());
+        return result;
+    }
     internal static void Rendered(ViewerWindow window)
     {
         if(!Program.EditorTest || !Loading.Complete)return;
@@ -32,11 +39,16 @@ internal static class ViewerEditorTest
                 if(editor.Layout!="side" || !editor.CanvasMatches(window,0))return;
                 initialLoads=Program.LoadCount;eye=Program.Camera.Pose.Position;
                 // Only use --editor-test with a disposable route fixture.
-                editor.Send("TEST-EDIT","\n; Route Editor integration test — estação\n");phase++;break;
+                extent=Extent();
+                string edit="\n; Route Editor integration test — estação\n";
+                if(Program.ObjectMode)edit+=Path.GetExtension(Program.CurrentRouteFile).Equals(".b3d",StringComparison.OrdinalIgnoreCase)?"ScaleAll 2,2,2\n":"ScaleAll,2,2,2\n";
+                editor.Send("TEST-EDIT",edit);phase++;break;
             case 4:
                 if(Program.LoadCount<=initialLoads)return;
                 if(!File.ReadAllText(Program.CurrentRouteFile,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(Program.CurrentRouteFile)).Contains("Route Editor integration test"))throw new Exception("Editor did not save route");
                 if(Vector3.Distance(eye,Program.Camera.Pose.Position)>.01)throw new Exception("Editor reload moved camera");
+                if(Program.ObjectMode && (extent<=0 || Extent()<extent*3.9))throw new Exception("Saved geometry was not updated in preview");
+                if(Program.ObjectMode)Console.WriteLine("OBJECT_EDITOR_GEOMETRY_OK: saved scale applied to mesh");
                 Console.WriteLine("VIEWER_EDITOR_OK: side, bottom, detached, reattached, save from desktop editor, preview reload, camera preserved");phase++;break;
         }
     }

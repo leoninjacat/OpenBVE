@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Numerics;
@@ -147,7 +147,7 @@ internal static class ViewerSmoke
         if(scenarioDone && frames>=30 && (Program.CapturePath==null || captured) && Program.SmokeSeconds>0 && timer.Elapsed.TotalSeconds>=Program.SmokeSeconds) {
             if(Program.Renderer.StaticObjectStates.Count==0 || Program.Renderer.VisibleObjects.OpaqueFaces.Count==0)throw new Exception("Empty route scene");
             Console.WriteLine($"VIEWER_SMOKE_OK: frames={frames}, objects={Program.Renderer.StaticObjectStates.Count}, opaque={Program.Renderer.VisibleObjects.OpaqueFaces.Count}");
-            Console.WriteLine($"VIEWER_TRACK_RANGE: {Program.Camera.Limits.Min}..{Program.Camera.Limits.Max}");
+            if(!Program.ObjectMode)Console.WriteLine($"VIEWER_TRACK_RANGE: {Program.Camera.Limits.Min}..{Program.Camera.Limits.Max}");
             if(Program.MessageLogPath!=null) {
                 using var log=new StreamWriter(Program.MessageLogPath);
                 foreach(var message in Interface.GetLogSnapshot())log.WriteLine(message.Type+": "+message.Text);

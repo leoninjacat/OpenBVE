@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup><TargetFramework>net10.0</TargetFramework><OutputType>Exe</OutputType>
+<ApplicationIcon>../../../assets/icon.ico</ApplicationIcon>
+<AssemblyName>ObjectEditor</AssemblyName><RootNamespace>RouteViewer</RootNamespace>
+<EnableDefaultCompileItems>false</EnableDefaultCompileItems><GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks><NoWarn>$(NoWarn);NU1701</NoWarn></PropertyGroup><ItemGroup>
+<Compile Include="../../../source/RouteViewer/FunctionScripts.cs" />
+<Compile Include="../../../source/RouteViewer/InterfaceR.cs" />
+<Compile Include="../../../source/RouteViewer/ObjectManager.cs" />
+<Compile Include="../../../source/RouteViewer/ObjectOptimizationMode.cs" />
+<Compile Include="../../../source/RouteViewer/TrainManagerR.cs" />
+<Compile Include="../../../source/RouteViewer/WorldR.cs" />
+<Compile Include="../../../source/RouteViewer/Audio/Sounds.Update.cs" />
+
+<Compile Include="../../../source/RouteViewer/Game/MessageManager.cs" />
+<ProjectReference Include="../LibRender2/LibRender2.csproj" />
+<ProjectReference Include="../OpenBveApi/OpenBveApi.csproj" />
+<ProjectReference Include="../Formats.OpenBve/Formats.OpenBve.csproj" />
+<ProjectReference Include="../RouteManager2/RouteManager2.csproj" />
+<ProjectReference Include="../SoundManager/SoundManager.csproj" />
+<ProjectReference Include="../TrainManager/TrainManager.csproj" />
+<ProjectReference Include="../NativeGraphics/NativeGraphics.csproj" />
+<PackageReference Include="OpenTK-OpenBVE" Version="1.0.7" />
+<Compile Include="../RouteViewer/Native/**/*.cs" Exclude="../RouteViewer/Native/AssemblyInfo.cs" />
+<Compile Include="AssemblyInfo.cs" />
+<Compile Include="../OpenBVE/Native/Aliases.cs" Link="Aliases.cs" />
+</ItemGroup></Project>

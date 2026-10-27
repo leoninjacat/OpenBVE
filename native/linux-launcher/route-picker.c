@@ -31,14 +31,15 @@ int main(int argc, char **argv)
         output_path(file);
         return exit_code;
     }
+    gboolean object_editor=g_getenv("OPENBVE_OBJECT_EDITOR")!=NULL;
     adw_init();
     g_set_application_name("Route Viewer Native");
     g_autoptr(GtkFileDialog) dialog = gtk_file_dialog_new();
-    gtk_file_dialog_set_title(dialog, "Abrir rota — Route Viewer Native");
+    gtk_file_dialog_set_title(dialog, object_editor?"Abrir objeto — OpenBVE Object Editor":"Abrir rota — Route Viewer Native");
     g_autoptr(GListStore) filters = g_list_store_new(GTK_TYPE_FILE_FILTER);
     g_autoptr(GtkFileFilter) route = gtk_file_filter_new();
-    gtk_file_filter_set_name(route, "Rotas BVE (*.csv, *.rw)");
-    gtk_file_filter_add_suffix(route, "csv"); gtk_file_filter_add_suffix(route, "rw");
+    gtk_file_filter_set_name(route, object_editor?"Objetos BVE (*.b3d, *.csv)":"Rotas BVE (*.csv, *.rw)");
+    gtk_file_filter_add_suffix(route, "csv"); gtk_file_filter_add_suffix(route, object_editor?"b3d":"rw");
     g_list_store_append(filters, route);
     g_autoptr(GtkFileFilter) all = gtk_file_filter_new();
     gtk_file_filter_set_name(all, "Todos os arquivos"); gtk_file_filter_add_pattern(all, "*");

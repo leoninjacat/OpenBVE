@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OpenBVE Object Editor
+Comment=Edite objetos B3D e CSV com código e prévia 3D
+Exec=object-editor-native %f
+Icon=org.openbve.OpenBVE.Native
+Terminal=false
+Categories=Game;Simulation;
+StartupNotify=false
+StartupWMClass=OpenBVE-ObjectEditor

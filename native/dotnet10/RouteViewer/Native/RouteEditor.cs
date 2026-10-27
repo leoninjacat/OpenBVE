@@ -32,6 +32,7 @@ internal sealed class RouteEditor : IDisposable
                 var start=new ProcessStartInfo(Path.Combine(AppContext.BaseDirectory,OperatingSystem.IsWindows()?"RouteViewer.Desktop.exe":"route-editor")) {
                     UseShellExecute=false,RedirectStandardInput=true,RedirectStandardOutput=true
                 };
+                if (Program.ObjectMode) start.Environment["OPENBVE_OBJECT_EDITOR"]="1";
                 start.ArgumentList.Add(window.WindowInfo.Handle.ToInt64().ToString());
                 process=new Process { StartInfo=start,EnableRaisingEvents=true };
                 process.OutputDataReceived+=(_,e)=>{if(e.Data!=null)messages.Enqueue(e.Data);};

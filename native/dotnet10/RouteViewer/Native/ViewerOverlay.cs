@@ -61,13 +61,14 @@ internal static class ViewerOverlay
         Add("toggle-ui","eye","Exibir / ocultar interface · F10",w-60,16,true,!window.InterfaceVisible);
         Add("toggle-editor","document","Exibir / ocultar editor · F8",w-60,60,window.Editor.Running,window.Editor.Visible);
         if(!window.InterfaceVisible)return;
-        Controls.Add(new("route-info","","Informações da rota · clique para ver mensagens",16,68,340,140,ready||RouteInfo.Errors>0));
+        Controls.Add(new("route-info","",Program.ObjectMode?"Objeto · clique para ver mensagens":"Informações da rota · clique para ver mensagens",16,68,340,140,ready||RouteInfo.Errors>0));
         string[] ids={"open","reload","previous","next","home","wire","events","log","help"};
         string[] icons={"folder","reload","previous","next","home","wire","events","log","help"};
         string[] tips={"Abrir rota · Ctrl+O","Recarregar · F5","Estação anterior · Page Up","Próxima estação · Page Down","Restaurar visão · Num 5","Aramado · F","Eventos da rota","Mensagens · F9","Ajuda · F1"};
         if(OperatingSystem.IsWindows()) {
             ids=ids.Concat(new[]{"new"}).ToArray();icons=icons.Concat(new[]{"plus"}).ToArray();tips=tips.Concat(new[]{"Nova rota - Ctrl+N"}).ToArray();
         }
+        if(Program.ObjectMode){ids=new[]{"open","reload","home","wire","log","help"};icons=new[]{"folder","reload","home","wire","log","help"};tips=new[]{"Abrir objeto · Ctrl+O","Recarregar · F5","Enquadrar objeto · Home","Aramado · F","Mensagens · F9","Ajuda · F1"};}
         for(int i=0;i<ids.Length;i++)Add(ids[i],icons[i],tips[i],16+i*44,16,ids[i] is "open" or "new"?!Program.Picking:ids[i] is "log" or "help"||ready,ids[i]=="wire"&&Program.Renderer.OptionWireFrame||ids[i]=="events"&&Program.Renderer.OptionEvents);
         Controls.Add(new("select-track","",$"Selecionar via - Tab alterna vias",w-292,16,136,40,ready,TrackDropdownOpen));
         Add("mode-track","track","Cabine invisível · via selecionada",w-148,16,ready,!free);
@@ -85,11 +86,12 @@ internal static class ViewerOverlay
         Controls.Add(new("speed-slider","","Velocidade de navegação · km/h",74,h-58,144,26,ready));
         // Globe = orbit; surrounding arrows = translation, independent of track 0.
         float cx=w-108,cy=h-112;
-        Add("orbit","globe",free?"Girar na posição livre · arraste":"Girar na cabine · arraste",cx-50,cy-50,ready,window.Drag==DragMode.Orbit,100);
+        Add("orbit","globe",Program.ObjectMode?"Orbitar objeto · arraste":free?"Girar na posição livre · arraste":"Girar na cabine · arraste",cx-50,cy-50,ready,window.Drag==DragMode.Orbit,100);
         Add("forward","up","Voo livre para frente · W",cx-18,cy-91,ready&&free,window.Held=="forward",36);
         Add("back","down","Voo livre para trás · S",cx-18,cy+55,ready&&free,window.Held=="back",36);
         Add("left","left","Voo livre à esquerda · A",cx-91,cy-18,ready&&free,window.Held=="left",36);
         Add("right","right","Voo livre à direita · D",cx+55,cy-18,ready&&free,window.Held=="right",36);
+        if(Program.ObjectMode)Controls.RemoveAll(c=>c.Id is "select-track" or "mode-track" or "rail-forward" or "rail-play" or "rail-back" or "rail-slider");
         if(window.Help||window.ShowLog)Add("close","close","Fechar · Esc",w/2+310,123);
         if(window.ShowLog&&!window.Help)BuildLog(window,w);
         if (ready && TrackDropdownOpen && !window.Help && !window.ShowLog) {
@@ -156,9 +158,9 @@ internal static class ViewerOverlay
         DrawRouteInfo(r);
         bool loaded=Loading.Complete&&Program.CurrentRouteFile!=null;
         string state=Program.Camera.Mode==NavigationMode.Track?$"Via {Program.Camera.SelectedTrack}":"Livre";
-        string status=loaded?$"{state}   ·   {r.CameraTrackFollower.TrackPosition:0} m":Program.Status;
+        string status=Program.ObjectMode?Program.Status:loaded?$"{state}   ·   {r.CameraTrackFollower.TrackPosition:0} m":Program.Status;
         Text(r,status,w/2-Math.Min(status.Length*3,230),h-24,White);
-        if(!loaded && RouteInfo.Failure==null) {PlateAt(r,w/2-210,h/2-48,420,96,Plate);Text(r,"Abra uma rota CSV/RW ou arraste o arquivo para a janela.",w/2-190,h/2-15,White);}
+        if(!loaded && RouteInfo.Failure==null) {PlateAt(r,w/2-210,h/2-48,420,96,Plate);Text(r,Program.ObjectMode?"Abra um objeto B3D/CSV ou arraste o arquivo.":"Abra uma rota CSV/RW ou arraste o arquivo para a janela.",w/2-190,h/2-15,White);}
         var hovered=Controls.LastOrDefault(c=>window.PointerX>=c.X*scale&&window.PointerY>=c.Y*scale&&window.PointerX<(c.X+c.W)*scale&&window.PointerY<(c.Y+c.H)*scale);
         if(hovered!=null&&!window.Help&&!window.ShowLog) {
             float tw=hovered.Tip.Length*7+20,tx=Math.Clamp(window.PointerX/scale+14,8,Math.Max(8,w-tw-8)),ty=window.PointerY/scale+48;
@@ -167,7 +169,7 @@ internal static class ViewerOverlay
         }
         if(window.Help||window.ShowLog) {
             float x=w/2-360;PlateAt(r,x,110,720,470,window.DarkTheme?new Color128(.07f,.08f,.09f,.98f):new Color128(.97f,.98f,.99f,.98f));
-            Text(r,window.Help?"Câmera e navegação":"Mensagens da rota",x+24,137,White);
+            Text(r,window.Help?"Câmera e navegação":Program.ObjectMode?"Mensagens do objeto":"Mensagens da rota",x+24,137,White);
             var close=Controls.Last(c=>c.Id=="close");Icon(r,"close",close.X,close.Y,40,40,White);
             if(window.ShowLog&&!window.Help) {
                 for(int row=0;row<VisibleLogRows&&row+window.LogScroll<logRows.Count;row++) {
@@ -193,6 +195,7 @@ internal static class ViewerOverlay
                 "Roda / controle à esquerda: zoom. Slider inferior: velocidade.",
                 "Page Up/Down: estações. Ctrl+O: abrir. F5: recarregar."
             };
+            if(Program.ObjectMode)lines=new[]{"Ctrl+O: abrir objeto B3D/CSV.","Ctrl+S: salvar o código e atualizar a prévia.","Lateral / Abaixo / Janela independente: posição do editor.","WASD + Q/E: mover câmera. Shift: acelerar.","MMB: orbitar. Botão direito: olhar. Shift+MMB: pan.","Roda: aproximar / afastar. Home: enquadrar objeto.","F: aramado. F5: recarregar arquivo salvo.","F9: mensagens do parser. F8: mostrar / ocultar código."};
             for(int i=0;i<lines.Length;i++){string line=lines[i];if(line.Length>86)line=line[..85]+"…";Text(r,line,x+24,190+i*32,Muted);}
         }
     }
