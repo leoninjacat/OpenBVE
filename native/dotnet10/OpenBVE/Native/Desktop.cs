@@ -24,6 +24,7 @@ namespace OpenBve.Native.Desktop
                 string file = System.IO.Path.Combine(AppContext.BaseDirectory, name.Name + ".dll");
                 return System.IO.File.Exists(file) ? context.LoadFromAssemblyPath(file) : null;
             };
+            if (!OperatingSystem.IsLinux()) return;
             NativeLibrary.SetDllImportResolver(typeof(OpenTK.Toolkit).Assembly, (name, assembly, path) => {
                 string mapped = name switch {
                     "openal32.dll" => "libopenal.so.1", "SDL2.dll" => "libSDL2-2.0.so.0",

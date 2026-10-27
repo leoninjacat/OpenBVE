@@ -1,0 +1,88 @@
+﻿; Minha rota - criado no Route Viewer by LT ARTS
+; Base gerada e bibliotecas escolhidas: consulte catalogo-objetos.json e preserve os caminhos relativos.
+; Os objetos Structure.Rail(0) repetem-se a cada bloco de 25 m.
+
+With Options
+.BlockLength 25
+
+With Route
+.Comment Minha rota
+.Gauge 1600
+
+With Structure
+; Trilhos — índices desta categoria
+.Rail(0) ../../../../../Object/Mobitrens/Trilhos/trilho.b3d
+.Rail(1) ../../../../../Object/Mobitrens/Trilhos/bridgetrack.b3d
+.Rail(2) ../../../../../Object/Mobitrens/Trilhos/bridgetrack2.b3d
+.Rail(3) ../../../../../Object/Mobitrens/Trilhos/brown-1000_overhead.b3d
+.Rail(4) ../../../../../Object/Mobitrens/Trilhos/brown-150.B3D
+.Rail(5) ../../../../../Object/Mobitrens/Trilhos/brown-150_overhead.B3D
+.Rail(6) ../../../../../Object/Mobitrens/Trilhos/brown-300.b3d
+.Rail(7) ../../../../../Object/Mobitrens/Trilhos/brown-300_overhead.b3d
+.Rail(8) ../../../../../Object/Mobitrens/Trilhos/brown-500_overhead.B3D
+.Rail(9) ../../../../../Object/Mobitrens/Trilhos/brown.b3d
+.Rail(10) ../../../../../Object/Mobitrens/Trilhos/brown1000_overhead.b3d
+.Rail(11) ../../../../../Object/Mobitrens/Trilhos/brown150.B3D
+.Rail(12) ../../../../../Object/Mobitrens/Trilhos/brown150_overhead.B3D
+.Rail(13) ../../../../../Object/Mobitrens/Trilhos/brown300.b3d
+.Rail(14) ../../../../../Object/Mobitrens/Trilhos/brown300_overhead.b3d
+.Rail(15) ../../../../../Object/Mobitrens/Trilhos/brown5.b3d
+.Rail(16) ../../../../../Object/Mobitrens/Trilhos/brown500_overhead.b3d
+.Rail(17) ../../../../../Object/Mobitrens/Trilhos/cube.b3d
+.Rail(18) ../../../../../Object/Mobitrens/Trilhos/empty.b3d
+.Rail(19) ../../../../../Object/Mobitrens/Trilhos/estacaotrack.b3d
+.Rail(20) ../../../../../Object/Mobitrens/Trilhos/greeny.b3d
+.Rail(21) ../../../../../Object/Mobitrens/Trilhos/metrica.b3d
+.Rail(22) ../../../../../Object/Mobitrens/Trilhos/NULL.b3d
+.Rail(23) ../../../../../Object/Mobitrens/Trilhos/telha.csv
+.Rail(24) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/bridgetrack.b3d
+.Rail(25) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/bridgetrack2.b3d
+.Rail(26) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-1000_overhead.b3d
+.Rail(27) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-150.B3D
+.Rail(28) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-150_overhead.B3D
+.Rail(29) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-300.b3d
+.Rail(30) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-300_overhead.b3d
+.Rail(31) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-500_overhead.B3D
+.Rail(32) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown.b3d
+.Rail(33) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown1000_overhead.b3d
+.Rail(34) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown150.B3D
+.Rail(35) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown150_overhead.B3D
+.Rail(36) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown300.b3d
+.Rail(37) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown300_overhead.b3d
+.Rail(38) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown5.b3d
+.Rail(39) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown500_overhead.b3d
+.Rail(40) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/cube.b3d
+.Rail(41) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/empty.b3d
+.Rail(42) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/estacaotrack.b3d
+.Rail(43) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/metrica.b3d
+.Rail(44) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/NULL.b3d
+.Rail(45) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/telha.csv
+.Rail(46) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/trilho.b3d
+.Rail(47) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/trilho_claro.b3d
+.Rail(48) ../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/trilho_escuro.b3d
+.Rail(49) ../../../../../Object/Mobitrens/Trilhos/trilho_claro.b3d
+.Rail(50) ../../../../../Object/Mobitrens/Trilhos/trilho_escuro.b3d
+; Terreno / solo — índices desta categoria
+.Ground(0) ../../../../../Object/Mobitrens/Solo/groundE.b3d
+.Ground(1) ../../../../../Object/Mobitrens/Solo/groundT.b3d
+; Taludes à esquerda — índices desta categoria
+.DikeL(1) ../../../../../Object/Mobitrens/Dike/Dike1L.b3d
+.DikeL(2) ../../../../../Object/Mobitrens/Dike/Dike1R.b3d
+; Taludes à direita — índices desta categoria
+.DikeR(0) ../../../../../Object/Mobitrens/Dike/Dike1R.b3d
+.DikeL(0) ../../../../../Object/Mobitrens/Dike/Dike1L.b3d
+; Postes / catenária (uma via) — índices desta categoria
+.Pole(0) ../../../../../Object/Mobitrens/Pole/pol0.b3d
+.Pole(0;2) ../../../../../Object/Mobitrens/Pole/pol00.b3d
+.Pole(0;3) ../../../../../Object/Mobitrens/Pole/pol1.b3d
+.Pole(0;4) ../../../../../Object/Mobitrens/Pole/pol2.b3d
+.Pole(0;5) ../../../../../Object/Mobitrens/Pole/RAIL/pol0.b3d
+.Pole(0;6) ../../../../../Object/Mobitrens/Pole/RAIL/pol1.b3d
+
+With Track
+0, .RailType 0;0, .Ground 0, .Pitch 0,.height 10, .Curve 0;0, .Dike 0;0;1, .Pole 0;0;0;50;1
+; Objetos contínuos devem ter 25 m no eixo Z (Options.BlockLength). Confira a escala dos seus modelos.
+; Comece a escrever sua rota abaixo. Posições em metros.
+; Exemplo: 100, .Curve 500;0
+; Exemplo: 200, .Curve 0;0
+1000, .Accuracy 2

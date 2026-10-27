@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Threading;
 using LibRender2.Viewports;
@@ -13,6 +13,9 @@ internal enum DragMode { None, Orbit, Pan, Zoom, Look }
 internal sealed class ViewerWindow : GameWindow
 {
     internal readonly RouteEditor Editor = new();
+    internal readonly ViewerKeyboard Keys = new();
+    readonly WindowsKeyboard windowsKeys=new();
+    internal bool ViewportFocused=>WindowIdentity.HasKeyboardFocus(WindowInfo.Handle,Focused);
     internal int ViewWidth => Width;
     internal int ViewHeight => Height;
     internal void UpdateCanvas()
@@ -58,11 +61,12 @@ internal sealed class ViewerWindow : GameWindow
     internal int ExpandedLogMessage=-1, LogScroll;
     internal int PointerX, PointerY;
     private bool initialized;
-    internal ViewerWindow() : base(Program.WindowWidth, Program.WindowHeight, new GraphicsMode(32,24,8,0), "Route Viewer Native") { VSync = VSyncMode.Off; TargetRenderFrequency=60; }
+    internal ViewerWindow() : base(Program.WindowWidth, Program.WindowHeight, new GraphicsMode(32,24,8,0), "OpenBVE Route Editor By LT ARTS") { VSync = VSyncMode.Off; TargetRenderFrequency=60; }
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
         WindowIdentity.Set(WindowInfo.Handle);
+        windowsKeys.Attach(WindowInfo.Handle);
         Program.Renderer.Screen.Width = Width;
         Program.Renderer.Screen.Height = Height;
         Program.Renderer.Initialize();
@@ -79,6 +83,8 @@ internal sealed class ViewerWindow : GameWindow
         Program.Renderer.UpdateViewport(ViewportChangeMode.NoChange);
         initialized = true;
         if (Program.CurrentRouteFile != null) Program.LoadRoute();
+        else if (Program.CreateOnStart) Program.NewRoute();
+        else if (OperatingSystem.IsWindows() && Program.SmokeSeconds <= 0) Program.OpenPicker();
     }
     protected override void OnResize(EventArgs e)
     {
@@ -125,11 +131,16 @@ internal sealed class ViewerWindow : GameWindow
             Program.Reload = false; Program.LoadRoute();
         }
         PollInteraction();
+        Keys.Capture(ViewportFocused);
+        windowsKeys.Drain((key,down)=>{
+            if(!down){Keys.Release(key);return;}
+            if(ViewportFocused && Keys.Press(key))HandleKey(key,Keys.IsKeyDown(Key.ControlLeft)||Keys.IsKeyDown(Key.ControlRight));
+        });
         if (!Loading.Complete || Program.CurrentRouteFile == null) return;
-        if (!Focused) Program.Camera.Cruise=0;
+        if (!ViewportFocused) Program.Camera.Cruise=0;
         float elapsed = (float)Math.Min(e.Time, .05);
-        if ((Focused||PointerInteraction) && !Help && !ShowLog) {
-            var keys = Keyboard.GetState();
+        if ((ViewportFocused||PointerInteraction) && !Help && !ShowLog) {
+            var keys = Keys;
             float x = (keys.IsKeyDown(Key.D) ? 1 : 0) - (keys.IsKeyDown(Key.A) ? 1 : 0);
             float y = (keys.IsKeyDown(Key.E) ? 1 : 0) - (keys.IsKeyDown(Key.Q) ? 1 : 0);
             float z = (keys.IsKeyDown(Key.W) ? 1 : 0) - (keys.IsKeyDown(Key.S) ? 1 : 0);
@@ -169,6 +180,7 @@ internal sealed class ViewerWindow : GameWindow
         ViewerFeedbackTest.Rendered(this);
         ViewerSmoke.Rendered(this);
         ViewerUiTest.Rendered(this);
+        ViewerKeyboardTest.Rendered(this);
         if (!IsExiting) SwapBuffers();
     }
     protected override void OnMouseDown(MouseButtonEventArgs e)
@@ -181,7 +193,8 @@ internal sealed class ViewerWindow : GameWindow
         if (e.Button == MouseButton.Left && ViewerOverlay.Press(this, e.X, e.Y)) {BeginInteraction(e.Button);return;}
         if (!Loading.Complete || Help || ShowLog) return;
         if (e.Button == MouseButton.Middle) {
-            var keys = Keyboard.GetState();
+            Keys.Capture(ViewportFocused);
+            var keys = Keys;
             Drag = keys.IsKeyDown(Key.ShiftLeft) || keys.IsKeyDown(Key.ShiftRight) ? DragMode.Pan :
                 keys.IsKeyDown(Key.ControlLeft) || keys.IsKeyDown(Key.ControlRight) ? DragMode.Zoom : DragMode.Orbit;
         } else if (e.Button == MouseButton.Right) Drag = DragMode.Look;
@@ -217,23 +230,35 @@ internal sealed class ViewerWindow : GameWindow
         if(ShowLog&&!Help) {LogScroll=Math.Max(0,LogScroll-(int)Math.Sign(e.DeltaPrecise)*3);return;}
         if (Loading.Complete && !Help && !ShowLog && !Program.CurrentlyLoading) Program.Camera.Zoom(e.DeltaPrecise);
     }
-    protected override void OnFocusedChanged(EventArgs e) { base.OnFocusedChanged(e); if(!Focused&&!PointerInteraction)EndInteraction(); }
+    protected override void OnFocusedChanged(EventArgs e) { base.OnFocusedChanged(e); if(!ViewportFocused&&!PointerInteraction){Keys.Capture(false);EndInteraction();} }
+    protected override void OnKeyUp(KeyboardKeyEventArgs e)
+    {
+        base.OnKeyUp(e);Keys.Release(e.Key);
+    }
     protected override void OnKeyDown(KeyboardKeyEventArgs e)
     {
         base.OnKeyDown(e);
+        if(OperatingSystem.IsWindows())return;
+        if(!ViewportFocused)return;
+        Keys.Press(e.Key);
+        HandleKey(e.Key,e.Control);
+    }
+    void HandleKey(Key key,bool control)
+    {
         if (Program.CurrentlyLoading) return;
-        if(e.Key==Key.F10){ToggleInterface();return;}
-        if(e.Key==Key.F8){Editor.ToggleVisible();return;}
-        if (e.Key == Key.Escape) { Help = false; ShowLog = false; Drag = DragMode.None; Held = null; return; }
-        if (e.Key == Key.F1) { Help = !Help;if(Help)InterfaceVisible=true; return; }
-        if (e.Key == Key.F7 || e.Control && e.Key == Key.O) { Program.OpenPicker(); return; }
-        if (e.Key == Key.F9) { ShowLog = !ShowLog;if(ShowLog)InterfaceVisible=true; return; }
+        if(control&&key==Key.N){Program.NewRoute();return;}
+        if(key==Key.F10){ToggleInterface();return;}
+        if(key==Key.F8){Editor.ToggleVisible();return;}
+        if (key == Key.Escape) { Help = false; ShowLog = false; Drag = DragMode.None; Held = null; return; }
+        if (key == Key.F1) { Help = !Help;if(Help)InterfaceVisible=true; return; }
+        if (key == Key.F7 || control && key == Key.O) { Program.OpenPicker(); return; }
+        if (key == Key.F9) { ShowLog = !ShowLog;if(ShowLog)InterfaceVisible=true; return; }
         if (!Loading.Complete || Help || ShowLog) return;
-        if(e.Key==Key.Tab) {
-            Program.Camera.SetMode(Program.Camera.Mode==NavigationMode.Track?NavigationMode.Free:NavigationMode.Track);
+        if(key==Key.Tab) {
+            Program.Camera.CycleTrack(); ViewerOverlay.TrackDropdownOpen=false;
             Drag=DragMode.None;Held=null;return;
         }
-        switch (e.Key) {
+        switch (key) {
             case Key.F5: Program.Reload = true; break;
             case Key.Home: case Key.Keypad5: Program.Camera.ResetView(); break;
             case Key.PageDown: Program.Camera.Station(1); break;
@@ -257,14 +282,15 @@ internal sealed class ViewerWindow : GameWindow
         if(Editor.Running && !Editor.CloseApproved) { Editor.Send("QUIT");e.Cancel=true;return; }
         EndInteraction();
         WindowIdentity.DisposePointer();
+        windowsKeys.Dispose();
         Editor.Dispose();
         ViewerIcons.Dispose();
         Program.Renderer.VisibilityThreadShouldRun = false;
         // BaseRenderer.DeInitialize also disposes GameWindow; leave ownership
         // with OpenTK so closing does not unmap the same X11 window twice.
         Program.Renderer.GameWindow = null;
-        Program.Renderer.DeInitialize();
         Interface.CurrentOptions.Save(OpenBveApi.Path.CombineFile(Program.FileSystem.SettingsFolder, "1.5.0/options_rv.cfg"));
+        Program.Renderer.DeInitialize();
         base.OnClosing(e);
     }
 }

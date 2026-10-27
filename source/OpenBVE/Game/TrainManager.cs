@@ -24,6 +24,7 @@ namespace OpenBve
 			{
 				return;
 			}
+			PlayerTrain?.RoundTrip?.UpdateInterlocking();
 			for (int i = 0; i < Trains.Count; i++) {
 				Trains[i].Update(TimeElapsed);
 			}
@@ -106,6 +107,8 @@ namespace OpenBve
 					}
 				}
 			});
+			RoundTripMode.Update();
+			CabinAnnouncements.Update();
 		}
 	}
 }

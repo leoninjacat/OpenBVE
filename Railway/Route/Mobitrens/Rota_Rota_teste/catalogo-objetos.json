@@ -1,0 +1,433 @@
+﻿{
+  "Documentation": "https://openbve-project.net/documentation/HTML/route_csv.html",
+  "RelativeTo": "Railway/Object",
+  "BlockLength": 25,
+  "Objects": [
+    {
+      "Command": "Rail",
+      "Index": 0,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/trilho.b3d",
+      "Initial": true
+    },
+    {
+      "Command": "Rail",
+      "Index": 1,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/bridgetrack.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 2,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/bridgetrack2.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 3,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown-1000_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 4,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown-150.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 5,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown-150_overhead.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 6,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown-300.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 7,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown-300_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 8,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown-500_overhead.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 9,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 10,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown1000_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 11,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown150.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 12,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown150_overhead.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 13,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown300.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 14,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown300_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 15,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown5.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 16,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/brown500_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 17,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/cube.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 18,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/empty.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 19,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/estacaotrack.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 20,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/greeny.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 21,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/metrica.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 22,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/NULL.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 23,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/telha.csv",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 24,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/bridgetrack.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 25,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/bridgetrack2.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 26,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-1000_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 27,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-150.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 28,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-150_overhead.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 29,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-300.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 30,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-300_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 31,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown-500_overhead.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 32,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 33,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown1000_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 34,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown150.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 35,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown150_overhead.B3D",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 36,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown300.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 37,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown300_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 38,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown5.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 39,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/brown500_overhead.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 40,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/cube.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 41,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/empty.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 42,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/estacaotrack.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 43,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/metrica.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 44,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/NULL.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 45,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/telha.csv",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 46,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/trilho.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 47,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/trilho_claro.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 48,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/TrilhosTunel/trilho_escuro.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 49,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/trilho_claro.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Rail",
+      "Index": 50,
+      "Path": "../../../../../Object/Mobitrens/Trilhos/trilho_escuro.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Ground",
+      "Index": 0,
+      "Path": "../../../../../Object/Mobitrens/Solo/groundE.b3d",
+      "Initial": true
+    },
+    {
+      "Command": "Ground",
+      "Index": 1,
+      "Path": "../../../../../Object/Mobitrens/Solo/groundT.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Pole",
+      "Index": 1,
+      "Path": "../../../../../Object/Mobitrens/Pole/pol0.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Pole",
+      "Index": 2,
+      "Path": "../../../../../Object/Mobitrens/Pole/pol00.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Pole",
+      "Index": 3,
+      "Path": "../../../../../Object/Mobitrens/Pole/pol1.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Pole",
+      "Index": 4,
+      "Path": "../../../../../Object/Mobitrens/Pole/pol2.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Pole",
+      "Index": 5,
+      "Path": "../../../../../Object/Mobitrens/Pole/RAIL/pol0.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "Pole",
+      "Index": 6,
+      "Path": "../../../../../Object/Mobitrens/Pole/RAIL/pol1.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "FormL",
+      "Index": 1,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormL.b3d",
+      "Initial": true
+    },
+    {
+      "Command": "FormL",
+      "Index": 2,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormC.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "FormL",
+      "Index": 3,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormR.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "FormR",
+      "Index": 1,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormR.b3d",
+      "Initial": true
+    },
+    {
+      "Command": "FormR",
+      "Index": 2,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormC.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "FormR",
+      "Index": 3,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormL.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "FormCL",
+      "Index": 1,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormC.b3d",
+      "Initial": true
+    },
+    {
+      "Command": "FormCL",
+      "Index": 2,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormL.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "FormCL",
+      "Index": 3,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormR.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "FormCR",
+      "Index": 1,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormC.b3d",
+      "Initial": true
+    },
+    {
+      "Command": "FormCR",
+      "Index": 2,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormL.b3d",
+      "Initial": false
+    },
+    {
+      "Command": "FormCR",
+      "Index": 3,
+      "Path": "../../../../../Object/Mobitrens/Plataformas/FormR.b3d",
+      "Initial": false
+    }
+  ]
+}

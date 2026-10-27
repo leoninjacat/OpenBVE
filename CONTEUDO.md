@@ -28,9 +28,12 @@ O conteúdo mantém sua autoria e os avisos que acompanham os arquivos; sua
 inclusão não o relicencia sob a licença do motor OpenBVE. Não foram encontrados
 arquivos separados de licença nas pastas originais.
 
-Algumas texturas originais com extensão `.bmp` têm conteúdo inválido. Elas foram
-preservadas como recebidas e podem gerar mensagens no visualizador; a inclusão
-no repositório não corrige esses arquivos. O port nativo também não tem suporte
+As 42 texturas `.bmp` danificadas da pasta `Object/Mobitrens` foram restauradas
+a partir das cópias válidas nos mesmos caminhos de `Object/Mobitrens_emissive`.
+A validação verifica assinatura, dimensões e decodificação completa, sem
+substituições genéricas. O empacotador Windows bloqueia a criação de ZIP se
+qualquer imagem incluída falhar no plugin que será distribuído.
+O port nativo também não tem suporte
 a todos os plugins da versão Mono. Veja `native/packaging/README.md`.
 
 Após instalar o aplicativo, execute da raiz:

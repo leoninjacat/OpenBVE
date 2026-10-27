@@ -1,4 +1,4 @@
-﻿//Simplified BSD License (BSD-2-Clause)
+//Simplified BSD License (BSD-2-Clause)
 //
 //Copyright (c) 2023, Christopher Lees, The OpenBVE Project
 //
@@ -83,6 +83,9 @@ namespace RouteManager2.Tracks
 		/// <remarks>Toggle switch to reset</remarks>
 		public bool RunThrough;
 
+        /// <summary>Interlocking holds this switch while its crossover is occupied.</summary>
+        public bool Locked;
+
 		public Switch(int[] tracks, string[] trackNames, int toeRail, int initialTrack, double trackPosition, SwitchType type, string name, bool fixedRoute, TrackDirection direction)
 		{
 			Type = type;
@@ -113,7 +116,7 @@ namespace RouteManager2.Tracks
 		/// <summary>Toggles the switch to the next track</summary>
 		public void Toggle()
 		{
-			if (FixedRoute)
+			if (FixedRoute || Locked)
 			{
 				return;
 			}

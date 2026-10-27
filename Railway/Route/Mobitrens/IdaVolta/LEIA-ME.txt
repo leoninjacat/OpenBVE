@@ -1,0 +1,74 @@
+﻿MOBITRENS - TESTE FUNCIONAL DE IDA E VOLTA
+
+ABRIR
+Execute Iniciar-Teste-IdaVolta.cmd na raiz do projeto.
+Ele usa a build atualizada em native/dotnet10/openbve-windows-beta
+com a rota idavolta.csv e o trem Serie 1000 Cofebra.
+Tambem e possivel escolher esta rota no launcher dessa mesma build.
+Versoes anteriores do simulador nao leem o arquivo de operacao de retorno.
+
+COMO JOGAR
+1. Selecione F no reversor e aguarde o embarque inicial no Terminal Sul (10 s, mais animacao das portas).
+2. Conduza normalmente, respeitando 40 km/h.
+3. Pare em Central, na via 1, com a frente do trem em 1290 m.
+   As portas corretas abrem automaticamente. Aguarde os 20 s e o fechamento.
+4. Siga ate o Terminal Norte e pare em 2490 m, na via 0.
+5. Depois da abertura das portas inicia a contagem de 30 s.
+   Ao zerar, as portas fecham e o trem e preparado para a volta.
+6. A cabine carregada passa para a outra extremidade. O trem nasce parado,
+   freado e com reversor em neutro, na via 1, com a frente em 2310 m.
+   Selecione F e libere os freios para conduzir no sentido de retorno.
+7. Na volta, pare em Central em 1110 m (via 1) e no Terminal Sul
+   em 110 m (via 0). O painel mostra o sentido e a distancia da proxima parada.
+8. No Terminal Sul, nova contagem de 30 s prepara outra viagem de ida.
+   O ciclo pode ser repetido sem carregar outro CSV ou reiniciar a simulacao.
+
+O Serie 1000 fecha a cortina da cabine em neutro. Selecionar F recolhe a cortina e libera a visao da linha.
+
+A tolerancia de parada e de 5 m. E necessario parar na via prevista.
+Portas e embarque sao automaticos nesta operacao de teste.
+O contador usa o tempo da simulacao e nao avanca durante uma pausa.
+A preparacao aguarda o fechamento completo das portas e a via livre.
+Nao ha trens IA nesta rota de laboratorio; o bloqueio de reposicionamento
+por outra composicao foi verificado no teste de integracao.
+
+TRACADO
+Terminal Sul: plataforma 100-300 m.
+Central: plataforma 1100-1300 m.
+Terminal Norte: plataforma 2300-2500 m.
+Via 0 em x=0; via 1 em x=-5. Extensao desenhada: 2800 m.
+AMVs Sul A/B: 600 e 750 m, conector 2 entre vias 0 e 1.
+AMVs Norte A/B: 1800 e 1950 m, conector 3 entre vias 1 e 0.
+Ida: 0 -> 2 -> 1 -> 3 -> 0.
+Volta: 1 -> 2 -> 0; o travessao Norte e passado pela via 1.
+O alinhamento inicial dos quatro AMVs atende esse ciclo.
+O menu nativo de AMVs permite mudar as chaves (Ctrl+F9 nos controles padrao).
+Ambas as chaves de um travessao ficam travadas enquanto uma composicao
+ocupa o conjunto, ate a cauda liberar a zona.
+Se alterar manualmente o tracado, restaure o alinhamento para servir as
+estacoes nas vias previstas pelo plano de operacao.
+Os objetos de trilho desenham os conectores; nao ha animacao de agulhas.
+
+CONFIGURACAO
+idavolta.roundtrip.xml, ao lado do CSV, configura a operacao.
+Outbound e Return definem a sequencia, via, posicao da frente do trem,
+tempo de parada e portas L/R relativas a cabine em cada sentido.
+Throat define os limites e vias das zonas de travamento dos AMVs.
+A direcao e individual do jogador; os trilhos nao sao invertidos globalmente.
+As rotas sem esse XML mantem a operacao anterior.
+Base visual: idavolta.csv fornecido pelo autor e os objetos da Mobitrens.
+
+VALIDACAO
+Teste de integracao /native-roundtrip-test: dois ciclos completos,
+passagem dos eixos e truques pelos AMVs nos dois sentidos sem descarrilar,
+paradas na via 1, contagens dos terminais, espera com via de retorno ocupada,
+travamento das chaves ocupadas, troca e altura da cabine, relogio continuo.
+Tracao verificada com a fisica normal: F e potencia movem o trem no sentido
+de quilometragem decrescente apos a reversao.
+Foi corrigido o cabecalho de sound.cfg do trem de teste e o indice 1 usa
+Run0.wav como fallback, pois o pacote nao inclui Run1.wav.
+
+REGRESSAO: a rota GAT-CAC night passou no teste de reposicionamento normal, preservando 20 trens IA e seus horarios; o modo de ida e volta nao foi ativado nessa rota.
+
+CORRECAO DO FECHAMENTO NO TERMINAL: o renderizador agora recria os buffers de malhas substituidas pela reversao do trem. Testes passaram com quatro reversoes renderizadas e uma partida real de volta de 18 segundos (aproximadamente 25 km/h), com a cabine traseira ativa.
+Para configurar seus proprios terminais sem agentes de IA, consulte COMO-CONFIGURAR-TERMINAIS.md.

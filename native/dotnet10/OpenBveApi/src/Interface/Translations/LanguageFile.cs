@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace OpenBveApi.Interface {
 	public static partial class Translations {
+        public static IReadOnlyDictionary<string, NewLanguage> AvailableLanguages => AvailableNewLanguages;
 
 		/// <summary>Loads all available language files from the specified folder</summary>
         public static void LoadLanguageFiles(string languageFolder) {

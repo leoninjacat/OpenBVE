@@ -1,0 +1,139 @@
+﻿With Route
+.Comment Mobitrens Linha X (Rota Fictícia);
+.Timetable Extensao 1 - 2;
+;.image info1.png;
+.Change 0;
+.Gauge 1067 
+
+With Options,
+.objectvisibility 1,
+
+With Structure;
+.DikeL(0)  Mobitrens\Dike\Dike1L.b3d,
+.DikeR(0)  Mobitrens\Dike\Dike1R.b3d,
+
+.rail(0) Mobitrens\Trilhos\trilho.B3D
+.rail(1) Mobitrens\Trilhos\NULL.b3d;
+.rail(2) Mobitrens\Trilhos\brown-500_overhead.B3D
+.rail(3) Mobitrens\Trilhos\brown500_overhead.B3D
+.rail(4) Mobitrens\Trilhos\brown-1000_overhead.B3D
+.rail(5) Mobitrens\Trilhos\brown1000_overhead.B3D
+.rail(6) Mobitrens\Trilhos\bridgetrack.B3D
+.rail(7) Mobitrens\Trilhos\bridgetrack2.B3D
+.rail(8) Mobitrens\Trilhos\empty.b3d
+.rail(9) Mobitrens\Trilhos\estacaotrack.B3D
+
+.rail(10) Mobitrens\Pole\pol2.b3d
+.rail(11) Mobitrens\Pole\pol1.b3d
+.rail(12) Mobitrens\Pole\pol0.b3d
+
+.rail(20) Mobitrens\Muros\Mureta.b3d
+.rail(21) Mobitrens\Muros\murocomgrade.b3d
+
+.rail(30) Mobitrens\Morros\morro1.csv
+.rail(31) Mobitrens\Morros\morro3.csv
+.rail(32) Mobitrens\Morros\morro2.csv
+.rail(33) Mobitrens\Morros\morro4.csv
+
+.rail(35) Mobitrens\Rua\rua.animated
+
+.rail(40) Mobitrens\tunel\T4.csv
+.rail(41) Mobitrens\tunel\T3.csv
+
+.rail(50) Mobitrens\Telhas\telha.csv
+
+.rail(60) Mobitrens\tunel\teto2.b3d
+
+.rail(70) Mobitrens\Paredes\muro.b3d
+
+.rail(100) Mobitrens\Plataformas\FormL.b3d
+.rail(101) Mobitrens\Plataformas\FormR.b3d
+.rail(102) Mobitrens\Plataformas\FormC.b3d
+
+.rail(280) Mobitrens\Predios\Condominio 1\Condominio.animated
+.rail(281) Mobitrens\Predios\Condominio 2\Condominio.animated
+.rail(282) Mobitrens\Predios\Condominio 3\Condominio.animated
+.rail(283) Mobitrens\Predios\Condominio 4\Condominio.animated
+.rail(284) Mobitrens\Predios\Condominio 5\Condominio.animated
+
+.rail(500) Mobitrens\Estacoes\Elevadas\Elevadas.b3d
+.rail(501) Mobitrens\Estacoes\Elevadas\ElevadB.b3d
+.rail(502) Mobitrens\Estacoes\Elevadas\basecentral.b3d
+
+.rail(600) Mobitrens\Estacoes\GAT\VidroLateral\VidroLateral.b3d
+
+.rail(700) Mobitrens\Estacoes\Ilhas\abrigo.b3d
+
+.rail(800) Mobitrens\Estacoes\LAC\abrigo_R.b3d
+.rail(801) Mobitrens\Estacoes\LAC\abrigo_L.b3d
+
+.rail(1000) Mobitrens\Trilhos\TrilhosTunel\trilho.B3D
+.rail(1001) Mobitrens\Trilhos\TrilhosTunel\NULL.b3d;
+.rail(1002) Mobitrens\Trilhos\TrilhosTunel\brown-500_overhead.B3D
+.rail(1003) Mobitrens\Trilhos\TrilhosTunel\brown500_overhead.B3D
+.rail(1004) Mobitrens\Trilhos\TrilhosTunel\brown-1000_overhead.B3D
+.rail(1005) Mobitrens\Trilhos\TrilhosTunel\brown1000_overhead.B3D
+.rail(1006) Mobitrens\Trilhos\TrilhosTunel\bridgetrack.B3D
+.rail(1007) Mobitrens\Trilhos\TrilhosTunel\bridgetrack2.B3D
+.rail(1008) Mobitrens\Trilhos\TrilhosTunel\empty.b3d
+.rail(1009) Mobitrens\Trilhos\TrilhosTunel\estacaotrack.B3D
+
+.freeobj(0) Mobitrens\Tapumes\entrada_tunel.csv
+.freeobj(1) Mobitrens\Estacoes\Elevadas\Tapumes\tapumeinicio.b3d
+
+
+.ground(1) Mobitrens\Solo\GroundE.b3d;
+.ground(0) Mobitrens\Solo\GroundT.b3d;
+
+With Texture
+.background(1) Mobitrens\Fundos\background1.bmp
+.background(0) Mobitrens\Fundos\black.bmp
+
+;Route.TfoXML(Trens_XML/1.XML)
+;Route.TfoXML(Trens_XML/2.XML)
+
+With track
+
+;rails principais da linha
+0,.rail 1;-5;0;1000,.railtype 0;1000
+
+;teto tunel
+,.rail 60;0;10;60
+
+;paredes tunel
+,.rail 40;6;0;40,.rail 41;-10;0;41
+
+200,.Sta Parada Tecnica;;;0;N
+400,.stop -1
+
+;AMV1 Inversor antes de Aeroporto
+400,.switch 0;4;4;false;inversor1A;Via 0;AMV1
+500,.switchT 1;4;4;false;inversor1B;Via 1;AMV1
+
+;desenho do AMV1
+400,.rail 4;0;0;1002
+425,.rail 4;-0.4;0;1002
+450,.rail 4;-1.8;0;1000
+475,.rail 4;-3.8;0;1003
+500,.railend 4;-5;0;1000
+
+500,.sta Aeroporto;;;0;R
+,.rail 100;-5;0;100,.rail 101;0;0;101
+,.freeobj 1;0;0.5
+,.railend 40,.railend 41
+
+;parede estacao lateral
+,.rail 70;16;0;70,.rail 71;-3;0;70
+
+685,.stop -1
+700,.railend 100,.railend 101
+,.freeobj 1;0;0.5
+,.rail 40,.rail 41
+,.railend 70,.railend 71
+
+;desenho do AMV3
+700,.rail 4;-5;0;1000
+725,.rail 4;-4.6;0;1003
+750,.rail 4;-3.3;0;1000
+775,.rail 4;-1.3;0;1002
+800,.railend 4;0;0;1000

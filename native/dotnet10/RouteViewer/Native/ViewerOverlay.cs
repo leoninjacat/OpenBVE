@@ -11,6 +11,7 @@ internal static class ViewerOverlay
     internal static readonly List<Control> Controls=new();
     static Color128 White=new(.92f,.93f,.94f,1),Muted=new(.55f,.57f,.6f,1),Plate=new(.08f,.09f,.10f,.82f),Active=new(.32f,.35f,.37f,.94f);
     static float scale=1;
+    internal static bool TrackDropdownOpen;
     sealed record LogRow(int Index, string Text, bool Header);
     static readonly List<LogRow> logRows=new();
     const int VisibleLogRows=15;
@@ -64,17 +65,21 @@ internal static class ViewerOverlay
         string[] ids={"open","reload","previous","next","home","wire","events","log","help"};
         string[] icons={"folder","reload","previous","next","home","wire","events","log","help"};
         string[] tips={"Abrir rota · Ctrl+O","Recarregar · F5","Estação anterior · Page Up","Próxima estação · Page Down","Restaurar visão · Num 5","Aramado · F","Eventos da rota","Mensagens · F9","Ajuda · F1"};
-        for(int i=0;i<ids.Length;i++)Add(ids[i],icons[i],tips[i],16+i*44,16,i==0?!Program.Picking:i>=7||ready,ids[i]=="wire"&&Program.Renderer.OptionWireFrame||ids[i]=="events"&&Program.Renderer.OptionEvents);
-        Add("mode-track","track","Cabine invisível · trilho zero · Tab",w-148,16,ready,!free);
-        Add("mode-free","camera","Câmera livre · Tab",w-104,16,ready,free);
+        if(OperatingSystem.IsWindows()) {
+            ids=ids.Concat(new[]{"new"}).ToArray();icons=icons.Concat(new[]{"plus"}).ToArray();tips=tips.Concat(new[]{"Nova rota - Ctrl+N"}).ToArray();
+        }
+        for(int i=0;i<ids.Length;i++)Add(ids[i],icons[i],tips[i],16+i*44,16,ids[i] is "open" or "new"?!Program.Picking:ids[i] is "log" or "help"||ready,ids[i]=="wire"&&Program.Renderer.OptionWireFrame||ids[i]=="events"&&Program.Renderer.OptionEvents);
+        Controls.Add(new("select-track","",$"Selecionar via - Tab alterna vias",w-292,16,136,40,ready,TrackDropdownOpen));
+        Add("mode-track","track","Cabine invisível · via selecionada",w-148,16,ready,!free);
+        Add("mode-free","camera","Câmera livre",w-104,16,ready,free);
         Add("zoom-in","plus","Aproximar",16,h/2-110,ready);
         Add("zoom-out","minus","Afastar",16,h/2+70,ready);
         Controls.Add(new("zoom-slider","","Zoom · arraste",24,h/2-62,24,126,ready));
         // The right-hand controls always move the invisible cab along track zero.
-        Add("rail-forward","up","Avançar no trilho zero · W / Num 9",w-60,h/2-90,ready&&!free,window.Held=="rail-forward");
-        Add("rail-play",Program.Camera.Cruise==0?"play":"pause","Percorrer / pausar o trilho zero · Espaço",w-60,h/2-46,ready&&!free,Program.Camera.Cruise!=0);
-        Add("rail-back","down","Recuar no trilho zero · S / Num 3",w-60,h/2-2,ready&&!free,window.Held=="rail-back");
-        Controls.Add(new("rail-slider","","Posição no trilho zero · arraste",w-51,h/2+50,22,110,ready&&!free));
+        Add("rail-forward","up","Avançar no via selecionada · W / Num 9",w-60,h/2-90,ready&&!free,window.Held=="rail-forward");
+        Add("rail-play",Program.Camera.Cruise==0?"play":"pause","Percorrer / pausar o via selecionada · Espaço",w-60,h/2-46,ready&&!free,Program.Camera.Cruise!=0);
+        Add("rail-back","down","Recuar no via selecionada · S / Num 3",w-60,h/2-2,ready&&!free,window.Held=="rail-back");
+        Controls.Add(new("rail-slider","","Posição no via selecionada · arraste",w-51,h/2+50,22,110,ready&&!free));
         Add("up","up","Subir · E / Num 8",16,h-108,ready,window.Held=="up");
         Add("down","down","Descer · Q / Num 2",16,h-64,ready,window.Held=="down");
         Controls.Add(new("speed-slider","","Velocidade de navegação · km/h",74,h-58,144,26,ready));
@@ -87,6 +92,12 @@ internal static class ViewerOverlay
         Add("right","right","Voo livre à direita · D",cx+55,cy-18,ready&&free,window.Held=="right",36);
         if(window.Help||window.ShowLog)Add("close","close","Fechar · Esc",w/2+310,123);
         if(window.ShowLog&&!window.Help)BuildLog(window,w);
+        if (ready && TrackDropdownOpen && !window.Help && !window.ShowLog) {
+            var trackIds = Program.Camera.TrackIds;
+            int rows = Math.Max(1, (int)((h-78)/32));
+            for (int i=0;i<trackIds.Length;i++)
+                Controls.Add(new($"track-option-{trackIds[i]}","",$"Seguir via {trackIds[i]}",w-292-(i/rows)*140,60+(i%rows)*32,136,30,true,trackIds[i]==Program.Camera.SelectedTrack));
+        }
     }
     static void Rect(NewRenderer r,float x,float y,float w,float h,Color128 color)=>r.Rectangle.Draw(null,new Vector2(x*scale,y*scale),new Vector2(w*scale,h*scale),color);
     static void Text(NewRenderer r,string text,float x,float y,Color128 color)=>r.OpenGlString.Draw(r.Fonts.SmallFont,text,new Vector2(x*scale,y*scale),TextAlignment.TopLeft,color);
@@ -132,6 +143,11 @@ internal static class ViewerOverlay
             var background=c.Active?Active:hover&&c.Enabled?(window.DarkTheme?new Color128(.23f,.25f,.27f,.92f):new Color128(.82f,.85f,.88f,.96f)):Plate;
             if(c.Id is "orbit" or "forward" or "back" or "left" or "right")Icon(r,"disc",c.X,c.Y,c.W,c.H,background);
             else PlateAt(r,c.X,c.Y,c.W,c.H,background);
+            if(c.Id=="select-track" || c.Id.StartsWith("track-option-")) {
+                string label=c.Id=="select-track"?$"Via {Program.Camera.SelectedTrack}  v":$"Via {c.Id[13..]}";
+                Text(r,label,c.X+10,c.Y+8,c.Enabled?White:Muted);
+                continue;
+            }
             float pad=c.Id=="orbit"?8:5;
             Icon(r,c.Icon,c.X+pad,c.Y+pad,c.W-2*pad,c.H-2*pad,c.Enabled?White:new Color128(.4f,.42f,.44f,.65f));
             if(c.Active)Rect(r,c.X+12,c.Y+c.H-4,c.W-24,2,White);
@@ -139,7 +155,7 @@ internal static class ViewerOverlay
         if(!window.InterfaceVisible)return;
         DrawRouteInfo(r);
         bool loaded=Loading.Complete&&Program.CurrentRouteFile!=null;
-        string state=Program.Camera.Mode==NavigationMode.Track?"Trilho 0":"Livre";
+        string state=Program.Camera.Mode==NavigationMode.Track?$"Via {Program.Camera.SelectedTrack}":"Livre";
         string status=loaded?$"{state}   ·   {r.CameraTrackFollower.TrackPosition:0} m":Program.Status;
         Text(r,status,w/2-Math.Min(status.Length*3,230),h-24,White);
         if(!loaded && RouteInfo.Failure==null) {PlateAt(r,w/2-210,h/2-48,420,96,Plate);Text(r,"Abra uma rota CSV/RW ou arraste o arquivo para a janela.",w/2-190,h/2-15,White);}
@@ -165,8 +181,8 @@ internal static class ViewerOverlay
                 return;
             }
             var lines=new[]{
-                "Tab ou ícones no alto à direita: alternar Trilho 0 / Livre.",
-                "Trilho 0: cabine invisível acompanha curvas, rampas e superelevação.",
+                "Tab: alternar vias. Dropdown: selecionar uma via diretamente.",
+                "Via selecionada: cabine invisível acompanha curvas, rampas e superelevação.",
                 "W/S ou Num 9/3: avançar/recuar. Espaço: percorrer ou pausar.",
                 "Num 4/6: deslocar para os lados. Num 8/2: subir/descer.",
                 "Num 5: restaurar visão, mantendo a posição na via.",
@@ -219,12 +235,22 @@ internal static class ViewerOverlay
             return true;
         }
         if(Program.FeedbackTest)Console.WriteLine($"FEEDBACK_HIT: {c?.Id??"none"} xy={x},{y} scale={scale}");
+        if (TrackDropdownOpen && c?.Id != "select-track") {
+
+            TrackDropdownOpen=false;
+            if(c?.Id.StartsWith("track-option-")==true) {
+                Program.Camera.SelectTrack(int.Parse(c.Id[13..]));
+                window.Held=null;window.Drag=DragMode.None;return true;
+            }
+            return true;
+        }
         if(c==null)return false;if(!c.Enabled)return true;
         switch(c.Id) {
             case "toggle-ui":window.ToggleInterface();break;
             case "toggle-editor":window.Editor.ToggleVisible();break;
             case "route-info":window.ShowLog=true;break;
             case "open":Program.OpenPicker();break;
+            case "new":Program.NewRoute();break;
             case "reload":Program.Reload=true;break;
             case "previous":Program.Camera.Station(-1);break;
             case "next":Program.Camera.Station(1);break;
@@ -233,6 +259,7 @@ internal static class ViewerOverlay
             case "events":Program.Renderer.OptionEvents=!Program.Renderer.OptionEvents;break;
             case "log":window.ShowLog=true;break;
             case "help":window.Help=true;break;
+            case "select-track":TrackDropdownOpen=!TrackDropdownOpen;window.Held=null;window.Drag=DragMode.None;break;
             case "mode-track":Program.Camera.SetMode(NavigationMode.Track);window.Held=null;window.Drag=DragMode.None;break;
             case "mode-free":Program.Camera.SetMode(NavigationMode.Free);window.Held=null;window.Drag=DragMode.None;break;
             case "orbit":window.Drag=DragMode.Orbit;break;

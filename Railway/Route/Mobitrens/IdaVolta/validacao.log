@@ -1,0 +1,16 @@
+ROUNDTRIP_READY: C:\Users\thoma\Documents\OpenBVE\Railway\Route\Mobitrens\IdaVolta\idavolta.roundtrip.xml
+ROUNDTRIP_TURNAROUND: generation=1, direction=-1, front=2310,00, rail=1
+ROUNDTRIP_REVERSAL_RENDER_OK: 1
+ROUNDTRIP_TRACTION_OK: normal F/P controls physically drove toward decreasing mileage after turnaround.
+ROUNDTRIP_TURNAROUND: generation=2, direction=1, front=290,00, rail=0
+ROUNDTRIP_REVERSAL_RENDER_OK: 2
+ROUNDTRIP_TURNAROUND: generation=3, direction=-1, front=2310,00, rail=1
+ROUNDTRIP_REVERSAL_RENDER_OK: 3
+ROUNDTRIP_TURNAROUND: generation=4, direction=1, front=290,00, rail=0
+ROUNDTRIP_REVERSAL_RENDER_OK: 4
+ROUNDTRIP_TEST_OK: two complete cycles, native axle/bogie switches in both directions, occupied-switch locking, via 1 stops, terminal countdowns, occupied-berth hold, cab relocation, F reverser mapping and continuous clock.
+NATIVE_CAB: driver=0 , 2.4 , 10.305, up=-0 , 1 , 0, anchor=0 , 2.4 , 290.48, front=0 , 0 , 281.475, rear=0 , 0 , 278.875, mode=InteriorLookAhead, restriction=NotAvailable
+NATIVE_SCENE: static=443, opaque=405, alpha=0, camera=0 , 2.4 , 290.48, direction=0 , 0 , 1
+NATIVE_READY: route loaded, simulation running on .NET 10.0.13
+NATIVE_SMOKE_OK: frames=143, speed=0 m/s, position=281.5759030408807 m
+CABIN_STATS: stations=0, radio=0, enabled=True

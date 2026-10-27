@@ -6,6 +6,7 @@ typedef struct {
     GtkWidget *route;
     GtkWidget *train;
     GtkWidget *status;
+    GtkWidget *game_mode;
     GtkWindow *window;
     guint generation[2];
     GtkWidget *description[2], *image[2], *notice[2];
@@ -204,7 +205,7 @@ static void start_clicked(GtkButton *button, gpointer data)
     g_autoptr(GSubprocessLauncher) launcher = g_subprocess_launcher_new(G_SUBPROCESS_FLAGS_NONE);
     g_subprocess_launcher_set_cwd(launcher, working_dir);
     g_autoptr(GError) error = NULL;
-    g_autoptr(GSubprocess) process = g_subprocess_launcher_spawn(launcher, &error, engine, route_arg, train_arg, NULL);
+    g_autoptr(GSubprocess) process = g_subprocess_launcher_spawn(launcher, &error, engine, route_arg, train_arg, gtk_drop_down_get_selected(GTK_DROP_DOWN(ui->game_mode)) == 1 ? "/mode=cco" : "/mode=normal", NULL);
     if (!process) { gtk_label_set_text(GTK_LABEL(ui->status), error->message); return; }
     gtk_widget_set_sensitive(GTK_WIDGET(button), FALSE);
     gtk_label_set_text(GTK_LABEL(ui->status), "Simulador nativo em execução — carregando a viagem…");
@@ -297,6 +298,12 @@ static void activate(GtkApplication *app, gpointer data)
         gtk_box_append(GTK_BOX(content), ui->notice[i]);
     }
 
+    AdwActionRow *mode_row = ADW_ACTION_ROW(adw_action_row_new());
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(mode_row), "Modo de jogo");
+    const char *game_modes[] = { "Normal", "Modo CCO (Beta)", NULL };
+    ui->game_mode = gtk_drop_down_new_from_strings(game_modes);
+    adw_action_row_add_suffix(mode_row, ui->game_mode);
+    adw_preferences_group_add(group, GTK_WIDGET(mode_row));
     GtkWidget *start = gtk_button_new_with_label("Iniciar viagem");
     gtk_widget_add_css_class(start, "suggested-action");
     gtk_widget_add_css_class(start, "pill");

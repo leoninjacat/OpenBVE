@@ -1,4 +1,4 @@
-﻿using OpenBveApi;
+using OpenBveApi;
 using OpenBveApi.Colors;
 using OpenBveApi.Hosts;
 using OpenBveApi.Interface;
@@ -34,6 +34,7 @@ namespace OpenBve
 			internal int ArrivalStation;
 			internal int DepartureStation;
 			internal double PassengerTimer;
+            private int roundTripGeneration = -1;
 
 			/// <summary>This method should be called once a frame to update the player's score</summary>
 			/// <param name="TimeElapsed">The time elapsed since this function was last called</param>
@@ -43,8 +44,15 @@ namespace OpenBve
 				{
 					return;
 				}
-				// doors
-				bool leftopen = false;
+				var roundTrip = TrainManager.PlayerTrain.RoundTrip;
+                if (roundTrip != null && roundTripGeneration != roundTrip.Generation)
+                {
+                    roundTripGeneration = roundTrip.Generation;
+                    ArrivalStation = roundTrip.NextStation;
+                    DepartureStation = -1;
+                }
+                // doors
+                bool leftopen = false;
 				bool rightopen = false;
 				for (int j = 0; j < TrainManager.PlayerTrain.Cars.Length; j++)
 				{
@@ -74,7 +82,7 @@ namespace OpenBve
 						{
 							if (Math.Abs(TrainManager.PlayerTrain.CurrentSpeed) < 0.1)
 							{
-								if (leftopen == Program.CurrentRoute.Stations[j].OpenLeftDoors & rightopen == Program.CurrentRoute.Stations[j].OpenRightDoors)
+								if (leftopen == (roundTrip?.PlatformLeft ?? Program.CurrentRoute.Stations[j].OpenLeftDoors) & rightopen == (roundTrip != null ? !roundTrip.PlatformLeft : Program.CurrentRoute.Stations[j].OpenRightDoors))
 								{
 									bad = false;
 								}
@@ -181,7 +189,7 @@ namespace OpenBve
 					int j = TrainManager.PlayerTrain.Station;
 					if (j >= 0 & j < Program.CurrentRoute.Stations.Length)
 					{
-						if (j >= ArrivalStation & TrainManager.PlayerTrain.StationState == TrainStopState.Boarding)
+						if ((roundTrip != null && roundTrip.Direction < 0 ? j <= ArrivalStation : j >= ArrivalStation) & TrainManager.PlayerTrain.StationState == TrainStopState.Boarding)
 						{
 							if (j == 0 || Program.CurrentRoute.Stations[j - 1].Type != StationType.ChangeEnds && Program.CurrentRoute.Stations[j - 1].Type != StationType.Jump)
 							{
@@ -267,7 +275,7 @@ namespace OpenBve
 								// evaluation
 								if (Interface.CurrentOptions.GameMode == GameMode.Arcade)
 								{
-									if (Program.CurrentRoute.Stations[j].Type == StationType.Terminal)
+									if (roundTrip == null && Program.CurrentRoute.Stations[j].Type == StationType.Terminal)
 									{
 										double y = CurrentValue / (double)Maximum;
 										if (y < 0.0) y = 0.0;
@@ -281,7 +289,7 @@ namespace OpenBve
 							}
 							// finalize
 							DepartureStation = j;
-							ArrivalStation = j + 1;
+							ArrivalStation = j + (roundTrip?.Direction ?? 1);
 						}
 					}
 				}

@@ -107,10 +107,12 @@ namespace RouteViewer
 			Builder.AppendLine();
 			Builder.AppendLine("[Folders]");
 				Builder.AppendLine($"routesearch = {RouteSearchDirectory}");
-				File.WriteAllText(fileName, Builder.ToString(), new System.Text.UTF8Encoding(true));
+                Directory.CreateDirectory(System.IO.Path.GetDirectoryName(fileName));
+                File.WriteAllText(fileName, Builder.ToString(), new System.Text.UTF8Encoding(true));
 			}
-			catch
+			catch(Exception error)
 			{
+				Console.Error.WriteLine("Options: "+error);
 				MessageBox.Show("An error occured whilst saving the options to disk." + Environment.NewLine +
 								"Please check you have write permission.");
 			}

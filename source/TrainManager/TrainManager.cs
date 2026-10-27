@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using LibRender2;
 using OpenBveApi;
@@ -14,6 +15,7 @@ namespace TrainManager
 	/// <summary>The base train manager class</summary>
 	public abstract class TrainManagerBase
 	{
+		public readonly ScriptedTrafficController ScriptedTraffic;
 		internal static HostInterface currentHost;
 		internal static BaseRenderer Renderer;
 		public static CurrentRoute CurrentRoute;
@@ -34,10 +36,76 @@ namespace TrainManager
 
 		protected TrainManagerBase(HostInterface host, BaseRenderer renderer, BaseOptions Options, FileSystem fileSystem)
 		{
+			ScriptedTraffic = new ScriptedTrafficController(() => Trains.Cast<AbstractTrain>().Concat(TFOs));
 			currentHost = host;
 			Renderer = renderer;
 			CurrentOptions = Options;
 			FileSystem = fileSystem;
+		}
+
+		/// <summary>Seeds a complete circulation before the initial scene is displayed.</summary>
+		public void InitializeScriptedTraffic()
+		{
+			foreach (var leader in TFOs.OfType<ScriptedTrain>().Where(x => x.WarmStart && x.FleetSlot == 0 && x.Fleet != null))
+			{
+				if (string.IsNullOrWhiteSpace(leader.NextService))
+				{
+					// One-way routes also need traffic ahead of the player at startup.
+					// Origin-only births otherwise remain hidden behind an occupied player platform.
+					if (leader.AppearanceTime > currentHost.InGameTime) continue;
+					var plan = leader.AI as TrackFollowingObjectAI;
+					if (plan == null || plan.JourneyDuration <= 0 || double.IsNaN(plan.JourneyDuration)) continue;
+					foreach (var member in leader.Fleet.Members)
+					{
+						double age = leader.Fleet.Interval * (member.FleetSlot + 1);
+						if (age >= plan.JourneyDuration)
+						{
+							if (member.FleetSlot != 0) continue;
+							age = plan.JourneyDuration * 0.5;
+						}
+						(member.AI as TrackFollowingObjectAI)?.PrepareAtElapsed(age);
+						member.AppearanceTime = currentHost.InGameTime;
+						member.WarmStartPending = true;
+					}
+					leader.Fleet.SeedHeadway(currentHost.InGameTime, 0);
+					continue;
+				}
+				double youngestOut = double.PositiveInfinity, youngestBack = double.PositiveInfinity;
+				ScriptedServiceFleet returnFleet = null;
+				foreach (var outgoing in leader.Fleet.Members)
+				{
+					var target = TFOs.OfType<ScriptedTrain>().SingleOrDefault(x => x.ServiceId == outgoing.NextService && x.FleetSlot == outgoing.FleetSlot);
+					if (target == null || !(outgoing.AI is TrackFollowingObjectAI outAI) || !(target.AI is TrackFollowingObjectAI backAI)) throw new InvalidOperationException("WarmStart requires paired scripted services");
+					double outDuration = outAI.JourneyDuration + outgoing.CompletionWait;
+					double backDuration = backAI.JourneyDuration + target.CompletionWait;
+					double cycle = outDuration + backDuration;
+					if (cycle <= 0 || double.IsInfinity(cycle) || double.IsNaN(cycle) || leader.Fleet.Members.Count * leader.Fleet.Interval < cycle) throw new InvalidOperationException("WarmStart fleet must cover the complete circulation");
+					// Space the whole circulation evenly, including the last-to-first gap.
+					double phase = outgoing.FleetSlot * cycle / leader.Fleet.Members.Count;
+					var active = phase < outDuration ? outgoing : target;
+					var hidden = phase < outDuration ? target : outgoing;
+					double age = phase < outDuration ? phase : phase - outDuration;
+					hidden.AwaitingTrigger = true;
+					active.AwaitingTrigger = false;
+					active.WarmStartPending = true;
+					active.AppearanceTime = currentHost.InGameTime;
+					(active.AI as TrackFollowingObjectAI).PrepareAtElapsed(age);
+					// Seed approaching trains upstream of interlocked throats. In particular,
+					// do not start an arrival inside CAC's throat against the initial departure.
+					while (age > 0 && active.ProtectedTraffic && ScriptedTraffic.IsNearConflictZone(active, 250))
+					{
+						age = (active.AI as TrackFollowingObjectAI).PrepareAtPreviousStation(age);
+					}
+
+					if (phase < outDuration) youngestOut = Math.Min(youngestOut, age);
+					else youngestBack = Math.Min(youngestBack, age);
+					returnFleet = target.Fleet;
+				}
+				leader.Fleet.SeedHeadway(currentHost.InGameTime, youngestOut);
+				returnFleet?.SeedHeadway(currentHost.InGameTime, youngestBack);
+			}
+			// Let the initial terminal departure reserve its exit before incoming traffic.
+			TFOs = TFOs.OrderBy(x => x is ScriptedTrain st && st.WarmStart && st.FleetSlot == 0 ? 0 : 1).ToList();
 		}
 
 		/// <summary>Un-derails all trains within the simulation</summary>

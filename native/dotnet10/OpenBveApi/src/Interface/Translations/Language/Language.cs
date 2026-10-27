@@ -39,10 +39,12 @@ namespace OpenBveApi.Interface
 		internal string Name;
 		/// <summary>The ISO-639 language code</summary>
 		internal string Code;
+        public string LanguageCode => Code;
 		/// <summary>A list of fallback language codes to try if a string does not exist</summary>
 		internal List<string> FallbackCodes;
 		/// <summary>The path to the flag for this language code</summary>
 		internal string Flag;
+        public string FlagFile => Flag;
 		/// <summary>The list of contributors</summary>
 		internal string Contributors;
 		/*

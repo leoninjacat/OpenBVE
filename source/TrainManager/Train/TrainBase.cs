@@ -1,4 +1,4 @@
-using LibRender2.Screens;
+﻿using LibRender2.Screens;
 using LibRender2.Trains;
 using OpenBveApi;
 using OpenBveApi.Colors;
@@ -129,7 +129,11 @@ namespace TrainManager.Trains
 		}
 
 		/// <summary>The direction of travel on the current track</summary>
-		public TrackDirection CurrentDirection => TrainManagerBase.CurrentRoute.Tracks[Cars[DriverCar].FrontAxle.Follower.TrackIndex].Direction;
+		public RoundTripService RoundTrip { get; set; }
+
+		public override int CurrentTrackIndex => Cars.Length == 0 ? 0 : (CurrentDirection == TrackDirection.Reverse ? Cars[Cars.Length - 1].RearAxle.Follower.TrackIndex : Cars[0].FrontAxle.Follower.TrackIndex);
+
+        public TrackDirection CurrentDirection => RoundTrip != null ? (TrackDirection)RoundTrip.Direction : TrainManagerBase.CurrentRoute.Tracks[Cars[DriverCar].FrontAxle.Follower.TrackIndex].Direction;
 
 		public TrainBase(TrainState state, TrainType type)
 		{

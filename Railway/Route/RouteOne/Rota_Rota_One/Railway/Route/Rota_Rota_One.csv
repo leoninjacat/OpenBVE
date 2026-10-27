@@ -1,0 +1,21 @@
+﻿; Rota One - criado no Route Viewer by LT ARTS
+; Estrutura independente: nenhuma biblioteca de objetos é obrigatória.
+; Os objetos Structure.Rail(0) repetem-se a cada bloco de 25 m.
+
+With Options
+.BlockLength 25
+
+With Route
+.Comment Rota One
+.Gauge 1600
+
+With Structure
+.Rail(0) Rota_Rota_One_Base/trilho_zero.csv
+.Ground(0) Rota_Rota_One_Base/terreno.csv
+
+With Track
+0, .RailType 0;0, .Ground 0, .Pitch 0, .Curve 0;0
+; Comece a escrever sua rota abaixo. Posições em metros.
+; Exemplo: 100, .Curve 500;0
+; Exemplo: 200, .Curve 0;0
+1000, .Accuracy 2

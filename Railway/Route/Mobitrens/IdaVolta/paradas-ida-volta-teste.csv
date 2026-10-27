@@ -1,0 +1,52 @@
+﻿; Base: idavolta.csv fornecido pelo autor (objetos Mobitrens).
+; Operacao de ida e volta ativada pelo arquivo idavolta.roundtrip.xml.
+; Coordenadas em metros. Via 0 = x 0, via 1 = x -5.
+; AMVs inicialmente alinhados para percurso 0 -> 2 -> 1 -> 3 -> 0.
+; Nao mudar as chaves enquanto a composicao estiver sobre o conjunto.
+With Route
+.Comment Mobitrens - Ida e Volta: tres estacoes, quatro AMVs e reversao automatica em 30 segundos nos terminais. Requer OpenBVE by LT ARTS atualizado.
+.Timetable Terminal Sul - Central - Terminal Norte
+.Gauge 1067
+With Options
+.ObjectVisibility 1
+With Structure
+.rail(0) Mobitrens\Trilhos\trilho.B3D
+.rail(100) Mobitrens\Plataformas\FormL.b3d
+.rail(101) Mobitrens\Plataformas\FormR.b3d
+.ground(0) Mobitrens\Solo\GroundE.b3d;
+With Texture
+.background(0) Mobitrens\Fundos\background1.bmp
+With Track
+0,.Rail 1;-5;0;0,.RailType 0;0,.Ground 0,.Height 0.3,.Back 0,.Limit 40
+; Plataforma central do Terminal Sul: 100 a 300 m.
+100,.Sta Terminal Sul;;12.0000;0;L;0;0;;20;100,.Rail 100;-5;0;100,.Rail 101;0;0;101
+290,.Stop -1;5;5
+300,.RailEnd 100,.RailEnd 101
+; Travessao Sul: via 0 -> via 2 -> via 1 (150 m de comprimento).
+600,.RailStart 2;0;0;0,.Switch 0;2;2;false;AMV Sul A;Via 0;Travessao Sul
+625,.Rail 2;-0.37;0;0
+650,.Rail 2;-1.30;0;0
+675,.Rail 2;-2.50;0;0
+700,.Rail 2;-3.70;0;0
+725,.Rail 2;-4.63;0;0
+750,.Rail 2;-5;0;0,.SwitchT 1;2;2;false;AMV Sul B;Via 1;Travessao Sul
+775,.RailEnd 2;-5;0
+; Plataforma central de Central: o jogador chega pela via 1.
+1100,.Sta Central;;;0;R;0;0;;20;100,.Rail 100;-5;0;100,.Rail 101;0;0;101
+1290,.Stop 1;5;5
+1300,.RailEnd 100,.RailEnd 101
+; Travessao Norte: via 1 -> via 3 -> via 0.
+1800,.RailStart 3;-5;0;0,.Switch 1;3;3;false;AMV Norte A;Via 1;Travessao Norte
+1825,.Rail 3;-4.63;0;0
+1850,.Rail 3;-3.70;0;0
+1875,.Rail 3;-2.50;0;0
+1900,.Rail 3;-1.30;0;0
+1925,.Rail 3;-0.37;0;0
+1950,.Rail 3;0;0;0,.SwitchT 0;3;3;false;AMV Norte B;Via 0;Travessao Norte
+1975,.RailEnd 3;0;0
+; Terminal Norte: desembarque, contagem de 30 s e reposicionamento na via 1.
+2300,.Sta Terminal Norte;;T;0;L;0;0;;30;100,.Rail 100;-5;0;100,.Rail 101;0;0;101
+2490,.Stop -1;5;5
+2500,.RailEnd 100,.RailEnd 101
+; Area de seguranca apos a plataforma. Duas vias continuam ate 2800 m.
+2800

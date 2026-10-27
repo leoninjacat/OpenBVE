@@ -1,0 +1,14 @@
+<RoundTrip>
+  <Outbound>
+    <Stop station="0" rail="0" position="290" dwell="10" doors="L" />
+    <Stop station="1" rail="1" position="1290" dwell="20" doors="R" />
+    <Stop station="2" rail="0" position="2490" dwell="30" doors="L" />
+  </Outbound>
+  <Return>
+    <Stop station="2" rail="1" position="2310" dwell="0" doors="L" />
+    <Stop station="1" rail="1" position="1110" dwell="20" doors="L" />
+    <Stop station="0" rail="0" position="110" dwell="30" doors="R" />
+  </Return>
+  <Throat start="600" end="750" rails="0,1,2" />
+  <Throat start="1800" end="1950" rails="0,1,3" />
+</RoundTrip>

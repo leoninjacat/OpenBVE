@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using OpenBveApi.Runtime;
 using V = System.Numerics.Vector3;
 using WorldVector = OpenBveApi.Math.Vector3;
@@ -10,10 +11,29 @@ internal sealed class CameraRig
     internal float Speed = 20 / 3.6f;
     internal NavigationMode Mode = NavigationMode.Track;
     internal readonly TrackCameraState Cab = new();
+    internal int SelectedTrack;
+    internal int[] TrackIds => Program.CurrentRoute.Tracks.Where(t => t.Key >= 0 && t.Value.Elements != null && t.Value.Elements.Any(e => !e.InvalidElement && e.WorldDirection.NormSquared() > .5)).Select(t => t.Key).OrderBy(t => t).ToArray();
+    internal void CycleTrack()
+    {
+        var ids = TrackIds;
+        if (ids.Length == 0) return;
+        SelectedTrack = ids[(Array.IndexOf(ids, SelectedTrack) + 1) % ids.Length];
+        SelectTrack(SelectedTrack);
+    }
+    internal void SelectTrack(int track)
+    {
+        if (!TrackIds.Contains(track)) return;
+        SelectedTrack = track;
+        Cruise = 0;
+        Cab.Reset();
+        Mode = NavigationMode.Track;
+        Apply();
+        Program.Status = $"Camera seguindo via {SelectedTrack}";
+    }
     internal float Cruise;
     internal float FieldOfView = MathF.PI / 4;
     internal (double Min,double Max) Limits {
-        get { var e=Program.CurrentRoute.Tracks[0].Elements; return e==null || e.Length==0 ? (0,1) : (e[0].StartingTrackPosition,e[^1].StartingTrackPosition); }
+        get { if (!Program.CurrentRoute.Tracks.ContainsKey(SelectedTrack)) SelectedTrack = 0; var e=Program.CurrentRoute.Tracks[SelectedTrack].Elements.Where(e => !e.InvalidElement && e.WorldDirection.NormSquared() > .5).ToArray(); return e==null || e.Length==0 ? (0,1) : (e[0].StartingTrackPosition,e[^1].StartingTrackPosition); }
     }
     internal void SetMode(NavigationMode mode)
     {
@@ -83,9 +103,20 @@ internal sealed class CameraRig
         if(Mode==NavigationMode.Track) {
             var limits=Limits;
             Cab.Position=Math.Clamp(Cab.Position,limits.Min,limits.Max);
+            var valid = Program.CurrentRoute.Tracks[SelectedTrack].Elements
+                .Where(e => !e.InvalidElement && e.WorldDirection.NormSquared() > .5).ToArray();
+            if (valid.Length == 0) return;
+            var selectedElements = Program.CurrentRoute.Tracks[SelectedTrack].Elements;
+            int cell = Array.FindLastIndex(selectedElements, e => e.StartingTrackPosition <= Cab.Position);
+            if (cell < 0 || selectedElements[cell].InvalidElement || selectedElements[cell].WorldDirection.NormSquared() < .5)
+                Cab.Position = valid.OrderBy(e => Math.Abs(e.StartingTrackPosition - Cab.Position)).First().StartingTrackPosition;
             var follower=renderer.CameraTrackFollower;
-            follower.TrackIndex=0;
-            follower.UpdateAbsolute(Cab.Position,true,false);
+            if (follower.TrackIndex != SelectedTrack) follower.LastTrackElement = 0;
+            follower.TrackIndex=SelectedTrack;
+            var trigger = follower.TriggerType;
+            follower.TriggerType = OpenBveApi.Routes.EventTriggerType.None;
+            try { follower.UpdateAbsolute(Cab.Position,true,false); }
+            finally { follower.TriggerType = trigger; }
             var basis=Cab.Compose(ToV(follower.WorldPosition),ToV(follower.WorldDirection),ToV(follower.WorldUp),ToV(follower.WorldSide));
             Pose.LookAt(basis.Eye,basis.Eye+basis.Forward*35);
             camera.AbsolutePosition=ToWorld(basis.Eye);

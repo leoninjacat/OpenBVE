@@ -30,6 +30,13 @@ With Structure;
 .rail(20) Mobitrens\Muros\Mureta.b3d
 .rail(21) Mobitrens\Muros\murocomgrade.b3d
 
+.rail(30) Mobitrens\Morros\morro1.csv
+.rail(31) Mobitrens\Morros\morro3.csv
+.rail(32) Mobitrens\Morros\morro2.csv
+.rail(33) Mobitrens\Morros\morro4.csv
+
+.rail(35) Mobitrens\Rua\rua.animated
+
 .rail(40) Mobitrens\tunel\T4.csv
 .rail(41) Mobitrens\tunel\T3.csv
 
@@ -39,141 +46,16 @@ With Structure;
 
 .rail(70) Mobitrens\Paredes\muro.b3d
 
+.rail(280) Mobitrens\Predios\Condominio 1\Condominio.animated
+.rail(281) Mobitrens\Predios\Condominio 2\Condominio.animated
+.rail(282) Mobitrens\Predios\Condominio 3\Condominio.animated
+.rail(283) Mobitrens\Predios\Condominio 4\Condominio.animated
+.rail(284) Mobitrens\Predios\Condominio 5\Condominio.animated
+
 .rail(100) Mobitrens\Plataformas\FormL.b3d
 .rail(101) Mobitrens\Plataformas\FormR.b3d
 .rail(102) Mobitrens\Plataformas\FormC.b3d
 
-.freeobj(0) Mobitrens\Tapumes\entrada_tunel.csv
-.freeobj(1) Mobitrens\Estacoes\GAT\telhado.b3d
-.freeobj(2) Mobitrens\Estacoes\GAT\mezanino.b3d
-
-.freeobj(19) Mobitrens\Escada rolante\escadarolante.animated
-.freeobj(20) Mobitrens\Escada rolante\rol1.animated
-
-.freeobj(21) Mobitrens\Estacoes\GAT\Escadas\escadb.b3d
-.freeobj(22) Mobitrens\Escadas\escadb.b3d
-.freeobj(23) Mobitrens\Escadas\elevador.csv
-.freeobj(24) Mobitrens\Estacoes\GAT\Tapumes\tapumeinicio.b3d
-
-.freeobj(524) Mobitrens\Estacoes\Elevadas\Tapumes\tapumeinicio.b3d
-.freeobj(525) Mobitrens\Estacoes\Elevadas\mezanino.b3d
-
-;placas estação Gatos
-.freeobj(25) Mobitrens\Placas\GAT\Plataforma 1\placaA.csv
-.freeobj(26) Mobitrens\Placas\GAT\Plataforma 1\placaB.csv
-
-.freeobj(27) Mobitrens\Placas\GAT\Plataforma 2\placa.csv
-
-.freeobj(28) Mobitrens\Placas\GAT\Plataforma 1\placaC.csv
-.freeobj(29) Mobitrens\Placas\GAT\Plataforma 1\placaD.csv
-
-.freeobj(30) Mobitrens\Placas\GAT\Plataforma1A\Destino1a.csv
-.freeobj(31) Mobitrens\Placas\GAT\Plataforma1B\Destino1b.csv
-.freeobj(32) Mobitrens\Placas\GAT\Desembarque\desembarque.csv
-.freeobj(33) Mobitrens\Placas\GAT\Saida\saida.csv
-
-;placas estação Mirueiro
-.freeobj(40) Mobitrens\Placas\MIR\PlacaComInfo\placaA.csv
-.freeobj(41) Mobitrens\Placas\MIR\PlacaComInfo\placaB.csv
-
-.freeobj(42) Mobitrens\Placas\MIR\PlacaComInfo\placaC.csv
-.freeobj(43) Mobitrens\Placas\MIR\PlacaComInfo\placaD.csv
-
-.freeobj(44) Mobitrens\Placas\MIR\DestinoCAC\placa.csv
-.freeobj(45) Mobitrens\Placas\MIR\DestinoGAT\placa.csv
-
-.freeobj(46) Mobitrens\Placas\MIR\Saida\placa.csv
-.freeobj(47) Mobitrens\Placas\MIR\Saida\placa2.csv
-
-.freeobj(48) Mobitrens\Placas\MIR\PlacaestMIR\placa.csv
-.freeobj(49) Mobitrens\Placas\MIR\PlacaestMIR\placa2.csv
-
-;placas estação Joao Paulo II
-.freeobj(50) Mobitrens\Placas\JP2\PlacaComInfo\placaA.csv
-.freeobj(51) Mobitrens\Placas\JP2\PlacaComInfo\placaB.csv
-
-.freeobj(52) Mobitrens\Placas\JP2\PlacaComInfo\placaC.csv
-.freeobj(53) Mobitrens\Placas\JP2\PlacaComInfo\placaD.csv
-
-.freeobj(54) Mobitrens\Placas\JP2\DestinoCAC\placa.csv
-.freeobj(55) Mobitrens\Placas\JP2\DestinoGAT\placa.csv
-
-.freeobj(56) Mobitrens\Placas\JP2\Saida\placa.csv
-.freeobj(57) Mobitrens\Placas\JP2\Saida\placa2.csv
-
-.freeobj(58) Mobitrens\Placas\JP2\PlacaestMIR\placa.csv
-.freeobj(59) Mobitrens\Placas\JP2\PlacaestMIR\placa2.csv
-
-;placas estação Maria das Dores
-.freeobj(60) Mobitrens\Placas\MAR\PlacaComInfo\placaA.csv
-.freeobj(61) Mobitrens\Placas\MAR\PlacaComInfo\placaB.csv
-
-.freeobj(62) Mobitrens\Placas\MAR\PlacaComInfo\placaC.csv
-.freeobj(63) Mobitrens\Placas\MAR\PlacaComInfo\placaD.csv
-
-.freeobj(64) Mobitrens\Placas\MAR\DestinoCAC\placa.csv
-.freeobj(65) Mobitrens\Placas\MAR\DestinoGAT\placa.csv
-
-.freeobj(66) Mobitrens\Placas\MAR\Saida\placa.csv
-.freeobj(67) Mobitrens\Placas\MAR\Saida\placa2.csv
-
-.freeobj(68) Mobitrens\Placas\MAR\PlacaestMIR\placa.csv
-.freeobj(69) Mobitrens\Placas\MAR\PlacaestMIR\placa2.csv
-
-;objs estacao Cabritas
-.rail(700) Mobitrens\Estacoes\Ilhas\abrigo_red.b3d
-
-
-;placas estação cabritas
-.freeobj(70) Mobitrens\Placas\CAB\Plataforma 1\placaA.csv
-.freeobj(71) Mobitrens\Placas\CAB\Plataforma 1\placaB.csv
-.freeobj(72) Mobitrens\Placas\CAB\DestinoCAC\Placa.csv
-.freeobj(73) Mobitrens\Placas\CAB\DestinoGAT\Placa.csv
-
-.freeobj(170) Mobitrens\Estacoes\CAB\mezanino.b3d
-.freeobj(171) Mobitrens\Estacoes\LAC\mezanino.b3d
-
-.rail(500) Mobitrens\Estacoes\Elevadas\Elevadas.b3d
-.rail(501) Mobitrens\Estacoes\Elevadas\ElevadB.b3d
-.rail(502) Mobitrens\Estacoes\Elevadas\basecentral.b3d
-
-.rail(600) Mobitrens\Estacoes\GAT\VidroLateral\VidroLateral.b3d
-
-;abrigo estacao Manoel Lacerda
-.rail(800) Mobitrens\Estacoes\LAC\abrigo.b3d
-.rail(801) Mobitrens\Estacoes\LAC\abrigo_L.b3d
-
-.rail(802) Mobitrens\Estacoes\ilhas\abrigo_red.b3d
-.rail(803) Mobitrens\Estacoes\LAC\abrigo_c.b3d
-
-;placas plataforma 1
-.freeobj(80) Mobitrens\Placas\LAC\Plataforma L1\placa.csv
-.freeobj(81) Mobitrens\Placas\LAC\placa com info\placaA.csv
-
-;placas plataforma 2
-.freeobj(82) Mobitrens\Placas\LAC\plataforma central\placaA.csv
-.freeobj(83) Mobitrens\Placas\LAC\placa com info\placaB.csv
-.freeobj(84) Mobitrens\Placas\LAC\plataforma central\placaB.csv
-.freeobj(85) Mobitrens\Placas\LAC\plataforma central\placaC.csv
-.freeobj(86) Mobitrens\Placas\LAC\placa com info\placaC.csv
-
-;placas plataforma 3
-.freeobj(87) Mobitrens\Placas\LAC\plataforma L2\placaA.csv
-.freeobj(88) Mobitrens\Placas\LAC\placa com info\placaD.csv
-.freeobj(89) Mobitrens\Placas\LAC\plataforma L2\placaB.csv
-.freeobj(90) Mobitrens\Placas\LAC\placa com info\placaD.csv
-
-;placas destino
-.freeobj(91) Mobitrens\Placas\LAC\DestinoGAT\placa.csv
-.freeobj(92) Mobitrens\Placas\LAC\DestinoCAC\placa.csv
-.freeobj(93) Mobitrens\Placas\LAC\DestinoPTO\placa.csv
-.freeobj(94) Mobitrens\Placas\LAC\DestinoROD\placa.csv
-.freeobj(95) Mobitrens\Placas\LAC\DestinoEXP1\placa.csv
-.freeobj(96) Mobitrens\Placas\LAC\DestinoEXP2\placa.csv
-
-.freeobj(97) Mobitrens\Estacoes\Monitor\monitor.csv
-
-.freeobj(100) Mobitrens\Estacoes\Ilhas\cadeira.b3d
 
 .ground(0) Mobitrens\Solo\GroundE.b3d;
 
@@ -181,62 +63,18 @@ With Texture
 .background(0) Mobitrens\Fundos\background1.bmp
 .background(1) Mobitrens\Fundos\black.bmp
 
-With Track
+Route.TfoXML(Trens_XML/1.XML)
+Route.TfoXML(Trens_XML/2.XML)
 
-; --- Trecho inicial da Linha 3 Amarela - Mobitrens ---
-; Eixo Leste-Oeste, partindo da estação inicial (ex: Cajueiros Leste)
+With track
 
-0, .RailType 0
-0, .Ground 0
-0, .Back 0
-0, .DikeL 1
-0, .DikeR 1
+;trilho 1
+0,.rail 1;-5;0;0
 
-; Via principal reta, em superfície
-0, .Curve 0
-0, .Pitch 0
-0, .Cant 0
+;postes
+,.rail 10;-5;1;10,.rail 11;0;1;11
 
-; Ativa o trilho principal (rail(0)) na via 0
-0, .Rail 0;0
+;muros
+,.rail 20;10;0;20,.rail 21;-15;0;20
 
-; Exemplo de estação inicial (preencha tempos depois)
-0, .Station Cajueiros Leste;Cajueiros Leste;Cajueiros Leste;-1;-1;0;0
 
-; 200 m à frente, ainda reto
-200, .Curve 0
-200, .Pitch 0
-200, .Ground 0
-
-; 400 m – início de leve curva para a direita (raio 800 m)
-400, .Curve 800
-400, .Cant 20
-
-; 800 m – curva encerra, volta para traçado reto
-800, .Curve 0
-800, .Cant 0
-
-; 1000 m – preparação para chegada na próxima estação (ex: Estação B)
-1000, .Ground 0
-1000, .DikeL 1
-1000, .DikeR 1
-
-; 1100 m – início da plataforma à esquerda (plataforma L: rail(100))
-1100, .Rail 100;0
-
-; 1150 m – início da plataforma à direita (plataforma R: rail(101))
-1150, .Rail 101;0
-
-; 1200 m – estação intermediária (substitua "Estacao B" pelo nome real)
-1200, .Station Estacao B;Estacao B;Estacao B;-1;-1;0;0
-
-; 1300 m – fim de plataforma à esquerda
-1300, .RailEnd 100
-
-; 1350 m – fim de plataforma à direita
-1350, .RailEnd 101
-
-; 1500 m – saída da estação, segue em linha reta
-1500, .Curve 0
-1500, .Pitch 0
-1500, .Ground 0

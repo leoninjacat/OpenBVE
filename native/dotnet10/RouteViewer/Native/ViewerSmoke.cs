@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Numerics;
@@ -8,7 +8,7 @@ namespace RouteViewer;
 internal static class ViewerSmoke
 {
     static Stopwatch timer;
-    static bool captured, tested;
+    static bool captured, tested, texturesTested;
     static int frames, phase, originalObjects;
     static Vector3 savedEye;
     internal static void Rendered(ViewerWindow window)
@@ -16,12 +16,63 @@ internal static class ViewerSmoke
         if(!Loading.Complete || Program.CurrentRouteFile==null) return;
         timer ??= Stopwatch.StartNew();
         frames++;
+        if(Program.TextureTest&&!texturesTested&&frames>10) {
+            int count=Program.Renderer.TextureManager.RegisteredTexturesCount,failed=0;
+            for(int i=0;i<count;i++) {
+                var texture=LibRender2.Textures.TextureManager.RegisteredTextures[i];
+                if(texture==null)continue;
+                if(!Program.CurrentHost.LoadTexture(ref texture,OpenBveApi.Textures.OpenGlTextureWrapMode.ClampClamp)) {
+                    failed++;
+                    Console.Error.WriteLine("VIEWER_TEXTURE_FAILED: "+(texture?.Origin is OpenBveApi.Textures.PathOrigin origin?origin.Path:$"texture {i}"));
+                }
+            }
+            foreach(var message in Interface.GetLogSnapshot()) {
+                if(message.Type is not (OpenBveApi.Interface.MessageType.Error or OpenBveApi.Interface.MessageType.Critical))continue;
+                bool textureDiagnostic=message.Text.IndexOf(".bmp",StringComparison.OrdinalIgnoreCase)>=0
+                    || message.Text.IndexOf(" at LoadTexture",StringComparison.OrdinalIgnoreCase)>=0
+                    || message.Text.IndexOf(" at QueryTextureDimensions",StringComparison.OrdinalIgnoreCase)>=0
+                    || message.Text.IndexOf(" at CanLoadTexture",StringComparison.OrdinalIgnoreCase)>=0
+                    || message.Text.StartsWith("No plugin found that is capable of loading texture",StringComparison.OrdinalIgnoreCase)
+                    || message.Text.StartsWith("Zero-byte texture file encountered",StringComparison.OrdinalIgnoreCase);
+                if(!textureDiagnostic)continue;
+                failed++;Console.Error.WriteLine("VIEWER_TEXTURE_DIAGNOSTIC: "+message.Text);
+            }
+            if(failed>0)throw new Exception($"Texture GPU upload failed: {failed}/{count}");
+            texturesTested=true;
+            Console.WriteLine($"VIEWER_TEXTURES_OK: uploaded={count}, failed=0");
+        }
         if(Program.CameraSmoke && !tested && frames>10) {
             tested=true;
             var rig=Program.Camera;
             ViewerOverlay.Build(window);
             var trackButton=ViewerOverlay.Center("mode-track");
             ViewerOverlay.Press(window,trackButton.X,trackButton.Y);
+            var available = rig.TrackIds;
+            if (available.Length > 1) {
+                ViewerOverlay.Build(window);
+                var select = ViewerOverlay.Center("select-track");
+                ViewerOverlay.Press(window, select.X, select.Y);
+                if (!ViewerOverlay.TrackDropdownOpen) throw new Exception("Track dropdown did not open");
+                ViewerOverlay.Build(window);
+                var choice=ViewerOverlay.Center($"track-option-{available[1]}");
+                ViewerOverlay.Press(window,choice.X,choice.Y);
+                if (ViewerOverlay.TrackDropdownOpen) throw new Exception("Track dropdown did not close");
+                int selected = rig.SelectedTrack;
+                if (selected == 0) throw new Exception("Track selection did not change");
+                rig.Move(0,0,1,1); rig.Apply();
+                var selectedFollower = Program.Renderer.CameraTrackFollower;
+                var selectedEye = CameraRig.ToV(selectedFollower.WorldPosition) + CameraRig.ToV(selectedFollower.WorldUp)*2.5f;
+                if (selectedFollower.TrackIndex != selected || Vector3.Distance(rig.Pose.Position,selectedEye)>.01f)
+                    throw new Exception("Camera did not follow selected track position and height");
+                Console.WriteLine($"VIEWER_SELECTED_TRACK_OK: via={selected}, eye follows rail basis");
+                if (Array.IndexOf(available, 2) >= 0) {
+                    rig.SelectedTrack = 2; rig.Cab.Position = 0; rig.Apply();
+                    if (Program.Renderer.CameraTrackFollower.TrackIndex != 2 || rig.Cab.Position < rig.Limits.Min ||
+                        float.IsNaN(rig.Pose.Position.Y)) throw new Exception("Secondary track start failed");
+                    Console.WriteLine($"VIEWER_BRANCH_START_OK: via=2 position={rig.Cab.Position}");
+                }
+                rig.SelectedTrack=0; rig.Cab.Position=0; rig.Apply();
+            }
             double original=rig.Cab.Position;
             var offset=rig.Cab.Offset;
             rig.Move(0,0,1,1);
@@ -88,7 +139,7 @@ internal static class ViewerSmoke
             Console.WriteLine("VIEWER_SWITCH_OK: " + Program.CurrentRouteFile);
             phase = 3;
         }
-        bool scenarioDone = (!Program.FeedbackTest || ViewerFeedbackTest.Complete) && (!Program.EditorTest || ViewerEditorTest.Complete) && (!Program.ReloadSmoke || phase >= (Program.SwitchSmoke != null ? 3 : 2));
+        bool scenarioDone = (!Program.KeyboardTest || ViewerKeyboardTest.Complete) && (!Program.FeedbackTest || ViewerFeedbackTest.Complete) && (!Program.EditorTest || ViewerEditorTest.Complete) && (!Program.ReloadSmoke || phase >= (Program.SwitchSmoke != null ? 3 : 2));
         if(scenarioDone && !captured && Program.CapturePath!=null && timer.Elapsed.TotalSeconds>3 && frames>15) {
             Capture(window,Program.CapturePath);captured=true;
             Console.WriteLine("VIEWER_CAPTURE: "+Program.CapturePath);
@@ -96,6 +147,11 @@ internal static class ViewerSmoke
         if(scenarioDone && frames>=30 && (Program.CapturePath==null || captured) && Program.SmokeSeconds>0 && timer.Elapsed.TotalSeconds>=Program.SmokeSeconds) {
             if(Program.Renderer.StaticObjectStates.Count==0 || Program.Renderer.VisibleObjects.OpaqueFaces.Count==0)throw new Exception("Empty route scene");
             Console.WriteLine($"VIEWER_SMOKE_OK: frames={frames}, objects={Program.Renderer.StaticObjectStates.Count}, opaque={Program.Renderer.VisibleObjects.OpaqueFaces.Count}");
+            Console.WriteLine($"VIEWER_TRACK_RANGE: {Program.Camera.Limits.Min}..{Program.Camera.Limits.Max}");
+            if(Program.MessageLogPath!=null) {
+                using var log=new StreamWriter(Program.MessageLogPath);
+                foreach(var message in Interface.GetLogSnapshot())log.WriteLine(message.Type+": "+message.Text);
+            }
             window.Close();
         }
     }

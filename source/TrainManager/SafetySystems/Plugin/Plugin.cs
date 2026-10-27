@@ -90,7 +90,8 @@ namespace TrainManager.SafetySystems
 		public abstract void EndJump();
 
 		/// <summary>Called every frame to update the plugin.</summary>
-		public void UpdatePlugin()
+		private int stationsTrack = int.MinValue;
+        public void UpdatePlugin()
 		{
 			if (Train.Cars == null || Train.Cars.Length == 0)
 			{
@@ -102,7 +103,7 @@ namespace TrainManager.SafetySystems
 			 * */
 			double location = this.Train.Cars[0].FrontAxle.Follower.TrackPosition - this.Train.Cars[0].FrontAxle.Position + 0.5 * this.Train.Cars[0].Length;
 			//If the list of stations has not been loaded, do so
-			if (!StationsLoaded)
+			if (!StationsLoaded || stationsTrack != Train.CurrentTrackIndex)
 			{
 				currentRouteStations = new List<Station>();
 				int s = 0;
@@ -112,7 +113,7 @@ namespace TrainManager.SafetySystems
 					double forwardTolerance = -1;
 					double backwardTolerance = -1;
 					int stopIdx = TrainManagerBase.CurrentRoute.Stations[s].GetStopIndex(Train);
-					if (selectedStation.Stops.Length != 0)
+					if (stopIdx >= 0)
 					{
 						stopPosition = selectedStation.Stops[stopIdx].TrackPosition;
 						forwardTolerance = selectedStation.Stops[stopIdx].ForwardTolerance;
@@ -125,6 +126,7 @@ namespace TrainManager.SafetySystems
 				}
 
 				StationsLoaded = true;
+                stationsTrack = Train.CurrentTrackIndex;
 
 			}
 

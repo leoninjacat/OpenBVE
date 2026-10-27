@@ -1,0 +1,45 @@
+ROUTE VIEWER - OpenBVE by LT ARTS - teste Windows x64
+
+1. Extraia TODO o ZIP para uma pasta no seu computador.
+2. Abra RouteViewer.exe. Nao execute o programa dentro do ZIP.
+3. Use Ctrl+O ou F7 para selecionar uma rota CSV/RW.
+   Use Ctrl+N ou "Nova rota" para criar um projeto com trilho zero e terreno.
+   Nas abas Via, Plataformas e Cenario, selecione pastas por tipo de objeto
+   e escolha quais modelos aplicar inicialmente. O CSV e o catalogo de indices
+   sao gerados. Bibliotecas externas e suas texturas devem acompanhar o projeto.
+   Se o pacote tiver Railway, "Testar rota.cmd" abre uma rota incluida.
+
+Nao precisa instalar .NET, Visual Studio, Mono ou GTK. Este pacote inclui
+o runtime .NET e as bibliotecas do programa. Destinado a Windows 10/11 x64,
+com driver de video instalado e suporte a OpenGL. Nao inclui o simulador.
+O marcador portable.flag salva preferencias e logs em UserData, nesta pasta.
+
+TECLADO E MOUSE
+Clique dentro da cena 3D para dar o foco ao viewport.
+Clique no texto do editor para voltar a escrever; isso nao move a camera.
+W/S: avancar/recuar. A/D: deslocar de lado. Q/E: descer/subir.
+Shift: movimento mais rapido. Setas: olhar no modo sobre os trilhos.
+Tab: alternar entre camera sobre os trilhos e camera livre.
+Home: redefinir vista. Page Up/Page Down: estacao anterior/seguinte.
+Espaco: movimento continuo no modo sobre os trilhos.
+Roda do mouse: zoom. Botao do meio: orbitar.
+Shift + botao do meio: deslocar. Ctrl + botao do meio: zoom.
+Botao direito: olhar ao redor.
+F1: ajuda. F5: recarregar rota. F8: mostrar/ocultar editor.
+F9: mensagens da rota. F10: mostrar/ocultar interface.
+No editor: Ctrl+S salva e atualiza a previa. Faca uma copia da rota antes
+de experimentar edicoes. O seletor permite layouts lateral, abaixo e separado.
+
+PARA COMPARTILHAR
+Envie o ZIP inteiro. O EXE sozinho nao basta: Data, DLLs e demais arquivos
+precisam ficar juntos. Rotas de terceiros precisam manter a estrutura
+Railway/Route, Railway/Object e Railway/Sound e seus avisos de autoria.
+As rotas incluidas continuam pertencendo aos autores originais.
+
+SE DER ERRO
+Use "Abrir com diagnostico.cmd" e envie os arquivos viewer-output.log,
+viewer-errors.log e, se existirem, routeviewer-error.log e desktop-error.log.
+Descreva tambem o que estava fazendo e a placa de video do computador.
+
+Codigo-fonte: https://github.com/leoninjacat/OpenBVE
+Licencas e avisos: pasta licenses e OpenBVE-README.md.

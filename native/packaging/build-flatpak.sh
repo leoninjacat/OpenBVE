@@ -39,6 +39,8 @@ for plugin in Route.CsvRw Train.OpenBve Object.CsvB3d Object.Animated Sound.Riff
     cp -a "$plugin_dir/$plugin.dll" "$engine/Data/Plugins/"
 done
 dotnet run --project "$native/CameraTests" -c Release
+dotnet run --project "$native/NativeTests" -c Release
+dotnet run --project "$native/RepeatTests" -c Release -- "$repo/Railway/Route/Mobitrens/Linha 1/Trens_XML"
 viewer="$files/lib/openbve/route-viewer"
 dotnet publish "$native/RouteViewer/RouteViewer.csproj" -c Release -r linux-x64 --self-contained true -o "$viewer" -v:minimal
 rm -f "$viewer/libcoreclrtraceptprovider.so"
@@ -69,6 +71,13 @@ for package in skiasharp skiasharp.nativeassets.linux.nodependencies; do
 done
 cp "$repo/Readme.md" "$files/share/licenses/openbve/PROJECT.md"
 cp "$here/README.md" "$files/share/licenses/openbve/NATIVE-PACKAGE.md"
+# Verify the exact staged plugin, not a DLL from a previous development build.
+dotnet build "$native/TextureAudit/TextureAudit.csproj" -c Release -v:minimal
+for content in "$engine/Data" "$repo/Railway" "$repo/Train"; do
+    dotnet "$native/TextureAudit/bin/Release/net10.0/TextureAudit.dll" \
+        "$content" "$stage/texture-audit-$(basename -- "$content").json" \
+        "$engine/Data/Plugins/Texture.Native.dll"
+done
 # Read access lets the user select routes for editing and trains; settings stay in
 # Flatpak's private XDG directory. GPU drivers are supplied by Flatpak extensions.
 flatpak build-finish --command=openbve-native --share=ipc --socket=x11 \

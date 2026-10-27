@@ -37,7 +37,7 @@ internal static class ViewerEditorTest
                 if(Program.LoadCount<=initialLoads)return;
                 if(!File.ReadAllText(Program.CurrentRouteFile,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(Program.CurrentRouteFile)).Contains("Route Editor integration test"))throw new Exception("Editor did not save route");
                 if(Vector3.Distance(eye,Program.Camera.Pose.Position)>.01)throw new Exception("Editor reload moved camera");
-                Console.WriteLine("VIEWER_EDITOR_OK: side, bottom, detached, reattached, save from GTK, preview reload, camera preserved");phase++;break;
+                Console.WriteLine("VIEWER_EDITOR_OK: side, bottom, detached, reattached, save from desktop editor, preview reload, camera preserved");phase++;break;
         }
     }
 }

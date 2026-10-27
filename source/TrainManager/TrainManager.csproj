@@ -45,6 +45,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +198,7 @@
     <Compile Include="Train\Horn.cs" />
     <Compile Include="Train\RequestStop.cs" />
     <Compile Include="Train\Station.cs" />
+    <Compile Include="Train\RoundTripService.cs" />
     <Compile Include="Train\TrainBase.cs" />
     <Compile Include="Train\TrainBase.Physics.cs">
       <DependentUpon>TrainBase.cs</DependentUpon>

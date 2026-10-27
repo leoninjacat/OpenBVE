@@ -1,4 +1,4 @@
-using OpenBveApi.Routes;
+﻿using OpenBveApi.Routes;
 using System;
 using System.Collections.Generic;
 
@@ -49,6 +49,9 @@ namespace OpenBveApi.Trains
 
 		/// <summary>Gets the track position of the front car</summary>
 		public virtual double FrontCarTrackPosition => 0;
+
+        /// <summary>The rail occupied by the leading axle.</summary>
+        public virtual int CurrentTrackIndex => 0;
 		
 		/// <summary>Gets the track position of the rear car</summary>
 		public virtual double RearCarTrackPosition => 0;

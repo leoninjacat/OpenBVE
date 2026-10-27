@@ -693,7 +693,7 @@ namespace RouteManager2
 				x = imageOrigin.X + (x - x0) * imageScale.X;
 				z = imageOrigin.Y + (z0 - z) * imageScale.Y + imageSize.Y;
 				p[i] = new PointF((float)x, (float)z);
-				if (currentTrack.Elements[i].Events == null)
+				if (currentTrack.Elements[i + firstUsedElement].Events == null)
 				{
 					continue;
 				}
@@ -764,7 +764,7 @@ namespace RouteManager2
 				x = imageOrigin.X + (x - x0) * imageScale.X;
 				z = imageOrigin.Y + (z0 - z) * imageScale.Y + imageSize.Y;
 				p[i] = new PointF((float)x, (float)z);
-				if (currentTrack.Elements[i].Events == null)
+				if (currentTrack.Elements[i + firstUsedElement].Events == null)
 				{
 					continue;
 				}
@@ -776,7 +776,7 @@ namespace RouteManager2
 					if (currentTrack.Elements[i + firstUsedElement].Events[j] is StationStartEvent)
 					{
 						StationStartEvent e =
-							(StationStartEvent)CurrentRoute.Tracks[0].Elements[i + firstUsedElement].Events[j];
+							(StationStartEvent)currentTrack.Elements[i + firstUsedElement].Events[j];
 						// if StationStartEvent found, look for a change in ATS/ATC control;
 						// if there is a change, draw all previous track elements
 						// with colour for the previous control state

@@ -30,6 +30,7 @@ using OpenBveApi.Trains;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using TrainManager.Car;
@@ -40,13 +41,13 @@ namespace OpenBve
 {
 	internal static class TrackFollowingObjectParser
 	{
-		private static TrainBase Train;
 
 		/// <summary>Parses a track following object</summary>
 		/// <param name="objectPath">Absolute path to the object folder of route data</param>
 		/// <param name="fileName">The XML file to parse</param>
-		internal static TrainBase ParseTrackFollowingObject(string objectPath, string fileName)
+		internal static TrainBase ParseTrackFollowingObject(string objectPath, string fileName, bool expandFleet = true)
 		{
+			TrainBase Train = null;
 			XMLFile<TrackFollowingObjectSection, TrackFollowingObjectKey> xmlFile = new XMLFile<TrackFollowingObjectSection, TrackFollowingObjectKey>(fileName, "/openBVE/TrackFollowingObject", Program.CurrentHost);
 			if (xmlFile.GetValue(TrackFollowingObjectKey.RunInterval, out double interval) || xmlFile.GetValue(TrackFollowingObjectKey.PreTrain, out interval))
 			{
@@ -172,6 +173,37 @@ namespace OpenBve
 				Train.Specs.DoorCloseMode = DoorMode.Manual;
 			}
 
+			if (Train is ScriptedTrain protectedService && protectedService.ProtectedTraffic)
+			{
+				protectedService.TrafficControl = Program.TrainManager.ScriptedTraffic;
+				if (!string.IsNullOrWhiteSpace(protectedService.ConflictZones))
+				foreach (string zone in protectedService.ConflictZones.Split(';'))
+				{
+					string[] parts = zone.Split(':');
+					if (parts.Length != 3 && parts.Length != 4) throw new InvalidDataException("ConflictZones syntax: [group:]low:high:rail,rail;...");
+					int offset = parts.Length == 4 ? 1 : 0;
+					protectedService.TrafficControl.AddZone(double.Parse(parts[offset], CultureInfo.InvariantCulture), double.Parse(parts[offset + 1], CultureInfo.InvariantCulture), parts[offset + 2].Split(',').Select(x => int.Parse(x, CultureInfo.InvariantCulture)), offset == 1 ? parts[0] : null);
+				}
+			}
+
+			if (Train is ScriptedTrain service && service.SpawnInterval > 0)
+			{
+				service.CanIntroduce = candidate => candidate.IsBirthAreaFree(
+					Program.TrainManager.Trains.Cast<AbstractTrain>().Concat(Program.TrainManager.TFOs));
+				if (expandFleet)
+				{
+					var fleet = new ScriptedServiceFleet(service.SpawnInterval);
+					fleet.Add(service);
+					for (int slot = 1; slot < service.FleetSize; slot++)
+					{
+						var instance = ParseTrackFollowingObject(objectPath, fileName, false) as ScriptedTrain;
+						if (instance == null) throw new InvalidDataException("Failed to preload fleet instance: " + fileName);
+						fleet.Add(instance);
+						Program.TrainManager.TFOs.Add(instance);
+					}
+				}
+			}
+
 			return Train;
 		}
 
@@ -184,6 +216,67 @@ namespace OpenBve
 			definitionBlock.TryGetValue(TrackFollowingObjectKey.AppearanceStartPosition, ref scriptedTrain.AppearanceStartPosition);
 			definitionBlock.TryGetValue(TrackFollowingObjectKey.AppearanceEndPosition, ref scriptedTrain.AppearanceEndPosition);
 			definitionBlock.TryGetTime(TrackFollowingObjectKey.LeaveTime, ref scriptedTrain.LeaveTime);
+			// RepeatInterval is measured in seconds between actual appearances.
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.RepeatInterval, ref scriptedTrain.RepeatInterval, NumberRange.NonNegative);
+			if (double.IsNaN(scriptedTrain.RepeatInterval) || double.IsInfinity(scriptedTrain.RepeatInterval) ||
+			    (scriptedTrain.RepeatInterval > 0 && (scriptedTrain.LeaveTime <= 0 || scriptedTrain.LeaveTime >= scriptedTrain.RepeatInterval)))
+			{
+				Interface.AddMessage(MessageType.Error, false, "RepeatInterval requires a positive LeaveTime shorter than the interval; repetition disabled.");
+				scriptedTrain.RepeatInterval = 0;
+			}
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.SpawnInterval, ref scriptedTrain.SpawnInterval, NumberRange.NonNegative);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.FleetSize, ref scriptedTrain.FleetSize, NumberRange.Positive);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.BirthClearance, ref scriptedTrain.BirthClearance, NumberRange.NonNegative);
+			if (double.IsNaN(scriptedTrain.SpawnInterval) || double.IsInfinity(scriptedTrain.SpawnInterval)) scriptedTrain.SpawnInterval = 0;
+			if (double.IsNaN(scriptedTrain.BirthClearance) || double.IsInfinity(scriptedTrain.BirthClearance)) scriptedTrain.BirthClearance = 50;
+			if (scriptedTrain.FleetSize < 1 || scriptedTrain.FleetSize > 32 || (scriptedTrain.FleetSize > 1 && scriptedTrain.SpawnInterval <= 0))
+			{
+				Interface.AddMessage(MessageType.Error, false, "FleetSize must be 1..32; multiple instances require SpawnInterval in seconds. Fleet disabled.");
+				scriptedTrain.FleetSize = 1;
+				scriptedTrain.SpawnInterval = 0;
+			}
+			if (scriptedTrain.SpawnInterval > 0 && scriptedTrain.RepeatInterval > 0)
+			{
+				Interface.AddMessage(MessageType.Error, false, "SpawnInterval replaces RepeatInterval; legacy repetition disabled.");
+				scriptedTrain.RepeatInterval = 0;
+			}
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.ContinuousHandoff, ref scriptedTrain.ContinuousHandoff);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.WarmStart, ref scriptedTrain.WarmStart);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.ProtectedTraffic, ref scriptedTrain.ProtectedTraffic);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.PreferStationWaiting, ref scriptedTrain.PreferStationWaiting);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.DisposeAtDestination, ref scriptedTrain.DisposeAtDestination);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.ConflictZones, ref scriptedTrain.ConflictZones);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.ServiceId, ref scriptedTrain.ServiceId);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.NextService, ref scriptedTrain.NextService);
+			definitionBlock.TryGetValue(TrackFollowingObjectKey.TriggeredStart, ref scriptedTrain.AwaitingTrigger);
+			definitionBlock.TryGetTime(TrackFollowingObjectKey.JourneyTime, ref scriptedTrain.JourneyTime);
+			definitionBlock.TryGetTime(TrackFollowingObjectKey.CompletionWait, ref scriptedTrain.CompletionWait);
+			if (scriptedTrain.JourneyTime < 0 || double.IsNaN(scriptedTrain.JourneyTime) || double.IsInfinity(scriptedTrain.JourneyTime)) scriptedTrain.JourneyTime = 0;
+			if (scriptedTrain.CompletionWait < 0 || double.IsNaN(scriptedTrain.CompletionWait) || double.IsInfinity(scriptedTrain.CompletionWait)) scriptedTrain.CompletionWait = 0;
+			if (scriptedTrain.SpawnInterval > 0 && string.IsNullOrWhiteSpace(scriptedTrain.NextService) && scriptedTrain.LeaveTime <= 0)
+			{
+				Interface.AddMessage(MessageType.Error, false, "Unchained fleets require positive LeaveTime; fleet disabled.");
+				scriptedTrain.SpawnInterval = 0;
+				scriptedTrain.FleetSize = 1;
+			}
+			if (!string.IsNullOrWhiteSpace(scriptedTrain.NextService))
+			{
+				if (scriptedTrain.RepeatInterval > 0)
+				{
+					Interface.AddMessage(MessageType.Error, false, "NextService cannot be combined with RepeatInterval; interval repetition disabled.");
+					scriptedTrain.RepeatInterval = 0;
+				}
+				scriptedTrain.JourneyCompleted = () =>
+				{
+					var matches = Program.TrainManager.TFOs.OfType<ScriptedTrain>().Where(x => x.ServiceId == scriptedTrain.NextService && x.FleetSlot == scriptedTrain.FleetSlot).ToArray();
+					if (matches.Length != 1 || matches[0] == scriptedTrain || !matches[0].AwaitingTrigger || matches[0].State != TrainState.Pending)
+					{
+						Interface.AddMessage(MessageType.Error, false, "NextService must identify exactly one inactive service with the same fleet slot: " + scriptedTrain.NextService);
+						return;
+					}
+					matches[0].ActivateService(scriptedTrain.ContinuousHandoff ? scriptedTrain : null);
+				};
+			}
 			definitionBlock.ReportErrors();
 		}
 

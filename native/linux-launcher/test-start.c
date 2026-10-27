@@ -39,9 +39,20 @@ int main(int argc, char **argv)
     g_assert_true(gtk_widget_get_sensitive(button));
     g_autofree char *actual = NULL;
     g_assert_true(g_file_get_contents(output, &actual, NULL, NULL));
-    g_autofree char *expected = g_strdup_printf("/route=%s\n/train=%s\n", route, train);
+    g_autofree char *expected = g_strdup_printf("/route=%s\n/train=%s\n/mode=normal\n", route, train);
     g_assert_cmpstr(actual, ==, expected);
     g_assert_cmpstr(gtk_label_get_text(GTK_LABEL(ui->status)), ==, "Viagem encerrada.");
+    gtk_drop_down_set_selected(GTK_DROP_DOWN(ui->game_mode), 1);
+    start_clicked(GTK_BUTTON(button), ui);
+    deadline = g_get_monotonic_time() + 5000000;
+    while (!gtk_widget_get_sensitive(button) && g_get_monotonic_time() < deadline) {
+        while (g_main_context_iteration(NULL, FALSE));
+        g_usleep(1000);
+    }
+    g_clear_pointer(&actual, g_free);
+    g_assert_true(g_file_get_contents(output, &actual, NULL, NULL));
+    g_autofree char *cco_expected = g_strdup_printf("/route=%s\n/train=%s\n/mode=cco\n", route, train);
+    g_assert_cmpstr(actual, ==, cco_expected);
     if (argc == 5) {
         gtk_editable_set_text(GTK_EDITABLE(ui->route), argv[1]);
         gtk_editable_set_text(GTK_EDITABLE(ui->train), argv[3]);
@@ -55,7 +66,7 @@ int main(int argc, char **argv)
         g_assert_true(gtk_widget_get_sensitive(button));
         g_clear_pointer(&actual, g_free);
         g_assert_true(g_file_get_contents(output, &actual, NULL, NULL));
-        g_autofree char *portal_expected = g_strdup_printf("/route=%s\n/train=%s\n", argv[2], argv[4]);
+        g_autofree char *portal_expected = g_strdup_printf("/route=%s\n/train=%s\n/mode=cco\n", argv[2], argv[4]);
         g_assert_cmpstr(actual, ==, portal_expected);
         g_print("Portal selection handoff passed (original route and train paths).\n");
     }

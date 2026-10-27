@@ -47,9 +47,9 @@ namespace OpenBve
 
 		/// <summary>Updates any TFOs within the world after a jump</summary>
 		/// <param name="Train">The train which has jumped</param>
-		public static void ProcessJump(AbstractTrain Train)
+		public static void ProcessJump(AbstractTrain Train, bool preserveTraffic = false)
 		{
-			if (Train.IsPlayerTrain)
+			if (Train.IsPlayerTrain && !preserveTraffic)
 			{
 				for (int i = 0; i < AnimatedWorldObjects.Length; i++)
 				{

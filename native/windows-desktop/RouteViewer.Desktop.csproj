@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>RouteViewer.Desktop</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup><Compile Include="../dotnet10/RouteViewer/Native/RouteProject.cs" Link="RouteProject.cs" /><Compile Include="../dotnet10/RouteViewer/Native/RouteObjectCatalog.cs" Link="RouteObjectCatalog.cs" /></ItemGroup>
+</Project>

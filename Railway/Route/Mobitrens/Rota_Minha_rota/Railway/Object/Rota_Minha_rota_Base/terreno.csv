@@ -1,0 +1,8 @@
+﻿; Terreno básico, sem texturas externas
+CreateMeshBuilder
+AddVertex,-50,-0.20,0
+AddVertex,50,-0.20,0
+AddVertex,50,-0.20,25
+AddVertex,-50,-0.20,25
+AddFace2,0,1,2,3
+SetColor,85,115,75

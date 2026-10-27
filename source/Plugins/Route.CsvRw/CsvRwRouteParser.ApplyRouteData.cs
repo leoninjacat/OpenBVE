@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using OpenBveApi.Colors;
 using OpenBveApi.Math;
@@ -997,11 +997,11 @@ namespace CsvRwRouteParser
 							}
 
 							// stop
-							if (railKey == 0)
 							{
 								for (int k = 0; k < Data.Blocks[i].StopPositions.Length; k++)
 								{
-									double b = RemapBrightness(Data, Data.Blocks[i].StopPositions[k].TrackPosition);
+									if (railKey != (Data.Blocks[i].StopPositions[k].RailIndex ?? 0)) continue;
+                                    double b = RemapBrightness(Data, Data.Blocks[i].StopPositions[k].TrackPosition);
 									Data.Blocks[i].StopPositions[k].Create(new Vector3(pos), RailTransformation, StartingDistance, EndingDistance, b);
 								}
 							}
@@ -1074,7 +1074,26 @@ namespace CsvRwRouteParser
 					}
 				}
 			}
-			// create default point of interests
+			// Stations belong to their declared rails, not exclusively to rail zero.
+            foreach (var track in CurrentRoute.Tracks) {
+                if (track.Key <= 0 || track.Value.Elements == null) continue;
+                for (int element = 0; element < track.Value.Elements.Length && element < CurrentRoute.Tracks[0].Elements.Length; element++) {
+                    if (track.Value.Elements[element].InvalidElement || track.Value.Elements[element].WorldDirection.NormSquared() < .5 || CurrentRoute.Tracks[0].Elements[element].Events == null) continue;
+                    if (track.Value.Elements[element].Events == null) track.Value.Elements[element].Events = new List<GeneralEvent>();
+                    foreach (var ev in CurrentRoute.Tracks[0].Elements[element].Events) {
+                        int station = ev is StationStartEvent start ? start.StationIndex : ev is StationEndEvent end ? end.StationIndex : -1;
+                        if (station < 0) continue;
+                        bool applies = false;
+                        foreach (var stop in CurrentRoute.Stations[station].Stops)
+                            if (!stop.RailIndex.HasValue || stop.RailIndex.Value == track.Key) applies = true;
+                        if (!applies) continue;
+                        track.Value.Elements[element].Events.Add(ev is StationStartEvent
+                            ? (GeneralEvent)new StationStartEvent(CurrentRoute, ev.TrackPositionDelta, station)
+                            : new StationEndEvent(Plugin.CurrentHost, CurrentRoute, ev.TrackPositionDelta, station));
+                    }
+                }
+            }
+            // create default point of interests
 			if (CurrentRoute.PointsOfInterest.Length == 0)
 			{
 				CurrentRoute.PointsOfInterest = new RouteManager2.PointOfInterest[CurrentRoute.Stations.Length];

@@ -8,9 +8,10 @@ namespace CsvRwRouteParser
 {
 	internal class Stop : AbstractStructure
 	{
-		internal Stop(double trackPosition, int stationIndex, int direction, double forwardTolerance, double backwardTolerance, int numberOfCars) : base(trackPosition)
+		internal Stop(double trackPosition, int stationIndex, int direction, double forwardTolerance, double backwardTolerance, int numberOfCars, int? railIndex = null) : base(trackPosition)
 		{
 			StationIndex = stationIndex;
+            RailIndex = railIndex;
 			Direction = direction;
 			ForwardTolerance = forwardTolerance;
 			BackwardTolerance = backwardTolerance;
@@ -18,6 +19,7 @@ namespace CsvRwRouteParser
 		}
 
 		private readonly int StationIndex;
+        internal readonly int? RailIndex;
 		internal readonly int Direction;
 		private readonly double ForwardTolerance;
 		private readonly double BackwardTolerance;
@@ -43,6 +45,7 @@ namespace CsvRwRouteParser
 			int t = Stations[StationIndex].Stops.Length;
 			Array.Resize(ref Stations[StationIndex].Stops, t + 1);
 			Stations[StationIndex].Stops[t].TrackPosition = TrackPosition;
+            Stations[StationIndex].Stops[t].RailIndex = RailIndex;
 			if (Stations[StationIndex].Dummy)
 			{
 				//If our station is dummy (for signalling), use an overlarge backstop range as stop pos doesn't matter

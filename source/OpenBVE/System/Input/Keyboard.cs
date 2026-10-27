@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using LibRender2.Menu;
 using LibRender2.Screens;
 using OpenTK.Input;
@@ -8,6 +8,8 @@ namespace OpenBve
 {
 	internal static partial class MainLoop
 	{
+		private static bool ccoViewKeyDown;
+		private static bool ccoRadioKeyDown;
 		/// <summary>Called when a KeyDown event is generated</summary>
 		internal static void KeyDownEvent(object sender, KeyboardKeyEventArgs e)
 		{
@@ -15,12 +17,28 @@ namespace OpenBve
 			{
 				//If in kiosk mode, reset the timer and disable AI on keypress
 				kioskModeTimer = 0;
-				TrainManager.PlayerTrain.AI = null;
+				if (!CcoMode.Enabled) TrainManager.PlayerTrain.AI = null;
 			}
 			if (Loading.Complete && e.Key == Key.F4 && e.Alt)
 			{
 				// Catch standard ALT + F4 quit and push confirmation prompt
 				Game.Menu.PushMenu(MenuType.Quit);
+				return;
+			}
+
+			if (Loading.Complete && Program.Renderer.CurrentInterface == InterfaceType.Normal &&
+				e.Key == Key.F7 && e.Control && !e.Shift && !e.Alt)
+			{
+				if (!ccoRadioKeyDown) CabinAnnouncements.ToggleRadio();
+				ccoRadioKeyDown = true;
+				return;
+			}
+
+			if (Loading.Complete && Program.Renderer.CurrentInterface == InterfaceType.Normal &&
+				e.Key == Key.F7 && !e.Alt && !e.Control && !e.Shift)
+			{
+				if (!ccoViewKeyDown) CcoMode.CycleTrafficView();
+				ccoViewKeyDown = true;
 				return;
 			}
 
@@ -85,11 +103,22 @@ namespace OpenBve
 		/// <summary>Called when a KeyUp event is generated</summary>
 		internal static void KeyUpEvent(object sender, KeyboardKeyEventArgs e)
 		{
+			if (e.Key == Key.F7 && ccoRadioKeyDown)
+			{
+				ccoRadioKeyDown = false;
+				return;
+			}
+			if (e.Key == Key.F7 && ccoViewKeyDown)
+			{
+				ccoViewKeyDown = false;
+				return;
+			}
+
 			if (Interface.CurrentOptions.KioskMode && Program.Renderer.CurrentInterface != InterfaceType.GLMainMenu)
 			{
 				//If in kiosk mode, reset the timer and disable AI on keypress
 				kioskModeTimer = 0;
-				TrainManager.PlayerTrain.AI = null;
+				if (!CcoMode.Enabled) TrainManager.PlayerTrain.AI = null;
 			}
 			if (Program.Renderer.PreviousInterface >= InterfaceType.Menu & Program.Renderer.CurrentInterface == InterfaceType.Normal)
 			{

@@ -155,6 +155,7 @@
 <Compile Include="../../../source/TrainManager/Train/Horn.cs" />
 <Compile Include="../../../source/TrainManager/Train/RequestStop.cs" />
 <Compile Include="../../../source/TrainManager/Train/Station.cs" />
+<Compile Include="../../../source/TrainManager/Train/RoundTripService.cs" />
 <Compile Include="../../../source/TrainManager/Train/TrainBase.cs" />
 <Compile Include="../../../source/TrainManager/Train/TrainBase.Physics.cs" />
 <Compile Include="../../../source/TrainManager/Train/TrainBase.TrainMovement.cs" />

@@ -1297,6 +1297,15 @@ namespace LibRender2
 
 			MeshMaterial material = state.Prototype.Mesh.Materials[face.Material];
 			VertexArrayObject VAO = (VertexArrayObject)state.Prototype.Mesh.VAO;
+            if (VAO == null)
+            {
+                // Reversing a loaded consist can replace a mesh with a clone that has no
+                // GPU buffers. Cached FaceStates outlive that change, so their constructor
+                // cannot be relied on to upload the replacement before the next draw.
+                VAOExtensions.CreateOrUpdateVAO(state.Prototype.Mesh, state.Prototype.Dynamic, shader.VertexLayout, this);
+                VAO = (VertexArrayObject)state.Prototype.Mesh.VAO;
+                if (VAO == null) throw new InvalidOperationException("Could not rebuild the graphics buffers for a changed mesh.");
+            }
 
 			if (lastVAO != VAO.handle)
 			{

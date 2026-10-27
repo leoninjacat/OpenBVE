@@ -52,12 +52,20 @@ namespace TrainManager.Trains
 
 		private double TimeLastProcessed;
 		private double CurrentPosition;
+		private double CurrentMileage;
+		private TravelDirection CurrentDirection;
+		/// <summary>The planned direction, including while stopped at a station.</summary>
+		public TravelDirection Direction => CurrentDirection;
+		private double HeldTime;
+		private double InitialElapsed;
+		public double WaitingStationPosition { get; private set; } = double.NaN;
+		public double JourneyDuration => Train.JourneyTime > 0 ? Train.JourneyTime : Data[Data.Length - 1].ArrivalTime;
 
 		public TrackFollowingObjectAI(ScriptedTrain train, TravelData[] data)
 		{
 			Train = train;
 			Data = data;
-			TimeLastProcessed = 0.0;
+			TimeLastProcessed = double.NaN;
 
 			if (Train.Cars[0].Specs.DoorOpenFrequency != 0.0)
 			{
@@ -71,37 +79,174 @@ namespace TrainManager.Trains
 
 			SetupTravelData();
 			CheckTravelData();
+			CurrentDirection = ((TravelStopData)Data[0]).Direction;
+		}
+
+		/// <summary>Rewinds a hidden composition without rebuilding its travel plan.</summary>
+		public void ResetForRepeat()
+		{
+			TimeLastProcessed = double.NaN;
+			HeldTime = 0;
+			WaitingStationPosition = double.NaN;
+			InitialElapsed = 0;
+			CurrentPosition = Data[0].Position;
+			CurrentMileage = 0;
+			CurrentDirection = ((TravelStopData)Data[0]).Direction;
+			Train.CurrentSpeed = 0;
+			Train.Specs.CurrentAverageAcceleration = 0;
+			Train.PlaceCars(CurrentPosition);
+			foreach (CarBase car in Train.Cars)
+			{
+				car.CurrentSpeed = 0;
+				car.Specs.PerceivedSpeed = 0;
+				car.Specs.Acceleration = 0;
+				car.FrontAxle.Follower.TrackIndex = Data[0].RailIndex;
+				car.RearAxle.Follower.TrackIndex = Data[0].RailIndex;
+				car.FrontBogie.FrontAxle.Follower.TrackIndex = Data[0].RailIndex;
+				car.FrontBogie.RearAxle.Follower.TrackIndex = Data[0].RailIndex;
+				car.RearBogie.FrontAxle.Follower.TrackIndex = Data[0].RailIndex;
+				car.RearBogie.RearAxle.Follower.TrackIndex = Data[0].RailIndex;
+				foreach (Door door in car.Doors)
+				{
+					door.State = 0;
+					door.AnticipatedOpen = false;
+					door.AnticipatedReopen = false;
+					door.DoorLockDuration = 0;
+				}
+			}
+		}
+
+		/// <summary>Rail the itinerary will use at an obstacle, after upcoming switches.</summary>
+		public bool UsesRailAtPosition(int rail, double position)
+		{
+			double mileage = CurrentMileage + (int)CurrentDirection * (position - CurrentPosition);
+			return (Data.LastOrDefault(x => x.Mileage <= mileage)?.RailIndex ?? Data[0].RailIndex) == rail;
+		}
+
+		private double PlanTime(double elapsed)
+		{
+			double arrival = Data[Data.Length - 1].ArrivalTime;
+			return Train.JourneyTime > 0 && arrival > 0 ?
+				(elapsed < Train.JourneyTime ? elapsed * arrival / Train.JourneyTime : arrival + elapsed - Train.JourneyTime) : elapsed;
+		}
+
+		private double ElapsedAtPlanTime(double time)
+		{
+			double arrival = Data[Data.Length - 1].ArrivalTime;
+			return Train.JourneyTime > 0 && arrival > 0 ?
+				(time < arrival ? time * Train.JourneyTime / arrival : Train.JourneyTime + time - arrival) : time;
+		}
+
+		private double WaitForStationExit(double elapsed, double frameTime)
+		{
+			WaitingStationPosition = double.NaN;
+			if (!Train.PreferStationWaiting || !Train.ProtectedTraffic || Train.TrafficControl == null) return elapsed;
+			double before = PlanTime(Math.Max(0, elapsed - frameTime));
+			double after = PlanTime(elapsed);
+			for (int i = 0; i < Data.Length - 1; i++)
+			{
+				if (!(Data[i] is TravelStopData station) || before > station.DepartureTime + 0.000001 || after < station.ClosingDoorsStartTime) continue;
+				int next = i + 1;
+				while (next < Data.Length && !(Data[next] is TravelStopData)) next++;
+				if (next == Data.Length) continue;
+				var destination = (TravelStopData)Data[next];
+				if (Train.TrafficControl.CanDepartStation(Train, station, destination, Data.Skip(i).Take(next - i + 1).ToArray())) continue;
+				// Retain the last stationary instant with the doors open. On release,
+				// the original door-closing and acceleration sequence continues normally.
+				double heldElapsed = ElapsedAtPlanTime(station.ClosingDoorsStartTime);
+				HeldTime += Math.Max(0, elapsed - heldElapsed);
+				WaitingStationPosition = station.Position;
+				return Math.Min(elapsed, heldElapsed);
+			}
+			return elapsed;
+		}
+
+		/// <summary>Rewinds seeded traffic to its last actual stop, avoiding queues in open line.</summary>
+		public double PrepareAtPreviousStation(double elapsed)
+		{
+			double time = PlanTime(elapsed);
+			var station = Data.OfType<TravelStopData>().LastOrDefault(x => x.ArrivalTime < time - 0.000001);
+			double age = station == null ? 0 : ElapsedAtPlanTime(station.ArrivalTime);
+			PrepareAtElapsed(age);
+			return age;
+		}
+
+		/// <summary>Places initial traffic at its actual point along the itinerary before rendering.</summary>
+		public void PrepareAtElapsed(double elapsed)
+		{
+			ResetForRepeat();
+			InitialElapsed = elapsed;
+			GetNewState(PlanTime(elapsed), out double mileage, out double position, out TravelDirection direction, out _, out _);
+			CurrentPosition = position;
+			CurrentMileage = mileage;
+			CurrentDirection = direction;
+			Train.PlaceCars(position);
+			foreach (var car in Train.Cars)
+			{
+				SetRailIndex(mileage, direction, car.FrontAxle.Follower);
+				SetRailIndex(mileage, direction, car.RearAxle.Follower);
+				SetRailIndex(mileage, direction, car.FrontBogie.FrontAxle.Follower);
+				SetRailIndex(mileage, direction, car.FrontBogie.RearAxle.Follower);
+				SetRailIndex(mileage, direction, car.RearBogie.FrontAxle.Follower);
+				SetRailIndex(mileage, direction, car.RearBogie.RearAxle.Follower);
+			}
 		}
 
 		public override void Trigger(double TimeElapsed)
 		{
+			if (Train.AwaitingHandoff || (Train.State != TrainState.Available && Train.State != TrainState.Bogus))
+			{
+				return;
+			}
 			if (TrainManagerBase.currentHost.InGameTime == TimeLastProcessed)
 			{
 				return;
 			}
 
 			// Initialize
-			if (TimeLastProcessed == 0.0)
+			if (double.IsNaN(TimeLastProcessed))
 			{
-				AppearanceTime = TrainManagerBase.currentHost.InGameTime;
+				AppearanceTime = TrainManagerBase.currentHost.InGameTime - InitialElapsed;
 				LeaveTime = AppearanceTime + Train.LeaveTime;
-				CurrentPosition = Data[0].Position;
+				if (InitialElapsed == 0) CurrentPosition = Data[0].Position;
 			}
 
+			double frameTime = double.IsNaN(TimeLastProcessed) ? 0 : Math.Max(0, TrainManagerBase.currentHost.InGameTime - TimeLastProcessed);
 			TimeLastProcessed = TrainManagerBase.currentHost.InGameTime;
 
+			double elapsed = TrainManagerBase.currentHost.InGameTime - AppearanceTime - HeldTime;
+			double plannedArrival = Data[Data.Length - 1].ArrivalTime;
+			double journeyDuration = Train.JourneyTime > 0 ? Train.JourneyTime : plannedArrival;
+			bool chained = !string.IsNullOrWhiteSpace(Train.NextService);
+
 			// Dispose the train if it is past the leave time of the train
-			if (LeaveTime > AppearanceTime && TrainManagerBase.currentHost.InGameTime >= LeaveTime)
+			if (!chained && LeaveTime > AppearanceTime && TrainManagerBase.currentHost.InGameTime >= LeaveTime)
 			{
 				Train.Dispose();
 				return;
 			}
 
 			// Calculate the position where the train is at the present time.
-			GetNewState(TrainManagerBase.currentHost.InGameTime - AppearanceTime, out double NewMileage, out double NewPosition, out TravelDirection NewDirection, out bool OpenLeftDoors, out bool OpenRightDoors);
+			// JourneyTime scales the entire travel timeline, including intermediate waits.
+			elapsed = WaitForStationExit(elapsed, frameTime);
+			double planTime = PlanTime(elapsed);
+			GetNewState(planTime, out double NewMileage, out double NewPosition, out TravelDirection NewDirection, out bool OpenLeftDoors, out bool OpenRightDoors);
 
 			// Calculate the travel distance of the train.
 			double DeltaPosition = NewPosition - CurrentPosition;
+			if (Train.ProtectedTraffic && Train.TrafficControl != null && !Train.TrafficControl.CanAdvance(Train, DeltaPosition, frameTime > 0 ? Math.Abs(DeltaPosition) / frameTime : 0))
+			{
+				HeldTime += frameTime;
+				Train.CurrentSpeed = 0;
+				Train.Specs.CurrentAverageAcceleration = 0;
+				foreach (var car in Train.Cars)
+				{
+					car.CurrentSpeed = 0;
+					car.Specs.PerceivedSpeed = 0;
+				}
+				return;
+			}
+
 
 			// Set the state quantity of the train.
 			if (DeltaPosition < 0)
@@ -183,6 +328,16 @@ namespace TrainManager.Trains
 			}
 
 			CurrentPosition = NewPosition;
+			CurrentMileage = NewMileage;
+			CurrentDirection = NewDirection;
+			if (chained && elapsed >= journeyDuration + Train.CompletionWait)
+			{
+				Train.CompleteJourney();
+			}
+			else if (!chained && Train.DisposeAtDestination && planTime >= Data[Data.Length - 1].DepartureTime)
+			{
+				Train.Dispose();
+			}
 		}
 
 		/// <summary>Create a train operation plan.</summary>

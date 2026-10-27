@@ -14,5 +14,8 @@
 		
 		/// <summary>The number of cars this stop point applies to, or 0 for all</summary>
 		public int Cars;
+
+        /// <summary>Optional rail restriction; null preserves legacy stops on any rail.</summary>
+        public int? RailIndex;
 	}
 }

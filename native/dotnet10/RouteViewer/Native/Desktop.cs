@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 namespace OpenBve.Native.Desktop
 {
@@ -7,7 +7,7 @@ namespace OpenBve.Native.Desktop
     {
         public static string StartupPath => AppContext.BaseDirectory;
         public static string ExecutablePath => Environment.ProcessPath;
-        public static string ProductName => "Route Viewer Native";
+        public static string ProductName => "OpenBVE Route Editor By LT ARTS";
         public static string ProductVersion => typeof(RouteViewer.Program).Assembly.GetName().Version.ToString();
     }
     internal enum MessageBoxButtons { OK }
@@ -24,6 +24,7 @@ namespace OpenBve.Native.Desktop
                 string file = System.IO.Path.Combine(AppContext.BaseDirectory, name.Name + ".dll");
                 return System.IO.File.Exists(file) ? context.LoadFromAssemblyPath(file) : null;
             };
+            if (!OperatingSystem.IsLinux()) return;
             NativeLibrary.SetDllImportResolver(typeof(OpenTK.Toolkit).Assembly, (name, assembly, path) => {
                 string mapped = name switch {
                     "openal32.dll" => "libopenal.so.1", "SDL2.dll" => "libSDL2-2.0.so.0",

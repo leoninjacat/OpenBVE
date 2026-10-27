@@ -25,7 +25,9 @@ namespace RouteManager2.Events
 				direction = -direction;
 			}
 
-			trackFollower.EnterStation(StationIndex, direction);
+			if (trackFollower.Train != null && currentRoute.Stations[StationIndex].Stops.Length > 0 && currentRoute.Stations[StationIndex].GetStopIndex(trackFollower.Train) < 0) return;
+
+            trackFollower.EnterStation(StationIndex, direction);
 
 			if (trackFollower.TriggerType == EventTriggerType.TrainFront || trackFollower.TriggerType == EventTriggerType.SingleCarTrain)
 			{

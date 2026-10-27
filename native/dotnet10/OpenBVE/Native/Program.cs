@@ -61,11 +61,12 @@ namespace OpenBve {
 		/// <summary>Is executed when the program starts.</summary>
 		/// <param name="args">The command-line arguments.</param>
 		[STAThread]
-		private static void Run(string[] args) {
-			if (args.Length == 0 || Array.IndexOf(args, "--help") >= 0) {
-                Console.WriteLine("OpenBVE Native (.NET 10)\nUsage: OpenBve /route=FILE /train=FOLDER [/ai=true] [/width=1280 /height=720]");
+		internal static void Run(string[] args) {
+			if ((!OperatingSystem.IsWindows() && args.Length == 0) || Array.IndexOf(args, "--help") >= 0) {
+                Console.WriteLine("OpenBVE Native (.NET 10)\nUsage: OpenBve /route=FILE /train=FOLDER [/ai=true] [/mode=normal|cco] [/width=1280 /height=720]");
                 return;
             }
+            CcoMode.Enabled = Array.Exists(args, arg => string.Equals(arg, "/mode=cco", StringComparison.OrdinalIgnoreCase));
             NativeSmoke.Configure(args);
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             // --- load options and controls ---
@@ -73,8 +74,11 @@ namespace OpenBve {
 			try
 			{
 				FileSystem = FileSystem.FromCommandLineArgs(args, CurrentHost);
-				FileSystem.SettingsFolder = System.IO.Path.Combine(
+				FileSystem.SettingsFolder = OperatingSystem.IsWindows() ? System.IO.Path.Combine(AppContext.BaseDirectory, "UserData", "Settings") : System.IO.Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenBVE-Native", "Settings");
+#if WINDOWS
+                ClassicWindows.ConfigureFolders();
+#endif
                 FileSystem.CreateFileSystem();
 				Interface.LoadOptions();
 			}
@@ -113,6 +117,10 @@ namespace OpenBve {
 
 			// --- check the command-line arguments for route and train ---
 			LaunchParameters result = CommandLine.ParseArguments(args);
+#if WINDOWS
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+#endif
 
 			try
 			{
@@ -149,8 +157,11 @@ namespace OpenBve {
 
 			try {
 				FileSystem = FileSystem.FromCommandLineArgs(args, CurrentHost);
-				FileSystem.SettingsFolder = System.IO.Path.Combine(
+				FileSystem.SettingsFolder = OperatingSystem.IsWindows() ? System.IO.Path.Combine(AppContext.BaseDirectory, "UserData", "Settings") : System.IO.Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenBVE-Native", "Settings");
+#if WINDOWS
+                ClassicWindows.ConfigureFolders();
+#endif
                 FileSystem.CreateFileSystem();
 			} catch (Exception ex) {
 				Program.ShowMessageBox(Translations.GetInterfaceString(HostApplication.OpenBve, new[] {"errors","filesystem_invalid"}) + Environment.NewLine + Environment.NewLine + ex.Message, Translations.GetInterfaceString(HostApplication.OpenBve, new[] {"program","title"}));
@@ -188,6 +199,11 @@ namespace OpenBve {
 			Interface.AddControls(ref Interface.CurrentControls, controls);
 			InputDevicePlugin.LoadPlugins(Program.FileSystem);
             FileSystem.AppendToLogFile("Native keyboard bindings: " + Interface.CurrentControls.Length);
+#if WINDOWS
+            if (Array.Exists(args, arg => arg == "--traffic-wizard")) { Native.TrafficWizardBackend.Run(args); return; }
+            string uiTest = Array.Find(args, arg => arg.StartsWith("--classic-ui-test="));
+            if(uiTest != null) { formMain.RunNativeUiTest(uiTest.Substring("--classic-ui-test=".Length)); return; }
+#endif
 
 
 			// --- check whether route and train exist ---
@@ -294,7 +310,11 @@ namespace OpenBve {
 				{
 					if (!result.ExperimentalGLMenu)
 					{
+#if WINDOWS
+                        result = formMain.ShowMainDialog(result);
+#else
 						throw new ArgumentException("Supply /route=FILE and /train=FOLDER from the GTK launcher or command line.");
+#endif
 					}
 				}
 			} else {

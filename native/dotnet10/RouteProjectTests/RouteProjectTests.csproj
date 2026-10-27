@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net10.0</TargetFramework><OutputType>Exe</OutputType><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
+  <ItemGroup><Compile Include="../RouteViewer/Native/RouteProject.cs" Link="RouteProject.cs" /><Compile Include="../RouteViewer/Native/RouteObjectCatalog.cs" Link="RouteObjectCatalog.cs" /></ItemGroup>
+</Project>

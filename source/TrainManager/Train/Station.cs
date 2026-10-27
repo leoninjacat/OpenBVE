@@ -18,6 +18,7 @@ namespace TrainManager.Trains
 		/// <inheritdoc/>
 		public override void EnterStation(int stationIndex, int direction)
 		{
+			if (RoundTrip != null) return;
 			if (direction < 0)
 			{
 				if (Handles.Reverser.Actual == ReverserPosition.Forwards && Handles.Power.Driver != 0 && TrainManagerBase.currentHost.SimulationState != SimulationState.MinimalisticSimulation && stationIndex == Station)
@@ -49,6 +50,7 @@ namespace TrainManager.Trains
 		/// <inheritdoc/>
 		public override void LeaveStation(int stationIndex, int direction)
 		{
+			if (RoundTrip != null) return;
 			if (direction < 0)
 			{
 				Station = stationIndex;
@@ -94,9 +96,23 @@ namespace TrainManager.Trains
 		/// <param name="TimeElapsed">The frame time elapsed</param>
 		internal void UpdateStation(double TimeElapsed)
 		{
-			if (Station >= 0)
-			{
-				int i = Station;
+			if (RoundTrip != null) { RoundTrip.Update(TimeElapsed); return; }
+			if (Station < 0 && CurrentDirection != TrackDirection.Reverse) {
+                double nearest = 250;
+                for (int candidate = 0; candidate < TrainManagerBase.CurrentRoute.Stations.Length; candidate++) {
+                    var station = TrainManagerBase.CurrentRoute.Stations[candidate];
+                    if (candidate == LastStation || !station.StopsHere(this)) continue;
+                    int stop = station.GetStopIndex(this);
+                    if (stop < 0) continue;
+                    double distance = station.Stops[stop].TrackPosition - FrontCarTrackPosition;
+                    if (distance >= -station.Stops[stop].ForwardTolerance && distance < nearest) {
+                        Station = candidate; nearest = distance; StationState = TrainStopState.Pending;
+                    }
+                }
+            }
+            if (Station >= 0)
+            {
+                int i = Station;
 				int n = TrainManagerBase.CurrentRoute.Stations[Station].GetStopIndex(this);
 				double tf, tb;
 				if (n >= 0)
@@ -189,7 +205,12 @@ namespace TrainManager.Trains
 								}
 
 								StationArrivalTime = TrainManagerBase.CurrentRoute.SecondsSinceMidnight;
-								StationDepartureTime = TrainManagerBase.CurrentRoute.Stations[i].DepartureTime - TimetableDelta;
+								// A manual reposition starts a fresh dwell at the current time,
+								// rather than waiting for this station's future timetable entry.
+								StationDepartureTime = preservedTimeJumpStation == i
+									? StationArrivalTime + TrainManagerBase.CurrentRoute.Stations[i].StopTime
+									: TrainManagerBase.CurrentRoute.Stations[i].DepartureTime - TimetableDelta;
+								preservedTimeJumpStation = -1;
 								if (StationDepartureTime - TrainManagerBase.CurrentRoute.SecondsSinceMidnight < TrainManagerBase.CurrentRoute.Stations[i].StopTime)
 								{
 									StationDepartureTime = TrainManagerBase.CurrentRoute.SecondsSinceMidnight + TrainManagerBase.CurrentRoute.Stations[i].StopTime;

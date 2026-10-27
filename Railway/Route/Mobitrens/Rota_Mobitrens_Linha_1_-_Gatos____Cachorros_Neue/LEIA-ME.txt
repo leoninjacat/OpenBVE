@@ -1,0 +1,10 @@
+﻿Projeto de rota OpenBVE by LT ARTS
+
+Abra o CSV em Railway/Route no Route Viewer.
+O trilho zero e o terreno são objetos simples sem texturas externas.
+Salve no editor para atualizar a prévia. Os exemplos comentados mostram curvas.
+Railway/Sound fica disponível para os sons que você adicionar.
+Objetos: ..\..\..\..\..\Object\Mobitrens\Rota_Mobitrens_Linha_1_-_Gatos____Cachorros_Neue_Base
+
+Se escolheu objetos fora do projeto, mantenha a posição relativa dessas pastas
+ou atualize as referências Structure ao mover/compartilhar o projeto.

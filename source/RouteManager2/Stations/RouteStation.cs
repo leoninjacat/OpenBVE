@@ -45,20 +45,26 @@ namespace RouteManager2.Stations
 
 		/// <summary>Gets the index of the stop for the train</summary>
 		/// <param name="train">The train</param>
-		public int GetStopIndex(AbstractTrain train)
-		{
+		public int GetStopIndex(AbstractTrain train) => GetStopIndexForRail(train, train.CurrentTrackIndex);
+
+        /// <summary>Selects a stop on the rail predicted by the driver's switch lookahead.</summary>
+        public int GetStopIndexForRail(AbstractTrain train, int railIndex)
+        {
 			int j = -1;
 			int allCars = -1;
+            int fallback = -1;
 			for (int i = Stops.Length - 1; i >= 0; i--)
 			{
-				if (train.NumberOfCars == Stops[i].Cars)
+				if (Stops[i].RailIndex.HasValue && Stops[i].RailIndex.Value != railIndex) continue;
+                if (fallback == -1) fallback = i;
+                if (train.NumberOfCars == Stops[i].Cars)
 				{
 					 // If we have found the specified number of cars, stop searching
 					 return i;
 				}
 				if (Stops[i].Cars == 0)
 				{
-					allCars = j;
+					allCars = i;
 				}
 				if (Stops[i].Cars != 0 && train.NumberOfCars < Stops[i].Cars)
 				{
@@ -86,7 +92,7 @@ namespace RouteManager2.Stations
 				return j;
 			}
 			// Return the final stop point, as nothing better :/
-			return Stops.Length -1;
+			return fallback;
 		}
 
 		/// <summary>Gets the stop position corresponding to the train</summary>
@@ -94,13 +100,14 @@ namespace RouteManager2.Stations
 		public double GetStopPosition(AbstractTrain train)
 		{
 			int n = GetStopIndex(train);
-			return Stops.Length > 0 ? Stops[n].TrackPosition : DefaultTrackPosition;
+			return n >= 0 ? Stops[n].TrackPosition : DefaultTrackPosition;
 		}
 
 		/// <summary>Indicates whether the specified train stops at this station.</summary>
 		public bool StopsHere(AbstractTrain Train)
 		{
-			if (Train.IsPlayerTrain)
+			if (Stops.Length > 0 && GetStopIndex(Train) < 0) return false;
+            if (Train.IsPlayerTrain)
 			{
 				return StopMode == StationStopMode.AllStop | StopMode == StationStopMode.PlayerStop | StopMode == StationStopMode.PlayerRequestStop | StopMode == StationStopMode.AllRequestStop;
 			}

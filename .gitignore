@@ -18,6 +18,8 @@
 [Rr]elease/
 bin_debug/
 bin_release/
+native/dotnet10/routeviewer-windows/
+native/dotnet10/artifacts/
 obj/
 linuxbuild.*
 macbuild.*
@@ -63,3 +65,8 @@ debian/debhelper-build-stamp
 
 # Reconstructed from content-parts/ by native/prepare-content.sh (>100 MB).
 /Railway/Sound/L2 verde/SomPlat.wav
+
+# Local Codex settings and Windows publish outputs
+/.codex/
+/native/dotnet10/openbve-windows/
+/native/dotnet10/openbve-windows-beta/

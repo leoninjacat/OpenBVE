@@ -1,0 +1,51 @@
+OpenBVE by LT ARTS — IA inteligente e CCO Beta
+
+Instalação padrão: Documentos\OpenBVE by LT ARTS
+Não é necessário instalar o SDK nem o runtime .NET separadamente.
+Requisitos: Windows 10/11 de 64 bits; 2 GB livres; placa compatível com OpenGL.
+
+Abra OpenBVE para selecionar sua rota e trem na janela original do simulador.
+As opções, os controles e o gerenciador de pacotes permanecem nessa janela.
+O seletor Normal / Modo CCO (Beta) escolhe o tipo de sessão.
+O atalho CCO Beta abre a mesma janela, com esse modo pré-selecionado.
+
+O OpenBVE Route Editor é incluído como aplicativo separado: o Route Viewer
+com editor integrado, viewport 3D e assistente Nova rota. Abra pelo atalho
+OpenBVE Route Editor; selecione uma rota, ou use Ctrl+N para criar uma.
+F8 alterna o editor. A biblioteca inclui a Mobitrens, mas você pode escolher
+outras rotas e pastas de trem pela interface original.
+O primeiro carregamento pode demorar: os modelos das composições de IA
+são carregados antes de iniciar a simulação.
+
+CONTROLES
+F7: alterna mapa, diagrama e oculto.
+Numpad 1/7: câmera da estação anterior/seguinte no CCO.
+Numpad 5: restaura a câmera da estação.
+Ctrl+F7: liga/desliga o rádio CCO.
+No CCO o piloto automático permanece ligado.
+
+CONTEÚDO
+Rota noturna Mobitrens Gatos–Cachorros; oito composições da Linha 1 em
+circulação, intervalo mínimo de 6min30; serviços da Linha 2 com 4 minutos
+por sentido. Inclui proteção de manobras, separação e espera na estação.
+Também são incluídas as outras rotas Mobitrens e seus arquivos de apoio.
+
+LIMITES DA BETA
+Os serviços seguem caminhos fixos: a escolha dinâmica da plataforma de
+Cachorros ainda não está incluída. Os dois anúncios de destino não estão
+disponíveis; os outros 14 áudios novos de estações e rádio estão incluídos.
+Modelos antigos ainda apresentam avisos de sintaxe e sons ausentes no log.
+A detecção Tolk é opcional: OPENBVE_SCREEN_READER=1 antes de iniciar.
+
+CONFIGURAÇÕES E DESINSTALAÇÃO
+Configurações e logs ficam em App\UserData\Settings.
+Execute Desinstalar.exe ou use Aplicativos instalados do Windows.
+Arquivos novos ou modificados são preservados; o pequeno Desinstalar.exe
+permanece na pasta após a remoção. A pasta não é apagada recursivamente.
+Instale em uma pasta vazia; esta primeira versão não atualiza uma pasta
+existente para evitar sobrescrever suas rotas e projetos.
+
+CRÉDITOS
+Motor: The OpenBVE Project. Integração e melhorias: LT ARTS.
+Rotas, objetos e trens mantêm a autoria e os avisos originais.
+Licenças do motor e das dependências: pasta Licencas.

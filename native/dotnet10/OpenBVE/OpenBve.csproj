@@ -1,7 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 <PropertyGroup>
 <TargetFramework>net10.0</TargetFramework><AssemblyName>OpenBve</AssemblyName>
+<TargetFramework Condition="$([MSBuild]::IsOSPlatform('Windows'))">net10.0-windows</TargetFramework>
+<UseWindowsForms Condition="$([MSBuild]::IsOSPlatform('Windows'))">true</UseWindowsForms>
 <RootNamespace>OpenBve</RootNamespace>
+<DefineConstants>$(DefineConstants);OPENBVE_NATIVE</DefineConstants>
 <EnableDefaultCompileItems>false</EnableDefaultCompileItems><GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 <AllowUnsafeBlocks>true</AllowUnsafeBlocks><NoWarn>$(NoWarn);NU1701</NoWarn>
 <OutputType>Exe</OutputType>
@@ -76,6 +79,10 @@
 
 <Compile Include="../../../source/OpenBVE/Game/ObjectManager/AnimatedObjects/FunctionScripts.cs" />
 <Compile Include="../../../source/OpenBVE/Game/Game.cs" />
+<Compile Include="../../../source/OpenBVE/Game/CcoMode.cs" />
+<Compile Include="../../../source/OpenBVE/Game/RoundTripMode.cs" />
+<Compile Include="../../../source/OpenBVE/Game/CabinAnnouncements.cs" />
+<Compile Include="../../../source/OpenBVE/Graphics/Renderers/Overlays.Cco.cs" />
 <Compile Include="../../../source/OpenBVE/System/Interface.cs" />
 
 <Compile Include="../../../source/OpenBVE/System/MainLoop.cs" />
@@ -101,9 +108,17 @@
 <Compile Include="../../../source/OpenBVE/UserInterface/LaunchParameters.cs" />
 <Compile Include="../../../source/OpenBVE/Graphics/NewRenderer.cs" />
 <Compile Include="Native/**/*.cs" />
+<Compile Include="../../../source/OpenBVE/System/Functions/FolderBrowserDialog.cs" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
+<EmbeddedResource Include="../../../source/OpenBVE/UserInterface/form*.resx" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+  <LogicalName>OpenBve.%(Filename).resources</LogicalName>
+</EmbeddedResource>
 <ProjectReference Include="../NativeGraphics/NativeGraphics.csproj" />
 <Reference Include="PIEHid32Net"><HintPath>../../../dependencies/PIEHid32Net.dll</HintPath></Reference>
 <Reference Include="PIEHid64Net"><HintPath>../../../dependencies/PIEHid64Net.dll</HintPath></Reference>
 <Reference Include="TolkDotNet"><HintPath>../../../dependencies/TolkDotNet.dll</HintPath></Reference>
 </ItemGroup>
+<Target Name="PrepareClassicWindowsUI" BeforeTargets="CoreCompile" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+  <Exec Command="pwsh -NoProfile -File &quot;$(MSBuildProjectDirectory)\prepare-classic-ui.ps1&quot; -OutputDirectory &quot;$(MSBuildProjectDirectory)\$(IntermediateOutputPath)ClassicUI&quot;" />
+  <ItemGroup><Compile Include="$(IntermediateOutputPath)ClassicUI/*.cs" /></ItemGroup>
+</Target>
 </Project>

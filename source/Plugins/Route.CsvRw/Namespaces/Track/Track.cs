@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using OpenBveApi;
 using OpenBveApi.Colors;
@@ -1033,7 +1033,12 @@ namespace CsvRwRouteParser
 
 						int n = Data.Blocks[BlockIndex].StopPositions.Length;
 						Array.Resize(ref Data.Blocks[BlockIndex].StopPositions, n + 1);
-						Data.Blocks[BlockIndex].StopPositions[n] = new Stop(Data.TrackPosition, CurrentStation, dir, forw, backw, cars);
+						int? railIndex = null;
+                        if (Arguments.Length >= 5 && Arguments[4].Length > 0) {
+                            if (NumberFormats.TryParseIntVb6(Arguments[4], out int rail) && rail >= 0) railIndex = rail;
+                            else Plugin.CurrentHost.AddMessage(MessageType.Error, false, "RailIndex must be a non-negative integer in Track.Stop" + At(Expression));
+                        }
+                        Data.Blocks[BlockIndex].StopPositions[n] = new Stop(Data.TrackPosition, CurrentStation, dir, forw, backw, cars, railIndex);
 						CurrentStop = cars;
 					}
 

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using OpenBveApi;
 using OpenBveApi.Interface;
 using OpenBveApi.Motor;
@@ -774,8 +775,49 @@ namespace OpenBve
 			}
 
 
+            private void LookAheadRailStops()
+            {
+                var start = Train.Cars[0].FrontAxle.Follower;
+                double position = Train.FrontCarTrackPosition;
+                foreach (var station in Program.CurrentRoute.Stations) {
+                    int stationIndex = Array.IndexOf(Program.CurrentRoute.Stations,station);
+                    if (stationIndex == Train.LastStation && Train.Station != stationIndex) continue;
+                    if (stationIndex == Train.Station && Train.StationState != TrainStopState.Pending) continue;
+                    double nearest = double.PositiveInfinity;
+                    foreach (var stop in station.Stops) {
+                        double distance = stop.TrackPosition-position;
+                        if (distance <= 0 || distance > 800) continue;
+                        int rail = start.TrackIndex;
+                        int element = start.LastTrackElement;
+                        // Follow the same switch events as the leading axle, without firing them.
+                        for (; element < Program.CurrentRoute.Tracks[rail].Elements.Length; element++) {
+                            var cell = Program.CurrentRoute.Tracks[rail].Elements[element];
+                            if (cell.StartingTrackPosition > stop.TrackPosition) break;
+                            if (cell.Events == null) continue;
+                            foreach (var ev in cell.Events) {
+                                double at = cell.StartingTrackPosition + ev.TrackPositionDelta;
+                                if (!(ev is SwitchEvent change) || at <= position || at > stop.TrackPosition) continue;
+                                var sw = Program.CurrentRoute.Switches[change.Index];
+                                rail = sw.Direction == TrackDirection.Forwards ? sw.CurrentlySetTrack : sw.ToeRail;
+                            }
+                        }
+                        int selected = station.GetStopIndexForRail(Train,rail);
+                        if (selected < 0 || station.Stops[selected].TrackPosition != stop.TrackPosition) continue;
+                        // StopsHere also includes the rail filter, so evaluate the stop mode independently here.
+                        bool stops = Train.IsPlayerTrain ? station.PlayerStops() : station.StopMode == StationStopMode.AllStop || station.StopMode == StationStopMode.PlayerPass || station.StopMode == StationStopMode.AllRequestStop;
+                        if (stops && distance < nearest) nearest = distance;
+                    }
+                    if (!double.IsInfinity(nearest)) {
+                        double required = Train.CurrentSpeed*Train.CurrentSpeed/(2*Math.Max(1,nearest-5));
+                        dec = Math.Max(dec,required);
+                        if (nearest < 25) reduceDecelerationCruiseAndStart = true;
+                    }
+                }
+            }
+
 			private void LookAheadForwards()
-			{
+            {
+                LookAheadRailStops();
 				double lookahead = (Train.Station >= 0 ? 150.0 : 50.0) + (Train.CurrentSpeed * Train.CurrentSpeed) / (2.0 * decelerationCruise);
 				double stopDistance = double.MaxValue;
 				{
@@ -1432,6 +1474,63 @@ namespace OpenBve
 				}
 				
 			}
+            // The itinerary supplies the physical leading end, rail and signed distance.
+            // Door dwell, occupancy checks and reversal remain owned by RoundTripService.
+            private void PerformRoundTrip()
+            {
+                var service = Train.RoundTrip;
+                CurrentInterval = 0.1;
+                double speed = Math.Abs(Train.CurrentSpeed);
+                double distance = service.Direction * (service.Target.Position - service.FrontPosition);
+                bool doors = false;
+                foreach (var car in Train.Cars) foreach (var door in car.Doors) if (door.State > 0) doors = true;
+                double cap = Math.Min(16.0, Math.Min(SpeedLimit, Math.Min(Train.CurrentRouteLimit, Train.CurrentSectionLimit)));
+                if (double.IsNaN(cap)) cap = 0;
+                cap = Math.Max(0, cap * 0.85);
+                var follower = service.Direction > 0 ? Train.Cars[0].FrontAxle.Follower : Train.Cars[Train.Cars.Length-1].RearAxle.Follower;
+                var elements = Program.CurrentRoute.Tracks[follower.TrackIndex].Elements;
+                // Keep approaching signals and local speed limits in the braking envelope.
+                for (int i=0;i<elements.Length;i++) {
+                    double ahead = service.Direction * (elements[i].StartingTrackPosition - service.FrontPosition);
+                    if (ahead < 0 || ahead > 600) continue;
+                    foreach (var ev in elements[i].Events) {
+                        double limit = double.PositiveInfinity;
+                        if (ev is LimitChangeEvent local) limit = service.Direction > 0 ? local.NextSpeedLimit : local.PreviousSpeedLimit;
+                        if (ev is SectionChangeEvent signal) {
+                            int section = service.Direction > 0 ? signal.NextSectionIndex : signal.PreviousSectionIndex;
+                            if (section >= 0 && section < Program.CurrentRoute.Sections.Length)
+                                limit = Program.CurrentRoute.Sections[section].CurrentAspect >= 0 ? Program.CurrentRoute.Sections[section].Aspects[Program.CurrentRoute.Sections[section].CurrentAspect].Speed : 0;
+                        }
+                        if (!double.IsInfinity(limit)) cap = Math.Min(cap, Math.Sqrt(Math.Max(0,limit*limit + 0.8*Math.Max(0,ahead-15))));
+                    }
+                }
+                foreach (var other in Program.TrainManager.Trains.Concat(Program.TrainManager.TFOs.OfType<TrainBase>())) {
+                    if (other == Train || other.State != TrainState.Available || other.Cars.Length == 0) continue;
+                    if (!other.Cars.Any(c => c.FrontAxle.Follower.TrackIndex == follower.TrackIndex || c.RearAxle.Follower.TrackIndex == follower.TrackIndex)) continue;
+                    var bounds = RoundTripService.Bounds(other);
+                    double gap = service.Direction > 0 ? bounds.Item1-service.FrontPosition : service.FrontPosition-bounds.Item2;
+                    double farEnd = service.Direction > 0 ? bounds.Item2-service.FrontPosition : service.FrontPosition-bounds.Item1;
+                    if (farEnd >= 0) cap = Math.Min(cap,Math.Sqrt(.8*Math.Max(0,gap-30)));
+                }
+                foreach (var buffer in Program.CurrentRoute.BufferTrackPositions) {
+                    if (buffer.TrackIndex != follower.TrackIndex) continue;
+                    double ahead = service.Direction * (buffer.TrackPosition-service.FrontPosition);
+                    if (ahead >= 0) cap = Math.Min(cap,Math.Sqrt(.8*Math.Max(0,ahead-10)));
+                }
+                bool hold = Train.Derailed || doors || service.IsDwelling || service.WaitingForTrack || distance <= 2.5 || cap == 0;
+                double target = hold ? 0 : Math.Min(cap, Math.Sqrt(0.8 * Math.Max(0,distance-2)));
+                int brake = 0, power = 0;
+                if (hold) brake = Train.Handles.Brake.MaximumNotch;
+                else if (speed > target + .15) brake = Math.Max(1, Math.Min(Train.Handles.Brake.MaximumNotch, (int)Math.Ceiling((speed-target)*2)));
+                else if (speed < target - .15) power = speed < 2 ? 2 : Math.Max(1,Train.Handles.Power.MaximumNotch/2);
+                Train.Handles.Power.ApplyState(Math.Min(power,Train.Handles.Power.MaximumNotch),false);
+                Train.Handles.Brake.ApplyState(brake,false);
+                if (Train.Handles.Brake is AirBrakeHandle) Train.Handles.Brake.ApplyState(brake > 0 ? AirBrakeHandleState.Service : AirBrakeHandleState.Release);
+                Train.Handles.HoldBrake.Driver = false;
+                if (Train.Derailed) Train.Handles.EmergencyBrake.Apply(); else Train.Handles.EmergencyBrake.Release();
+                Train.Handles.Reverser.ApplyState(ReverserPosition.Forwards);
+            }
+
 			public override void Trigger(double timeElapsed)
 			{
 				if (TimeLastProcessed > Program.CurrentRoute.SecondsSinceMidnight)
@@ -1443,7 +1542,11 @@ namespace OpenBve
 					doorWaitingTimer -= Program.CurrentRoute.SecondsSinceMidnight - TimeLastProcessed;
 					wiperTimer -= Program.CurrentRoute.SecondsSinceMidnight - TimeLastProcessed;
 					TimeLastProcessed = Program.CurrentRoute.SecondsSinceMidnight;
-					if (Train.Plugin != null && Train.Plugin.SupportsAI != AISupport.None)
+					if (Train.RoundTrip != null) {
+                        if (Train.Plugin != null && Train.Plugin.SupportsAI != AISupport.None && PerformPlugin(timeElapsed) != AIResponse.None) return;
+                        PerformRoundTrip(); return;
+                    }
+                    if (Train.Plugin != null && Train.Plugin.SupportsAI != AISupport.None)
 					{
 						if (PerformPlugin(timeElapsed) != AIResponse.None)
 						{

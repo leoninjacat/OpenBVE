@@ -101,16 +101,10 @@ namespace Plugin { public partial class Plugin {
 
 				if (pngHeader)
 				{
-					// NB: GDI+ decoders are curerntly enabled by default as they are marginally faster (~10ms or so per texture unless massively interlaced which is worse)
-					//     If / when mobile device support is added, these will likely be removed
-					using (PngDecoder decoder = new PngDecoder())
-					{
-						if (decoder.Read(file))
-						{
-							texture = new Texture(decoder.Width, decoder.Height, (OpenBveApi.Textures.PixelFormat)decoder.BytesPerPixel, decoder.pixelBuffer, (OpenBveApi.Colors.Color24[])null);
-							return true;
-						}
-					}
+					// The legacy decoder rejects valid RGB tRNS color keys without a
+					// palette. Skia handles these and rejects incomplete pixel data.
+					texture = SkiaDecoder.Decode(file);
+					return true;
 				}
 			}
 			catch
