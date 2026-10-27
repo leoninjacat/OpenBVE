@@ -15,7 +15,9 @@ static GtkWidget *editor_content;
 static GtkTextBuffer *buffer;
 static GtkWidget *mesh_panel;
 static GtkLabel *mesh_heading,*mesh_info,*mesh_dimensions,*mesh_error;
-static GtkSpinButton *mesh_values[9],*mesh_sizes[3];
+static GtkSpinButton *mesh_values[9],*mesh_sizes[3],*mesh_pivots[3];
+static GtkWidget *pivot_origin,*pivot_center;
+static GtkLabel *pivot_status;
 static GtkColorDialogButton *mesh_color;
 static int mesh_edits;
 static gboolean mesh_changing;
@@ -74,6 +76,7 @@ static gboolean apply_properties(gpointer data) {
     mesh_changing=FALSE;
     const GdkRGBA *rgba=gtk_color_dialog_button_get_rgba(mesh_color);
     g_string_append_printf(value," %d %d %d %d",(int)(rgba->red*255+.5),(int)(rgba->green*255+.5),(int)(rgba->blue*255+.5),(int)(rgba->alpha*255+.5));
+    for(int i=0;i<3;i++){char number[G_ASCII_DTOSTR_BUF_SIZE];mesh_changing=TRUE;gtk_spin_button_update(mesh_pivots[i]);mesh_changing=FALSE;g_ascii_dtostr(number,sizeof(number),gtk_spin_button_get_value(mesh_pivots[i]));g_string_append_printf(value," %s",number);}
     g_autofree char *text=current_text();g_string_append_c(value,'\n');g_string_append(value,text);graph_requests++;emit("GRAPH-SET",value->str);g_string_free(value,TRUE);return G_SOURCE_REMOVE;
 }
 static void queue_property(int edits) {
@@ -103,6 +106,11 @@ static void drain_graph_queue(void) {
         graph_requests++;emit(request,payload);return;
     }
     if(save_after_graph){save_after_graph=FALSE;save();}
+}
+
+static void pivot_clicked(GtkButton *button,gpointer data) {
+    (void)button;if(!mesh_id)return;
+    g_queue_push_tail(&graph_queue,g_strdup_printf("GRAPH-PIVOT\n%d %s",mesh_id,(const char *)data));drain_graph_queue();
 }
 
 // GTK owns the outer window and text controls. The existing OpenTK X11
@@ -233,6 +241,16 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
         for(int i=0;i<3;i++){char number[G_ASCII_DTOSTR_BUF_SIZE];g_ascii_dtostr(number,sizeof(number),gtk_spin_button_get_value(mesh_sizes[i]));g_string_append_printf(result," %s",number);}
         emit("TEST-PROPERTIES",result->str);g_string_free(result,TRUE);
     }
+    else if(testing&&object_editor&&g_str_equal(line,"TEST-PIVOT-SET")){
+        g_auto(GStrv) fields=g_strsplit(value," ",-1);if(g_strv_length(fields)==3)for(int i=0;i<3;i++)gtk_spin_button_set_value(mesh_pivots[i],g_ascii_strtod(fields[i],NULL));
+    }
+    else if(testing&&object_editor&&g_str_equal(line,"TEST-PIVOT-ORIGIN")){g_signal_emit_by_name(pivot_origin,"clicked");}
+    else if(testing&&object_editor&&g_str_equal(line,"TEST-PIVOT-CENTER")){g_signal_emit_by_name(pivot_center,"clicked");}
+    else if(testing&&object_editor&&g_str_equal(line,"TEST-READ-PIVOT")){
+        GString *result=g_string_new(NULL);for(int i=0;i<3;i++){char number[G_ASCII_DTOSTR_BUF_SIZE];g_ascii_dtostr(number,sizeof(number),gtk_spin_button_get_value(mesh_pivots[i]));if(i)g_string_append_c(result,' ');g_string_append(result,number);}
+        g_string_append_printf(result," %d",gtk_text_buffer_get_modified(buffer)?1:0);
+        emit("TEST-PIVOT",result->str);g_string_free(result,TRUE);
+    }
     else if(testing&&object_editor&&g_str_equal(line,"TEST-UNDO")){gtk_text_buffer_undo(buffer);}
     else if(testing&&g_str_equal(line,"TEST-EDIT")){GtkTextIter end;gtk_text_buffer_get_end_iter(buffer,&end);gtk_text_buffer_insert(buffer,&end,value,-1);save();}
     else if(g_str_equal(line,"VISIBLE")){
@@ -260,6 +278,18 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
             }
         }
     }
+    else if(object_editor&&g_str_equal(line,"PIVOT")){
+        if(!*value){gtk_label_set_text(pivot_status,"");}
+        else{
+            g_auto(GStrv) fields=g_strsplit(value,"\t",-1);
+            if(g_strv_length(fields)==5&&atoi(fields[0])==mesh_id&&!(mesh_edits&8)){
+                mesh_changing=TRUE;for(int i=0;i<3;i++)gtk_spin_button_set_value(mesh_pivots[i],g_ascii_strtod(fields[i+1],NULL));mesh_changing=FALSE;
+                gtk_label_set_text(pivot_status,fields[4]);
+            }
+        }
+    }
+    else if(object_editor&&g_str_equal(line,"PIVOT-DONE")){if(graph_requests>0)graph_requests--;drain_graph_queue();}
+    else if(object_editor&&g_str_equal(line,"PIVOT-ERROR")){gtk_label_set_text(mesh_error,value);}
     else if(object_editor&&(g_str_equal(line,"MOVE-REQUEST")||g_str_equal(line,"TOOL-REQUEST"))){
         g_queue_push_tail(&graph_queue,g_strconcat(g_str_equal(line,"TOOL-REQUEST")?"GRAPH-TOOL":"GRAPH-MOVE","\n",value,NULL));drain_graph_queue();
     }
@@ -341,10 +371,23 @@ int main(int argc,char **argv) {
         gtk_widget_set_tooltip_text(GTK_WIDGET(mesh_color),"Alterar cor e opacidade do mesh selecionado");
         gtk_grid_attach(GTK_GRID(mesh_panel),gtk_label_new("Cor"),0,5,1,1);gtk_grid_attach(GTK_GRID(mesh_panel),GTK_WIDGET(mesh_color),1,5,3,1);
         g_signal_connect(mesh_color,"notify::rgba",G_CALLBACK(color_changed),NULL);
+        gtk_grid_attach(GTK_GRID(mesh_panel),gtk_label_new("Pivô (m)"),0,6,1,1);
+        for(int axis=0;axis<3;axis++){
+            mesh_pivots[axis]=GTK_SPIN_BUTTON(gtk_spin_button_new_with_range(-1000000,1000000,.1));gtk_spin_button_set_digits(mesh_pivots[axis],3);
+            gtk_widget_set_hexpand(GTK_WIDGET(mesh_pivots[axis]),TRUE);gtk_editable_set_width_chars(GTK_EDITABLE(mesh_pivots[axis]),6);
+            gtk_widget_set_tooltip_text(GTK_WIDGET(mesh_pivots[axis]),"Posição do pivô nos eixos do modelo. Alterar o pivô não move a geometria.");
+            gtk_grid_attach(GTK_GRID(mesh_panel),GTK_WIDGET(mesh_pivots[axis]),axis+1,6,1,1);g_signal_connect(mesh_pivots[axis],"value-changed",G_CALLBACK(property_changed),GINT_TO_POINTER(8));
+        }
+        GtkWidget *pivot_buttons=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,6);
+        pivot_origin=gtk_button_new_with_label("Origem");pivot_center=gtk_button_new_with_label("Centro do objeto");
+        gtk_widget_set_tooltip_text(pivot_origin,"Posicionar o pivô em X=0, Y=0, Z=0 do modelo");gtk_widget_set_tooltip_text(pivot_center,"Posicionar o pivô no centro da caixa delimitadora da mesh selecionada");
+        gtk_box_append(GTK_BOX(pivot_buttons),pivot_origin);gtk_box_append(GTK_BOX(pivot_buttons),pivot_center);gtk_grid_attach(GTK_GRID(mesh_panel),pivot_buttons,1,7,3,1);
+        g_signal_connect(pivot_origin,"clicked",G_CALLBACK(pivot_clicked),"origin");g_signal_connect(pivot_center,"clicked",G_CALLBACK(pivot_clicked),"center");
+        pivot_status=GTK_LABEL(gtk_label_new(""));gtk_label_set_wrap(pivot_status,TRUE);gtk_grid_attach(GTK_GRID(mesh_panel),GTK_WIDGET(pivot_status),0,8,4,1);
         gtk_widget_set_sensitive(mesh_panel,FALSE);
         mesh_dimensions=GTK_LABEL(gtk_label_new(""));gtk_label_set_wrap(mesh_dimensions,TRUE);gtk_box_append(GTK_BOX(box),GTK_WIDGET(mesh_dimensions));
         mesh_error=GTK_LABEL(gtk_label_new(""));gtk_label_set_wrap(mesh_error,TRUE);gtk_widget_add_css_class(GTK_WIDGET(mesh_error),"error");gtk_box_append(GTK_BOX(box),GTK_WIDGET(mesh_error));
-        GtkWidget *hint=gtk_label_new("Arraste o mesh para mover · Ctrl+Z no código desfaz\nTransformações relativas ao mesh original, na origem do modelo");gtk_label_set_wrap(GTK_LABEL(hint),TRUE);gtk_widget_add_css_class(hint,"dim-label");gtk_box_append(GTK_BOX(box),hint);
+        GtkWidget *hint=gtk_label_new("Ferramenta + eixo + arraste · Ctrl+Z no código desfaz\nDefinir pivô não altera o modelo · rotação/escala usam o pivô");gtk_label_set_wrap(GTK_LABEL(hint),TRUE);gtk_widget_add_css_class(hint,"dim-label");gtk_box_append(GTK_BOX(box),hint);
     }
     GtkWidget *scroll=gtk_scrolled_window_new();gtk_scrolled_window_set_overlay_scrolling(GTK_SCROLLED_WINDOW(scroll),FALSE);gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scroll),GTK_POLICY_ALWAYS,GTK_POLICY_ALWAYS);gtk_widget_set_vexpand(scroll,TRUE);gtk_box_append(GTK_BOX(box),scroll);
     GtkWidget *text=gtk_text_view_new();gtk_text_view_set_monospace(GTK_TEXT_VIEW(text),TRUE);gtk_text_view_set_left_margin(GTK_TEXT_VIEW(text),12);gtk_text_view_set_top_margin(GTK_TEXT_VIEW(text),10);gtk_text_view_set_right_margin(GTK_TEXT_VIEW(text),12);gtk_text_view_set_bottom_margin(GTK_TEXT_VIEW(text),10);

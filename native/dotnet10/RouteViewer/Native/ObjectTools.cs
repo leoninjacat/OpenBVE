@@ -4,7 +4,7 @@ using System.Linq;
 using System.Numerics;
 namespace RouteViewer;
 
-internal enum ObjectTool { Select, Move, Rotate, Scale }
+internal enum ObjectTool { Select, Move, Rotate, Scale, Pivot }
 internal static class ObjectTools
 {
     internal sealed record Operation(int Mesh, ObjectTool Tool, int Axis, double Amount);
@@ -14,8 +14,8 @@ internal static class ObjectTools
     static readonly List<Operation> pending = new();
     static Operation drag;
     static float unitsPerPixel;
-    internal static string Name => Tool switch { ObjectTool.Move=>"Mover",ObjectTool.Rotate=>"Girar",ObjectTool.Scale=>"Escalar",_=>"Selecionar" };
-    internal static string Hint => ObjectGraph.Selected==0?"Clique em um mesh para selecionar":Tool==ObjectTool.Select?"Escolha Mover, Girar ou Escalar":Axis<0?Name+" · escolha X, Y ou Z"+(Tool==ObjectTool.Scale?" ou ALL":""):Name+" · "+(Axis==3?"ALL":"eixo "+"XYZ"[Axis])+" · arraste o mesh";
+    internal static string Name => Tool switch { ObjectTool.Move=>"Mover",ObjectTool.Rotate=>"Girar",ObjectTool.Scale=>"Escalar",ObjectTool.Pivot=>"Pivô",_=>"Selecionar" };
+    internal static string Hint => ObjectGraph.Selected==0?"Clique em um mesh para selecionar":Tool==ObjectTool.Select?"Escolha uma ferramenta":Axis<0?Name+" · escolha X, Y ou Z"+(Tool==ObjectTool.Scale?" ou ALL":""):Name+" · "+(Axis==3?"ALL":"eixo "+"XYZ"[Axis])+(Tool==ObjectTool.Pivot?" · arraste o marcador ou o mesh":" · arraste o mesh");
     internal static void Reset() {Tool=ObjectTool.Select;Axis=-1;drag=null;pending.Clear();}
     internal static void ChooseTool(ObjectTool tool) { Tool=tool;Axis=-1;Program.Status=Hint; }
     internal static void ChooseAxis(int axis)
@@ -29,7 +29,7 @@ internal static class ObjectTools
         drag=new(ObjectGraph.Selected,Tool,Axis,0);
         // Use the selected geometry's depth so translation feels consistent at different zooms.
         var points=Program.Renderer.StaticObjectStates.SelectMany(s=>s.Prototype.Mesh.Faces.Where(f=>f.SourceMesh==drag.Mesh).SelectMany(f=>f.Vertices.Select(v=>CameraRig.ToV(s.Prototype.Mesh.Vertices[v.Index].Coordinates)))).ToArray();
-        var center=points.Length==0?Program.Camera.Pose.Target:points.Aggregate(Vector3.Zero,(a,b)=>a+b)/points.Length;
+        var center=Tool==ObjectTool.Pivot?ObjectPivot.World(ObjectGraph.Source,drag.Mesh):points.Length==0?Program.Camera.Pose.Target:points.Aggregate(Vector3.Zero,(a,b)=>a+b)/points.Length;
         float depth=Math.Max(.1f,Math.Abs(Vector3.Dot(center-Program.Camera.Pose.Position,Program.Camera.Pose.Forward)));
         unitsPerPixel=2*depth*MathF.Tan((float)Program.Renderer.Camera.VerticalViewingAngle/2)/Math.Max(1,window.ViewHeight);
         return true;
@@ -39,7 +39,7 @@ internal static class ObjectTools
     {
         if(drag==null||dx==0&&dy==0)return;
         double amount;
-        if(drag.Tool==ObjectTool.Move){
+        if(drag.Tool is ObjectTool.Move or ObjectTool.Pivot){
             var axis=drag.Axis==0?Vector3.UnitX:drag.Axis==1?Vector3.UnitY:Vector3.UnitZ;
             float sx=Vector3.Dot(axis,Program.Camera.Pose.Right),sy=-Vector3.Dot(axis,Program.Camera.Pose.Up);
             float length=sx*sx+sy*sy;

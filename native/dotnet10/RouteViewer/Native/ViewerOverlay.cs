@@ -71,13 +71,14 @@ internal static class ViewerOverlay
         if(Program.ObjectMode){ids=new[]{"open","reload","home","wire","log","help"};icons=new[]{"folder","reload","home","wire","log","help"};tips=new[]{"Abrir objeto · Ctrl+O","Recarregar · F5","Enquadrar objeto · Home","Aramado · F","Mensagens · F9","Ajuda · F1"};}
         for(int i=0;i<ids.Length;i++)Add(ids[i],icons[i],tips[i],16+i*44,16,ids[i] is "open" or "new"?!Program.Picking:ids[i] is "log" or "help"||ready,ids[i]=="wire"&&Program.Renderer.OptionWireFrame||ids[i]=="events"&&Program.Renderer.OptionEvents);
         if(Program.ObjectMode){
-            float start=w/2-166;
+            float start=w/2-188;
             Add("tool-move","move","Mover · escolha um eixo e arraste o mesh",start,16,ready,ObjectTools.Tool==ObjectTool.Move);
             Add("tool-rotate","rotate","Girar · escolha X, Y ou Z · graus no painel",start+44,16,ready,ObjectTools.Tool==ObjectTool.Rotate);
             Add("tool-scale","scale","Escalar · escolha X, Y, Z ou ALL",start+88,16,ready,ObjectTools.Tool==ObjectTool.Scale);
+            Add("tool-pivot","pivot","Pivô · mover a ancoragem sem alterar o modelo",start+132,16,ready,ObjectTools.Tool==ObjectTool.Pivot);
             bool enabled=ready&&ObjectGraph.Selected>0&&ObjectTools.Tool!=ObjectTool.Select;
-            for(int axis=0;axis<3;axis++)Add("axis-"+axis,"","Eixo "+"XYZ"[axis]+" · "+ObjectTools.Name,start+144+axis*44,16,enabled,ObjectTools.Axis==axis);
-            if(ObjectTools.Tool==ObjectTool.Scale)Controls.Add(new("axis-3","","ALL · escala uniforme nos três eixos",start+276,16,52,40,enabled,ObjectTools.Axis==3));
+            for(int axis=0;axis<3;axis++)Add("axis-"+axis,"","Eixo "+"XYZ"[axis]+" · "+ObjectTools.Name,start+188+axis*44,16,enabled,ObjectTools.Axis==axis);
+            if(ObjectTools.Tool==ObjectTool.Scale)Controls.Add(new("axis-3","","ALL · escala uniforme nos três eixos",start+320,16,52,40,enabled,ObjectTools.Axis==3));
         }
         if(!Program.ObjectMode)Controls.Add(new("select-track","",$"Selecionar via - Tab alterna vias",w-292,16,136,40,ready,TrackDropdownOpen));
         if(!Program.ObjectMode)Add("mode-track","track","Cabine invisível · via selecionada",w-148,16,ready,!free);
@@ -133,7 +134,7 @@ internal static class ViewerOverlay
     {
         var window=(ViewerWindow)r.GameWindow;Build(window);
         float w=window.ViewWidth/scale,h=window.ViewHeight/scale;
-        if(Program.ObjectMode)ObjectGraph.DrawSelection(r,window);
+        if(Program.ObjectMode){ObjectGraph.DrawSelection(r,window);ObjectPivot.Draw(r,window);}
         foreach(var c in Controls) {
             if(c.Id is "close" or "route-info" || c.Id.StartsWith("log-message-"))continue;
             bool hover=window.PointerX>=c.X*scale&&window.PointerY>=c.Y*scale&&window.PointerX<(c.X+c.W)*scale&&window.PointerY<(c.Y+c.H)*scale;
@@ -274,7 +275,7 @@ internal static class ViewerOverlay
         if(c==null)return false;if(!c.Enabled)return true;
         if(c.Id.StartsWith("tool-")){
             window.EndInteraction();
-            ObjectTools.ChooseTool(c.Id switch {"tool-move"=>ObjectTool.Move,"tool-rotate"=>ObjectTool.Rotate,_=>ObjectTool.Scale});
+            ObjectTools.ChooseTool(c.Id switch {"tool-move"=>ObjectTool.Move,"tool-rotate"=>ObjectTool.Rotate,"tool-pivot"=>ObjectTool.Pivot,_=>ObjectTool.Scale});
             return true;
         }
         if(c.Id.StartsWith("axis-")){

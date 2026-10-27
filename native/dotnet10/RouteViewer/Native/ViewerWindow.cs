@@ -193,7 +193,8 @@ internal sealed class ViewerWindow : GameWindow
         if (e.Button == MouseButton.Left && ViewerOverlay.Press(this, e.X, e.Y)) {BeginInteraction(e.Button);return;}
         if (!Loading.Complete || Help || ShowLog) return;
         if (Program.ObjectMode && e.Button == MouseButton.Left) {
-            if(ObjectGraph.Pick(this,e.X,e.Y)&&ObjectTools.BeginDrag(this))Drag=DragMode.ObjectTransform;
+            bool pivot=ObjectTools.Tool==ObjectTool.Pivot&&ObjectPivot.Hit(this,e.X,e.Y);
+            if((pivot||ObjectGraph.Pick(this,e.X,e.Y))&&ObjectTools.BeginDrag(this))Drag=DragMode.ObjectTransform;
         } else if (e.Button == MouseButton.Middle) {
             Keys.Capture(ViewportFocused);
             var keys = Keys;

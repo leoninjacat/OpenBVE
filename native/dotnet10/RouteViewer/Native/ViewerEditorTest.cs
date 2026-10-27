@@ -9,7 +9,7 @@ namespace RouteViewer;
 internal static class ViewerEditorTest
 {
     static int phase, initialLoads;
-    internal static bool Complete => Program.ObjectMode?phase>=15&&ViewerObjectToolsTest.Complete:phase>=5;
+    internal static bool Complete => Program.ObjectMode?phase>=15&&ViewerObjectToolsTest.Complete&&ViewerPivotTest.Complete:phase>=5;
     static Stopwatch timer,step;
 
     static Vector3 eye,graphMove,initialDimensions,wantedDimensions;
@@ -52,7 +52,7 @@ internal static class ViewerEditorTest
     internal static void Rendered(ViewerWindow window)
     {
         if(!Program.EditorTest || !Loading.Complete)return;
-        if(Program.ObjectMode&&phase>=15){ViewerObjectToolsTest.Rendered(window);return;}
+        if(Program.ObjectMode&&phase>=15){if(!ViewerObjectToolsTest.Complete)ViewerObjectToolsTest.Rendered(window);else ViewerPivotTest.Rendered(window);return;}
         timer??=Stopwatch.StartNew();
         if(timer.Elapsed.TotalSeconds>25)throw new Exception("Editor integration timed out at phase "+phase);
         var editor=window.Editor;

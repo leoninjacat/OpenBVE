@@ -58,6 +58,7 @@ internal static class ObjectPreview
             Program.Renderer.CurrentInterface=LibRender2.Screens.InterfaceType.Normal;
             if(loaded!=path)ObjectGraph.Reset(sourceText??File.ReadAllText(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path)));
             else ObjectGraph.Source=sourceText??File.ReadAllText(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path));
+            if(loaded!=path||sourceText==null)ObjectPivot.Open(path);
             loaded=path;Program.LoadCount++;
             window.Title=Path.GetFileName(path)+" — "+Program.AppTitle;
             Program.Status=Path.GetFileName(path);

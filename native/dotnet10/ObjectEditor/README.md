@@ -62,7 +62,7 @@ Texturas usam os caminhos relativos ao arquivo original.
   atualiza código e prévia; em meshes com várias cores, a amostra mostra a primeira
   e a alteração aplica a nova cor a todo o mesh selecionado.
 - Posição, rotação e escala são transformações **relativas à geometria original do bloco**.
-  Rotação e escala usam a origem do modelo, não o centro da peça.
+  Rotação e escala usam o pivô configurado; sem configuração, usam a ancoragem padrão da mesh.
   Comandos `*All` em blocos posteriores continuam sendo aplicados.
 - As alterações gráficas atualizam o código e a prévia automaticamente, sem gravar
   o arquivo. A edição direta do texto também atualiza a prévia após uma breve pausa.
@@ -71,6 +71,31 @@ Texturas usam os caminhos relativos ao arquivo original.
 - O editor mantém as instruções originais e acrescenta um trecho identificado por
   `; @openbve-editor` ou `; @openbve-color` ao final do bloco. Esses trechos contêm comandos B3D/CSV
   normais, compatíveis com o simulador; mudanças seguintes substituem o trecho.
+
+## Pivô / ancoragem da mesh
+
+- O marcador amarelo mostra o pivô atual. Quando ele difere da ancoragem padrão,
+  outro marcador, cinza, identifica essa ancoragem. Indicadores na borda avisam
+  quando o ponto fica fora da vista. A ancoragem padrão é a origem local do
+  modelo, acompanhando as transformações da peça; não é calculada pelo seu centro.
+- Escolha a ferramenta **Pivô**, selecione **X**, **Y** ou **Z** e arraste o
+  marcador ou a mesh selecionada. A geometria permanece no mesmo lugar.
+- Os campos **Pivô (m)** permitem informar X/Y/Z diretamente, nos eixos do modelo.
+  **Origem** posiciona o pivô em `(0, 0, 0)` do modelo. **Centro do objeto** usa o
+  centro da caixa delimitadora da mesh selecionada.
+- Definir, mover ou centralizar o pivô não modifica o texto, a geometria ou o
+  arquivo B3D/CSV, nem marca o código como alterado. A configuração é salva
+  automaticamente em `nome.b3d.objecteditor.json` ou `nome.csv.objecteditor.json`,
+  ao lado do objeto. Não é preciso salvar o modelo para guardar o pivô.
+- Girar, escalar ou alterar dimensões depois disso usa o pivô escolhido e atualiza
+  comandos B3D/CSV normais, inclusive a translação necessária para manter esse
+  ponto fixo. Só essas transformações modificam o código; **Ctrl+S** grava o modelo.
+  Ao mover a mesh, seu pivô acompanha a peça, inclusive ao desfazer no código.
+- Copie o arquivo auxiliar junto com o objeto para preservar os pivôs em outro
+  local. Os pivôs são identificados pelo conteúdo original de cada bloco, ignorando
+  os trechos gerados pelo editor. Alterar o bloco original pode exigir redefinir
+  sua ancoragem. Mudanças externas no arquivo auxiliar bloqueiam a sobrescrita;
+  reabra o objeto para carregar a configuração mais recente.
 
 Exemplo com duas colunas e uma placa:
 
@@ -90,11 +115,14 @@ native/run-objecteditor.sh /tmp/object-test.b3d --editor-test --smoke=14
 ```
 
 Exigir saída zero, `OBJECT_EDITOR_GEOMETRY_OK`, `VIEWER_EDITOR_OK`, `OBJECT_EDITOR_GRAPH_OK`,
-`OBJECT_EDITOR_PROPERTIES_OK`, `OBJECT_EDITOR_TOOLS_OK` e `VIEWER_SMOKE_OK`. O teste percorre os três layouts, salva pelo widget GTK e
+`OBJECT_EDITOR_PROPERTIES_OK`, `OBJECT_EDITOR_TOOLS_OK`, `OBJECT_EDITOR_PIVOT_OK` e
+`VIEWER_SMOKE_OK`. O teste percorre os três layouts, salva pelo widget GTK e
 confere a nova geometria e a câmera preservada. Também seleciona o primeiro mesh,
 altera a escala pelo widget de propriedades, verifica a prévia sem salvar, desfaz,
 move e salva novamente. Confere a cor carregada, altera RGBA pelo seletor, desfaz,
 redimensiona meshes normais, rotacionados e planos, e testa a direção do globo. Em arquivos com vários meshes, verifica que a alteração
 não afetou as outras peças. Os botões de mover/girar/escalar são testados em cada
-eixo, incluindo ALL, sincronização dos campos de rotação e desfazer. Repetir com `cube.csv` testa CSV; uma cópia de
+eixo, incluindo ALL, sincronização dos campos de rotação e desfazer. A validação do
+pivô confirma que XYZ/origem/centro não alteram o modelo, que a configuração persiste,
+que rotação/escala/dimensões mantêm o ponto fixo e que conflitos externos são preservados. Repetir com `cube.csv` testa CSV; uma cópia de
 `meshes.b3d` testa a seleção de cilindros e a independência entre blocos.

@@ -21,7 +21,7 @@ internal sealed class RouteEditor : IDisposable
     internal bool CloseApproved;
     private bool replacingRoute;
     private bool graphMovePending;
-    internal string TestProperties,TestTransform;
+    internal string TestProperties,TestTransform,TestPivot;
     private long lastGraphMove;
     internal bool Running => process != null && !process.HasExited;
     internal void Open(ViewerWindow window, string path)
@@ -100,6 +100,7 @@ internal sealed class RouteEditor : IDisposable
                 case "LAYOUT":Layout=value;window.UpdateCanvas();break;
                 case "ROUTE":replacingRoute=true;Program.PendingRoute=value;break;
                 case "QUIT":CloseApproved=true;window.Close();break;
+                case "TEST-PIVOT":if(Program.EditorTest&&Program.ObjectMode)TestPivot=value;break;
                 case "TEST-TRANSFORM":if(Program.EditorTest&&Program.ObjectMode)TestTransform=value;break;
                 case "TEST-PROPERTIES":if(Program.EditorTest&&Program.ObjectMode)TestProperties=value;break;
                 case "PREVIEW":
@@ -108,6 +109,7 @@ internal sealed class RouteEditor : IDisposable
                 case "GRAPH-SET":
                 case "GRAPH-MOVE":
                 case "GRAPH-TOOL":
+                case "GRAPH-PIVOT":
                     if(!Program.ObjectMode)break;
                     try {
                         int newline=value.IndexOf('\n');if(newline<0)break;
@@ -116,17 +118,33 @@ internal sealed class RouteEditor : IDisposable
                         string text=value[(newline+1)..];
                         double Number(int index)=>double.Parse(parts[index],System.Globalization.CultureInfo.InvariantCulture);
                         string updated;
-                        if(command=="GRAPH-TOOL"){
+                        if(command=="GRAPH-PIVOT"){
+                            if(parts.Length!=2||parts[1] is not ("origin" or "center"))throw new InvalidOperationException("Comando de pivô inválido.");
+                            ObjectPivot.SetWorld(text,id,parts[1]=="origin"?System.Numerics.Vector3.Zero:ObjectPivot.Center(text,id));
+                            ObjectPivot.Publish(window);graphMovePending=false;Send("PIVOT-DONE");break;
+                        }else if(command=="GRAPH-TOOL"){
                             if(parts.Length!=4)throw new InvalidOperationException("Manipulação incompleta.");
-                            updated=ObjectTools.Apply(text,id,(ObjectTool)int.Parse(parts[1],System.Globalization.CultureInfo.InvariantCulture),int.Parse(parts[2],System.Globalization.CultureInfo.InvariantCulture),Number(3));
+                            var tool=(ObjectTool)int.Parse(parts[1],System.Globalization.CultureInfo.InvariantCulture);
+                            int axis=int.Parse(parts[2],System.Globalization.CultureInfo.InvariantCulture);
+                            if(tool==ObjectTool.Pivot){
+                                if(axis<0||axis>2)throw new InvalidOperationException("Escolha X, Y ou Z para mover o pivô.");
+                                var point=ObjectPivot.World(text,id);if(axis==0)point.X+=(float)Number(3);else if(axis==1)point.Y+=(float)Number(3);else point.Z+=(float)Number(3);
+                                ObjectPivot.SetWorld(text,id,point);ObjectPivot.Publish(window);graphMovePending=false;Send("PIVOT-DONE");break;
+                            }
+                            updated=ObjectTools.Apply(text,id,tool,axis,Number(3));
                         }else if(command=="GRAPH-MOVE"){
                             var values=ObjectGraph.Values(text,id);
                             for(int i=0;i<3;i++)values[i]+=Number(i+1);
                             updated=ObjectGraph.Transform(text,id,values);
                         }else{
-                            if(parts.Length!=18)throw new InvalidOperationException("Propriedades incompletas.");
+                            if(parts.Length!=21)throw new InvalidOperationException("Propriedades incompletas.");
                             int edits=int.Parse(parts[1],System.Globalization.CultureInfo.InvariantCulture);
                             updated=text;
+                            if((edits&8)!=0){
+                                ObjectPivot.SetWorld(text,id,new System.Numerics.Vector3((float)Number(18),(float)Number(19),(float)Number(20)));
+                                ObjectPivot.Publish(window);
+                                if((edits&7)==0){graphMovePending=false;Send("PIVOT-DONE");break;}
+                            }
                             if((edits&1)!=0)updated=ObjectGraph.Transform(updated,id,System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(System.Linq.Enumerable.Range(2,9),Number)));
                             if((edits&2)!=0)updated=ObjectGraph.Resize(updated,id,new[]{Number(11),Number(12),Number(13)});
                             if((edits&4)!=0)updated=ObjectGraph.SetColor(updated,id,new[]{Number(14),Number(15),Number(16),Number(17)});
