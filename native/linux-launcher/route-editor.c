@@ -198,8 +198,14 @@ static gboolean key_pressed(GtkEventControllerKey *controller,guint key,guint co
 }
 static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) {
     (void)data;if(condition&(G_IO_HUP|G_IO_ERR)){g_main_loop_quit(loop);return G_SOURCE_REMOVE;}
+    // GLib may read several pipe lines into its own buffer in a single read.
+    // Drain them now; the file descriptor may not become readable again.
+    GIOFlags flags=g_io_channel_get_flags(channel);
+    if(!(flags&G_IO_FLAG_NONBLOCK))g_io_channel_set_flags(channel,flags|G_IO_FLAG_NONBLOCK,NULL);
+    for(;;){
     char *line=NULL;gsize length=0;
-    if(g_io_channel_read_line(channel,&line,&length,NULL,NULL)!=G_IO_STATUS_NORMAL)return G_SOURCE_CONTINUE;
+    GIOStatus result=g_io_channel_read_line(channel,&line,&length,NULL,NULL);
+    if(result!=G_IO_STATUS_NORMAL){g_free(line);return G_SOURCE_CONTINUE;}
     g_strchomp(line);char *tab=strchr(line,'\t');if(tab)*tab++=0;
     gsize bytes=0;g_autofree guchar *decoded=tab?g_base64_decode(tab,&bytes):NULL;
     g_autofree char *value=decoded?g_strndup((char *)decoded,bytes):g_strdup("");
@@ -285,7 +291,8 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
         if(g_str_equal(line,"SAVED")){gtk_text_buffer_set_modified(buffer,FALSE);title();finish_action();}
         else {g_clear_pointer(&pending_action,g_free);g_clear_pointer(&pending_value,g_free);g_autoptr(GtkAlertDialog) dialog=gtk_alert_dialog_new("%s",value);const char *buttons[]={"Fechar",NULL};gtk_alert_dialog_set_buttons(dialog,buttons);gtk_alert_dialog_show(dialog,window);}
     }
-    g_free(line);return G_SOURCE_CONTINUE;
+    g_free(line);
+    }
 }
 static void theme_changed(AdwStyleManager *manager,GParamSpec *spec,gpointer data) {
     (void)spec;(void)data;emit("THEME",adw_style_manager_get_dark(manager)?"dark":"light");

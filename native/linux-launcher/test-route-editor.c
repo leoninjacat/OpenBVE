@@ -31,12 +31,14 @@ static void click_dialog(const char *label) {
     }
     check(found,"unsaved changes dialog button exists");
 }
-static void command(const char *verb,const char *value) {
+static void commands(const char *lines) {
     int fds[2];check(pipe(fds)==0,"test pipe");
-    g_autofree char *encoded=g_base64_encode((const guchar *)value,strlen(value));
-    g_autofree char *line=g_strdup_printf("%s\t%s\n",verb,encoded);
-    check(write(fds[1],line,strlen(line))==(ssize_t)strlen(line),"test command write");
+    check(write(fds[1],lines,strlen(lines))==(ssize_t)strlen(lines),"test command write");
     GIOChannel *channel=g_io_channel_unix_new(fds[0]);input(channel,G_IO_IN,NULL);g_io_channel_unref(channel);close(fds[0]);close(fds[1]);
+}
+static void command(const char *verb,const char *value) {
+    g_autofree char *encoded=g_base64_encode((const guchar *)value,strlen(value));
+    g_autofree char *line=g_strdup_printf("%s\t%s\n",verb,encoded);commands(line);
 }
 static gboolean tick(gpointer data) {
     (void)data;
@@ -50,6 +52,9 @@ static gboolean tick(gpointer data) {
             adw_style_manager_set_color_scheme(style,ADW_COLOR_SCHEME_FORCE_DARK);check(adw_style_manager_get_dark(style),"dark theme");
             adw_style_manager_set_color_scheme(style,ADW_COLOR_SCHEME_FORCE_LIGHT);check(!adw_style_manager_get_dark(style),"light theme");
             adw_style_manager_set_color_scheme(style,ADW_COLOR_SCHEME_DEFAULT);
+            // Both lines arrive in one pipe write while its writer stays open.
+            commands("TEXT\tZmlyc3Q=\nTEXT\tc2Vjb25k\n");
+            char *batched=current_text();check(g_str_equal(batched,"second"),"all buffered IPC lines processed without a later write");g_free(batched);
             command("TEXT","initial");gtk_text_buffer_insert_at_cursor(buffer,"edit",-1);gtk_drop_down_set_selected(g_object_get_data(G_OBJECT(window),"layout"),1);break;
         case 1:geometry(1);command("VISIBLE","0");check(!gtk_widget_get_visible(editor_content),"editor hides without disposing buffer");command("VISIBLE","1");check(gtk_text_buffer_get_can_undo(buffer),"dock preserves undo");gtk_drop_down_set_selected(g_object_get_data(G_OBJECT(window),"layout"),2);break;
         case 2:geometry(2);check(gtk_text_buffer_get_can_undo(buffer),"detach preserves undo");gtk_drop_down_set_selected(g_object_get_data(G_OBJECT(window),"layout"),0);break;
