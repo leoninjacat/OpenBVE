@@ -100,9 +100,9 @@ internal static class ObjectPivot
     }
     static W Linear(double[] values,Vector3 point)
     {
-        var p=new W(point.X*values[6],point.Y*values[7],point.Z*values[8]);
+        var p=new W(point.X*values[6]*values[9],point.Y*values[7]*values[10],point.Z*values[8]*values[11]);
         p.Rotate(new W(1,0,0),values[3]*Math.PI/180);p.Rotate(new W(0,1,0),values[4]*Math.PI/180);p.Rotate(new W(0,0,1),values[5]*Math.PI/180);
-        p.X*=values[9];p.Y*=values[10];p.Z*=values[11];return p;
+        return p;
     }
     internal static double[] Compensate(string text,int mesh,double[] values)
     {

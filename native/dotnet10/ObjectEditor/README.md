@@ -80,8 +80,12 @@ Texturas usam os caminhos relativos ao arquivo original.
   a geometria e o código são atualizados tanto pelo arraste quanto pelos campos.
 - **Dimensões (m)** mostra as medidas reais X/Y/Z da caixa delimitadora nos eixos
   do modelo e permite digitar medidas diretamente. O editor calcula o redimensionamento
-  após a rotação, considerando também comandos `*All` posteriores. Eixos planos
+  considerando a rotação e os comandos `*All` posteriores. Eixos planos
   permanecem com dimensão zero; medidas incompatíveis exibem erro sem alterar o código.
+- As escalas do painel e os ajustes de dimensões são aplicados antes da rotação,
+  nos eixos locais da peça. Girar em X/Y/Z preserva as distâncias entre vértices,
+  inclusive em cubos achatados e cilindros redimensionados. Dimensões incompatíveis
+  com a orientação atual são recusadas em vez de deformar a peça.
 - **Cor** carrega a cor RGBA do material e abre um seletor com opacidade. A escolha
   atualiza código e prévia; em meshes com várias cores, a amostra mostra a primeira
   e a alteração aplica a nova cor a todo o mesh selecionado.
@@ -143,7 +147,9 @@ Exigir saída zero, `OBJECT_EDITOR_GEOMETRY_OK`, `VIEWER_EDITOR_OK`, `OBJECT_EDI
 `VIEWER_SMOKE_OK`. O teste percorre os três layouts, salva pelo widget GTK e
 confere a nova geometria e a câmera preservada. Também seleciona o primeiro mesh,
 altera a escala pelo widget de propriedades, verifica a prévia sem salvar, desfaz,
-move e salva novamente. Confere a cor carregada, altera RGBA pelo seletor, desfaz,
+move e salva novamente. Confere rotações rígidas X=-45°, Y=45° e Z=40° em cubos/cilindros com escala
+não uniforme, comparando todas as distâncias entre vértices antes/depois.
+Confere a cor carregada, altera RGBA pelo seletor, desfaz,
 redimensiona meshes normais, rotacionados e planos, e testa a direção do globo. Em arquivos com vários meshes, verifica que a alteração
 não afetou as outras peças. Os botões de mover/girar/escalar são testados em cada
 eixo, incluindo ALL, sincronização dos campos de rotação e desfazer. A validação do

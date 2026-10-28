@@ -24,6 +24,39 @@ internal static class ViewerEditorTest
         if(fields.Length!=7||fields[0]!=color.R||fields[1]!=color.G||fields[2]!=color.B||fields[3]!=color.A)throw new Exception("GTK color picker did not load material RGBA: "+report);
         if(Vector3.Distance(new Vector3((float)fields[4],(float)fields[5],(float)fields[6]),size)>.002f)throw new Exception("GTK dimension fields did not load actual mesh dimensions: "+report);
     }
+    static void CheckRigidRotations() {
+        bool b3d=Path.GetExtension(Program.CurrentRouteFile).Equals(".b3d",StringComparison.OrdinalIgnoreCase);
+        foreach(string primitive in new[]{b3d?"Cube 1,1,1":"Cube,1,1,1",b3d?"Cylinder 16,1,1,2":"Cylinder,16,1,1,2"}){
+            string text=(b3d?"[MeshBuilder]\n":"CreateMeshBuilder\n")+primitive+"\n";
+            var values=new double[]{0,0,0,0,0,0,.8,1.3,.6,1,.1,.1};
+            string baseline=ObjectGraph.Transform(text,1,values);
+            var original=ObjectGraph.Parse(baseline).Mesh.Vertices;
+            for(int axis=0;axis<3;axis++){
+                var next=(double[])values.Clone();next[3+axis]=axis==0?-45:axis==1?45:40;
+                string rotatedText=ObjectGraph.Transform(baseline,1,next);
+                var rotated=ObjectGraph.Parse(rotatedText).Mesh.Vertices;
+                if(rotated.Length!=original.Length)throw new Exception("Rotation changed vertex count");
+                for(int i=0;i<original.Length;i++)for(int j=i+1;j<original.Length;j++){
+                    double before=(original[i].Coordinates-original[j].Coordinates).NormSquared();
+                    double after=(rotated[i].Coordinates-rotated[j].Coordinates).NormSquared();
+                    if(Math.Abs(before-after)>1e-7*Math.Max(1,before))throw new Exception($"Rotation deformed {primitive} on axis {axis}: {before} -> {after}");
+                }
+                // Also rotate after an actual dimensions edit, then round-trip to zero.
+                var size=ObjectGraph.Dimensions(baseline,1);
+                string resized=ObjectGraph.Resize(baseline,1,new double[]{size.X*.9,size.Y*1.2,size.Z*.8});
+                var shape=ObjectGraph.Parse(resized).Mesh.Vertices;
+                var settings=ObjectGraph.Values(resized,1);settings[3+axis]=next[3+axis];
+                var afterResize=ObjectGraph.Parse(ObjectGraph.Transform(resized,1,settings)).Mesh.Vertices;
+                for(int i=0;i<shape.Length;i++)for(int j=i+1;j<shape.Length;j++){
+                    double before=(shape[i].Coordinates-shape[j].Coordinates).NormSquared();
+                    if(Math.Abs(before-(afterResize[i].Coordinates-afterResize[j].Coordinates).NormSquared())>1e-6*Math.Max(1,before))throw new Exception("Rotation deformed a mesh after dimension editing");
+                }
+                next[3+axis]=0;var restored=ObjectGraph.Parse(ObjectGraph.Transform(rotatedText,1,next)).Mesh.Vertices;
+                if(restored.Where((v,i)=>(v.Coordinates-original[i].Coordinates).NormSquared()>1e-10).Any())throw new Exception("Resetting rotation did not restore the shape");
+            }
+        }
+        Console.WriteLine("OBJECT_EDITOR_RIGID_ROTATION_OK: resized cubes/cylinders, X=-45 Y=45 Z=40, all pair distances, dimension edits and reset");
+    }
     static void CheckResizingTransforms() {
         int id=ObjectGraph.Selected;var values=ObjectGraph.Values(ObjectGraph.Source,id);
         values[3]=20;values[4]=25;values[5]=10;
@@ -63,6 +96,7 @@ internal static class ViewerEditorTest
             case 0:
                 if(!editor.Running || editor.Layout!="side" || !editor.CanvasMatches(window,0))return;
                 if(Program.ObjectMode){
+                    CheckRigidRotations();
                     ViewerOverlay.Build(window);
                     var create=ViewerOverlay.Controls.Single(c=>c.Id=="object-new");
                     var open=ViewerOverlay.Controls.Single(c=>c.Id=="open");

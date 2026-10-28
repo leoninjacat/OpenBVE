@@ -62,8 +62,10 @@ internal static class ObjectGraph
         string Cmd(string command,params double[] args)=>command+sep+string.Join(",",args.Select(F))+nl;
         string addition="; @openbve-editor "+string.Join(" ",values.Select(F))+nl;
         addition+=Cmd("Scale",values[6],values[7],values[8]);
-        addition+=Cmd("Rotate",1,0,0,values[3])+Cmd("Rotate",0,1,0,values[4])+Cmd("Rotate",0,0,1,values[5]);
+        // Both scale factors describe the unrotated shape. Scaling in world axes
+        // after rotation would shear a nonuniformly resized cube or cylinder.
         addition+=Cmd("Scale",values[9],values[10],values[11]);
+        addition+=Cmd("Rotate",1,0,0,values[3])+Cmd("Rotate",0,1,0,values[4])+Cmd("Rotate",0,0,1,values[5]);
         addition+=Cmd("Translate",values[0],values[1],values[2])+"; @openbve-editor-end"+nl;
         return text[..start]+block.TrimEnd('\r','\n')+nl+addition+text[end..];
     }
@@ -99,7 +101,8 @@ internal static class ObjectGraph
         var values=Values(text,id);
         string candidate=text;
         float tolerance=Math.Max(.0001f,desired.Length()*1e-5f);
-        // Resize after local rotation. Measure through the actual parser so later *All
+        // Solve local shape scales against world bounding dimensions. Measure through
+        // the actual parser so rotation and later *All
         // commands are included, rather than assuming dimensions equal scale factors.
         for(int iteration=0;iteration<10;iteration++){
             var size=Dimensions(Parse(candidate),id);var error=desired-size;
