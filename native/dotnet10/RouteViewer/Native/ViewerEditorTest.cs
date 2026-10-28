@@ -9,6 +9,7 @@ namespace RouteViewer;
 internal static class ViewerEditorTest
 {
     static int phase, initialLoads;
+    static bool awaitingViewportSave;
     internal static bool Complete => Program.ObjectMode?phase>=15&&ViewerObjectToolsTest.Complete&&ViewerPivotTest.Complete:phase>=5;
     static Stopwatch timer,step;
 
@@ -54,13 +55,25 @@ internal static class ViewerEditorTest
         if(!Program.EditorTest || !Loading.Complete)return;
         if(Program.ObjectMode&&phase>=15){if(!ViewerObjectToolsTest.Complete)ViewerObjectToolsTest.Rendered(window);else ViewerPivotTest.Rendered(window);return;}
         timer??=Stopwatch.StartNew();
-        if(timer.Elapsed.TotalSeconds>25)throw new Exception("Editor integration timed out at phase "+phase);
+        if(timer.Elapsed.TotalSeconds>25)throw new Exception($"Editor integration timed out at phase {phase}, loads={Program.LoadCount}/{initialLoads}, awaitingSave={awaitingViewportSave}");
         var editor=window.Editor;
         step??=Stopwatch.StartNew();
         if(step.Elapsed.TotalSeconds<.45)return;
         switch(phase) {
             case 0:
                 if(!editor.Running || editor.Layout!="side" || !editor.CanvasMatches(window,0))return;
+                if(Program.ObjectMode){
+                    ViewerOverlay.Build(window);
+                    var create=ViewerOverlay.Controls.Single(c=>c.Id=="object-new");
+                    var open=ViewerOverlay.Controls.Single(c=>c.Id=="open");
+                    if(create.X+create.W>open.X)throw new Exception("New object button overlaps Open");
+                    foreach(string id in new[]{"insert-cube","insert-plane","insert-cylinder"})
+                        if(ViewerOverlay.Controls.Single(c=>c.Id==id).X!=16)throw new Exception("Primitive is not on the left of the viewport");
+                    var point=ViewerOverlay.Center("object-new");ViewerOverlay.Press(window,point.X,point.Y);ViewerOverlay.Build(window);
+                    if(ViewerOverlay.Controls.Count(c=>c.Id.StartsWith("new-object-"))!=3)throw new Exception("New object dropdown is missing formats or empty file");
+                    ViewerOverlay.Press(window,point.X,point.Y);
+                    Console.WriteLine("OBJECT_EDITOR_CREATION_UI_OK: New before Open, B3D/CSV/empty dropdown, left viewport primitives");
+                }
                 editor.Send("TEST-LAYOUT","1");step.Restart();phase++;break;
             case 1:
                 if(editor.Layout!="bottom" || !editor.CanvasMatches(window,1))return;
@@ -75,13 +88,18 @@ internal static class ViewerEditorTest
                 extent=Extent();
                 string edit="\n; Route Editor integration test — estação\n";
                 if(Program.ObjectMode)edit+=Path.GetExtension(Program.CurrentRouteFile).Equals(".b3d",StringComparison.OrdinalIgnoreCase)?"ScaleAll 2,2,2\n":"ScaleAll,2,2,2\n";
-                editor.Send("TEST-EDIT",edit);phase++;break;
+                awaitingViewportSave=Program.ObjectMode;editor.Send(Program.ObjectMode?"TEST-EDIT-NOSAVE":"TEST-EDIT",edit);phase++;break;
             case 4:
+                if(awaitingViewportSave){
+                    if(Program.LoadCount<=initialLoads||!ObjectGraph.Source.Contains("Route Editor integration test"))return;
+                    ViewerOverlay.Build(window);var save=ViewerOverlay.Center("save-object");ViewerOverlay.Press(window,save.X,save.Y);
+                    initialLoads=Program.LoadCount;awaitingViewportSave=false;return;
+                }
                 if(Program.LoadCount<=initialLoads)return;
                 if(!File.ReadAllText(Program.CurrentRouteFile,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(Program.CurrentRouteFile)).Contains("Route Editor integration test"))throw new Exception("Editor did not save route");
                 if(Vector3.Distance(eye,Program.Camera.Pose.Position)>.01)throw new Exception("Editor reload moved camera");
                 if(Program.ObjectMode && (extent<=0 || Extent()<extent*3.9))throw new Exception("Saved geometry was not updated in preview");
-                if(Program.ObjectMode)Console.WriteLine("OBJECT_EDITOR_GEOMETRY_OK: saved scale applied to mesh");
+                if(Program.ObjectMode)Console.WriteLine("OBJECT_EDITOR_GEOMETRY_OK: saved scale applied to mesh; viewport Save and update");
                 Console.WriteLine("VIEWER_EDITOR_OK: side, bottom, detached, reattached, save from desktop editor, preview reload, camera preserved");phase++;break;
             case 5:
                 if(!Program.ObjectMode)return;

@@ -12,6 +12,7 @@ internal static class ViewerOverlay
     static Color128 White=new(.92f,.93f,.94f,1),Muted=new(.55f,.57f,.6f,1),Plate=new(.08f,.09f,.10f,.82f),Active=new(.32f,.35f,.37f,.94f);
     static float scale=1;
     internal static bool TrackDropdownOpen;
+    internal static bool NewObjectMenu;
     sealed record LogRow(int Index, string Text, bool Header);
     static readonly List<LogRow> logRows=new();
     const int VisibleLogRows=15;
@@ -68,24 +69,35 @@ internal static class ViewerOverlay
         if(OperatingSystem.IsWindows()) {
             ids=ids.Concat(new[]{"new"}).ToArray();icons=icons.Concat(new[]{"plus"}).ToArray();tips=tips.Concat(new[]{"Nova rota - Ctrl+N"}).ToArray();
         }
-        if(Program.ObjectMode){ids=new[]{"open","reload","home","wire","log","help"};icons=new[]{"folder","reload","home","wire","log","help"};tips=new[]{"Abrir objeto · Ctrl+O","Recarregar · F5","Enquadrar objeto · Home","Aramado · F","Mensagens · F9","Ajuda · F1"};}
-        for(int i=0;i<ids.Length;i++)Add(ids[i],icons[i],tips[i],16+i*44,16,ids[i] is "open" or "new"?!Program.Picking:ids[i] is "log" or "help"||ready,ids[i]=="wire"&&Program.Renderer.OptionWireFrame||ids[i]=="events"&&Program.Renderer.OptionEvents);
+        if(Program.ObjectMode){ids=new[]{"object-new","open","save-object","home","wire","log","help"};icons=new[]{"plus","folder","save","home","wire","log","help"};tips=new[]{"Novo objeto · B3D, CSV ou arquivo vazio","Abrir objeto · Ctrl+O","Salvar e atualizar · Ctrl+S","Enquadrar objeto · Home","Aramado · F","Mensagens · F9","Ajuda · F1"};}
+        for(int i=0;i<ids.Length;i++){
+            float offset=Program.ObjectMode&&i>0?44:0;
+            Add(ids[i],icons[i],tips[i],16+i*44+offset,16,ids[i] is "open" or "new" or "object-new"?!Program.Picking:ids[i] is "log" or "help"||ready,ids[i]=="wire"&&Program.Renderer.OptionWireFrame||ids[i]=="events"&&Program.Renderer.OptionEvents);
+            if(ids[i]=="object-new")Controls[^1]=Controls[^1] with {W=84};
+        }
         if(Program.ObjectMode){
-            float start=w/2-188;
+            float start=Math.Max(390,w/2-188);
             Add("tool-move","move","Mover · escolha um eixo e arraste o mesh",start,16,ready,ObjectTools.Tool==ObjectTool.Move);
-            Add("tool-rotate","rotate","Girar · escolha X, Y ou Z · graus no painel",start+44,16,ready,ObjectTools.Tool==ObjectTool.Rotate);
+            Add("tool-rotate","rotate","Girar · X/Y/Z ou ALL · RotateAll no último eixo",start+44,16,ready,ObjectTools.Tool==ObjectTool.Rotate);
             Add("tool-scale","scale","Escalar · escolha X, Y, Z ou ALL",start+88,16,ready,ObjectTools.Tool==ObjectTool.Scale);
             Add("tool-pivot","pivot","Pivô · mover a ancoragem sem alterar o modelo",start+132,16,ready,ObjectTools.Tool==ObjectTool.Pivot);
             bool enabled=ready&&ObjectGraph.Selected>0&&ObjectTools.Tool!=ObjectTool.Select;
             for(int axis=0;axis<3;axis++)Add("axis-"+axis,"","Eixo "+"XYZ"[axis]+" · "+ObjectTools.Name,start+188+axis*44,16,enabled,ObjectTools.Axis==axis);
-            if(ObjectTools.Tool==ObjectTool.Scale)Controls.Add(new("axis-3","","ALL · escala uniforme nos três eixos",start+320,16,52,40,enabled,ObjectTools.Axis==3));
+            if(ObjectTools.Tool is ObjectTool.Scale or ObjectTool.Rotate)Controls.Add(new("axis-3","",ObjectTools.Tool==ObjectTool.Rotate?"ALL · RotateAll em todo o objeto · último eixo "+"XYZ"[ObjectTools.LastRotationAxis]:"ALL · escala uniforme nos três eixos",start+320,16,52,40,enabled,ObjectTools.Axis==3));
         }
         if(!Program.ObjectMode)Controls.Add(new("select-track","",$"Selecionar via - Tab alterna vias",w-292,16,136,40,ready,TrackDropdownOpen));
         if(!Program.ObjectMode)Add("mode-track","track","Cabine invisível · via selecionada",w-148,16,ready,!free);
         Add("mode-free","camera","Câmera livre",w-104,16,ready,free);
-        Add("zoom-in","plus","Aproximar",16,h/2-110,ready);
+        if(!Program.ObjectMode){Add("zoom-in","plus","Aproximar",16,h/2-110,ready);
         Add("zoom-out","minus","Afastar",16,h/2+70,ready);
         Controls.Add(new("zoom-slider","","Zoom · arraste",24,h/2-62,24,126,ready));
+        }
+        if(Program.ObjectMode){
+            Add("insert-cube","cube","Inserir cubo · dimensões no painel",16,h/2-66,ready);
+            Add("insert-plane","plane","Inserir plano · dimensões no painel",16,h/2-22,ready);
+            Add("insert-cylinder","cylinder","Inserir cilindro · dimensões no painel",16,h/2+22,ready);
+            Add("human-reference","human","Referência humana · 1,75 m · mostrar / ocultar",16,h/2+70,ready,ObjectReference.Visible);
+        }
         // The right-hand controls always move the invisible cab along track zero.
         Add("rail-forward","up","Avançar no via selecionada · W / Num 9",w-60,h/2-90,ready&&!free,window.Held=="rail-forward");
         Add("rail-play",Program.Camera.Cruise==0?"play":"pause","Percorrer / pausar o via selecionada · Espaço",w-60,h/2-46,ready&&!free,Program.Camera.Cruise!=0);
@@ -102,6 +114,10 @@ internal static class ViewerOverlay
         Add("left","left","Voo livre à esquerda · A",cx-91,cy-18,ready&&free,window.Held=="left",36);
         Add("right","right","Voo livre à direita · D",cx+55,cy-18,ready&&free,window.Held=="right",36);
         if(Program.ObjectMode)Controls.RemoveAll(c=>c.Id is "select-track" or "mode-track" or "rail-forward" or "rail-play" or "rail-back" or "rail-slider");
+        if(Program.ObjectMode&&NewObjectMenu){
+            string[] labels={"Arquivo B3D","Arquivo CSV","Arquivo vazio…"};
+            for(int i=0;i<3;i++)Controls.Add(new("new-object-"+i,"",labels[i],16,62+i*36,190,34,window.Editor.Running));
+        }
         if(window.Help||window.ShowLog)Add("close","close","Fechar · Esc",w/2+310,123);
         if(window.ShowLog&&!window.Help)BuildLog(window,w);
         if (ready && TrackDropdownOpen && !window.Help && !window.ShowLog) {
@@ -134,7 +150,7 @@ internal static class ViewerOverlay
     {
         var window=(ViewerWindow)r.GameWindow;Build(window);
         float w=window.ViewWidth/scale,h=window.ViewHeight/scale;
-        if(Program.ObjectMode){ObjectGraph.DrawSelection(r,window);ObjectPivot.Draw(r,window);}
+        if(Program.ObjectMode){ObjectReference.Draw(r,window);ObjectGraph.DrawSelection(r,window);ObjectPivot.Draw(r,window);}
         foreach(var c in Controls) {
             if(c.Id is "close" or "route-info" || c.Id.StartsWith("log-message-"))continue;
             bool hover=window.PointerX>=c.X*scale&&window.PointerY>=c.Y*scale&&window.PointerX<(c.X+c.W)*scale&&window.PointerY<(c.Y+c.H)*scale;
@@ -164,6 +180,8 @@ internal static class ViewerOverlay
                 if(c.Active)Rect(r,c.X+8,c.Y+c.H-4,c.W-16,2,tint);
                 continue;
             }
+            if(c.Id=="object-new"){Icon(r,"plus",c.X+5,c.Y+7,26,26,White);Text(r,"Novo",c.X+33,c.Y+11,White);continue;}
+            if(c.Id.StartsWith("new-object-")){Text(r,c.Tip,c.X+10,c.Y+8,White);continue;}
             if(c.Id=="select-track" || c.Id.StartsWith("track-option-")) {
                 string label=c.Id=="select-track"?$"Via {Program.Camera.SelectedTrack}  v":$"Via {c.Id[13..]}";
                 Text(r,label,c.X+10,c.Y+8,c.Enabled?White:Muted);
@@ -272,7 +290,13 @@ internal static class ViewerOverlay
             }
             return true;
         }
+        if(NewObjectMenu&&c?.Id!="object-new"){
+            NewObjectMenu=false;
+            if(c?.Id.StartsWith("new-object-")==true){window.Editor.Send("CREATE-OBJECT",c.Id[11..]);return true;}
+            return true;
+        }
         if(c==null)return false;if(!c.Enabled)return true;
+        if(c.Id.StartsWith("insert-")){window.Editor.Send("INSERT-OBJECT",c.Id[7..]);return true;}
         if(c.Id.StartsWith("tool-")){
             window.EndInteraction();
             ObjectTools.ChooseTool(c.Id switch {"tool-move"=>ObjectTool.Move,"tool-rotate"=>ObjectTool.Rotate,"tool-pivot"=>ObjectTool.Pivot,_=>ObjectTool.Scale});
@@ -285,8 +309,11 @@ internal static class ViewerOverlay
             case "toggle-ui":window.ToggleInterface();break;
             case "toggle-editor":window.Editor.ToggleVisible();break;
             case "route-info":window.ShowLog=true;break;
+            case "object-new":NewObjectMenu=!NewObjectMenu;break;
             case "open":Program.OpenPicker();break;
             case "new":Program.NewRoute();break;
+            case "save-object":window.Editor.Send("SAVE-REQUEST");break;
+            case "human-reference":ObjectReference.Visible=!ObjectReference.Visible;break;
             case "reload":Program.Reload=true;break;
             case "previous":Program.Camera.Station(-1);break;
             case "next":Program.Camera.Station(1);break;

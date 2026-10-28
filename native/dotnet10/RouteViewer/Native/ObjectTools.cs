@@ -9,24 +9,25 @@ internal static class ObjectTools
 {
     internal sealed record Operation(int Mesh, ObjectTool Tool, int Axis, double Amount);
     internal static ObjectTool Tool { get; private set; }
-    // -1 = waiting for an axis; 3 = uniform scale (ALL).
+    // -1 = waiting for an axis; 3 = ALL. Rotation captures its last XYZ axis.
+    internal static int LastRotationAxis { get; private set; } = 1;
     internal static int Axis { get; private set; } = -1;
     static readonly List<Operation> pending = new();
     static Operation drag;
     static float unitsPerPixel;
     internal static string Name => Tool switch { ObjectTool.Move=>"Mover",ObjectTool.Rotate=>"Girar",ObjectTool.Scale=>"Escalar",ObjectTool.Pivot=>"Pivô",_=>"Selecionar" };
-    internal static string Hint => ObjectGraph.Selected==0?"Clique em um mesh para selecionar":Tool==ObjectTool.Select?"Escolha uma ferramenta":Axis<0?Name+" · escolha X, Y ou Z"+(Tool==ObjectTool.Scale?" ou ALL":""):Name+" · "+(Axis==3?"ALL":"eixo "+"XYZ"[Axis])+(Tool==ObjectTool.Pivot?" · arraste o marcador ou o mesh":" · arraste o mesh");
-    internal static void Reset() {Tool=ObjectTool.Select;Axis=-1;drag=null;pending.Clear();}
+    internal static string Hint => ObjectGraph.Selected==0?"Clique em um mesh para selecionar":Tool==ObjectTool.Select?"Escolha uma ferramenta":Axis<0?Name+" · escolha X, Y ou Z"+(Tool is ObjectTool.Scale or ObjectTool.Rotate?" ou ALL":""):Name+" · "+(Axis==3?(Tool==ObjectTool.Rotate?"ALL · eixo "+"XYZ"[LastRotationAxis]:"ALL"):"eixo "+"XYZ"[Axis])+(Tool==ObjectTool.Pivot?" · arraste o marcador ou o mesh":" · arraste o mesh");
+    internal static void Reset() {Tool=ObjectTool.Select;Axis=-1;drag=null;pending.Clear();LastRotationAxis=1;}
     internal static void ChooseTool(ObjectTool tool) { Tool=tool;Axis=-1;Program.Status=Hint; }
     internal static void ChooseAxis(int axis)
     {
-        if(Tool==ObjectTool.Select||axis<0||axis>3||axis==3&&Tool!=ObjectTool.Scale)return;
-        Axis=axis;Program.Status=Hint;
+        if(Tool==ObjectTool.Select||axis<0||axis>3||axis==3&&Tool is not (ObjectTool.Scale or ObjectTool.Rotate))return;
+        Axis=axis;if(Tool==ObjectTool.Rotate&&axis<3)LastRotationAxis=axis;Program.Status=Hint;
     }
     internal static bool BeginDrag(ViewerWindow window)
     {
         if(ObjectGraph.Selected==0||Tool==ObjectTool.Select||Axis<0){Program.Status=Hint;return false;}
-        drag=new(ObjectGraph.Selected,Tool,Axis,0);
+        drag=new(ObjectGraph.Selected,Tool,Tool==ObjectTool.Rotate&&Axis==3?3+LastRotationAxis:Axis,0);
         // Use the selected geometry's depth so translation feels consistent at different zooms.
         var points=Program.Renderer.StaticObjectStates.SelectMany(s=>s.Prototype.Mesh.Faces.Where(f=>f.SourceMesh==drag.Mesh).SelectMany(f=>f.Vertices.Select(v=>CameraRig.ToV(s.Prototype.Mesh.Vertices[v.Index].Coordinates)))).ToArray();
         var center=Tool==ObjectTool.Pivot?ObjectPivot.World(ObjectGraph.Source,drag.Mesh):points.Length==0?Program.Camera.Pose.Target:points.Aggregate(Vector3.Zero,(a,b)=>a+b)/points.Length;
@@ -61,7 +62,14 @@ internal static class ObjectTools
     }
     internal static string Apply(string text,int mesh,ObjectTool tool,int axis,double amount)
     {
-        if(tool is not (ObjectTool.Move or ObjectTool.Rotate or ObjectTool.Scale)||axis<0||axis>3||axis==3&&tool!=ObjectTool.Scale||!double.IsFinite(amount))throw new InvalidOperationException("Selecione uma ferramenta e um eixo válido.");
+        if(tool is not (ObjectTool.Move or ObjectTool.Rotate or ObjectTool.Scale)||axis<0||axis>(tool==ObjectTool.Rotate?5:3)||axis==3&&tool==ObjectTool.Move||!double.IsFinite(amount))throw new InvalidOperationException("Selecione uma ferramenta e um eixo válido.");
+        if(tool==ObjectTool.Rotate&&axis>=3){
+            ObjectGraph.Range(text,mesh);
+            string nl=text.Contains("\r\n")?"\r\n":"\n";
+            string sep=System.IO.Path.GetExtension(Program.CurrentRouteFile).Equals(".b3d",StringComparison.OrdinalIgnoreCase)?" ":",";
+            string vector=axis==3?"1,0,0,":axis==4?"0,1,0,":"0,0,1,";
+            return text.TrimEnd('\r','\n')+nl+"RotateAll"+sep+vector+Math.IEEERemainder(amount,360).ToString("G17",System.Globalization.CultureInfo.InvariantCulture)+nl;
+        }
         var values=ObjectGraph.Values(text,mesh);
         if(tool==ObjectTool.Move)values[axis]+=amount;
         else if(tool==ObjectTool.Rotate)values[3+axis]=Math.IEEERemainder(values[3+axis]+amount,360);

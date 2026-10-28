@@ -44,3 +44,10 @@ build/test-route-editor: test-route-editor.c route-editor.c
 check-editor: build/test-route-editor
 	./build/test-route-editor
 .PHONY: check-editor
+
+build/test-object-creation: test-object-creation.c route-editor.c
+	mkdir -p build
+	$(CC) $(shell pkg-config --cflags gtk4 libadwaita-1 x11) $(CFLAGS) $< -o $@ $(shell pkg-config --libs gtk4 libadwaita-1 x11)
+check-object-creation: build/test-object-creation
+	./build/test-object-creation
+.PHONY: check-object-creation

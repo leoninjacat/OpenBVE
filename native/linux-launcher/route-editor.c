@@ -14,6 +14,7 @@ static GtkWidget *viewer_area;
 static GtkWidget *editor_content;
 static GtkTextBuffer *buffer;
 static GtkWidget *mesh_panel;
+static GtkLabel *code_language;
 static GtkLabel *mesh_heading,*mesh_info,*mesh_dimensions,*mesh_error;
 static GtkSpinButton *mesh_values[9],*mesh_sizes[3],*mesh_pivots[3];
 static GtkWidget *pivot_origin,*pivot_center;
@@ -190,6 +191,58 @@ static void request(const char *action,const char *value) {
     gtk_alert_dialog_set_buttons(dialog,buttons);gtk_alert_dialog_set_cancel_button(dialog,0);gtk_alert_dialog_set_default_button(dialog,2);
     gtk_alert_dialog_choose(dialog,window,NULL,choice,NULL);
 }
+static char *object_path;
+static GtkSpinButton *primitive_size[3],*primitive_segments;
+static void new_file_chosen(GObject *source,GAsyncResult *result,gpointer data) {
+    g_autoptr(GError) error=NULL;
+    g_autoptr(GFile) file=gtk_file_dialog_save_finish(GTK_FILE_DIALOG(source),result,&error);
+    if(!file)return;
+    g_autofree char *path=g_file_get_path(file);
+    const char *extension=g_str_has_prefix(data,"empty")?(const char *)data+5:data;
+    if(!path)return;
+    g_autofree char *name=g_str_has_suffix(path,extension)?g_strdup(path):g_strconcat(path,extension,NULL);
+    request(g_str_has_prefix(data,"empty")?"NEW-EMPTY":"NEW",name);
+}
+static void new_clicked(GtkButton *button,gpointer data) {
+    GtkWidget *popover=button?gtk_widget_get_ancestor(GTK_WIDGET(button),GTK_TYPE_POPOVER):NULL;if(popover)gtk_popover_popdown(GTK_POPOVER(popover));
+    if(waiting||graph_requests||mesh_edits||!g_queue_is_empty(&graph_queue))return;
+    GtkFileDialog *dialog=gtk_file_dialog_new();gtk_file_dialog_set_title(dialog,"Criar objeto");
+    gtk_file_dialog_set_initial_name(dialog,g_str_has_suffix(data,".csv")?"objeto.csv":"objeto.b3d");
+    gtk_file_dialog_save(dialog,host_window,NULL,new_file_chosen,data);g_object_unref(dialog);
+}
+static void empty_language_chosen(GObject *source,GAsyncResult *result,gpointer data) {
+    (void)data;g_autoptr(GError) error=NULL;
+    int answer=gtk_alert_dialog_choose_finish(GTK_ALERT_DIALOG(source),result,&error);
+    if(answer==1||answer==2)new_clicked(NULL,answer==1?"empty.b3d":"empty.csv");
+}
+static void create_object(const char *kind) {
+    if(g_str_equal(kind,"2")){
+        g_autoptr(GtkAlertDialog) dialog=gtk_alert_dialog_new("Linguagem do arquivo vazio");
+        const char *buttons[]={"Cancelar","B3D","CSV",NULL};gtk_alert_dialog_set_buttons(dialog,buttons);gtk_alert_dialog_set_cancel_button(dialog,0);
+        gtk_alert_dialog_choose(dialog,host_window,NULL,empty_language_chosen,NULL);
+    }else new_clicked(NULL,g_str_equal(kind,"1")?".csv":".b3d");
+}
+static void primitive_clicked(GtkButton *button,gpointer data) {
+    (void)button;
+    if(!object_path){gtk_label_set_text(mesh_error,"Crie ou abra um arquivo B3D/CSV primeiro.");return;}
+    if(waiting||graph_requests||mesh_edits||!g_queue_is_empty(&graph_queue)){gtk_label_set_text(mesh_error,"Aguarde a alteração atual antes de inserir uma mesh.");return;}
+    const char *extension=strrchr(object_path,'.');gboolean csv=extension&&g_ascii_strcasecmp(extension,".csv")==0;
+    double size[3];char n[3][G_ASCII_DTOSTR_BUF_SIZE];
+    for(int i=0;i<3;i++){gtk_spin_button_update(primitive_size[i]);size[i]=gtk_spin_button_get_value(primitive_size[i]);g_ascii_dtostr(n[i],sizeof(n[i]),size[i]/2);}
+    GString *code=g_string_new(csv?"\nCreateMeshBuilder\n":"\n[MeshBuilder]\n");
+    int kind=GPOINTER_TO_INT(data);
+    if(kind==0)g_string_append_printf(code,csv?"Cube, %s, %s, %s\n":"Cube %s, %s, %s\n",n[0],n[1],n[2]);
+    else if(kind==2){
+        char h[G_ASCII_DTOSTR_BUF_SIZE];g_ascii_dtostr(h,sizeof(h),size[1]);gtk_spin_button_update(primitive_segments);
+        g_string_append_printf(code,csv?"Cylinder, %d, %s, %s, %s\n":"Cylinder %d, %s, %s, %s\n",gtk_spin_button_get_value_as_int(primitive_segments),n[0],n[0],h);
+    }else{
+        const char *v=csv?"AddVertex,":"Vertex";
+        g_string_append_printf(code,"%s -%s, 0, -%s\n%s %s, 0, -%s\n%s %s, 0, %s\n%s -%s, 0, %s\n%s\n",v,n[0],n[2],v,n[0],n[2],v,n[0],n[2],v,n[0],n[2],csv?"AddFace2, 0, 1, 2, 3":"Face2 0, 1, 2, 3");
+    }
+    g_string_append(code,csv?"SetColor, 200, 200, 200\n":"Color 200, 200, 200\n");
+    GtkTextIter end;gtk_text_buffer_get_end_iter(buffer,&end);gtk_text_buffer_begin_user_action(buffer);gtk_text_buffer_insert(buffer,&end,code->str,-1);gtk_text_buffer_end_user_action(buffer);g_string_free(code,TRUE);
+}
+
 static gboolean close_requested(GtkWindow *w,gpointer data){(void)w;(void)data;request("QUIT","");return TRUE;}
 static void focus_editor(GtkGestureClick *gesture,int presses,double x,double y,gpointer data) {
     (void)gesture;(void)presses;(void)x;(void)y;(void)data;
@@ -217,7 +270,9 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
     g_strchomp(line);char *tab=strchr(line,'\t');if(tab)*tab++=0;
     gsize bytes=0;g_autofree guchar *decoded=tab?g_base64_decode(tab,&bytes):NULL;
     g_autofree char *value=decoded?g_strndup((char *)decoded,bytes):g_strdup("");
-    if(testing&&g_str_equal(line,"TEST-THEME"))adw_style_manager_set_color_scheme(adw_style_manager_get_default(),g_str_equal(value,"dark")?ADW_COLOR_SCHEME_FORCE_DARK:g_str_equal(value,"light")?ADW_COLOR_SCHEME_FORCE_LIGHT:ADW_COLOR_SCHEME_DEFAULT);
+    if(object_editor&&g_str_equal(line,"CREATE-OBJECT"))create_object(value);
+    else if(object_editor&&g_str_equal(line,"INSERT-OBJECT"))primitive_clicked(NULL,GINT_TO_POINTER(g_str_equal(value,"cube")?0:g_str_equal(value,"plane")?1:2));
+    else if(testing&&g_str_equal(line,"TEST-THEME"))adw_style_manager_set_color_scheme(adw_style_manager_get_default(),g_str_equal(value,"dark")?ADW_COLOR_SCHEME_FORCE_DARK:g_str_equal(value,"light")?ADW_COLOR_SCHEME_FORCE_LIGHT:ADW_COLOR_SCHEME_DEFAULT);
     else if(testing&&g_str_equal(line,"TEST-LAYOUT"))gtk_drop_down_set_selected(g_object_get_data(G_OBJECT(window),"layout"),(guint)atoi(value));
     else if(testing&&object_editor&&g_str_equal(line,"TEST-PROPERTY")){for(int i=6;i<9;i++)gtk_spin_button_set_value(mesh_values[i],3);}
     else if(testing&&object_editor&&g_str_equal(line,"TEST-COLOR")){
@@ -252,7 +307,7 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
         emit("TEST-PIVOT",result->str);g_string_free(result,TRUE);
     }
     else if(testing&&object_editor&&g_str_equal(line,"TEST-UNDO")){gtk_text_buffer_undo(buffer);}
-    else if(testing&&g_str_equal(line,"TEST-EDIT")){GtkTextIter end;gtk_text_buffer_get_end_iter(buffer,&end);gtk_text_buffer_insert(buffer,&end,value,-1);save();}
+    else if(testing&&(g_str_equal(line,"TEST-EDIT")||g_str_equal(line,"TEST-EDIT-NOSAVE"))){GtkTextIter end;gtk_text_buffer_get_end_iter(buffer,&end);gtk_text_buffer_insert(buffer,&end,value,-1);if(g_str_equal(line,"TEST-EDIT"))save();}
     else if(g_str_equal(line,"VISIBLE")){
         editor_visible=g_str_equal(value,"1");gtk_widget_set_visible(editor_content,editor_visible);arrange();emit("VISIBLE",editor_visible?"1":"0");
     }
@@ -311,7 +366,8 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
     }
     else if(g_str_equal(line,"TEXT")){
         changing=TRUE;gtk_text_buffer_begin_irreversible_action(buffer);gtk_text_buffer_set_text(buffer,value,-1);gtk_text_buffer_end_irreversible_action(buffer);gtk_text_buffer_set_modified(buffer,FALSE);changing=FALSE;title();
-    } else if(g_str_equal(line,"PATH")){gtk_label_set_text(status,value);g_free(route_name);route_name=g_path_get_basename(value);title();}
+    } else if(g_str_equal(line,"PATH")){if(object_editor){g_free(object_path);object_path=g_file_test(value,G_FILE_TEST_IS_REGULAR)?g_strdup(value):NULL;
+        const char *ext=strrchr(value,'.');gtk_label_set_text(code_language,object_path?(ext&&g_ascii_strcasecmp(ext,".csv")==0?"Código · CSV":"Código · B3D"):"Código · escolha B3D ou CSV em Novo");}gtk_label_set_text(status,value);g_free(route_name);route_name=g_path_get_basename(value);title();}
     else if(g_str_equal(line,"SAVE-REQUEST"))save();
     else if(g_str_equal(line,"ROUTE"))request("ROUTE",value);
     else if(g_str_equal(line,"QUIT"))request("QUIT","");
@@ -335,17 +391,27 @@ int main(int argc,char **argv) {
     host_window=GTK_WINDOW(gtk_window_new());window=host_window;
     floating_window=GTK_WINDOW(gtk_window_new());gtk_window_set_default_size(floating_window,760,680);
     gtk_window_set_default_size(host_window,width,height);
-    paned=GTK_PANED(gtk_paned_new(GTK_ORIENTATION_HORIZONTAL));gtk_window_set_child(host_window,GTK_WIDGET(paned));
+    paned=GTK_PANED(gtk_paned_new(GTK_ORIENTATION_HORIZONTAL));GtkWidget *root=gtk_box_new(GTK_ORIENTATION_VERTICAL,4);gtk_window_set_child(host_window,root);
+    gtk_widget_set_vexpand(GTK_WIDGET(paned),TRUE);gtk_box_append(GTK_BOX(root),GTK_WIDGET(paned));
     viewer_area=gtk_drawing_area_new();gtk_widget_set_size_request(viewer_area,320,240);
     gtk_widget_set_hexpand(viewer_area,TRUE);gtk_widget_set_vexpand(viewer_area,TRUE);
     gtk_paned_set_start_child(paned,viewer_area);gtk_paned_set_resize_start_child(paned,TRUE);gtk_paned_set_shrink_start_child(paned,FALSE);
     GtkWidget *box=gtk_box_new(GTK_ORIENTATION_VERTICAL,8);editor_content=box;gtk_widget_set_size_request(box,280,140);
     gtk_paned_set_end_child(paned,box);gtk_paned_set_resize_end_child(paned,FALSE);gtk_paned_set_shrink_end_child(paned,FALSE);
-    GtkWidget *bar=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,8);gtk_box_append(GTK_BOX(box),bar);
+    GtkWidget *bar=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,8);if(!object_editor)gtk_box_append(GTK_BOX(box),bar);
     GtkWidget *layout=gtk_drop_down_new_from_strings(layouts);gtk_widget_set_hexpand(layout,TRUE);gtk_box_append(GTK_BOX(bar),layout);
-    GtkWidget *button=gtk_button_new_with_label("Salvar e atualizar");gtk_box_append(GTK_BOX(bar),button);
+    GtkWidget *button=NULL;if(!object_editor){button=gtk_button_new_with_label("Salvar e atualizar");gtk_box_append(GTK_BOX(bar),button);}
     status=GTK_LABEL(gtk_label_new(object_editor?"Abra um objeto B3D/CSV para editar":"Abra uma rota para editar"));gtk_label_set_ellipsize(status,PANGO_ELLIPSIZE_MIDDLE);gtk_box_append(GTK_BOX(box),GTK_WIDGET(status));
     if(object_editor){
+        GtkWidget *primitives=gtk_box_new(GTK_ORIENTATION_VERTICAL,4);gtk_box_append(GTK_BOX(box),primitives);
+        GtkWidget *sizes=gtk_grid_new();gtk_grid_set_column_spacing(GTK_GRID(sizes),4);gtk_box_append(GTK_BOX(primitives),sizes);
+        const char *labels[]={"Largura / diâmetro","Altura","Profundidade","Segmentos"};
+        for(int i=0;i<4;i++){
+            GtkSpinButton *spin=GTK_SPIN_BUTTON(gtk_spin_button_new_with_range(i==3?3:.001,i==3?256:100000,i==3?1:.1));gtk_spin_button_set_digits(spin,i==3?0:3);gtk_spin_button_set_value(spin,i==3?16:2);
+            if(i==3)primitive_segments=spin;else primitive_size[i]=spin;
+            gtk_grid_attach(GTK_GRID(sizes),gtk_label_new(labels[i]),i%2*2,i/2,1,1);gtk_grid_attach(GTK_GRID(sizes),GTK_WIDGET(spin),i%2*2+1,i/2,1,1);
+        }
+        GtkWidget *note=gtk_label_new("Metros · plano XZ · cilindro no eixo Y (diâmetro e altura)");gtk_label_set_wrap(GTK_LABEL(note),TRUE);gtk_box_append(GTK_BOX(primitives),note);
         mesh_heading=GTK_LABEL(gtk_label_new("Selecione um mesh na vista 3D"));gtk_widget_add_css_class(GTK_WIDGET(mesh_heading),"title-3");gtk_box_append(GTK_BOX(box),GTK_WIDGET(mesh_heading));
         mesh_info=GTK_LABEL(gtk_label_new(""));gtk_box_append(GTK_BOX(box),GTK_WIDGET(mesh_info));
         mesh_panel=gtk_grid_new();gtk_grid_set_column_spacing(GTK_GRID(mesh_panel),6);gtk_grid_set_row_spacing(GTK_GRID(mesh_panel),6);gtk_box_append(GTK_BOX(box),mesh_panel);
@@ -389,6 +455,7 @@ int main(int argc,char **argv) {
         mesh_error=GTK_LABEL(gtk_label_new(""));gtk_label_set_wrap(mesh_error,TRUE);gtk_widget_add_css_class(GTK_WIDGET(mesh_error),"error");gtk_box_append(GTK_BOX(box),GTK_WIDGET(mesh_error));
         GtkWidget *hint=gtk_label_new("Ferramenta + eixo + arraste · Ctrl+Z no código desfaz\nDefinir pivô não altera o modelo · rotação/escala usam o pivô");gtk_label_set_wrap(GTK_LABEL(hint),TRUE);gtk_widget_add_css_class(hint,"dim-label");gtk_box_append(GTK_BOX(box),hint);
     }
+    if(object_editor){code_language=GTK_LABEL(gtk_label_new("Código · escolha B3D ou CSV em Novo"));gtk_box_append(GTK_BOX(bar),GTK_WIDGET(code_language));gtk_box_reorder_child_after(GTK_BOX(bar),GTK_WIDGET(code_language),NULL);gtk_box_append(GTK_BOX(box),bar);}
     GtkWidget *scroll=gtk_scrolled_window_new();gtk_scrolled_window_set_overlay_scrolling(GTK_SCROLLED_WINDOW(scroll),FALSE);gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scroll),GTK_POLICY_ALWAYS,GTK_POLICY_ALWAYS);gtk_widget_set_vexpand(scroll,TRUE);gtk_box_append(GTK_BOX(box),scroll);
     GtkWidget *text=gtk_text_view_new();gtk_text_view_set_monospace(GTK_TEXT_VIEW(text),TRUE);gtk_text_view_set_left_margin(GTK_TEXT_VIEW(text),12);gtk_text_view_set_top_margin(GTK_TEXT_VIEW(text),10);gtk_text_view_set_right_margin(GTK_TEXT_VIEW(text),12);gtk_text_view_set_bottom_margin(GTK_TEXT_VIEW(text),10);
     gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(text),GTK_WRAP_NONE);gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scroll),text);buffer=gtk_text_view_get_buffer(GTK_TEXT_VIEW(text));gtk_text_buffer_set_enable_undo(buffer,TRUE);
@@ -398,7 +465,7 @@ int main(int argc,char **argv) {
     g_object_set_data(G_OBJECT(floating_window),"scroll",scroll);
     g_object_set_data(G_OBJECT(floating_window),"text",text);
     g_object_set_data(G_OBJECT(floating_window),"layout",layout);
-    g_signal_connect(buffer,"changed",G_CALLBACK(changed),NULL);g_signal_connect(button,"clicked",G_CALLBACK(saved_clicked),NULL);
+    g_signal_connect(buffer,"changed",G_CALLBACK(changed),NULL);if(button)g_signal_connect(button,"clicked",G_CALLBACK(saved_clicked),NULL);
     g_signal_connect(layout,"notify::selected",G_CALLBACK(layout_changed),NULL);g_signal_connect(window,"close-request",G_CALLBACK(close_requested),NULL);
     g_signal_connect(floating_window,"close-request",G_CALLBACK(close_requested),NULL);
     GtkGesture *click=gtk_gesture_click_new();gtk_gesture_single_set_button(GTK_GESTURE_SINGLE(click),0);

@@ -55,6 +55,11 @@ internal static class ViewerIcons
                 case "disc": pen.Style=SKPaintStyle.Fill;canvas.DrawCircle(16,16,15,pen);break;
                 case "orbit-ring":pen.StrokeWidth=.35f;canvas.DrawCircle(16,16,15,pen);break;
                 case "plate": pen.Style=SKPaintStyle.Fill;canvas.DrawRoundRect(1,1,30,30,6,6,pen);break;
+                case "save":Path(5,4,24,4,28,8,28,28,4,28,4,4,5,4);Path(10,4,10,13,23,13,23,4);Path(10,28,10,19,23,19,23,28);break;
+                case "human":canvas.DrawCircle(16,6,3,pen);Path(7,20,11,12,21,12,25,20);Path(12,13,12,21,9,29);Path(20,13,20,21,23,29);Line(12,21,20,21);break;
+                case "cube":Path(5,10,16,4,27,10,16,16,5,10,5,23,16,29,27,23,27,10);Line(16,16,16,29);break;
+                case "plane":Path(4,20,14,9,28,14,18,25,4,20);break;
+                case "cylinder":canvas.DrawOval(new SKRect(6,4,26,12),pen);Line(6,8,6,24);Line(26,8,26,24);canvas.DrawArc(new SKRect(6,20,26,28),0,180,false,pen);break;
                 case "folder":Path(5,25,5,8,13,8,16,11,27,11,27,14);Path(5,25,9,15,29,15,25,25,5,25);break;
                 case "pivot":canvas.DrawCircle(16,16,7,pen);Line(16,2,16,12);Line(16,20,16,30);Line(2,16,12,16);Line(20,16,30,16);canvas.DrawCircle(16,16,1,pen);break;
                 case "move":Line(16,4,16,28);Line(4,16,28,16);Path(11,9,16,4,21,9);Path(11,23,16,28,21,23);Path(9,11,4,16,9,21);Path(23,11,28,16,23,21);break;

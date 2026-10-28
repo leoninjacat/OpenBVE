@@ -29,8 +29,12 @@ internal sealed class RouteEditor : IDisposable
         if (Program.SmokeSeconds>0 && !Program.EditorTest && !Program.FeedbackTest && !Program.KeyboardTest) return;
         try {
             // Reloading the preview must not replace the editor's undo history.
-            if (!replacingRoute && document?.Path == (File.ResolveLinkTarget(path,true)?.FullName ?? Path.GetFullPath(path)) && Running) return;
-            var next=RouteDocument.Open(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path));
+            if (path != null && !replacingRoute && document?.Path == (File.ResolveLinkTarget(path,true)?.FullName ?? Path.GetFullPath(path)) && Running) return;
+            var encoding=path==null?Encoding.UTF8:OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path);
+            // Empty / ASCII-only objects have no encoding marker. UTF-8 keeps all
+            // existing bytes unchanged and permits accented comments in new files.
+            if(Program.ObjectMode&&encoding.CodePage==Encoding.ASCII.CodePage)encoding=new UTF8Encoding(false,true);
+            var next=path == null ? null : RouteDocument.Open(path,encoding);
             if (!Running) {
                 var start=new ProcessStartInfo(Path.Combine(AppContext.BaseDirectory,OperatingSystem.IsWindows()?"RouteViewer.Desktop.exe":"route-editor")) {
                     UseShellExecute=false,RedirectStandardInput=true,RedirectStandardOutput=true
@@ -56,7 +60,7 @@ internal sealed class RouteEditor : IDisposable
                 });
             }
             document=next;replacingRoute=false;graphMovePending=false;
-            Send("PATH",path);Send("TEXT",document.Text);Resize(window);
+            Send("PATH",path ?? "Novo objeto");Send("TEXT",document?.Text ?? "");Resize(window);
         } catch(Exception error) { Program.Status="Editor: "+error.Message;Console.Error.WriteLine(Program.Status); }
     }
     internal void Send(string command,string value="")
@@ -152,8 +156,18 @@ internal sealed class RouteEditor : IDisposable
                         Send("PATCH",Convert.ToBase64String(Encoding.UTF8.GetBytes(text))+"\n"+updated);
                     } catch(Exception error){graphMovePending=false;Send("GRAPH-ERROR",error.Message);}
                     break;
+                case "NEW-EMPTY":
+                case "NEW":
+                    try {
+                        if(!Program.ObjectMode || (Path.GetExtension(value).ToLowerInvariant() is not (".b3d" or ".csv")))throw new IOException("Escolha um arquivo B3D ou CSV.");
+                        using(var file=new FileStream(value,FileMode.CreateNew,FileAccess.Write)) {
+                            var bytes=Encoding.UTF8.GetBytes(command=="NEW-EMPTY"?"":"; Novo objeto OpenBVE\n"+(Path.GetExtension(value).Equals(".csv",StringComparison.OrdinalIgnoreCase)?"CreateMeshBuilder\n":"[MeshBuilder]\n"));file.Write(bytes);
+                        }
+                        replacingRoute=true;Program.PendingRoute=value;
+                    } catch(Exception error){Send("ERROR",error.Message);}
+                    break;
                 case "SAVE":
-                    try {document.Save(value);Send("SAVED");Program.Reload=true;}
+                    try {if(document==null)throw new IOException("Crie ou abra um objeto antes de salvar.");document.Save(value);Send("SAVED");Program.Reload=true;}
                     catch(Exception error){Send("ERROR","Não foi possível salvar: "+error.Message);}
                     break;
             }

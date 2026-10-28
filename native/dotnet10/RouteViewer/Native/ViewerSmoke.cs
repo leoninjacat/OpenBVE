@@ -145,7 +145,7 @@ internal static class ViewerSmoke
             Console.WriteLine("VIEWER_CAPTURE: "+Program.CapturePath);
         }
         if(scenarioDone && frames>=30 && (Program.CapturePath==null || captured) && Program.SmokeSeconds>0 && timer.Elapsed.TotalSeconds>=Program.SmokeSeconds) {
-            if(Program.Renderer.StaticObjectStates.Count==0 || Program.Renderer.VisibleObjects.OpaqueFaces.Count==0)throw new Exception("Empty route scene");
+            if((Program.Renderer.StaticObjectStates.Count==0 || Program.Renderer.VisibleObjects.OpaqueFaces.Count==0) && !(Program.ObjectMode&&string.IsNullOrWhiteSpace(ObjectGraph.Source)))throw new Exception("Empty route scene");
             Console.WriteLine($"VIEWER_SMOKE_OK: frames={frames}, objects={Program.Renderer.StaticObjectStates.Count}, opaque={Program.Renderer.VisibleObjects.OpaqueFaces.Count}");
             if(!Program.ObjectMode)Console.WriteLine($"VIEWER_TRACK_RANGE: {Program.Camera.Limits.Min}..{Program.Camera.Limits.Max}");
             if(Program.MessageLogPath!=null) {

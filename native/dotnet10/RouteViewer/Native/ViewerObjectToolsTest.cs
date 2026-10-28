@@ -33,23 +33,39 @@ internal static class ViewerObjectToolsTest
                 baseline=ObjectGraph.Source;initial=ObjectGraph.Values(baseline,ObjectGraph.Selected);others=OtherGeometry();disk=File.ReadAllBytes(Program.CurrentRouteFile);
                 phase=1;goto case 1;
             case 1:
-                tool=index<3?ObjectTool.Move:index<6?ObjectTool.Rotate:ObjectTool.Scale;
-                axis=index==9?3:index%3;
+                tool=index==10?ObjectTool.Rotate:index<3?ObjectTool.Move:index<6?ObjectTool.Rotate:ObjectTool.Scale;
+                axis=index>=9?3:index%3;
                 Click(window,"tool-"+(tool==ObjectTool.Move?"move":tool==ObjectTool.Rotate?"rotate":"scale"));
                 if(ObjectTools.Axis!=-1||ObjectTools.BeginDrag(window))throw new Exception("Tool moved a mesh before an axis was chosen");
                 ViewerOverlay.Build(window);
-                if(ViewerOverlay.Controls.Any(c=>c.Id=="axis-3")!=(tool==ObjectTool.Scale))throw new Exception("ALL should only be available with Scale");
+                if(ViewerOverlay.Controls.Any(c=>c.Id=="axis-3")!=(tool is ObjectTool.Scale or ObjectTool.Rotate))throw new Exception("ALL should be available with Scale and Rotate");
                 ObjectTools.ChooseAxis(3);
-                if(tool!=ObjectTool.Scale&&ObjectTools.Axis!=-1)throw new Exception("ALL was accepted by Move or Rotate");
+                if(tool==ObjectTool.Move&&ObjectTools.Axis!=-1)throw new Exception("ALL was accepted by Move");
+                if(index==10)Click(window,"axis-1");
                 Click(window,"axis-"+axis);
                 if(ObjectTools.Tool!=tool||ObjectTools.Axis!=axis||!ObjectTools.BeginDrag(window))throw new Exception("Toolbar tool/axis selection did not start a drag");
                 window.Drag=DragMode.ObjectTransform;window.DragBy(30,-12);window.EndInteraction();
                 // Changing the toolbar must not redirect movement already waiting on GTK.
-                if(index==0){Click(window,"tool-rotate");Click(window,"axis-2");}
+                if(index is 0 or 10){Click(window,"tool-rotate");Click(window,"axis-2");}
                 phase=2;step.Restart();break;
             case 2:
                 if(ObjectGraph.Source==baseline)return;
                 var values=ObjectGraph.Values(ObjectGraph.Source,ObjectGraph.Selected);
+                if(index==10){
+                    string sep=Path.GetExtension(Program.CurrentRouteFile).Equals(".b3d",StringComparison.OrdinalIgnoreCase)?" ":",";
+                    if(!ObjectGraph.Source.Contains("RotateAll"+sep+"0,1,0,21"))throw new Exception("Rotate ALL did not capture the last Y axis or serialize RotateAll");
+                    if(values.Where((v,i)=>Math.Abs(v-initial[i])>1e-7).Any())throw new Exception("RotateAll changed mesh-local transform properties");
+                    var rotated=ObjectGraph.Parse(ObjectGraph.Source);var original=ObjectGraph.Parse(baseline);
+                    var expected=ObjectGraph.Parse(baseline+"\nRotateAll"+sep+"0,1,0,21\n");
+                    if(rotated.Mesh.Vertices.Length!=expected.Mesh.Vertices.Length||rotated.Mesh.Vertices.Where((v,i)=>(v.Coordinates-expected.Mesh.Vertices[i].Coordinates).NormSquared()>1e-8).Any())throw new Exception("RotateAll geometry differs from parser rotation");
+                    if(rotated.Mesh.Vertices.Where((v,i)=>(v.Coordinates-original.Mesh.Vertices[i].Coordinates).NormSquared()>1e-8).Count()==0)throw new Exception("RotateAll did not rotate geometry");
+                    foreach(int id in original.Mesh.Faces.Select(f=>f.SourceMesh).Distinct()){
+                        var vertices=original.Mesh.Faces.Where(f=>f.SourceMesh==id).SelectMany(f=>f.Vertices.Select(v=>v.Index)).Distinct();
+                        if(!vertices.Any(i=>(rotated.Mesh.Vertices[i].Coordinates-original.Mesh.Vertices[i].Coordinates).NormSquared()>1e-8))throw new Exception("RotateAll left a mesh unchanged");
+                    }
+                    if(!File.ReadAllBytes(Program.CurrentRouteFile).SequenceEqual(disk))throw new Exception("RotateAll unexpectedly saved the document");
+                    editor.TestTransform=null;editor.Send("TEST-READ-TRANSFORM");phase=3;step.Restart();break;
+                }
                 int first=tool==ObjectTool.Move?axis:tool==ObjectTool.Rotate?3+axis:axis==3?6:6+axis;
                 int last=axis==3?8:first;
                 for(int i=0;i<12;i++){
@@ -69,7 +85,7 @@ internal static class ViewerObjectToolsTest
                 editor.Send("TEST-UNDO");phase=4;step.Restart();break;
             case 4:
                 if(ObjectGraph.Source!=baseline)return;
-                if(++index<10){phase=1;step.Restart();break;}
+                if(++index<11){phase=1;step.Restart();break;}
                 editor.Send("TEST-ROTATION");phase=5;step.Restart();break;
             case 5:
                 var rotation=ObjectGraph.Values(ObjectGraph.Source,ObjectGraph.Selected);
@@ -82,7 +98,7 @@ internal static class ViewerObjectToolsTest
         }
         if(Complete){
             ObjectTools.ChooseTool(ObjectTool.Rotate);ObjectTools.ChooseAxis(1);
-            Console.WriteLine("OBJECT_EDITOR_TOOLS_OK: Move/Rotate/Scale XYZ, Scale ALL, explicit axis selection, queued tool capture, panel rotation XYZ, live code, independent meshes and undo");
+            Console.WriteLine("OBJECT_EDITOR_TOOLS_OK: Move/Rotate/Scale XYZ, Scale ALL, RotateAll with captured axis and parser syntax, explicit axis selection, queued tool capture, panel rotation XYZ, live code, independent meshes and undo");
         }
     }
 }

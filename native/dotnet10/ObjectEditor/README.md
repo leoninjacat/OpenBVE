@@ -25,15 +25,30 @@ Depois abra **OpenBVE Object Editor**, ou use:
 flatpak run --command=object-editor-native org.openbve.OpenBVE.Native
 ```
 
+- **Novo**, na barra superior do viewport, antes de Abrir: escolha **Arquivo B3D**,
+  **Arquivo CSV** ou **Arquivo vazio…** e o destino. Arquivo vazio pede a linguagem
+  B3D/CSV e cria um arquivo sem conteúdo; a extensão informa ao editor qual sintaxe usar.
+  O editor cria um arquivo vazio nesse formato, sem sobrescrever arquivos existentes.
+  Também é possível iniciar sem arquivo e usar esse menu.
+- Na lateral esquerda do viewport, os ícones de **Cubo**, **Plano** e **Cilindro**
+  inserem meshes com a sintaxe do arquivo
+  aberto. Configure as medidas em metros no painel direito antes de clicar: cubo usa largura/altura/
+  profundidade; plano usa largura/profundidade no plano XZ; cilindro usa diâmetro,
+  altura e segmentos (3–256), no eixo Y, com tampas. As formas ficam na origem.
+  A inserção atualiza a prévia e pode ser desfeita com **Ctrl+Z** no código;
+  **Ctrl+S** salva as alterações.
 - **Ctrl+O** ou pasta: abrir objeto B3D/CSV; também aceita arrastar arquivo.
-- **Ctrl+S** ou **Salvar e atualizar**: grava o código e recarrega a geometria,
+- **Ctrl+S** ou o ícone de disquete **Salvar e atualizar** no viewport (no lugar
+  de recarregar): grava o código e recarrega a geometria,
   preservando a câmera e o histórico de edição.
-- Painel redimensionável **Lateral**, **Abaixo** ou **Janela independente**.
+- Painel redimensionável **Lateral**, **Abaixo** ou **Janela independente**,
+  com o seletor ao lado de **Código**, acima do texto.
 - **Globo e arraste**: orbitar acompanhando o gesto; **MMB**: órbita tradicional; **Shift+MMB**: pan; botão direito: olhar.
 - **WASD/QE**: mover; roda: zoom; **Home/Num 5**: enquadrar; **F**: aramado.
 - **F9**: mensagens do parser; **F5**: reler o arquivo salvo; **F8**: ocultar código.
 
-O salvamento mantém codificação/BOM e CRLF; alterações externas bloqueiam a
+O salvamento mantém codificação/BOM e CRLF; objetos vazios ou somente ASCII usam
+UTF-8 para permitir comentários acentuados. Alterações externas bloqueiam a
 sobrescrita. Fechar ou trocar de arquivo com alterações pede salvar, descartar
 ou cancelar. Erros de parsing ficam nas mensagens e o texto continua editável.
 Texturas usam os caminhos relativos ao arquivo original.
@@ -48,6 +63,15 @@ Texturas usam os caminhos relativos ao arquivo original.
   o eixo escolhido. Nenhuma transformação acontece antes de escolher o eixo.
 - **Escalar** oferece também **ALL**: a mesma proporção é aplicada aos três eixos
   do mesh selecionado. As outras peças do arquivo permanecem intactas.
+- **Girar → ALL** usa o último eixo X/Y/Z escolhido (Y inicialmente) e gira o
+  objeto inteiro em torno da origem, acrescentando `RotateAll x,y,z,graus` em B3D
+  ou `RotateAll,x,y,z,graus` em CSV ao fim do código. O eixo é capturado no início
+  do arraste; trocar de eixo depois não redireciona uma operação já enviada.
+  **Ctrl+Z no código** desfaz a rotação global; gravar continua sendo explícito.
+- O ícone de **pessoa** à esquerda mostra/oculta uma silhueta de **1,75 m**, em pé
+  ao lado do modelo e alinhada à sua base, como referência de tamanho. É apenas
+  uma sobreposição da prévia: não é selecionável, não altera medidas ou meshes,
+  não entra no histórico e não grava conteúdo nem arquivos auxiliares.
 - Na rotação e escala, arrastar para a direita/cima aumenta o valor; para a
   esquerda/baixo diminui. Na movimentação, o gesto acompanha a projeção do eixo
   na tela; eixos de frente para a câmera usam o gesto para cima/direita.
@@ -104,7 +128,7 @@ native/run-objecteditor.sh native/dotnet10/ObjectEditor/Samples/meshes.b3d
 ```
 
 Esta etapa trabalha com blocos MeshBuilder explícitos em linhas separadas.
-Ainda não inclui criação de primitivas, edição de faces ou seleção de texturas. A edição gráfica deve ser feita com o código sintaticamente
+Ainda não inclui edição de faces ou seleção de texturas. A edição gráfica deve ser feita com o código sintaticamente
 válido; diagnósticos do parser continuam disponíveis em F9.
 
 Validação integrada (modifica a cópia, dobrando a geometria):
@@ -126,3 +150,9 @@ eixo, incluindo ALL, sincronização dos campos de rotação e desfazer. A valid
 pivô confirma que XYZ/origem/centro não alteram o modelo, que a configuração persiste,
 que rotação/escala/dimensões mantêm o ponto fixo e que conflitos externos são preservados. Repetir com `cube.csv` testa CSV; uma cópia de
 `meshes.b3d` testa a seleção de cilindros e a independência entre blocos.
+
+Teste da geração de primitivas e desfazer pelo buffer GTK:
+
+```sh
+make -C native/linux-launcher check-object-creation
+```

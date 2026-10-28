@@ -29,7 +29,10 @@ internal static class ObjectPreview
                 throw new InvalidOperationException("Selecione um objeto B3D ou CSV.");
             window.Editor.Open(window,path);
             UnifiedObject obj=null;
-            if(sourceText!=null) {
+            string contents=sourceText??File.ReadAllText(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path));
+            bool empty=string.IsNullOrWhiteSpace(contents);
+            if(empty)obj=new StaticObject(Program.CurrentHost);
+            if(sourceText!=null&&!empty) {
                 foreach(var plugin in Program.CurrentHost.Plugins)
                     if(plugin.Object!=null && plugin.Object.CanLoadObject(path) && plugin.Object.LoadObjectFromText(path,sourceText,out obj))break;
                 if(obj==null)throw new InvalidOperationException("Este parser não aceita pré-visualização de texto.");
@@ -39,7 +42,7 @@ internal static class ObjectPreview
             Program.CurrentRoute.AccurateObjectDisposal=OpenBveApi.Routes.ObjectDisposalMode.Legacy;
             Loading.Complete=false;
             Program.CurrentHost.ClearObjectCaches();
-            if(sourceText==null && (!Program.CurrentHost.LoadObject(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path),out obj)||obj==null))
+            if(sourceText==null && !empty && (!Program.CurrentHost.LoadObject(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path),out obj)||obj==null))
                 throw new InvalidOperationException("Falha ao interpretar objeto. Consulte as mensagens (F9).");
             obj.CreateObject(OpenBveApi.Math.Vector3.Zero,new ObjectCreationParameters(0,0,-100000,100000,1));
             Program.Renderer.Camera.QuadTreeLeaf=null;

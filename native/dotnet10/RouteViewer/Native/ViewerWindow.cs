@@ -83,6 +83,7 @@ internal sealed class ViewerWindow : GameWindow
         Program.Renderer.UpdateViewport(ViewportChangeMode.NoChange);
         initialized = true;
         if (Program.CurrentRouteFile != null) Program.LoadRoute();
+        else if (Program.ObjectMode && OperatingSystem.IsLinux()) Editor.Open(this,null);
         else if (Program.CreateOnStart) Program.NewRoute();
         else if (OperatingSystem.IsWindows() && Program.SmokeSeconds <= 0) Program.OpenPicker();
     }
