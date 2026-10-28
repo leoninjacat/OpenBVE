@@ -57,7 +57,18 @@ Texturas usam os caminhos relativos ao arquivo original.
 
 - Clique numa peça na vista 3D para selecionar seu bloco `[MeshBuilder]` / `CreateMeshBuilder`.
   Um retângulo azul destaca a seleção; clicar no fundo limpa a seleção.
-- O painel mostra identificação, vértices, faces e dimensões do mesh selecionado.
+- Ao selecionar uma mesh no viewport, o código correspondente é destacado e
+  trazido para a área visível do painel, sem transferir o foco do viewport.
+  Se o painel estava oculto, ele volta a aparecer. O restante do arquivo continua editável.
+- **Delete com foco no viewport** exclui a mesh selecionada e seu bloco do código.
+  Comandos globais (`RotateAll`, `ScaleAll`, etc.) são preservados para não mudar
+  as outras peças. A tecla Delete no editor de texto mantém a edição normal do texto.
+  A exclusão atualiza a prévia, limpa a seleção e pode ser desfeita com **Ctrl+Z no código**.
+- **Nome**, nas propriedades: escreva um nome para a mesh. O editor o salva como
+  comentário `; @openbve-name Nome` dentro do bloco, compatível com B3D/CSV.
+  Renomear não muda a geometria nem a identificação usada pelos pivôs; apagar o
+  nome remove o comentário. Renomeações também podem ser desfeitas no código.
+- O painel mostra identificação, nome, vértices, faces e dimensões do mesh selecionado.
 - Na barra superior, escolha **Mover**, **Girar** ou **Escalar** e depois o eixo
   **X**, **Y** ou **Z**. Arraste o mesh com o botão esquerdo para manipular somente
   o eixo escolhido. Nenhuma transformação acontece antes de escolher o eixo.
@@ -143,7 +154,8 @@ native/run-objecteditor.sh /tmp/object-test.b3d --editor-test --smoke=14
 ```
 
 Exigir saída zero, `OBJECT_EDITOR_GEOMETRY_OK`, `VIEWER_EDITOR_OK`, `OBJECT_EDITOR_GRAPH_OK`,
-`OBJECT_EDITOR_PROPERTIES_OK`, `OBJECT_EDITOR_TOOLS_OK`, `OBJECT_EDITOR_PIVOT_OK` e
+`OBJECT_EDITOR_PROPERTIES_OK`, `OBJECT_EDITOR_TOOLS_OK`, `OBJECT_EDITOR_PIVOT_OK`,
+`OBJECT_EDITOR_MESH_ACTIONS_OK` e
 `VIEWER_SMOKE_OK`. O teste percorre os três layouts, salva pelo widget GTK e
 confere a nova geometria e a câmera preservada. Também seleciona o primeiro mesh,
 altera a escala pelo widget de propriedades, verifica a prévia sem salvar, desfaz,

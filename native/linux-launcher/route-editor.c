@@ -15,6 +15,11 @@ static GtkWidget *editor_content;
 static GtkTextBuffer *buffer;
 static GtkWidget *mesh_panel;
 static GtkLabel *code_language;
+static GtkEntry *mesh_name;
+static GtkTextTag *mesh_code_tag;
+static guint name_timer;
+static int name_mesh;
+static gboolean delete_pending;
 static GtkLabel *mesh_heading,*mesh_info,*mesh_dimensions,*mesh_error;
 static GtkSpinButton *mesh_values[9],*mesh_sizes[3],*mesh_pivots[3];
 static GtkWidget *pivot_origin,*pivot_center;
@@ -25,7 +30,8 @@ static gboolean mesh_changing;
 static int mesh_id;
 static guint preview_timer,property_timer;
 static int graph_requests;
-static gboolean save_after_graph;
+static gboolean save_after_graph,action_after_graph;
+static void confirm_request(void);
 static GQueue graph_queue=G_QUEUE_INIT;
 static void save(void);
 static void drain_graph_queue(void);
@@ -107,8 +113,40 @@ static void drain_graph_queue(void) {
         graph_requests++;emit(request,payload);return;
     }
     if(save_after_graph){save_after_graph=FALSE;save();}
+    if(action_after_graph){action_after_graph=FALSE;confirm_request();}
 }
 
+static void arrange(void);
+static gboolean apply_name(gpointer data){
+    (void)data;name_timer=0;if(!name_mesh)return G_SOURCE_REMOVE;
+    const char *name=gtk_editable_get_text(GTK_EDITABLE(mesh_name));
+    g_autofree char *encoded=g_base64_encode((const guchar *)name,strlen(name));
+    g_queue_push_tail(&graph_queue,g_strdup_printf("GRAPH-NAME\n%d %s",name_mesh,encoded));name_mesh=0;drain_graph_queue();return G_SOURCE_REMOVE;
+}
+static void name_changed(GtkEditable *entry,gpointer data){
+    (void)entry;(void)data;if(mesh_changing||!mesh_id||delete_pending)return;
+    name_mesh=mesh_id;if(name_timer)g_source_remove(name_timer);name_timer=g_timeout_add(350,apply_name,NULL);
+}
+static void flush_name(void){if(name_timer){g_source_remove(name_timer);name_timer=0;apply_name(NULL);}}
+static void delete_mesh(void){
+    if(!mesh_id||delete_pending||waiting)return;
+    flush_name();delete_pending=TRUE;
+    g_queue_push_tail(&graph_queue,g_strdup_printf("GRAPH-DELETE\n%d",mesh_id));drain_graph_queue();
+}
+static void show_mesh_code(const char *value){
+    GtkTextIter a,b;gtk_text_buffer_get_bounds(buffer,&a,&b);gtk_text_buffer_remove_tag(buffer,mesh_code_tag,&a,&b);
+    if(!*value)return;
+    int id,first,last,focus;
+    const char *newline=strchr(value,'\n');if(!newline||sscanf(value,"%d %d %d %d",&id,&first,&last,&focus)!=4)return;
+    g_autofree char *text=current_text();gsize size=0;g_autofree guchar *original=g_base64_decode(newline+1,&size);
+    if(size!=strlen(text)||memcmp(text,original,size)!=0||first<0||last<first||(gsize)last>size)return;
+    gtk_text_buffer_get_iter_at_offset(buffer,&a,g_utf8_pointer_to_offset(text,text+first));gtk_text_buffer_get_iter_at_offset(buffer,&b,g_utf8_pointer_to_offset(text,text+last));
+    gtk_text_buffer_apply_tag(buffer,mesh_code_tag,&a,&b);
+    if(focus){
+        if(!editor_visible){editor_visible=TRUE;gtk_widget_set_visible(editor_content,TRUE);arrange();emit("VISIBLE","1");}
+        gtk_text_view_scroll_to_iter(GTK_TEXT_VIEW(g_object_get_data(G_OBJECT(window),"text")),&a,.08,TRUE,0,.1);
+    }
+}
 static void pivot_clicked(GtkButton *button,gpointer data) {
     (void)button;if(!mesh_id)return;
     g_queue_push_tail(&graph_queue,g_strdup_printf("GRAPH-PIVOT\n%d %s",mesh_id,(const char *)data));drain_graph_queue();
@@ -165,6 +203,7 @@ static void layout_changed(GObject *object,GParamSpec *spec,gpointer data) {
 }
 static void save(void) {
     if(waiting)return;
+    if(object_editor)flush_name();
     if(object_editor && mesh_edits){if(property_timer)g_source_remove(property_timer);property_timer=0;apply_properties(NULL);}
     if(object_editor && (graph_requests||!g_queue_is_empty(&graph_queue))){save_after_graph=TRUE;drain_graph_queue();return;}
     if(preview_timer){g_source_remove(preview_timer);preview_timer=0;}
@@ -182,14 +221,24 @@ static void choice(GObject *source,GAsyncResult *result,gpointer data) {
     int answer=gtk_alert_dialog_choose_finish(GTK_ALERT_DIALOG(source),result,&error);
     if(answer==2)save();else if(answer==1)finish_action();else {g_clear_pointer(&pending_action,g_free);g_clear_pointer(&pending_value,g_free);}
 }
-static void request(const char *action,const char *value) {
-    if(pending_action||waiting)return;
-    pending_action=g_strdup(action);pending_value=g_strdup(value);
+static void confirm_request(void) {
+    if(!pending_action)return;
     if(!gtk_text_buffer_get_modified(buffer)){finish_action();return;}
     g_autoptr(GtkAlertDialog) dialog=gtk_alert_dialog_new("Salvar as alterações do arquivo?");
     const char *buttons[]={"Cancelar","Descartar","Salvar e continuar",NULL};
     gtk_alert_dialog_set_buttons(dialog,buttons);gtk_alert_dialog_set_cancel_button(dialog,0);gtk_alert_dialog_set_default_button(dialog,2);
     gtk_alert_dialog_choose(dialog,window,NULL,choice,NULL);
+}
+static void request(const char *action,const char *value) {
+    if(pending_action||waiting)return;
+    pending_action=g_strdup(action);pending_value=g_strdup(value);
+    if(object_editor){
+        flush_name();
+        if(graph_requests||mesh_edits||!g_queue_is_empty(&graph_queue)){
+            action_after_graph=TRUE;drain_graph_queue();return;
+        }
+    }
+    confirm_request();
 }
 static char *object_path;
 static GtkSpinButton *primitive_size[3],*primitive_segments;
@@ -270,7 +319,18 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
     g_strchomp(line);char *tab=strchr(line,'\t');if(tab)*tab++=0;
     gsize bytes=0;g_autofree guchar *decoded=tab?g_base64_decode(tab,&bytes):NULL;
     g_autofree char *value=decoded?g_strndup((char *)decoded,bytes):g_strdup("");
-    if(object_editor&&g_str_equal(line,"CREATE-OBJECT"))create_object(value);
+    if(testing&&object_editor&&g_str_equal(line,"TEST-NAME"))gtk_editable_set_text(GTK_EDITABLE(mesh_name),value);
+    else if(testing&&object_editor&&g_str_equal(line,"TEST-READ-MESH-LINK")){
+        GtkTextIter first,last;gtk_text_buffer_get_start_iter(buffer,&first);last=first;
+        int a=-1,b=-1;
+        if(gtk_text_iter_has_tag(&first,mesh_code_tag)||gtk_text_iter_forward_to_tag_toggle(&first,mesh_code_tag)){
+            last=first;gtk_text_iter_forward_to_tag_toggle(&last,mesh_code_tag);
+            g_autofree char *text=current_text();a=g_utf8_offset_to_pointer(text,gtk_text_iter_get_offset(&first))-text;b=g_utf8_offset_to_pointer(text,gtk_text_iter_get_offset(&last))-text;
+        }
+        const char *name=gtk_editable_get_text(GTK_EDITABLE(mesh_name));g_autofree char *encoded=g_base64_encode((const guchar *)name,strlen(name));
+        g_autofree char *report=g_strdup_printf("%d %d %d %s",mesh_id,a,b,encoded);emit("TEST-MESH-LINK",report);
+    }
+    else if(object_editor&&g_str_equal(line,"CREATE-OBJECT"))create_object(value);
     else if(object_editor&&g_str_equal(line,"INSERT-OBJECT"))primitive_clicked(NULL,GINT_TO_POINTER(g_str_equal(value,"cube")?0:g_str_equal(value,"plane")?1:2));
     else if(testing&&g_str_equal(line,"TEST-THEME"))adw_style_manager_set_color_scheme(adw_style_manager_get_default(),g_str_equal(value,"dark")?ADW_COLOR_SCHEME_FORCE_DARK:g_str_equal(value,"light")?ADW_COLOR_SCHEME_FORCE_LIGHT:ADW_COLOR_SCHEME_DEFAULT);
     else if(testing&&g_str_equal(line,"TEST-LAYOUT"))gtk_drop_down_set_selected(g_object_get_data(G_OBJECT(window),"layout"),(guint)atoi(value));
@@ -313,8 +373,9 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
     }
     else if(g_str_equal(line,"RECT")){if(!received_size){sscanf(value,"%d %d",&width,&height);gtk_window_set_default_size(host_window,width,height);received_size=TRUE;}}
     else if(object_editor&&g_str_equal(line,"MESH")){
+        if(name_timer&&(!*value||atoi(value)!=mesh_id))flush_name();
         if(property_timer && (!*value || atoi(value)!=mesh_id)){g_source_remove(property_timer);property_timer=0;apply_properties(NULL);}
-        if(!*value){mesh_id=0;gtk_label_set_text(mesh_heading,"Selecione um mesh na vista 3D");gtk_label_set_text(mesh_info,"");gtk_label_set_text(mesh_dimensions,"");gtk_widget_set_sensitive(mesh_panel,FALSE);}
+        if(!*value){mesh_changing=TRUE;gtk_editable_set_text(GTK_EDITABLE(mesh_name),"");mesh_changing=FALSE;mesh_id=0;gtk_label_set_text(mesh_heading,"Selecione um mesh na vista 3D");gtk_label_set_text(mesh_info,"");gtk_label_set_text(mesh_dimensions,"");gtk_widget_set_sensitive(mesh_panel,FALSE);}
         else {
             g_auto(GStrv) fields=g_strsplit(value,"\t",-1);
             if(g_strv_length(fields)==20 && !((property_timer||graph_requests||mesh_edits) && mesh_id==atoi(fields[0]))){
@@ -348,8 +409,15 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
     else if(object_editor&&(g_str_equal(line,"MOVE-REQUEST")||g_str_equal(line,"TOOL-REQUEST"))){
         g_queue_push_tail(&graph_queue,g_strconcat(g_str_equal(line,"TOOL-REQUEST")?"GRAPH-TOOL":"GRAPH-MOVE","\n",value,NULL));drain_graph_queue();
     }
-    else if(object_editor&&g_str_equal(line,"GRAPH-ERROR")){if(graph_requests>0)graph_requests--;save_after_graph=FALSE;gtk_label_set_text(mesh_error,value);drain_graph_queue();}
-    else if(object_editor&&g_str_equal(line,"PATCH")){
+    else if(object_editor&&g_str_equal(line,"GRAPH-ERROR")){delete_pending=FALSE;action_after_graph=FALSE;g_clear_pointer(&pending_action,g_free);g_clear_pointer(&pending_value,g_free);if(graph_requests>0)graph_requests--;save_after_graph=FALSE;gtk_label_set_text(mesh_error,value);drain_graph_queue();}
+    else if(object_editor&&g_str_equal(line,"MESH-CODE"))show_mesh_code(value);
+    else if(object_editor&&g_str_equal(line,"MESH-NAME")){
+        const char *tab=strchr(value,'\t');
+        if(tab&&atoi(value)==mesh_id&&!name_timer&&!graph_requests){mesh_changing=TRUE;gtk_editable_set_text(GTK_EDITABLE(mesh_name),tab+1);mesh_changing=FALSE;}
+    }
+    else if(object_editor&&g_str_equal(line,"DELETE-MESH"))delete_mesh();
+    else if(object_editor&&(g_str_equal(line,"PATCH")||g_str_equal(line,"PATCH-DELETE"))){
+        gboolean deleting=g_str_equal(line,"PATCH-DELETE");if(deleting)delete_pending=FALSE;
         if(graph_requests>0)graph_requests--;
         if(preview_timer){g_source_remove(preview_timer);preview_timer=0;}
         char *newline=strchr(value,'\n');
@@ -357,14 +425,16 @@ static gboolean input(GIOChannel *channel,GIOCondition condition,gpointer data) 
             *newline=0;gsize original_size=0;g_autofree guchar *original=g_base64_decode(value,&original_size);
             g_autofree char *text=current_text();
             if(strlen(text)!=original_size||memcmp(text,original,original_size)!=0){
-                save_after_graph=FALSE;gtk_label_set_text(mesh_error,"O código mudou durante a alteração gráfica. Tente novamente.");emit("PREVIEW",text);
+                save_after_graph=FALSE;action_after_graph=FALSE;g_clear_pointer(&pending_action,g_free);g_clear_pointer(&pending_value,g_free);gtk_label_set_text(mesh_error,"O código mudou durante a alteração gráfica. Tente novamente.");emit("PREVIEW",text);
             }else{
+                if(deleting){mesh_id=0;g_queue_clear_full(&graph_queue,g_free);emit("CLEAR-SELECTION","");}
                 changing=TRUE;GtkTextIter start,end;gtk_text_buffer_begin_user_action(buffer);gtk_text_buffer_get_bounds(buffer,&start,&end);gtk_text_buffer_delete(buffer,&start,&end);gtk_text_buffer_insert(buffer,&start,newline+1,-1);gtk_text_buffer_end_user_action(buffer);changing=FALSE;title();emit("PREVIEW",newline+1);
             }
         }
         drain_graph_queue();
     }
     else if(g_str_equal(line,"TEXT")){
+        if(name_timer){g_source_remove(name_timer);name_timer=0;}name_mesh=0;delete_pending=FALSE;
         changing=TRUE;gtk_text_buffer_begin_irreversible_action(buffer);gtk_text_buffer_set_text(buffer,value,-1);gtk_text_buffer_end_irreversible_action(buffer);gtk_text_buffer_set_modified(buffer,FALSE);changing=FALSE;title();
     } else if(g_str_equal(line,"PATH")){if(object_editor){g_free(object_path);object_path=g_file_test(value,G_FILE_TEST_IS_REGULAR)?g_strdup(value):NULL;
         const char *ext=strrchr(value,'.');gtk_label_set_text(code_language,object_path?(ext&&g_ascii_strcasecmp(ext,".csv")==0?"Código · CSV":"Código · B3D"):"Código · escolha B3D ou CSV em Novo");}gtk_label_set_text(status,value);g_free(route_name);route_name=g_path_get_basename(value);title();}
@@ -415,6 +485,8 @@ int main(int argc,char **argv) {
         mesh_heading=GTK_LABEL(gtk_label_new("Selecione um mesh na vista 3D"));gtk_widget_add_css_class(GTK_WIDGET(mesh_heading),"title-3");gtk_box_append(GTK_BOX(box),GTK_WIDGET(mesh_heading));
         mesh_info=GTK_LABEL(gtk_label_new(""));gtk_box_append(GTK_BOX(box),GTK_WIDGET(mesh_info));
         mesh_panel=gtk_grid_new();gtk_grid_set_column_spacing(GTK_GRID(mesh_panel),6);gtk_grid_set_row_spacing(GTK_GRID(mesh_panel),6);gtk_box_append(GTK_BOX(box),mesh_panel);
+        mesh_name=GTK_ENTRY(gtk_entry_new());gtk_entry_set_max_length(mesh_name,200);gtk_entry_set_placeholder_text(mesh_name,"Nome da mesh (comentário)");
+        gtk_grid_attach(GTK_GRID(mesh_panel),gtk_label_new("Nome"),0,9,1,1);gtk_grid_attach(GTK_GRID(mesh_panel),GTK_WIDGET(mesh_name),1,9,3,1);g_signal_connect(mesh_name,"changed",G_CALLBACK(name_changed),NULL);
         const char *groups[]={"Posição Δ (m)","Rotação Δ (°)","Escala ×"};const char *axes[]={"X","Y","Z"};
         for(int axis=0;axis<3;axis++)gtk_grid_attach(GTK_GRID(mesh_panel),gtk_label_new(axes[axis]),axis+1,0,1,1);
         for(int group=0;group<3;group++){
@@ -459,6 +531,7 @@ int main(int argc,char **argv) {
     GtkWidget *scroll=gtk_scrolled_window_new();gtk_scrolled_window_set_overlay_scrolling(GTK_SCROLLED_WINDOW(scroll),FALSE);gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scroll),GTK_POLICY_ALWAYS,GTK_POLICY_ALWAYS);gtk_widget_set_vexpand(scroll,TRUE);gtk_box_append(GTK_BOX(box),scroll);
     GtkWidget *text=gtk_text_view_new();gtk_text_view_set_monospace(GTK_TEXT_VIEW(text),TRUE);gtk_text_view_set_left_margin(GTK_TEXT_VIEW(text),12);gtk_text_view_set_top_margin(GTK_TEXT_VIEW(text),10);gtk_text_view_set_right_margin(GTK_TEXT_VIEW(text),12);gtk_text_view_set_bottom_margin(GTK_TEXT_VIEW(text),10);
     gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(text),GTK_WRAP_NONE);gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scroll),text);buffer=gtk_text_view_get_buffer(GTK_TEXT_VIEW(text));gtk_text_buffer_set_enable_undo(buffer,TRUE);
+    if(object_editor)mesh_code_tag=gtk_text_buffer_create_tag(buffer,"mesh-source","background","#304d68","foreground","#ffffff",NULL);
     g_object_set_data(G_OBJECT(window),"scroll",scroll);
     g_object_set_data(G_OBJECT(window),"text",text);
     g_object_set_data(G_OBJECT(window),"layout",layout);

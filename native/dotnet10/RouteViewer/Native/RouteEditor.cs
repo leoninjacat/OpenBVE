@@ -21,7 +21,7 @@ internal sealed class RouteEditor : IDisposable
     internal bool CloseApproved;
     private bool replacingRoute;
     private bool graphMovePending;
-    internal string TestProperties,TestTransform,TestPivot;
+    internal string TestProperties,TestTransform,TestPivot,TestMeshLink;
     private long lastGraphMove;
     internal bool Running => process != null && !process.HasExited;
     internal void Open(ViewerWindow window, string path)
@@ -104,12 +104,16 @@ internal sealed class RouteEditor : IDisposable
                 case "LAYOUT":Layout=value;window.UpdateCanvas();break;
                 case "ROUTE":replacingRoute=true;Program.PendingRoute=value;break;
                 case "QUIT":CloseApproved=true;window.Close();break;
+                case "TEST-MESH-LINK":if(Program.EditorTest&&Program.ObjectMode)TestMeshLink=value;break;
                 case "TEST-PIVOT":if(Program.EditorTest&&Program.ObjectMode)TestPivot=value;break;
                 case "TEST-TRANSFORM":if(Program.EditorTest&&Program.ObjectMode)TestTransform=value;break;
                 case "TEST-PROPERTIES":if(Program.EditorTest&&Program.ObjectMode)TestProperties=value;break;
+                case "CLEAR-SELECTION":ObjectGraph.Selected=0;ObjectGraph.PendingMove=System.Numerics.Vector3.Zero;ObjectTools.Reset();break;
                 case "PREVIEW":
                     if(Program.ObjectMode){graphMovePending=false;ObjectPreview.Load(value);}
                     break;
+                case "GRAPH-NAME":
+                case "GRAPH-DELETE":
                 case "GRAPH-SET":
                 case "GRAPH-MOVE":
                 case "GRAPH-TOOL":
@@ -122,7 +126,11 @@ internal sealed class RouteEditor : IDisposable
                         string text=value[(newline+1)..];
                         double Number(int index)=>double.Parse(parts[index],System.Globalization.CultureInfo.InvariantCulture);
                         string updated;
-                        if(command=="GRAPH-PIVOT"){
+                        if(command=="GRAPH-DELETE"){
+                            updated=ObjectGraph.Delete(text,id);
+                        }else if(command=="GRAPH-NAME"){
+                            updated=ObjectGraph.Rename(text,id,parts.Length>1?Encoding.UTF8.GetString(Convert.FromBase64String(parts[1])):"");
+                        }else if(command=="GRAPH-PIVOT"){
                             if(parts.Length!=2||parts[1] is not ("origin" or "center"))throw new InvalidOperationException("Comando de pivô inválido.");
                             ObjectPivot.SetWorld(text,id,parts[1]=="origin"?System.Numerics.Vector3.Zero:ObjectPivot.Center(text,id));
                             ObjectPivot.Publish(window);graphMovePending=false;Send("PIVOT-DONE");break;
@@ -153,7 +161,7 @@ internal sealed class RouteEditor : IDisposable
                             if((edits&2)!=0)updated=ObjectGraph.Resize(updated,id,new[]{Number(11),Number(12),Number(13)});
                             if((edits&4)!=0)updated=ObjectGraph.SetColor(updated,id,new[]{Number(14),Number(15),Number(16),Number(17)});
                         }
-                        Send("PATCH",Convert.ToBase64String(Encoding.UTF8.GetBytes(text))+"\n"+updated);
+                        Send(command=="GRAPH-DELETE"?"PATCH-DELETE":"PATCH",Convert.ToBase64String(Encoding.UTF8.GetBytes(text))+"\n"+updated);
                     } catch(Exception error){graphMovePending=false;Send("GRAPH-ERROR",error.Message);}
                     break;
                 case "NEW-EMPTY":

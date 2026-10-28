@@ -24,6 +24,28 @@ internal static class ObjectGraph
         if(id<1||id>matches.Count)throw new InvalidOperationException("Selecione um bloco MeshBuilder explícito para editar.");
         return (matches[id-1].Index,id<matches.Count?matches[id].Index:text.Length);
     }
+    static readonly Regex NameComment=new(@"(?m)^[ \t]*; @openbve-name ([^\r\n]*)(?:\r?\n|$)");
+    internal static string Name(string text,int id){var (a,b)=Range(text,id);return NameComment.Match(text[a..b]).Groups[1].Value;}
+    internal static string Rename(string text,int id,string name){
+        if(name.Length>200||name.Contains('\r')||name.Contains('\n'))throw new InvalidOperationException("Use um nome de até 200 caracteres em uma linha.");
+        var (a,b)=Range(text,id);string block=NameComment.Replace(text[a..b],"");
+        int line=block.IndexOf('\n');string nl=text.Contains("\r\n")?"\r\n":"\n";
+        if(line<0){block+=nl;line=block.Length-1;}
+        if(!string.IsNullOrWhiteSpace(name))block=block.Insert(line+1,"; @openbve-name "+name.Trim()+nl);
+        return text[..a]+block+text[b..];
+    }
+    internal static string Delete(string text,int id){
+        var (a,b)=Range(text,id);
+        // Global transforms belong to the object, even when located in this builder.
+        string globals=string.Concat(Regex.Matches(text[a..b],@"(?im)^[ \t]*(?:TranslateAll|RotateAll|ScaleAll|ShearAll|MirrorAll)(?=[,;\s]|$)[^\r\n]*(?:\r?\n|$)").Select(m=>m.Value));
+        return text[..a]+globals+text[b..];
+    }
+    internal static void PublishCode(ViewerWindow window,bool focus=false){
+        if(Selected==0){window.Editor.Send("MESH-CODE","");window.Editor.Send("MESH-NAME","");return;}
+        var (a,b)=Range(Source,Selected);
+        window.Editor.Send("MESH-CODE",$"{Selected} {System.Text.Encoding.UTF8.GetByteCount(Source[..a])} {System.Text.Encoding.UTF8.GetByteCount(Source[..b])} {(focus?1:0)}\n"+Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Source)));
+        window.Editor.Send("MESH-NAME",Selected+"\t"+Name(Source,Selected));
+    }
     internal static double[] Values(string text,int id)
     {
         var (start,end)=Range(text,id);
@@ -40,7 +62,7 @@ internal static class ObjectGraph
     }
     internal static string MeshKey(string text,int id)
     {
-        string Base(int mesh) {var (a,b)=Range(text,mesh);return ColorEdit.Replace(Edit.Replace(text.Substring(a,b-a),""),"").Replace("\r\n","\n").Trim();}
+        string Base(int mesh) {var (a,b)=Range(text,mesh);return NameComment.Replace(ColorEdit.Replace(Edit.Replace(text.Substring(a,b-a),""),""),"").Replace("\r\n","\n").Trim();}
         string block=Base(id);int duplicate=0;
         for(int i=1;i<id;i++)if(Base(i)==block)duplicate++;
         return Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(block)))+":"+duplicate;
@@ -143,7 +165,7 @@ internal static class ObjectGraph
     {
         if(!Program.ObjectMode)return;
         try {
-            if(Selected==0){window.Editor.Send("MESH","");window.Editor.Send("PIVOT","");return;}
+            if(Selected==0){PublishCode(window);window.Editor.Send("MESH","");window.Editor.Send("PIVOT","");return;}
             var values=Values(Source,Selected);
             int faces=0;var vertices=new HashSet<Vector3>();
             var min=new Vector3(float.MaxValue);var max=new Vector3(float.MinValue);
@@ -152,11 +174,12 @@ internal static class ObjectGraph
                     faces++;
                     foreach(var vertex in face.Vertices){var v=CameraRig.ToV(state.Prototype.Mesh.Vertices[vertex.Index].Coordinates);vertices.Add(v);min=Vector3.Min(min,v);max=Vector3.Max(max,v);}
                 }
-            if(faces==0){Selected=0;window.Editor.Send("MESH","");return;}
+            if(faces==0){Selected=0;PublishCode(window);window.Editor.Send("MESH","");return;}
             var size=max-min;
             var colors=Program.Renderer.StaticObjectStates.SelectMany(state=>state.Prototype.Mesh.Faces.Where(f=>f.SourceMesh==Selected).Select(f=>state.Prototype.Mesh.Materials[f.Material].Color)).GroupBy(c=>(c.R,c.G,c.B,c.A)).Select(g=>g.First()).ToArray();
             var color=colors[0];
             window.Editor.Send("MESH",$"{Selected}\t{vertices.Count}\t{faces}\t"+string.Join("\t",values.Take(9).Select(v=>v.ToString("G17",Inv)))+$"\t{size.X.ToString("R",Inv)}\t{size.Y.ToString("R",Inv)}\t{size.Z.ToString("R",Inv)}\t{color.R}\t{color.G}\t{color.B}\t{color.A}\t{(colors.Length>1?1:0)}");
+            PublishCode(window);
             ObjectPivot.Publish(window);
             Program.Status=$"Mesh {Selected} · "+ObjectTools.Hint;
         }catch(Exception error){window.Editor.Send("GRAPH-ERROR",error.Message);}
@@ -219,7 +242,7 @@ internal static class ObjectGraph
                 }
             }
         }
-        Selected=selected;Publish(window);return selected!=0;
+        Selected=selected;Publish(window);PublishCode(window,true);return selected!=0;
     }
     internal static void Move(float dx,float dy,int height)
     {

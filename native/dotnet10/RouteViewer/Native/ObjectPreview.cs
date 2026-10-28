@@ -30,7 +30,7 @@ internal static class ObjectPreview
             window.Editor.Open(window,path);
             UnifiedObject obj=null;
             string contents=sourceText??File.ReadAllText(path,OpenBveApi.TextEncoding.GetSystemEncodingFromFile(path));
-            bool empty=string.IsNullOrWhiteSpace(contents);
+            bool empty=System.Linq.Enumerable.All(contents.Split('\n'),line=>string.IsNullOrWhiteSpace(line.Split(';')[0]));
             if(empty)obj=new StaticObject(Program.CurrentHost);
             if(sourceText!=null&&!empty) {
                 foreach(var plugin in Program.CurrentHost.Plugins)

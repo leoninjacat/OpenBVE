@@ -250,7 +250,7 @@ internal sealed class ViewerWindow : GameWindow
         Keys.Press(e.Key);
         HandleKey(e.Key,e.Control);
     }
-    void HandleKey(Key key,bool control)
+    internal void HandleKey(Key key,bool control)
     {
         if (Program.CurrentlyLoading) return;
         if(control&&key==Key.S){Editor.Send("SAVE-REQUEST");return;}
@@ -262,6 +262,10 @@ internal sealed class ViewerWindow : GameWindow
         if (key == Key.F7 || control && key == Key.O) { Program.OpenPicker(); return; }
         if (key == Key.F9) { ShowLog = !ShowLog;if(ShowLog)InterfaceVisible=true; return; }
         if (!Loading.Complete || Help || ShowLog) return;
+        if(Program.ObjectMode&&key==Key.Delete){
+            EndInteraction();ObjectTools.Reset();ObjectGraph.PendingMove=System.Numerics.Vector3.Zero;
+            Editor.Send("DELETE-MESH");return;
+        }
         if(key==Key.Tab) {
             Program.Camera.CycleTrack(); ViewerOverlay.TrackDropdownOpen=false;
             Drag=DragMode.None;Held=null;return;
